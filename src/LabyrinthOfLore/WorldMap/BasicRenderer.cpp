@@ -24,7 +24,7 @@ BasicRenderer::~BasicRenderer()
 }
 
 
-void BasicRenderer::intialize()
+void BasicRenderer::initialize()
 {
 al_init_primitives_addon();
 

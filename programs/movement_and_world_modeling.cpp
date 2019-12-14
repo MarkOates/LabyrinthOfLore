@@ -16,11 +16,15 @@ std::vector<std::vector<LabyrinthOfLore::WorldMap::Tile>> construct_tile_map_dat
    { { 1, 100 },  { 0, 10 }, { 0, 10 }, { 0, 10 }, { 0, 10 }, { 0, 10 }, { 0, 10 }, { 1, 100 }, },
    { { 1, 100 },  { 0, 10 }, { 0, 10 }, { 0, 10 }, { 0, 10 }, { 0, 10 }, { 0, 10 }, { 1, 100 }, },
    { { 1, 100 },  { 0, 10 }, { 0, 10 }, { 0, 10 }, { 0, 10 }, { 0, 10 }, { 0, 10 }, { 1, 100 }, },
+   { { 1, 100 },  { 0, 10 }, { 0, 10 }, { 0, 10 }, { 0, 10 }, { 0, 10 }, { 0, 10 }, { 1, 100 }, },
+   { { 1, 100 },  { 0, 10 }, { 0, 10 }, { 0, 10 }, { 0, 10 }, { 0, 10 }, { 0, 10 }, { 1, 100 }, },
+   { { 1, 100 },  { 0, 10 }, { 0, 10 }, { 0, 10 }, { 0, 10 }, { 0, 10 }, { 0, 10 }, { 1, 100 }, },
+   { { 1, 100 },  { 0, 10 }, { 0, 10 }, { 0, 10 }, { 0, 10 }, { 0, 10 }, { 0, 10 }, { 1, 100 }, },
    { { 1, 100 }, { 1, 100 }, { 1, 100 }, { 1, 100 }, { 1, 100 }, { 1, 100 }, { 1, 100 }, { 1, 100 }, },
 };
 
 
-bool active = false;
+bool active = true;
 
 int main(int argc, char **argv)
 {
@@ -32,6 +36,8 @@ int main(int argc, char **argv)
 
       LabyrinthOfLore::WorldMap::TileMap tile_map = LabyrinthOfLore::WorldMap::TileMapLoader(construct_tile_map_data).build_tile_map();
       LabyrinthOfLore::WorldMap::BasicRenderer tile_map_renderer(tile_map);
+
+      tile_map_renderer.initialize();
 
       tile_map_renderer.render();
 

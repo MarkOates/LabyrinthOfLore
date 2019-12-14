@@ -19,6 +19,7 @@ TEST(LabyrinthOfLore_WorldMap_TileMapLoaderTest, build_tile_map__works_successfu
    std::vector<std::vector<LabyrinthOfLore::WorldMap::Tile>> tile_data = {
       { { 1, 100 }, { 1, 100 }, { 1, 100 }, },
       { { 1, 100 }, { 0, 10 }, { 1, 100 }, },
+      { { 1, 100 }, { 0, 10 }, { 1, 100 }, },
       { { 1, 100 }, { 1, 100 }, { 1, 100 }, },
    };
 
@@ -40,6 +41,7 @@ TEST(LabyrinthOfLore_WorldMap_TileMapLoaderTest, build_tile_map__raises_an_excep
    std::vector<std::vector<LabyrinthOfLore::WorldMap::Tile>> uneven_tile_data = {
       { { 1, 100 }, { 1, 100 }, { 1, 100 }, },
       { { 0, 10 }, },
+      { { 0, 10 }, { 0, 10 } },
       { { 1, 100 }, { 1, 100 }, { 1, 100 }, },
    };
 

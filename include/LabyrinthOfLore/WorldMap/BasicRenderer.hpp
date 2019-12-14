@@ -18,7 +18,7 @@ namespace LabyrinthOfLore
          ~BasicRenderer();
 
 
-      void intialize();
+      void initialize();
       void render();
       };
    }
