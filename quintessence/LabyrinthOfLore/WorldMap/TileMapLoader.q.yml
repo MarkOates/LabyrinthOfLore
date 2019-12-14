@@ -2,14 +2,29 @@ properties:
   - name: tile_map_data
     type: std::vector<std::vector<LabyrinthOfLore::WorldMap::Tile>>
     init_with: "{}"
+    constructor_arg: true
 functions:
-  - name: load
-    type: LabyrinthOfLore::WorldMap::TileMap
+  - name: validate_size_and_integrity
+    private: true
+    type: void
     body: |
       if (tile_map_data.size() == 0)
       {
          throw std::runtime_error("Attempting to load tilemap, but the passed tile_map_data is dimensionless");
       }
+
+      int expected_size = tile_map_data.size();
+      for (int i=0; i<tile_map_data.size(); i++)
+      {
+         if (tile_map_data[i].size() != expected_size)
+         {
+            throw std::runtime_error("Attempting to load tilemap, but the number of columns is uneven among all of the rows.");
+         }
+      }
+  - name: build_tile_map
+    type: LabyrinthOfLore::WorldMap::TileMap
+    body: |
+      validate_size_and_integrity();
 
       int width = tile_map_data.size();
       int height = tile_map_data[0].size();

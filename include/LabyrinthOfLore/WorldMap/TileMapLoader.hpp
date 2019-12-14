@@ -16,11 +16,12 @@ namespace LabyrinthOfLore
          std::vector<std::vector<LabyrinthOfLore::WorldMap::Tile>> tile_map_data;
 
       public:
-         TileMapLoader();
+         TileMapLoader(std::vector<std::vector<LabyrinthOfLore::WorldMap::Tile>> tile_map_data={});
          ~TileMapLoader();
 
 
-      LabyrinthOfLore::WorldMap::TileMap load();
+      void validate_size_and_integrity();
+      LabyrinthOfLore::WorldMap::TileMap build_tile_map();
       };
    }
 }
