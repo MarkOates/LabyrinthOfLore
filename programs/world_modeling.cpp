@@ -49,7 +49,7 @@ int main(int argc, char **argv)
 
       al_flip_display();
 
-      sleep(20);
+      sleep(2);
    }
 
    return 0;
