@@ -1,0 +1,17 @@
+properties:
+  - name: placement
+    type: allegro_flare::placement3d
+    init_with: "{}"
+    constructor_arg: true
+    getter_ref: true
+  - name: velocity
+    type: allegro_flare::placement3d
+    init_with: "{}"
+    constructor_arg: true
+functions:
+  - name: run
+    type: std::string
+    body: return "Hello World!";
+dependencies:
+  - symbol: allegro_flare::placement3d
+    headers: [ allegro_flare/placement3d.h ]
