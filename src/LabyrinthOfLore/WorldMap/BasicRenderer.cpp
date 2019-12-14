@@ -13,7 +13,6 @@ namespace WorldMap
 
 BasicRenderer::BasicRenderer()
    : tile_map({})
-   , tile_height_map({})
 {
 }
 
@@ -34,9 +33,7 @@ void BasicRenderer::render()
 for (unsigned y=0; y<tile_map.get_height(); y++)
   for (unsigned x=0; x<tile_map.get_width(); x++)
    {
-      int tile_index_num = tile_map.get_tile(x, y);
-      int tile_height = tile_height_map.get_tile(x, y);
-      LabyrinthOfLore::WorldMap::Tile tile(tile_index_num, (float)tile_height / 3);
+      LabyrinthOfLore::WorldMap::Tile tile = tile_map.get_tile(x, y);
    }
 return;
 

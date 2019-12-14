@@ -12,7 +12,6 @@ namespace LabyrinthOfLore
       {
       private:
          LabyrinthOfLore::WorldMap::TileMap tile_map;
-         LabyrinthOfLore::WorldMap::TileMap tile_height_map;
 
       public:
          BasicRenderer();
