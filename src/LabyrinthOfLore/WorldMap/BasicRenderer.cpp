@@ -2,6 +2,7 @@
 
 #include <LabyrinthOfLore/WorldMap/BasicRenderer.hpp>
 #include <allegro5/allegro_primitives.h>
+#include <AllegroFlare/Color.hpp>
 #include <LabyrinthOfLore/WorldMap/Tile.hpp>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_color.h>
@@ -37,18 +38,22 @@ int tile_height = 32;
 
 float bottom_height = 0;
 float top_height = 100;
-ALLEGRO_COLOR tile_color = al_color_name("white");
+ALLEGRO_COLOR tile_color = al_color_name("chartreuse");
 
 for (unsigned y=0; y<tile_map.get_height(); y++)
   for (unsigned x=0; x<tile_map.get_width(); x++)
    {
       LabyrinthOfLore::WorldMap::Tile tile = tile_map.get_tile(x, y);
+      float height_float = tile.get_height() / top_height + 0.1f;
+
+      ALLEGRO_COLOR this_tile_color = AllegroFlare::color::color(tile_color, height_float);
+
       al_draw_filled_rectangle(
          x * tile_width,
          y * tile_height,
          x * tile_width + tile_width,
          y * tile_height + tile_height,
-         tile_color
+         this_tile_color
       );
    }
 return;

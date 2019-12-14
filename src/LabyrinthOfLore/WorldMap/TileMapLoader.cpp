@@ -43,8 +43,8 @@ LabyrinthOfLore::WorldMap::TileMap TileMapLoader::build_tile_map()
 {
 validate_size_and_integrity();
 
-int width = tile_map_data.size();
-int height = tile_map_data[0].size();
+int width = tile_map_data[0].size();
+int height = tile_map_data.size();
 
 LabyrinthOfLore::WorldMap::TileMap result;
 result.resize(width, height);
