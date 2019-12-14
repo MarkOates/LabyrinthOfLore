@@ -2,6 +2,7 @@ properties:
   - name: tile_map
     type: LabyrinthOfLore::WorldMap::TileMap
     init_with: "{}"
+    constructor_arg: true
 functions:
   - name: intialize
     type: void

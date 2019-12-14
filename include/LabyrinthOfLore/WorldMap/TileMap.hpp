@@ -5,6 +5,7 @@
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_primitives.h>
 #include <vector>
+#include <LabyrinthOfLore/WorldMap/Tile.hpp>
 
 
 namespace LabyrinthOfLore
@@ -16,7 +17,7 @@ namespace LabyrinthOfLore
       private:
          int width;
          int height;
-         std::vector<int> tiles;
+         std::vector<Tile> tiles;
 
       public:
 
@@ -28,8 +29,8 @@ namespace LabyrinthOfLore
          int infer_num_tiles();
          bool is_dimensionless();
 
-         int get_tile(int tile_x, int tile_y);
-         bool set_tile(int tile_x, int tile_y, int value);
+         Tile get_tile(int tile_x, int tile_y);
+         bool set_tile(int tile_x, int tile_y, Tile value);
          std::pair<int, int> get_coordinates_from_contiguous_number(int contiguous_tile_num);
 
          void resize(int w, int h);

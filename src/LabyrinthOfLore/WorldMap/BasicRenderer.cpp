@@ -13,8 +13,8 @@ namespace WorldMap
 {
 
 
-BasicRenderer::BasicRenderer()
-   : tile_map({})
+BasicRenderer::BasicRenderer(LabyrinthOfLore::WorldMap::TileMap tile_map)
+   : tile_map(tile_map)
 {
 }
 

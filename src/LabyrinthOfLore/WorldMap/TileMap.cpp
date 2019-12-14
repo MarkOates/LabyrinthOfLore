@@ -45,7 +45,7 @@ namespace LabyrinthOfLore
       }
 
 
-      int TileMap::get_tile(int tile_x, int tile_y)
+      Tile TileMap::get_tile(int tile_x, int tile_y)
       {
          if (tile_x < 0 || (tile_x >= width)) return -1;
          if (tile_y < 0 || (tile_y >= height)) return -1;
@@ -54,7 +54,7 @@ namespace LabyrinthOfLore
       }
 
 
-      bool TileMap::set_tile(int tile_x, int tile_y, int value)
+      bool TileMap::set_tile(int tile_x, int tile_y, Tile value)
          // if the tile is set to a negative number, then the tiles[tile_index] will be set to that number, but
          // the image will be the bitmap at index 0
       {
