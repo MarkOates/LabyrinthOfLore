@@ -36,15 +36,15 @@ void BasicRenderer::render()
 int tile_width = 32;
 int tile_height = 32;
 
-float bottom_height = 0;
-float top_height = 100;
+float bottom_height = 0.0;
+float top_height = 10.0;
 ALLEGRO_COLOR tile_color = al_color_name("chartreuse");
 
 for (unsigned y=0; y<tile_map.get_height(); y++)
   for (unsigned x=0; x<tile_map.get_width(); x++)
    {
       LabyrinthOfLore::WorldMap::Tile tile = tile_map.get_tile(x, y);
-      float height_float = tile.get_height() / top_height + 0.1f;
+      float height_float = tile.get_height() / top_height;
 
       ALLEGRO_COLOR this_tile_color = AllegroFlare::color::color(tile_color, height_float);
 
