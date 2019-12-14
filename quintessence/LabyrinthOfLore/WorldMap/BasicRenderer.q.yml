@@ -12,18 +12,38 @@ functions:
   - name: render
     type: void
     body: |
+      int tile_width = 32;
+      int tile_height = 32;
+
+      float bottom_height = 0;
+      float top_height = 100;
+      ALLEGRO_COLOR tile_color = al_color_name("white");
+
       for (unsigned y=0; y<tile_map.get_height(); y++)
         for (unsigned x=0; x<tile_map.get_width(); x++)
          {
             LabyrinthOfLore::WorldMap::Tile tile = tile_map.get_tile(x, y);
+            al_draw_filled_rectangle(
+               x * tile_width,
+               y * tile_height,
+               x * tile_width + tile_width,
+               y * tile_height + tile_height,
+               tile_color
+            );
          }
       return;
     body_dependency_symbols:
       - LabyrinthOfLore::WorldMap::Tile
+      - al_draw_filled_rectangle
+      - al_color_name
 dependencies:
   - symbol: LabyrinthOfLore::WorldMap::TileMap
     headers: [ LabyrinthOfLore/WorldMap/TileMap.hpp ]
   - symbol: LabyrinthOfLore::WorldMap::Tile
     headers: [ LabyrinthOfLore/WorldMap/Tile.hpp ]
+  - symbol: al_draw_filled_rectangle
+    headers: [ allegro5/allegro_primitives.h ]
+  - symbol: al_color_name
+    headers: [ allegro5/allegro_color.h ]
   - symbol: al_init_primitives_addon
     headers: [ allegro5/allegro_primitives.h ]
