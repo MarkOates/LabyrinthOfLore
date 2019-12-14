@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include <Tileo/TileMap.hpp>
+#include <LabyrinthOfLore/WorldMap/TileMap.hpp>
 
 
 namespace LabyrinthOfLore
@@ -11,8 +11,8 @@ namespace LabyrinthOfLore
       class BasicRenderer
       {
       private:
-         Tileo::TileMap tile_map;
-         Tileo::TileMap tile_height_map;
+         LabyrinthOfLore::WorldMap::TileMap tile_map;
+         LabyrinthOfLore::WorldMap::TileMap tile_height_map;
 
       public:
          BasicRenderer();

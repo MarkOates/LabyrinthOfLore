@@ -1,9 +1,9 @@
 properties:
   - name: tile_map
-    type: Tileo::TileMap
+    type: LabyrinthOfLore::WorldMap::TileMap
     init_with: "{}"
   - name: tile_height_map
-    type: Tileo::TileMap
+    type: LabyrinthOfLore::WorldMap::TileMap
     init_with: "{}"
 functions:
   - name: intialize
@@ -26,8 +26,8 @@ functions:
     body_dependency_symbols:
       - LabyrinthOfLore::WorldMap::Tile
 dependencies:
-  - symbol: Tileo::TileMap
-    headers: [ Tileo/TileMap.hpp ]
+  - symbol: LabyrinthOfLore::WorldMap::TileMap
+    headers: [ LabyrinthOfLore/WorldMap/TileMap.hpp ]
   - symbol: LabyrinthOfLore::WorldMap::Tile
     headers: [ LabyrinthOfLore/WorldMap/Tile.hpp ]
   - symbol: al_init_primitives_addon
