@@ -1,0 +1,34 @@
+properties:
+  - name: tile_map
+    type: Tileo::TileMap
+    init_with: "{}"
+  - name: tile_height_map
+    type: Tileo::TileMap
+    init_with: "{}"
+functions:
+  - name: intialize
+    type: void
+    body: |
+      al_init_primitives_addon();
+    body_dependency_symbols:
+      - al_init_primitives_addon
+  - name: render
+    type: void
+    body: |
+      for (unsigned y=0; y<tile_map.get_height(); y++)
+        for (unsigned x=0; x<tile_map.get_width(); x++)
+         {
+            int tile_index_num = tile_map.get_tile(x, y);
+            int tile_height = tile_height_map.get_tile(x, y);
+            LabyrinthOfLore::WorldMap::Tile tile(tile_index_num, (float)tile_height / 3);
+         }
+      return;
+    body_dependency_symbols:
+      - LabyrinthOfLore::WorldMap::Tile
+dependencies:
+  - symbol: Tileo::TileMap
+    headers: [ Tileo/TileMap.hpp ]
+  - symbol: LabyrinthOfLore::WorldMap::Tile
+    headers: [ LabyrinthOfLore/WorldMap/Tile.hpp ]
+  - symbol: al_init_primitives_addon
+    headers: [ allegro5/allegro_primitives.h ]
