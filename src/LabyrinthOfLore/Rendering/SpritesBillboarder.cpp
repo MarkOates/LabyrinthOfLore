@@ -33,7 +33,10 @@ AllegroFlare::vec3d reverse_camera_rotation(
 );
 for (auto &entity : entities)
 {
-   entity->get_placement_ref().rotation = reverse_camera_rotation;
+   if (entity->get_billboard_at_camera())
+   {
+      entity->get_placement_ref().rotation = reverse_camera_rotation;
+   }
 }
 return;
 

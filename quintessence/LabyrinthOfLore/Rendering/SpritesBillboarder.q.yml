@@ -18,7 +18,10 @@ functions:
       );
       for (auto &entity : entities)
       {
-         entity->get_placement_ref().rotation = reverse_camera_rotation;
+         if (entity->get_billboard_at_camera())
+         {
+            entity->get_placement_ref().rotation = reverse_camera_rotation;
+         }
       }
       return;
     body_dependency_symbols:
