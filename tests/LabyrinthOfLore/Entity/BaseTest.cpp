@@ -8,9 +8,8 @@ TEST(LabyrinthOfLore_Entity_BaseTest, can_be_created_without_blowing_up)
    LabyrinthOfLore::Entity::Base base;
 }
 
-TEST(LabyrinthOfLore_Entity_BaseTest, run__returns_the_expected_response)
+TEST(LabyrinthOfLore_Entity_BaseTest, get_billboard_at_camera__initializes_to_false)
 {
    LabyrinthOfLore::Entity::Base base;
-   std::string expected_string = "Hello World!";
-   EXPECT_EQ(expected_string, base.run());
+   EXPECT_EQ(false, base.get_billboard_at_camera());
 }
