@@ -139,7 +139,7 @@ int main(int argc, char **argv)
             shutdown_program = true;
             break;
          case ALLEGRO_EVENT_KEY_DOWN:
-            shutdown_program = true;
+            if (this_event.keyboard.keycode == ALLEGRO_KEY_ESCAPE) shutdown_program = true;
             break;
          case ALLEGRO_EVENT_TIMER:
             {
