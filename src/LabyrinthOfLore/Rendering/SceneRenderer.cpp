@@ -56,10 +56,7 @@ prep_render();
 LabyrinthOfLore::Rendering::SpritesBillboarder billboarder(camera_view.rotation, entities);
 billboarder.process();
 
-for (auto &entity : entities)
-{
-   LabyrinthOfLore::Rendering::EntityRenderer(entity).render();
-}
+for (auto &entity : entities) { LabyrinthOfLore::Rendering::EntityRenderer(entity).render(); }
 
 return;
 
