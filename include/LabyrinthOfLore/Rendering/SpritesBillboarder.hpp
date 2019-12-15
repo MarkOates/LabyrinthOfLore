@@ -3,7 +3,6 @@
 
 #include <AllegroFlare/Vec3D.hpp>
 #include <LabyrinthOfLore/Entity/Base.hpp>
-#include <allegro_flare/placement3d.h>
 #include <vector>
 
 
@@ -14,15 +13,14 @@ namespace LabyrinthOfLore
       class SpritesBillboarder
       {
       private:
-         allegro_flare::placement3d camera_placement;
+         AllegroFlare::vec3d camera_rotation;
          std::vector<LabyrinthOfLore::Entity::Base*> entities;
 
       public:
-         SpritesBillboarder(allegro_flare::placement3d camera_placement={}, std::vector<LabyrinthOfLore::Entity::Base*> entities={});
+         SpritesBillboarder(AllegroFlare::vec3d camera_rotation={}, std::vector<LabyrinthOfLore::Entity::Base*> entities={});
          ~SpritesBillboarder();
 
 
-      void reverse_rotation(AllegroFlare::vec3d* entity_rotation=nullptr);
       void process();
       };
    }

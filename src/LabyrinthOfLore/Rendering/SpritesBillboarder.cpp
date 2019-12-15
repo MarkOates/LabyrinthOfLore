@@ -2,6 +2,8 @@
 
 #include <LabyrinthOfLore/Rendering/SpritesBillboarder.hpp>
 #include <allegro_flare/placement3d.h>
+#include <AllegroFlare/Vec3D.hpp>
+#include <AllegroFlare/Useful.hpp>
 
 
 namespace LabyrinthOfLore
@@ -10,8 +12,8 @@ namespace Rendering
 {
 
 
-SpritesBillboarder::SpritesBillboarder(allegro_flare::placement3d camera_placement, std::vector<LabyrinthOfLore::Entity::Base*> entities)
-   : camera_placement(camera_placement)
+SpritesBillboarder::SpritesBillboarder(AllegroFlare::vec3d camera_rotation, std::vector<LabyrinthOfLore::Entity::Base*> entities)
+   : camera_rotation(camera_rotation)
    , entities(entities)
 {
 }
@@ -22,17 +24,16 @@ SpritesBillboarder::~SpritesBillboarder()
 }
 
 
-void SpritesBillboarder::reverse_rotation(AllegroFlare::vec3d* entity_rotation)
-{
-return;
-
-}
-
 void SpritesBillboarder::process()
 {
+AllegroFlare::vec3d reverse_camera_rotation(
+   camera_rotation.x + AllegroFlare::FULL_ROTATION/2,
+   camera_rotation.y + AllegroFlare::FULL_ROTATION/2,
+   camera_rotation.z + AllegroFlare::FULL_ROTATION/2
+);
 for (auto &entity : entities)
 {
-   reverse_rotation(&entity->get_placement_ref().rotation);
+   entity->get_placement_ref().rotation = reverse_camera_rotation;
 }
 return;
 

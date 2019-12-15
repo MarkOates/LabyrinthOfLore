@@ -1,6 +1,6 @@
 properties:
-  - name: camera_placement
-    type: allegro_flare::placement3d
+  - name: camera_rotation
+    type: AllegroFlare::vec3d
     init_with: "{}"
     constructor_arg: true
   - name: entities
@@ -8,28 +8,30 @@ properties:
     init_with: "{}"
     constructor_arg: true
 functions:
-  - name: reverse_rotation
-    type: void
-    private: true
-    parameters:
-      - name: entity_rotation
-        type: AllegroFlare::vec3d*
-        default_argument: nullptr
-    body: |
-      return;
   - name: process
     type: void
     body: |
+      AllegroFlare::vec3d reverse_camera_rotation(
+         camera_rotation.x + AllegroFlare::FULL_ROTATION/2,
+         camera_rotation.y + AllegroFlare::FULL_ROTATION/2,
+         camera_rotation.z + AllegroFlare::FULL_ROTATION/2
+      );
       for (auto &entity : entities)
       {
-         reverse_rotation(&entity->get_placement_ref().rotation);
+         entity->get_placement_ref().rotation = reverse_camera_rotation;
       }
       return;
     body_dependency_symbols:
       - allegro_flare::placement3d
+      - AllegroFlare::vec3d
+      - AllegroFlare::FULL_ROTATION
 dependencies:
   - symbol: std::vector<LabyrinthOfLore::Entity::Base*>
     headers: [ vector, LabyrinthOfLore/Entity/Base.hpp ]
+  - symbol: AllegroFlare::FULL_ROTATION
+    headers: [ AllegroFlare/Useful.hpp ]
+  - symbol: AllegroFlare::vec3d
+    headers: [ AllegroFlare/Vec3D.hpp ]
   - symbol: AllegroFlare::vec3d*
     headers: [ AllegroFlare/Vec3D.hpp ]
   - symbol: allegro_flare::placement3d
