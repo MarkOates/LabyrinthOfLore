@@ -2,6 +2,7 @@
 
 #include <LabyrinthOfLore/Rendering/PickingBufferRenderer.hpp>
 #include <LabyrinthOfLore/Rendering/EntityRenderer.hpp>
+#include <LabyrinthOfLore/Rendering/SpritesBillboarder.hpp>
 
 
 namespace LabyrinthOfLore
@@ -52,8 +53,8 @@ al_store_state(&previous_render_state, ALLEGRO_STATE_TARGET_BITMAP);
 al_set_target_bitmap(picking_buffer->get_surface_render());
 prep_render();
 
-//LabyrinthOfLore::Rendering::SpritesBillboarder billboarder(camera_view, entities);
-//billboarder.process();
+LabyrinthOfLore::Rendering::SpritesBillboarder billboarder(camera_view, entities);
+billboarder.process();
 
 for (auto &entity : entities)
 {
