@@ -10,8 +10,8 @@ namespace Rendering
 {
 
 
-SceneRenderer::SceneRenderer(AllegroFlare::vec3d camera_rotation, std::vector<LabyrinthOfLore::Entity::Base*> entities)
-   : camera_rotation(camera_rotation)
+SceneRenderer::SceneRenderer(allegro_flare::placement3d camera, std::vector<LabyrinthOfLore::Entity::Base*> entities)
+   : camera(camera)
    , entities(entities)
 {
 }
@@ -21,6 +21,12 @@ SceneRenderer::~SceneRenderer()
 {
 }
 
+
+void SceneRenderer::prep_render()
+{
+// setup the render settings
+
+}
 
 void SceneRenderer::render()
 {

@@ -1,8 +1,8 @@
 #pragma once
 
 
-#include <AllegroFlare/Vec3D.hpp>
 #include <LabyrinthOfLore/Entity/Base.hpp>
+#include <allegro_flare/placement3d.h>
 #include <vector>
 
 
@@ -13,14 +13,15 @@ namespace LabyrinthOfLore
       class SceneRenderer
       {
       private:
-         AllegroFlare::vec3d camera_rotation;
+         allegro_flare::placement3d camera;
          std::vector<LabyrinthOfLore::Entity::Base*> entities;
 
       public:
-         SceneRenderer(AllegroFlare::vec3d camera_rotation={}, std::vector<LabyrinthOfLore::Entity::Base*> entities={});
+         SceneRenderer(allegro_flare::placement3d camera={}, std::vector<LabyrinthOfLore::Entity::Base*> entities={});
          ~SceneRenderer();
 
 
+      void prep_render();
       void render();
       };
    }
