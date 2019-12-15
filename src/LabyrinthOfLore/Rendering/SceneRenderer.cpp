@@ -53,7 +53,7 @@ void SceneRenderer::render()
 al_clear_to_color(al_color_name("maroon"));
 prep_render();
 
-LabyrinthOfLore::Rendering::SpritesBillboarder billboarder(camera_view.rotation, entities);
+LabyrinthOfLore::Rendering::SpritesBillboarder billboarder(camera_view, entities);
 billboarder.process();
 
 for (auto &entity : entities) { LabyrinthOfLore::Rendering::EntityRenderer(entity).render(); }

@@ -12,8 +12,8 @@ namespace Rendering
 {
 
 
-SpritesBillboarder::SpritesBillboarder(AllegroFlare::vec3d camera_rotation, std::vector<LabyrinthOfLore::Entity::Base*> entities)
-   : camera_rotation(camera_rotation)
+SpritesBillboarder::SpritesBillboarder(allegro_flare::placement3d camera_placement, std::vector<LabyrinthOfLore::Entity::Base*> entities)
+   : camera_placement(camera_placement)
    , entities(entities)
 {
 }
@@ -26,11 +26,20 @@ SpritesBillboarder::~SpritesBillboarder()
 
 void SpritesBillboarder::process()
 {
+
+//ALLEGRO_TRANSFORM transform;
+
+//camera_placement.build_reverse_transform(&transform);
+
+AllegroFlare::vec3d camera_rotation = camera_placement.rotation;
+
 AllegroFlare::vec3d reverse_camera_rotation(
-   camera_rotation.x + 0.5,//AllegroFlare::FULL_ROTATION/2,
-   camera_rotation.y + 0.5,//AllegroFlare::FULL_ROTATION/2,
+   camera_rotation.x + 0.5, //AllegroFlare::FULL_ROTATION/2,
+   camera_rotation.y + 0.5, //AllegroFlare::FULL_ROTATION/2,
    camera_rotation.z + 0.5 //AllegroFlare::FULL_ROTATION/2
 );
+
+
 for (auto &entity : entities)
 {
    if (entity->get_billboard_at_camera())

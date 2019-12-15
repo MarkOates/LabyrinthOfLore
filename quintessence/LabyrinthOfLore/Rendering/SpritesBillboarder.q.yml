@@ -1,6 +1,6 @@
 properties:
-  - name: camera_rotation
-    type: AllegroFlare::vec3d
+  - name: camera_placement
+    type: allegro_flare::placement3d
     init_with: "{}"
     constructor_arg: true
   - name: entities
@@ -11,11 +11,20 @@ functions:
   - name: process
     type: void
     body: |
+
+      //ALLEGRO_TRANSFORM transform;
+
+      //camera_placement.build_reverse_transform(&transform);
+
+      AllegroFlare::vec3d camera_rotation = camera_placement.rotation;
+
       AllegroFlare::vec3d reverse_camera_rotation(
-         camera_rotation.x + 0.5,//AllegroFlare::FULL_ROTATION/2,
-         camera_rotation.y + 0.5,//AllegroFlare::FULL_ROTATION/2,
+         camera_rotation.x + 0.5, //AllegroFlare::FULL_ROTATION/2,
+         camera_rotation.y + 0.5, //AllegroFlare::FULL_ROTATION/2,
          camera_rotation.z + 0.5 //AllegroFlare::FULL_ROTATION/2
       );
+
+      
       for (auto &entity : entities)
       {
          if (entity->get_billboard_at_camera())
