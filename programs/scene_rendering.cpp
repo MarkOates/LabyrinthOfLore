@@ -9,6 +9,47 @@
 #include <AllegroFlare/Model3D.hpp>
 
 
+void look_at(AllegroFlare::vec3d target)
+{
+}
+
+void look_at(allegro_flare::placement3d &camera_placement, AllegroFlare::vec3d target)
+{
+   //view_vector = (target - camera_placement.position).normalized();
+   //camera_placement.rotation = (target - camera_placement.position).normalized();
+}
+
+
+class SceneUpdater
+{
+private:
+   allegro_flare::placement3d &camera_placement;
+   int start_time_offset;
+
+public:
+   SceneUpdater(allegro_flare::placement3d &camera_placement)
+      : camera_placement(camera_placement)
+      , start_time_offset(4566432) // to make the movements less in sync
+   {}
+
+   void update()
+   {
+      camera_placement.position = AllegroFlare::vec3d(
+            sin(al_get_time()+start_time_offset),
+            sin((al_get_time()+start_time_offset)*0.81527),
+            5+sin((al_get_time()+start_time_offset)*0.71527)
+         );
+      camera_placement.rotation = AllegroFlare::vec3d(
+            sin(al_get_time()+start_time_offset)*0.05,
+            sin(al_get_time()+start_time_offset)*0.05,
+            sin(al_get_time()+start_time_offset)*0.05
+         );
+      //look_at(camera_placement, AllegroFlare::vec3d(0, 0, 0));
+   }
+};
+
+
+
 bool active = true;
 
 int main(int argc, char **argv)
@@ -18,6 +59,14 @@ int main(int argc, char **argv)
       al_init();
       al_init_image_addon();
 
+
+      // setup the world objects
+
+      // set a few options and flags
+      al_set_new_display_option(ALLEGRO_SAMPLE_BUFFERS, 2, ALLEGRO_SUGGEST);
+      al_set_new_display_option(ALLEGRO_DEPTH_SIZE, 32, ALLEGRO_SUGGEST);
+      al_set_new_display_option(ALLEGRO_SAMPLES, 16, ALLEGRO_SUGGEST);
+      //al_set_new_display_flags(display_flags);
       ALLEGRO_DISPLAY *display = al_create_display(1920, 1080);
 
       ALLEGRO_BITMAP *billboard_tester_sprite = al_load_bitmap("bin/programs/data/bitmaps/billboarding_tester_sprite.png");
@@ -65,15 +114,48 @@ int main(int argc, char **argv)
 
       ALLEGRO_BITMAP *render_surface = al_get_backbuffer(display);
 
-      LabyrinthOfLore::Rendering::SceneRenderer scene_renderer(camera_placement, render_surface, entities);
-      scene_renderer.prep_render();
 
-      scene_renderer.render();
+      // run the simulation
 
+      ALLEGRO_EVENT_QUEUE *event_queue = al_create_event_queue();
 
-      al_flip_display();
+      al_install_keyboard();
+      al_register_event_source(event_queue, al_get_keyboard_event_source());
 
-      sleep(5);
+      ALLEGRO_TIMER *primary_timer = al_create_timer(1.0/60.0);
+      al_register_event_source(event_queue, al_get_timer_event_source(primary_timer));
+      al_start_timer(primary_timer);
+
+      bool shutdown_program = false;
+
+      while(!shutdown_program)
+      {
+         ALLEGRO_EVENT this_event;
+         al_wait_for_event(event_queue, &this_event);
+
+         switch(this_event.type)
+         {
+         case ALLEGRO_EVENT_DISPLAY_CLOSE:
+            shutdown_program = true;
+            break;
+         case ALLEGRO_EVENT_KEY_DOWN:
+            shutdown_program = true;
+            break;
+         case ALLEGRO_EVENT_TIMER:
+            {
+               SceneUpdater scene_updater(camera_placement);
+               scene_updater.update();
+
+               LabyrinthOfLore::Rendering::SceneRenderer scene_renderer(camera_placement, render_surface, entities);
+               scene_renderer.prep_render();
+               scene_renderer.render();
+               al_flip_display();
+            }
+            break;
+         }
+      }
+
+      //sleep(5);
 
       // cleanup
       for (auto &entity : entities) { delete entity; }
