@@ -1,0 +1,19 @@
+properties:
+  - name: camera_rotation
+    type: AllegroFlare::vec3d
+    init_with: "{}"
+    constructor_arg: true
+  - name: entities
+    type: std::vector<LabyrinthOfLore::Entity::Base*>
+    init_with: "{}"
+    constructor_arg: true
+functions:
+  - name: render
+    type: void
+    body: |
+      return;
+dependencies:
+  - symbol: std::vector<LabyrinthOfLore::Entity::Base*>
+    headers: [ vector, LabyrinthOfLore/Entity/Base.hpp ]
+  - symbol: AllegroFlare::vec3d
+    headers: [ AllegroFlare/Vec3D.hpp ]
