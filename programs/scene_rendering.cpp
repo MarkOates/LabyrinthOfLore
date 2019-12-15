@@ -1,8 +1,11 @@
 #include <allegro5/allegro.h>
+#include <allegro5/allegro_image.h>
 
 #include <allegro_flare/placement2d.h>
 
 #include <LabyrinthOfLore/Rendering/SceneRenderer.hpp>
+#include <AllegroFlare/Random.hpp>
+#include <AllegroFlare/Useful.hpp> // for FULL_ROTATION
 
 
 bool active = true;
@@ -12,17 +15,35 @@ int main(int argc, char **argv)
    if (active)
    {
       al_init();
+      al_init_image_addon();
 
       ALLEGRO_DISPLAY *display = al_create_display(1920, 1080);
 
-      allegro_flare::placement3d camera_placement;
+      ALLEGRO_BITMAP *billboard_tester_sprite = al_load_bitmap("bin/programs/data/bitmaps/billboarding_tester_sprite.png");
+      if (!billboard_tester_sprite) throw std::runtime_error("could not load billboard_tester_sprite");
+
+      allegro_flare::placement3d camera_placement(0, 0, 100);
       std::vector<LabyrinthOfLore::Entity::Base*> entities = {};
 
+      AllegroFlare::Random random;
       float pos_min = -10;
       float pos_max = 10;
       for (unsigned i=0; i<10; i++)
       {
-         entities.push_back(new LabyrinthOfLore::Entity::Base);
+         LabyrinthOfLore::Entity::Base* entity = new LabyrinthOfLore::Entity::Base;
+         entity->set_bitmap(billboard_tester_sprite);
+         entity->get_placement_ref().position = AllegroFlare::vec3d(
+               random.get_random_int(pos_min, pos_max),
+               random.get_random_int(pos_min, pos_max),
+               random.get_random_int(pos_min, pos_max)
+            );
+         entity->get_placement_ref().rotation = AllegroFlare::vec3d(
+               random.get_random_float(0, AllegroFlare::FULL_ROTATION),
+               random.get_random_float(0, AllegroFlare::FULL_ROTATION),
+               random.get_random_float(0, AllegroFlare::FULL_ROTATION)
+            );
+
+         entities.push_back(entity);
       }
 
       ALLEGRO_BITMAP *render_surface = al_get_backbuffer(display);
@@ -35,7 +56,7 @@ int main(int argc, char **argv)
 
       al_flip_display();
 
-      sleep(1);
+      sleep(6);
    }
 
    return 0;

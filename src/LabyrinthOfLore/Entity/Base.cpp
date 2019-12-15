@@ -10,8 +10,9 @@ namespace Entity
 {
 
 
-Base::Base(allegro_flare::placement3d placement, allegro_flare::placement3d velocity)
-   : placement(placement)
+Base::Base(ALLEGRO_BITMAP* bitmap, allegro_flare::placement3d placement, allegro_flare::placement3d velocity)
+   : bitmap(bitmap)
+   , placement(placement)
    , velocity(velocity)
 {
 }
@@ -19,6 +20,18 @@ Base::Base(allegro_flare::placement3d placement, allegro_flare::placement3d velo
 
 Base::~Base()
 {
+}
+
+
+void Base::set_bitmap(ALLEGRO_BITMAP* bitmap)
+{
+   this->bitmap = bitmap;
+}
+
+
+ALLEGRO_BITMAP* Base::get_bitmap()
+{
+   return bitmap;
 }
 
 

@@ -1,4 +1,10 @@
 properties:
+  - name: bitmap
+    type: ALLEGRO_BITMAP*
+    init_with: "nullptr"
+    constructor_arg: true
+    setter: true
+    getter: true
   - name: placement
     type: allegro_flare::placement3d
     init_with: "{}"
@@ -15,3 +21,5 @@ functions:
 dependencies:
   - symbol: allegro_flare::placement3d
     headers: [ allegro_flare/placement3d.h ]
+  - symbol: ALLEGRO_BITMAP*
+    headers: [ allegro5/allegro.h ]

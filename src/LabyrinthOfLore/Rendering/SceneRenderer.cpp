@@ -3,6 +3,7 @@
 #include <LabyrinthOfLore/Rendering/SceneRenderer.hpp>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_color.h>
+#include <allegro5/allegro.h>
 
 
 namespace LabyrinthOfLore
@@ -49,6 +50,14 @@ void SceneRenderer::render()
 {
 al_clear_to_color(al_color_name("maroon"));
 prep_render();
+
+for (auto &entity : entities)
+{
+   entity->get_placement_ref().start_transform();
+   al_draw_bitmap(entity->get_bitmap(), 0, 0, 0);
+   entity->get_placement_ref().restore_transform();
+}
+
 return;
 
 }

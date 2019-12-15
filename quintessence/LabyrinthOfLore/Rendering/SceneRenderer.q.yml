@@ -41,10 +41,19 @@ functions:
     body: |
       al_clear_to_color(al_color_name("maroon"));
       prep_render();
+
+      for (auto &entity : entities)
+      {
+         entity->get_placement_ref().start_transform();
+         al_draw_bitmap(entity->get_bitmap(), 0, 0, 0);
+         entity->get_placement_ref().restore_transform();
+      }
+
       return;
     body_dependency_symbols:
       - al_clear_to_color
       - al_color_name
+      - al_draw_bitmap
 dependencies:
   - symbol: std::vector<LabyrinthOfLore::Entity::Base*>
     headers: [ vector, LabyrinthOfLore/Entity/Base.hpp ]
@@ -57,4 +66,6 @@ dependencies:
   - symbol: al_color_name
     headers: [ allegro5/allegro_color.h ]
   - symbol: al_clear_to_color
+    headers: [ allegro5/allegro.h ]
+  - symbol: al_draw_bitmap
     headers: [ allegro5/allegro.h ]
