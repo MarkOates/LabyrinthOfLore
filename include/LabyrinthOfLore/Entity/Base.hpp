@@ -1,6 +1,7 @@
 #pragma once
 
 
+#include <AllegroFlare/ElementID.hpp>
 #include <AllegroFlare/Model3D.hpp>
 #include <allegro5/allegro.h>
 #include <allegro_flare/placement3d.h>
@@ -10,7 +11,7 @@ namespace LabyrinthOfLore
 {
    namespace Entity
    {
-      class Base
+      class Base : private AllegroFlare::ElementID
       {
       private:
          ALLEGRO_BITMAP* bitmap;

@@ -11,7 +11,8 @@ namespace Entity
 
 
 Base::Base(ALLEGRO_BITMAP* bitmap, AllegroFlare::Model3D* model, allegro_flare::placement3d placement, allegro_flare::placement3d velocity, bool billboard_at_camera)
-   : bitmap(bitmap)
+   : AllegroFlare::ElementID({})
+   , bitmap(bitmap)
    , model(model)
    , placement(placement)
    , velocity(velocity)

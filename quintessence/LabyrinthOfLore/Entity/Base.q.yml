@@ -1,3 +1,7 @@
+parent_classes:
+  - class: AllegroFlare::ElementID
+    scope: private
+    init_with: "{}"
 properties:
   - name: bitmap
     type: ALLEGRO_BITMAP*
@@ -27,6 +31,8 @@ properties:
     getter: true
     setter: true
 dependencies:
+  - symbol: AllegroFlare::ElementID
+    headers: [ AllegroFlare/ElementID.hpp ]
   - symbol: allegro_flare::placement3d
     headers: [ allegro_flare/placement3d.h ]
   - symbol: AllegroFlare::Model3D*
