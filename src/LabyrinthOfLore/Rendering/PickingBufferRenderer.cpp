@@ -1,7 +1,7 @@
 
 
 #include <LabyrinthOfLore/Rendering/PickingBufferRenderer.hpp>
-#include <LabyrinthOfLore/Rendering/EntityRenderer.hpp>
+#include <LabyrinthOfLore/Rendering/EntityPickingRenderer.hpp>
 #include <LabyrinthOfLore/Rendering/SpritesBillboarder.hpp>
 
 
@@ -58,7 +58,7 @@ billboarder.process();
 
 for (auto &entity : entities)
 {
-   LabyrinthOfLore::Rendering::EntityRenderer(entity).render();
+   LabyrinthOfLore::Rendering::EntityPickingRenderer(entity).render();
 }
 
 al_restore_state(&previous_render_state);

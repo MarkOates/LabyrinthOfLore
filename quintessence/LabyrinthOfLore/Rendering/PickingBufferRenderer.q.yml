@@ -52,19 +52,19 @@ functions:
 
       for (auto &entity : entities)
       {
-         LabyrinthOfLore::Rendering::EntityRenderer(entity).render();
+         LabyrinthOfLore::Rendering::EntityPickingRenderer(entity).render();
       }
 
       al_restore_state(&previous_render_state);
       return;
     body_dependency_symbols:
-      - LabyrinthOfLore::Rendering::EntityRenderer
+      - LabyrinthOfLore::Rendering::EntityPickingRenderer
       - LabyrinthOfLore::Rendering::SpritesBillboarder
 dependencies:
   - symbol: allegro_flare::placement3d
     headers: [ allegro_flare/placement3d.h ]
-  - symbol: LabyrinthOfLore::Rendering::EntityRenderer
-    headers: [ LabyrinthOfLore/Rendering/EntityRenderer.hpp ]
+  - symbol: LabyrinthOfLore::Rendering::EntityPickingRenderer
+    headers: [ LabyrinthOfLore/Rendering/EntityPickingRenderer.hpp ]
   - symbol: LabyrinthOfLore::Rendering::SpritesBillboarder
     headers: [ LabyrinthOfLore/Rendering/SpritesBillboarder.hpp ]
   - symbol: std::vector<LabyrinthOfLore::Entity::Base*>
