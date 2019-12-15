@@ -26,12 +26,12 @@ public:
    {
       camera_placement.position = AllegroFlare::vec3d(
             sin(al_get_time()+start_time_offset),
-            sin((al_get_time()+start_time_offset)*0.81527),
+            0.5 + sin((al_get_time()+start_time_offset)*0.81527),
             5 * sin((al_get_time()+start_time_offset)*0.71527)
          );
       camera_placement.rotation = AllegroFlare::vec3d(
             sin(al_get_time()+start_time_offset)*0.1,
-            sin(al_get_time()+start_time_offset)*0.1,
+            sin(al_get_time()*0.2+start_time_offset)*1.0, // turning left and right (good), this is what the player controls for rotation
             sin(al_get_time()+start_time_offset)*0.1
          );
    }
