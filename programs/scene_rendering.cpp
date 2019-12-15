@@ -37,12 +37,12 @@ public:
       camera_placement.position = AllegroFlare::vec3d(
             sin(al_get_time()+start_time_offset),
             sin((al_get_time()+start_time_offset)*0.81527),
-            5+sin((al_get_time()+start_time_offset)*0.71527)
+            5 * sin((al_get_time()+start_time_offset)*0.71527)
          );
       camera_placement.rotation = AllegroFlare::vec3d(
-            sin(al_get_time()+start_time_offset)*0.05,
-            sin(al_get_time()+start_time_offset)*0.05,
-            sin(al_get_time()+start_time_offset)*0.05
+            sin(al_get_time()+start_time_offset)*0.1,
+            sin(al_get_time()+start_time_offset)*0.1,
+            sin(al_get_time()+start_time_offset)*0.1
          );
       //look_at(camera_placement, AllegroFlare::vec3d(0, 0, 0));
    }
@@ -83,9 +83,9 @@ int main(int argc, char **argv)
       allegro_flare::placement3d camera_placement(0, 0, 5);
       std::vector<LabyrinthOfLore::Entity::Base*> entities = {};
 
-      float pos_min = -3;
-      float pos_max = 3;
-      for (unsigned i=0; i<10; i++)
+      float pos_min = -6;
+      float pos_max = 6;
+      for (unsigned i=0; i<20; i++)
       {
          LabyrinthOfLore::Entity::Base* entity = new LabyrinthOfLore::Entity::Base;
          entity->set_bitmap(billboard_tester_sprite);
