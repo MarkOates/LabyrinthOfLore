@@ -27,7 +27,7 @@ entity->get_placement_ref().start_transform();
 
 if (!entity->get_model())
 {
-   al_draw_bitmap(entity->get_bitmap(), 0, 0, ALLEGRO_FLIP_VERTICAL);
+   if (entity->get_bitmap()) al_draw_bitmap(entity->get_bitmap(), 0, 0, ALLEGRO_FLIP_VERTICAL);
 }
 else
 {
