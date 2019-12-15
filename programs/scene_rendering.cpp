@@ -25,7 +25,10 @@ int main(int argc, char **argv)
          entities.push_back(new LabyrinthOfLore::Entity::Base);
       }
 
-      LabyrinthOfLore::Rendering::SceneRenderer scene_renderer(camera_placement, entities);
+      ALLEGRO_BITMAP *render_surface = al_get_backbuffer(display);
+
+      LabyrinthOfLore::Rendering::SceneRenderer scene_renderer(camera_placement, render_surface, entities);
+      scene_renderer.prep_render();
 
       scene_renderer.render();
 
