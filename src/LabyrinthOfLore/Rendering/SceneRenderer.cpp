@@ -2,6 +2,7 @@
 
 #include <LabyrinthOfLore/Rendering/SceneRenderer.hpp>
 #include <LabyrinthOfLore/Rendering/SpritesBillboarder.hpp>
+#include <LabyrinthOfLore/Rendering/EntityRenderer.hpp>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_color.h>
 #include <allegro5/allegro.h>
@@ -57,9 +58,7 @@ billboarder.process();
 
 for (auto &entity : entities)
 {
-   entity->get_placement_ref().start_transform();
-   al_draw_bitmap(entity->get_bitmap(), 0, 0, ALLEGRO_FLIP_VERTICAL);
-   entity->get_placement_ref().restore_transform();
+   LabyrinthOfLore::Rendering::EntityRenderer(entity).render();
 }
 
 return;
