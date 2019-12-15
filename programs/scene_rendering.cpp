@@ -94,11 +94,18 @@ int main(int argc, char **argv)
          entities.push_back(entity);
       }
 
-      LabyrinthOfLore::Entity::Base* world_entity = new LabyrinthOfLore::Entity::Base;
-      world_entity->set_bitmap(world_model_texture);
-      world_entity->set_model(&world_model);
 
-      entities.push_back(world_entity);
+      for (int z=-5; z<5; z++)
+      {
+         for (int x=-5; x<5; x++)
+         {
+            LabyrinthOfLore::Entity::Base* entity_with_model = new LabyrinthOfLore::Entity::Base;
+            entity_with_model->set_bitmap(world_model_texture);
+            entity_with_model->set_model(&world_model);
+            entity_with_model->get_placement_ref().position = AllegroFlare::vec3d(x*2, 0, z*2);
+            entities.push_back(entity_with_model);
+         }
+      }
 
 
       ALLEGRO_BITMAP *render_surface = al_get_backbuffer(display);
