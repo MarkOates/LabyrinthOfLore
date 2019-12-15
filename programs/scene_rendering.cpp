@@ -9,16 +9,6 @@
 #include <AllegroFlare/Model3D.hpp>
 
 
-void look_at(AllegroFlare::vec3d target)
-{
-}
-
-void look_at(allegro_flare::placement3d &camera_placement, AllegroFlare::vec3d target)
-{
-   //view_vector = (target - camera_placement.position).normalized();
-   //camera_placement.rotation = (target - camera_placement.position).normalized();
-}
-
 
 class SceneUpdater
 {
@@ -44,7 +34,6 @@ public:
             sin(al_get_time()+start_time_offset)*0.1,
             sin(al_get_time()+start_time_offset)*0.1
          );
-      //look_at(camera_placement, AllegroFlare::vec3d(0, 0, 0));
    }
 };
 
