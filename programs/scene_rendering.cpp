@@ -59,6 +59,9 @@ int main(int argc, char **argv)
       al_flip_display();
 
       sleep(5);
+
+      // cleanup
+      for (auto &entity : entities) { delete entity; }
    }
 
    return 0;
