@@ -22,12 +22,13 @@ int main(int argc, char **argv)
       ALLEGRO_BITMAP *billboard_tester_sprite = al_load_bitmap("bin/programs/data/bitmaps/billboarding_tester_sprite.png");
       if (!billboard_tester_sprite) throw std::runtime_error("could not load billboard_tester_sprite");
 
-      allegro_flare::placement3d camera_placement(0, 0, 100);
+      AllegroFlare::Random random;
+
+      allegro_flare::placement3d camera_placement(0, 0, 50);
       std::vector<LabyrinthOfLore::Entity::Base*> entities = {};
 
-      AllegroFlare::Random random;
-      float pos_min = -10;
-      float pos_max = 10;
+      float pos_min = -20;
+      float pos_max = 20;
       for (unsigned i=0; i<10; i++)
       {
          LabyrinthOfLore::Entity::Base* entity = new LabyrinthOfLore::Entity::Base;
@@ -42,6 +43,7 @@ int main(int argc, char **argv)
                random.get_random_float(0, AllegroFlare::FULL_ROTATION),
                random.get_random_float(0, AllegroFlare::FULL_ROTATION)
             );
+         entity->get_placement_ref().scale = AllegroFlare::vec3d(0.1, 0.1, 0.1);
 
          entities.push_back(entity);
       }
@@ -56,7 +58,7 @@ int main(int argc, char **argv)
 
       al_flip_display();
 
-      sleep(6);
+      sleep(5);
    }
 
    return 0;

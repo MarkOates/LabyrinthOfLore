@@ -32,7 +32,7 @@ TEST(LabyrinthOfLore_Rendering_SpritesBillboarderTest, process__sets_the_entitie
 
    sprites_billboarder.process();
 
-   AllegroFlare::vec3d expected_reverse_camera_rotation = AllegroFlare::FULL_ROTATION/2;
+   AllegroFlare::vec3d expected_reverse_camera_rotation = 0.5;//AllegroFlare::FULL_ROTATION/2;
 
    EXPECT_EQ(expected_reverse_camera_rotation, entities[0]->get_placement_ref().rotation.x);
    EXPECT_EQ(expected_reverse_camera_rotation, entities[0]->get_placement_ref().rotation.y);

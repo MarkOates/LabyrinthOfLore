@@ -27,9 +27,9 @@ SpritesBillboarder::~SpritesBillboarder()
 void SpritesBillboarder::process()
 {
 AllegroFlare::vec3d reverse_camera_rotation(
-   camera_rotation.x + AllegroFlare::FULL_ROTATION/2,
-   camera_rotation.y + AllegroFlare::FULL_ROTATION/2,
-   camera_rotation.z + AllegroFlare::FULL_ROTATION/2
+   camera_rotation.x + 0.5,//AllegroFlare::FULL_ROTATION/2,
+   camera_rotation.y + 0.5,//AllegroFlare::FULL_ROTATION/2,
+   camera_rotation.z + 0.5 //AllegroFlare::FULL_ROTATION/2
 );
 for (auto &entity : entities)
 {
