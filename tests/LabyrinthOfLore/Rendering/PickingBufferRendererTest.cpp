@@ -48,8 +48,9 @@ TEST_F(LabyrinthOfLore_Rendering_PickingBufferRendererTest, render__does_not_exp
    picking_buffer.initialize();
    allegro_flare::placement3d camera_placement;
    std::vector<LabyrinthOfLore::Entity::Base*> entities = {};
+   LabyrinthOfLore::Shader::ClampedColor clamped_color_shader;
 
-   LabyrinthOfLore::Rendering::PickingBufferRenderer picking_buffer_renderer(&picking_buffer, camera_placement, entities);
+   LabyrinthOfLore::Rendering::PickingBufferRenderer picking_buffer_renderer(&picking_buffer, camera_placement, entities, &clamped_color_shader);
 
    picking_buffer_renderer.render();
 }
@@ -63,6 +64,8 @@ TEST_F(LabyrinthOfLore_Rendering_PickingBufferRendererTest, render__displays_the
    picking_buffer.initialize();
    allegro_flare::placement3d camera_placement;
    std::vector<LabyrinthOfLore::Entity::Base*> entities = {};
+   LabyrinthOfLore::Shader::ClampedColor clamped_color_shader;
+
    ALLEGRO_BITMAP *billboard_tester_sprite = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/billboarding_tester_sprite.png");
    ASSERT_NE(nullptr, billboard_tester_sprite);
 
@@ -72,7 +75,7 @@ TEST_F(LabyrinthOfLore_Rendering_PickingBufferRendererTest, render__displays_the
    entity->get_placement_ref().scale = AllegroFlare::vec3d(0.01, 0.01, 0.01);
    entities.push_back(entity);
 
-   LabyrinthOfLore::Rendering::PickingBufferRenderer picking_buffer_renderer(&picking_buffer, camera_placement, entities);
+   LabyrinthOfLore::Rendering::PickingBufferRenderer picking_buffer_renderer(&picking_buffer, camera_placement, entities, &clamped_color_shader);
    picking_buffer_renderer.render();
 
    al_init_image_addon();
@@ -88,6 +91,8 @@ TEST_F(LabyrinthOfLore_Rendering_PickingBufferRendererTest, render__renders_the_
    picking_buffer.initialize();
    allegro_flare::placement3d camera_placement(0, 0, 5);
    std::vector<LabyrinthOfLore::Entity::Base*> entities = {};
+   LabyrinthOfLore::Shader::ClampedColor clamped_color_shader;
+
    ALLEGRO_BITMAP *billboard_tester_sprite = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/billboarding_tester_sprite.png");
    ASSERT_NE(nullptr, billboard_tester_sprite);
 
@@ -105,7 +110,7 @@ TEST_F(LabyrinthOfLore_Rendering_PickingBufferRendererTest, render__renders_the_
       entities.push_back(entity);
    }
 
-   LabyrinthOfLore::Rendering::PickingBufferRenderer picking_buffer_renderer(&picking_buffer, camera_placement, entities);
+   LabyrinthOfLore::Rendering::PickingBufferRenderer picking_buffer_renderer(&picking_buffer, camera_placement, entities, &clamped_color_shader);
    picking_buffer_renderer.render();
 
    al_init_image_addon();

@@ -11,10 +11,11 @@ namespace Rendering
 {
 
 
-PickingBufferRenderer::PickingBufferRenderer(AllegroFlare::PickingBuffer* picking_buffer, allegro_flare::placement3d camera_view, std::vector<LabyrinthOfLore::Entity::Base*> entities)
+PickingBufferRenderer::PickingBufferRenderer(AllegroFlare::PickingBuffer* picking_buffer, allegro_flare::placement3d camera_view, std::vector<LabyrinthOfLore::Entity::Base*> entities, LabyrinthOfLore::Shader::ClampedColor* clamped_color_shader)
    : picking_buffer(picking_buffer)
    , camera_view(camera_view)
    , entities(entities)
+   , clamped_color_shader(clamped_color_shader)
 {
 }
 
@@ -48,6 +49,7 @@ set_projection(picking_buffer->get_surface_render(), &t);
 void PickingBufferRenderer::render()
 {
 if (!picking_buffer) throw std::runtime_error("picking buffer must not be a nullptr");
+if (!clamped_color_shader) throw std::runtime_error("clamped_color_shader must not be a nullptr");
 ALLEGRO_STATE previous_render_state;
 al_store_state(&previous_render_state, ALLEGRO_STATE_TARGET_BITMAP);
 al_set_target_bitmap(picking_buffer->get_surface_render());

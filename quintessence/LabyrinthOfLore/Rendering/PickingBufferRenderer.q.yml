@@ -11,6 +11,10 @@ properties:
     type: std::vector<LabyrinthOfLore::Entity::Base*>
     init_with: "{}"
     constructor_arg: true
+  - name: clamped_color_shader
+    type: LabyrinthOfLore::Shader::ClampedColor*
+    init_with: nullptr
+    constructor_arg: true
 functions:
   - name: set_projection
     type: void
@@ -42,6 +46,7 @@ functions:
     type: void
     body: |
       if (!picking_buffer) throw std::runtime_error("picking buffer must not be a nullptr");
+      if (!clamped_color_shader) throw std::runtime_error("clamped_color_shader must not be a nullptr");
       ALLEGRO_STATE previous_render_state;
       al_store_state(&previous_render_state, ALLEGRO_STATE_TARGET_BITMAP);
       al_set_target_bitmap(picking_buffer->get_surface_render());
@@ -64,6 +69,8 @@ functions:
 dependencies:
   - symbol: allegro_flare::placement3d
     headers: [ allegro_flare/placement3d.h ]
+  - symbol: LabyrinthOfLore::Shader::ClampedColor*
+    headers: [ LabyrinthOfLore/Shader/ClampedColor.hpp ]
   - symbol: LabyrinthOfLore::Rendering::EntityPickingRenderer
     headers: [ LabyrinthOfLore/Rendering/EntityPickingRenderer.hpp ]
   - symbol: LabyrinthOfLore::Rendering::SpritesBillboarder
