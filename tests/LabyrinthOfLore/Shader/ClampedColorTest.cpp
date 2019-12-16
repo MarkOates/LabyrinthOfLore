@@ -9,6 +9,7 @@
 
 
 #include <LabyrinthOfLore/Shader/ClampedColor.hpp>
+#include <AllegroFlare/ColorIDConverter.hpp>
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_color.h>
 #include <allegro_flare/placement2d.h>
@@ -32,7 +33,7 @@ protected:
       al_set_new_display_flags(ALLEGRO_OPENGL | ALLEGRO_PROGRAMMABLE_PIPELINE);
       ASSERT_EQ(ALLEGRO_OPENGL, al_get_new_display_flags() & ALLEGRO_OPENGL);
       ASSERT_EQ(ALLEGRO_PROGRAMMABLE_PIPELINE, al_get_new_display_flags() & ALLEGRO_PROGRAMMABLE_PIPELINE);
-      ALLEGRO_DISPLAY *display = al_create_display(400, 300);
+      ALLEGRO_DISPLAY *display = al_create_display(300, 200);
       ASSERT_NE(nullptr, display);
    }
 
@@ -140,7 +141,7 @@ TEST_F(LabyrinthOfLore_Shader_ClampedColorTest, when_active__only_renders_solid_
 
 
    ALLEGRO_COLOR color = al_color_name("orange");
-   ALLEGRO_COLOR black = al_color_name("pink");
+   ALLEGRO_COLOR black = al_color_name("black");
 
    flat_color_shader.set_flat_color(color);
 
@@ -150,7 +151,7 @@ TEST_F(LabyrinthOfLore_Shader_ClampedColorTest, when_active__only_renders_solid_
    int total_passes = 3;
    for (unsigned pass_num=0; pass_num<total_passes; pass_num++)
    {
-      al_clear_to_color(al_color_name("pink"));
+      al_clear_to_color(al_color_name("black"));
 
       allegro_flare::placement2d place(
             al_get_display_width(current_display)/2,
@@ -186,6 +187,49 @@ TEST_F(LabyrinthOfLore_Shader_ClampedColorTest, when_active__only_renders_solid_
 
    std::string tmp_path = "/Users/markoates/Repos/LabyrinthOfLore/tmp/";
    std::string output_image_full_filename = tmp_path + "when_active__renders_the_image_with_the_expected_flat_color.png";
+   ASSERT_EQ(true, al_save_bitmap(output_image_full_filename.c_str(), al_get_backbuffer(current_display)));
+}
+
+
+TEST_F(LabyrinthOfLore_Shader_ClampedColorTest, when_active__is_able_to_render_the_entire_range_of_color_ids)
+{
+   LabyrinthOfLore::Shader::ClampedColor flat_color_shader;
+
+   flat_color_shader.initialize();
+   flat_color_shader.activate();
+
+   al_init_image_addon();
+
+   ALLEGRO_BITMAP *test_image = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/billboarding_tester_sprite.png");
+   ASSERT_NE(nullptr, test_image);
+
+
+   ALLEGRO_COLOR color = al_color_name("orange");
+   ALLEGRO_COLOR black = al_color_name("pink");
+
+   flat_color_shader.set_flat_color(color);
+
+   ALLEGRO_DISPLAY *current_display = al_get_current_display();
+   ASSERT_NE(nullptr, current_display);
+
+   int total_passes = AllegroFlare::ColorIDConverter::ID_MAX / 10000;
+   ALLEGRO_BITMAP *surface = al_get_backbuffer(current_display);
+
+   for (int color_id_num=0; color_id_num<total_passes; color_id_num++)
+   {
+      ALLEGRO_COLOR color = AllegroFlare::ColorIDConverter::encode_id(color_id_num);
+      flat_color_shader.set_flat_color(color);
+
+      al_draw_bitmap(test_image, 0, 0, 0);
+      ALLEGRO_COLOR actual_color = al_get_pixel(surface, 0, 0);
+
+      ASSERT_EQ(color.r, actual_color.r);
+      ASSERT_EQ(color.g, actual_color.g);
+      ASSERT_EQ(color.b, actual_color.b);
+   }
+
+   std::string tmp_path = "/Users/markoates/Repos/LabyrinthOfLore/tmp/";
+   std::string output_image_full_filename = tmp_path + "when_active__all_ids.png";
    ASSERT_EQ(true, al_save_bitmap(output_image_full_filename.c_str(), al_get_backbuffer(current_display)));
 }
 
