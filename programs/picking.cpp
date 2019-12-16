@@ -4,6 +4,7 @@
 #include <allegro_flare/placement2d.h>
 
 #include <LabyrinthOfLore/Rendering/SceneRenderer.hpp>
+#include <LabyrinthOfLore/Rendering/PickingBufferRenderer.hpp>
 #include <AllegroFlare/Random.hpp>
 #include <AllegroFlare/Useful.hpp> // for FULL_ROTATION
 #include <AllegroFlare/Model3D.hpp>
@@ -56,6 +57,7 @@ int main(int argc, char **argv)
       al_set_new_display_option(ALLEGRO_DEPTH_SIZE, 32, ALLEGRO_SUGGEST);
       al_set_new_display_option(ALLEGRO_SAMPLES, 16, ALLEGRO_SUGGEST);
       //al_set_new_display_flags(display_flags);
+      al_set_new_display_flags(ALLEGRO_OPENGL | ALLEGRO_PROGRAMMABLE_PIPELINE);
       ALLEGRO_DISPLAY *display = al_create_display(1920, 1080);
 
       ALLEGRO_BITMAP *billboard_tester_sprite = al_load_bitmap("bin/programs/data/bitmaps/billboarding_tester_sprite.png");
@@ -124,6 +126,13 @@ int main(int argc, char **argv)
 
       bool shutdown_program = false;
 
+
+
+      AllegroFlare::PickingBuffer picking_buffer(al_get_display_width(display), al_get_display_height(display), 32);
+      picking_buffer.initialize();
+      LabyrinthOfLore::Shader::ClampedColor clamped_color_shader;
+      clamped_color_shader.initialize();
+
       while(!shutdown_program)
       {
          ALLEGRO_EVENT this_event;
@@ -145,6 +154,15 @@ int main(int argc, char **argv)
                LabyrinthOfLore::Rendering::SceneRenderer scene_renderer(camera_placement, render_surface, entities);
                scene_renderer.prep_render();
                scene_renderer.render();
+
+               LabyrinthOfLore::Rendering::PickingBufferRenderer picking_buffer_renderer(&picking_buffer, camera_placement, entities, &clamped_color_shader);
+               picking_buffer_renderer.render();
+
+               al_save_bitmap("/Users/markoates/Repos/LabyrinthOfLore/tmp/regular_render.png", render_surface);
+               al_save_bitmap("/Users/markoates/Repos/LabyrinthOfLore/tmp/picking_render.png", picking_buffer.get_surface_render());
+
+               shutdown_program = true;
+
                al_flip_display();
             }
             break;
