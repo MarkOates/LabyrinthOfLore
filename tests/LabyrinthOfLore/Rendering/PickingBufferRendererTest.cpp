@@ -49,6 +49,7 @@ TEST_F(LabyrinthOfLore_Rendering_PickingBufferRendererTest, render__does_not_exp
    allegro_flare::placement3d camera_placement;
    std::vector<LabyrinthOfLore::Entity::Base*> entities = {};
    LabyrinthOfLore::Shader::ClampedColor clamped_color_shader;
+   clamped_color_shader.initialize();
 
    LabyrinthOfLore::Rendering::PickingBufferRenderer picking_buffer_renderer(&picking_buffer, camera_placement, entities, &clamped_color_shader);
 

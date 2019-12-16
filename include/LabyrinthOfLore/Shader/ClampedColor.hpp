@@ -22,6 +22,7 @@ namespace LabyrinthOfLore
 
       void initialize();
       void activate();
+      void deactivate();
       void set_clamped_color(ALLEGRO_COLOR clamped_color={});
       static std::string obtain_vertex_source();
       static std::string obtain_fragment_source();

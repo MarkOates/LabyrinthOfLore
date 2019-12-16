@@ -3,26 +3,37 @@ properties:
     type: LabyrinthOfLore::Entity::Base*
     init_with: nullptr
     constructor_arg: true
+  - name: clamped_color_shader
+    type: LabyrinthOfLore::Shader::ClampedColor*
+    init_with: nullptr
+    constructor_arg: true
 functions:
   - name: render
     type: void
     body: |
-       entity->get_placement_ref().start_transform();
-
-       if (!entity->get_model())
-       {
+      if (!entity->get_model())
+      {
           if (entity->get_bitmap())
           {
+             clamped_color_shader->set_clamped_color(AllegroFlare::ColorIDConverter::encode_id(entity->get_id()));
+             entity->get_placement_ref().start_transform();
              al_draw_bitmap(entity->get_bitmap(), 0, 0, ALLEGRO_FLIP_VERTICAL);
+             entity->get_placement_ref().restore_transform();
           }
        }
        else
        {
-          //shader->set_
+          entity->get_placement_ref().start_transform();
           entity->get_model()->set_texture(entity->get_bitmap());
           entity->get_model()->draw();
+          entity->get_placement_ref().restore_transform();
        }
-       entity->get_placement_ref().restore_transform();
+    body_dependency_symbols:
+       - AllegroFlare::ColorIDConverter
 dependencies:
   - symbol: LabyrinthOfLore::Entity::Base*
     headers: [ LabyrinthOfLore/Entity/Base.hpp ]
+  - symbol: LabyrinthOfLore::Shader::ClampedColor*
+    headers: [ LabyrinthOfLore/Shader/ClampedColor.hpp ]
+  - symbol: AllegroFlare::ColorIDConverter
+    headers: [ AllegroFlare/ColorIDConverter.hpp ]

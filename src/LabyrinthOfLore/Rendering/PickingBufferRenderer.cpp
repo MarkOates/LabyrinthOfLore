@@ -55,14 +55,18 @@ al_store_state(&previous_render_state, ALLEGRO_STATE_TARGET_BITMAP);
 al_set_target_bitmap(picking_buffer->get_surface_render());
 prep_render();
 
+clamped_color_shader->activate();
+
 
 LabyrinthOfLore::Rendering::SpritesBillboarder billboarder(camera_view, entities);
 billboarder.process();
 
 for (auto &entity : entities)
 {
-   LabyrinthOfLore::Rendering::EntityPickingRenderer(entity).render();
+   LabyrinthOfLore::Rendering::EntityPickingRenderer(entity, clamped_color_shader).render();
 }
+
+clamped_color_shader->deactivate();
 
 al_restore_state(&previous_render_state);
 return;

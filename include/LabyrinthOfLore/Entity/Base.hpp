@@ -11,7 +11,7 @@ namespace LabyrinthOfLore
 {
    namespace Entity
    {
-      class Base : private AllegroFlare::ElementID
+      class Base : public AllegroFlare::ElementID
       {
       private:
          ALLEGRO_BITMAP* bitmap;

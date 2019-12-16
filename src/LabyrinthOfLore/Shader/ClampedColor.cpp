@@ -36,6 +36,12 @@ LabyrinthOfLore::Shader::Base::activate();
 
 }
 
+void ClampedColor::deactivate()
+{
+LabyrinthOfLore::Shader::Base::deactivate();
+
+}
+
 void ClampedColor::set_clamped_color(ALLEGRO_COLOR clamped_color)
 {
 Shader::set_vec3("tint", clamped_color.r, clamped_color.g, clamped_color.b);

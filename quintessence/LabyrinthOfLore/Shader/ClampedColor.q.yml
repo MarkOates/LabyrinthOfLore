@@ -17,6 +17,10 @@ functions:
     body: |
       if (!initialized) throw std::runtime_error("[LabyrinthOfLore::Shader::ClampedColor] Attempting to activate() shader before it has been initialized");
       LabyrinthOfLore::Shader::Base::activate();
+  - name: deactivate
+    type: void
+    body: |
+      LabyrinthOfLore::Shader::Base::deactivate();
   - name: set_clamped_color
     parameters:
       - name: clamped_color

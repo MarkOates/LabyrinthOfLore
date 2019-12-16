@@ -1,6 +1,6 @@
 parent_classes:
   - class: AllegroFlare::ElementID
-    scope: private
+    scope: public
     init_with: "{}"
 properties:
   - name: bitmap
