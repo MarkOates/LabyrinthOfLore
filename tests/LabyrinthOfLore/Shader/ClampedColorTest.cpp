@@ -32,7 +32,7 @@ protected:
       al_set_new_display_flags(ALLEGRO_OPENGL | ALLEGRO_PROGRAMMABLE_PIPELINE);
       ASSERT_EQ(ALLEGRO_OPENGL, al_get_new_display_flags() & ALLEGRO_OPENGL);
       ASSERT_EQ(ALLEGRO_PROGRAMMABLE_PIPELINE, al_get_new_display_flags() & ALLEGRO_PROGRAMMABLE_PIPELINE);
-      ALLEGRO_DISPLAY *display = al_create_display(800, 600);
+      ALLEGRO_DISPLAY *display = al_create_display(400, 300);
       ASSERT_NE(nullptr, display);
    }
 
@@ -125,5 +125,63 @@ TEST_F(LabyrinthOfLore_Shader_ClampedColorTest, when_active__renders_the_image_w
    ASSERT_EQ(true, al_save_bitmap(output_image_full_filename.c_str(), al_get_backbuffer(current_display)));
 }
 
+
+TEST_F(LabyrinthOfLore_Shader_ClampedColorTest, when_active__only_renders_solid_and_non_solid_colors__aka_no_alphas)
+{
+   LabyrinthOfLore::Shader::ClampedColor flat_color_shader;
+
+   flat_color_shader.initialize();
+   flat_color_shader.activate();
+
+   al_init_image_addon();
+
+   ALLEGRO_BITMAP *test_image = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/billboarding_tester_sprite.png");
+   ASSERT_NE(nullptr, test_image);
+
+
+   ALLEGRO_COLOR color = al_color_name("orange");
+   ALLEGRO_COLOR black = al_color_name("black");
+
+   flat_color_shader.set_flat_color(color);
+
+   ALLEGRO_DISPLAY *current_display = al_get_current_display();
+   ASSERT_NE(nullptr, current_display);
+
+   allegro_flare::placement2d place(
+         al_get_display_width(current_display)/2,
+         al_get_display_height(current_display)/2,
+         al_get_bitmap_width(test_image),
+         al_get_bitmap_height(test_image));
+   place.scale = AllegroFlare::vec2d(4, 4);
+   place.rotation = 0.2;
+   place.start_transform();
+   al_draw_bitmap(test_image, 0, 0, 0);
+   place.restore_transform();
+
+
+   ALLEGRO_BITMAP *surface = al_get_backbuffer(current_display);
+   al_lock_bitmap(surface, ALLEGRO_PIXEL_FORMAT_ANY, ALLEGRO_LOCK_READONLY);
+   for (unsigned y=0; y<al_get_bitmap_height(surface); y++)
+   {
+      for (unsigned x=0; x<al_get_bitmap_width(surface); x++)
+      {
+         ALLEGRO_COLOR expected_color = color;
+         ALLEGRO_COLOR actual_color = al_get_pixel(surface, x, y);
+
+         bool matches_color = false;
+         bool matches_black = false;
+
+         matches_color = actual_color.r == color.r && color.g == actual_color.g && color.b == actual_color.b && color.a == actual_color.a;
+         matches_black = actual_color.r == black.r && black.g == actual_color.g && black.b == actual_color.b && black.a == actual_color.a;
+
+         ASSERT_EQ(true, matches_color || matches_black);
+      }
+   }
+   al_unlock_bitmap(surface);
+
+   std::string tmp_path = "/Users/markoates/Repos/LabyrinthOfLore/tmp/";
+   std::string output_image_full_filename = tmp_path + "when_active__renders_the_image_with_the_expected_flat_color.png";
+   ASSERT_EQ(true, al_save_bitmap(output_image_full_filename.c_str(), al_get_backbuffer(current_display)));
+}
 
 
