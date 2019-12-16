@@ -26,6 +26,9 @@ protected:
       ASSERT_EQ(false, al_is_system_installed());
       ASSERT_EQ(true, al_init());
 
+      al_set_new_display_flags(ALLEGRO_OPENGL | ALLEGRO_PROGRAMMABLE_PIPELINE);
+      ASSERT_EQ(ALLEGRO_OPENGL, al_get_new_display_flags() & ALLEGRO_OPENGL);
+      ASSERT_EQ(ALLEGRO_PROGRAMMABLE_PIPELINE, al_get_new_display_flags() & ALLEGRO_PROGRAMMABLE_PIPELINE);
       ALLEGRO_DISPLAY *display = al_create_display(800, 600);
       ASSERT_NE(nullptr, display);
    }
@@ -38,17 +41,26 @@ protected:
 };
 
 
-TEST(LabyrinthOfLore_Shader_FlatColorTest, can_be_created_without_blowing_up)
+TEST_F(LabyrinthOfLore_Shader_FlatColorTest, can_be_created_without_blowing_up)
 {
    LabyrinthOfLore::Shader::FlatColor flat_color_shader;
+   SUCCEED();
 }
 
 
-TEST(LabyrinthOfLore_Shader_FlatColorTest, activate__before_being_initialized_raises_an_exception)
+TEST_F(LabyrinthOfLore_Shader_FlatColorTest, activate__before_being_initialized_raises_an_exception)
 {
    LabyrinthOfLore::Shader::FlatColor flat_color_shader;
    std::string expected_error_message = "[LabyrinthOfLore::Shader::FlatColor] Attempting to activate() shader before it has been initialized";
    ASSERT_THROW_WITH_MESSAGE(flat_color_shader.activate(), std::runtime_error, expected_error_message);
+}
+
+
+TEST_F(LabyrinthOfLore_Shader_FlatColorTest, initialize__works_without_blowing_up)
+{
+   LabyrinthOfLore::Shader::FlatColor flat_color_shader;
+   flat_color_shader.initialize();
+   SUCCEED();
 }
 
 
