@@ -65,6 +65,7 @@ TEST_F(LabyrinthOfLore_Rendering_PickingBufferRendererTest, render__displays_the
    allegro_flare::placement3d camera_placement;
    std::vector<LabyrinthOfLore::Entity::Base*> entities = {};
    LabyrinthOfLore::Shader::ClampedColor clamped_color_shader;
+   clamped_color_shader.initialize();
 
    ALLEGRO_BITMAP *billboard_tester_sprite = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/billboarding_tester_sprite.png");
    ASSERT_NE(nullptr, billboard_tester_sprite);
@@ -92,6 +93,7 @@ TEST_F(LabyrinthOfLore_Rendering_PickingBufferRendererTest, render__renders_the_
    allegro_flare::placement3d camera_placement(0, 0, 5);
    std::vector<LabyrinthOfLore::Entity::Base*> entities = {};
    LabyrinthOfLore::Shader::ClampedColor clamped_color_shader;
+   clamped_color_shader.initialize();
 
    ALLEGRO_BITMAP *billboard_tester_sprite = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/billboarding_tester_sprite.png");
    ASSERT_NE(nullptr, billboard_tester_sprite);
