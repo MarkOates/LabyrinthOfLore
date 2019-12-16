@@ -9,6 +9,9 @@
 
 
 #include <LabyrinthOfLore/Shader/FlatColor.hpp>
+#include <allegro5/allegro_image.h>
+#include <allegro5/allegro_color.h>
+#include <allegro_flare/placement2d.h>
 
 
 class LabyrinthOfLore_Shader_FlatColorTest : public ::testing::Test
@@ -37,6 +40,11 @@ protected:
    {
       if (display) al_destroy_display(display);
       al_uninstall_system();
+   }
+
+   ALLEGRO_DISPLAY *get_display()
+   {
+      return display;
    }
 };
 
@@ -70,6 +78,51 @@ TEST_F(LabyrinthOfLore_Shader_FlatColorTest, activate__works_without_blowing_up)
 
    flat_color_shader.initialize();
    flat_color_shader.activate();
+}
+
+
+TEST_F(LabyrinthOfLore_Shader_FlatColorTest, when_active__renders_the_image_with_the_flat_color)
+{
+   LabyrinthOfLore::Shader::FlatColor flat_color_shader;
+
+   flat_color_shader.initialize();
+   flat_color_shader.activate();
+
+   al_init_image_addon();
+
+   ALLEGRO_BITMAP *test_image = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/billboarding_tester_sprite.png");
+   ASSERT_NE(nullptr, test_image);
+
+
+   ALLEGRO_COLOR color = al_color_name("red");
+
+   flat_color_shader.set_flat_color(color);
+
+   ALLEGRO_DISPLAY *current_display = al_get_current_display();
+   ASSERT_NE(nullptr, current_display);
+
+   allegro_flare::placement2d place(
+         al_get_display_width(current_display)/2,
+         al_get_display_height(current_display)/2,
+         al_get_bitmap_width(test_image),
+         al_get_bitmap_height(test_image));
+   place.scale = AllegroFlare::vec2d(4, 4);
+   place.start_transform();
+   al_draw_bitmap(test_image, 0, 0, 0);
+   place.restore_transform();
+
+
+   ALLEGRO_COLOR expected_color = color;
+   ALLEGRO_COLOR actual_color = al_get_pixel(al_get_backbuffer(current_display), al_get_display_width(current_display)/2, al_get_display_height(current_display)/2);
+
+   ASSERT_EQ(color.r, actual_color.r);
+   ASSERT_EQ(color.g, actual_color.g);
+   ASSERT_EQ(color.b, actual_color.b);
+   ASSERT_EQ(color.a, actual_color.a);
+
+   std::string tmp_path = "/Users/markoates/Repos/LabyrinthOfLore/tmp/";
+   std::string output_image_full_filename = tmp_path + "when_activated__renders_bitmaps_with_a_solid_tinted_overlay.png";
+   ASSERT_EQ(true, al_save_bitmap(output_image_full_filename.c_str(), al_get_backbuffer(current_display)));
 }
 
 
