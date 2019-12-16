@@ -76,12 +76,7 @@ static const std::string source = R"DELIM(
   void main()
   {
      vec4 tmp = texture2D(al_tex, varying_texcoord);
-     float inverse_tint_intensity = 1.0 - tint_intensity;
-     tmp.r = (tmp.r * inverse_tint_intensity + tint.r * tint_intensity) * tmp.a;
-     tmp.g = (tmp.g * inverse_tint_intensity + tint.g * tint_intensity) * tmp.a;
-     tmp.b = (tmp.b * inverse_tint_intensity + tint.b * tint_intensity) * tmp.a;
-     tmp.a = tmp.a;
-     gl_FragColor = tmp;
+     gl_FragColor = (tmp.a < 0.0001) ? vec4(0.0, 0.0, 0.0, 0.0) : vec4(tint, 1.0);
   }
 )DELIM";
 return source;

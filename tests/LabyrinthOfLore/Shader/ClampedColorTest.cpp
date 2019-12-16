@@ -81,7 +81,7 @@ TEST_F(LabyrinthOfLore_Shader_ClampedColorTest, activate__works_without_blowing_
 }
 
 
-TEST_F(LabyrinthOfLore_Shader_ClampedColorTest, when_active__renders_the_image_with_the_flat_color)
+TEST_F(LabyrinthOfLore_Shader_ClampedColorTest, when_active__renders_the_image_with_the_expected_flat_color)
 {
    LabyrinthOfLore::Shader::ClampedColor flat_color_shader;
 
@@ -94,7 +94,7 @@ TEST_F(LabyrinthOfLore_Shader_ClampedColorTest, when_active__renders_the_image_w
    ASSERT_NE(nullptr, test_image);
 
 
-   ALLEGRO_COLOR color = al_color_name("red");
+   ALLEGRO_COLOR color = al_color_name("orange");
 
    flat_color_shader.set_flat_color(color);
 
@@ -121,7 +121,7 @@ TEST_F(LabyrinthOfLore_Shader_ClampedColorTest, when_active__renders_the_image_w
    ASSERT_EQ(color.a, actual_color.a);
 
    std::string tmp_path = "/Users/markoates/Repos/LabyrinthOfLore/tmp/";
-   std::string output_image_full_filename = tmp_path + "when_activated__renders_bitmaps_with_a_solid_tinted_overlay.png";
+   std::string output_image_full_filename = tmp_path + "when_active__renders_the_image_with_the_expected_flat_color.png";
    ASSERT_EQ(true, al_save_bitmap(output_image_full_filename.c_str(), al_get_backbuffer(current_display)));
 }
 
