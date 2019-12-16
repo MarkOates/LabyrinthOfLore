@@ -104,6 +104,7 @@ TEST_F(LabyrinthOfLore_Rendering_PickingBufferRendererTest, render__renders_the_
    {
       float here_pos = (float)i / total_passes;
       LabyrinthOfLore::Entity::Base* entity = new LabyrinthOfLore::Entity::Base;
+      entity->set_billboard_at_camera(true);
       entity->set_bitmap(billboard_tester_sprite);
       entity->get_placement_ref().position = AllegroFlare::vec3d(here_pos * 5, here_pos * 5, here_pos * 5);
       entity->get_placement_ref().size = AllegroFlare::vec3d(al_get_bitmap_width(billboard_tester_sprite), al_get_bitmap_height(billboard_tester_sprite));
