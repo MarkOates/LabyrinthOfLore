@@ -52,42 +52,42 @@ protected:
 
 TEST_F(LabyrinthOfLore_Shader_ClampedColorTest, can_be_created_without_blowing_up)
 {
-   LabyrinthOfLore::Shader::ClampedColor flat_color_shader;
+   LabyrinthOfLore::Shader::ClampedColor clamped_color_shader;
    SUCCEED();
 }
 
 
 TEST_F(LabyrinthOfLore_Shader_ClampedColorTest, activate__before_being_initialized_raises_an_exception)
 {
-   LabyrinthOfLore::Shader::ClampedColor flat_color_shader;
+   LabyrinthOfLore::Shader::ClampedColor clamped_color_shader;
    std::string expected_error_message = "[LabyrinthOfLore::Shader::ClampedColor] Attempting to activate() shader before it has been initialized";
-   ASSERT_THROW_WITH_MESSAGE(flat_color_shader.activate(), std::runtime_error, expected_error_message);
+   ASSERT_THROW_WITH_MESSAGE(clamped_color_shader.activate(), std::runtime_error, expected_error_message);
 }
 
 
 TEST_F(LabyrinthOfLore_Shader_ClampedColorTest, initialize__works_without_blowing_up)
 {
-   LabyrinthOfLore::Shader::ClampedColor flat_color_shader;
-   flat_color_shader.initialize();
+   LabyrinthOfLore::Shader::ClampedColor clamped_color_shader;
+   clamped_color_shader.initialize();
    SUCCEED();
 }
 
 
 TEST_F(LabyrinthOfLore_Shader_ClampedColorTest, activate__works_without_blowing_up)
 {
-   LabyrinthOfLore::Shader::ClampedColor flat_color_shader;
+   LabyrinthOfLore::Shader::ClampedColor clamped_color_shader;
 
-   flat_color_shader.initialize();
-   flat_color_shader.activate();
+   clamped_color_shader.initialize();
+   clamped_color_shader.activate();
 }
 
 
-TEST_F(LabyrinthOfLore_Shader_ClampedColorTest, when_active__renders_the_image_with_the_expected_flat_color)
+TEST_F(LabyrinthOfLore_Shader_ClampedColorTest, when_active__renders_the_image_with_the_expected_clamped_color)
 {
-   LabyrinthOfLore::Shader::ClampedColor flat_color_shader;
+   LabyrinthOfLore::Shader::ClampedColor clamped_color_shader;
 
-   flat_color_shader.initialize();
-   flat_color_shader.activate();
+   clamped_color_shader.initialize();
+   clamped_color_shader.activate();
 
    al_init_image_addon();
 
@@ -97,7 +97,7 @@ TEST_F(LabyrinthOfLore_Shader_ClampedColorTest, when_active__renders_the_image_w
 
    ALLEGRO_COLOR color = al_color_name("orange");
 
-   flat_color_shader.set_flat_color(color);
+   clamped_color_shader.set_clamped_color(color);
 
    ALLEGRO_DISPLAY *current_display = al_get_current_display();
    ASSERT_NE(nullptr, current_display);
@@ -122,17 +122,17 @@ TEST_F(LabyrinthOfLore_Shader_ClampedColorTest, when_active__renders_the_image_w
    ASSERT_EQ(color.a, actual_color.a);
 
    std::string tmp_path = "/Users/markoates/Repos/LabyrinthOfLore/tmp/";
-   std::string output_image_full_filename = tmp_path + "when_active__renders_the_image_with_the_expected_flat_color.png";
+   std::string output_image_full_filename = tmp_path + "when_active__renders_the_image_with_the_expected_clamped_color.png";
    ASSERT_EQ(true, al_save_bitmap(output_image_full_filename.c_str(), al_get_backbuffer(current_display)));
 }
 
 
 TEST_F(LabyrinthOfLore_Shader_ClampedColorTest, when_active__only_renders_solid_and_non_solid_colors__aka_no_alphas)
 {
-   LabyrinthOfLore::Shader::ClampedColor flat_color_shader;
+   LabyrinthOfLore::Shader::ClampedColor clamped_color_shader;
 
-   flat_color_shader.initialize();
-   flat_color_shader.activate();
+   clamped_color_shader.initialize();
+   clamped_color_shader.activate();
 
    al_init_image_addon();
 
@@ -143,7 +143,7 @@ TEST_F(LabyrinthOfLore_Shader_ClampedColorTest, when_active__only_renders_solid_
    ALLEGRO_COLOR color = al_color_name("orange");
    ALLEGRO_COLOR black = al_color_name("black");
 
-   flat_color_shader.set_flat_color(color);
+   clamped_color_shader.set_clamped_color(color);
 
    ALLEGRO_DISPLAY *current_display = al_get_current_display();
    ASSERT_NE(nullptr, current_display);
@@ -186,17 +186,17 @@ TEST_F(LabyrinthOfLore_Shader_ClampedColorTest, when_active__only_renders_solid_
    }
 
    std::string tmp_path = "/Users/markoates/Repos/LabyrinthOfLore/tmp/";
-   std::string output_image_full_filename = tmp_path + "when_active__renders_the_image_with_the_expected_flat_color.png";
+   std::string output_image_full_filename = tmp_path + "when_active__renders_the_image_with_the_expected_clamped_color.png";
    ASSERT_EQ(true, al_save_bitmap(output_image_full_filename.c_str(), al_get_backbuffer(current_display)));
 }
 
 
 TEST_F(LabyrinthOfLore_Shader_ClampedColorTest, when_active__is_able_to_render_the_entire_range_of_color_ids)
 {
-   LabyrinthOfLore::Shader::ClampedColor flat_color_shader;
+   LabyrinthOfLore::Shader::ClampedColor clamped_color_shader;
 
-   flat_color_shader.initialize();
-   flat_color_shader.activate();
+   clamped_color_shader.initialize();
+   clamped_color_shader.activate();
 
    al_init_image_addon();
 
@@ -207,7 +207,7 @@ TEST_F(LabyrinthOfLore_Shader_ClampedColorTest, when_active__is_able_to_render_t
    ALLEGRO_COLOR color = al_color_name("orange");
    ALLEGRO_COLOR black = al_color_name("pink");
 
-   flat_color_shader.set_flat_color(color);
+   clamped_color_shader.set_clamped_color(color);
 
    ALLEGRO_DISPLAY *current_display = al_get_current_display();
    ASSERT_NE(nullptr, current_display);
@@ -218,7 +218,7 @@ TEST_F(LabyrinthOfLore_Shader_ClampedColorTest, when_active__is_able_to_render_t
    for (int color_id_num=0; color_id_num<total_passes; color_id_num++)
    {
       ALLEGRO_COLOR color = AllegroFlare::ColorIDConverter::encode_id(color_id_num);
-      flat_color_shader.set_flat_color(color);
+      clamped_color_shader.set_clamped_color(color);
 
       al_draw_bitmap(test_image, 0, 0, 0);
       ALLEGRO_COLOR actual_color = al_get_pixel(surface, 0, 0);
