@@ -36,6 +36,12 @@ LabyrinthOfLore::Shader::Base::activate();
 
 }
 
+void FlatColor::set_flat_color(ALLEGRO_COLOR flat_color)
+{
+Shader::set_vec4("tint", flat_color.r, flat_color.g, flat_color.b, flat_color.a);
+
+}
+
 std::string FlatColor::obtain_vertex_source()
 {
 static const std::string source = R"DELIM(

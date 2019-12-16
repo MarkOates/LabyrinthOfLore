@@ -64,3 +64,12 @@ TEST_F(LabyrinthOfLore_Shader_FlatColorTest, initialize__works_without_blowing_u
 }
 
 
+TEST_F(LabyrinthOfLore_Shader_FlatColorTest, activate__works_without_blowing_up)
+{
+   LabyrinthOfLore::Shader::FlatColor flat_color_shader;
+
+   flat_color_shader.initialize();
+   flat_color_shader.activate();
+}
+
+
