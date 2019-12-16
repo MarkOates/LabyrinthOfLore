@@ -36,6 +36,7 @@ if (!entity->get_model())
  }
  else
  {
+    clamped_color_shader->set_clamped_color(AllegroFlare::ColorIDConverter::encode_id(entity->get_id()));
     entity->get_placement_ref().start_transform();
     entity->get_model()->set_texture(entity->get_bitmap());
     entity->get_model()->draw();
