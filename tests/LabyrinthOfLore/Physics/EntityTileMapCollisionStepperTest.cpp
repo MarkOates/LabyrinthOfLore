@@ -210,7 +210,7 @@ TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest, process_step__wo
 }
 
 TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
-      with_an_entity__process_step__will_not_move_an_entity_higher_than_the_ceiling__but_will_position_it_at_the_maximum_minus_a_small_offset)
+      with_an_entity__process_step__will_not_move_an_entity_higher_than_the_ceiling__but_will_position_it_at_the_maximum_minus_a_small_offset__and_will_set_the_vertical_velocity_to_0)
 {
    LabyrinthOfLore::WorldMap::TileMap tile_map;
    tile_map.resize(10, 10, LabyrinthOfLore::WorldMap::Tile(0, -10.0));
@@ -227,10 +227,13 @@ TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
    EXPECT_EQ(0.0f, actual_placement.position.x);
    EXPECT_EQ(0.0f, actual_placement.position.y);
    EXPECT_EQ(99.99f, actual_placement.position.z);
+
+   allegro_flare::placement3d actual_velocity = entity.get_velocity_ref();
+   EXPECT_EQ(0.0f, actual_velocity.position.z);
 }
 
 TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
-      with_an_entity__process_step__will_not_move_an_entity_lower_than_the_floor__but_will_position_it_at_the_miniumum_plus_a_small_offset) // need to add: __and_will_set_the_vertical_velocity_to_0)
+      with_an_entity__process_step__will_not_move_an_entity_lower_than_the_floor__but_will_position_it_at_the_miniumum_plus_a_small_offset__and_will_set_the_vertical_velocity_to_0)
 {
    LabyrinthOfLore::WorldMap::TileMap tile_map;
    tile_map.resize(10, 10, LabyrinthOfLore::WorldMap::Tile(0, -10.0));
@@ -247,6 +250,9 @@ TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
    EXPECT_EQ(0.0f, actual_placement.position.x);
    EXPECT_EQ(0.0f, actual_placement.position.y);
    EXPECT_EQ(0.01f, actual_placement.position.z);
+
+   allegro_flare::placement3d actual_velocity = entity.get_velocity_ref();
+   EXPECT_EQ(0.0f, actual_velocity.position.z);
 }
 
 TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
