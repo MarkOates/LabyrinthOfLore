@@ -32,8 +32,10 @@ return dummy_tile_map;
 
 void EntityTileMapCollisionStepper::process_step()
 {
-ALLEGRO_KEYBOARD_STATE keyboard_state;
-al_get_keyboard_state(&keyboard_state);
+bool player_pressing_w_or_up = false;
+bool player_pressing_s_or_down = false;
+bool player_pressing_a = false;
+bool player_pressing_d = false;
 
 double dirX = 0;
 double dirY = 1; // normal
@@ -43,20 +45,20 @@ double posY = 0;
 int worldMap[100][100] = { 0 };
 
 //move forward if no wall in front of you
-if (al_key_down(&keyboard_state, ALLEGRO_KEY_W) || al_key_down(&keyboard_state, ALLEGRO_KEY_UP))
+if (player_pressing_w_or_up)
 {
    if(worldMap[int(posX + dirX * moveSpeed)][int(posY)] == false) posX += dirX * moveSpeed;
    if(worldMap[int(posX)][int(posY + dirY * moveSpeed)] == false) posY += dirY * moveSpeed;
 }
 //move backwards if no wall behind you
-if (al_key_down(&keyboard_state, ALLEGRO_KEY_S) || al_key_down(&keyboard_state, ALLEGRO_KEY_DOWN))
+if (player_pressing_s_or_down)
 {
    if(worldMap[int(posX - dirX * moveSpeed)][int(posY)] == false) posX -= dirX * moveSpeed;
    if(worldMap[int(posX)][int(posY - dirY * moveSpeed)] == false) posY -= dirY * moveSpeed;
 }
 
 // strafing
-if (al_key_down(&keyboard_state, ALLEGRO_KEY_A))
+if (player_pressing_a)
 {
    float dirX2 = -dirY;
    float dirY2 = dirX;
@@ -64,7 +66,7 @@ if (al_key_down(&keyboard_state, ALLEGRO_KEY_A))
    if(worldMap[int(posX)][int(posY + dirY2 * moveSpeed)] == false) posY += dirY2 * moveSpeed;
 }
 //move backwards if no wall behind you
-if (al_key_down(&keyboard_state, ALLEGRO_KEY_D))
+if (player_pressing_d)
 {
    float dirX2 = -dirY;
    float dirY2 = dirX;
