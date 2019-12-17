@@ -1,7 +1,7 @@
 
 
 #include <LabyrinthOfLore/Physics/EntityTileMapCollisionStepper.hpp>
-
+#include <cmath>
 
 
 namespace LabyrinthOfLore
@@ -51,7 +51,7 @@ for (auto &entity : entities)
    AllegroFlare::vec2d x_y_movement_normalized = player_xy.normalized();
    float player_xy_magnitude = player_xy.get_magnitude();
 
-   if (entity->get_velocity_ref().position.x <= 0.00001 && entity->get_velocity_ref().position.y <= 0.00001)
+   if (fabs(entity->get_velocity_ref().position.x) <= 0.00001 && fabs(entity->get_velocity_ref().position.y) <= 0.00001)
    {
       x_y_movement_normalized = AllegroFlare::vec2d(0, 1);
       player_xy_magnitude = 0.0;

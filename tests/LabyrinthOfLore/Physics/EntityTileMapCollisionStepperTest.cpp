@@ -49,6 +49,26 @@ TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
 }
 
 TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
+      with_an_entity__process_step__steps_the_entity_forward_when_moving_at_a_negative_velocity)
+{
+   LabyrinthOfLore::WorldMap::TileMap tile_map;
+   tile_map.resize(10, 10, LabyrinthOfLore::WorldMap::Tile(0, 10.0));
+   LabyrinthOfLore::Entity::Base entity = LabyrinthOfLore::Entity::Base();
+   std::vector<LabyrinthOfLore::Entity::Base*> entities = { &entity };
+
+   entity.get_placement_ref().position = AllegroFlare::vec3d(1.0, 1.0, 11.01);
+   entity.get_velocity_ref().position = AllegroFlare::vec3d(-0.3, -0.4, -0.2);
+
+   LabyrinthOfLore::Physics::EntityTileMapCollisionStepper entity_tile_map_collision_stepper(tile_map, entities);
+   entity_tile_map_collision_stepper.process_step();
+
+   allegro_flare::placement3d actual_placement = entity.get_placement_ref();
+   EXPECT_EQ(0.7f, actual_placement.position.x);
+   EXPECT_EQ(0.6f, actual_placement.position.y);
+   EXPECT_EQ(10.81f, actual_placement.position.z);
+}
+
+TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
       with_an_entity__process_step__does_not_horizontally_advance_the_player_if_the_colliding_block_is_higher_than_the_auto_ascend_threshold)
 {
    LabyrinthOfLore::WorldMap::TileMap tile_map;
@@ -145,5 +165,45 @@ TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
    EXPECT_EQ(1.5f, actual_placement.position.x);
    EXPECT_EQ(0.5f, actual_placement.position.y);
    EXPECT_EQ(10.0f + auto_ascend_threshold + 0.01f, actual_placement.position.z);
+}
+
+TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest, process_step__works_on_multiple_entities)
+{
+   LabyrinthOfLore::WorldMap::TileMap tile_map;
+   tile_map.resize(3, 3, LabyrinthOfLore::WorldMap::Tile(0, 10.0));
+
+   LabyrinthOfLore::Entity::Base entity1 = LabyrinthOfLore::Entity::Base();
+   LabyrinthOfLore::Entity::Base entity2 = LabyrinthOfLore::Entity::Base();
+   LabyrinthOfLore::Entity::Base entity3 = LabyrinthOfLore::Entity::Base();
+
+   std::vector<LabyrinthOfLore::Entity::Base*> entities = { &entity1, &entity2, &entity3 };
+
+   entity1.get_placement_ref().position = AllegroFlare::vec3d(0.5, 0.5, 10.01);
+   entity1.get_velocity_ref().position = AllegroFlare::vec3d(1.0, 0.0, 0.0);
+
+   entity2.get_placement_ref().position = AllegroFlare::vec3d(0.5, 1.5, 10.01);
+   entity2.get_velocity_ref().position = AllegroFlare::vec3d(0.0, -1.0, 0.0);
+
+   entity3.get_placement_ref().position = AllegroFlare::vec3d(1.5, 0.5, 10.01);
+   entity3.get_velocity_ref().position = AllegroFlare::vec3d(-1.0, 0.0, 0.0);
+
+   LabyrinthOfLore::Physics::EntityTileMapCollisionStepper entity_tile_map_collision_stepper(tile_map, entities);
+   entity_tile_map_collision_stepper.process_step();
+
+   allegro_flare::placement3d entity1_actual_placement = entity1.get_placement_ref();
+   allegro_flare::placement3d entity2_actual_placement = entity2.get_placement_ref();
+   allegro_flare::placement3d entity3_actual_placement = entity3.get_placement_ref();
+
+   EXPECT_EQ(1.5f, entity1_actual_placement.position.x);
+   EXPECT_EQ(0.5f, entity1_actual_placement.position.y);
+   EXPECT_EQ(10.01f, entity1_actual_placement.position.z);
+
+   EXPECT_EQ(0.5f, entity2_actual_placement.position.x);
+   EXPECT_EQ(0.5f, entity2_actual_placement.position.y);
+   EXPECT_EQ(10.01f, entity2_actual_placement.position.z);
+
+   EXPECT_EQ(0.5f, entity3_actual_placement.position.x);
+   EXPECT_EQ(0.5f, entity3_actual_placement.position.y);
+   EXPECT_EQ(10.01f, entity3_actual_placement.position.z);
 }
 
