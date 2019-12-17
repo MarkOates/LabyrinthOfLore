@@ -97,6 +97,7 @@ for (auto &entity : entities)
    if ((posZ + dirZ) < tile_map.get_tile(int(posX), int(posY)).get_height())
    {
       posZ = tile_map.get_tile(int(posX), int(posY)).get_height() + 0.01f;
+      entity->get_velocity_ref().position.z = 0.0f;
    }
    else
    {
@@ -107,10 +108,10 @@ for (auto &entity : entities)
    entity->get_placement_ref().position.y = posY;
    float clamped_floor = std::max<float>(get_floor_height()+0.01, posZ);
    float clamped_ceiling = std::min<float>(get_ceiling_height()-0.01, clamped_floor);
-   if (clamped_floor != clamped_ceiling != posZ)
-   {
-      entity->get_velocity_ref().position.z = 0.0f;
-   }
+   //if (clamped_floor != clamped_ceiling != posZ)
+   //{
+      //entity->get_velocity_ref().position.z = 0.0f;
+   //}
    entity->get_placement_ref().position.z = clamped_ceiling;
 }
 
