@@ -17,10 +17,10 @@ TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest, accepts_reasonab
    SUCCEED();
 }
 
-TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest, process_step__workds_with_reasonable_arguments)
+TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest, process_step__works_with_reasonable_arguments)
 {
    LabyrinthOfLore::WorldMap::TileMap tile_map;
-    std::vector<LabyrinthOfLore::Entity::Base*> entities = {};
+   std::vector<LabyrinthOfLore::Entity::Base*> entities = {};
 
    LabyrinthOfLore::Physics::EntityTileMapCollisionStepper entity_tile_map_collision_stepper(tile_map, entities);
 
