@@ -8,11 +8,23 @@ TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest, can_be_created_w
    LabyrinthOfLore::Physics::EntityTileMapCollisionStepper entity_tile_map_collision_stepper;
 }
 
-TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest, accepts_reasonable_parameters_without_crashing)
+TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest, accepts_reasonable_arguments_without_crashing)
 {
    LabyrinthOfLore::WorldMap::TileMap tile_map;
     std::vector<LabyrinthOfLore::Entity::Base*> entities = {};
 
    LabyrinthOfLore::Physics::EntityTileMapCollisionStepper entity_tile_map_collision_stepper(tile_map, entities);
+   SUCCEED();
+}
+
+TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest, process_step__workds_with_reasonable_arguments)
+{
+   LabyrinthOfLore::WorldMap::TileMap tile_map;
+    std::vector<LabyrinthOfLore::Entity::Base*> entities = {};
+
+   LabyrinthOfLore::Physics::EntityTileMapCollisionStepper entity_tile_map_collision_stepper(tile_map, entities);
+
+   entity_tile_map_collision_stepper.process_step();
+   SUCCEED();
 }
 
