@@ -1,0 +1,29 @@
+properties:
+  - name: dummy_tile_map
+    static: true
+    type: LabyrinthOfLore::WorldMap::TileMap
+    init_with: "{}"
+  - name: tile_map
+    type: LabyrinthOfLore::WorldMap::TileMap&
+    init_with: "get_dummy_tile_map()"
+    constructor_arg: true
+  - name: entities
+    type: std::vector<LabyrinthOfLore::Entity::Base*>
+    init_with: "{}"
+    constructor_arg: true
+functions:
+  - name: get_dummy_tile_map
+    type: LabyrinthOfLore::WorldMap::TileMap&
+    static: true
+    body: return dummy_tile_map;
+  - name: process_step
+    type: void
+    body: |
+      return;
+dependencies:
+  - symbol: LabyrinthOfLore::WorldMap::TileMap
+    headers: [ LabyrinthOfLore/WorldMap/TileMap.hpp ]
+  - symbol: LabyrinthOfLore::WorldMap::TileMap&
+    headers: [ LabyrinthOfLore/WorldMap/TileMap.hpp ]
+  - symbol: std::vector<LabyrinthOfLore::Entity::Base*>
+    headers: [ vector, LabyrinthOfLore/Entity/Base.hpp ]
