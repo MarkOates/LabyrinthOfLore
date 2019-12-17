@@ -106,9 +106,14 @@ for (auto &entity : entities)
 
    entity->get_placement_ref().position.x = posX;
    entity->get_placement_ref().position.y = posY;
-   float clamped_floor = std::max<float>(get_floor_height()+0.01, posZ);
-   float clamped_ceiling = std::min<float>(get_ceiling_height()-0.01, clamped_floor);
-   //if (clamped_floor != clamped_ceiling != posZ)
+   float clamped_ceiling = std::min<float>(get_ceiling_height()-0.01, posZ);
+   if (fabs(clamped_ceiling - posZ) > 0.0001f)
+   {
+      // has been clamped at the ceiling
+      entity->get_velocity_ref().position.z = 0.0f;
+   }
+
+   //float clamped_floor = std::max<float>(get_floor_height()+0.01, clamped_floor);
    //{
       //entity->get_velocity_ref().position.z = 0.0f;
    //}
