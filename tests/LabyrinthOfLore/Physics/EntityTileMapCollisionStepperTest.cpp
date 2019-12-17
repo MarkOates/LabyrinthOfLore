@@ -69,8 +69,6 @@ TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
    EXPECT_EQ(0.5f, actual_placement.position.x);
    EXPECT_EQ(0.5f, actual_placement.position.y);
    EXPECT_EQ(10.01f, actual_placement.position.z);
-
-   entity_tile_map_collision_stepper.process_step();
 }
 
 TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
@@ -94,8 +92,6 @@ TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
    EXPECT_EQ(0.5f, actual_placement.position.x);
    EXPECT_EQ(0.5f, actual_placement.position.y);
    EXPECT_EQ(10.01f, actual_placement.position.z);
-
-   entity_tile_map_collision_stepper.process_step();
 }
 
 TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
@@ -149,7 +145,5 @@ TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
    EXPECT_EQ(1.5f, actual_placement.position.x);
    EXPECT_EQ(0.5f, actual_placement.position.y);
    EXPECT_EQ(10.25f + 0.01f, actual_placement.position.z);
-
-   entity_tile_map_collision_stepper.process_step();
 }
 
