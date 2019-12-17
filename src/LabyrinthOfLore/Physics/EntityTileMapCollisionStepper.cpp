@@ -38,8 +38,15 @@ for (auto &entity : entities)
         entity->get_velocity_ref().position.x,
         entity->get_velocity_ref().position.y
      );
+
    AllegroFlare::vec2d x_y_movement_normalized = player_xy.normalized();
    float player_xy_magnitude = player_xy.get_magnitude();
+
+   if (entity->get_velocity_ref().position.x <= 0.00001 && entity->get_velocity_ref().position.y <= 0.00001)
+   {
+     x_y_movement_normalized = AllegroFlare::vec2d(0, 1);
+     player_xy_magnitude = 0.0;
+   }
 
    double dirX = x_y_movement_normalized.x;
    double dirY = x_y_movement_normalized.y; // normal
@@ -52,7 +59,14 @@ for (auto &entity : entities)
 
    if(tile_map.get_tile(int(posX + dirX * moveSpeed), int(posY)).get_height() <= posZ) posX += dirX * moveSpeed;
    if(tile_map.get_tile(int(posX), int(posY + dirY * moveSpeed)).get_height() <= posZ) posY += dirY * moveSpeed;
-   posZ += dirZ;
+   if ((posZ + dirZ) < tile_map.get_tile(int(posX), int(posY)).get_height())
+   {
+      //posZ = tile_map.get_tile(int(posX), int(posY)).get_height() - 0.01f; 
+   }
+   else
+   {
+      posZ += dirZ;
+   }
 
    entity->get_placement_ref().position.x = posX;
    entity->get_placement_ref().position.y = posY;
