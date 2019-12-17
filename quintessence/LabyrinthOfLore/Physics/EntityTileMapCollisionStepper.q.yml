@@ -36,8 +36,8 @@ functions:
 
          if (entity->get_velocity_ref().position.x <= 0.00001 && entity->get_velocity_ref().position.y <= 0.00001)
          {
-           x_y_movement_normalized = AllegroFlare::vec2d(0, 1);
-           player_xy_magnitude = 0.0;
+            x_y_movement_normalized = AllegroFlare::vec2d(0, 1);
+            player_xy_magnitude = 0.0;
          }
 
          double dirX = x_y_movement_normalized.x;
