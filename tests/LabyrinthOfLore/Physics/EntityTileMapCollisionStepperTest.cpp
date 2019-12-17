@@ -230,7 +230,7 @@ TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
 }
 
 TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
-      with_an_entity__process_step__will_not_move_an_entity_lower_than_the_floor__but_will_position_it_at_the_miniumum_plus_a_small_offset)
+      with_an_entity__process_step__will_not_move_an_entity_lower_than_the_floor__but_will_position_it_at_the_miniumum_plus_a_small_offset) // need to add: __and_will_set_the_vertical_velocity_to_0)
 {
    LabyrinthOfLore::WorldMap::TileMap tile_map;
    tile_map.resize(10, 10, LabyrinthOfLore::WorldMap::Tile(0, -10.0));
@@ -321,5 +321,83 @@ TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
    EXPECT_NEAR(8.5f, actual_placement.position.x, FLOATING_POINT_ERROR_MARGIN);
    EXPECT_NEAR(0.5f, actual_placement.position.y, FLOATING_POINT_ERROR_MARGIN);
    EXPECT_NEAR(12.01f, actual_placement.position.z, FLOATING_POINT_ERROR_MARGIN);
+}
+
+TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
+      process_step__multiple_pass_2__spiraling_staricase)
+{
+   LabyrinthOfLore::WorldMap::TileMap tile_map;
+   tile_map.resize(4, 4, LabyrinthOfLore::WorldMap::Tile(0, 10.0));
+   LabyrinthOfLore::Entity::Base entity = LabyrinthOfLore::Entity::Base();
+   std::vector<LabyrinthOfLore::Entity::Base*> entities = { &entity };
+
+   float auto_ascend_threshold = LabyrinthOfLore::Physics::EntityTileMapCollisionStepper::get_auto_ascend_threshold();
+   allegro_flare::placement3d &actual_placement = entity.get_placement_ref();
+
+   // moving right
+   tile_map.set_tile(0, 0, LabyrinthOfLore::WorldMap::Tile(0, 10.0 + auto_ascend_threshold*0));
+   tile_map.set_tile(1, 0, LabyrinthOfLore::WorldMap::Tile(0, 10.0 + auto_ascend_threshold*1));
+   tile_map.set_tile(2, 0, LabyrinthOfLore::WorldMap::Tile(0, 10.0 + auto_ascend_threshold*2));
+   tile_map.set_tile(3, 0, LabyrinthOfLore::WorldMap::Tile(0, 10.0 + auto_ascend_threshold*3));
+
+   // moving down
+   tile_map.set_tile(3, 1, LabyrinthOfLore::WorldMap::Tile(0, 10.0 + auto_ascend_threshold*4));
+   tile_map.set_tile(3, 2, LabyrinthOfLore::WorldMap::Tile(0, 10.0 + auto_ascend_threshold*5));
+   tile_map.set_tile(3, 3, LabyrinthOfLore::WorldMap::Tile(0, 10.0 + auto_ascend_threshold*6));
+
+   // moving left
+   tile_map.set_tile(2, 3, LabyrinthOfLore::WorldMap::Tile(0, 10.0 + auto_ascend_threshold*7));
+   tile_map.set_tile(1, 3, LabyrinthOfLore::WorldMap::Tile(0, 10.0 + auto_ascend_threshold*8));
+   tile_map.set_tile(0, 3, LabyrinthOfLore::WorldMap::Tile(0, 10.0 + auto_ascend_threshold*9));
+
+   // moving up
+   tile_map.set_tile(0, 2, LabyrinthOfLore::WorldMap::Tile(0, 10.0 + auto_ascend_threshold*10));
+   tile_map.set_tile(0, 1, LabyrinthOfLore::WorldMap::Tile(0, 10.0 + auto_ascend_threshold*11));
+
+   LabyrinthOfLore::Physics::EntityTileMapCollisionStepper entity_tile_map_collision_stepper(tile_map, entities);
+   entity.get_placement_ref().position = AllegroFlare::vec3d(0.5, 0.5, 10.01);
+
+   // moving right
+   entity.get_velocity_ref().position = AllegroFlare::vec3d(1.0, 0.0, 0.0);
+
+   entity_tile_map_collision_stepper.process_step();
+   entity_tile_map_collision_stepper.process_step();
+   entity_tile_map_collision_stepper.process_step();
+
+   EXPECT_NEAR(3.5f, actual_placement.position.x, FLOATING_POINT_ERROR_MARGIN);
+   EXPECT_NEAR(0.5f, actual_placement.position.y, FLOATING_POINT_ERROR_MARGIN);
+   EXPECT_NEAR(10.75f + 0.01f, actual_placement.position.z, FLOATING_POINT_ERROR_MARGIN);
+
+   // moving down
+   entity.get_velocity_ref().position = AllegroFlare::vec3d(0.0, 1.0, 0.0);
+
+   entity_tile_map_collision_stepper.process_step();
+   entity_tile_map_collision_stepper.process_step();
+   entity_tile_map_collision_stepper.process_step();
+
+   EXPECT_NEAR(3.5f, actual_placement.position.x, FLOATING_POINT_ERROR_MARGIN);
+   EXPECT_NEAR(3.5f, actual_placement.position.y, FLOATING_POINT_ERROR_MARGIN);
+   EXPECT_NEAR(11.5f + 0.01f, actual_placement.position.z, FLOATING_POINT_ERROR_MARGIN);
+
+   // moving left
+   entity.get_velocity_ref().position = AllegroFlare::vec3d(-1.0, 0.0, 0.0);
+
+   entity_tile_map_collision_stepper.process_step();
+   entity_tile_map_collision_stepper.process_step();
+   entity_tile_map_collision_stepper.process_step();
+
+   EXPECT_NEAR(0.5f, actual_placement.position.x, FLOATING_POINT_ERROR_MARGIN);
+   EXPECT_NEAR(3.5f, actual_placement.position.y, FLOATING_POINT_ERROR_MARGIN);
+   EXPECT_NEAR(12.25f + 0.01f, actual_placement.position.z, FLOATING_POINT_ERROR_MARGIN);
+
+   // moving up
+   entity.get_velocity_ref().position = AllegroFlare::vec3d(0.0, -1.0, 0.0);
+
+   entity_tile_map_collision_stepper.process_step();
+   entity_tile_map_collision_stepper.process_step();
+
+   EXPECT_NEAR(0.5f, actual_placement.position.x, FLOATING_POINT_ERROR_MARGIN);
+   EXPECT_NEAR(1.5f, actual_placement.position.y, FLOATING_POINT_ERROR_MARGIN);
+   EXPECT_NEAR(12.75f + 0.01f, actual_placement.position.z, FLOATING_POINT_ERROR_MARGIN);
 }
 
