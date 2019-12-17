@@ -199,7 +199,7 @@ TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
    EXPECT_EQ(0.0f, actual_velocity.position.z);
 }
 
-TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest, process_step__works_on_multiple_entities)
+TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest, process_step__processes_multiple_entities)
 {
    LabyrinthOfLore::WorldMap::TileMap tile_map;
    tile_map.resize(3, 3, LabyrinthOfLore::WorldMap::Tile(0, 10.0));
