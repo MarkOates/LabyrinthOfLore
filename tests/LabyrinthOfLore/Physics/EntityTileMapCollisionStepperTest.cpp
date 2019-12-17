@@ -441,3 +441,99 @@ TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
    EXPECT_NEAR(12.75f + 0.01f, actual_placement.position.z, FLOATING_POINT_ERROR_MARGIN);
 }
 
+TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
+      process_step__multiple_pass_3__diagonal_against_wall__down_right)
+{
+   LabyrinthOfLore::WorldMap::TileMap tile_map;
+   tile_map.resize(2, 3, LabyrinthOfLore::WorldMap::Tile(0, 10.0));
+   LabyrinthOfLore::Entity::Base entity = LabyrinthOfLore::Entity::Base();
+   std::vector<LabyrinthOfLore::Entity::Base*> entities = { &entity };
+
+   tile_map.set_tile(1, 0, LabyrinthOfLore::WorldMap::Tile(0, 11.0));
+
+   entity.get_placement_ref().position = AllegroFlare::vec3d(0.75, 0.25, 10.01);
+   entity.get_velocity_ref().position = AllegroFlare::vec3d(0.5, 0.5, 0.0);
+
+   LabyrinthOfLore::Physics::EntityTileMapCollisionStepper entity_tile_map_collision_stepper(tile_map, entities);
+
+   entity_tile_map_collision_stepper.process_step();
+   entity_tile_map_collision_stepper.process_step();
+   entity_tile_map_collision_stepper.process_step();
+
+   allegro_flare::placement3d &actual_placement = entity.get_placement_ref();
+   EXPECT_NEAR(1.25f, actual_placement.position.x, FLOATING_POINT_ERROR_MARGIN);
+   EXPECT_NEAR(1.75f, actual_placement.position.y, FLOATING_POINT_ERROR_MARGIN);
+}
+
+TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
+      process_step__multiple_pass_3__diagonal_against_wall__down_left)
+{
+   LabyrinthOfLore::WorldMap::TileMap tile_map;
+   tile_map.resize(2, 2, LabyrinthOfLore::WorldMap::Tile(0, 10.0));
+   LabyrinthOfLore::Entity::Base entity = LabyrinthOfLore::Entity::Base();
+   std::vector<LabyrinthOfLore::Entity::Base*> entities = { &entity };
+
+   tile_map.set_tile(0, 0, LabyrinthOfLore::WorldMap::Tile(0, 11.0));
+
+   entity.get_placement_ref().position = AllegroFlare::vec3d(1.25, 0.25, 10.01);
+   entity.get_velocity_ref().position = AllegroFlare::vec3d(-0.5, 0.5, 0.0);
+
+   LabyrinthOfLore::Physics::EntityTileMapCollisionStepper entity_tile_map_collision_stepper(tile_map, entities);
+
+   entity_tile_map_collision_stepper.process_step();
+   entity_tile_map_collision_stepper.process_step();
+   entity_tile_map_collision_stepper.process_step();
+
+   allegro_flare::placement3d &actual_placement = entity.get_placement_ref();
+   EXPECT_NEAR(0.75f, actual_placement.position.x, FLOATING_POINT_ERROR_MARGIN);
+   EXPECT_NEAR(1.75f, actual_placement.position.y, FLOATING_POINT_ERROR_MARGIN);
+}
+
+TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
+      process_step__multiple_pass_3__diagonal_against_wall__up_right)
+{
+   LabyrinthOfLore::WorldMap::TileMap tile_map;
+   tile_map.resize(2, 2, LabyrinthOfLore::WorldMap::Tile(0, 10.0));
+   LabyrinthOfLore::Entity::Base entity = LabyrinthOfLore::Entity::Base();
+   std::vector<LabyrinthOfLore::Entity::Base*> entities = { &entity };
+
+   tile_map.set_tile(1, 1, LabyrinthOfLore::WorldMap::Tile(0, 11.0));
+
+   entity.get_placement_ref().position = AllegroFlare::vec3d(0.75, 1.75, 10.01);
+   entity.get_velocity_ref().position = AllegroFlare::vec3d(0.5, -0.5, 0.0);
+
+   LabyrinthOfLore::Physics::EntityTileMapCollisionStepper entity_tile_map_collision_stepper(tile_map, entities);
+
+   entity_tile_map_collision_stepper.process_step();
+   entity_tile_map_collision_stepper.process_step();
+   entity_tile_map_collision_stepper.process_step();
+
+   allegro_flare::placement3d &actual_placement = entity.get_placement_ref();
+   EXPECT_NEAR(1.25f, actual_placement.position.x, FLOATING_POINT_ERROR_MARGIN);
+   EXPECT_NEAR(0.25f, actual_placement.position.y, FLOATING_POINT_ERROR_MARGIN);
+}
+
+TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
+      process_step__multiple_pass_3__diagonal_against_wall__up_left)
+{
+   LabyrinthOfLore::WorldMap::TileMap tile_map;
+   tile_map.resize(2, 2, LabyrinthOfLore::WorldMap::Tile(0, 10.0));
+   LabyrinthOfLore::Entity::Base entity = LabyrinthOfLore::Entity::Base();
+   std::vector<LabyrinthOfLore::Entity::Base*> entities = { &entity };
+
+   tile_map.set_tile(0, 1, LabyrinthOfLore::WorldMap::Tile(0, 11.0));
+
+   entity.get_placement_ref().position = AllegroFlare::vec3d(1.25, 1.75, 10.01);
+   entity.get_velocity_ref().position = AllegroFlare::vec3d(-0.5, -0.5, 0.0);
+
+   LabyrinthOfLore::Physics::EntityTileMapCollisionStepper entity_tile_map_collision_stepper(tile_map, entities);
+
+   entity_tile_map_collision_stepper.process_step();
+   entity_tile_map_collision_stepper.process_step();
+   entity_tile_map_collision_stepper.process_step();
+
+   allegro_flare::placement3d &actual_placement = entity.get_placement_ref();
+   EXPECT_NEAR(0.75f, actual_placement.position.x, FLOATING_POINT_ERROR_MARGIN);
+   EXPECT_NEAR(0.25f, actual_placement.position.y, FLOATING_POINT_ERROR_MARGIN);
+}
+
