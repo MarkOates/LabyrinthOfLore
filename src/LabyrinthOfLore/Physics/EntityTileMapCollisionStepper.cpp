@@ -103,8 +103,8 @@ for (auto &entity : entities)
       posZ += dirZ;
    }
 
-   entity->get_placement_ref().position.x = std::min<float>(tile_map.get_width(), std::max<float>(0, posX));
-   entity->get_placement_ref().position.y = std::min<float>(tile_map.get_height(), std::max<float>(0, posY));
+   entity->get_placement_ref().position.x = posX;
+   entity->get_placement_ref().position.y = posY;
    entity->get_placement_ref().position.z = std::min<float>(get_ceiling_height()-0.01, std::max<float>(get_floor_height()+0.01, posZ));
 }
 

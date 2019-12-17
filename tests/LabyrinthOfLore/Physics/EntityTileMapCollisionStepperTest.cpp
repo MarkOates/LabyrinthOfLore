@@ -3,6 +3,8 @@
 
 #include <LabyrinthOfLore/Physics/EntityTileMapCollisionStepper.hpp>
 
+#define FLOATING_POINT_ERROR_MARGIN (0.00001f)
+
 TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest, can_be_created_without_blowing_up)
 {
    LabyrinthOfLore::Physics::EntityTileMapCollisionStepper entity_tile_map_collision_stepper;
@@ -245,5 +247,25 @@ TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
    EXPECT_EQ(0.0f, actual_placement.position.x);
    EXPECT_EQ(0.0f, actual_placement.position.y);
    EXPECT_EQ(0.01f, actual_placement.position.z);
+}
+
+TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
+      with_an_entity__process_setp__does_not_have_range_restrictions_along_the_horizontal_or_vertical_axes)
+{
+   LabyrinthOfLore::WorldMap::TileMap tile_map;
+   tile_map.resize(1, 1, LabyrinthOfLore::WorldMap::Tile(0, 10.0));
+   LabyrinthOfLore::Entity::Base entity = LabyrinthOfLore::Entity::Base();
+   std::vector<LabyrinthOfLore::Entity::Base*> entities = { &entity };
+
+   entity.get_placement_ref().position = AllegroFlare::vec3d(0.5, 0.5, 10.01);
+   entity.get_velocity_ref().position = AllegroFlare::vec3d(-1.0, -1.0, 0.0);
+
+   LabyrinthOfLore::Physics::EntityTileMapCollisionStepper entity_tile_map_collision_stepper(tile_map, entities);
+   entity_tile_map_collision_stepper.process_step();
+
+   allegro_flare::placement3d actual_placement = entity.get_placement_ref();
+   EXPECT_NEAR(-0.5f, actual_placement.position.x, FLOATING_POINT_ERROR_MARGIN);
+   EXPECT_NEAR(-0.5f, actual_placement.position.y, FLOATING_POINT_ERROR_MARGIN);
+   EXPECT_NEAR(10.01f, actual_placement.position.z, FLOATING_POINT_ERROR_MARGIN);
 }
 
