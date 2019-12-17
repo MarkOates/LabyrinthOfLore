@@ -76,14 +76,14 @@ namespace LabyrinthOfLore
       }
 
 
-      void TileMap::resize(int w, int h)
+      void TileMap::resize(int w, int h, Tile tile_to_fill)
       {
          // set the width and height of our map
          width = w;
          height = h;
 
          // resize and clear the tiles
-         tiles.assign(width * height, 0);
+         tiles.assign(width * height, tile_to_fill);
       }
 
    } // namespace WorldMap

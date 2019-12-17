@@ -33,7 +33,7 @@ namespace LabyrinthOfLore
          bool set_tile(int tile_x, int tile_y, Tile value);
          std::pair<int, int> get_coordinates_from_contiguous_number(int contiguous_tile_num);
 
-         void resize(int w, int h);
+         void resize(int w, int h, Tile tile_to_fill=Tile());
       };
    }
 }
