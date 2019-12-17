@@ -289,3 +289,37 @@ TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
    EXPECT_NEAR(10.01f, actual_placement.position.z, FLOATING_POINT_ERROR_MARGIN);
 }
 
+TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
+      process_setp__multiple_pass_1__ascending_stairs_horizontally)
+{
+   LabyrinthOfLore::WorldMap::TileMap tile_map;
+   tile_map.resize(9, 1, LabyrinthOfLore::WorldMap::Tile(0, 10.0));
+   LabyrinthOfLore::Entity::Base entity = LabyrinthOfLore::Entity::Base();
+   std::vector<LabyrinthOfLore::Entity::Base*> entities = { &entity };
+
+   float auto_ascend_threshold = LabyrinthOfLore::Physics::EntityTileMapCollisionStepper::get_auto_ascend_threshold();
+   tile_map.set_tile(0, 0, LabyrinthOfLore::WorldMap::Tile(0, 10.0 + auto_ascend_threshold*0));
+   tile_map.set_tile(1, 0, LabyrinthOfLore::WorldMap::Tile(0, 10.0 + auto_ascend_threshold*1));
+   tile_map.set_tile(2, 0, LabyrinthOfLore::WorldMap::Tile(0, 10.0 + auto_ascend_threshold*2));
+   tile_map.set_tile(3, 0, LabyrinthOfLore::WorldMap::Tile(0, 10.0 + auto_ascend_threshold*3));
+   tile_map.set_tile(4, 0, LabyrinthOfLore::WorldMap::Tile(0, 10.0 + auto_ascend_threshold*4));
+   tile_map.set_tile(5, 0, LabyrinthOfLore::WorldMap::Tile(0, 10.0 + auto_ascend_threshold*5));
+   tile_map.set_tile(6, 0, LabyrinthOfLore::WorldMap::Tile(0, 10.0 + auto_ascend_threshold*6));
+   tile_map.set_tile(7, 0, LabyrinthOfLore::WorldMap::Tile(0, 10.0 + auto_ascend_threshold*7));
+   tile_map.set_tile(8, 0, LabyrinthOfLore::WorldMap::Tile(0, 10.0 + auto_ascend_threshold*8));
+
+   entity.get_placement_ref().position = AllegroFlare::vec3d(0.5, 0.5, 10.01);
+   entity.get_velocity_ref().position = AllegroFlare::vec3d(1.0, 0.0, 0.0);
+
+   for (unsigned pass=0; pass<8; pass++)
+   {
+      LabyrinthOfLore::Physics::EntityTileMapCollisionStepper entity_tile_map_collision_stepper(tile_map, entities);
+      entity_tile_map_collision_stepper.process_step();
+   }
+
+   allegro_flare::placement3d actual_placement = entity.get_placement_ref();
+   EXPECT_NEAR(8.5f, actual_placement.position.x, FLOATING_POINT_ERROR_MARGIN);
+   EXPECT_NEAR(0.5f, actual_placement.position.y, FLOATING_POINT_ERROR_MARGIN);
+   EXPECT_NEAR(12.01f, actual_placement.position.z, FLOATING_POINT_ERROR_MARGIN);
+}
+
