@@ -61,7 +61,7 @@ for (auto &entity : entities)
    if(tile_map.get_tile(int(posX), int(posY + dirY * moveSpeed)).get_height() <= posZ) posY += dirY * moveSpeed;
    if ((posZ + dirZ) < tile_map.get_tile(int(posX), int(posY)).get_height())
    {
-      //posZ = tile_map.get_tile(int(posX), int(posY)).get_height() - 0.01f; 
+      posZ = tile_map.get_tile(int(posX), int(posY)).get_height() + 0.01f;
    }
    else
    {

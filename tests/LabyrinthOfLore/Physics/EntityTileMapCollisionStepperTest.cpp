@@ -88,7 +88,7 @@ TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
 
    allegro_flare::placement3d actual_placement = entity.get_placement_ref();
    EXPECT_EQ(0.5f, actual_placement.position.x);
-   //EXPECT_EQ(0.5f, actual_placement.position.y);
-   //EXPECT_EQ(10.01f, actual_placement.position.z);
+   EXPECT_EQ(0.5f, actual_placement.position.y);
+   EXPECT_EQ(10.01f, actual_placement.position.z);
 }
 
