@@ -13,6 +13,9 @@ namespace Physics
 LabyrinthOfLore::WorldMap::TileMap EntityTileMapCollisionStepper::dummy_tile_map = {};
 
 
+float EntityTileMapCollisionStepper::auto_ascend_threshold = 0.25f;
+
+
 EntityTileMapCollisionStepper::EntityTileMapCollisionStepper(LabyrinthOfLore::WorldMap::TileMap& tile_map, std::vector<LabyrinthOfLore::Entity::Base*> entities)
    : tile_map(tile_map)
    , entities(entities)
@@ -22,6 +25,12 @@ EntityTileMapCollisionStepper::EntityTileMapCollisionStepper(LabyrinthOfLore::Wo
 
 EntityTileMapCollisionStepper::~EntityTileMapCollisionStepper()
 {
+}
+
+
+float EntityTileMapCollisionStepper::get_auto_ascend_threshold()
+{
+   return auto_ascend_threshold;
 }
 
 
@@ -57,8 +66,14 @@ for (auto &entity : entities)
    double posZ = entity->get_placement_ref().position.z;
    int worldMap[100][100] = { 0 };
 
-   if(tile_map.get_tile(int(posX + dirX * moveSpeed), int(posY)).get_height() <= posZ) posX += dirX * moveSpeed;
-   if(tile_map.get_tile(int(posX), int(posY + dirY * moveSpeed)).get_height() <= posZ) posY += dirY * moveSpeed;
+   if(tile_map.get_tile(int(posX + dirX * moveSpeed), int(posY)).get_height() <= (posZ + get_auto_ascend_threshold()))
+   {
+      posX += dirX * moveSpeed;
+   }
+   if(tile_map.get_tile(int(posX), int(posY + dirY * moveSpeed)).get_height() <= (posZ + get_auto_ascend_threshold()))
+   {
+      posY += dirY * moveSpeed;
+   }
    if ((posZ + dirZ) < tile_map.get_tile(int(posX), int(posY)).get_height())
    {
       posZ = tile_map.get_tile(int(posX), int(posY)).get_height() + 0.01f;

@@ -49,16 +49,18 @@ TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
 }
 
 TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
-      with_an_entity__process_step__does_not_advance_the_player_if_the_colliding_block_is_higher_by_more_than_half_a_unit_of_height)
+      with_an_entity__process_step__does_not_horizontally_advance_the_player_if_the_colliding_block_is_higher_than_the_auto_ascend_threshold)
 {
    LabyrinthOfLore::WorldMap::TileMap tile_map;
    tile_map.resize(2, 1, LabyrinthOfLore::WorldMap::Tile(0, 10.0));
    LabyrinthOfLore::Entity::Base entity = LabyrinthOfLore::Entity::Base();
    std::vector<LabyrinthOfLore::Entity::Base*> entities = { &entity };
 
+   float auto_ascend_threshold = LabyrinthOfLore::Physics::EntityTileMapCollisionStepper::get_auto_ascend_threshold();
+
    entity.get_placement_ref().position = AllegroFlare::vec3d(0.5, 0.5, 10.01);
    entity.get_velocity_ref().position = AllegroFlare::vec3d(1.0, 0.0, 0.0);
-   tile_map.set_tile(1, 0, LabyrinthOfLore::WorldMap::Tile(0, 10.0 + 0.50001));
+   tile_map.set_tile(1, 0, LabyrinthOfLore::WorldMap::Tile(0, 10.01 + auto_ascend_threshold + 0.001));
 
    LabyrinthOfLore::Physics::EntityTileMapCollisionStepper entity_tile_map_collision_stepper(tile_map, entities);
    entity_tile_map_collision_stepper.process_step();
@@ -69,6 +71,40 @@ TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
    EXPECT_EQ(10.01f, actual_placement.position.z);
 
    entity_tile_map_collision_stepper.process_step();
+}
+
+TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
+      with_an_entity__process_step__does_not_vertically_advance_the_player_if_the_colliding_block_is_higher_than_the_auto_ascend_threshold)
+{
+   LabyrinthOfLore::WorldMap::TileMap tile_map;
+   tile_map.resize(1, 2, LabyrinthOfLore::WorldMap::Tile(0, 10.0));
+   LabyrinthOfLore::Entity::Base entity = LabyrinthOfLore::Entity::Base();
+   std::vector<LabyrinthOfLore::Entity::Base*> entities = { &entity };
+
+   float auto_ascend_threshold = LabyrinthOfLore::Physics::EntityTileMapCollisionStepper::get_auto_ascend_threshold();
+
+   entity.get_placement_ref().position = AllegroFlare::vec3d(0.5, 0.5, 10.01);
+   entity.get_velocity_ref().position = AllegroFlare::vec3d(0.0, 1.0, 0.0);
+   tile_map.set_tile(0, 1, LabyrinthOfLore::WorldMap::Tile(0, 10.01 + auto_ascend_threshold + 0.001));
+
+   LabyrinthOfLore::Physics::EntityTileMapCollisionStepper entity_tile_map_collision_stepper(tile_map, entities);
+   entity_tile_map_collision_stepper.process_step();
+
+   allegro_flare::placement3d actual_placement = entity.get_placement_ref();
+   EXPECT_EQ(0.5f, actual_placement.position.x);
+   EXPECT_EQ(0.5f, actual_placement.position.y);
+   EXPECT_EQ(10.01f, actual_placement.position.z);
+
+   entity_tile_map_collision_stepper.process_step();
+}
+
+TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
+      has_an_auto_ascend_threshold_that_is_one_quarter_of_a_whole_unit)
+{
+   float expected_auto_ascend_threshold = 0.25;
+   float actual_auto_ascend_threshold = LabyrinthOfLore::Physics::EntityTileMapCollisionStepper::get_auto_ascend_threshold();
+
+   ASSERT_EQ(expected_auto_ascend_threshold, actual_auto_ascend_threshold);
 }
 
 TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
