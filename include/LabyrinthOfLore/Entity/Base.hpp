@@ -32,6 +32,7 @@ namespace LabyrinthOfLore
          AllegroFlare::Model3D* get_model();
          bool get_billboard_at_camera();
          allegro_flare::placement3d &get_placement_ref();
+         allegro_flare::placement3d &get_velocity_ref();
       };
    }
 }

@@ -68,6 +68,12 @@ allegro_flare::placement3d &Base::get_placement_ref()
 }
 
 
+allegro_flare::placement3d &Base::get_velocity_ref()
+{
+   return velocity;
+}
+
+
 } // namespace Entity
 } // namespace LabyrinthOfLore
 
