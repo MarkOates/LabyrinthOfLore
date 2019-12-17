@@ -207,3 +207,43 @@ TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest, process_step__wo
    EXPECT_EQ(10.01f, entity3_actual_placement.position.z);
 }
 
+TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
+      with_an_entity__process_step__will_not_move_an_entity_higher_than_the_ceiling__but_will_position_it_at_the_maximum_minus_a_small_offset)
+{
+   LabyrinthOfLore::WorldMap::TileMap tile_map;
+   tile_map.resize(10, 10, LabyrinthOfLore::WorldMap::Tile(0, -10.0));
+   LabyrinthOfLore::Entity::Base entity = LabyrinthOfLore::Entity::Base();
+   std::vector<LabyrinthOfLore::Entity::Base*> entities = { &entity };
+
+   entity.get_placement_ref().position = AllegroFlare::vec3d(0.0, 0.0, 99.51);
+   entity.get_velocity_ref().position = AllegroFlare::vec3d(0.0, 0.0, 1.0);
+
+   LabyrinthOfLore::Physics::EntityTileMapCollisionStepper entity_tile_map_collision_stepper(tile_map, entities);
+   entity_tile_map_collision_stepper.process_step();
+
+   allegro_flare::placement3d actual_placement = entity.get_placement_ref();
+   EXPECT_EQ(0.0f, actual_placement.position.x);
+   EXPECT_EQ(0.0f, actual_placement.position.y);
+   EXPECT_EQ(99.99f, actual_placement.position.z);
+}
+
+TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
+      with_an_entity__process_step__will_not_move_an_entity_lower_than_the_floor__but_will_position_it_at_the_miniumum_plus_a_small_offset)
+{
+   LabyrinthOfLore::WorldMap::TileMap tile_map;
+   tile_map.resize(10, 10, LabyrinthOfLore::WorldMap::Tile(0, -10.0));
+   LabyrinthOfLore::Entity::Base entity = LabyrinthOfLore::Entity::Base();
+   std::vector<LabyrinthOfLore::Entity::Base*> entities = { &entity };
+
+   entity.get_placement_ref().position = AllegroFlare::vec3d(0.0, 0.0, 0.51);
+   entity.get_velocity_ref().position = AllegroFlare::vec3d(0.0, 0.0, -1.0);
+
+   LabyrinthOfLore::Physics::EntityTileMapCollisionStepper entity_tile_map_collision_stepper(tile_map, entities);
+   entity_tile_map_collision_stepper.process_step();
+
+   allegro_flare::placement3d actual_placement = entity.get_placement_ref();
+   EXPECT_EQ(0.0f, actual_placement.position.x);
+   EXPECT_EQ(0.0f, actual_placement.position.y);
+   EXPECT_EQ(0.01f, actual_placement.position.z);
+}
+

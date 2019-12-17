@@ -2,6 +2,8 @@
 
 #include <LabyrinthOfLore/Physics/EntityTileMapCollisionStepper.hpp>
 #include <cmath>
+#include <algorithm>
+#include <algorithm>
 
 
 namespace LabyrinthOfLore
@@ -11,6 +13,12 @@ namespace Physics
 
 
 LabyrinthOfLore::WorldMap::TileMap EntityTileMapCollisionStepper::dummy_tile_map = {};
+
+
+float EntityTileMapCollisionStepper::ceiling_height = 100.0f;
+
+
+float EntityTileMapCollisionStepper::floor_height = 0.0f;
 
 
 float EntityTileMapCollisionStepper::auto_ascend_threshold = 0.25f;
@@ -25,6 +33,18 @@ EntityTileMapCollisionStepper::EntityTileMapCollisionStepper(LabyrinthOfLore::Wo
 
 EntityTileMapCollisionStepper::~EntityTileMapCollisionStepper()
 {
+}
+
+
+float EntityTileMapCollisionStepper::get_ceiling_height()
+{
+   return ceiling_height;
+}
+
+
+float EntityTileMapCollisionStepper::get_floor_height()
+{
+   return floor_height;
 }
 
 
@@ -83,9 +103,9 @@ for (auto &entity : entities)
       posZ += dirZ;
    }
 
-   entity->get_placement_ref().position.x = posX;
-   entity->get_placement_ref().position.y = posY;
-   entity->get_placement_ref().position.z = posZ;
+   entity->get_placement_ref().position.x = std::min<float>(tile_map.get_width(), std::max<float>(0, posX));
+   entity->get_placement_ref().position.y = std::min<float>(tile_map.get_height(), std::max<float>(0, posY));
+   entity->get_placement_ref().position.z = std::min<float>(get_ceiling_height()-0.01, std::max<float>(get_floor_height()+0.01, posZ));
 }
 
 return;
