@@ -35,6 +35,13 @@ void EntityTileMapCollisionStepper::process_step()
 ALLEGRO_KEYBOARD_STATE keyboard_state;
 al_get_keyboard_state(&keyboard_state);
 
+double dirX = 0;
+double dirY = 1; // normal
+double moveSpeed;
+double posX = 0;
+double posY = 0;
+int worldMap[100][100] = { 0 };
+
 //move forward if no wall in front of you
 if (al_key_down(&keyboard_state, ALLEGRO_KEY_W) || al_key_down(&keyboard_state, ALLEGRO_KEY_UP))
 {
