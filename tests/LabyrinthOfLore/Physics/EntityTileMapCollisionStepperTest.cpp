@@ -442,7 +442,7 @@ TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
 }
 
 TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
-      process_step__multiple_pass_3__diagonal_against_wall__down_right)
+      process_step__multiple_pass_3__diagonal_slide_against_wall__down_right__has_an_x_first_bias)
 {
    LabyrinthOfLore::WorldMap::TileMap tile_map;
    tile_map.resize(2, 3, LabyrinthOfLore::WorldMap::Tile(0, 10.0));
@@ -466,7 +466,7 @@ TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
 }
 
 TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
-      process_step__multiple_pass_3__diagonal_against_wall__down_left)
+      process_step__multiple_pass_3__diagonal_slide_against_wall__down_left__has_an_x_first_bias)
 {
    LabyrinthOfLore::WorldMap::TileMap tile_map;
    tile_map.resize(2, 2, LabyrinthOfLore::WorldMap::Tile(0, 10.0));
@@ -490,7 +490,7 @@ TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
 }
 
 TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
-      process_step__multiple_pass_3__diagonal_against_wall__up_right)
+      process_step__multiple_pass_3__diagonal_slide_against_wall__up_right__has_an_x_first_bias)
 {
    LabyrinthOfLore::WorldMap::TileMap tile_map;
    tile_map.resize(2, 2, LabyrinthOfLore::WorldMap::Tile(0, 10.0));
@@ -514,7 +514,7 @@ TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
 }
 
 TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
-      process_step__multiple_pass_3__diagonal_against_wall__up_left)
+      process_step__multiple_pass_3__diagonal_slide_against_wall__up_left__has_an_x_first_bias)
 {
    LabyrinthOfLore::WorldMap::TileMap tile_map;
    tile_map.resize(2, 2, LabyrinthOfLore::WorldMap::Tile(0, 10.0));
