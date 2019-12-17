@@ -36,7 +36,7 @@ TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
    LabyrinthOfLore::Entity::Base entity = LabyrinthOfLore::Entity::Base();
    std::vector<LabyrinthOfLore::Entity::Base*> entities = { &entity };
 
-   entity.get_placement_ref().position = AllegroFlare::vec3d(0.0, 0.0, 0.0);
+   entity.get_placement_ref().position = AllegroFlare::vec3d(0.0, 0.0, 10.01);
    entity.get_velocity_ref().position = AllegroFlare::vec3d(0.3, 0.4, 0.2);
 
    LabyrinthOfLore::Physics::EntityTileMapCollisionStepper entity_tile_map_collision_stepper(tile_map, entities);
@@ -45,8 +45,6 @@ TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
    allegro_flare::placement3d actual_placement = entity.get_placement_ref();
    EXPECT_EQ(0.3f, actual_placement.position.x);
    EXPECT_EQ(0.4f, actual_placement.position.y);
-   EXPECT_EQ(0.2f, actual_placement.position.z);
-
-   entity_tile_map_collision_stepper.process_step();
+   EXPECT_EQ(10.21f, actual_placement.position.z);
 }
 
