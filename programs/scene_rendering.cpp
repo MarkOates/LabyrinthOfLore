@@ -29,7 +29,7 @@ public:
       camera_placement.position = AllegroFlare::vec3d(
             sin(al_get_time()+start_time_offset),
             0.5 + sin((al_get_time()+start_time_offset)*0.81527),
-            5 * sin((al_get_time()+start_time_offset)*0.71527)
+            0.5 + 0.3 * sin((al_get_time()+start_time_offset)*0.71527) // height of player
          );
       camera_placement.rotation = AllegroFlare::vec3d(
             0, //sin(al_get_time()+start_time_offset)*0.1,
@@ -89,7 +89,7 @@ int main(int argc, char **argv)
          entity->set_billboard_at_camera(true);
          entity->get_placement_ref().position = AllegroFlare::vec3d(
                random.get_random_int(pos_min, pos_max),
-               0.5,
+               0.01, // 0.01 is "on the floor"
                random.get_random_int(pos_min, pos_max)
                //random.get_random_int(pos_min, pos_max)
             );
