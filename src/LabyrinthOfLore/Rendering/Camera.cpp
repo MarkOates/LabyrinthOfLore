@@ -77,7 +77,7 @@ camera_view.rotation = AllegroFlare::vec3d(pitch, -yaw, 0);
 build_custom_reverse_transform(&camera_view, &transform);
 
 float aspect_ratio = (float)al_get_bitmap_height(surface) / al_get_bitmap_width(surface);
-al_perspective_transform(&transform, -1, aspect_ratio, 1, 1, -aspect_ratio, 100);
+al_perspective_transform(&transform, -1, aspect_ratio, 1, 1, -aspect_ratio, 300);
 al_use_projection_transform(&transform);
 
 return;

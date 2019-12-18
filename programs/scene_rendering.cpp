@@ -13,33 +13,23 @@
 class SceneUpdater
 {
 private:
-   allegro_flare::placement3d &camera_placement;
    LabyrinthOfLore::Rendering::Camera &camera;
    int start_time_offset;
 
 public:
-   SceneUpdater(allegro_flare::placement3d &camera_placement, LabyrinthOfLore::Rendering::Camera &camera)
-      : camera_placement(camera_placement)
-      , camera(camera)
+   SceneUpdater(LabyrinthOfLore::Rendering::Camera &camera)
+      : camera(camera)
       , start_time_offset(4566432) // to make the movements less in sync
    {}
 
    void update()
    {
-      camera_placement.position = AllegroFlare::vec3d(
+      camera.get_position_ref() = AllegroFlare::vec3d(
             sin(al_get_time()+start_time_offset),
             0.5 + sin((al_get_time()+start_time_offset)*0.81527),
             0.5 + 0.3 * sin((al_get_time()+start_time_offset)*0.71527) // height of player
          );
-      camera_placement.rotation = AllegroFlare::vec3d(
-            0, //sin(al_get_time()+start_time_offset)*0.1,
-            sin(al_get_time()*0.2+start_time_offset)*1.0, // turning left and right (good), this is what the player controls for rotation
-            0
-            //sin(al_get_time()+start_time_offset)*0.1
-         );
-
-      camera.get_position_ref() = camera_placement.position;
-      camera.get_yaw_ref() = -camera_placement.rotation.y;
+      camera.get_yaw_ref() = -sin(al_get_time()*0.2+start_time_offset)*1.0;
    }
 };
 
@@ -75,7 +65,6 @@ int main(int argc, char **argv)
 
       AllegroFlare::Random random;
 
-      allegro_flare::placement3d camera_placement(0, 0, 5);
       std::vector<LabyrinthOfLore::Entity::Base*> entities = {};
 
       LabyrinthOfLore::Rendering::Camera camera;
@@ -149,7 +138,7 @@ int main(int argc, char **argv)
             break;
          case ALLEGRO_EVENT_TIMER:
             {
-               SceneUpdater scene_updater(camera_placement, camera);
+               SceneUpdater scene_updater(camera);
                scene_updater.update();
 
                LabyrinthOfLore::Rendering::SceneRenderer scene_renderer(render_surface, &camera, entities);
