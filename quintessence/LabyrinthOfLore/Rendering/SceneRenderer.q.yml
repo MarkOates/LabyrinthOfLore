@@ -1,56 +1,29 @@
 properties:
-  - name: camera_view
-    type: allegro_flare::placement3d
-    init_with: "{}"
-    constructor_arg: true
   - name: rendering_surface
     type: ALLEGRO_BITMAP*
+    init_with: nullptr
+    constructor_arg: true
+  - name: camera
+    type: LabyrinthOfLore::Rendering::Camera*
     init_with: nullptr
     constructor_arg: true
   - name: entities
     type: std::vector<LabyrinthOfLore::Entity::Base*>
     init_with: "{}"
     constructor_arg: true
-  - name: camera
-    type: LabyrinthOfLore::Rendering::Camera*
-    init_with: nullptr
-    constructor_arg: true
 functions:
-  - name: set_projection
-    type: void
-    parameters:
-      - name: bitmap
-        type: ALLEGRO_BITMAP*
-        default_argument: nullptr
-      - name: t
-        type: ALLEGRO_TRANSFORM*
-        default_argument: nullptr
-    body: |
-       float aspect_ratio = (float)al_get_bitmap_height(bitmap) / al_get_bitmap_width(bitmap);
-       al_perspective_transform(t, -1, aspect_ratio, 1, 1, -aspect_ratio, 100);
-       al_use_projection_transform(t);
-  - name: prep_render
-    type: void
-    body: |
-       // setup the render settings
-       al_set_render_state(ALLEGRO_DEPTH_TEST, 1);
-       al_set_render_state(ALLEGRO_WRITE_MASK, ALLEGRO_MASK_DEPTH | ALLEGRO_MASK_RGBA);
-       al_clear_depth_buffer(1);
-
-       ALLEGRO_TRANSFORM t;
-       camera_view.build_reverse_transform(&t);
-       set_projection(rendering_surface, &t);
   - name: render
     type: void
     body: |
+      if (!rendering_surface || !camera) throw std::runtime_error("cannot render with null rendering_surface and/or camera");
+
       al_set_target_bitmap(rendering_surface);
       al_clear_to_color(al_color_name("maroon"));
 
-      if (camera) camera->start_projection(rendering_surface);
-      else prep_render();
+      camera->start_projection(rendering_surface);
 
-      LabyrinthOfLore::Rendering::SpritesBillboarder billboarder(camera_view, entities);
-      billboarder.process();
+      //LabyrinthOfLore::Rendering::SpritesBillboarder billboarder(camera_view, entities);
+      //billboarder.process();
 
       for (auto &entity : entities)
       {

@@ -152,7 +152,7 @@ int main(int argc, char **argv)
                SceneUpdater scene_updater(camera_placement, camera);
                scene_updater.update();
 
-               LabyrinthOfLore::Rendering::SceneRenderer scene_renderer(camera_placement, render_surface, entities, &camera);
+               LabyrinthOfLore::Rendering::SceneRenderer scene_renderer(render_surface, &camera, entities);
                scene_renderer.render();
                al_flip_display();
             }

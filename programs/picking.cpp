@@ -127,6 +127,8 @@ int main(int argc, char **argv)
       bool shutdown_program = false;
 
 
+      LabyrinthOfLore::Rendering::Camera camera;
+
 
       AllegroFlare::PickingBuffer picking_buffer(al_get_display_width(display), al_get_display_height(display), 32);
       picking_buffer.initialize();
@@ -151,8 +153,7 @@ int main(int argc, char **argv)
                SceneUpdater scene_updater(camera_placement);
                scene_updater.update();
 
-               LabyrinthOfLore::Rendering::SceneRenderer scene_renderer(camera_placement, render_surface, entities);
-               scene_renderer.prep_render();
+               LabyrinthOfLore::Rendering::SceneRenderer scene_renderer(render_surface, &camera, entities);
                scene_renderer.render();
 
                LabyrinthOfLore::Rendering::PickingBufferRenderer picking_buffer_renderer(&picking_buffer, camera_placement, entities, &clamped_color_shader);

@@ -14,11 +14,10 @@ namespace Rendering
 {
 
 
-SceneRenderer::SceneRenderer(allegro_flare::placement3d camera_view, ALLEGRO_BITMAP* rendering_surface, std::vector<LabyrinthOfLore::Entity::Base*> entities, LabyrinthOfLore::Rendering::Camera* camera)
-   : camera_view(camera_view)
-   , rendering_surface(rendering_surface)
-   , entities(entities)
+SceneRenderer::SceneRenderer(ALLEGRO_BITMAP* rendering_surface, LabyrinthOfLore::Rendering::Camera* camera, std::vector<LabyrinthOfLore::Entity::Base*> entities)
+   : rendering_surface(rendering_surface)
    , camera(camera)
+   , entities(entities)
 {
 }
 
@@ -28,37 +27,17 @@ SceneRenderer::~SceneRenderer()
 }
 
 
-void SceneRenderer::set_projection(ALLEGRO_BITMAP* bitmap, ALLEGRO_TRANSFORM* t)
-{
-float aspect_ratio = (float)al_get_bitmap_height(bitmap) / al_get_bitmap_width(bitmap);
-al_perspective_transform(t, -1, aspect_ratio, 1, 1, -aspect_ratio, 100);
-al_use_projection_transform(t);
-
-}
-
-void SceneRenderer::prep_render()
-{
-// setup the render settings
-al_set_render_state(ALLEGRO_DEPTH_TEST, 1);
-al_set_render_state(ALLEGRO_WRITE_MASK, ALLEGRO_MASK_DEPTH | ALLEGRO_MASK_RGBA);
-al_clear_depth_buffer(1);
-
-ALLEGRO_TRANSFORM t;
-camera_view.build_reverse_transform(&t);
-set_projection(rendering_surface, &t);
-
-}
-
 void SceneRenderer::render()
 {
+if (!rendering_surface || !camera) throw std::runtime_error("cannot render with null rendering_surface and/or camera");
+
 al_set_target_bitmap(rendering_surface);
 al_clear_to_color(al_color_name("maroon"));
 
-if (camera) camera->start_projection(rendering_surface);
-else prep_render();
+camera->start_projection(rendering_surface);
 
-LabyrinthOfLore::Rendering::SpritesBillboarder billboarder(camera_view, entities);
-billboarder.process();
+//LabyrinthOfLore::Rendering::SpritesBillboarder billboarder(camera_view, entities);
+//billboarder.process();
 
 for (auto &entity : entities)
 {
