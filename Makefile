@@ -116,7 +116,7 @@ tests: $(INDIVIDUAL_TEST_EXECUTABLES) bin/run_all_tests
 
 
 run_tests: tests
-	bin/run_all_tests --gtest_filter=LabyrinthOfLore_Rendering_CameraTest.*
+	bin/run_all_tests
 
 
 
