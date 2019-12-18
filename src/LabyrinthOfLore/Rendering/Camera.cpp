@@ -62,10 +62,13 @@ al_rotate_transform_3d(transform, -1, 0, 0, placement->rotation.x * AllegroFlare
 
 }
 
-void Camera::set_classic_perspective_transform(ALLEGRO_BITMAP* surface, ALLEGRO_TRANSFORM* transform)
+void Camera::set_perspective_transform(ALLEGRO_BITMAP* surface, ALLEGRO_TRANSFORM* transform)
 {
 float aspect_ratio = (float)al_get_bitmap_height(surface) / al_get_bitmap_width(surface);
-al_perspective_transform(transform, -1, aspect_ratio, 1, 1, -aspect_ratio, 300);
+float multiplier = 0.01; // lower numbers (0.3), while not changing the "far" are a zoom in
+al_perspective_transform(transform,
+  -1 * multiplier, aspect_ratio * multiplier, 1 * multiplier,
+  multiplier, -aspect_ratio * multiplier, 300);
 
 }
 
@@ -83,7 +86,7 @@ allegro_flare::placement3d camera_view(AllegroFlare::vec3d(position.x, position.
 camera_view.rotation = AllegroFlare::vec3d(pitch, -yaw, 0);
 build_custom_reverse_transform(&camera_view, &transform);
 
-set_classic_perspective_transform(surface, &transform);
+set_perspective_transform(surface, &transform);
 
 al_use_projection_transform(&transform);
 

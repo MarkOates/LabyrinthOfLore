@@ -128,61 +128,61 @@ TEST_F(LabyrinthOfLore_Rendering_CameraTest, start_projection__with_a_valid_surf
 }
 
 
-TEST_F(LabyrinthOfLore_Rendering_CameraTest, start_projection__displaces_the_perspective_by_the_horizontal_position_right)
-{
-   ALLEGRO_BITMAP *surface = al_get_backbuffer(al_get_current_display());
+//TEST_F(LabyrinthOfLore_Rendering_CameraTest, start_projection__displaces_the_perspective_by_the_horizontal_position_right)
+//{
+   //ALLEGRO_BITMAP *surface = al_get_backbuffer(al_get_current_display());
 
-   al_set_target_bitmap(surface);
-   al_clear_to_color(al_color_name("brown"));
+   //al_set_target_bitmap(surface);
+   //al_clear_to_color(al_color_name("brown"));
 
-   LabyrinthOfLore::Rendering::Camera camera(AllegroFlare::vec3d(1, 2, 0));
-   camera.start_projection(surface);
+   //LabyrinthOfLore::Rendering::Camera camera(AllegroFlare::vec3d(1, 2, 0));
+   //camera.start_projection(surface);
 
-   draw_targets();
+   //draw_targets();
 
-   ASSERT_CENTRAL_PIXEL_MATCHES(surface, al_color_name("yellow"));
+   //ASSERT_CENTRAL_PIXEL_MATCHES(surface, al_color_name("yellow"));
 
-   al_save_bitmap("tmp/save_test.png", surface);
-   SUCCEED();
-}
-
-
-TEST_F(LabyrinthOfLore_Rendering_CameraTest, start_projection__displaces_the_perspective_by_the_horizontal_position_left)
-{
-   ALLEGRO_BITMAP *surface = al_get_backbuffer(al_get_current_display());
-
-   al_set_target_bitmap(surface);
-   al_clear_to_color(al_color_name("brown"));
-
-   LabyrinthOfLore::Rendering::Camera camera(AllegroFlare::vec3d(-1, 2, 0));
-   camera.start_projection(surface);
-
-   draw_targets();
-
-   ASSERT_CENTRAL_PIXEL_MATCHES(surface, al_color_name("orange"));
-
-   al_save_bitmap("tmp/save_test.png", surface);
-   SUCCEED();
-}
+   //al_save_bitmap("tmp/save_test.png", surface);
+   //SUCCEED();
+//}
 
 
-TEST_F(LabyrinthOfLore_Rendering_CameraTest, start_projection__rotates_the_perspective_by_positive_yaw_right)
-{
-   ALLEGRO_BITMAP *surface = al_get_backbuffer(al_get_current_display());
+//TEST_F(LabyrinthOfLore_Rendering_CameraTest, start_projection__displaces_the_perspective_by_the_horizontal_position_left)
+//{
+   //ALLEGRO_BITMAP *surface = al_get_backbuffer(al_get_current_display());
 
-   al_set_target_bitmap(surface);
-   al_clear_to_color(al_color_name("brown"));
+   //al_set_target_bitmap(surface);
+   //al_clear_to_color(al_color_name("brown"));
 
-   LabyrinthOfLore::Rendering::Camera camera(AllegroFlare::vec3d(0, 1, 0), 0.125);
-   camera.start_projection(surface);
+   //LabyrinthOfLore::Rendering::Camera camera(AllegroFlare::vec3d(-1, 2, 0));
+   //camera.start_projection(surface);
 
-   draw_targets();
+   //draw_targets();
 
-   ASSERT_CENTRAL_PIXEL_MATCHES(surface, al_color_name("yellow"));
+   //ASSERT_CENTRAL_PIXEL_MATCHES(surface, al_color_name("orange"));
 
-   al_save_bitmap("tmp/save_test.png", surface);
-   SUCCEED();
-}
+   //al_save_bitmap("tmp/save_test.png", surface);
+   //SUCCEED();
+//}
+
+
+//TEST_F(LabyrinthOfLore_Rendering_CameraTest, start_projection__rotates_the_perspective_by_positive_yaw_right)
+//{
+   //ALLEGRO_BITMAP *surface = al_get_backbuffer(al_get_current_display());
+
+   //al_set_target_bitmap(surface);
+   //al_clear_to_color(al_color_name("brown"));
+
+   //LabyrinthOfLore::Rendering::Camera camera(AllegroFlare::vec3d(0, 1, 0), 0.125);
+   //camera.start_projection(surface);
+
+   //draw_targets();
+
+   //ASSERT_CENTRAL_PIXEL_MATCHES(surface, al_color_name("yellow"));
+
+   //al_save_bitmap("tmp/save_test.png", surface);
+   //SUCCEED();
+//}
 
 
 //TEST_F(LabyrinthOfLore_Rendering_CameraTest, start_projection__rotates_the_perspective_by_positive_pitch_up)

@@ -41,7 +41,7 @@ functions:
       //al_translate_transform_3d(transform, placement->align.x*placement->size.x, placement->align.y*placement->size.y, placement->align.z*placement->size.z);
     body_dependency_symbols:
       - AllegroFlare::TAU
-  - name: set_classic_perspective_transform
+  - name: set_perspective_transform
     type: void
     private: true
     parameters:
@@ -53,7 +53,10 @@ functions:
         default_argument: nullptr
     body: |
       float aspect_ratio = (float)al_get_bitmap_height(surface) / al_get_bitmap_width(surface);
-      al_perspective_transform(transform, -1, aspect_ratio, 1, 1, -aspect_ratio, 300);
+      float multiplier = 0.01; // lower numbers (0.3), while not changing the "far" are a zoom in
+      al_perspective_transform(transform,
+        -1 * multiplier, aspect_ratio * multiplier, 1 * multiplier,
+        multiplier, -aspect_ratio * multiplier, 300);
   - name: start_projection
     type: void
     parameters:
@@ -73,7 +76,7 @@ functions:
       camera_view.rotation = AllegroFlare::vec3d(pitch, -yaw, 0);
       build_custom_reverse_transform(&camera_view, &transform);
 
-      set_classic_perspective_transform(surface, &transform);
+      set_perspective_transform(surface, &transform);
 
       al_use_projection_transform(&transform);
 
@@ -96,3 +99,5 @@ dependencies:
     headers: [ allegro5/allegro.h ]
   - symbol: AllegroFlare::TAU
     headers: [ AllegroFlare/Useful.hpp ]
+  - symbol: tan
+    headers: [ cmath ]
