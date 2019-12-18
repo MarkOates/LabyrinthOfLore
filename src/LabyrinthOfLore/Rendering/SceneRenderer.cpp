@@ -36,9 +36,6 @@ al_clear_to_color(al_color_name("maroon"));
 
 camera->start_projection(rendering_surface);
 
-//LabyrinthOfLore::Rendering::SpritesBillboarder billboarder(camera_view, entities);
-//billboarder.process();
-
 for (auto &entity : entities)
 {
    LabyrinthOfLore::Rendering::EntityRenderer(entity).render();
