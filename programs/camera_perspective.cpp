@@ -1,3 +1,5 @@
+#define ALLEGRO_UNSTABLE
+
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
 
@@ -50,9 +52,9 @@ int main(int argc, char **argv)
       al_set_new_display_option(ALLEGRO_SAMPLE_BUFFERS, 2, ALLEGRO_SUGGEST);
       al_set_new_display_option(ALLEGRO_DEPTH_SIZE, 32, ALLEGRO_SUGGEST);
       al_set_new_display_option(ALLEGRO_SAMPLES, 16, ALLEGRO_SUGGEST);
-      //al_set_new_display_flags(display_flags);
-      al_set_new_display_flags(ALLEGRO_OPENGL | ALLEGRO_PROGRAMMABLE_PIPELINE);
-      ALLEGRO_DISPLAY *display = al_create_display(1920, 1080);
+      //al_set_new_display_flags(ALLEGRO_RESIZABLE);
+      al_set_new_display_flags(ALLEGRO_RESIZABLE | ALLEGRO_OPENGL | ALLEGRO_PROGRAMMABLE_PIPELINE);
+      ALLEGRO_DISPLAY *display = al_create_display(1920/2, 1080/2);
 
       ALLEGRO_BITMAP *billboard_tester_sprite = al_load_bitmap("bin/programs/data/bitmaps/billboarding_tester_sprite.png");
       if (!billboard_tester_sprite) throw std::runtime_error("could not load billboard_tester_sprite");
@@ -104,7 +106,21 @@ int main(int argc, char **argv)
       }
 
 
-      ALLEGRO_BITMAP *render_surface = al_get_backbuffer(display);
+      //ALLEGRO_BITMAP *render_surface = al_create_sub_bitmap(al_get_backbuffer(display), 0, 0, al_get_display_width(display)/3, al_get_display_height(display)/3);
+      int depth = 32;
+      int previous_depth = al_get_new_bitmap_depth();
+      int previous_samples = al_get_new_bitmap_samples();
+      ALLEGRO_STATE previous_state;
+      al_store_state(&previous_state, ALLEGRO_STATE_BITMAP);
+
+      al_set_new_bitmap_depth(depth);
+      al_set_new_bitmap_samples(0);
+      ALLEGRO_BITMAP *render_surface = al_create_bitmap(al_get_display_width(display)/3, al_get_display_height(display)/3);
+      //ALLEGRO_BITMAP *bmp = al_create_bitmap(w, h);
+
+      al_restore_state(&previous_state);
+      al_set_new_bitmap_depth(previous_depth);
+      al_set_new_bitmap_samples(previous_samples);
 
 
       // run the simulation
@@ -122,7 +138,7 @@ int main(int argc, char **argv)
 
 
 
-      AllegroFlare::PickingBuffer picking_buffer(al_get_display_width(display), al_get_display_height(display), 32);
+      AllegroFlare::PickingBuffer picking_buffer(al_get_display_width(display)/3, al_get_display_height(display)/3, 32);
       picking_buffer.initialize();
       LabyrinthOfLore::Shader::ClampedColor clamped_color_shader;
       clamped_color_shader.initialize();
@@ -152,8 +168,26 @@ int main(int argc, char **argv)
                LabyrinthOfLore::Rendering::SceneRenderer scene_renderer(camera_placement, render_surface, entities, &camera);
                scene_renderer.render();
 
-               LabyrinthOfLore::Rendering::PickingBufferRenderer picking_buffer_renderer(&picking_buffer, camera_placement, entities, &clamped_color_shader, &camera);
-               picking_buffer_renderer.render();
+               //LabyrinthOfLore::Rendering::PickingBufferRenderer picking_buffer_renderer(&picking_buffer, camera_placement, entities, &clamped_color_shader, &camera);
+               //picking_buffer_renderer.render();
+
+               // draw the final passes to the screen
+
+               al_set_target_bitmap(al_get_backbuffer(display));
+
+               al_clear_to_color(al_map_rgba_f(0, 0, 0, 0));
+
+               al_set_render_state(ALLEGRO_DEPTH_TEST, 1);
+               al_set_render_state(ALLEGRO_WRITE_MASK, ALLEGRO_MASK_DEPTH | ALLEGRO_MASK_RGBA);
+               al_clear_depth_buffer(1);
+
+               ALLEGRO_TRANSFORM identity;
+               al_identity_transform(&identity);
+               al_use_transform(&identity);
+
+               al_draw_scaled_bitmap(render_surface,
+                     0, 0, al_get_bitmap_width(render_surface), al_get_bitmap_height(render_surface),
+                     0, 0, al_get_display_width(display), al_get_display_height(display), 0);
 
                al_flip_display();
             }
@@ -171,7 +205,5 @@ int main(int argc, char **argv)
 
    return 0;
 }
-
-
 
 

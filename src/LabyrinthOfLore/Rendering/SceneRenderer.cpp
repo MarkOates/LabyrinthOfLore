@@ -51,6 +51,7 @@ set_projection(rendering_surface, &t);
 
 void SceneRenderer::render()
 {
+al_set_target_bitmap(rendering_surface);
 al_clear_to_color(al_color_name("maroon"));
 
 if (camera) camera->start_projection(rendering_surface);
