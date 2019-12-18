@@ -11,35 +11,6 @@
 
 
 
-class SceneUpdater
-{
-private:
-   allegro_flare::placement3d &camera_placement;
-   int start_time_offset;
-
-public:
-   SceneUpdater(allegro_flare::placement3d &camera_placement)
-      : camera_placement(camera_placement)
-      , start_time_offset(4566432) // to make the movements less in sync
-   {}
-
-   void update()
-   {
-      camera_placement.position = AllegroFlare::vec3d(
-            sin(al_get_time()+start_time_offset),
-            0.5 + sin((al_get_time()+start_time_offset)*0.81527),
-            5 * sin((al_get_time()+start_time_offset)*0.71527)
-         );
-      camera_placement.rotation = AllegroFlare::vec3d(
-            sin(al_get_time()+start_time_offset)*0.1,
-            sin(al_get_time()*0.2+start_time_offset)*1.0, // turning left and right (good), this is what the player controls for rotation
-            sin(al_get_time()+start_time_offset)*0.1
-         );
-   }
-};
-
-
-
 bool active = true;
 
 int main(int argc, char **argv)
@@ -150,9 +121,6 @@ int main(int argc, char **argv)
             break;
          case ALLEGRO_EVENT_TIMER:
             {
-               SceneUpdater scene_updater(camera_placement);
-               scene_updater.update();
-
                LabyrinthOfLore::Rendering::SceneRenderer scene_renderer(render_surface, &camera, entities);
                scene_renderer.render();
 
