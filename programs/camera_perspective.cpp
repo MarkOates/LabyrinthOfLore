@@ -155,15 +155,15 @@ int main(int argc, char **argv)
                LabyrinthOfLore::Rendering::PickingBufferRenderer picking_buffer_renderer(&picking_buffer, camera_placement, entities, &clamped_color_shader, &camera);
                picking_buffer_renderer.render();
 
-               //al_save_bitmap("/Users/markoates/Repos/LabyrinthOfLore/tmp/regular_render.png", render_surface);
-               //al_save_bitmap("/Users/markoates/Repos/LabyrinthOfLore/tmp/picking_render.png", picking_buffer.get_surface_render());
-               //shutdown_program = true;
-
                al_flip_display();
             }
             break;
          }
       }
+
+      // save the renders
+      al_save_bitmap("/Users/markoates/Repos/LabyrinthOfLore/tmp/regular_render.png", render_surface);
+      al_save_bitmap("/Users/markoates/Repos/LabyrinthOfLore/tmp/picking_render.png", picking_buffer.get_surface_render());
 
       // cleanup
       for (auto &entity : entities) { delete entity; }
