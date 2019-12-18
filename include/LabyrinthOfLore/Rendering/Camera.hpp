@@ -26,6 +26,7 @@ namespace LabyrinthOfLore
          float &get_yaw_ref();
          float &get_pitch_ref();
       void build_custom_reverse_transform(allegro_flare::placement3d* placement=nullptr, ALLEGRO_TRANSFORM* transform=nullptr);
+      void set_classic_perspective_transform(ALLEGRO_BITMAP* surface=nullptr, ALLEGRO_TRANSFORM* transform=nullptr);
       void start_projection(ALLEGRO_BITMAP* surface=nullptr);
       };
    }

@@ -62,6 +62,13 @@ al_rotate_transform_3d(transform, -1, 0, 0, placement->rotation.x * AllegroFlare
 
 }
 
+void Camera::set_classic_perspective_transform(ALLEGRO_BITMAP* surface, ALLEGRO_TRANSFORM* transform)
+{
+float aspect_ratio = (float)al_get_bitmap_height(surface) / al_get_bitmap_width(surface);
+al_perspective_transform(transform, -1, aspect_ratio, 1, 1, -aspect_ratio, 300);
+
+}
+
 void Camera::start_projection(ALLEGRO_BITMAP* surface)
 {
 if (!surface) throw std::runtime_error("[Camera::start_projection] error: cannot set the projection on nullptr surface");
@@ -76,8 +83,8 @@ allegro_flare::placement3d camera_view(AllegroFlare::vec3d(position.x, position.
 camera_view.rotation = AllegroFlare::vec3d(pitch, -yaw, 0);
 build_custom_reverse_transform(&camera_view, &transform);
 
-float aspect_ratio = (float)al_get_bitmap_height(surface) / al_get_bitmap_width(surface);
-al_perspective_transform(&transform, -1, aspect_ratio, 1, 1, -aspect_ratio, 300);
+set_classic_perspective_transform(surface, &transform);
+
 al_use_projection_transform(&transform);
 
 return;
