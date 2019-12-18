@@ -26,6 +26,10 @@ public:
 
    void update()
    {
+      camera.get_position_ref().z = 0.5;
+      camera.get_position_ref().x += 0.002;
+      camera.get_yaw_ref() -= 0.0001;
+      camera.get_pitch_ref() = sin(al_get_time()*0.5) * 0.01;
    }
 };
 
@@ -145,8 +149,7 @@ int main(int argc, char **argv)
                SceneUpdater scene_updater(camera_placement, camera);
                scene_updater.update();
 
-               LabyrinthOfLore::Rendering::SceneRenderer scene_renderer(camera_placement, render_surface, entities);
-               scene_renderer.prep_render();
+               LabyrinthOfLore::Rendering::SceneRenderer scene_renderer(camera_placement, render_surface, entities, &camera);
                scene_renderer.render();
 
                //LabyrinthOfLore::Rendering::PickingBufferRenderer picking_buffer_renderer(&picking_buffer, camera_placement, entities, &clamped_color_shader);
