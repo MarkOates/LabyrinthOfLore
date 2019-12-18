@@ -2,7 +2,6 @@
 
 #include <LabyrinthOfLore/Rendering/PickingBufferRenderer.hpp>
 #include <LabyrinthOfLore/Rendering/EntityPickingRenderer.hpp>
-#include <LabyrinthOfLore/Rendering/SpritesBillboarder.hpp>
 
 
 namespace LabyrinthOfLore
@@ -62,9 +61,6 @@ else prep_render();
 
 clamped_color_shader->activate();
 
-
-LabyrinthOfLore::Rendering::SpritesBillboarder billboarder(camera_view, entities);
-billboarder.process();
 
 for (auto &entity : entities)
 {

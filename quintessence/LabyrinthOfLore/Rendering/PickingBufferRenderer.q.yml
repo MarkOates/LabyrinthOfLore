@@ -63,9 +63,6 @@ functions:
       clamped_color_shader->activate();
 
 
-      LabyrinthOfLore::Rendering::SpritesBillboarder billboarder(camera_view, entities);
-      billboarder.process();
-
       for (auto &entity : entities)
       {
          LabyrinthOfLore::Rendering::EntityPickingRenderer(entity, clamped_color_shader).render();
@@ -77,7 +74,6 @@ functions:
       return;
     body_dependency_symbols:
       - LabyrinthOfLore::Rendering::EntityPickingRenderer
-      - LabyrinthOfLore::Rendering::SpritesBillboarder
 dependencies:
   - symbol: LabyrinthOfLore::Rendering::Camera*
     headers: [ LabyrinthOfLore/Rendering/Camera.hpp ]
@@ -87,8 +83,6 @@ dependencies:
     headers: [ LabyrinthOfLore/Shader/ClampedColor.hpp ]
   - symbol: LabyrinthOfLore::Rendering::EntityPickingRenderer
     headers: [ LabyrinthOfLore/Rendering/EntityPickingRenderer.hpp ]
-  - symbol: LabyrinthOfLore::Rendering::SpritesBillboarder
-    headers: [ LabyrinthOfLore/Rendering/SpritesBillboarder.hpp ]
   - symbol: std::vector<LabyrinthOfLore::Entity::Base*>
     headers: [ vector, LabyrinthOfLore/Entity/Base.hpp ]
   - symbol: AllegroFlare::PickingBuffer*

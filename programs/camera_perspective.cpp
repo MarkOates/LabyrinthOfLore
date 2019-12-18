@@ -168,9 +168,6 @@ int main(int argc, char **argv)
                LabyrinthOfLore::Rendering::SceneRenderer scene_renderer(render_surface, &camera, entities);
                scene_renderer.render();
 
-               //LabyrinthOfLore::Rendering::PickingBufferRenderer picking_buffer_renderer(&picking_buffer, camera_placement, entities, &clamped_color_shader, &camera);
-               //picking_buffer_renderer.render();
-
                // draw the final passes to the screen
 
                al_set_target_bitmap(al_get_backbuffer(display));
