@@ -1,7 +1,6 @@
 
 
 #include <LabyrinthOfLore/Rendering/SceneRenderer.hpp>
-#include <LabyrinthOfLore/Rendering/SpritesBillboarder.hpp>
 #include <LabyrinthOfLore/Rendering/EntityRenderer.hpp>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_color.h>
@@ -31,7 +30,10 @@ void SceneRenderer::render()
 {
 if (!rendering_surface || !camera) throw std::runtime_error("cannot render with null rendering_surface and/or camera");
 
+ALLEGRO_STATE previous_render_state;
+al_store_state(&previous_render_state, ALLEGRO_STATE_TARGET_BITMAP);
 al_set_target_bitmap(rendering_surface);
+
 al_clear_to_color(al_color_name("maroon"));
 
 camera->start_projection(rendering_surface);
@@ -41,6 +43,7 @@ for (auto &entity : entities)
    LabyrinthOfLore::Rendering::EntityRenderer(entity).render();
 }
 
+al_restore_state(&previous_render_state);
 return;
 
 }

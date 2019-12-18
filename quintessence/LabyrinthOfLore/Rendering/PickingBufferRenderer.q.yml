@@ -20,45 +20,20 @@ properties:
     init_with: nullptr
     constructor_arg: true
 functions:
-  - name: set_projection
-    type: void
-    private: true
-    parameters:
-      - name: bitmap
-        type: ALLEGRO_BITMAP*
-        default_argument: nullptr
-      - name: t
-        type: ALLEGRO_TRANSFORM*
-        default_argument: nullptr
-    body: |
-       float aspect_ratio = (float)al_get_bitmap_height(bitmap) / al_get_bitmap_width(bitmap);
-       al_perspective_transform(t, -1, aspect_ratio, 1, 1, -aspect_ratio, 100);
-       al_use_projection_transform(t);
-  - name: prep_render
-    type: void
-    private: true
-    body: |
-       // setup the render settings
-       al_set_render_state(ALLEGRO_DEPTH_TEST, 1);
-       al_set_render_state(ALLEGRO_WRITE_MASK, ALLEGRO_MASK_DEPTH | ALLEGRO_MASK_RGBA);
-       al_clear_depth_buffer(1);
-
-       ALLEGRO_TRANSFORM t;
-       camera_view.build_reverse_transform(&t);
-       set_projection(picking_buffer->get_surface_render(), &t);
   - name: render
     type: void
     body: |
       if (!picking_buffer) throw std::runtime_error("picking buffer must not be a nullptr");
+      if (!camera) throw std::runtime_error("PickingBuffer camera must not be a nullptr");
       if (!clamped_color_shader) throw std::runtime_error("clamped_color_shader must not be a nullptr");
+
       ALLEGRO_STATE previous_render_state;
       al_store_state(&previous_render_state, ALLEGRO_STATE_TARGET_BITMAP);
       al_set_target_bitmap(picking_buffer->get_surface_render());
 
       al_clear_to_color(al_map_rgba_f(0, 0, 0, 0));
 
-      if (camera) camera->start_projection(picking_buffer->get_surface_render());
-      else prep_render();
+      camera->start_projection(picking_buffer->get_surface_render());
 
       clamped_color_shader->activate();
 

@@ -5,7 +5,6 @@
 #include <LabyrinthOfLore/Entity/Base.hpp>
 #include <LabyrinthOfLore/Rendering/Camera.hpp>
 #include <LabyrinthOfLore/Shader/ClampedColor.hpp>
-#include <allegro5/allegro.h>
 #include <allegro_flare/placement3d.h>
 #include <vector>
 
@@ -28,8 +27,6 @@ namespace LabyrinthOfLore
          ~PickingBufferRenderer();
 
 
-      void set_projection(ALLEGRO_BITMAP* bitmap=nullptr, ALLEGRO_TRANSFORM* t=nullptr);
-      void prep_render();
       void render();
       };
    }
