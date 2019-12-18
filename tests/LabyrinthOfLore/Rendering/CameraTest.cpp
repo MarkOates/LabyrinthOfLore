@@ -118,7 +118,7 @@ TEST_F(LabyrinthOfLore_Rendering_CameraTest, start_projection__displaces_the_per
    al_set_target_bitmap(surface);
    al_clear_to_color(al_color_name("brown"));
 
-   LabyrinthOfLore::Rendering::Camera camera(AllegroFlare::vec3d(1, 0, 2));
+   LabyrinthOfLore::Rendering::Camera camera(AllegroFlare::vec3d(1, 2, 0));
    camera.start_projection(surface);
 
    draw_targets();
@@ -137,7 +137,7 @@ TEST_F(LabyrinthOfLore_Rendering_CameraTest, start_projection__displaces_the_per
    al_set_target_bitmap(surface);
    al_clear_to_color(al_color_name("brown"));
 
-   LabyrinthOfLore::Rendering::Camera camera(AllegroFlare::vec3d(-1, 0, 2));
+   LabyrinthOfLore::Rendering::Camera camera(AllegroFlare::vec3d(-1, 2, 0));
    camera.start_projection(surface);
 
    draw_targets();
