@@ -7,6 +7,10 @@ properties:
     type: float
     init_with: "0.0f"
     constructor_arg: true
+  - name: pitch
+    type: float
+    init_with: "0.0f"
+    constructor_arg: true
 functions:
   - name: start_projection
     type: void
@@ -24,7 +28,7 @@ functions:
       ALLEGRO_TRANSFORM transform;
       allegro_flare::placement3d camera_view(AllegroFlare::vec3d(position.x, position.z, position.y));
       //camera_view.rotation = AllegroFlare::vec3d(yaw, 0, 0);
-      camera_view.rotation = AllegroFlare::vec3d(0, -yaw, 0);
+      camera_view.rotation = AllegroFlare::vec3d(pitch, -yaw, 0);
       camera_view.build_reverse_transform(&transform);
 
       float aspect_ratio = (float)al_get_bitmap_height(surface) / al_get_bitmap_width(surface);

@@ -40,7 +40,7 @@ protected:
       //ASSERT_EQ(ALLEGRO_OPENGL, al_get_new_display_flags() & ALLEGRO_OPENGL);
       //ASSERT_EQ(ALLEGRO_PROGRAMMABLE_PIPELINE, al_get_new_display_flags() & ALLEGRO_PROGRAMMABLE_PIPELINE);
 
-      ALLEGRO_DISPLAY *display = al_create_display(800, 600);
+      ALLEGRO_DISPLAY *display = al_create_display(800, 800);
       ASSERT_NE(nullptr, display);
    }
 
@@ -68,6 +68,10 @@ protected:
       x = 1;
       y = -1;
       al_draw_filled_rectangle(-size+x, -size+y, size+x, size+y, al_color_name("green"));
+
+      x = 0;
+      y = 1;
+      al_draw_filled_rectangle(-size+x, -size+y, size+x, size+y, al_color_name("pink"));
    }
 
    void ASSERT_CENTRAL_PIXEL_MATCHES(ALLEGRO_BITMAP *surface, ALLEGRO_COLOR expected_color)
@@ -163,6 +167,25 @@ TEST_F(LabyrinthOfLore_Rendering_CameraTest, start_projection__displaces_the_per
    draw_targets();
 
    ASSERT_CENTRAL_PIXEL_MATCHES(surface, al_color_name("yellow"));
+
+   al_save_bitmap("tmp/save_test.png", surface);
+   SUCCEED();
+}
+
+
+TEST_F(LabyrinthOfLore_Rendering_CameraTest, start_projection__displaces_the_perspective_by_positive_pitch_up)
+{
+   ALLEGRO_BITMAP *surface = al_get_backbuffer(al_get_current_display());
+
+   al_set_target_bitmap(surface);
+   al_clear_to_color(al_color_name("brown"));
+
+   LabyrinthOfLore::Rendering::Camera camera(AllegroFlare::vec3d(0, 1, 0), 0.0, 0.125);
+   camera.start_projection(surface);
+
+   draw_targets();
+
+   ASSERT_CENTRAL_PIXEL_MATCHES(surface, al_color_name("pink"));
 
    al_save_bitmap("tmp/save_test.png", surface);
    SUCCEED();
