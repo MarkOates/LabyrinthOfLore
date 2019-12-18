@@ -26,6 +26,9 @@ namespace LabyrinthOfLore
 
 
       void set_projection(ALLEGRO_BITMAP* bitmap=nullptr, ALLEGRO_TRANSFORM* t=nullptr);
+      static bool dot_product_sorter(LabyrinthOfLore::Entity::Base* a=nullptr, LabyrinthOfLore::Entity::Base* b=nullptr);
+      std::vector<LabyrinthOfLore::Entity::Base*> select_non_billboarded_sprites();
+      std::vector<LabyrinthOfLore::Entity::Base*> select_sorted_billboard_sprites();
       void prep_render();
       void render();
       };

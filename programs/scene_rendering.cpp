@@ -72,27 +72,31 @@ int main(int argc, char **argv)
       allegro_flare::placement3d camera_placement(0, 0, 5);
       std::vector<LabyrinthOfLore::Entity::Base*> entities = {};
 
-      float pos_min = -6;
-      float pos_max = 6;
-      for (unsigned i=0; i<20; i++)
+      float pos_min = -12;
+      float pos_max = 12;
+      for (unsigned i=0; i<30; i++)
       {
          LabyrinthOfLore::Entity::Base* entity = new LabyrinthOfLore::Entity::Base;
          entity->set_bitmap(billboard_tester_sprite);
          entity->set_billboard_at_camera(true);
          entity->get_placement_ref().position = AllegroFlare::vec3d(
                random.get_random_int(pos_min, pos_max),
-               random.get_random_int(pos_min, pos_max),
+               0.5,
                random.get_random_int(pos_min, pos_max)
+               //random.get_random_int(pos_min, pos_max)
             );
          entity->get_placement_ref().rotation = AllegroFlare::vec3d(
                random.get_random_float(0, AllegroFlare::FULL_ROTATION),
                random.get_random_float(0, AllegroFlare::FULL_ROTATION),
                random.get_random_float(0, AllegroFlare::FULL_ROTATION)
             );
-         entity->get_placement_ref().scale = AllegroFlare::vec3d(0.01, 0.01, 0.01);
+         entity->get_placement_ref().scale = AllegroFlare::vec3d(0.02, 0.02, 0.02);
 
          entities.push_back(entity);
       }
+
+
+      std::cout << "AAAAAAAAAAAAAAAAAAAAAAAAAAAA" << std::endl;
 
 
       for (int z=-5; z<5; z++)
@@ -102,7 +106,7 @@ int main(int argc, char **argv)
             LabyrinthOfLore::Entity::Base* entity_with_model = new LabyrinthOfLore::Entity::Base;
             entity_with_model->set_bitmap(world_model_texture);
             entity_with_model->set_model(&world_model);
-            entity_with_model->get_placement_ref().position = AllegroFlare::vec3d(x*2, 0, z*2);
+            entity_with_model->get_placement_ref().position = AllegroFlare::vec3d(x*4, 0, z*4);
             entities.push_back(entity_with_model);
          }
       }

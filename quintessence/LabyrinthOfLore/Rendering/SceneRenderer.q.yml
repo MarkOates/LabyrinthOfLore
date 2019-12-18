@@ -29,6 +29,40 @@ functions:
        float aspect_ratio = (float)al_get_bitmap_height(bitmap) / al_get_bitmap_width(bitmap);
        al_perspective_transform(t, -1, aspect_ratio, 1, 1, -aspect_ratio, 100);
        al_use_projection_transform(t);
+  - name: dot_product_sorter
+    type: bool
+    static: true
+    parameters:
+      - name: a
+        type: LabyrinthOfLore::Entity::Base*
+        default_argument: nullptr
+      - name: b
+        type: LabyrinthOfLore::Entity::Base*
+        default_argument: nullptr
+    body: |
+      return true;
+      //return a->get_placement_ref().position * b->get_placement_ref().position;
+  - name: select_non_billboarded_sprites
+    type: std::vector<LabyrinthOfLore::Entity::Base*>
+    body: |
+      std::vector<LabyrinthOfLore::Entity::Base*> billboarded_sprites = {};
+      for (auto &entity : entities)
+      {
+         if (!entity->get_billboard_at_camera()) billboarded_sprites.push_back(entity);
+      }
+      return entities;
+  - name: select_sorted_billboard_sprites
+    type: std::vector<LabyrinthOfLore::Entity::Base*>
+    body: |
+      std::vector<LabyrinthOfLore::Entity::Base*> billboarded_sprites = {};
+      for (auto &entity : entities)
+      {
+         if (entity->get_billboard_at_camera()) billboarded_sprites.push_back(entity);
+      }
+      std::sort(billboarded_sprites.begin(), billboarded_sprites.end(), dot_product_sorter);
+      return entities;
+    body_dependency_symbols:
+      - std::sort
   - name: prep_render
     type: void
     body: |
@@ -52,7 +86,16 @@ functions:
       LabyrinthOfLore::Rendering::SpritesBillboarder billboarder(camera_view, entities);
       billboarder.process();
 
-      for (auto &entity : entities) { LabyrinthOfLore::Rendering::EntityRenderer(entity).render(); }
+       al_set_render_state(ALLEGRO_DEPTH_TEST, 0);
+      for (auto &entity : select_sorted_billboard_sprites())
+      {
+         LabyrinthOfLore::Rendering::EntityRenderer(entity).render();
+      }
+      al_set_render_state(ALLEGRO_DEPTH_TEST, 1);
+      for (auto &entity : select_non_billboarded_sprites())
+      {
+         LabyrinthOfLore::Rendering::EntityRenderer(entity).render();
+      }
 
       return;
     body_dependency_symbols:
@@ -64,6 +107,8 @@ functions:
 dependencies:
   - symbol: LabyrinthOfLore::Rendering::Camera*
     headers: [ LabyrinthOfLore/Rendering/Camera.hpp ]
+  - symbol: LabyrinthOfLore::Entity::Base*
+    headers: [ LabyrinthOfLore/Entity/Base.hpp ]
   - symbol: std::vector<LabyrinthOfLore::Entity::Base*>
     headers: [ vector, LabyrinthOfLore/Entity/Base.hpp ]
   - symbol: LabyrinthOfLore::Rendering::SpritesBillboarder
@@ -82,3 +127,5 @@ dependencies:
     headers: [ allegro5/allegro.h ]
   - symbol: al_draw_bitmap
     headers: [ allegro5/allegro.h ]
+  - symbol: std::sort
+    headers: [ algorithm ]
