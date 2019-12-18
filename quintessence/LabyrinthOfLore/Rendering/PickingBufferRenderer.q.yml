@@ -3,9 +3,9 @@ properties:
     type: AllegroFlare::PickingBuffer*
     init_with: "nullptr"
     constructor_arg: true
-  - name: camera_view
-    type: allegro_flare::placement3d
-    init_with: "{}"
+  - name: camera
+    type: LabyrinthOfLore::Rendering::Camera*
+    init_with: nullptr
     constructor_arg: true
   - name: entities
     type: std::vector<LabyrinthOfLore::Entity::Base*>
@@ -13,10 +13,6 @@ properties:
     constructor_arg: true
   - name: clamped_color_shader
     type: LabyrinthOfLore::Shader::ClampedColor*
-    init_with: nullptr
-    constructor_arg: true
-  - name: camera
-    type: LabyrinthOfLore::Rendering::Camera*
     init_with: nullptr
     constructor_arg: true
 functions:

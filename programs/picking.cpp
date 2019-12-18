@@ -127,7 +127,7 @@ int main(int argc, char **argv)
       bool shutdown_program = false;
 
 
-      LabyrinthOfLore::Rendering::Camera camera;
+      LabyrinthOfLore::Rendering::Camera camera({1.5, 0, 0.5}, 0, 0);
 
 
       AllegroFlare::PickingBuffer picking_buffer(al_get_display_width(display), al_get_display_height(display), 32);
@@ -156,18 +156,18 @@ int main(int argc, char **argv)
                LabyrinthOfLore::Rendering::SceneRenderer scene_renderer(render_surface, &camera, entities);
                scene_renderer.render();
 
-               LabyrinthOfLore::Rendering::PickingBufferRenderer picking_buffer_renderer(&picking_buffer, camera_placement, entities, &clamped_color_shader);
+               LabyrinthOfLore::Rendering::PickingBufferRenderer picking_buffer_renderer(&picking_buffer, &camera, entities, &clamped_color_shader);
                picking_buffer_renderer.render();
-
-               //al_save_bitmap("/Users/markoates/Repos/LabyrinthOfLore/tmp/regular_render.png", render_surface);
-               //al_save_bitmap("/Users/markoates/Repos/LabyrinthOfLore/tmp/picking_render.png", picking_buffer.get_surface_render());
-               //shutdown_program = true;
 
                al_flip_display();
             }
             break;
          }
       }
+
+      al_save_bitmap("/Users/markoates/Repos/LabyrinthOfLore/tmp/picking__regular_render.png", render_surface);
+      al_save_bitmap("/Users/markoates/Repos/LabyrinthOfLore/tmp/picking__picking_render.png", picking_buffer.get_surface_render());
+      shutdown_program = true;
 
       // cleanup
       for (auto &entity : entities) { delete entity; }

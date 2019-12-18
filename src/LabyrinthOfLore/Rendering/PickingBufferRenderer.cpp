@@ -10,12 +10,11 @@ namespace Rendering
 {
 
 
-PickingBufferRenderer::PickingBufferRenderer(AllegroFlare::PickingBuffer* picking_buffer, allegro_flare::placement3d camera_view, std::vector<LabyrinthOfLore::Entity::Base*> entities, LabyrinthOfLore::Shader::ClampedColor* clamped_color_shader, LabyrinthOfLore::Rendering::Camera* camera)
+PickingBufferRenderer::PickingBufferRenderer(AllegroFlare::PickingBuffer* picking_buffer, LabyrinthOfLore::Rendering::Camera* camera, std::vector<LabyrinthOfLore::Entity::Base*> entities, LabyrinthOfLore::Shader::ClampedColor* clamped_color_shader)
    : picking_buffer(picking_buffer)
-   , camera_view(camera_view)
+   , camera(camera)
    , entities(entities)
    , clamped_color_shader(clamped_color_shader)
-   , camera(camera)
 {
 }
 
