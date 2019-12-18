@@ -215,3 +215,22 @@ TEST_F(LabyrinthOfLore_Rendering_CameraTest, start_projection__rotates_the_persp
 }
 
 
+TEST_F(LabyrinthOfLore_Rendering_CameraTest, start_projection__observes_at_180_rotations)
+{
+   ALLEGRO_BITMAP *surface = al_get_backbuffer(al_get_current_display());
+
+   al_set_target_bitmap(surface);
+   al_clear_to_color(al_color_name("brown"));
+
+   LabyrinthOfLore::Rendering::Camera camera(AllegroFlare::vec3d(0, -1, 0), 0.5);
+   camera.start_projection(surface);
+
+   draw_targets();
+
+   ASSERT_CENTRAL_PIXEL_MATCHES(surface, al_color_name("white"));
+
+   al_save_bitmap("tmp/save_test.png", surface);
+   SUCCEED();
+}
+
+
