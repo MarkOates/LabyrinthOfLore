@@ -14,11 +14,13 @@ class SceneUpdater
 {
 private:
    allegro_flare::placement3d &camera_placement;
+   LabyrinthOfLore::Rendering::Camera &camera;
    int start_time_offset;
 
 public:
-   SceneUpdater(allegro_flare::placement3d &camera_placement)
+   SceneUpdater(allegro_flare::placement3d &camera_placement, LabyrinthOfLore::Rendering::Camera &camera)
       : camera_placement(camera_placement)
+      , camera(camera)
       , start_time_offset(4566432) // to make the movements less in sync
    {}
 
@@ -30,10 +32,14 @@ public:
             5 * sin((al_get_time()+start_time_offset)*0.71527)
          );
       camera_placement.rotation = AllegroFlare::vec3d(
-            sin(al_get_time()+start_time_offset)*0.1,
+            0, //sin(al_get_time()+start_time_offset)*0.1,
             sin(al_get_time()*0.2+start_time_offset)*1.0, // turning left and right (good), this is what the player controls for rotation
-            sin(al_get_time()+start_time_offset)*0.1
+            0
+            //sin(al_get_time()+start_time_offset)*0.1
          );
+
+      camera.get_position_ref() = camera_placement.position;
+      camera.get_yaw_ref() = -camera_placement.rotation.y;
    }
 };
 
@@ -72,9 +78,11 @@ int main(int argc, char **argv)
       allegro_flare::placement3d camera_placement(0, 0, 5);
       std::vector<LabyrinthOfLore::Entity::Base*> entities = {};
 
-      float pos_min = -12;
-      float pos_max = 12;
-      for (unsigned i=0; i<30; i++)
+      LabyrinthOfLore::Rendering::Camera camera;
+
+      float pos_min = -20;
+      float pos_max = 20;
+      for (unsigned i=0; i<100; i++)
       {
          LabyrinthOfLore::Entity::Base* entity = new LabyrinthOfLore::Entity::Base;
          entity->set_bitmap(billboard_tester_sprite);
@@ -96,9 +104,6 @@ int main(int argc, char **argv)
       }
 
 
-      std::cout << "AAAAAAAAAAAAAAAAAAAAAAAAAAAA" << std::endl;
-
-
       for (int z=-5; z<5; z++)
       {
          for (int x=-5; x<5; x++)
@@ -113,6 +118,7 @@ int main(int argc, char **argv)
 
 
       ALLEGRO_BITMAP *render_surface = al_get_backbuffer(display);
+
 
 
       // run the simulation
@@ -143,11 +149,11 @@ int main(int argc, char **argv)
             break;
          case ALLEGRO_EVENT_TIMER:
             {
-               SceneUpdater scene_updater(camera_placement);
+               SceneUpdater scene_updater(camera_placement, camera);
                scene_updater.update();
 
-               LabyrinthOfLore::Rendering::SceneRenderer scene_renderer(camera_placement, render_surface, entities);
-               scene_renderer.prep_render();
+               LabyrinthOfLore::Rendering::SceneRenderer scene_renderer(camera_placement, render_surface, entities, &camera);
+               //scene_renderer.prep_render();
                scene_renderer.render();
                al_flip_display();
             }

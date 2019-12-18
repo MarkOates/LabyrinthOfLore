@@ -1,7 +1,6 @@
 
 
 #include <LabyrinthOfLore/Rendering/SceneRenderer.hpp>
-#include <algorithm>
 #include <LabyrinthOfLore/Rendering/SpritesBillboarder.hpp>
 #include <LabyrinthOfLore/Rendering/EntityRenderer.hpp>
 #include <allegro5/allegro.h>
@@ -37,36 +36,6 @@ al_use_projection_transform(t);
 
 }
 
-bool SceneRenderer::dot_product_sorter(LabyrinthOfLore::Entity::Base* a, LabyrinthOfLore::Entity::Base* b)
-{
-return true;
-//return a->get_placement_ref().position * b->get_placement_ref().position;
-
-}
-
-std::vector<LabyrinthOfLore::Entity::Base*> SceneRenderer::select_non_billboarded_sprites()
-{
-std::vector<LabyrinthOfLore::Entity::Base*> billboarded_sprites = {};
-for (auto &entity : entities)
-{
-   if (!entity->get_billboard_at_camera()) billboarded_sprites.push_back(entity);
-}
-return entities;
-
-}
-
-std::vector<LabyrinthOfLore::Entity::Base*> SceneRenderer::select_sorted_billboard_sprites()
-{
-std::vector<LabyrinthOfLore::Entity::Base*> billboarded_sprites = {};
-for (auto &entity : entities)
-{
-   if (entity->get_billboard_at_camera()) billboarded_sprites.push_back(entity);
-}
-std::sort(billboarded_sprites.begin(), billboarded_sprites.end(), dot_product_sorter);
-return entities;
-
-}
-
 void SceneRenderer::prep_render()
 {
 // setup the render settings
@@ -91,13 +60,7 @@ else prep_render();
 LabyrinthOfLore::Rendering::SpritesBillboarder billboarder(camera_view, entities);
 billboarder.process();
 
- al_set_render_state(ALLEGRO_DEPTH_TEST, 0);
-for (auto &entity : select_sorted_billboard_sprites())
-{
-   LabyrinthOfLore::Rendering::EntityRenderer(entity).render();
-}
-al_set_render_state(ALLEGRO_DEPTH_TEST, 1);
-for (auto &entity : select_non_billboarded_sprites())
+for (auto &entity : entities)
 {
    LabyrinthOfLore::Rendering::EntityRenderer(entity).render();
 }
