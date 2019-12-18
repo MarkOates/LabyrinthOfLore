@@ -13,6 +13,7 @@
 #include <allegro5/allegro_color.h>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_image.h>
+#include <AllegroFlare/Useful.hpp> // for TAU
 
 
 class LabyrinthOfLore_Rendering_CameraTest : public ::testing::Test
@@ -143,6 +144,25 @@ TEST_F(LabyrinthOfLore_Rendering_CameraTest, start_projection__displaces_the_per
    draw_targets();
 
    ASSERT_CENTRAL_PIXEL_MATCHES(surface, al_color_name("orange"));
+
+   al_save_bitmap("tmp/save_test.png", surface);
+   SUCCEED();
+}
+
+
+TEST_F(LabyrinthOfLore_Rendering_CameraTest, start_projection__displaces_the_perspective_by_positive_yaw_right)
+{
+   ALLEGRO_BITMAP *surface = al_get_backbuffer(al_get_current_display());
+
+   al_set_target_bitmap(surface);
+   al_clear_to_color(al_color_name("brown"));
+
+   LabyrinthOfLore::Rendering::Camera camera(AllegroFlare::vec3d(0, 1, 0), 0.125);
+   camera.start_projection(surface);
+
+   draw_targets();
+
+   ASSERT_CENTRAL_PIXEL_MATCHES(surface, al_color_name("yellow"));
 
    al_save_bitmap("tmp/save_test.png", surface);
    SUCCEED();

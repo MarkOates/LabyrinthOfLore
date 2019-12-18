@@ -13,9 +13,10 @@ namespace LabyrinthOfLore
       {
       private:
          AllegroFlare::vec3d position;
+         float yaw;
 
       public:
-         Camera(AllegroFlare::vec3d position={});
+         Camera(AllegroFlare::vec3d position={}, float yaw=0.0f);
          ~Camera();
 
 

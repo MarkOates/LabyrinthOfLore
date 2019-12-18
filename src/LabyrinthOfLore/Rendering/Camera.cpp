@@ -11,8 +11,9 @@ namespace Rendering
 {
 
 
-Camera::Camera(AllegroFlare::vec3d position)
+Camera::Camera(AllegroFlare::vec3d position, float yaw)
    : position(position)
+   , yaw(yaw)
 {
 }
 
@@ -32,6 +33,8 @@ al_clear_depth_buffer(1);
 
 ALLEGRO_TRANSFORM transform;
 allegro_flare::placement3d camera_view(AllegroFlare::vec3d(position.x, position.z, position.y));
+//camera_view.rotation = AllegroFlare::vec3d(yaw, 0, 0);
+camera_view.rotation = AllegroFlare::vec3d(0, -yaw, 0);
 camera_view.build_reverse_transform(&transform);
 
 float aspect_ratio = (float)al_get_bitmap_height(surface) / al_get_bitmap_width(surface);
