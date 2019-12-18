@@ -31,7 +31,7 @@ al_set_render_state(ALLEGRO_WRITE_MASK, ALLEGRO_MASK_DEPTH | ALLEGRO_MASK_RGBA);
 al_clear_depth_buffer(1);
 
 ALLEGRO_TRANSFORM transform;
-allegro_flare::placement3d camera_view(0, 0, 2);
+allegro_flare::placement3d camera_view(position);
 camera_view.build_reverse_transform(&transform);
 
 float aspect_ratio = (float)al_get_bitmap_height(surface) / al_get_bitmap_width(surface);
