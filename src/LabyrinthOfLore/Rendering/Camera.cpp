@@ -25,6 +25,24 @@ Camera::~Camera()
 }
 
 
+AllegroFlare::vec3d &Camera::get_position_ref()
+{
+   return position;
+}
+
+
+float &Camera::get_yaw_ref()
+{
+   return yaw;
+}
+
+
+float &Camera::get_pitch_ref()
+{
+   return pitch;
+}
+
+
 void Camera::build_custom_reverse_transform(allegro_flare::placement3d* placement, ALLEGRO_TRANSFORM* transform)
 {
 al_identity_transform(transform);

@@ -2,14 +2,17 @@ properties:
   - name: position
     type: AllegroFlare::vec3d
     init_with: "{}"
+    getter_ref: true
     constructor_arg: true
   - name: yaw
     type: float
     init_with: "0.0f"
+    getter_ref: true
     constructor_arg: true
   - name: pitch
     type: float
     init_with: "0.0f"
+    getter_ref: true
     constructor_arg: true
 functions:
   - name: build_custom_reverse_transform
