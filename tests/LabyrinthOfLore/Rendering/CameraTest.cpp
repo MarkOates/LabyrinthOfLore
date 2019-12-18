@@ -53,3 +53,15 @@ TEST_F(LabyrinthOfLore_Rendering_CameraTest, start_projection__with_a_nullptr_su
 }
 
 
+TEST_F(LabyrinthOfLore_Rendering_CameraTest, start_projection__with_a_valid_surface__does_not_blow_up)
+{
+   LabyrinthOfLore::Rendering::Camera camera;
+
+   ALLEGRO_BITMAP *surface = al_create_bitmap(800, 600);
+   ASSERT_NE(nullptr, surface);
+
+   camera.start_projection(surface);
+   SUCCEED();
+}
+
+
