@@ -10,7 +10,8 @@ namespace Rendering
 {
 
 
-Camera::Camera()
+Camera::Camera(AllegroFlare::vec3d position)
+   : position(position)
 {
 }
 
@@ -20,9 +21,9 @@ Camera::~Camera()
 }
 
 
-std::string Camera::run()
+void Camera::start_transform()
 {
-return "Hello World!";
+return;
 }
 } // namespace Rendering
 } // namespace LabyrinthOfLore

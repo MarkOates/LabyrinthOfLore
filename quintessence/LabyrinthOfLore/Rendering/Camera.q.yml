@@ -1,4 +1,12 @@
+properties:
+  - name: position
+    type: AllegroFlare::vec3d
+    init_with: "{}"
+    constructor_arg: true
 functions:
-  - name: run
-    type: std::string
-    body: return "Hello World!";
+  - name: start_transform
+    type: void
+    body: return;
+dependencies:
+  - symbol: AllegroFlare::vec3d
+    headers: [ AllegroFlare/Vec3D.hpp ]

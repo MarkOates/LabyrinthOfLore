@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include <string>
+#include <AllegroFlare/Vec3D.hpp>
 
 
 namespace LabyrinthOfLore
@@ -11,13 +11,14 @@ namespace LabyrinthOfLore
       class Camera
       {
       private:
+         AllegroFlare::vec3d position;
 
       public:
-         Camera();
+         Camera(AllegroFlare::vec3d position={});
          ~Camera();
 
 
-      std::string run();
+      void start_transform();
       };
    }
 }
