@@ -10,13 +10,41 @@
 #include <LabyrinthOfLore/Rendering/Camera.hpp>
 
 
-TEST(LabyrinthOfLore_Rendering_CameraTest, can_be_created_without_blowing_up)
+class LabyrinthOfLore_Rendering_CameraTest : public ::testing::Test
+{
+protected:
+   ALLEGRO_DISPLAY *display;
+
+   LabyrinthOfLore_Rendering_CameraTest()
+      : display(nullptr)
+   {
+   }
+
+   virtual void SetUp() override
+   {
+      ASSERT_EQ(false, al_is_system_installed());
+      ASSERT_EQ(true, al_init());
+
+      ALLEGRO_DISPLAY *display = al_create_display(800, 600);
+      ASSERT_NE(nullptr, display);
+   }
+
+   virtual void TearDown() override
+   {
+      if (display) al_destroy_display(display);
+      al_uninstall_system();
+   }
+};
+
+
+TEST_F(LabyrinthOfLore_Rendering_CameraTest, can_be_created_without_blowing_up)
 {
    LabyrinthOfLore::Rendering::Camera camera;
+   SUCCEED();
 }
 
 
-TEST(LabyrinthOfLore_Rendering_CameraTest, start_projection__with_a_nullptr_surface_raises_an_exception)
+TEST_F(LabyrinthOfLore_Rendering_CameraTest, start_projection__with_a_nullptr_surface_raises_an_exception)
 {
    LabyrinthOfLore::Rendering::Camera camera;
 
