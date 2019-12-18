@@ -54,7 +54,7 @@ protected:
    {
       float x = 0;
       float y = 0;
-      float size = 0.1;
+      float size = 0.3;
       al_draw_filled_rectangle(-size+x, -size+y, size+x, size+y, al_color_name("white"));
 
       x = 1;
@@ -64,6 +64,10 @@ protected:
       x = -1;
       y = 0;
       al_draw_filled_rectangle(-size+x, -size+y, size+x, size+y, al_color_name("orange"));
+
+      x = -2;
+      y = 0;
+      al_draw_filled_rectangle(-size+x, -size+y, size+x, size+y, al_color_name("cyan"));
 
       x = 1;
       y = -1;
@@ -76,6 +80,10 @@ protected:
       x = 0;
       y = 1;
       al_draw_filled_rectangle(-size+x, -size+y, size+x, size+y, al_color_name("pink"));
+
+      x = 0;
+      y = -2;
+      al_draw_filled_rectangle(-size+x, -size+y, size+x, size+y, al_color_name("olive"));
    }
 
    void ASSERT_CENTRAL_PIXEL_MATCHES(ALLEGRO_BITMAP *surface, ALLEGRO_COLOR expected_color)
@@ -203,7 +211,7 @@ TEST_F(LabyrinthOfLore_Rendering_CameraTest, start_projection__rotates_the_persp
    al_set_target_bitmap(surface);
    al_clear_to_color(al_color_name("brown"));
 
-   LabyrinthOfLore::Rendering::Camera camera(AllegroFlare::vec3d(0, 1, 0), 0.122, -0.10); // kinda fudged here
+   LabyrinthOfLore::Rendering::Camera camera(AllegroFlare::vec3d(0, 1, 0), 0.12f, -0.12f); // kinda fudged here
    camera.start_projection(surface);
 
    draw_targets();
@@ -232,5 +240,25 @@ TEST_F(LabyrinthOfLore_Rendering_CameraTest, start_projection__observes_at_180_r
    al_save_bitmap("tmp/save_test.png", surface);
    SUCCEED();
 }
+
+
+TEST_F(LabyrinthOfLore_Rendering_CameraTest, start_projection__observes_at_complex_rotations)
+{
+   ALLEGRO_BITMAP *surface = al_get_backbuffer(al_get_current_display());
+
+   al_set_target_bitmap(surface);
+   al_clear_to_color(al_color_name("brown"));
+
+   LabyrinthOfLore::Rendering::Camera camera(AllegroFlare::vec3d(-2, -2, 1), 0.5-0.125, -0.125);
+   camera.start_projection(surface);
+
+   draw_targets();
+
+   ASSERT_CENTRAL_PIXEL_MATCHES(surface, al_color_name("olive"));
+
+   al_save_bitmap("tmp/save_test.png", surface);
+   SUCCEED();
+}
+
 
 
