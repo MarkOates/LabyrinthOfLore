@@ -4,9 +4,22 @@ properties:
     init_with: "{}"
     constructor_arg: true
 functions:
-  - name: start_transform
+  - name: start_projection
     type: void
-    body: return;
+    parameters:
+      - name: surface
+        type: ALLEGRO_BITMAP*
+        default_argument: nullptr
+    body: |
+      if (!surface) throw std::runtime_error("[Camera::start_projection] error: cannot set the projection on nullptr surface");
+
+      return;
+    body_dependency_symbols:
+      - ALLEGRO_TRANSFORM
 dependencies:
   - symbol: AllegroFlare::vec3d
     headers: [ AllegroFlare/Vec3D.hpp ]
+  - symbol: ALLEGRO_TRANSFORM
+    headers: [ allegro5/allegro.h ]
+  - symbol: ALLEGRO_BITMAP*
+    headers: [ allegro5/allegro.h ]

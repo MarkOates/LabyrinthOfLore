@@ -1,7 +1,7 @@
 
 
 #include <LabyrinthOfLore/Rendering/Camera.hpp>
-
+#include <allegro5/allegro.h>
 
 
 namespace LabyrinthOfLore
@@ -21,9 +21,12 @@ Camera::~Camera()
 }
 
 
-void Camera::start_transform()
+void Camera::start_projection(ALLEGRO_BITMAP* surface)
 {
+if (!surface) throw std::runtime_error("[Camera::start_projection] error: cannot set the projection on nullptr surface");
+
 return;
+
 }
 } // namespace Rendering
 } // namespace LabyrinthOfLore

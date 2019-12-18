@@ -2,6 +2,7 @@
 
 
 #include <AllegroFlare/Vec3D.hpp>
+#include <allegro5/allegro.h>
 
 
 namespace LabyrinthOfLore
@@ -18,7 +19,7 @@ namespace LabyrinthOfLore
          ~Camera();
 
 
-      void start_transform();
+      void start_projection(ALLEGRO_BITMAP* surface=nullptr);
       };
    }
 }
