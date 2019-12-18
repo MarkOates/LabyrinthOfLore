@@ -3,6 +3,7 @@
 
 #include <AllegroFlare/Vec3D.hpp>
 #include <allegro5/allegro.h>
+#include <allegro_flare/placement3d.h>
 
 
 namespace LabyrinthOfLore
@@ -21,6 +22,7 @@ namespace LabyrinthOfLore
          ~Camera();
 
 
+      void build_custom_reverse_transform(allegro_flare::placement3d* placement=nullptr, ALLEGRO_TRANSFORM* transform=nullptr);
       void start_projection(ALLEGRO_BITMAP* surface=nullptr);
       };
    }

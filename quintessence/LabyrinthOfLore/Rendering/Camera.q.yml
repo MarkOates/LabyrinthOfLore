@@ -12,6 +12,32 @@ properties:
     init_with: "0.0f"
     constructor_arg: true
 functions:
+  - name: build_custom_reverse_transform
+    type: void
+    parameters:
+      - name: placement
+        type: allegro_flare::placement3d*
+        default_argument: nullptr
+      - name: transform
+        type: ALLEGRO_TRANSFORM*
+        default_argument: nullptr
+    body: |
+      al_identity_transform(transform);
+
+      // translate
+      al_translate_transform_3d(transform, -placement->position.x, -placement->position.y, -placement->position.z);
+
+      // rotate
+      al_rotate_transform_3d(transform, 0, -1, 0, placement->rotation.y * AllegroFlare::TAU);
+      al_rotate_transform_3d(transform, -1, 0, 0, placement->rotation.x * AllegroFlare::TAU);
+      // al_rotate_transform_3d(transform, 0, 0, -1, placement->rotation.z * AllegroFlare::TAU);
+
+      // offset for alignment and anchors
+      al_translate_transform_3d(transform, -placement->anchor.x, -placement->anchor.y, -placement->anchor.z);
+      al_scale_transform_3d(transform, 1.0/placement->scale.x, 1.0/placement->scale.y, 1.0/placement->scale.z);
+      al_translate_transform_3d(transform, placement->align.x*placement->size.x, placement->align.y*placement->size.y, placement->align.z*placement->size.z);
+    body_dependency_symbols:
+      - AllegroFlare::TAU
   - name: start_projection
     type: void
     parameters:
@@ -29,7 +55,7 @@ functions:
       allegro_flare::placement3d camera_view(AllegroFlare::vec3d(position.x, position.z, position.y));
       //camera_view.rotation = AllegroFlare::vec3d(yaw, 0, 0);
       camera_view.rotation = AllegroFlare::vec3d(pitch, -yaw, 0);
-      camera_view.build_reverse_transform(&transform);
+      build_custom_reverse_transform(&camera_view, &transform);
 
       float aspect_ratio = (float)al_get_bitmap_height(surface) / al_get_bitmap_width(surface);
       al_perspective_transform(&transform, -1, aspect_ratio, 1, 1, -aspect_ratio, 100);
@@ -44,7 +70,13 @@ dependencies:
     headers: [ AllegroFlare/Vec3D.hpp ]
   - symbol: allegro_flare::placement3d
     headers: [ allegro_flare/placement3d.h ]
+  - symbol: allegro_flare::placement3d*
+    headers: [ allegro_flare/placement3d.h ]
   - symbol: ALLEGRO_TRANSFORM
+    headers: [ allegro5/allegro.h ]
+  - symbol: ALLEGRO_TRANSFORM*
     headers: [ allegro5/allegro.h ]
   - symbol: ALLEGRO_BITMAP*
     headers: [ allegro5/allegro.h ]
+  - symbol: AllegroFlare::TAU
+    headers: [ AllegroFlare/Useful.hpp ]
