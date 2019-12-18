@@ -38,9 +38,9 @@ al_rotate_transform_3d(transform, -1, 0, 0, placement->rotation.x * AllegroFlare
 // al_rotate_transform_3d(transform, 0, 0, -1, placement->rotation.z * AllegroFlare::TAU);
 
 // offset for alignment and anchors
-al_translate_transform_3d(transform, -placement->anchor.x, -placement->anchor.y, -placement->anchor.z);
-al_scale_transform_3d(transform, 1.0/placement->scale.x, 1.0/placement->scale.y, 1.0/placement->scale.z);
-al_translate_transform_3d(transform, placement->align.x*placement->size.x, placement->align.y*placement->size.y, placement->align.z*placement->size.z);
+//al_translate_transform_3d(transform, -placement->anchor.x, -placement->anchor.y, -placement->anchor.z);
+//al_scale_transform_3d(transform, 1.0/placement->scale.x, 1.0/placement->scale.y, 1.0/placement->scale.z);
+//al_translate_transform_3d(transform, placement->align.x*placement->size.x, placement->align.y*placement->size.y, placement->align.z*placement->size.z);
 
 }
 
