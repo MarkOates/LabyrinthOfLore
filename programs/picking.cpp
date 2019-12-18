@@ -127,7 +127,7 @@ int main(int argc, char **argv)
       bool shutdown_program = false;
 
 
-      LabyrinthOfLore::Rendering::Camera camera({1.5, 0, 0.5}, 0, 0);
+      LabyrinthOfLore::Rendering::Camera camera({1, 0, 0.5}, 0, 0);
 
 
       AllegroFlare::PickingBuffer picking_buffer(al_get_display_width(display), al_get_display_height(display), 32);
