@@ -15,6 +15,10 @@ properties:
     type: LabyrinthOfLore::Shader::ClampedColor*
     init_with: nullptr
     constructor_arg: true
+  - name: camera
+    type: LabyrinthOfLore::Rendering::Camera*
+    init_with: nullptr
+    constructor_arg: true
 functions:
   - name: set_projection
     type: void
@@ -50,7 +54,9 @@ functions:
       ALLEGRO_STATE previous_render_state;
       al_store_state(&previous_render_state, ALLEGRO_STATE_TARGET_BITMAP);
       al_set_target_bitmap(picking_buffer->get_surface_render());
-      prep_render();
+
+      if (camera) camera->start_projection(picking_buffer->get_surface_render());
+      else prep_render();
 
       clamped_color_shader->activate();
 
@@ -71,6 +77,8 @@ functions:
       - LabyrinthOfLore::Rendering::EntityPickingRenderer
       - LabyrinthOfLore::Rendering::SpritesBillboarder
 dependencies:
+  - symbol: LabyrinthOfLore::Rendering::Camera*
+    headers: [ LabyrinthOfLore/Rendering/Camera.hpp ]
   - symbol: allegro_flare::placement3d
     headers: [ allegro_flare/placement3d.h ]
   - symbol: LabyrinthOfLore::Shader::ClampedColor*
