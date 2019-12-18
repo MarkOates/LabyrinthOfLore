@@ -11,6 +11,10 @@ properties:
     type: std::vector<LabyrinthOfLore::Entity::Base*>
     init_with: "{}"
     constructor_arg: true
+  - name: camera
+    type: LabyrinthOfLore::Rendering::Camera*
+    init_with: nullptr
+    constructor_arg: true
 functions:
   - name: set_projection
     type: void
@@ -40,7 +44,9 @@ functions:
     type: void
     body: |
       al_clear_to_color(al_color_name("maroon"));
-      prep_render();
+
+      if (camera) camera->start_projection(rendering_surface);
+      else prep_render();
 
       LabyrinthOfLore::Rendering::SpritesBillboarder billboarder(camera_view, entities);
       billboarder.process();
@@ -55,6 +61,8 @@ functions:
       - al_color_name
       - al_draw_bitmap
 dependencies:
+  - symbol: LabyrinthOfLore::Rendering::Camera*
+    headers: [ LabyrinthOfLore/Rendering/Camera.hpp ]
   - symbol: std::vector<LabyrinthOfLore::Entity::Base*>
     headers: [ vector, LabyrinthOfLore/Entity/Base.hpp ]
   - symbol: LabyrinthOfLore::Rendering::SpritesBillboarder

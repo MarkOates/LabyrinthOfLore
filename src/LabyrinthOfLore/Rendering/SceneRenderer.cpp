@@ -14,10 +14,11 @@ namespace Rendering
 {
 
 
-SceneRenderer::SceneRenderer(allegro_flare::placement3d camera_view, ALLEGRO_BITMAP* rendering_surface, std::vector<LabyrinthOfLore::Entity::Base*> entities)
+SceneRenderer::SceneRenderer(allegro_flare::placement3d camera_view, ALLEGRO_BITMAP* rendering_surface, std::vector<LabyrinthOfLore::Entity::Base*> entities, LabyrinthOfLore::Rendering::Camera* camera)
    : camera_view(camera_view)
    , rendering_surface(rendering_surface)
    , entities(entities)
+   , camera(camera)
 {
 }
 
@@ -51,7 +52,9 @@ set_projection(rendering_surface, &t);
 void SceneRenderer::render()
 {
 al_clear_to_color(al_color_name("maroon"));
-prep_render();
+
+if (camera) camera->start_projection(rendering_surface);
+else prep_render();
 
 LabyrinthOfLore::Rendering::SpritesBillboarder billboarder(camera_view, entities);
 billboarder.process();
