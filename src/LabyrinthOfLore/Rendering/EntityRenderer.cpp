@@ -23,18 +23,24 @@ EntityRenderer::~EntityRenderer()
 
 void EntityRenderer::render()
 {
-entity->get_placement_ref().start_transform();
 
 if (!entity->get_model())
 {
-   if (entity->get_bitmap()) al_draw_bitmap(entity->get_bitmap(), 0, 0, ALLEGRO_FLIP_VERTICAL);
+   if (entity->get_bitmap())
+   {
+      entity->get_placement_ref().start_transform();
+      al_draw_bitmap(entity->get_bitmap(), 0, 0, ALLEGRO_FLIP_VERTICAL);
+      entity->get_placement_ref().restore_transform();
+   }
 }
 else
 {
+   entity->get_placement_ref().scale = AllegroFlare::vec3d(0.8, 0.8, 0.8);
+   entity->get_placement_ref().start_transform();
    entity->get_model()->set_texture(entity->get_bitmap());
    entity->get_model()->draw();
+   entity->get_placement_ref().restore_transform();
 }
-entity->get_placement_ref().restore_transform();
 
 }
 } // namespace Rendering
