@@ -151,6 +151,12 @@ int main(int argc, char **argv)
       al_start_timer(primary_timer);
 
 
+      //
+
+      float player_yaw = 0.0;
+      float player_pitch = 0.0;
+
+
       while(!shutdown_program)
       {
          ALLEGRO_EVENT this_event, next_event;
@@ -167,13 +173,14 @@ int main(int argc, char **argv)
          case ALLEGRO_EVENT_TIMER:
             {
                camera_entity->get_velocity_ref().position = {-0.002, 0.02, 0};
+               camera_entity->get_placement_ref().rotation = {0.0, 0.0, 0.0};
 
                LabyrinthOfLore::Physics::EntityTileMapCollisionStepper entity_tile_map_collision_stepper(tile_map, entities);
                entity_tile_map_collision_stepper.process_step();
 
                camera.get_position_ref() = camera_entity->get_placement_ref().position + AllegroFlare::vec3d(0, 0, 0.5);//{5, 20, 2.01 + 0.5};
-               camera.get_yaw_ref() = 0.5 + sin(al_get_time()) * 0.02;
-               camera.get_pitch_ref() = sin((al_get_time()+2.345)*0.8534) * 0.02;
+               camera.get_yaw_ref() = player_yaw + 0.5 + sin(al_get_time()) * 0.02;
+               camera.get_pitch_ref() = player_pitch + sin((al_get_time()+2.345)*0.8534) * 0.02;
 
                LabyrinthOfLore::Rendering::SceneRenderer scene_renderer(al_get_backbuffer(display), &camera, tile_map_mesh, entities);
                scene_renderer.render();

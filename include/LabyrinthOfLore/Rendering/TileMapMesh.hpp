@@ -21,6 +21,7 @@ namespace LabyrinthOfLore
          ~TileMapMesh();
 
 
+      ALLEGRO_COLOR random_color();
       std::vector<ALLEGRO_VERTEX> build_cube(float x=0, float y=0, float height=1);
       bool build();
       void draw();

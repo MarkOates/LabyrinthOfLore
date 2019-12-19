@@ -7,6 +7,20 @@ properties:
     type: std::vector<ALLEGRO_VERTEX>
     init_with: "{}"
 functions:
+  - name: random_color
+    type: ALLEGRO_COLOR
+    body: |
+      static AllegroFlare::Random random;
+      static std::vector<ALLEGRO_COLOR> colors = {
+         al_color_name("orange"),
+         al_color_name("dimgray"),
+         al_color_name("darkslategray"),
+         al_color_name("firebrick"),
+         al_color_name("darkolivegreen"),
+      };
+      return colors[random.get_random_int(0, colors.size()-1)];
+    body_dependency_symbols:
+      - AllegroFlare::Random
   - name: build_cube
     type: std::vector<ALLEGRO_VERTEX>
     parameters:
@@ -20,8 +34,10 @@ functions:
         type: float
         default_argument: 1
     body: |
-      ALLEGRO_COLOR cube_color = al_color_name("orange");
+      ALLEGRO_COLOR cube_color = random_color();
       return {
+        // facing from the top down:
+
         // top
         AllegroFlare::build_vertex(-x, y, height, cube_color, 0, 0), // top left triangle
         AllegroFlare::build_vertex(-x+1, y, height, cube_color, 1, 0),
@@ -30,6 +46,25 @@ functions:
         AllegroFlare::build_vertex(-x+1, y, height, cube_color, 1, 0), // bottom right triangle
         AllegroFlare::build_vertex(-x, y+1, height, cube_color, 0, 1),
         AllegroFlare::build_vertex(-x+1, y+1, height, cube_color, 1, 1),
+
+        // right
+        //AllegroFlare::build_vertex(-x, y, height, cube_color, 0, 0), // top left triangle
+        //AllegroFlare::build_vertex(-x, y+1, height, cube_color, 1, 0),
+        //AllegroFlare::build_vertex(-x, y, 0, cube_color, 0, 1),
+
+        //AllegroFlare::build_vertex(-x, y+1, height, cube_color, 1, 0), // bottom right triangle
+        //AllegroFlare::build_vertex(-x, y, 0, cube_color, 0, 1),
+        //AllegroFlare::build_vertex(-x, y+1, 0, cube_color, 1, 1),
+
+        // bottom
+        //AllegroFlare::build_vertex(-x, y+1, height, cube_color, 0, 0), // top left triangle
+        //AllegroFlare::build_vertex(-x+1, y+1, height, cube_color, 1, 0),
+        //AllegroFlare::build_vertex(-x, y+1, 0, cube_color, 0, 1),
+
+        //AllegroFlare::build_vertex(-x+1, y+1, height, cube_color, 1, 0), // bottom right triangle
+        //AllegroFlare::build_vertex(-x, y+1, 0, cube_color, 0, 1),
+        //AllegroFlare::build_vertex(-x+1, y+1, 0, cube_color, 1, 1),
+
         //
       };
     body_dependency_symbols:
@@ -77,6 +112,10 @@ dependencies:
     headers: [ LabyrinthOfLore/WorldMap/TileMap.hpp ]
   - symbol: std::vector<ALLEGRO_VERTEX>
     headers: [ vector, allegro5/allegro.h ]
+  - symbol: AllegroFlare::Random
+    headers: [ AllegroFlare/Random.hpp ]
+  - symbol: ALLEGRO_COLOR
+    headers: [ allegro5/allegro.h ]
   - symbol: ALLEGRO_VERTEX
     headers: [ allegro5/allegro.h ]
   - symbol: al_color_name
