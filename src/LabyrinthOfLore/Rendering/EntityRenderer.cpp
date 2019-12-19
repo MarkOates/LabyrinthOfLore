@@ -35,11 +35,13 @@ if (!entity->get_model())
 }
 else
 {
+   /* // world model is drawn as a single mesh separately
    entity->get_placement_ref().scale = AllegroFlare::vec3d(0.8, 0.8, 0.8);
    entity->get_placement_ref().start_transform();
    entity->get_model()->set_texture(entity->get_bitmap());
    entity->get_model()->draw();
    entity->get_placement_ref().restore_transform();
+   */
 }
 
 }

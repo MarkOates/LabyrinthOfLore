@@ -13,9 +13,10 @@ namespace Rendering
 {
 
 
-SceneRenderer::SceneRenderer(ALLEGRO_BITMAP* rendering_surface, LabyrinthOfLore::Rendering::Camera* camera, std::vector<LabyrinthOfLore::Entity::Base*> entities)
+SceneRenderer::SceneRenderer(ALLEGRO_BITMAP* rendering_surface, LabyrinthOfLore::Rendering::Camera* camera, LabyrinthOfLore::Rendering::TileMapMesh tile_map_mesh, std::vector<LabyrinthOfLore::Entity::Base*> entities)
    : rendering_surface(rendering_surface)
    , camera(camera)
+   , tile_map_mesh(tile_map_mesh)
    , entities(entities)
 {
 }
@@ -42,6 +43,8 @@ for (auto &entity : entities)
 {
    LabyrinthOfLore::Rendering::EntityRenderer(entity).render();
 }
+
+tile_map_mesh.draw();
 
 al_restore_state(&previous_render_state);
 return;

@@ -4,6 +4,7 @@
 #include <LabyrinthOfLore/WorldMap/Tile.hpp>
 #include <LabyrinthOfLore/WorldMap/TileMapLoader.hpp>
 #include <LabyrinthOfLore/Rendering/SceneRenderer.hpp>
+#include <LabyrinthOfLore/Rendering/TileMapMesh.hpp>
 #include <LabyrinthOfLore/Physics/EntityTileMapCollisionStepper.hpp>
 #include <allegro_flare/placement2d.h>
 
@@ -133,6 +134,10 @@ int main(int argc, char **argv)
 
       entities.push_back(camera_entity);
 
+      LabyrinthOfLore::Rendering::TileMapMesh tile_map_mesh(tile_map);
+      tile_map_mesh.build();
+
+
       //
 
 
@@ -172,7 +177,7 @@ int main(int argc, char **argv)
                camera.get_position_ref() = camera_entity->get_placement_ref().position;//{5, 20, 2.01 + 0.5};
                camera.get_yaw_ref() = -0.04;
 
-               LabyrinthOfLore::Rendering::SceneRenderer scene_renderer(al_get_backbuffer(display), &camera, entities);
+               LabyrinthOfLore::Rendering::SceneRenderer scene_renderer(al_get_backbuffer(display), &camera, tile_map_mesh, entities);
                scene_renderer.render();
 
                al_flip_display();
