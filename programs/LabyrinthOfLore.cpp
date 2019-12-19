@@ -113,9 +113,6 @@ int main(int argc, char **argv)
       ALLEGRO_DISPLAY *display = al_create_display(1920, 1080);
 
 
-      std::cout << "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" << std::endl;
-
-
       std::vector<LabyrinthOfLore::Entity::Base*> entities = {};
       LabyrinthOfLore::Rendering::Camera camera({0, 0, 0}, 0.0, 0.0);
 
@@ -152,7 +149,6 @@ int main(int argc, char **argv)
       al_register_event_source(event_queue, al_get_timer_event_source(primary_timer));
       al_start_timer(primary_timer);
 
-      std::cout << "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB" << std::endl;
 
       while(!shutdown_program)
       {
