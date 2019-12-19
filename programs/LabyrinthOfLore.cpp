@@ -7,6 +7,7 @@
 #include <LabyrinthOfLore/Rendering/TileMapMesh.hpp>
 #include <LabyrinthOfLore/Physics/EntityTileMapCollisionStepper.hpp>
 #include <allegro_flare/placement2d.h>
+#include <cmath>
 
 
 std::vector<std::vector<LabyrinthOfLore::WorldMap::Tile>> construct_tile_map_data = {
@@ -127,7 +128,7 @@ int main(int argc, char **argv)
       entities = tile_entities_builder.build_entities();
 
       LabyrinthOfLore::Entity::Base* camera_entity = new LabyrinthOfLore::Entity::Base;
-      camera_entity->get_placement_ref().position = AllegroFlare::vec3d(5, 20, 2.01 + 0.5);
+      camera_entity->get_placement_ref().position = AllegroFlare::vec3d(1.5, 1.5, 1.01);
 
       entities.push_back(camera_entity);
 
@@ -165,13 +166,14 @@ int main(int argc, char **argv)
             break;
          case ALLEGRO_EVENT_TIMER:
             {
-               camera_entity->get_velocity_ref().position = {-0.002, -0.05, 0};
+               camera_entity->get_velocity_ref().position = {-0.002, 0.02, 0};
 
                LabyrinthOfLore::Physics::EntityTileMapCollisionStepper entity_tile_map_collision_stepper(tile_map, entities);
                entity_tile_map_collision_stepper.process_step();
 
-               camera.get_position_ref() = camera_entity->get_placement_ref().position;//{5, 20, 2.01 + 0.5};
-               camera.get_yaw_ref() = -0.04;
+               camera.get_position_ref() = camera_entity->get_placement_ref().position + AllegroFlare::vec3d(0, 0, 0.5);//{5, 20, 2.01 + 0.5};
+               camera.get_yaw_ref() = 0.5 + sin(al_get_time()) * 0.02;
+               camera.get_pitch_ref() = sin((al_get_time()+2.345)*0.8534) * 0.02;
 
                LabyrinthOfLore::Rendering::SceneRenderer scene_renderer(al_get_backbuffer(display), &camera, tile_map_mesh, entities);
                scene_renderer.render();

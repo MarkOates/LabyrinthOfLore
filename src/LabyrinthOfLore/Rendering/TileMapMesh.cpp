@@ -25,16 +25,17 @@ TileMapMesh::~TileMapMesh()
 
 std::vector<ALLEGRO_VERTEX> TileMapMesh::build_cube(float x, float y, float height)
 {
+ALLEGRO_COLOR cube_color = al_color_name("orange");
 return {
   // top
-  AllegroFlare::build_vertex(x, y, height, al_color_name("orange"), 0, 0), // top left triangle
-  AllegroFlare::build_vertex(x+1, y, height, al_color_name("orange"), 1, 0),
-  AllegroFlare::build_vertex(x, y+1, height, al_color_name("orange"), 0, 1),
+  AllegroFlare::build_vertex(-x, y, height, cube_color, 0, 0), // top left triangle
+  AllegroFlare::build_vertex(-x+1, y, height, cube_color, 1, 0),
+  AllegroFlare::build_vertex(-x, y+1, height, cube_color, 0, 1),
 
-  AllegroFlare::build_vertex(x+1, y, height, al_color_name("orange"), 1, 0), // bottom right triangle
-  AllegroFlare::build_vertex(x, y+1, height, al_color_name("orange"), 0, 1),
-  AllegroFlare::build_vertex(x+1, y+1, height, al_color_name("orange"), 1, 1),
-  //k
+  AllegroFlare::build_vertex(-x+1, y, height, cube_color, 1, 0), // bottom right triangle
+  AllegroFlare::build_vertex(-x, y+1, height, cube_color, 0, 1),
+  AllegroFlare::build_vertex(-x+1, y+1, height, cube_color, 1, 1),
+  //
 };
 
 }
@@ -60,7 +61,23 @@ return true;
 
 void TileMapMesh::draw()
 {
+ALLEGRO_STATE previous_transform_state;
+al_store_state(&previous_transform_state, ALLEGRO_STATE_TRANSFORM);
+
+ALLEGRO_TRANSFORM transform;
+al_identity_transform(&transform);
+al_rotate_transform_3d(&transform, 1, 0, 0, -ALLEGRO_PI/2);
+al_rotate_transform_3d(&transform, 0, 1, 0, -ALLEGRO_PI/2);
+al_rotate_transform_3d(&transform, 0, 1, 0, -ALLEGRO_PI/2);
+//al_rotate_transform_3d(&transform, 0, 0, 1, -ALLEGRO_PI/2);
+//al_scale_transform_3d(&transform, 1.0, 1.0, 1.0);
+al_translate_transform_3d(&transform, 1.0, 0, 0);
+
+al_use_transform(&transform);
+
 al_draw_prim(&vertexes[0], nullptr, nullptr, 0, vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
+
+al_restore_state(&previous_transform_state);
 
 }
 } // namespace Rendering
