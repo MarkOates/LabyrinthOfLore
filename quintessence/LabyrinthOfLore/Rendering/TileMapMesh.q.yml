@@ -40,7 +40,7 @@ functions:
         default_argument: 1
     body: |
       ALLEGRO_COLOR cube_color = random_color();
-      int u = 0
+      int u = 0;
       int v = texture ? al_get_bitmap_width(texture) : 1;
 
       return {
