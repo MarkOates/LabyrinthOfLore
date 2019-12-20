@@ -5,6 +5,7 @@
 #include <LabyrinthOfLore/WorldMap/TileMapLoader.hpp>
 #include <LabyrinthOfLore/Rendering/SceneRenderer.hpp>
 #include <LabyrinthOfLore/Rendering/TileMapMesh.hpp>
+#include <LabyrinthOfLore/Physics/GravityStepper.hpp>
 #include <LabyrinthOfLore/Physics/EntityTileMapCollisionStepper.hpp>
 #include <allegro_flare/placement2d.h>
 #include <cmath>
@@ -155,7 +156,8 @@ int main(int argc, char **argv)
 
       float player_yaw = 0.0;
       float player_pitch = 0.0;
-
+      camera_entity->get_velocity_ref().position = {-0.002, 0.02, 0};
+      camera_entity->get_placement_ref().rotation = {0.0, 0.0, 0.0};
 
       while(!shutdown_program)
       {
@@ -172,8 +174,8 @@ int main(int argc, char **argv)
             break;
          case ALLEGRO_EVENT_TIMER:
             {
-               camera_entity->get_velocity_ref().position = {-0.002, 0.02, 0};
-               camera_entity->get_placement_ref().rotation = {0.0, 0.0, 0.0};
+               LabyrinthOfLore::Physics::GravityStepper gravity_stepper(entities);
+               gravity_stepper.process_step();
 
                LabyrinthOfLore::Physics::EntityTileMapCollisionStepper entity_tile_map_collision_stepper(tile_map, entities);
                entity_tile_map_collision_stepper.process_step();
