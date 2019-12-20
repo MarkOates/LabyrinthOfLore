@@ -9,6 +9,7 @@
 #include <LabyrinthOfLore/Physics/EntityTileMapCollisionStepper.hpp>
 #include <LabyrinthOfLore/Rendering/PickingBufferRenderer.hpp>
 #include <LabyrinthOfLore/Rendering/MousePointer.hpp>
+#include <LabyrinthOfLore/Rendering/HudRenderer.hpp>
 #include <AllegroFlare/PickingBuffer.hpp>
 #include <allegro_flare/placement2d.h>
 #include <AllegroFlare/Useful.hpp>
@@ -195,10 +196,12 @@ int main(int argc, char **argv)
 
                //
 
+               LabyrinthOfLore::Rendering::MousePointer mouse_pointer(player_mouse_x, player_mouse_y);
+               LabyrinthOfLore::Rendering::HudRenderer hud_renderer(hud_rendering_surface, &mouse_pointer);
+               hud_renderer.render();
+
                al_set_target_bitmap(hud_rendering_surface);
 
-               LabyrinthOfLore::Rendering::MousePointer mouse_pointer(player_mouse_x, player_mouse_y);
-               mouse_pointer.render();
 
                al_flip_display();
             }
