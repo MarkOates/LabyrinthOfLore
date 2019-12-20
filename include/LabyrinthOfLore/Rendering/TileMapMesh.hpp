@@ -14,10 +14,11 @@ namespace LabyrinthOfLore
       {
       private:
          LabyrinthOfLore::WorldMap::TileMap tile_map;
+         ALLEGRO_BITMAP* texture;
          std::vector<ALLEGRO_VERTEX> vertexes;
 
       public:
-         TileMapMesh(LabyrinthOfLore::WorldMap::TileMap tile_map={});
+         TileMapMesh(LabyrinthOfLore::WorldMap::TileMap tile_map={}, ALLEGRO_BITMAP* texture=nullptr);
          ~TileMapMesh();
 
 

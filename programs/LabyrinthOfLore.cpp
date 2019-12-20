@@ -39,10 +39,6 @@ std::vector<std::vector<LabyrinthOfLore::WorldMap::Tile>> construct_tile_map_dat
    { { 1, 10.0 },  { 0, 1.0 },     { 0, 1.0 }, { 0, 1.0 }, { 0, 1.0 }, { 0, 1.0 }, { 0, 1.0 }, { 1, 10.0 }, },
    { { 1, 10.0 },  { 0, 1.0 },     { 0, 1.0 }, { 0, 1.0 }, { 0, 1.0 }, { 0, 1.0 }, { 0, 1.0 }, { 1, 10.0 }, },
    { { 1, 10.0 },  { 0, 1.0 },     { 0, 1.0 }, { 0, 1.0 }, { 0, 1.0 }, { 0, 1.0 }, { 0, 1.0 }, { 1, 10.0 }, },
-   { { 1, 10.0 },  { 0, 1.0 },     { 0, 1.0 }, { 0, 1.0 }, { 0, 1.0 }, { 0, 1.0 }, { 0, 1.0 }, { 1, 10.0 }, },
-   { { 1, 10.0 },  { 0, 1.0 },     { 0, 1.0 }, { 0, 1.0 }, { 0, 1.0 }, { 0, 1.0 }, { 0, 1.0 }, { 1, 10.0 }, },
-   { { 1, 10.0 },  { 0, 1.0 },     { 0, 1.0 }, { 0, 1.0 }, { 0, 1.0 }, { 0, 1.0 }, { 0, 1.0 }, { 1, 10.0 }, },
-   { { 1, 10.0 },  { 0, 1.0 },     { 0, 1.0 }, { 0, 1.0 }, { 0, 1.0 }, { 0, 1.0 }, { 0, 1.0 }, { 1, 10.0 }, },
    { { 1, 10.0 }, { 1, 10.0 }, { 1, 10.0 }, { 1, 10.0 }, { 1, 10.0 }, { 1, 10.0 }, { 1, 10.0 }, { 1, 10.0 }, },
 };
 
@@ -79,12 +75,17 @@ int main(int argc, char **argv)
 
       //
 
+      ALLEGRO_BITMAP *tile_mesh_texture = al_load_bitmap("data/bitmaps/grid-texture-128.png");
+      if (!tile_mesh_texture) throw std::runtime_error("could not load grid-texture-128.png");
+
+      //
+
       LabyrinthOfLore::Entity::Base* camera_entity = new LabyrinthOfLore::Entity::Base;
       camera_entity->get_placement_ref().position = AllegroFlare::vec3d(1.5, 1.5, 1.01);
 
       entities.push_back(camera_entity);
 
-      LabyrinthOfLore::Rendering::TileMapMesh tile_map_mesh(tile_map);
+      LabyrinthOfLore::Rendering::TileMapMesh tile_map_mesh(tile_map, tile_mesh_texture);
       tile_map_mesh.build();
 
 
@@ -101,7 +102,6 @@ int main(int argc, char **argv)
       ALLEGRO_TIMER *primary_timer = al_create_timer(1.0/60.0);
       al_register_event_source(event_queue, al_get_timer_event_source(primary_timer));
       al_start_timer(primary_timer);
-
 
       //
 
