@@ -47,52 +47,6 @@ std::vector<std::vector<LabyrinthOfLore::WorldMap::Tile>> construct_tile_map_dat
 };
 
 
-class TileEntitiesBuilder
-{
-private:
-   LabyrinthOfLore::WorldMap::TileMap &tile_map;
-   AllegroFlare::Model3D cube_model;
-   ALLEGRO_BITMAP *cube_texture;
-
-public:
-   TileEntitiesBuilder(LabyrinthOfLore::WorldMap::TileMap &tile_map)
-      : tile_map(tile_map)
-      , cube_model()
-      , cube_texture(nullptr)
-   {}
-   ~TileEntitiesBuilder() {}
-
-   void initialize()
-   {
-      cube_model.load_obj_file("data/models/unit_cube-01.obj", 1.0);
-      cube_texture = al_load_bitmap("data/bitmaps/unit_cube-01b.png");
-   }
-
-   std::vector<LabyrinthOfLore::Entity::Base*> build_entities()
-   {
-      std::vector<LabyrinthOfLore::Entity::Base*> entities = {};
-
-      for (unsigned y=0; y<tile_map.get_height(); y++)
-      {
-         for (unsigned x=0; x<tile_map.get_width(); x++)
-         {
-            int tile_type = tile_map.get_tile(x, y).get_type();
-            float tile_height = tile_map.get_tile(x, y).get_height();
-            LabyrinthOfLore::Entity::Base* entity = new LabyrinthOfLore::Entity::Base;
-
-            entity->get_placement_ref().position = AllegroFlare::vec3d(x, tile_height, y);
-            entity->set_model(&cube_model);
-            entity->set_bitmap(cube_texture);
-
-            entities.push_back(entity);
-         }
-      }
-
-      return entities;
-   }
-};
-
-
 bool active = true;
 
 int main(int argc, char **argv)
@@ -124,10 +78,6 @@ int main(int argc, char **argv)
       LabyrinthOfLore::WorldMap::TileMap tile_map = LabyrinthOfLore::WorldMap::TileMapLoader(construct_tile_map_data).build_tile_map();
 
       //
-
-      TileEntitiesBuilder tile_entities_builder(tile_map);
-      tile_entities_builder.initialize();
-      entities = tile_entities_builder.build_entities();
 
       LabyrinthOfLore::Entity::Base* camera_entity = new LabyrinthOfLore::Entity::Base;
       camera_entity->get_placement_ref().position = AllegroFlare::vec3d(1.5, 1.5, 1.01);
