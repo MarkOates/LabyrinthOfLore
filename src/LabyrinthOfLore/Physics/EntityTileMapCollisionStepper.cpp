@@ -24,6 +24,9 @@ float EntityTileMapCollisionStepper::floor_height = 0.0f;
 float EntityTileMapCollisionStepper::auto_ascend_threshold = 0.25f;
 
 
+float EntityTileMapCollisionStepper::offset_at_collision_edge = 0.001f;
+
+
 EntityTileMapCollisionStepper::EntityTileMapCollisionStepper(LabyrinthOfLore::WorldMap::TileMap& tile_map, std::vector<LabyrinthOfLore::Entity::Base*> entities)
    : tile_map(tile_map)
    , entities(entities)
@@ -51,6 +54,12 @@ float EntityTileMapCollisionStepper::get_floor_height()
 float EntityTileMapCollisionStepper::get_auto_ascend_threshold()
 {
    return auto_ascend_threshold;
+}
+
+
+float EntityTileMapCollisionStepper::get_offset_at_collision_edge()
+{
+   return offset_at_collision_edge;
 }
 
 
@@ -96,7 +105,7 @@ for (auto &entity : entities)
    }
    if ((posZ + dirZ) < tile_map.get_tile(int(posX), int(posY)).get_height())
    {
-      posZ = tile_map.get_tile(int(posX), int(posY)).get_height() + 0.01f;
+      posZ = tile_map.get_tile(int(posX), int(posY)).get_height() + get_offset_at_collision_edge();
       entity->get_velocity_ref().position.z = 0.0f;
    }
    else
@@ -106,14 +115,14 @@ for (auto &entity : entities)
 
    entity->get_placement_ref().position.x = posX;
    entity->get_placement_ref().position.y = posY;
-   float clamped_ceiling = std::min<float>(get_ceiling_height()-0.01, posZ);
+   float clamped_ceiling = std::min<float>(get_ceiling_height()-get_offset_at_collision_edge(), posZ);
    if (fabs(clamped_ceiling - posZ) > 0.0001f)
    {
       // has been clamped at the ceiling
       entity->get_velocity_ref().position.z = 0.0f;
    }
 
-   float clamped_floor = std::max<float>(get_floor_height()+0.01, clamped_ceiling);
+   float clamped_floor = std::max<float>(get_floor_height()+get_offset_at_collision_edge(), clamped_ceiling);
    if (fabs(clamped_floor - posZ) > 0.0001f)
    {
       // has been clamped at the ceiling
