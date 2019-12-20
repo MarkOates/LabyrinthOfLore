@@ -7,6 +7,8 @@
 #include <LabyrinthOfLore/Rendering/TileMapMesh.hpp>
 #include <LabyrinthOfLore/Physics/GravityStepper.hpp>
 #include <LabyrinthOfLore/Physics/EntityTileMapCollisionStepper.hpp>
+#include <LabyrinthOfLore/Rendering/PickingBufferRenderer.hpp>
+#include <AllegroFlare/PickingBuffer.hpp>
 #include <allegro_flare/placement2d.h>
 #include <AllegroFlare/Useful.hpp>
 #include <cmath>
@@ -91,6 +93,9 @@ int main(int argc, char **argv)
       LabyrinthOfLore::Rendering::TileMapMesh tile_map_mesh(tile_map, tile_mesh_texture);
       tile_map_mesh.build();
 
+      AllegroFlare::PickingBuffer picking_buffer(1920, 1080, 32);
+      picking_buffer.initialize();
+
 
       //
 
@@ -158,7 +163,12 @@ int main(int argc, char **argv)
                camera.get_yaw_ref() = player_yaw + 0.5;// + sin(al_get_time()) * 0.02;
                camera.get_pitch_ref() = player_pitch;// + sin((al_get_time()+2.345)*0.8534) * 0.02;
 
+               //
+
                LabyrinthOfLore::Rendering::SceneRenderer scene_renderer(al_get_backbuffer(display), &camera, tile_map_mesh, entities);
+               scene_renderer.render();
+
+               LabyrinthOfLore::Rendering::PickingBufferRenderer picking_buffer_renderer(&picking_buffer, &camera, tile_map_mesh, entities);
                scene_renderer.render();
 
                al_flip_display();
@@ -169,6 +179,9 @@ int main(int argc, char **argv)
                al_drop_next_event(event_queue);
          }
       }
+
+      al_save_bitmap("tmp/scene.png", al_get_backbuffer(display));
+      al_save_bitmap("tmp/picking.png", picking_buffer.get_surface_render());
    }
 
    return 0;
