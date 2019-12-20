@@ -1,0 +1,24 @@
+properties:
+  - name: x
+    type: float
+    init_with: 1
+    constructor_arg: true
+  - name: y
+    type: float
+    init_with: 1
+    constructor_arg: true
+functions:
+  - name: render
+    type: void
+    body: |
+      float size = 10;
+      al_draw_filled_rectangle(x-size, y-size, x+size, y+size, al_color_name("white"));
+    body_dependency_symbols:
+      - al_draw_filled_rectangle
+      - al_color_name
+dependencies:
+  - symbol: al_draw_filled_rectangle
+    headers: [ allegro5/allegro_primitives.h ]
+  - symbol: al_color_name
+    headers: [ allegro5/allegro_color.h ]
+
