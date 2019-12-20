@@ -105,6 +105,9 @@ int main(int argc, char **argv)
       //
 
 
+      ALLEGRO_BITMAP *scene_rendering_surface = al_create_sub_bitmap(al_get_backbuffer(display), 0, 0, al_get_display_width(display), al_get_display_height(display));
+      if (!scene_rendering_surface) throw std::runtime_error("could not create scene_rendering_surface");
+
       ALLEGRO_BITMAP *hud_rendering_surface = al_create_sub_bitmap(al_get_backbuffer(display), 0, 0, al_get_display_width(display), al_get_display_height(display));
       if (!hud_rendering_surface) throw std::runtime_error("could not create hud_rendering_surface");
 
@@ -186,7 +189,7 @@ int main(int argc, char **argv)
 
                //
 
-               LabyrinthOfLore::Rendering::SceneRenderer scene_renderer(al_get_backbuffer(display), &camera, tile_map_mesh, entities);
+               LabyrinthOfLore::Rendering::SceneRenderer scene_renderer(scene_rendering_surface, &camera, tile_map_mesh, entities);
                scene_renderer.render();
 
                //
