@@ -107,6 +107,9 @@ int main(int argc, char **argv)
       al_install_keyboard();
       al_register_event_source(event_queue, al_get_keyboard_event_source());
 
+      al_install_mouse();
+      al_register_event_source(event_queue, al_get_mouse_event_source());
+
       ALLEGRO_TIMER *primary_timer = al_create_timer(1.0/60.0);
       al_register_event_source(event_queue, al_get_timer_event_source(primary_timer));
       al_start_timer(primary_timer);
