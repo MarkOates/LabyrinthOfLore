@@ -111,6 +111,7 @@ int main(int argc, char **argv)
       float player_yaw = 0.0;
       float player_pitch = 0.0;
       float player_turning = 0.0;
+      float max_player_turning_speed = 0.0023;
       float player_movement_magnitude = 0.0;
 
       camera_entity->get_velocity_ref().position = {0.0, 0.0, 0};
@@ -128,9 +129,9 @@ int main(int argc, char **argv)
             break;
          case ALLEGRO_EVENT_KEY_DOWN:
             if (this_event.keyboard.keycode == ALLEGRO_KEY_ESCAPE) shutdown_program = true;
-            if (this_event.keyboard.keycode == ALLEGRO_KEY_A) player_turning = -0.0015;
+            if (this_event.keyboard.keycode == ALLEGRO_KEY_A) player_turning = -max_player_turning_speed;
             if (this_event.keyboard.keycode == ALLEGRO_KEY_W) player_movement_magnitude = 0.022;
-            if (this_event.keyboard.keycode == ALLEGRO_KEY_D) player_turning = 0.0015;
+            if (this_event.keyboard.keycode == ALLEGRO_KEY_D) player_turning = max_player_turning_speed;
             if (this_event.keyboard.keycode == ALLEGRO_KEY_S) player_movement_magnitude = -0.022;
             break;
          case ALLEGRO_EVENT_KEY_UP:
