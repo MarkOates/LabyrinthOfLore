@@ -1,15 +1,15 @@
 
 #include <gtest/gtest.h>
 
-#include <LabyrinthOfLore/Physics/Gravity.hpp>
+#include <LabyrinthOfLore/Physics/GravityStepper.hpp>
 
-TEST(LabyrinthOfLore_Physics_GravityTest, can_be_created_without_blowing_up)
+TEST(LabyrinthOfLore_Physics_GravityStepperTest, can_be_created_without_blowing_up)
 {
-   LabyrinthOfLore::Physics::Gravity gravity;
+   LabyrinthOfLore::Physics::GravityStepper gravity_stepper;
 }
 
-TEST(LabyrinthOfLore_Physics_GravityTest, process_step__applies_the_gravity_value_to_the_entities)
+TEST(LabyrinthOfLore_Physics_GravityStepperTest, process_step__applies_the_gravity_value_to_the_entities)
 {
-   LabyrinthOfLore::Physics::Gravity gravity;
+   LabyrinthOfLore::Physics::GravityStepper gravity_stepper;
    // not tested
 }
