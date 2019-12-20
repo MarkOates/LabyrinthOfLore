@@ -107,7 +107,9 @@ int main(int argc, char **argv)
 
       float player_yaw = 0.0;
       float player_pitch = 0.0;
-      camera_entity->get_velocity_ref().position = {0.0, 0.06, 0};
+      float player_turning = 0.0;
+
+      camera_entity->get_velocity_ref().position = {0.0, 0.02, 0};
       camera_entity->get_placement_ref().rotation = {0.0, 0.0, 0.0};
 
       while(!shutdown_program)
@@ -122,16 +124,24 @@ int main(int argc, char **argv)
             break;
          case ALLEGRO_EVENT_KEY_DOWN:
             if (this_event.keyboard.keycode == ALLEGRO_KEY_ESCAPE) shutdown_program = true;
+            if (this_event.keyboard.keycode == ALLEGRO_KEY_A) player_turning = -0.0015;
+            if (this_event.keyboard.keycode == ALLEGRO_KEY_D) player_turning = 0.0015;
+            break;
+         case ALLEGRO_EVENT_KEY_UP:
+            if (this_event.keyboard.keycode == ALLEGRO_KEY_A) player_turning = 0.0;
+            if (this_event.keyboard.keycode == ALLEGRO_KEY_D) player_turning = 0.0;
             break;
          case ALLEGRO_EVENT_TIMER:
             {
+               player_yaw += player_turning;
+
                LabyrinthOfLore::Physics::GravityStepper gravity_stepper(entities);
                gravity_stepper.process_step();
 
                LabyrinthOfLore::Physics::EntityTileMapCollisionStepper entity_tile_map_collision_stepper(tile_map, entities);
                entity_tile_map_collision_stepper.process_step();
 
-               camera.get_position_ref() = camera_entity->get_placement_ref().position + AllegroFlare::vec3d(0, 0, 0.5);//{5, 20, 2.01 + 0.5};
+               camera.get_position_ref() = camera_entity->get_placement_ref().position + AllegroFlare::vec3d(0, 0, 0.65);//{5, 20, 2.01 + 0.5};
                camera.get_yaw_ref() = player_yaw + 0.5 + sin(al_get_time()) * 0.02;
                camera.get_pitch_ref() = player_pitch + sin((al_get_time()+2.345)*0.8534) * 0.02;
 
