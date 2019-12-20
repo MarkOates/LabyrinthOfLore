@@ -1,0 +1,21 @@
+properties:
+  - name: entities
+    type: std::vector<LabyrinthOfLore::Entity::Base*>
+    init_with: "{}"
+    constructor_arg: true
+  - name: gravity
+    type: AllegroFlare::vec3d
+    init_with: 0.0f, 0.0f, -0.003f
+functions:
+  - name: process_step
+    type: void
+    body: |
+      for (auto &entity : entities)
+      {
+         entity->get_velocity_ref().position += gravity;
+      }
+dependencies:
+  - symbol: AllegroFlare::vec3d
+    headers: [ AllegroFlare/Vec3D.hpp ]
+  - symbol: std::vector<LabyrinthOfLore::Entity::Base*>
+    headers: [ vector, LabyrinthOfLore/Entity/Base.hpp ]
