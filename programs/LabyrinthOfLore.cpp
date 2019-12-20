@@ -215,7 +215,7 @@ int main(int argc, char **argv)
          }
       }
 
-      al_save_bitmap("tmp/scene.png", al_get_backbuffer(display));
+      al_save_bitmap("tmp/scene.png", scene_rendering_surface);
       al_save_bitmap("tmp/picking.png", picking_buffer.get_surface_render());
    }
 
