@@ -39,12 +39,12 @@ al_clear_to_color(al_color_name("maroon"));
 
 camera->start_projection(rendering_surface);
 
+tile_map_mesh.draw();
+
 for (auto &entity : entities)
 {
    LabyrinthOfLore::Rendering::EntityRenderer(entity).render();
 }
-
-tile_map_mesh.draw();
 
 al_restore_state(&previous_render_state);
 return;

@@ -39,6 +39,8 @@ al_clear_to_color(al_map_rgba_f(0, 0, 0, 0));
 
 camera->start_projection(picking_buffer->get_surface_render());
 
+//tile_map_mesh.draw();
+
 clamped_color_shader->activate();
 
 for (auto &entity : entities)
