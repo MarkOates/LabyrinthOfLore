@@ -8,6 +8,7 @@
 #include <LabyrinthOfLore/Physics/GravityStepper.hpp>
 #include <LabyrinthOfLore/Physics/EntityTileMapCollisionStepper.hpp>
 #include <LabyrinthOfLore/Rendering/PickingBufferRenderer.hpp>
+#include <LabyrinthOfLore/Rendering/MousePointer.hpp>
 #include <AllegroFlare/PickingBuffer.hpp>
 #include <allegro_flare/placement2d.h>
 #include <AllegroFlare/Useful.hpp>
@@ -56,7 +57,6 @@ int main(int argc, char **argv)
    {
       al_init();
       al_init_image_addon();
-      //al_init_path_addon();
 
       ALLEGRO_PATH *resource_path = al_get_standard_path(ALLEGRO_RESOURCES_PATH);
       al_change_directory(al_path_cstr(resource_path, ALLEGRO_NATIVE_PATH_SEP));
@@ -67,6 +67,7 @@ int main(int argc, char **argv)
       al_set_new_display_option(ALLEGRO_DEPTH_SIZE, 32, ALLEGRO_SUGGEST);
       al_set_new_display_option(ALLEGRO_SAMPLES, 16, ALLEGRO_SUGGEST);
       al_set_new_display_flags(ALLEGRO_RESIZABLE | ALLEGRO_OPENGL | ALLEGRO_PROGRAMMABLE_PIPELINE);
+
 
       ALLEGRO_DISPLAY *display = al_create_display(1920, 1080);
 
@@ -93,12 +94,21 @@ int main(int argc, char **argv)
       LabyrinthOfLore::Rendering::TileMapMesh tile_map_mesh(tile_map, tile_mesh_texture);
       tile_map_mesh.build();
 
+      LabyrinthOfLore::Shader::ClampedColor clamped_color_shader;
+      clamped_color_shader.initialize();
+
       AllegroFlare::PickingBuffer picking_buffer(1920, 1080, 32);
       picking_buffer.initialize();
 
 
       //
 
+
+      ALLEGRO_BITMAP *hud_rendering_surface = al_create_sub_bitmap(al_get_backbuffer(display), 0, 0, al_get_display_width(display), al_get_display_height(display));
+      if (!hud_rendering_surface) throw std::runtime_error("could not create hud_rendering_surface");
+
+
+      //
 
       bool shutdown_program = false;
 
@@ -122,6 +132,9 @@ int main(int argc, char **argv)
       float max_player_turning_speed = 0.0023;
       float player_movement_magnitude = 0.0;
 
+      int player_mouse_x = 0;
+      int player_mouse_y = 0;
+
       camera_entity->get_velocity_ref().position = {0.0, 0.0, 0};
       camera_entity->get_placement_ref().rotation = {0.0, 0.0, 0.0};
 
@@ -134,6 +147,10 @@ int main(int argc, char **argv)
          {
          case ALLEGRO_EVENT_DISPLAY_CLOSE:
             shutdown_program = true;
+            break;
+         case ALLEGRO_EVENT_MOUSE_AXES:
+            player_mouse_x = this_event.mouse.x;
+            player_mouse_y = this_event.mouse.y;
             break;
          case ALLEGRO_EVENT_KEY_DOWN:
             if (this_event.keyboard.keycode == ALLEGRO_KEY_ESCAPE) shutdown_program = true;
@@ -171,8 +188,17 @@ int main(int argc, char **argv)
                LabyrinthOfLore::Rendering::SceneRenderer scene_renderer(al_get_backbuffer(display), &camera, tile_map_mesh, entities);
                scene_renderer.render();
 
-               LabyrinthOfLore::Rendering::PickingBufferRenderer picking_buffer_renderer(&picking_buffer, &camera, tile_map_mesh, entities);
-               scene_renderer.render();
+               //
+
+               LabyrinthOfLore::Rendering::PickingBufferRenderer picking_buffer_renderer(&picking_buffer, &camera, tile_map_mesh, entities, &clamped_color_shader);
+               picking_buffer_renderer.render();
+
+               //
+
+               al_set_target_bitmap(hud_rendering_surface);
+
+               LabyrinthOfLore::Rendering::MousePointer mouse_pointer(player_mouse_x, player_mouse_y);
+               mouse_pointer.render();
 
                al_flip_display();
             }
