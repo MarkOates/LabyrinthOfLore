@@ -10,9 +10,10 @@ namespace Rendering
 {
 
 
-PickingBufferRenderer::PickingBufferRenderer(AllegroFlare::PickingBuffer* picking_buffer, LabyrinthOfLore::Rendering::Camera* camera, std::vector<LabyrinthOfLore::Entity::Base*> entities, LabyrinthOfLore::Shader::ClampedColor* clamped_color_shader)
+PickingBufferRenderer::PickingBufferRenderer(AllegroFlare::PickingBuffer* picking_buffer, LabyrinthOfLore::Rendering::Camera* camera, LabyrinthOfLore::Rendering::TileMapMesh tile_map_mesh, std::vector<LabyrinthOfLore::Entity::Base*> entities, LabyrinthOfLore::Shader::ClampedColor* clamped_color_shader)
    : picking_buffer(picking_buffer)
    , camera(camera)
+   , tile_map_mesh(tile_map_mesh)
    , entities(entities)
    , clamped_color_shader(clamped_color_shader)
 {
@@ -39,7 +40,6 @@ al_clear_to_color(al_map_rgba_f(0, 0, 0, 0));
 camera->start_projection(picking_buffer->get_surface_render());
 
 clamped_color_shader->activate();
-
 
 for (auto &entity : entities)
 {

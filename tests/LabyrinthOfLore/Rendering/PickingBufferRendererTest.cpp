@@ -48,11 +48,12 @@ TEST_F(LabyrinthOfLore_Rendering_PickingBufferRendererTest, render__does_not_exp
    AllegroFlare::PickingBuffer picking_buffer(800, 600);
    picking_buffer.initialize();
    LabyrinthOfLore::Rendering::Camera camera;
+   LabyrinthOfLore::Rendering::TileMapMesh tile_map_mesh;
    std::vector<LabyrinthOfLore::Entity::Base*> entities = {};
    LabyrinthOfLore::Shader::ClampedColor clamped_color_shader;
    clamped_color_shader.initialize();
 
-   LabyrinthOfLore::Rendering::PickingBufferRenderer picking_buffer_renderer(&picking_buffer, &camera, entities, &clamped_color_shader);
+   LabyrinthOfLore::Rendering::PickingBufferRenderer picking_buffer_renderer(&picking_buffer, &camera, tile_map_mesh, entities, &clamped_color_shader);
 
    picking_buffer_renderer.render();
 }
@@ -65,6 +66,7 @@ TEST_F(LabyrinthOfLore_Rendering_PickingBufferRendererTest, render__displays_the
    AllegroFlare::PickingBuffer picking_buffer(800, 600);
    picking_buffer.initialize();
    LabyrinthOfLore::Rendering::Camera camera;
+   LabyrinthOfLore::Rendering::TileMapMesh tile_map_mesh;
    std::vector<LabyrinthOfLore::Entity::Base*> entities = {};
    LabyrinthOfLore::Shader::ClampedColor clamped_color_shader;
    clamped_color_shader.initialize();
@@ -78,7 +80,7 @@ TEST_F(LabyrinthOfLore_Rendering_PickingBufferRendererTest, render__displays_the
    entity->get_placement_ref().scale = AllegroFlare::vec3d(0.01, 0.01, 0.01);
    entities.push_back(entity);
 
-   LabyrinthOfLore::Rendering::PickingBufferRenderer picking_buffer_renderer(&picking_buffer, &camera, entities, &clamped_color_shader);
+   LabyrinthOfLore::Rendering::PickingBufferRenderer picking_buffer_renderer(&picking_buffer, &camera, tile_map_mesh, entities, &clamped_color_shader);
    picking_buffer_renderer.render();
 
    al_init_image_addon();
@@ -93,6 +95,7 @@ TEST_F(LabyrinthOfLore_Rendering_PickingBufferRendererTest, render__renders_the_
    AllegroFlare::PickingBuffer picking_buffer(800, 600);
    picking_buffer.initialize();
    LabyrinthOfLore::Rendering::Camera camera({0, 5, 0}, 0, 0);
+   LabyrinthOfLore::Rendering::TileMapMesh tile_map_mesh;
    std::vector<LabyrinthOfLore::Entity::Base*> entities = {};
    LabyrinthOfLore::Shader::ClampedColor clamped_color_shader;
    clamped_color_shader.initialize();
@@ -115,7 +118,7 @@ TEST_F(LabyrinthOfLore_Rendering_PickingBufferRendererTest, render__renders_the_
       entities.push_back(entity);
    }
 
-   LabyrinthOfLore::Rendering::PickingBufferRenderer picking_buffer_renderer(&picking_buffer, &camera, entities, &clamped_color_shader);
+   LabyrinthOfLore::Rendering::PickingBufferRenderer picking_buffer_renderer(&picking_buffer, &camera, tile_map_mesh, entities, &clamped_color_shader);
    picking_buffer_renderer.render();
 
    al_init_image_addon();
