@@ -2,7 +2,7 @@
 
 
 #include <LabyrinthOfLore/Entity/Base.hpp>
-#include <allegro_flare/placement3d.h>
+#include <LabyrinthOfLore/Rendering/Camera.hpp>
 #include <vector>
 
 
@@ -13,11 +13,11 @@ namespace LabyrinthOfLore
       class SpritesBillboarder
       {
       private:
-         allegro_flare::placement3d camera_placement;
+         LabyrinthOfLore::Rendering::Camera camera;
          std::vector<LabyrinthOfLore::Entity::Base*> entities;
 
       public:
-         SpritesBillboarder(allegro_flare::placement3d camera_placement={}, std::vector<LabyrinthOfLore::Entity::Base*> entities={});
+         SpritesBillboarder(LabyrinthOfLore::Rendering::Camera camera={}, std::vector<LabyrinthOfLore::Entity::Base*> entities={});
          ~SpritesBillboarder();
 
 

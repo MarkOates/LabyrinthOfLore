@@ -39,15 +39,17 @@ al_identity_transform(&transform);
 
 allegro_flare::placement3d &place = entity->get_placement_ref();
 
-al_scale_transform_3d(&transform, place.scale.x, place.scale.y, place.scale.z);
 
-//al_rotate_transform_3d(&transform, 1, 0, 0, -ALLEGRO_PI/2);
-//al_rotate_transform_3d(&transform, 0, 1, 0, -ALLEGRO_PI/2);
-//al_rotate_transform_3d(&transform, 0, 1, 0, -ALLEGRO_PI/2);
-//al_rotate_transform_3d(&transform, 0, 0, 1, -ALLEGRO_PI/2);
-//al_scale_transform_3d(&transform, 1.0, 1.0, 1.0);
+// rotate
+al_rotate_transform_3d(&transform, 0, 1, 0, place.rotation.y * (ALLEGRO_PI*2)); // "turning head" transform
+al_rotate_transform_3d(&transform, 1, 0, 0, place.rotation.x * (ALLEGRO_PI*2)); // "tilting head" transform
+//al_rotate_transform_3d(&transform, 0, 0, 1, place.rotation.z * (ALLEGRO_PI*2)); // <-- uuhh... not sure how this should work
+
+al_scale_transform_3d(&transform, place.scale.x, place.scale.y, place.scale.z);
                     // in world:      moves horizontal, moves vertical,   moves height
 al_translate_transform_3d(&transform, place.position.x, place.position.z, place.position.y);
+
+
 
 al_use_transform(&transform);
 

@@ -12,8 +12,8 @@ namespace Rendering
 {
 
 
-SpritesBillboarder::SpritesBillboarder(allegro_flare::placement3d camera_placement, std::vector<LabyrinthOfLore::Entity::Base*> entities)
-   : camera_placement(camera_placement)
+SpritesBillboarder::SpritesBillboarder(LabyrinthOfLore::Rendering::Camera camera, std::vector<LabyrinthOfLore::Entity::Base*> entities)
+   : camera(camera)
    , entities(entities)
 {
 }
@@ -26,14 +26,11 @@ SpritesBillboarder::~SpritesBillboarder()
 
 void SpritesBillboarder::process()
 {
-return;
-AllegroFlare::vec3d camera_rotation = camera_placement.rotation;
-
 for (auto &entity : entities)
 {
    if (entity->get_billboard_at_camera())
    {
-      entity->get_placement_ref().rotation = camera_rotation;
+      entity->get_placement_ref().rotation.y = -camera.get_yaw_ref();
    }
 }
 return;

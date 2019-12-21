@@ -13,13 +13,16 @@
 #include <LabyrinthOfLore/Physics/EntityTileMapCollisionStepper.hpp>
 #include <LabyrinthOfLore/Rendering/PickingBufferRenderer.hpp>
 #include <LabyrinthOfLore/Rendering/MousePointer.hpp>
+#include <LabyrinthOfLore/Rendering/SpritesBillboarder.hpp>
 #include <LabyrinthOfLore/Rendering/HudRenderer.hpp>
 #include <AllegroFlare/PickingBuffer.hpp>
+#include <AllegroFlare/Random.hpp>
 #include <allegro_flare/placement2d.h>
 #include <AllegroFlare/Useful.hpp>
 #include <cmath>
 
 using AllegroFlare::radians_to_degrees;
+using AllegroFlare::Random;
 
 
 std::vector<std::vector<LabyrinthOfLore::WorldMap::Tile>> construct_tile_map_data = {
@@ -103,15 +106,20 @@ int main(int argc, char **argv)
       entities.push_back(camera_entity);
 
 
+      Random random;
+
       for (int y=1; y<3; y++)
       {
          for (int x=1; x<3; x++)
          {
             LabyrinthOfLore::Entity::Base* entity = new LabyrinthOfLore::Entity::Base;
+            entity->set_billboard_at_camera(true);
             entity->set_bitmap(billboarding_tester_sprite);
-            entity->get_placement_ref().scale = AllegroFlare::vec3d(0.01, 0.01, 0.01);
+            entity->get_placement_ref().scale = AllegroFlare::vec3d(0.005, 0.005, 0.005);
             entity->get_placement_ref().align = AllegroFlare::vec3d(0.5, 1.0, 0.0);
             entity->get_placement_ref().position = AllegroFlare::vec3d(x + 0.5, y + 0.5, 1.01);
+            entity->get_placement_ref().rotation = AllegroFlare::vec3d(0, random.get_random_float(-1, 1), 0);
+            //entity->get_placement_ref().rotation = AllegroFlare::vec3d(random.get_random_float(-1, 1), random.get_random_float(-1, 1), random.get_random_float(-1, 1));
 
             entities.push_back(entity);
 
@@ -176,7 +184,7 @@ int main(int argc, char **argv)
 
       //
 
-      float player_yaw = 0.0;
+      float player_yaw = 0.5;
       float player_pitch = 0.0;
       float player_turning = 0.0;
       float max_player_turning_speed = 0.0023;
@@ -186,7 +194,8 @@ int main(int argc, char **argv)
       int player_mouse_y = 0;
 
       camera_entity->get_velocity_ref().position = {0.0, 0.0, 0};
-      camera_entity->get_placement_ref().rotation = {0.0, 0.0, 0.0};
+      camera_entity->get_placement_ref().position = {2.5, 2.5, 0.0};
+      //camera_entity->get_placement_ref().rotation = {2.5, 2.5, 0.0};
 
       while(!shutdown_program)
       {
@@ -199,8 +208,8 @@ int main(int argc, char **argv)
             shutdown_program = true;
             break;
          case ALLEGRO_EVENT_MOUSE_AXES:
-            player_mouse_x = this_event.mouse.x;
-            player_mouse_y = this_event.mouse.y;
+            player_mouse_x = this_event.mouse.x/resolution_scale;
+            player_mouse_y = this_event.mouse.y/resolution_scale;
             break;
          case ALLEGRO_EVENT_KEY_DOWN:
             if (this_event.keyboard.keycode == ALLEGRO_KEY_ESCAPE) shutdown_program = true;
@@ -235,6 +244,11 @@ int main(int argc, char **argv)
 
                //
 
+               LabyrinthOfLore::Rendering::SpritesBillboarder sprites_billboarder(camera, entities);
+               sprites_billboarder.process();
+
+               //
+
                LabyrinthOfLore::Rendering::SceneRenderer scene_renderer(scene_rendering_surface, &camera, tile_map_mesh, entities);
                scene_renderer.render();
 
@@ -245,14 +259,15 @@ int main(int argc, char **argv)
 
                //
 
-               LabyrinthOfLore::Rendering::MousePointer mouse_pointer(player_mouse_x, player_mouse_y);
-               LabyrinthOfLore::Rendering::HudRenderer hud_renderer(hud_rendering_surface, &mouse_pointer);
-               hud_renderer.render();
+               //LabyrinthOfLore::Rendering::MousePointer mouse_pointer(player_mouse_x, player_mouse_y);
+               //LabyrinthOfLore::Rendering::HudRenderer hud_renderer(hud_rendering_surface, &mouse_pointer);
+               //hud_renderer.render();
 
                al_set_target_bitmap(al_get_backbuffer(display));
                al_clear_depth_buffer(1);
 
                al_draw_scaled_bitmap(buffer_buffer, 0, 0, al_get_bitmap_width(buffer_buffer), al_get_bitmap_height(buffer_buffer), 0, 0, al_get_display_width(display), al_get_display_height(display), 0);
+               //al_draw_scaled_bitmap(picking_buffer.get_surface_render(), 0, 0, al_get_bitmap_width(buffer_buffer), al_get_bitmap_height(buffer_buffer), 0, 0, al_get_display_width(display), al_get_display_height(display), 0);
 
                al_flip_display();
             }

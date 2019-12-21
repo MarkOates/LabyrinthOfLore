@@ -1,6 +1,6 @@
 properties:
-  - name: camera_placement
-    type: allegro_flare::placement3d
+  - name: camera
+    type: LabyrinthOfLore::Rendering::Camera
     init_with: "{}"
     constructor_arg: true
   - name: entities
@@ -11,14 +11,11 @@ functions:
   - name: process
     type: void
     body: |
-      return;
-      AllegroFlare::vec3d camera_rotation = camera_placement.rotation;
-
       for (auto &entity : entities)
       {
          if (entity->get_billboard_at_camera())
          {
-            entity->get_placement_ref().rotation = camera_rotation;
+            entity->get_placement_ref().rotation.y = -camera.get_yaw_ref();
          }
       }
       return;
@@ -39,3 +36,5 @@ dependencies:
     headers: [ allegro_flare/placement3d.h ]
   - symbol: vec3d::placement3d
     headers: [ allegro_flare/placement3d.h ]
+  - symbol: LabyrinthOfLore::Rendering::Camera
+    headers: [ LabyrinthOfLore/Rendering/Camera.hpp ]
