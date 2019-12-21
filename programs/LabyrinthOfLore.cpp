@@ -1,4 +1,8 @@
+#define ALLEGRO_UNSTABLE
+
+
 #include <allegro5/allegro.h>
+
 
 #include <LabyrinthOfLore/Entity/Base.hpp>
 #include <LabyrinthOfLore/WorldMap/Tile.hpp>
@@ -70,6 +74,9 @@ int main(int argc, char **argv)
       al_set_new_display_flags(ALLEGRO_RESIZABLE | ALLEGRO_OPENGL | ALLEGRO_PROGRAMMABLE_PIPELINE);
 
 
+      float resolution_scale = 4;
+
+
       ALLEGRO_DISPLAY *display = al_create_display(1920, 1080);
 
 
@@ -104,11 +111,27 @@ int main(int argc, char **argv)
 
       //
 
+      int previous_depth = al_get_new_bitmap_depth();
+      int previous_samples = al_get_new_bitmap_samples();
+      ALLEGRO_STATE previous_state;
+      al_store_state(&previous_state, ALLEGRO_STATE_BITMAP);
 
-      ALLEGRO_BITMAP *scene_rendering_surface = al_create_sub_bitmap(al_get_backbuffer(display), 0, 0, al_get_display_width(display), al_get_display_height(display));
+      al_set_new_bitmap_depth(32);
+      al_set_new_bitmap_samples(0);
+      //ALLEGRO_BITMAP *bmp = al_create_bitmap(w, h);
+
+      ALLEGRO_BITMAP *buffer_buffer = al_create_bitmap(al_get_display_width(display)/resolution_scale, al_get_display_height(display)/resolution_scale);
+      //ALLEGRO_BITMAP *buffer_buffer = al_get_backbuffer(display);
+
+      al_restore_state(&previous_state);
+      al_set_new_bitmap_depth(previous_depth);
+      al_set_new_bitmap_samples(previous_samples);
+
+
+      ALLEGRO_BITMAP *scene_rendering_surface = al_create_sub_bitmap(buffer_buffer, 0, 0, al_get_bitmap_width(buffer_buffer), al_get_bitmap_height(buffer_buffer));
       if (!scene_rendering_surface) throw std::runtime_error("could not create scene_rendering_surface");
 
-      ALLEGRO_BITMAP *hud_rendering_surface = al_create_sub_bitmap(al_get_backbuffer(display), 0, 0, al_get_display_width(display), al_get_display_height(display));
+      ALLEGRO_BITMAP *hud_rendering_surface = al_create_sub_bitmap(buffer_buffer, 0, 0, al_get_bitmap_width(buffer_buffer), al_get_bitmap_height(buffer_buffer));
       if (!hud_rendering_surface) throw std::runtime_error("could not create hud_rendering_surface");
 
 
@@ -203,8 +226,10 @@ int main(int argc, char **argv)
                LabyrinthOfLore::Rendering::HudRenderer hud_renderer(hud_rendering_surface, &mouse_pointer);
                hud_renderer.render();
 
-               al_set_target_bitmap(hud_rendering_surface);
+               al_set_target_bitmap(al_get_backbuffer(display));
+               al_clear_depth_buffer(1);
 
+               al_draw_scaled_bitmap(buffer_buffer, 0, 0, al_get_bitmap_width(buffer_buffer), al_get_bitmap_height(buffer_buffer), 0, 0, al_get_display_width(display), al_get_display_height(display), 0);
 
                al_flip_display();
             }
@@ -215,8 +240,9 @@ int main(int argc, char **argv)
          }
       }
 
-      al_save_bitmap("tmp/scene.png", scene_rendering_surface);
-      al_save_bitmap("tmp/picking.png", picking_buffer.get_surface_render());
+      al_save_bitmap("tmp/buffer_buffer.png", buffer_buffer);
+      //al_save_bitmap("tmp/scene.png", scene_rendering_surface);
+      //al_save_bitmap("tmp/picking.png", picking_buffer.get_surface_render());
    }
 
    return 0;
