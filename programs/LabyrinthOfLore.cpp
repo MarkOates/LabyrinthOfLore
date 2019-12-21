@@ -77,7 +77,7 @@ int main(int argc, char **argv)
       al_set_new_display_flags(ALLEGRO_RESIZABLE | ALLEGRO_OPENGL | ALLEGRO_PROGRAMMABLE_PIPELINE);
 
 
-      float resolution_scale = 3;
+      float resolution_scale = 1;
 
 
       ALLEGRO_DISPLAY *display = al_create_display(1920, 1080);
