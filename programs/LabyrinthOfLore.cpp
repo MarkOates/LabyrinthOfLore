@@ -137,7 +137,7 @@ int main(int argc, char **argv)
       LabyrinthOfLore::Shader::ClampedColor clamped_color_shader;
       clamped_color_shader.initialize();
 
-      AllegroFlare::PickingBuffer picking_buffer(1920, 1080, 32);
+      AllegroFlare::PickingBuffer picking_buffer(al_get_display_width(display)/resolution_scale, al_get_display_height(display)/resolution_scale, 32);
       picking_buffer.initialize();
 
 
