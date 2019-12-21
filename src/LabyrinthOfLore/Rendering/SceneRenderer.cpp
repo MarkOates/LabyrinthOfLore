@@ -38,7 +38,7 @@ ALLEGRO_STATE previous_render_state;
 al_store_state(&previous_render_state, ALLEGRO_STATE_TARGET_BITMAP);
 al_set_target_bitmap(rendering_surface);
 
-al_clear_to_color(al_color_name("maroon"));
+al_clear_to_color(al_color_name("black"));
 
 camera->start_projection(rendering_surface);
 

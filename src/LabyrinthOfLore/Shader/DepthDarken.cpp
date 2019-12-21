@@ -79,8 +79,8 @@ static const std::string source = R"DELIM(
      float depth_value = gl_FragCoord.a;
      //float inverse_tint_intensity = 1.0 - tint_intensity;
      tmp.r = tmp.r * depth_value;
-     //tmp.g = (tmp.g * inverse_tint_intensity + tint.g * tint_intensity) * tmp.a;
-     //tmp.b = (tmp.b * inverse_tint_intensity + tint.b * tint_intensity) * tmp.a;
+     tmp.g = tmp.g * depth_value;
+     tmp.b = tmp.b * depth_value;
      //tmp.a = tmp.a;
 
      gl_FragColor = tmp;
