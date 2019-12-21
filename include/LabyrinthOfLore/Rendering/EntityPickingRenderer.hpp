@@ -20,6 +20,7 @@ namespace LabyrinthOfLore
          ~EntityPickingRenderer();
 
 
+      void render_with_custom_transform();
       void render();
       };
    }

@@ -61,13 +61,22 @@ std::vector<ALLEGRO_VERTEX> result = {
   AllegroFlare::build_vertex(mul*x+1, y+1, height, cube_color, v, v),
 
   // left
-  //AllegroFlare::build_vertex(mul*x, y, height, cube_color, 0, 0), // top left triangle
-  //AllegroFlare::build_vertex(mul*x, y+1, height, cube_color, v, 0),
-  //AllegroFlare::build_vertex(mul*x, y, 0, cube_color, 0, v),
+  AllegroFlare::build_vertex(mul*x, y, height, cube_color, 0, 0), // top left triangle
+  AllegroFlare::build_vertex(mul*x, y+1, height, cube_color, v, 0),
+  AllegroFlare::build_vertex(mul*x, y, 0, cube_color, 0, v),
 
-  //AllegroFlare::build_vertex(mul*x, y+1, height, cube_color, v, 0), // bottom right triangle
-  //AllegroFlare::build_vertex(mul*x, y, 0, cube_color, 0, v),
-  //AllegroFlare::build_vertex(mul*x, y+1, 0, cube_color, v, v),
+  AllegroFlare::build_vertex(mul*x, y+1, height, cube_color, v, 0), // bottom right triangle
+  AllegroFlare::build_vertex(mul*x, y, 0, cube_color, 0, v),
+  AllegroFlare::build_vertex(mul*x, y+1, 0, cube_color, v, v),
+
+  // right
+  //AllegroFlare::build_vertex(mul*x+1, y+1, height, cube_color, 0, 0), // top left triangle
+  //AllegroFlare::build_vertex(mul*x+1, y, height, cube_color, v, 0),
+  //AllegroFlare::build_vertex(mul*x+1, y+1, 0, cube_color, 0, v),
+
+  //AllegroFlare::build_vertex(mul*x+1, y, height, cube_color, v, 0), // bottom right triangle
+  //AllegroFlare::build_vertex(mul*x+1, y+1, 0, cube_color, 0, v),
+  //AllegroFlare::build_vertex(mul*x+1, y, 0, cube_color, v, v),
 
   // right
   //AllegroFlare::build_vertex(mul*x+1, y+1, height, cube_color, 0, 0), // top left triangle

@@ -35,7 +35,7 @@ ALLEGRO_STATE previous_render_state;
 al_store_state(&previous_render_state, ALLEGRO_STATE_TARGET_BITMAP);
 al_set_target_bitmap(picking_buffer->get_surface_render());
 
-al_clear_to_color(al_map_rgba_f(0, 0, 0, 0));
+al_clear_to_color(al_map_rgba_f(0, 0.5, 0, 1.0));
 
 camera->start_projection(picking_buffer->get_surface_render());
 

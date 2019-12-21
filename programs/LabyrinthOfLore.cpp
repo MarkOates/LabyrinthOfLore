@@ -77,7 +77,7 @@ int main(int argc, char **argv)
       al_set_new_display_flags(ALLEGRO_RESIZABLE | ALLEGRO_OPENGL | ALLEGRO_PROGRAMMABLE_PIPELINE);
 
 
-      float resolution_scale = 4;
+      float resolution_scale = 1;
 
 
       ALLEGRO_DISPLAY *display = al_create_display(1920, 1080);
@@ -255,6 +255,8 @@ int main(int argc, char **argv)
 
                //
 
+               al_clear_depth_buffer(1);
+               al_set_render_state(ALLEGRO_DEPTH_TEST, 1);
                LabyrinthOfLore::Rendering::PickingBufferRenderer picking_buffer_renderer(&picking_buffer, &camera, tile_map_mesh, entities, &clamped_color_shader);
                picking_buffer_renderer.render();
 
@@ -265,8 +267,7 @@ int main(int argc, char **argv)
                //hud_renderer.render();
 
                al_set_target_bitmap(al_get_backbuffer(display));
-               al_clear_depth_buffer(1);
-
+               al_set_render_state(ALLEGRO_DEPTH_TEST, 0);
                al_draw_scaled_bitmap(buffer_buffer, 0, 0, al_get_bitmap_width(buffer_buffer), al_get_bitmap_height(buffer_buffer), 0, 0, al_get_display_width(display), al_get_display_height(display), 0);
                //al_draw_scaled_bitmap(picking_buffer.get_surface_render(), 0, 0, al_get_bitmap_width(buffer_buffer), al_get_bitmap_height(buffer_buffer), 0, 0, al_get_display_width(display), al_get_display_height(display), 0);
 
