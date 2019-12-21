@@ -209,14 +209,14 @@ int main(int argc, char **argv)
             shutdown_program = true;
             break;
          case ALLEGRO_EVENT_MOUSE_AXES:
-            player_mouse_x = this_event.mouse.x/resolution_scale;
-            player_mouse_y = this_event.mouse.y/resolution_scale;
+            player_mouse_x = this_event.mouse.x;
+            player_mouse_y = this_event.mouse.y;
             break;
          case ALLEGRO_EVENT_MOUSE_BUTTON_DOWN:
             {
-               player_mouse_x = this_event.mouse.x/resolution_scale;
-               player_mouse_y = this_event.mouse.y/resolution_scale;
-               int picked_id = picking_buffer.get_id(player_mouse_x, player_mouse_y);
+               player_mouse_x = this_event.mouse.x;
+               player_mouse_y = this_event.mouse.y;
+               int picked_id = picking_buffer.get_id(player_mouse_x/resolution_scale, player_mouse_y/resolution_scale);
                std::cout << "Picked ID: " << picked_id << std::endl;
                break;
             }
@@ -270,14 +270,16 @@ int main(int argc, char **argv)
 
                //
 
-               //LabyrinthOfLore::Rendering::MousePointer mouse_pointer(player_mouse_x, player_mouse_y);
-               //LabyrinthOfLore::Rendering::HudRenderer hud_renderer(hud_rendering_surface, &mouse_pointer);
-               //hud_renderer.render();
-
                al_set_target_bitmap(al_get_backbuffer(display));
                al_set_render_state(ALLEGRO_DEPTH_TEST, 0);
                al_draw_scaled_bitmap(buffer_buffer, 0, 0, al_get_bitmap_width(buffer_buffer), al_get_bitmap_height(buffer_buffer), 0, 0, al_get_display_width(display), al_get_display_height(display), 0);
                //al_draw_scaled_bitmap(picking_buffer.get_surface_render(), 0, 0, al_get_bitmap_width(buffer_buffer), al_get_bitmap_height(buffer_buffer), 0, 0, al_get_display_width(display), al_get_display_height(display), 0);
+
+               //
+
+               LabyrinthOfLore::Rendering::MousePointer mouse_pointer(player_mouse_x, player_mouse_y);
+               LabyrinthOfLore::Rendering::HudRenderer hud_renderer(al_get_backbuffer(display), &mouse_pointer);
+               hud_renderer.render();
 
                al_flip_display();
             }
