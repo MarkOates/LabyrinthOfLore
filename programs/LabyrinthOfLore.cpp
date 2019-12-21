@@ -92,8 +92,8 @@ int main(int argc, char **argv)
 
       //
 
-      ALLEGRO_BITMAP *tile_mesh_texture = al_load_bitmap("data/bitmaps/grid-texture-128.png");
-      if (!tile_mesh_texture) throw std::runtime_error("could not load grid-texture-128.png");
+      ALLEGRO_BITMAP *tile_mesh_texture = al_load_bitmap("data/bitmaps/wall-tile-01-3x.png");
+      if (!tile_mesh_texture) throw std::runtime_error("could not load tile_mesh_texture");
 
       ALLEGRO_BITMAP *billboarding_tester_sprite = al_load_bitmap("data/bitmaps/billboarding_tester_sprite.png");
       if (!billboarding_tester_sprite) throw std::runtime_error("could not load billboarding_tester_sprite.png");
@@ -249,7 +249,7 @@ int main(int argc, char **argv)
 
                camera.get_position_ref() = camera_entity->get_placement_ref().position + AllegroFlare::vec3d(0, 0, 0.65);//{5, 20, 2.01 + 0.5};
                camera.get_yaw_ref() = player_yaw + 0.5;// + sin(al_get_time()) * 0.02;
-               camera.get_pitch_ref() = player_pitch + sin((al_get_time()+2.345)*0.8534) * 0.02;
+               camera.get_pitch_ref() = player_pitch - 0.02;;// + sin((al_get_time()+2.345)*0.8534) * 0.02;
 
                //
 
