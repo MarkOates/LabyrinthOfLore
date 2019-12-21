@@ -134,11 +134,14 @@ int main(int argc, char **argv)
       LabyrinthOfLore::Rendering::TileMapMesh tile_map_mesh(tile_map, tile_mesh_texture);
       tile_map_mesh.build();
 
+      AllegroFlare::PickingBuffer picking_buffer(al_get_display_width(display)/resolution_scale, al_get_display_height(display)/resolution_scale, 32);
+      picking_buffer.initialize();
+
       LabyrinthOfLore::Shader::ClampedColor clamped_color_shader;
       clamped_color_shader.initialize();
 
-      AllegroFlare::PickingBuffer picking_buffer(al_get_display_width(display)/resolution_scale, al_get_display_height(display)/resolution_scale, 32);
-      picking_buffer.initialize();
+      LabyrinthOfLore::Shader::DepthDarken depth_darken_shader;
+      depth_darken_shader.initialize();
 
 
       //
@@ -258,7 +261,7 @@ int main(int argc, char **argv)
 
                //
 
-               LabyrinthOfLore::Rendering::SceneRenderer scene_renderer(scene_rendering_surface, &camera, tile_map_mesh, entities);
+               LabyrinthOfLore::Rendering::SceneRenderer scene_renderer(scene_rendering_surface, &camera, tile_map_mesh, entities, &depth_darken_shader);
                scene_renderer.render();
 
                //

@@ -4,6 +4,7 @@
 #include <LabyrinthOfLore/Entity/Base.hpp>
 #include <LabyrinthOfLore/Rendering/Camera.hpp>
 #include <LabyrinthOfLore/Rendering/TileMapMesh.hpp>
+#include <LabyrinthOfLore/Shader/DepthDarken.hpp>
 #include <allegro5/allegro.h>
 #include <vector>
 
@@ -19,9 +20,10 @@ namespace LabyrinthOfLore
          LabyrinthOfLore::Rendering::Camera* camera;
          LabyrinthOfLore::Rendering::TileMapMesh tile_map_mesh;
          std::vector<LabyrinthOfLore::Entity::Base*> entities;
+         LabyrinthOfLore::Shader::DepthDarken* depth_darken_shader;
 
       public:
-         SceneRenderer(ALLEGRO_BITMAP* rendering_surface=nullptr, LabyrinthOfLore::Rendering::Camera* camera=nullptr, LabyrinthOfLore::Rendering::TileMapMesh tile_map_mesh={}, std::vector<LabyrinthOfLore::Entity::Base*> entities={});
+         SceneRenderer(ALLEGRO_BITMAP* rendering_surface=nullptr, LabyrinthOfLore::Rendering::Camera* camera=nullptr, LabyrinthOfLore::Rendering::TileMapMesh tile_map_mesh={}, std::vector<LabyrinthOfLore::Entity::Base*> entities={}, LabyrinthOfLore::Shader::DepthDarken* depth_darken_shader=nullptr);
          ~SceneRenderer();
 
 

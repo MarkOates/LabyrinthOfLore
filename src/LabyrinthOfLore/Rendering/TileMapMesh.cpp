@@ -44,7 +44,7 @@ std::vector<ALLEGRO_VERTEX> TileMapMesh::build_cube(float x, float y, float heig
 {
 ALLEGRO_COLOR cube_color = random_color();
 int u = 0;
-int v = texture ? al_get_bitmap_width(texture) : 1;
+int v = 1; //texture ? al_get_bitmap_width(texture) : 1;
 
 float mul = -1;
 
