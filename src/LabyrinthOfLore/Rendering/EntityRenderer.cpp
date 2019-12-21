@@ -40,6 +40,8 @@ al_identity_transform(&transform);
 allegro_flare::placement3d &place = entity->get_placement_ref();
 
 
+al_translate_transform_3d(&transform, place.size.x * -place.align.x, 0, 0); //place.position.z, place.position.y);
+
 // rotate
 al_rotate_transform_3d(&transform, 1, 0, 0, place.rotation.x * (ALLEGRO_PI*2)); // "tilting head" transform
 al_rotate_transform_3d(&transform, 0, 1, 0, place.rotation.y * (ALLEGRO_PI*2)); // "turning head" transform
