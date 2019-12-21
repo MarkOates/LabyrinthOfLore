@@ -212,6 +212,14 @@ int main(int argc, char **argv)
             player_mouse_x = this_event.mouse.x/resolution_scale;
             player_mouse_y = this_event.mouse.y/resolution_scale;
             break;
+         case ALLEGRO_EVENT_MOUSE_BUTTON_DOWN:
+            {
+               player_mouse_x = this_event.mouse.x/resolution_scale;
+               player_mouse_y = this_event.mouse.y/resolution_scale;
+               int picked_id = picking_buffer.get_id(player_mouse_x, player_mouse_y);
+               std::cout << "Picked ID: " << picked_id << std::endl;
+               break;
+            }
          case ALLEGRO_EVENT_KEY_DOWN:
             if (this_event.keyboard.keycode == ALLEGRO_KEY_ESCAPE) shutdown_program = true;
             if (this_event.keyboard.keycode == ALLEGRO_KEY_A) player_turning = -max_player_turning_speed;
