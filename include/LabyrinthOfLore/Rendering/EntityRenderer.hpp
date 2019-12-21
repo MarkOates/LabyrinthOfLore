@@ -18,6 +18,8 @@ namespace LabyrinthOfLore
          ~EntityRenderer();
 
 
+      void render_with_legacy_transform();
+      void render_with_custom_transform();
       void render();
       };
    }
