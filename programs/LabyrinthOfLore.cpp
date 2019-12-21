@@ -92,12 +92,35 @@ int main(int argc, char **argv)
       ALLEGRO_BITMAP *tile_mesh_texture = al_load_bitmap("data/bitmaps/grid-texture-128.png");
       if (!tile_mesh_texture) throw std::runtime_error("could not load grid-texture-128.png");
 
+      ALLEGRO_BITMAP *billboarding_tester_sprite = al_load_bitmap("data/bitmaps/billboarding_tester_sprite.png");
+      if (!billboarding_tester_sprite) throw std::runtime_error("could not load billboarding_tester_sprite.png");
+
       //
 
       LabyrinthOfLore::Entity::Base* camera_entity = new LabyrinthOfLore::Entity::Base;
       camera_entity->get_placement_ref().position = AllegroFlare::vec3d(1.5, 1.5, 1.01);
 
       entities.push_back(camera_entity);
+
+
+      for (int y=1; y<3; y++)
+      {
+         for (int x=1; x<3; x++)
+         {
+            LabyrinthOfLore::Entity::Base* entity = new LabyrinthOfLore::Entity::Base;
+            entity->set_bitmap(billboarding_tester_sprite);
+            entity->get_placement_ref().scale = AllegroFlare::vec3d(0.01, 0.01, 0.01);
+            entity->get_placement_ref().align = AllegroFlare::vec3d(0.5, 1.0, 0.0);
+            entity->get_placement_ref().position = AllegroFlare::vec3d(x + 0.5, y + 0.5, 1.01);
+
+            entities.push_back(entity);
+
+            std::cout << "entity made " << std::endl;
+         }
+      }
+
+
+      //
 
       LabyrinthOfLore::Rendering::TileMapMesh tile_map_mesh(tile_map, tile_mesh_texture);
       tile_map_mesh.build();
