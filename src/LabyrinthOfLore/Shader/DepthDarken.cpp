@@ -76,8 +76,9 @@ static const std::string source = R"DELIM(
   {
      vec4 tmp = texture2D(al_tex, varying_texcoord);
 
+     float depth_value = gl_FragCoord.a;
      //float inverse_tint_intensity = 1.0 - tint_intensity;
-     //tmp.r = (tmp.r * inverse_tint_intensity + tint.r * tint_intensity) * tmp.a;
+     tmp.r = tmp.r * depth_value;
      //tmp.g = (tmp.g * inverse_tint_intensity + tint.g * tint_intensity) * tmp.a;
      //tmp.b = (tmp.b * inverse_tint_intensity + tint.b * tint_intensity) * tmp.a;
      //tmp.a = tmp.a;
