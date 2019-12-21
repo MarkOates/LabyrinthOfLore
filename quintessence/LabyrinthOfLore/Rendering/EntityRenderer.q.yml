@@ -23,8 +23,8 @@ functions:
 
 
       // rotate
-      al_rotate_transform_3d(&transform, 0, 1, 0, place.rotation.y * (ALLEGRO_PI*2)); // "turning head" transform
       al_rotate_transform_3d(&transform, 1, 0, 0, place.rotation.x * (ALLEGRO_PI*2)); // "tilting head" transform
+      al_rotate_transform_3d(&transform, 0, 1, 0, place.rotation.y * (ALLEGRO_PI*2)); // "turning head" transform
       //al_rotate_transform_3d(&transform, 0, 0, 1, place.rotation.z * (ALLEGRO_PI*2)); // <-- uuhh... not sure how this should work
 
       al_scale_transform_3d(&transform, place.scale.x, place.scale.y, place.scale.z);
