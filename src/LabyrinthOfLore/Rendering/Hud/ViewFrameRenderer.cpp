@@ -33,7 +33,7 @@ if (!view_frame) throw std::runtime_error("Cannot draw ViewFrame with a nullptr 
 
 place.start_transform();
 
-al_draw_filled_rounded_rectangle(0, 0, place.size.x, place.size.y, 6, 6, al_color_name("red"));
+al_draw_rounded_rectangle(0, 0, place.size.x, place.size.y, 6, 6, al_color_name("red"), 3.0);
 al_draw_text(font, al_color_name("white"), 0, 0, 0, " - view frame - ");
 
 place.restore_transform();
