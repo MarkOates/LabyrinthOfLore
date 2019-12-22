@@ -1,0 +1,29 @@
+properties:
+  - name: render_surface
+    type: ALLEGRO_BITMAP*
+    init_with: nullptr
+    constructor_arg: true
+  - name: mouse_pointer
+    type: LabyrinthOfLore::Rendering::MousePointer*
+    init_with: nullptr
+    constructor_arg: true
+functions:
+  - name: render
+    type: void
+    body: |
+      if (!render_surface) throw std::runtime_error("cannot render HudRenderer with a nullptr render_surface");
+
+      al_set_target_bitmap(render_surface);
+
+      if (mouse_pointer) mouse_pointer->render();
+
+      return;
+    body_dependency_symbols:
+      - std::runtime_error
+dependencies:
+  - symbol: ALLEGRO_BITMAP*
+    headers: [ allegro5/allegro.h ]
+  - symbol: LabyrinthOfLore::Rendering::MousePointer*
+    headers: [ LabyrinthOfLore/Rendering/MousePointer.hpp ]
+  - symbol: std::runtime_error
+    headers: [ stdexcept ]
