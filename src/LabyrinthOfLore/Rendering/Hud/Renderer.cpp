@@ -72,7 +72,7 @@ placement.align = AllegroFlare::vec3d(0.5, 0.5, 0);
 placement.size = AllegroFlare::vec3d(40, 200, 0);
 //placement.rotation = AllegroFlare::vec3d(0, 0, 0);
 placement.scale = AllegroFlare::vec3d(2.0, 2.0, 2.0);
-placement.position = AllegroFlare::vec3d(300, al_get_bitmap_height(render_surface)/2, 0);
+placement.position = AllegroFlare::vec3d(al_get_bitmap_width(render_surface) - 300, al_get_bitmap_height(render_surface)/2, 0);
 
 LabyrinthOfLore::Rendering::Hud::CharacterPanelRenderer character_panel_renderer(font, character_panel, placement);
 character_panel_renderer.render();
