@@ -8,6 +8,15 @@
 #include <LabyrinthOfLore/Hud/MessageScroll.hpp>
 #include <LabyrinthOfLore/Hud/CommandPanel.hpp>
 #include <LabyrinthOfLore/Hud/VitalityAndManaBar.hpp>
+#include <LabyrinthOfLore/Hud/CharacterPanel.hpp>
+#include <LabyrinthOfLore/Hud/MapButton.hpp>
+#include <LabyrinthOfLore/Hud/RuneShelf.hpp>
+#include <LabyrinthOfLore/Hud/Compass.hpp>
+#include <LabyrinthOfLore/Hud/RotateCharacterPanelButton.hpp>
+#include <LabyrinthOfLore/Hud/CommandsHintPane.hpp>
+#include <LabyrinthOfLore/Hud/CurrentSpells.hpp>
+#include <LabyrinthOfLore/Hud/ViewFrame.hpp>
+#include <LabyrinthOfLore/Hud/TitleText.hpp>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_ttf.h>
@@ -101,8 +110,16 @@ int main(int argc, char **argv)
 
       LabyrinthOfLore::Hud::MessageScroll message_scroll;
       LabyrinthOfLore::Hud::CommandPanel command_panel;
-      LabyrinthOfLore::Hud::CharacterPanel character_panel;
       LabyrinthOfLore::Hud::VitalityAndManaBar vitality_and_mana_bar;
+      LabyrinthOfLore::Hud::CharacterPanel character_panel;
+      LabyrinthOfLore::Hud::MapButton map_button;
+      LabyrinthOfLore::Hud::RuneShelf rune_shelf;
+      LabyrinthOfLore::Hud::Compass compass;
+      LabyrinthOfLore::Hud::RotateCharacterPanelButton rotate_character_panel_button;
+      LabyrinthOfLore::Hud::CommandsHintPane commands_hint_pane;
+      LabyrinthOfLore::Hud::CurrentSpells current_spells;
+      LabyrinthOfLore::Hud::ViewFrame veiw_frame;
+      LabyrinthOfLore::Hud::TitleText title_text;
 
       //
 
@@ -150,8 +167,16 @@ int main(int argc, char **argv)
                      &font_bin,
                      &message_scroll,
                      &command_panel,
-                     &character_panel,
                      &vitality_and_mana_bar,
+                     &character_panel,
+                     &map_button,
+                     &rune_shelf,
+                     &compass,
+                     &rotate_character_panel_button,
+                     &commands_hint_pane,
+                     &current_spells,
+                     &veiw_frame,
+                     &title_text,
                      &mouse_pointer
                   );
                hud_renderer.render();
