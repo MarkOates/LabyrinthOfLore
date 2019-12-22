@@ -7,6 +7,7 @@
 #include <LabyrinthOfLore/Rendering/Hud/Renderer.hpp>
 #include <LabyrinthOfLore/Hud/MessageScroll.hpp>
 #include <LabyrinthOfLore/Hud/CommandPanel.hpp>
+#include <LabyrinthOfLore/Hud/VitalityAndManaBar.hpp>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_ttf.h>
@@ -100,6 +101,7 @@ int main(int argc, char **argv)
 
       LabyrinthOfLore::Hud::MessageScroll message_scroll;
       LabyrinthOfLore::Hud::CommandPanel command_panel;
+      LabyrinthOfLore::Hud::VitalityAndManaBar vitality_and_mana_bar;
 
       //
 
@@ -147,6 +149,7 @@ int main(int argc, char **argv)
                      &font_bin,
                      &message_scroll,
                      &command_panel,
+                     &vitality_and_mana_bar,
                      &mouse_pointer
                   );
                hud_renderer.render();
