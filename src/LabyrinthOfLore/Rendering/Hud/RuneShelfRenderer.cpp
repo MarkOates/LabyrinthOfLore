@@ -13,7 +13,7 @@ namespace Hud
 {
 
 
-RuneShelfRenderer::RuneShelfRenderer(ALLEGRO_FONT* font, LabyrinthOfLore::Hud::CharacterPanel* rune_shelf, allegro_flare::placement3d place)
+RuneShelfRenderer::RuneShelfRenderer(ALLEGRO_FONT* font, LabyrinthOfLore::Hud::RuneShelf* rune_shelf, allegro_flare::placement3d place)
    : font(font)
    , rune_shelf(rune_shelf)
    , place(place)
@@ -28,8 +28,8 @@ RuneShelfRenderer::~RuneShelfRenderer()
 
 void RuneShelfRenderer::render()
 {
-if (!font) throw std::runtime_error("Cannot draw CharacterPanelRenderer with a nullptr font");
-if (!rune_shelf) throw std::runtime_error("Cannot draw CharacterPanelRenderer with a nullptr rune_shelf");
+if (!font) throw std::runtime_error("Cannot draw RuneShelfRenderer with a nullptr font");
+if (!rune_shelf) throw std::runtime_error("Cannot draw RuneShelfRenderer with a nullptr rune_shelf");
 
 place.start_transform();
 

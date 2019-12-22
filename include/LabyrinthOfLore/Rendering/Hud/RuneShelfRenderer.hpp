@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include <LabyrinthOfLore/Hud/CharacterPanel.hpp>
+#include <LabyrinthOfLore/Hud/RuneShelf.hpp>
 #include <allegro5/allegro_font.h>
 #include <allegro_flare/placement3d.h>
 
@@ -16,11 +16,11 @@ namespace LabyrinthOfLore
          {
          private:
             ALLEGRO_FONT* font;
-            LabyrinthOfLore::Hud::CharacterPanel* rune_shelf;
+            LabyrinthOfLore::Hud::RuneShelf* rune_shelf;
             allegro_flare::placement3d place;
 
          public:
-            RuneShelfRenderer(ALLEGRO_FONT* font=nullptr, LabyrinthOfLore::Hud::CharacterPanel* rune_shelf=nullptr, allegro_flare::placement3d place=allegro_flare::placement3d{});
+            RuneShelfRenderer(ALLEGRO_FONT* font=nullptr, LabyrinthOfLore::Hud::RuneShelf* rune_shelf=nullptr, allegro_flare::placement3d place=allegro_flare::placement3d{});
             ~RuneShelfRenderer();
 
 

@@ -13,7 +13,7 @@ namespace Hud
 {
 
 
-RotateCharacterPanelButtonRenderer::RotateCharacterPanelButtonRenderer(ALLEGRO_FONT* font, LabyrinthOfLore::Hud::CharacterPanel* rotate_character_panel_button, allegro_flare::placement3d place)
+RotateCharacterPanelButtonRenderer::RotateCharacterPanelButtonRenderer(ALLEGRO_FONT* font, LabyrinthOfLore::Hud::RotateCharacterPanelButton* rotate_character_panel_button, allegro_flare::placement3d place)
    : font(font)
    , rotate_character_panel_button(rotate_character_panel_button)
    , place(place)
@@ -28,8 +28,8 @@ RotateCharacterPanelButtonRenderer::~RotateCharacterPanelButtonRenderer()
 
 void RotateCharacterPanelButtonRenderer::render()
 {
-if (!font) throw std::runtime_error("Cannot draw CharacterPanelRenderer with a nullptr font");
-if (!rotate_character_panel_button) throw std::runtime_error("Cannot draw CharacterPanelRenderer with a nullptr rotate_character_panel_button");
+if (!font) throw std::runtime_error("Cannot draw RotateCharacterPanelButtonRenderer with a nullptr font");
+if (!rotate_character_panel_button) throw std::runtime_error("Cannot draw RotateCharacterPanelButtonRenderer with a nullptr rotate_character_panel_button");
 
 place.start_transform();
 

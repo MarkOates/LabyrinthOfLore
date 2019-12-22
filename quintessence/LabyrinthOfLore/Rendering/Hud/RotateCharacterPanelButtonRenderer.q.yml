@@ -4,7 +4,7 @@ properties:
     init_with: nullptr
     constructor_arg: true
   - name: rotate_character_panel_button
-    type: LabyrinthOfLore::Hud::CharacterPanel*
+    type: LabyrinthOfLore::Hud::RotateCharacterPanelButton*
     init_with: nullptr
     constructor_arg: true
   - name: place
@@ -15,8 +15,8 @@ functions:
   - name: render
     type: void
     body: |
-      if (!font) throw std::runtime_error("Cannot draw CharacterPanelRenderer with a nullptr font");
-      if (!rotate_character_panel_button) throw std::runtime_error("Cannot draw CharacterPanelRenderer with a nullptr rotate_character_panel_button");
+      if (!font) throw std::runtime_error("Cannot draw RotateCharacterPanelButtonRenderer with a nullptr font");
+      if (!rotate_character_panel_button) throw std::runtime_error("Cannot draw RotateCharacterPanelButtonRenderer with a nullptr rotate_character_panel_button");
 
       place.start_transform();
 
@@ -29,8 +29,8 @@ functions:
       - al_color_name
       - al_draw_rounded_rectangle
 dependencies:
-  - symbol: LabyrinthOfLore::Hud::CharacterPanel*
-    headers: [ LabyrinthOfLore/Hud/CharacterPanel.hpp ]
+  - symbol: LabyrinthOfLore::Hud::RotateCharacterPanelButton*
+    headers: [ LabyrinthOfLore/Hud/RotateCharacterPanelButton.hpp ]
   - symbol: ALLEGRO_FONT*
     headers: [ allegro5/allegro_font.h ]
   - symbol: al_color_name

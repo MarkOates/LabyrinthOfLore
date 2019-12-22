@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include <LabyrinthOfLore/Hud/CharacterPanel.hpp>
+#include <LabyrinthOfLore/Hud/RotateCharacterPanelButton.hpp>
 #include <allegro5/allegro_font.h>
 #include <allegro_flare/placement3d.h>
 
@@ -16,11 +16,11 @@ namespace LabyrinthOfLore
          {
          private:
             ALLEGRO_FONT* font;
-            LabyrinthOfLore::Hud::CharacterPanel* rotate_character_panel_button;
+            LabyrinthOfLore::Hud::RotateCharacterPanelButton* rotate_character_panel_button;
             allegro_flare::placement3d place;
 
          public:
-            RotateCharacterPanelButtonRenderer(ALLEGRO_FONT* font=nullptr, LabyrinthOfLore::Hud::CharacterPanel* rotate_character_panel_button=nullptr, allegro_flare::placement3d place=allegro_flare::placement3d{});
+            RotateCharacterPanelButtonRenderer(ALLEGRO_FONT* font=nullptr, LabyrinthOfLore::Hud::RotateCharacterPanelButton* rotate_character_panel_button=nullptr, allegro_flare::placement3d place=allegro_flare::placement3d{});
             ~RotateCharacterPanelButtonRenderer();
 
 
