@@ -48,9 +48,11 @@ void Renderer::render_command_panel()
 {
 ALLEGRO_FONT *font = font_bin->operator[]("gameovercre1.ttf -12");
 allegro_flare::placement3d placement{0, 0, 0};
-placement.size = AllegroFlare::vec3d(300, 100, 0);
+placement.align = AllegroFlare::vec3d(0.5, 0.5, 0);
+placement.size = AllegroFlare::vec3d(40, 200, 0);
+//placement.rotation = AllegroFlare::vec3d(0, 0, 0);
 placement.scale = AllegroFlare::vec3d(2.0, 2.0, 2.0);
-placement.position = AllegroFlare::vec3d(al_get_bitmap_width(render_surface)/2, al_get_bitmap_height(render_surface) - 200, 0);
+placement.position = AllegroFlare::vec3d(300, al_get_bitmap_height(render_surface)/2, 0);
 
 LabyrinthOfLore::Rendering::Hud::CommandPanelRenderer command_panel_renderer(font, command_panel, placement);
 command_panel_renderer.render();
