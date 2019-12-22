@@ -1,0 +1,6 @@
+properties:
+  - name: text
+    type: std::string
+    init_with: "\"Hello, brave soul. Adventure awaits you.\""
+    getter: true
+    setter: true

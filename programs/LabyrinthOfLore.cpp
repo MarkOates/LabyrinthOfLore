@@ -15,6 +15,10 @@
 #include <LabyrinthOfLore/Rendering/MousePointer.hpp>
 #include <LabyrinthOfLore/Rendering/SpritesBillboarder.hpp>
 #include <LabyrinthOfLore/Rendering/Hud/Renderer.hpp>
+#include <LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer.hpp>
+#include <LabyrinthOfLore/Hud/MessageScroll.hpp>
+#include <AllegroFlare/FontBin.hpp>
+#include <AllegroFlare/BitmapBin.hpp>
 #include <AllegroFlare/PickingBuffer.hpp>
 #include <AllegroFlare/Random.hpp>
 #include <allegro_flare/placement2d.h>
@@ -64,7 +68,9 @@ int main(int argc, char **argv)
    if (active)
    {
       al_init();
+      al_init_font_addon();
       al_init_image_addon();
+      al_init_primitives_addon();
 
       ALLEGRO_PATH *resource_path = al_get_standard_path(ALLEGRO_RESOURCES_PATH);
       al_change_directory(al_path_cstr(resource_path, ALLEGRO_NATIVE_PATH_SEP));
@@ -128,6 +134,15 @@ int main(int argc, char **argv)
          }
       }
 
+
+      //
+
+      AllegroFlare::FontBin font_bin;
+      font_bin.set_path("data/fonts");
+      font_bin.operator[]("gameovercre1.ttf -12");
+
+      AllegroFlare::BitmapBin bitmap_bin;
+      bitmap_bin.set_path("data/bitmaps");
 
       //
 
@@ -200,6 +215,12 @@ int main(int argc, char **argv)
       camera_entity->get_velocity_ref().position = {0.0, 0.0, 0};
       camera_entity->get_placement_ref().position = {2.5, 2.5, 0.0};
       //camera_entity->get_placement_ref().rotation = {2.5, 2.5, 0.0};
+
+      //
+
+      LabyrinthOfLore::Hud::MessageScroll message_scroll;
+
+      //
 
       while(!shutdown_program)
       {
@@ -281,7 +302,7 @@ int main(int argc, char **argv)
                //
 
                LabyrinthOfLore::Rendering::MousePointer mouse_pointer(player_mouse_x, player_mouse_y);
-               LabyrinthOfLore::Rendering::Hud::Renderer hud_renderer(al_get_backbuffer(display), &mouse_pointer);
+               LabyrinthOfLore::Rendering::Hud::Renderer hud_renderer(al_get_backbuffer(display), &font_bin, &message_scroll, &mouse_pointer);
                hud_renderer.render();
 
                al_flip_display();
