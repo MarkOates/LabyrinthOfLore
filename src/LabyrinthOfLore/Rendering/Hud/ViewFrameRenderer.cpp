@@ -1,7 +1,8 @@
 
 
 #include <LabyrinthOfLore/Rendering/Hud/ViewFrameRenderer.hpp>
-
+#include <allegro5/allegro_color.h>
+#include <allegro5/allegro_primitives.h>
 
 
 namespace LabyrinthOfLore
@@ -12,7 +13,10 @@ namespace Hud
 {
 
 
-ViewFrameRenderer::ViewFrameRenderer()
+ViewFrameRenderer::ViewFrameRenderer(ALLEGRO_FONT* font, LabyrinthOfLore::Hud::ViewFrame* view_frame, allegro_flare::placement3d place)
+   : font(font)
+   , view_frame(view_frame)
+   , place(place)
 {
 }
 
@@ -22,9 +26,19 @@ ViewFrameRenderer::~ViewFrameRenderer()
 }
 
 
-std::string ViewFrameRenderer::run()
+void ViewFrameRenderer::render()
 {
-return "Hello World!";
+if (!font) throw std::runtime_error("Cannot draw ViewFrame with a nullptr font");
+if (!view_frame) throw std::runtime_error("Cannot draw ViewFrame with a nullptr view_frame");
+
+place.start_transform();
+
+al_draw_filled_rounded_rectangle(0, 0, place.size.x, place.size.y, 6, 6, al_color_name("red"));
+al_draw_text(font, al_color_name("white"), 0, 0, 0, " - view frame - ");
+
+place.restore_transform();
+return;
+
 }
 } // namespace Hud
 } // namespace Rendering

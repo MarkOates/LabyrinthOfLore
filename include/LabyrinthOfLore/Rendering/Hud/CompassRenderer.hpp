@@ -1,7 +1,9 @@
 #pragma once
 
 
-#include <string>
+#include <LabyrinthOfLore/Hud/Compass.hpp>
+#include <allegro5/allegro_font.h>
+#include <allegro_flare/placement3d.h>
 
 
 namespace LabyrinthOfLore
@@ -13,13 +15,16 @@ namespace LabyrinthOfLore
          class CompassRenderer
          {
          private:
+            ALLEGRO_FONT* font;
+            LabyrinthOfLore::Hud::Compass* compass;
+            allegro_flare::placement3d place;
 
          public:
-            CompassRenderer();
+            CompassRenderer(ALLEGRO_FONT* font=nullptr, LabyrinthOfLore::Hud::Compass* compass=nullptr, allegro_flare::placement3d place=allegro_flare::placement3d{});
             ~CompassRenderer();
 
 
-         std::string run();
+         void render();
          };
       }
    }

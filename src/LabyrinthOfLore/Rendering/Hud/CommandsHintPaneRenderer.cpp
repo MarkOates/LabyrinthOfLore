@@ -1,7 +1,8 @@
 
 
 #include <LabyrinthOfLore/Rendering/Hud/CommandsHintPaneRenderer.hpp>
-
+#include <allegro5/allegro_color.h>
+#include <allegro5/allegro_primitives.h>
 
 
 namespace LabyrinthOfLore
@@ -12,7 +13,10 @@ namespace Hud
 {
 
 
-CommandsHintPaneRenderer::CommandsHintPaneRenderer()
+CommandsHintPaneRenderer::CommandsHintPaneRenderer(ALLEGRO_FONT* font, LabyrinthOfLore::Hud::CommandsHintPane* commands_hint_pane, allegro_flare::placement3d place)
+   : font(font)
+   , commands_hint_pane(commands_hint_pane)
+   , place(place)
 {
 }
 
@@ -22,9 +26,19 @@ CommandsHintPaneRenderer::~CommandsHintPaneRenderer()
 }
 
 
-std::string CommandsHintPaneRenderer::run()
+void CommandsHintPaneRenderer::render()
 {
-return "Hello World!";
+if (!font) throw std::runtime_error("Cannot draw CommandsHintPane with a nullptr font");
+if (!commands_hint_pane) throw std::runtime_error("Cannot draw CommandsHintPane with a nullptr commands_hint_pane");
+
+place.start_transform();
+
+al_draw_filled_rounded_rectangle(0, 0, place.size.x, place.size.y, 6, 6, al_color_name("red"));
+al_draw_text(font, al_color_name("white"), 0, 0, 0, " - commands hint pane - ");
+
+place.restore_transform();
+return;
+
 }
 } // namespace Hud
 } // namespace Rendering

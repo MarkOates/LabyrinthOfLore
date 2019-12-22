@@ -1,7 +1,9 @@
 #pragma once
 
 
-#include <string>
+#include <LabyrinthOfLore/Hud/ViewFrame.hpp>
+#include <allegro5/allegro_font.h>
+#include <allegro_flare/placement3d.h>
 
 
 namespace LabyrinthOfLore
@@ -13,13 +15,16 @@ namespace LabyrinthOfLore
          class ViewFrameRenderer
          {
          private:
+            ALLEGRO_FONT* font;
+            LabyrinthOfLore::Hud::ViewFrame* view_frame;
+            allegro_flare::placement3d place;
 
          public:
-            ViewFrameRenderer();
+            ViewFrameRenderer(ALLEGRO_FONT* font=nullptr, LabyrinthOfLore::Hud::ViewFrame* view_frame=nullptr, allegro_flare::placement3d place=allegro_flare::placement3d{});
             ~ViewFrameRenderer();
 
 
-         std::string run();
+         void render();
          };
       }
    }
