@@ -29,6 +29,8 @@
 #include <LabyrinthOfLore/Hud/CurrentSpells.hpp>
 #include <LabyrinthOfLore/Hud/ViewFrame.hpp>
 #include <LabyrinthOfLore/Hud/TitleText.hpp>
+#include <Tileo/TileIndexInfo.hpp>
+#include <Tileo/TileAtlas.hpp>
 #include <AllegroFlare/FontBin.hpp>
 #include <AllegroFlare/BitmapBin.hpp>
 #include <AllegroFlare/PickingBuffer.hpp>
@@ -100,6 +102,16 @@ int main(int argc, char **argv)
 
       ALLEGRO_DISPLAY *display = al_create_display(1920, 1080);
 
+      //
+
+      AllegroFlare::FontBin font_bin;
+      font_bin.set_path("data/fonts");
+      font_bin.operator[]("gameovercre1.ttf -12");
+
+      AllegroFlare::BitmapBin bitmap_bin;
+      bitmap_bin.set_path("data/bitmaps");
+
+      //
 
       std::vector<LabyrinthOfLore::Entity::Base*> entities = {};
       LabyrinthOfLore::Rendering::Camera camera({0, 0, 0}, 0.0, 0.0);
@@ -115,6 +127,9 @@ int main(int argc, char **argv)
 
       ALLEGRO_BITMAP *billboarding_tester_sprite = al_load_bitmap("data/bitmaps/billboarding_tester_sprite.png");
       if (!billboarding_tester_sprite) throw std::runtime_error("could not load billboarding_tester_sprite.png");
+
+      Tileo::TileAtlas item_tile_atlas;
+      item_tile_atlas.load(bitmap_bin["spritesheet_4x.png"], 16*4, 16*4, 0);
 
       //
 
@@ -146,15 +161,6 @@ int main(int argc, char **argv)
          }
       }
 
-
-      //
-
-      AllegroFlare::FontBin font_bin;
-      font_bin.set_path("data/fonts");
-      font_bin.operator[]("gameovercre1.ttf -12");
-
-      AllegroFlare::BitmapBin bitmap_bin;
-      bitmap_bin.set_path("data/bitmaps");
 
       //
 
