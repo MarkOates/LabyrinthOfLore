@@ -35,12 +35,12 @@ Renderer::~Renderer()
 
 void Renderer::render_message_scroll()
 {
-ALLEGRO_FONT *message_scroll_font = font_bin->operator[]("gameovercre1.ttf -12");
-allegro_flare::placement3d message_scroll_placement{0, 0, 0};
-message_scroll_placement.size = AllegroFlare::vec3d(300, 100, 0);
-message_scroll_placement.scale = AllegroFlare::vec3d(2.0, 2.0, 2.0);
-message_scroll_placement.position = AllegroFlare::vec3d(al_get_bitmap_width(render_surface)/2, al_get_bitmap_height(render_surface) - 200, 0);
-LabyrinthOfLore::Rendering::Hud::MessageScrollRenderer message_scroll_renderer(message_scroll_font, message_scroll, message_scroll_placement);
+ALLEGRO_FONT *font = font_bin->operator[]("gameovercre1.ttf -12");
+allegro_flare::placement3d placement{0, 0, 0};
+placement.size = AllegroFlare::vec3d(450, 80, 0);
+placement.scale = AllegroFlare::vec3d(2.0, 2.0, 2.0);
+placement.position = AllegroFlare::vec3d(al_get_bitmap_width(render_surface)/2, al_get_bitmap_height(render_surface) - 150, 0);
+LabyrinthOfLore::Rendering::Hud::MessageScrollRenderer message_scroll_renderer(font, message_scroll, placement);
 message_scroll_renderer.render();
 return;
 
@@ -66,9 +66,9 @@ void Renderer::render_vitality_and_mana_bar()
 {
 ALLEGRO_FONT *font = font_bin->operator[]("gameovercre1.ttf -12");
 allegro_flare::placement3d placement{0, 0, 0};
-placement.size = AllegroFlare::vec3d(135, 20, 0);
+placement.size = AllegroFlare::vec3d(200, 20, 0);
 placement.scale = AllegroFlare::vec3d(2.0, 2.0, 2.0);
-placement.position = AllegroFlare::vec3d(al_get_bitmap_width(render_surface)/2, al_get_bitmap_height(render_surface) - 200 - 100, 0);
+placement.position = AllegroFlare::vec3d(al_get_bitmap_width(render_surface)/2, al_get_bitmap_height(render_surface) - 200 - 80, 0);
 
 LabyrinthOfLore::Rendering::Hud::VitalityAndManaBarRenderer vitality_and_mana_bar_renderer(font, vitality_and_mana_bar, placement);
 vitality_and_mana_bar_renderer.render();
