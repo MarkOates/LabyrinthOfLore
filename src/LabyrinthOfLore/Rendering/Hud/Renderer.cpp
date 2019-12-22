@@ -26,13 +26,13 @@ namespace Hud
 {
 
 
-Renderer::Renderer(ALLEGRO_BITMAP* render_surface, AllegroFlare::FontBin* font_bin, LabyrinthOfLore::Hud::MessageScroll* message_scroll, LabyrinthOfLore::Hud::CommandPanel* command_panel, LabyrinthOfLore::Hud::CharacterPanel* character_panel, LabyrinthOfLore::Hud::VitalityAndManaBar* vitality_and_mana_bar, LabyrinthOfLore::Hud::MapButton* map_button, LabyrinthOfLore::Hud::RuneShelf* rune_shelf, LabyrinthOfLore::Hud::Compass* compass, LabyrinthOfLore::Hud::RotateCharacterPanelButton* rotate_character_panel_button, LabyrinthOfLore::Hud::CommandsHintPane* commands_hint_pane, LabyrinthOfLore::Hud::CurrentSpells* current_spells, LabyrinthOfLore::Hud::ViewFrame* view_frame, LabyrinthOfLore::Hud::TitleText* title_text, LabyrinthOfLore::Rendering::MousePointer* mouse_pointer)
+Renderer::Renderer(ALLEGRO_BITMAP* render_surface, AllegroFlare::FontBin* font_bin, LabyrinthOfLore::Hud::MessageScroll* message_scroll, LabyrinthOfLore::Hud::CommandPanel* command_panel, LabyrinthOfLore::Hud::VitalityAndManaBar* vitality_and_mana_bar, LabyrinthOfLore::Hud::CharacterPanel* character_panel, LabyrinthOfLore::Hud::MapButton* map_button, LabyrinthOfLore::Hud::RuneShelf* rune_shelf, LabyrinthOfLore::Hud::Compass* compass, LabyrinthOfLore::Hud::RotateCharacterPanelButton* rotate_character_panel_button, LabyrinthOfLore::Hud::CommandsHintPane* commands_hint_pane, LabyrinthOfLore::Hud::CurrentSpells* current_spells, LabyrinthOfLore::Hud::ViewFrame* view_frame, LabyrinthOfLore::Hud::TitleText* title_text, LabyrinthOfLore::Rendering::MousePointer* mouse_pointer)
    : render_surface(render_surface)
    , font_bin(font_bin)
    , message_scroll(message_scroll)
    , command_panel(command_panel)
-   , character_panel(character_panel)
    , vitality_and_mana_bar(vitality_and_mana_bar)
+   , character_panel(character_panel)
    , map_button(map_button)
    , rune_shelf(rune_shelf)
    , compass(compass)

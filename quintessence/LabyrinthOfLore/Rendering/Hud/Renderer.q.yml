@@ -15,12 +15,12 @@ properties:
     type: LabyrinthOfLore::Hud::CommandPanel*
     init_with: nullptr
     constructor_arg: true
-  - name: character_panel
-    type: LabyrinthOfLore::Hud::CharacterPanel*
-    init_with: nullptr
-    constructor_arg: true
   - name: vitality_and_mana_bar
     type: LabyrinthOfLore::Hud::VitalityAndManaBar*
+    init_with: nullptr
+    constructor_arg: true
+  - name: character_panel
+    type: LabyrinthOfLore::Hud::CharacterPanel*
     init_with: nullptr
     constructor_arg: true
   - name: map_button
