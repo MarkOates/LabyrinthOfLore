@@ -15,6 +15,10 @@ properties:
     type: LabyrinthOfLore::Hud::CommandPanel*
     init_with: nullptr
     constructor_arg: true
+  - name: character_panel
+    type: LabyrinthOfLore::Hud::CharacterPanel*
+    init_with: nullptr
+    constructor_arg: true
   - name: vitality_and_mana_bar
     type: LabyrinthOfLore::Hud::VitalityAndManaBar*
     init_with: nullptr
@@ -52,6 +56,22 @@ functions:
       command_panel_renderer.render();
       return;
     body_dependency_symbols:
+      - LabyrinthOfLore::Rendering::Hud::CharacterPanelRenderer
+  - name: render_character_panel
+    type: void
+    body: |
+      ALLEGRO_FONT *font = font_bin->operator[]("gameovercre1.ttf -12");
+      allegro_flare::placement3d placement{0, 0, 0};
+      placement.align = AllegroFlare::vec3d(0.5, 0.5, 0);
+      placement.size = AllegroFlare::vec3d(40, 200, 0);
+      //placement.rotation = AllegroFlare::vec3d(0, 0, 0);
+      placement.scale = AllegroFlare::vec3d(2.0, 2.0, 2.0);
+      placement.position = AllegroFlare::vec3d(300, al_get_bitmap_height(render_surface)/2, 0);
+
+      LabyrinthOfLore::Rendering::Hud::CharacterPanelRenderer character_panel_renderer(font, character_panel, placement);
+      character_panel_renderer.render();
+      return;
+    body_dependency_symbols:
       - LabyrinthOfLore::Rendering::Hud::CommandPanelRenderer
   - name: render_vitality_and_mana_bar
     type: void
@@ -81,6 +101,7 @@ functions:
       render_message_scroll();
       render_command_panel();
       render_vitality_and_mana_bar();
+      render_character_panel();
 
       if (mouse_pointer) mouse_pointer->render();
 
@@ -104,10 +125,14 @@ dependencies:
     headers: [ LabyrinthOfLore/Rendering/Hud/VitalityAndManaBarRenderer.hpp ]
   - symbol: LabyrinthOfLore::Hud::CommandPanel*
     headers: [ LabyrinthOfLore/Hud/CommandPanel.hpp ]
+  - symbol: LabyrinthOfLore::Hud::CharacterPanel*
+    headers: [ LabyrinthOfLore/Hud/CharacterPanel.hpp ]
   - symbol: LabyrinthOfLore::Hud::MessageScroll*
     headers: [ LabyrinthOfLore/Hud/MessageScroll.hpp ]
   - symbol: LabyrinthOfLore::Rendering::Hud::CommandPanelRenderer
     headers: [ LabyrinthOfLore/Rendering/Hud/CommandPanelRenderer.hpp ]
+  - symbol: LabyrinthOfLore::Rendering::Hud::CharacterPanelRenderer
+    headers: [ LabyrinthOfLore/Rendering/Hud/CharacterPanelRenderer.hpp ]
   - symbol: LabyrinthOfLore::Rendering::Hud::MessageScrollRenderer
     headers: [ LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer.hpp ]
   - symbol: LabyrinthOfLore::Rendering::MousePointer*

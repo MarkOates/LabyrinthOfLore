@@ -2,6 +2,7 @@
 
 #include <LabyrinthOfLore/Rendering/Hud/Renderer.hpp>
 #include <LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer.hpp>
+#include <LabyrinthOfLore/Rendering/Hud/CharacterPanelRenderer.hpp>
 #include <LabyrinthOfLore/Rendering/Hud/CommandPanelRenderer.hpp>
 #include <LabyrinthOfLore/Rendering/Hud/VitalityAndManaBarRenderer.hpp>
 #include <stdexcept>
@@ -17,11 +18,12 @@ namespace Hud
 {
 
 
-Renderer::Renderer(ALLEGRO_BITMAP* render_surface, AllegroFlare::FontBin* font_bin, LabyrinthOfLore::Hud::MessageScroll* message_scroll, LabyrinthOfLore::Hud::CommandPanel* command_panel, LabyrinthOfLore::Hud::VitalityAndManaBar* vitality_and_mana_bar, LabyrinthOfLore::Rendering::MousePointer* mouse_pointer)
+Renderer::Renderer(ALLEGRO_BITMAP* render_surface, AllegroFlare::FontBin* font_bin, LabyrinthOfLore::Hud::MessageScroll* message_scroll, LabyrinthOfLore::Hud::CommandPanel* command_panel, LabyrinthOfLore::Hud::CharacterPanel* character_panel, LabyrinthOfLore::Hud::VitalityAndManaBar* vitality_and_mana_bar, LabyrinthOfLore::Rendering::MousePointer* mouse_pointer)
    : render_surface(render_surface)
    , font_bin(font_bin)
    , message_scroll(message_scroll)
    , command_panel(command_panel)
+   , character_panel(character_panel)
    , vitality_and_mana_bar(vitality_and_mana_bar)
    , mouse_pointer(mouse_pointer)
 {
@@ -62,6 +64,22 @@ return;
 
 }
 
+void Renderer::render_character_panel()
+{
+ALLEGRO_FONT *font = font_bin->operator[]("gameovercre1.ttf -12");
+allegro_flare::placement3d placement{0, 0, 0};
+placement.align = AllegroFlare::vec3d(0.5, 0.5, 0);
+placement.size = AllegroFlare::vec3d(40, 200, 0);
+//placement.rotation = AllegroFlare::vec3d(0, 0, 0);
+placement.scale = AllegroFlare::vec3d(2.0, 2.0, 2.0);
+placement.position = AllegroFlare::vec3d(300, al_get_bitmap_height(render_surface)/2, 0);
+
+LabyrinthOfLore::Rendering::Hud::CharacterPanelRenderer character_panel_renderer(font, character_panel, placement);
+character_panel_renderer.render();
+return;
+
+}
+
 void Renderer::render_vitality_and_mana_bar()
 {
 ALLEGRO_FONT *font = font_bin->operator[]("gameovercre1.ttf -12");
@@ -89,6 +107,7 @@ al_use_transform(&transform);
 render_message_scroll();
 render_command_panel();
 render_vitality_and_mana_bar();
+render_character_panel();
 
 if (mouse_pointer) mouse_pointer->render();
 

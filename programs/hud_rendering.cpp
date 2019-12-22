@@ -101,6 +101,7 @@ int main(int argc, char **argv)
 
       LabyrinthOfLore::Hud::MessageScroll message_scroll;
       LabyrinthOfLore::Hud::CommandPanel command_panel;
+      LabyrinthOfLore::Hud::CharacterPanel character_panel;
       LabyrinthOfLore::Hud::VitalityAndManaBar vitality_and_mana_bar;
 
       //
@@ -149,6 +150,7 @@ int main(int argc, char **argv)
                      &font_bin,
                      &message_scroll,
                      &command_panel,
+                     &character_panel,
                      &vitality_and_mana_bar,
                      &mouse_pointer
                   );
