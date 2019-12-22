@@ -15,8 +15,10 @@
 #include <LabyrinthOfLore/Rendering/MousePointer.hpp>
 #include <LabyrinthOfLore/Rendering/SpritesBillboarder.hpp>
 #include <LabyrinthOfLore/Rendering/Hud/Renderer.hpp>
-#include <LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer.hpp>
+//#include <LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer.hpp>
+//#include <LabyrinthOfLore/Rendering/Hud/CommandPanelRenderer.hpp>
 #include <LabyrinthOfLore/Hud/MessageScroll.hpp>
+#include <LabyrinthOfLore/Hud/CommandPanel.hpp>
 #include <AllegroFlare/FontBin.hpp>
 #include <AllegroFlare/BitmapBin.hpp>
 #include <AllegroFlare/PickingBuffer.hpp>
@@ -219,6 +221,7 @@ int main(int argc, char **argv)
       //
 
       LabyrinthOfLore::Hud::MessageScroll message_scroll;
+      LabyrinthOfLore::Hud::CommandPanel command_panel;
 
       //
 
@@ -302,7 +305,7 @@ int main(int argc, char **argv)
                //
 
                LabyrinthOfLore::Rendering::MousePointer mouse_pointer(player_mouse_x, player_mouse_y);
-               LabyrinthOfLore::Rendering::Hud::Renderer hud_renderer(al_get_backbuffer(display), &font_bin, &message_scroll, &mouse_pointer);
+               LabyrinthOfLore::Rendering::Hud::Renderer hud_renderer(al_get_backbuffer(display), &font_bin, &message_scroll, &command_panel, &mouse_pointer);
                hud_renderer.render();
 
                al_flip_display();

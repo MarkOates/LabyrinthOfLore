@@ -11,11 +11,42 @@ properties:
     type: LabyrinthOfLore::Hud::MessageScroll*
     init_with: nullptr
     constructor_arg: true
+  - name: command_panel
+    type: LabyrinthOfLore::Hud::CommandPanel*
+    init_with: nullptr
+    constructor_arg: true
   - name: mouse_pointer
     type: LabyrinthOfLore::Rendering::MousePointer*
     init_with: nullptr
     constructor_arg: true
 functions:
+  - name: render_message_scroll
+    type: void
+    body: |
+      ALLEGRO_FONT *message_scroll_font = font_bin->operator[]("gameovercre1.ttf -12");
+      allegro_flare::placement3d message_scroll_placement{0, 0, 0};
+      message_scroll_placement.size = AllegroFlare::vec3d(300, 100, 0);
+      message_scroll_placement.scale = AllegroFlare::vec3d(2.0, 2.0, 2.0);
+      message_scroll_placement.position = AllegroFlare::vec3d(al_get_bitmap_width(render_surface)/2, al_get_bitmap_height(render_surface) - 200, 0);
+      LabyrinthOfLore::Rendering::Hud::MessageScrollRenderer message_scroll_renderer(message_scroll_font, message_scroll, message_scroll_placement);
+      message_scroll_renderer.render();
+      return;
+    body_dependency_symbols:
+      - LabyrinthOfLore::Rendering::Hud::MessageScrollRenderer
+  - name: render_command_panel
+    type: void
+    body: |
+      ALLEGRO_FONT *font = font_bin->operator[]("gameovercre1.ttf -12");
+      allegro_flare::placement3d placement{0, 0, 0};
+      placement.size = AllegroFlare::vec3d(300, 100, 0);
+      placement.scale = AllegroFlare::vec3d(2.0, 2.0, 2.0);
+      placement.position = AllegroFlare::vec3d(al_get_bitmap_width(render_surface)/2, al_get_bitmap_height(render_surface) - 200, 0);
+
+      LabyrinthOfLore::Rendering::Hud::CommandPanelRenderer command_panel_renderer(font, command_panel, placement);
+      command_panel_renderer.render();
+      return;
+    body_dependency_symbols:
+      - LabyrinthOfLore::Rendering::Hud::CommandPanelRenderer
   - name: render
     type: void
     body: |
@@ -27,13 +58,8 @@ functions:
       al_identity_transform(&transform);
       al_use_transform(&transform);
 
-      ALLEGRO_FONT *message_scroll_font = font_bin->operator[]("gameovercre1.ttf -12");
-      allegro_flare::placement3d message_scroll_placement{0, 0, 0};
-      message_scroll_placement.size = AllegroFlare::vec3d(300, 100, 0);
-      message_scroll_placement.scale = AllegroFlare::vec3d(2.0, 2.0, 2.0);
-      message_scroll_placement.position = AllegroFlare::vec3d(al_get_bitmap_width(render_surface)/2, al_get_bitmap_height(render_surface) - 200, 0);
-      LabyrinthOfLore::Rendering::Hud::MessageScrollRenderer message_scroll_renderer(message_scroll_font, message_scroll, message_scroll_placement);
-      message_scroll_renderer.draw();
+      render_message_scroll();
+      render_command_panel();
 
       if (mouse_pointer) mouse_pointer->render();
 
@@ -42,7 +68,6 @@ functions:
       - std::runtime_error
       - al_color_name
       - allegro_flare::placement3d
-      - LabyrinthOfLore::Rendering::Hud::MessageScrollRenderer
 dependencies:
   - symbol: AllegroFlare::FontBin*
     headers: [ AllegroFlare/FontBin.hpp ]
@@ -54,6 +79,10 @@ dependencies:
     headers: [ allegro_flare/placement3d.h ]
   - symbol: LabyrinthOfLore::Hud::MessageScroll*
     headers: [ LabyrinthOfLore/Hud/MessageScroll.hpp ]
+  - symbol: LabyrinthOfLore::Hud::CommandPanel*
+    headers: [ LabyrinthOfLore/Hud/CommandPanel.hpp ]
+  - symbol: LabyrinthOfLore::Rendering::Hud::CommandPanelRenderer
+    headers: [ LabyrinthOfLore/Rendering/Hud/CommandPanelRenderer.hpp ]
   - symbol: LabyrinthOfLore::Rendering::Hud::MessageScrollRenderer
     headers: [ LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer.hpp ]
   - symbol: LabyrinthOfLore::Rendering::MousePointer*

@@ -24,7 +24,7 @@ namespace LabyrinthOfLore
             ~MessageScrollRenderer();
 
 
-         void draw();
+         void render();
          };
       }
    }

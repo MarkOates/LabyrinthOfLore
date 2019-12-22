@@ -3,9 +3,9 @@ properties:
     type: ALLEGRO_FONT*
     init_with: nullptr
     constructor_arg: true
-  - name: message_scroll
-    type: LabyrinthOfLore::Hud::MessageScroll*
-    init_with: "{}"
+  - name: command_panel
+    type: LabyrinthOfLore::Hud::CommandPanel*
+    init_with: nullptr
     constructor_arg: true
   - name: place
     type: allegro_flare::placement3d
@@ -15,13 +15,13 @@ functions:
   - name: render
     type: void
     body: |
-      if (!font) throw std::runtime_error("Cannot draw MessageScrollRenderer with a nullptr font");
-      if (!message_scroll) throw std::runtime_error("Cannot draw MessageScrollRenderer with a nullptr message_scroll");
+      if (!font) throw std::runtime_error("Cannot draw CommandPanelRenderer with a nullptr font");
+      if (!command_panel) throw std::runtime_error("Cannot draw CommandPanelRenderer with a nullptr command_panel");
 
       place.start_transform();
 
       al_draw_filled_rounded_rectangle(0, 0, place.size.x, place.size.y, 6, 6, al_color_name("red"));
-      al_draw_text(font, al_color_name("white"), 0, 0, 0, message_scroll->get_text().c_str());
+      al_draw_text(font, al_color_name("white"), 0, 0, 0, " - command panel - ");
 
       place.restore_transform();
       return;
@@ -29,8 +29,8 @@ functions:
       - al_color_name
       - al_draw_rounded_rectangle
 dependencies:
-  - symbol: LabyrinthOfLore::Hud::MessageScroll*
-    headers: [ LabyrinthOfLore/Hud/MessageScroll.hpp ]
+  - symbol: LabyrinthOfLore::Hud::CommandPanel*
+    headers: [ LabyrinthOfLore/Hud/CommandPanel.hpp ]
   - symbol: ALLEGRO_FONT*
     headers: [ allegro5/allegro_font.h ]
   - symbol: al_color_name

@@ -26,7 +26,7 @@ MessageScrollRenderer::~MessageScrollRenderer()
 }
 
 
-void MessageScrollRenderer::draw()
+void MessageScrollRenderer::render()
 {
 if (!font) throw std::runtime_error("Cannot draw MessageScrollRenderer with a nullptr font");
 if (!message_scroll) throw std::runtime_error("Cannot draw MessageScrollRenderer with a nullptr message_scroll");

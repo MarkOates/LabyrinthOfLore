@@ -5,8 +5,8 @@
 
 
 #include <LabyrinthOfLore/Rendering/Hud/Renderer.hpp>
-#include <LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer.hpp>
 #include <LabyrinthOfLore/Hud/MessageScroll.hpp>
+#include <LabyrinthOfLore/Hud/CommandPanel.hpp>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_ttf.h>
@@ -99,6 +99,7 @@ int main(int argc, char **argv)
       //
 
       LabyrinthOfLore::Hud::MessageScroll message_scroll;
+      LabyrinthOfLore::Hud::CommandPanel command_panel;
 
       //
 
@@ -141,7 +142,13 @@ int main(int argc, char **argv)
                //
 
                LabyrinthOfLore::Rendering::MousePointer mouse_pointer(player_mouse_x, player_mouse_y);
-               LabyrinthOfLore::Rendering::Hud::Renderer hud_renderer(al_get_backbuffer(display), &font_bin, &message_scroll, &mouse_pointer);
+               LabyrinthOfLore::Rendering::Hud::Renderer hud_renderer(
+                     al_get_backbuffer(display),
+                     &font_bin,
+                     &message_scroll,
+                     &command_panel,
+                     &mouse_pointer
+                  );
                hud_renderer.render();
 
                al_draw_scaled_bitmap(buffer_buffer, 0, 0, al_get_bitmap_width(buffer_buffer), al_get_bitmap_height(buffer_buffer), 0, 0, al_get_display_width(display), al_get_display_height(display), 0);
