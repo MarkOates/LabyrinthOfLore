@@ -11,7 +11,35 @@ properties:
     type: float
     init_with: 1.0f
     constructor_arg: true
+  - name: mul
+    type: float
+    init_with: -1.0f
+    constructor_arg: true
 functions:
+  - name: build_a
+    type: ALLEGRO_VERTEX
+    body: return AllegroFlare::build_vertex(mul*0, 0, height, al_color_name("white"), 0, 0);
+  - name: build_b
+    type: ALLEGRO_VERTEX
+    body: return AllegroFlare::build_vertex(mul*1, 0, height, al_color_name("white"), 0, 0);
+  - name: build_c
+    type: ALLEGRO_VERTEX
+    body: return AllegroFlare::build_vertex(mul*0, 1, height, al_color_name("white"), 0, 0);
+  - name: build_d
+    type: ALLEGRO_VERTEX
+    body: return AllegroFlare::build_vertex(mul*1, 1, height, al_color_name("white"), 0, 0);
+  - name: build_e
+    type: ALLEGRO_VERTEX
+    body: return AllegroFlare::build_vertex(mul*0, 1, 0, al_color_name("white"), 0, 0);
+  - name: build_f
+    type: ALLEGRO_VERTEX
+    body: return AllegroFlare::build_vertex(mul*1, 1, 0, al_color_name("white"), 0, 0);
+  - name: build_g
+    type: ALLEGRO_VERTEX
+    body: return AllegroFlare::build_vertex(mul*0, 0, 0, al_color_name("white"), 0, 0);
+  - name: build_h
+    type: ALLEGRO_VERTEX
+    body: return AllegroFlare::build_vertex(mul*1, 0, 0, al_color_name("white"), 0, 0);
   - name: random_color
     type: ALLEGRO_COLOR
     body: |
@@ -34,7 +62,7 @@ functions:
       int u = 0;
       int v = 1; //texture ? al_get_bitmap_width(texture) : 1;
 
-      float mul = -1;
+      //float mul = -1;
 
       std::vector<ALLEGRO_VERTEX> result = {
         // facing from the top down:
@@ -63,6 +91,8 @@ dependencies:
     headers: [ vector, allegro5/allegro.h, allegro5/allegro_primitives.h ]
   - symbol: AllegroFlare::Random
     headers: [ AllegroFlare/Random.hpp ]
+  - symbol: ALLEGRO_VERTEX
+    headers: [ allegro5/allegro_primitives.h ]
   - symbol: ALLEGRO_COLOR
     headers: [ allegro5/allegro.h ]
   - symbol: AllegroFlare::build_vertex

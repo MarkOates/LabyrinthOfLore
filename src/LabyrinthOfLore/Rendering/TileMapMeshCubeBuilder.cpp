@@ -12,10 +12,11 @@ namespace Rendering
 {
 
 
-TileMapMeshCubeBuilder::TileMapMeshCubeBuilder(float x, float y, float height)
+TileMapMeshCubeBuilder::TileMapMeshCubeBuilder(float x, float y, float height, float mul)
    : x(x)
    , y(y)
    , height(height)
+   , mul(mul)
 {
 }
 
@@ -24,6 +25,46 @@ TileMapMeshCubeBuilder::~TileMapMeshCubeBuilder()
 {
 }
 
+
+ALLEGRO_VERTEX TileMapMeshCubeBuilder::build_a()
+{
+return AllegroFlare::build_vertex(mul*0, 0, height, al_color_name("white"), 0, 0);
+}
+
+ALLEGRO_VERTEX TileMapMeshCubeBuilder::build_b()
+{
+return AllegroFlare::build_vertex(mul*1, 0, height, al_color_name("white"), 0, 0);
+}
+
+ALLEGRO_VERTEX TileMapMeshCubeBuilder::build_c()
+{
+return AllegroFlare::build_vertex(mul*0, 1, height, al_color_name("white"), 0, 0);
+}
+
+ALLEGRO_VERTEX TileMapMeshCubeBuilder::build_d()
+{
+return AllegroFlare::build_vertex(mul*1, 1, height, al_color_name("white"), 0, 0);
+}
+
+ALLEGRO_VERTEX TileMapMeshCubeBuilder::build_e()
+{
+return AllegroFlare::build_vertex(mul*0, 1, 0, al_color_name("white"), 0, 0);
+}
+
+ALLEGRO_VERTEX TileMapMeshCubeBuilder::build_f()
+{
+return AllegroFlare::build_vertex(mul*1, 1, 0, al_color_name("white"), 0, 0);
+}
+
+ALLEGRO_VERTEX TileMapMeshCubeBuilder::build_g()
+{
+return AllegroFlare::build_vertex(mul*0, 0, 0, al_color_name("white"), 0, 0);
+}
+
+ALLEGRO_VERTEX TileMapMeshCubeBuilder::build_h()
+{
+return AllegroFlare::build_vertex(mul*1, 0, 0, al_color_name("white"), 0, 0);
+}
 
 ALLEGRO_COLOR TileMapMeshCubeBuilder::random_color()
 {
@@ -46,7 +87,7 @@ ALLEGRO_COLOR cube_color = random_color();
 int u = 0;
 int v = 1; //texture ? al_get_bitmap_width(texture) : 1;
 
-float mul = -1;
+//float mul = -1;
 
 std::vector<ALLEGRO_VERTEX> result = {
   // facing from the top down:
