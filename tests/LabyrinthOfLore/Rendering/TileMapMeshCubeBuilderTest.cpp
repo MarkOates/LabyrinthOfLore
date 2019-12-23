@@ -26,11 +26,6 @@ TEST(LabyrinthOfLore_Rendering_TileMapMeshCubeBuilderTest, can_be_created_withou
    LabyrinthOfLore::Rendering::TileMapMeshCubeBuilder tile_map_mesh_cube_builder;
 }
 
-TEST(LabyrinthOfLore_Rendering_TileMapMeshCubeBuilderTest, build_cube__with_no_arguments__returns_the_expected_response)
-{
-   LabyrinthOfLore::Rendering::TileMapMeshCubeBuilder tile_map_mesh_cube_builder;
-}
-
 TEST(LabyrinthOfLore_Rendering_TileMapMeshCubeBuilderTest, buildA__builds_the_expected_named_vertex_point)
 {
    ALLEGRO_COLOR white = al_color_name("white");
