@@ -2,6 +2,7 @@
 
 
 #include <LabyrinthOfLore/WorldMap/TileMap.hpp>
+#include <Tileo/TileAtlas.hpp>
 #include <allegro5/allegro.h>
 #include <vector>
 
@@ -13,12 +14,13 @@ namespace LabyrinthOfLore
       class TileMapMesh
       {
       private:
+         Tileo::TileAtlas* tile_atlas;
          LabyrinthOfLore::WorldMap::TileMap tile_map;
          ALLEGRO_BITMAP* texture;
          std::vector<ALLEGRO_VERTEX> vertexes;
 
       public:
-         TileMapMesh(LabyrinthOfLore::WorldMap::TileMap tile_map={}, ALLEGRO_BITMAP* texture=nullptr);
+         TileMapMesh(Tileo::TileAtlas* tile_atlas=nullptr, LabyrinthOfLore::WorldMap::TileMap tile_map={}, ALLEGRO_BITMAP* texture=nullptr);
          ~TileMapMesh();
 
 

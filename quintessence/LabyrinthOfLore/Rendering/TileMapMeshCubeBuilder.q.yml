@@ -1,4 +1,7 @@
 properties:
+  #- name: tile_atlas
+    #type: Tileo::TileAtlas*
+    #init_with: nullptr
   - name: x
     type: int
     init_with: 0
@@ -176,6 +179,8 @@ dependencies:
     headers: [ vector, allegro5/allegro.h, allegro5/allegro_primitives.h ]
   - symbol: AllegroFlare::Random
     headers: [ AllegroFlare/Random.hpp ]
+  - symbol: Tileo::TileAtlas*
+    headers: [ Tileo/TileAtlas.hpp ]
   - symbol: ALLEGRO_VERTEX
     headers: [ allegro5/allegro_primitives.h ]
   - symbol: ALLEGRO_COLOR

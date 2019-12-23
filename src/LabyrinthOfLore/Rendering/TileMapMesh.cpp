@@ -10,8 +10,9 @@ namespace Rendering
 {
 
 
-TileMapMesh::TileMapMesh(LabyrinthOfLore::WorldMap::TileMap tile_map, ALLEGRO_BITMAP* texture)
-   : tile_map(tile_map)
+TileMapMesh::TileMapMesh(Tileo::TileAtlas* tile_atlas, LabyrinthOfLore::WorldMap::TileMap tile_map, ALLEGRO_BITMAP* texture)
+   : tile_atlas(tile_atlas)
+   , tile_map(tile_map)
    , texture(texture)
    , vertexes({})
 {

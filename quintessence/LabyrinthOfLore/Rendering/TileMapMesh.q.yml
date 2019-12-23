@@ -1,4 +1,8 @@
 properties:
+  - name: tile_atlas
+    type: Tileo::TileAtlas*
+    init_with: nullptr
+    constructor_arg: true
   - name: tile_map
     type: LabyrinthOfLore::WorldMap::TileMap
     init_with: "{}"
@@ -69,3 +73,5 @@ dependencies:
     headers: [ allegro5/allegro_color.h ]
   - symbol: AllegroFlare::build_vertex
     headers: [ AllegroFlare/Useful.hpp ]
+  - symbol: Tileo::TileAtlas*
+    headers: [ Tileo/TileAtlas.hpp ]
