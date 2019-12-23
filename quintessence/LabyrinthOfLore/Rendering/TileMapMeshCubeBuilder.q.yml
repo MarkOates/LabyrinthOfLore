@@ -128,6 +128,14 @@ functions:
         buildB(v, 0),
         buildC(0, v),
         buildD(v, v),
+
+        // front:
+        buildC(0, 0),
+        buildD(v, 0),
+        buildE(0, v),
+        buildD(v, 0),
+        buildE(0, v),
+        buildF(v, v),
       };
 
       for (auto &vertex : result)
