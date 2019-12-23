@@ -84,51 +84,59 @@ return colors[random.get_random_int(0, colors.size()-1)];
 std::vector<ALLEGRO_VERTEX> TileMapMeshCubeBuilder::build_cube()
 {
 ALLEGRO_COLOR cube_color = random_color();
-int u = 0;
+int u = 1;
 int v = 1; //texture ? al_get_bitmap_width(texture) : 1;
+int tile_width = 48;
 
 //float mul = -1;
 
+int top_u = u;
+int top_v = v;
+int front_and_back_u = u;
+int front_and_back_v = v;
+int right_and_left_u = u;
+int right_and_left_v = v;
+
 std::vector<ALLEGRO_VERTEX> result = {
   // top:
-  buildA(0, 0),
-  buildB(v, 0),
-  buildC(0, v),
-  buildB(v, 0),
-  buildC(0, v),
-  buildD(v, v),
+  buildA(top_u, 0),
+  buildB(top_u+1, 0),
+  buildC(top_u, 0+1),
+  buildB(top_u+1, 0),
+  buildC(top_u, 0+1),
+  buildD(top_u+1, 0+1),
 
   // front:
-  buildC(0, 0),
-  buildD(v, 0),
-  buildE(0, v),
-  buildD(v, 0),
-  buildE(0, v),
-  buildF(v, v),
+  buildC(front_and_back_u, 0),
+  buildD(front_and_back_u+1, 0),
+  buildE(front_and_back_u, 0+1),
+  buildD(front_and_back_u+1, 0),
+  buildE(front_and_back_u, 0+1),
+  buildF(front_and_back_u+1, 0+1),
 
   // right:
-  buildD(0, 0),
-  buildB(v, 0),
-  buildF(0, v),
-  buildB(v, 0),
-  buildF(0, v),
-  buildH(v, v),
+  buildD(right_and_left_u, 0),
+  buildB(right_and_left_u+1, 0),
+  buildF(right_and_left_u, 0+1),
+  buildB(right_and_left_u+1, 0),
+  buildF(right_and_left_u, 0+1),
+  buildH(right_and_left_u+1, v),
 
   // left:
-  buildA(0, 0),
-  buildC(v, 0),
-  buildG(0, v),
-  buildC(v, 0),
-  buildG(0, v),
-  buildE(v, v),
+  buildA(right_and_left_u, 0),
+  buildC(right_and_left_u+1, 0),
+  buildG(right_and_left_u, 0+1),
+  buildC(right_and_left_u+1, 0),
+  buildG(right_and_left_u, 0+1),
+  buildE(right_and_left_u+1, v),
 
   // back:
-  buildB(0, 0),
-  buildA(v, 0),
-  buildH(0, v),
-  buildA(v, 0),
-  buildH(0, v),
-  buildG(v, v),
+  buildB(front_and_back_u+1, 0),
+  buildA(front_and_back_u+1, 0),
+  buildH(front_and_back_u, 0+1),
+  buildA(front_and_back_u+1, 0),
+  buildH(front_and_back_u, 0+1),
+  buildG(front_and_back_u+1, v),
 };
 
 for (auto &vertex : result)
