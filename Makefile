@@ -73,6 +73,8 @@ focus:
 	@make obj/tests/$(FOCUSED_COMPONENT_NAME)Test.o
 	$(call output_terminal_message,"Make the focused component test")
 	@./bin/tests/$(FOCUSED_COMPONENT_NAME)Test
+	$(call output_terminal_message,"Celebrate passing focused component tests")
+	@make celebrate_passing_tests
 
 
 
@@ -102,7 +104,7 @@ main:
 
 quintessences: $(QUINTESSENCE_SOURCES)
 	@[ -f $(QUINTESSENCE_BUILDER_EXECUTABLE) ] || echo "The needed executable $(QUINTESSENCE_BUILDER_EXECUTABLE) was not found"
-	@find quintessence -name '*$(FOCUSED_COMPONENT_NAME)*.q.yml' | xargs $(QUINTESSENCE_BUILDER_EXECUTABLE) --less_verbose -f
+	@find quintessence -name '*.q.yml' | xargs $(QUINTESSENCE_BUILDER_EXECUTABLE) --less_verbose -f
 	@echo "(finished)"
 
 
