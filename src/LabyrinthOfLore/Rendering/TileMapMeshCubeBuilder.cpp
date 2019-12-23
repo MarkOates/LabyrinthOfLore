@@ -91,13 +91,12 @@ int v = 1; //texture ? al_get_bitmap_width(texture) : 1;
 
 std::vector<ALLEGRO_VERTEX> result = {
   // top:
-  AllegroFlare::build_vertex(mul*x, y, height, cube_color, 0, 0), // top left triangle
-  AllegroFlare::build_vertex(mul*x+1, y, height, cube_color, v, 0),
-  AllegroFlare::build_vertex(mul*x, y+1, height, cube_color, 0, v),
-
-  AllegroFlare::build_vertex(mul*x+1, y, height, cube_color, v, 0), // bottom right triangle
-  AllegroFlare::build_vertex(mul*x, y+1, height, cube_color, 0, v),
-  AllegroFlare::build_vertex(mul*x+1, y+1, height, cube_color, v, v),
+  buildA(0, 0),
+  buildB(v, 0),
+  buildC(0, v),
+  buildB(v, 0),
+  buildC(0, v),
+  buildD(v, v),
 };
 
 for (auto &vertex : result)
