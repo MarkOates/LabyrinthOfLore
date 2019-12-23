@@ -99,6 +99,8 @@ focus:
 	@make bin/tests/$(FOCUSED_COMPONENT_NAME)Test
 	$(call output_terminal_message,"Run the focused component test")
 	@./bin/tests/$(FOCUSED_COMPONENT_NAME)Test
+	$(call output_terminal_message,"Make all the programs")
+	@make programs
 	$(call output_terminal_message,"Celebrate passing focused component tests")
 	@make celebrate_passing_tests
 
