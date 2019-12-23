@@ -113,6 +113,14 @@ std::vector<ALLEGRO_VERTEX> result = {
   buildB(v, 0),
   buildF(0, v),
   buildH(v, v),
+
+  // left:
+  buildA(0, 0),
+  buildC(v, 0),
+  buildG(0, v),
+  buildC(v, 0),
+  buildG(0, v),
+  buildE(v, v),
 };
 
 for (auto &vertex : result)
