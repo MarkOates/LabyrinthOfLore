@@ -90,7 +90,7 @@ main:
 
 quintessences: $(QUINTESSENCE_SOURCES)
 	[ -f $(QUINTESSENCE_BUILDER_EXECUTABLE) ] || echo "The needed executable $(QUINTESSENCE_BUILDER_EXECUTABLE) was not found"
-	find quintessence -name '*.q.yml' | xargs $(QUINTESSENCE_BUILDER_EXECUTABLE) $(QUINTESSENCE_BUILDER_FLAGS) -f
+	find quintessence -name '$(FOCUSED_COMPONENT_NAME)*.q.yml' | xargs $(QUINTESSENCE_BUILDER_EXECUTABLE) -f
 
 
 
@@ -119,7 +119,7 @@ tests: $(INDIVIDUAL_TEST_EXECUTABLES) bin/run_all_tests
 
 
 run_tests: tests
-	bin/run_all_tests --gtest_filter=*MessageScroll*
+	bin/run_all_tests --gtest_filter=*$(FOCUSED_COMPONENT_NAME)*
 
 
 
