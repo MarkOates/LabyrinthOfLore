@@ -28,42 +28,42 @@ TileMapMeshCubeBuilder::~TileMapMeshCubeBuilder()
 
 ALLEGRO_VERTEX TileMapMeshCubeBuilder::buildA(float u, float v)
 {
-return AllegroFlare::build_vertex(mul*0, 0, height, al_color_name("white"), u, v);
+return AllegroFlare::build_vertex(mul*x, y, height, al_color_name("white"), u, v);
 }
 
 ALLEGRO_VERTEX TileMapMeshCubeBuilder::buildB(float u, float v)
 {
-return AllegroFlare::build_vertex(mul*1, 0, height, al_color_name("white"), u, v);
+return AllegroFlare::build_vertex(mul*(x+1), y, height, al_color_name("white"), u, v);
 }
 
 ALLEGRO_VERTEX TileMapMeshCubeBuilder::buildC(float u, float v)
 {
-return AllegroFlare::build_vertex(mul*0, 1, height, al_color_name("white"), u, v);
+return AllegroFlare::build_vertex(mul*x, (y+1), height, al_color_name("white"), u, v);
 }
 
 ALLEGRO_VERTEX TileMapMeshCubeBuilder::buildD(float u, float v)
 {
-return AllegroFlare::build_vertex(mul*1, 1, height, al_color_name("white"), u, v);
+return AllegroFlare::build_vertex(mul*(x+1), (y+1), height, al_color_name("white"), u, v);
 }
 
 ALLEGRO_VERTEX TileMapMeshCubeBuilder::buildE(float u, float v)
 {
-return AllegroFlare::build_vertex(mul*0, 1, 0, al_color_name("white"), u, v);
+return AllegroFlare::build_vertex(mul*x, (y+1), 0, al_color_name("white"), u, v);
 }
 
 ALLEGRO_VERTEX TileMapMeshCubeBuilder::buildF(float u, float v)
 {
-return AllegroFlare::build_vertex(mul*1, 1, 0, al_color_name("white"), u, v);
+return AllegroFlare::build_vertex(mul*(x+1), (y+1), 0, al_color_name("white"), u, v);
 }
 
 ALLEGRO_VERTEX TileMapMeshCubeBuilder::buildG(float u, float v)
 {
-return AllegroFlare::build_vertex(mul*0, 0, 0, al_color_name("white"), u, v);
+return AllegroFlare::build_vertex(mul*x, y, 0, al_color_name("white"), u, v);
 }
 
 ALLEGRO_VERTEX TileMapMeshCubeBuilder::buildH(float u, float v)
 {
-return AllegroFlare::build_vertex(mul*1, 0, 0, al_color_name("white"), u, v);
+return AllegroFlare::build_vertex(mul*(x+1), y, 0, al_color_name("white"), u, v);
 }
 
 ALLEGRO_COLOR TileMapMeshCubeBuilder::random_color()
@@ -90,9 +90,7 @@ int v = 1; //texture ? al_get_bitmap_width(texture) : 1;
 //float mul = -1;
 
 std::vector<ALLEGRO_VERTEX> result = {
-  // facing from the top down:
-
-  // top
+  // top:
   AllegroFlare::build_vertex(mul*x, y, height, cube_color, 0, 0), // top left triangle
   AllegroFlare::build_vertex(mul*x+1, y, height, cube_color, v, 0),
   AllegroFlare::build_vertex(mul*x, y+1, height, cube_color, 0, v),
