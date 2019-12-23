@@ -130,44 +130,44 @@ functions:
 
       std::vector<ALLEGRO_VERTEX> result = {
         // top:
-        buildA(top_u, 0),
-        buildB(top_u+1, 0),
-        buildC(top_u, 0+1),
-        buildB(top_u+1, 0),
-        buildC(top_u, 0+1),
-        buildD(top_u+1, 0+1),
+        buildA(top_u, top_v),
+        buildB(top_u+1, top_v),
+        buildC(top_u, top_v+1),
+        buildB(top_u+1, top_v),
+        buildC(top_u, top_v+1),
+        buildD(top_u+1, top_v+1),
 
         // front:
-        buildC(front_and_back_u, 0),
-        buildD(front_and_back_u+1, 0),
-        buildE(front_and_back_u, 0+1),
-        buildD(front_and_back_u+1, 0),
-        buildE(front_and_back_u, 0+1),
-        buildF(front_and_back_u+1, 0+1),
+        buildC(front_and_back_u, front_and_back_v),
+        buildD(front_and_back_u+1, front_and_back_v),
+        buildE(front_and_back_u, front_and_back_v+1),
+        buildD(front_and_back_u+1, front_and_back_v),
+        buildE(front_and_back_u, front_and_back_v+1),
+        buildF(front_and_back_u+1, front_and_back_v+1),
 
         // right:
-        buildD(right_and_left_u, 0),
-        buildB(right_and_left_u+1, 0),
-        buildF(right_and_left_u, 0+1),
-        buildB(right_and_left_u+1, 0),
-        buildF(right_and_left_u, 0+1),
-        buildH(right_and_left_u+1, v),
+        buildD(right_and_left_u, right_and_left_v),
+        buildB(right_and_left_u+1, right_and_left_v),
+        buildF(right_and_left_u, right_and_left_v+1),
+        buildB(right_and_left_u+1, right_and_left_v),
+        buildF(right_and_left_u, right_and_left_v+1),
+        buildH(right_and_left_u+1, right_and_left_v+1),
 
         // left:
-        buildA(right_and_left_u, 0),
-        buildC(right_and_left_u+1, 0),
-        buildG(right_and_left_u, 0+1),
-        buildC(right_and_left_u+1, 0),
-        buildG(right_and_left_u, 0+1),
-        buildE(right_and_left_u+1, v),
+        buildA(right_and_left_u, right_and_left_v),
+        buildC(right_and_left_u+1, right_and_left_v),
+        buildG(right_and_left_u, right_and_left_v+1),
+        buildC(right_and_left_u+1, right_and_left_v),
+        buildG(right_and_left_u, right_and_left_v+1),
+        buildE(right_and_left_u+1, right_and_left_v+1),
 
         // back:
-        buildB(front_and_back_u+1, 0),
-        buildA(front_and_back_u+1, 0),
-        buildH(front_and_back_u, 0+1),
-        buildA(front_and_back_u+1, 0),
-        buildH(front_and_back_u, 0+1),
-        buildG(front_and_back_u+1, v),
+        buildB(front_and_back_u+1, front_and_back_v),
+        buildA(front_and_back_u+1, front_and_back_v),
+        buildH(front_and_back_u, front_and_back_v+1),
+        buildA(front_and_back_u+1, front_and_back_v),
+        buildH(front_and_back_u, front_and_back_v+1),
+        buildG(front_and_back_u+1, front_and_back_v+1),
       };
 
       for (auto &vertex : result)
