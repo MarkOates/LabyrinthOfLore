@@ -42,7 +42,7 @@
 using AllegroFlare::radians_to_degrees;
 using AllegroFlare::Random;
 
-float topmost_wall_height = 10.0;
+float topmost_wall_height = 2.0;
 
 std::vector<std::vector<LabyrinthOfLore::WorldMap::Tile>> construct_tile_map_data = {
    { { 1, topmost_wall_height }, { 1, topmost_wall_height }, { 1, topmost_wall_height }, { 1, topmost_wall_height }, { 1, topmost_wall_height }, { 1, topmost_wall_height }, { 1, topmost_wall_height }, { 1, topmost_wall_height }, },
