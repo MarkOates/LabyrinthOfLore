@@ -122,7 +122,7 @@ int main(int argc, char **argv)
 
       //
 
-      ALLEGRO_BITMAP *tile_mesh_texture = al_load_bitmap("data/bitmaps/wall-tile-01-3x.png");
+      ALLEGRO_BITMAP *tile_mesh_texture = al_load_bitmap("data/bitmaps/billboarding_tester_sprite.png");
       if (!tile_mesh_texture) throw std::runtime_error("could not load tile_mesh_texture");
 
       ALLEGRO_BITMAP *billboarding_tester_sprite = al_load_bitmap("data/bitmaps/billboarding_tester_sprite.png");
