@@ -64,20 +64,6 @@ endef
 
 
 
-focus:
-	$(call output_terminal_message,"Compose componets from all quintessence files")
-	@make quintessences
-	$(call output_terminal_message,"Make all the component object files")
-	@make objects
-	$(call output_terminal_message,"Make the focused component test")
-	@make obj/tests/$(FOCUSED_COMPONENT_NAME)Test.o
-	$(call output_terminal_message,"Make the focused component test")
-	@./bin/tests/$(FOCUSED_COMPONENT_NAME)Test
-	$(call output_terminal_message,"Celebrate passing focused component tests")
-	@make celebrate_passing_tests
-
-
-
 main:
 	$(call output_terminal_message,"Compose componets from all quintessence files")
 	@make quintessences
@@ -99,6 +85,20 @@ main:
 	@make examples
 	$(call output_terminal_message,"🀫 🀫 🀫 🀫 🀫 🀫 🀫 FINISHED! 🀫 🀫 🀫 🀫 🀫 🀫 🀫")
 	@make celebrate_everything_built
+
+
+
+focus:
+	$(call output_terminal_message,"Compose componets from all quintessence files")
+	@make quintessences
+	$(call output_terminal_message,"Make all the component object files")
+	@make objects
+	$(call output_terminal_message,"Make the focused component test")
+	@make obj/tests/$(FOCUSED_COMPONENT_NAME)Test.o
+	$(call output_terminal_message,"Make the focused component test")
+	@./bin/tests/$(FOCUSED_COMPONENT_NAME)Test
+	$(call output_terminal_message,"Celebrate passing focused component tests")
+	@make celebrate_passing_tests
 
 
 
