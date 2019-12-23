@@ -15,7 +15,8 @@ YAML_CPP_INCLUDE_DIR=$(YAML_CPP_DIR)/include
 
 
 QUINTESSENCE_BUILDER_EXECUTABLE=~/Repos/blast/bin/programs/quintessence_from_yaml
-
+QUINTESSENCE_BUILDER_FLAGS=--less_verbose
+FOCUSED_COMPONENT_NAME=
 
 
 ALLEGRO_LIBS=allegro_color allegro_font allegro_ttf allegro_dialog allegro_audio allegro_acodec allegro_primitives allegro_image allegro
@@ -86,9 +87,10 @@ main:
 	@make celebrate_everything_built
 
 
+
 quintessences: $(QUINTESSENCE_SOURCES)
 	[ -f $(QUINTESSENCE_BUILDER_EXECUTABLE) ] || echo "The needed executable $(QUINTESSENCE_BUILDER_EXECUTABLE) was not found"
-	find quintessence -name '*.q.yml' | xargs $(QUINTESSENCE_BUILDER_EXECUTABLE)
+	find quintessence -name '*.q.yml' | xargs $(QUINTESSENCE_BUILDER_EXECUTABLE) $(QUINTESSENCE_BUILDER_FLAGS) -f
 
 
 
