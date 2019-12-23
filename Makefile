@@ -96,6 +96,8 @@ focus:
 	$(call output_terminal_message,"Make the focused component test")
 	@make obj/tests/$(FOCUSED_COMPONENT_NAME)Test.o
 	$(call output_terminal_message,"Make the focused component test")
+	@make bin/tests/$(FOCUSED_COMPONENT_NAME)Test
+	$(call output_terminal_message,"Run the focused component test")
 	@./bin/tests/$(FOCUSED_COMPONENT_NAME)Test
 	$(call output_terminal_message,"Celebrate passing focused component tests")
 	@make celebrate_passing_tests
