@@ -1,3 +1,16 @@
+properties:
+  - name: x
+    type: float
+    init_with: 0.0f
+    constructor_arg: true
+  - name: y
+    type: float
+    init_with: 0.0f
+    constructor_arg: true
+  - name: height
+    type: float
+    init_with: 1.0f
+    constructor_arg: true
 functions:
   - name: random_color
     type: ALLEGRO_COLOR
@@ -16,16 +29,6 @@ functions:
       - AllegroFlare::Random
   - name: build_cube
     type: std::vector<ALLEGRO_VERTEX>
-    parameters:
-      - name: x
-        type: float
-        default_argument: 0
-      - name: y
-        type: float
-        default_argument: 0
-      - name: height
-        type: float
-        default_argument: 1
     body: |
       ALLEGRO_COLOR cube_color = random_color();
       int u = 0;

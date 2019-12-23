@@ -12,7 +12,10 @@ namespace Rendering
 {
 
 
-TileMapMeshCubeBuilder::TileMapMeshCubeBuilder()
+TileMapMeshCubeBuilder::TileMapMeshCubeBuilder(float x, float y, float height)
+   : x(x)
+   , y(y)
+   , height(height)
 {
 }
 
@@ -37,7 +40,7 @@ return colors[random.get_random_int(0, colors.size()-1)];
 
 }
 
-std::vector<ALLEGRO_VERTEX> TileMapMeshCubeBuilder::build_cube(float x, float y, float height)
+std::vector<ALLEGRO_VERTEX> TileMapMeshCubeBuilder::build_cube()
 {
 ALLEGRO_COLOR cube_color = random_color();
 int u = 0;
