@@ -348,7 +348,7 @@ int main(int argc, char **argv)
                      &title_text,
                      &mouse_pointer
                   );
-               hud_renderer.render();
+               //hud_renderer.render();
 
                al_flip_display();
             }
