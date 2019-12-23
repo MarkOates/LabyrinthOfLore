@@ -16,9 +16,9 @@ functions:
     body: |
       vertexes.clear();
 
-      for (unsigned y=0; y<tile_map.get_height(); y++)
+      for (int y=0; y<tile_map.get_height(); y++)
       {
-         for (unsigned x=0; x<tile_map.get_width(); x++)
+         for (int x=0; x<tile_map.get_width(); x++)
          {
             LabyrinthOfLore::WorldMap::Tile tile = tile_map.get_tile(x, y);
             std::vector<ALLEGRO_VERTEX> cube = LabyrinthOfLore::Rendering::TileMapMeshCubeBuilder(x, y, tile.get_height()).build_cube();

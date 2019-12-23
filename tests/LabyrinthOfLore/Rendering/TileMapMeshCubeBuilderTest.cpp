@@ -3,9 +3,22 @@
 
 #include <LabyrinthOfLore/Rendering/TileMapMeshCubeBuilder.hpp>
 #include <AllegroFlare/Vec3D.hpp>
+#include <AllegroFlare/Useful.hpp> // for build_vertex
+#include <allegro5/allegro_color.h>
 
 
 using AllegroFlare::vec3d;
+using AllegroFlare::build_vertex;
+
+
+void ASSERT_EQ_VERTEX(ALLEGRO_VERTEX first_vertex, ALLEGRO_VERTEX second_vertex)
+{
+   ASSERT_EQ(first_vertex.x, second_vertex.x);
+   ASSERT_EQ(first_vertex.y, second_vertex.y);
+   ASSERT_EQ(first_vertex.z, second_vertex.z);
+   ASSERT_EQ(first_vertex.u, second_vertex.u);
+   ASSERT_EQ(first_vertex.v, second_vertex.v);
+}
 
 
 TEST(LabyrinthOfLore_Rendering_TileMapMeshCubeBuilderTest, can_be_created_without_blowing_up)
@@ -18,19 +31,16 @@ TEST(LabyrinthOfLore_Rendering_TileMapMeshCubeBuilderTest, build_cube__with_no_a
    LabyrinthOfLore::Rendering::TileMapMeshCubeBuilder tile_map_mesh_cube_builder;
 }
 
-TEST(LabyrinthOfLore_Rendering_TileMapMeshCubeBuilderTest, build_n__builds_the_expected_named_vertex_point)
+TEST(LabyrinthOfLore_Rendering_TileMapMeshCubeBuilderTest, buildA__builds_the_expected_named_vertex_point)
 {
-   float height = 1.0;
-   LabyrinthOfLore::Rendering::TileMapMeshCubeBuilder tile_map_mesh_cube_builder(0, 0, height, 1.0);
+   ALLEGRO_COLOR white = al_color_name("white");
+   LabyrinthOfLore::Rendering::TileMapMeshCubeBuilder tile_map_mesh_cube_builder(0, 0, 3.0, 1.0);
+   ASSERT_EQ_VERTEX(build_vertex(0, 0, 3.0, white, 0, 0), tile_map_mesh_cube_builder.buildA());
+}
 
-   vec3d expected_vertex = vec3d(0, 0, 0);
-   //ASSERT_EQ(expected_vertex, tile_map_mesh_cube_builder.build_a());
-
-   //tile_map_mesh_cube_builder.build_b
-      //tile_map_mesh_cube_builder.build_c
-      //tile_map_mesh_cube_builder.build_d
-      //tile_map_mesh_cube_builder.build_e
-      //tile_map_mesh_cube_builder.build_f
-      //tile_map_mesh_cube_builder.build_g
-      //tile_map_mesh_cube_builder.build_h
+TEST(LabyrinthOfLore_Rendering_TileMapMeshCubeBuilderTest, buildB__builds_the_expected_named_vertex_point)
+{
+   ALLEGRO_COLOR white = al_color_name("white");
+   LabyrinthOfLore::Rendering::TileMapMeshCubeBuilder tile_map_mesh_cube_builder(0, 0, 3.0, 1.0);
+   ASSERT_EQ_VERTEX(build_vertex(1.0, 0, 3.0, white, 0, 0), tile_map_mesh_cube_builder.buildB());
 }
