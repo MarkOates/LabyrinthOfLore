@@ -16,7 +16,7 @@ YAML_CPP_INCLUDE_DIR=$(YAML_CPP_DIR)/include
 
 QUINTESSENCE_BUILDER_EXECUTABLE=~/Repos/blast/bin/programs/quintessence_from_yaml
 QUINTESSENCE_BUILDER_FLAGS=--less_verbose
-FOCUSED_COMPONENT_NAME=
+FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Rendering/TileMapMeshCubeBuilder
 
 
 ALLEGRO_LIBS=allegro_color allegro_font allegro_ttf allegro_dialog allegro_audio allegro_acodec allegro_primitives allegro_image allegro
@@ -64,6 +64,18 @@ endef
 
 
 
+focus:
+	$(call output_terminal_message,"Compose componets from all quintessence files")
+	@make quintessences
+	$(call output_terminal_message,"Make all the component object files")
+	@make objects
+	$(call output_terminal_message,"Make the focused component test")
+	@make obj/tests/$(FOCUSED_COMPONENT_NAME)Test.o
+	$(call output_terminal_message,"Make the focused component test")
+	@./bin/tests/$(FOCUSED_COMPONENT_NAME)Test
+
+
+
 main:
 	$(call output_terminal_message,"Compose componets from all quintessence files")
 	@make quintessences
@@ -89,8 +101,9 @@ main:
 
 
 quintessences: $(QUINTESSENCE_SOURCES)
-	[ -f $(QUINTESSENCE_BUILDER_EXECUTABLE) ] || echo "The needed executable $(QUINTESSENCE_BUILDER_EXECUTABLE) was not found"
-	find quintessence -name '$(FOCUSED_COMPONENT_NAME)*.q.yml' | xargs $(QUINTESSENCE_BUILDER_EXECUTABLE) -f
+	@[ -f $(QUINTESSENCE_BUILDER_EXECUTABLE) ] || echo "The needed executable $(QUINTESSENCE_BUILDER_EXECUTABLE) was not found"
+	@find quintessence -name '*$(FOCUSED_COMPONENT_NAME)*.q.yml' | xargs $(QUINTESSENCE_BUILDER_EXECUTABLE) --less_verbose -f
+	@echo "(finished)"
 
 
 
