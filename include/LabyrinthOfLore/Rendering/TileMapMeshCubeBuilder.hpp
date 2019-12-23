@@ -13,14 +13,17 @@ namespace LabyrinthOfLore
       class TileMapMeshCubeBuilder
       {
       private:
+         float x;
+         float y;
+         float height;
 
       public:
-         TileMapMeshCubeBuilder();
+         TileMapMeshCubeBuilder(float x=0.0f, float y=0.0f, float height=1.0f);
          ~TileMapMeshCubeBuilder();
 
 
       ALLEGRO_COLOR random_color();
-      std::vector<ALLEGRO_VERTEX> build_cube(float x=0, float y=0, float height=1);
+      std::vector<ALLEGRO_VERTEX> build_cube();
       };
    }
 }
