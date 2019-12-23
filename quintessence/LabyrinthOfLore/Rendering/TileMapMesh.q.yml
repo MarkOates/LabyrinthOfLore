@@ -11,100 +11,6 @@ properties:
     type: std::vector<ALLEGRO_VERTEX>
     init_with: "{}"
 functions:
-  - name: random_color
-    type: ALLEGRO_COLOR
-    body: |
-      static AllegroFlare::Random random;
-      static std::vector<ALLEGRO_COLOR> colors = {
-         al_color_name("white"),
-         //al_color_name("orange"),
-         //al_color_name("dimgray"),
-         //al_color_name("darkslategray"),
-         //al_color_name("firebrick"),
-         //al_color_name("darkolivegreen"),
-      };
-      return colors[random.get_random_int(0, colors.size()-1)];
-    body_dependency_symbols:
-      - AllegroFlare::Random
-  - name: build_cube
-    type: std::vector<ALLEGRO_VERTEX>
-    parameters:
-      - name: x
-        type: float
-        default_argument: 0
-      - name: y
-        type: float
-        default_argument: 0
-      - name: height
-        type: float
-        default_argument: 1
-    body: |
-      ALLEGRO_COLOR cube_color = random_color();
-      int u = 0;
-      int v = 1; //texture ? al_get_bitmap_width(texture) : 1;
-
-      float mul = -1;
-
-      std::vector<ALLEGRO_VERTEX> result = {
-        // facing from the top down:
-
-        // top
-        AllegroFlare::build_vertex(mul*x, y, height, cube_color, 0, 0), // top left triangle
-        AllegroFlare::build_vertex(mul*x+1, y, height, cube_color, v, 0),
-        AllegroFlare::build_vertex(mul*x, y+1, height, cube_color, 0, v),
-
-        AllegroFlare::build_vertex(mul*x+1, y, height, cube_color, v, 0), // bottom right triangle
-        AllegroFlare::build_vertex(mul*x, y+1, height, cube_color, 0, v),
-        AllegroFlare::build_vertex(mul*x+1, y+1, height, cube_color, v, v),
-
-        // left
-        AllegroFlare::build_vertex(mul*x, y, height, cube_color, 0, 0), // top left triangle
-        AllegroFlare::build_vertex(mul*x, y+1, height, cube_color, v, 0),
-        AllegroFlare::build_vertex(mul*x, y, 0, cube_color, 0, v),
-
-        AllegroFlare::build_vertex(mul*x, y+1, height, cube_color, v, 0), // bottom right triangle
-        AllegroFlare::build_vertex(mul*x, y, 0, cube_color, 0, v),
-        AllegroFlare::build_vertex(mul*x, y+1, 0, cube_color, v, v),
-
-        // right
-        //AllegroFlare::build_vertex(mul*x+1, y+1, height, cube_color, 0, 0), // top left triangle
-        //AllegroFlare::build_vertex(mul*x+1, y, height, cube_color, v, 0),
-        //AllegroFlare::build_vertex(mul*x+1, y+1, 0, cube_color, 0, v),
-
-        //AllegroFlare::build_vertex(mul*x+1, y, height, cube_color, v, 0), // bottom right triangle
-        //AllegroFlare::build_vertex(mul*x+1, y+1, 0, cube_color, 0, v),
-        //AllegroFlare::build_vertex(mul*x+1, y, 0, cube_color, v, v),
-
-        // right
-        //AllegroFlare::build_vertex(mul*x+1, y+1, height, cube_color, 0, 0), // top left triangle
-        //AllegroFlare::build_vertex(mul*x+1, y, height, cube_color, v, 0),
-        //AllegroFlare::build_vertex(mul*x+1, y+1, 0, cube_color, 0, v),
-
-        //AllegroFlare::build_vertex(mul*x+1, y, height, cube_color, v, 0), // bottom right triangle
-        //AllegroFlare::build_vertex(mul*x+1, y+1, 0, cube_color, 0, v),
-        //AllegroFlare::build_vertex(mul*x+1, y, 0, cube_color, v, v),
-
-        // bottom
-        //AllegroFlare::build_vertex(mul*x, y+1, height, cube_color, 0, 0), // top left triangle
-        //AllegroFlare::build_vertex(mul*x+1, y+1, height, cube_color, v, 0),
-        //AllegroFlare::build_vertex(mul*x, y+1, 0, cube_color, 0, v),
-
-        //AllegroFlare::build_vertex(mul*x+1, y+1, height, cube_color, v, 0), // bottom right triangle
-        //AllegroFlare::build_vertex(mul*x, y+1, 0, cube_color, 0, v),
-        //AllegroFlare::build_vertex(mul*x+1, y+1, 0, cube_color, v, v),
-
-        //
-      };
-
-      for (auto &vertex : result)
-      {
-         //vertex.x = -vertex.x;
-      }
-
-      return result;
-    body_dependency_symbols:
-      - AllegroFlare::build_vertex
-      - al_color_name
   - name: build
     type: bool
     body: |
@@ -115,13 +21,15 @@ functions:
          for (unsigned x=0; x<tile_map.get_width(); x++)
          {
             LabyrinthOfLore::WorldMap::Tile tile = tile_map.get_tile(x, y);
-            std::vector<ALLEGRO_VERTEX> cube = build_cube(x, y, tile.get_height());
+            std::vector<ALLEGRO_VERTEX> cube = LabyrinthOfLore::Rendering::TileMapMeshCubeBuilder().build_cube(x, y, tile.get_height());
   
             vertexes.insert(vertexes.end(), cube.begin(), cube.end());
          }
       }
 
       return true;
+    body_dependency_symbols:
+      - LabyrinthOfLore::Rendering::TileMapMeshCubeBuilder
   - name: draw
     type: void
     body: |
@@ -143,6 +51,8 @@ functions:
 
       al_restore_state(&previous_transform_state);
 dependencies:
+  - symbol: LabyrinthOfLore::Rendering::TileMapMeshCubeBuilder
+    headers: [ LabyrinthOfLore/Rendering/TileMapMeshCubeBuilder.hpp ]
   - symbol: LabyrinthOfLore::WorldMap::TileMap
     headers: [ LabyrinthOfLore/WorldMap/TileMap.hpp ]
   - symbol: std::vector<ALLEGRO_VERTEX>
