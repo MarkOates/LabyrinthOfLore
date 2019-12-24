@@ -74,7 +74,7 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, build_textured_cub
 
 // facing tests
 
-TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, while_rendering_with_the_camera_facing_down_should_see_a1)
+TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, while_rendering_with_the_camera_facing_down_should_see_a2)
 {
    LabyrinthOfLore::Rendering::Camera camera(AllegroFlare::vec3d(0, 0, 3), 0, -0.25); // facing down, towards the top face
    ALLEGRO_BITMAP *surface = al_get_backbuffer(al_get_current_display());
@@ -91,7 +91,7 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, while_rendering_wi
    al_clear_to_color(al_color_name("slategray"));
    std::vector<ALLEGRO_VERTEX> cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeBuilder(0, 0, 1.0, 1.0).build_cube();
 
-   cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeTexturer(&tile_atlas, cube_vertexes).build_textured_cube();
+   cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeTexturer(&tile_atlas, cube_vertexes, 0, 0, 1).build_textured_cube();
 
    // draw the scene
 
@@ -119,7 +119,7 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, while_rendering_wi
    al_clear_to_color(al_color_name("slategray"));
    std::vector<ALLEGRO_VERTEX> cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeBuilder(0, 0, 1.0, 1.0).build_cube();
 
-   cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeTexturer(&tile_atlas, cube_vertexes).build_textured_cube();
+   cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeTexturer(&tile_atlas, cube_vertexes, 1, 0, 0).build_textured_cube();
 
    // draw the scene
 
@@ -130,7 +130,7 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, while_rendering_wi
    SUCCEED();
 }
 
-TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, while_rendering_with_the_camera_facing_towards_the_right_face_should_see_a3)
+TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, while_rendering_with_the_camera_facing_towards_the_right_face_should_see_a2)
 {
    LabyrinthOfLore::Rendering::Camera camera(AllegroFlare::vec3d(3, 0, 0), -0.25, 0); // facing towards the right face
    ALLEGRO_BITMAP *surface = al_get_backbuffer(al_get_current_display());
@@ -147,7 +147,7 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, while_rendering_wi
    al_clear_to_color(al_color_name("slategray"));
    std::vector<ALLEGRO_VERTEX> cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeBuilder(0, 0, 1.0, 1.0).build_cube();
 
-   cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeTexturer(&tile_atlas, cube_vertexes).build_textured_cube();
+   cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeTexturer(&tile_atlas, cube_vertexes, 0, 1, 0).build_textured_cube();
 
    // draw the scene
 
@@ -158,7 +158,7 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, while_rendering_wi
    SUCCEED();
 }
 
-TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, while_rendering_with_the_camera_facing_towards_the_left_face_should_see_b1)
+TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, while_rendering_with_the_camera_facing_towards_the_left_face_should_see_a2)
 {
    LabyrinthOfLore::Rendering::Camera camera(AllegroFlare::vec3d(-3, 0, 0), 0.25, 0); // facing towards the left face
    ALLEGRO_BITMAP *surface = al_get_backbuffer(al_get_current_display());
@@ -175,7 +175,7 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, while_rendering_wi
    al_clear_to_color(al_color_name("slategray"));
    std::vector<ALLEGRO_VERTEX> cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeBuilder(0, 0, 1.0, 1.0).build_cube();
 
-   cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeTexturer(&tile_atlas, cube_vertexes).build_textured_cube();
+   cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeTexturer(&tile_atlas, cube_vertexes, 0, 1, 0).build_textured_cube();
 
    // draw the scene
 
@@ -187,7 +187,7 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, while_rendering_wi
 }
 
 
-TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, while_rendering_with_the_camera_facing_towards_the_back_face_should_see_b2)
+TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, while_rendering_with_the_camera_facing_towards_the_back_face_should_see_a2)
 {
    LabyrinthOfLore::Rendering::Camera camera(AllegroFlare::vec3d(0, -3, 0), 0.5, 0); // facing towards the back face
    ALLEGRO_BITMAP *surface = al_get_backbuffer(al_get_current_display());
@@ -204,7 +204,7 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, while_rendering_wi
    al_clear_to_color(al_color_name("slategray"));
    std::vector<ALLEGRO_VERTEX> cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeBuilder(0, 0, 1.0, 1.0).build_cube();
 
-   cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeTexturer(&tile_atlas, cube_vertexes).build_textured_cube();
+   cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeTexturer(&tile_atlas, cube_vertexes, 1, 0, 0).build_textured_cube();
 
    // draw the scene
 

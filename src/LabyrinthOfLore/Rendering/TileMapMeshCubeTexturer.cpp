@@ -11,9 +11,12 @@ namespace Rendering
 {
 
 
-TileMapMeshCubeTexturer::TileMapMeshCubeTexturer(Tileo::TileAtlas* tile_atlas, std::vector<ALLEGRO_VERTEX> cube_vertexes)
+TileMapMeshCubeTexturer::TileMapMeshCubeTexturer(Tileo::TileAtlas* tile_atlas, std::vector<ALLEGRO_VERTEX> cube_vertexes, int tile_index_for_front_and_back_texture, int tile_index_for_right_and_left_texture, int tile_index_for_top_texture)
    : tile_atlas(tile_atlas)
    , cube_vertexes(cube_vertexes)
+   , tile_index_for_front_and_back_texture(tile_index_for_front_and_back_texture)
+   , tile_index_for_right_and_left_texture(tile_index_for_right_and_left_texture)
+   , tile_index_for_top_texture(tile_index_for_top_texture)
 {
 }
 
@@ -39,7 +42,7 @@ float v1 = 0;
 float u2 = 0;
 float v2 = 0;
 
-tile_atlas->get_tile_uv(0, &u1, &v1, &u2, &v2);
+tile_atlas->get_tile_uv(tile_index_for_top_texture, &u1, &v1, &u2, &v2);
 // top face
 cube_vertexes[6*0+0].u = u1;
 cube_vertexes[6*0+0].v = v2;//1.0 * 128;
@@ -54,7 +57,7 @@ cube_vertexes[6*0+4].v = v2;//1.0 * 128;
 cube_vertexes[6*0+5].u = u2;//1.0 * 128;
 cube_vertexes[6*0+5].v = v2;//1.0 * 128;
 
-tile_atlas->get_tile_uv(1, &u1, &v1, &u2, &v2);
+tile_atlas->get_tile_uv(tile_index_for_front_and_back_texture, &u1, &v1, &u2, &v2);
 // front face
 cube_vertexes[6*1+0].u = u1;
 cube_vertexes[6*1+0].v = v2;//1.0 * 128;
@@ -69,7 +72,7 @@ cube_vertexes[6*1+4].v = v2;//1.0 * 128;
 cube_vertexes[6*1+5].u = u2;//1.0 * 128;
 cube_vertexes[6*1+5].v = v2;//1.0 * 128;
 
-tile_atlas->get_tile_uv(2, &u1, &v1, &u2, &v2);
+tile_atlas->get_tile_uv(tile_index_for_right_and_left_texture, &u1, &v1, &u2, &v2);
 // right face
 cube_vertexes[6*2+0].u = u1;
 cube_vertexes[6*2+0].v = v2;//1.0 * 128;
@@ -84,7 +87,7 @@ cube_vertexes[6*2+4].v = v2;//1.0 * 128;
 cube_vertexes[6*2+5].u = u2;//1.0 * 128;
 cube_vertexes[6*2+5].v = v2;//1.0 * 128;
 
-tile_atlas->get_tile_uv(3, &u1, &v1, &u2, &v2);
+tile_atlas->get_tile_uv(tile_index_for_right_and_left_texture, &u1, &v1, &u2, &v2);
 // left face
 cube_vertexes[6*3+0].u = u1;
 cube_vertexes[6*3+0].v = v2;//1.0 * 128;
@@ -99,7 +102,7 @@ cube_vertexes[6*3+4].v = v2;//1.0 * 128;
 cube_vertexes[6*3+5].u = u2;//1.0 * 128;
 cube_vertexes[6*3+5].v = v2;//1.0 * 128;
 
-tile_atlas->get_tile_uv(4, &u1, &v1, &u2, &v2);
+tile_atlas->get_tile_uv(tile_index_for_front_and_back_texture, &u1, &v1, &u2, &v2);
 // back face
 cube_vertexes[6*4+0].u = u1;
 cube_vertexes[6*4+0].v = v2;//1.0 * 128;
