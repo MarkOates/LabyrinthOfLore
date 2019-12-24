@@ -99,15 +99,19 @@ int tile_width = 48;
 
 int integer_floor_of_the_height = (int)height;
 
-std::vector<ALLEGRO_VERTEX> result = {
+std::vector<ALLEGRO_VERTEX> result = {};
+
+std::vector<ALLEGRO_VERTEX> top_face = {
   // top:
   buildC(),
   buildB(),
   buildA(),
   buildB(),
   buildC(),
-  buildD(),
+  buildD()
+};
 
+std::vector<ALLEGRO_VERTEX> side_faces = {
   // front:
   buildE(),
   buildD(),
@@ -140,6 +144,9 @@ std::vector<ALLEGRO_VERTEX> result = {
   buildH(),
   buildG()
 };
+
+result.insert(result.begin(), top_face.begin(), top_face.end());
+result.insert(result.begin(), side_faces.begin(), side_faces.end());
 
 for (auto &vertex : result) { float swap = vertex.y; vertex.y = vertex.z; vertex.z = swap; }
 
