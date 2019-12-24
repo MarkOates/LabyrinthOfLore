@@ -153,39 +153,42 @@ std::vector<ALLEGRO_VERTEX> top_face = {
   buildD()
 };
 
-std::vector<ALLEGRO_VERTEX> side_faces = {
-  // front:
-  buildE(),
-  buildD(),
-  buildC(),
-  buildD(),
-  buildE(),
-  buildF(),
+if (true) //(needs_partial_height_side_faces_from_top)
+{
+   side_faces = {
+      // front:
+      buildE(),
+      buildD(),
+      buildC(),
+      buildD(),
+      buildE(),
+      buildF(),
 
-  // right: // looks correct
-  buildF(),
-  buildB(),
-  buildD(),
-  buildB(),
-  buildF(),
-  buildH(),
+      // right: // looks correct
+      buildF(),
+      buildB(),
+      buildD(),
+      buildB(),
+      buildF(),
+      buildH(),
 
-  // left: // looks correct
-  buildG(),
-  buildC(),
-  buildA(),
-  buildC(),
-  buildG(),
-  buildE(),
+      // left: // looks correct
+      buildG(),
+      buildC(),
+      buildA(),
+      buildC(),
+      buildG(),
+      buildE(),
 
-  // back:
-  buildH(),
-  buildA(),
-  buildB(),
-  buildA(),
-  buildH(),
-  buildG()
-};
+      // back:
+      buildH(),
+      buildA(),
+      buildB(),
+      buildA(),
+      buildH(),
+      buildG()
+  };
+}
 
 result.insert(result.begin(), top_face.begin(), top_face.end());
 result.insert(result.begin(), side_faces.begin(), side_faces.end());
