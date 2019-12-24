@@ -23,6 +23,17 @@ TEST(LabyrinthOfLore_WorldMap_TileMapTest, get_tile__when_requesting_a_tile_outs
 }
 
 
+TEST(LabyrinthOfLore_WorldMap_TileMapTest, ceiling_height__has_getters_and_setters_and_had_the_expected_default)
+{
+   LabyrinthOfLore::WorldMap::TileMap tile_map;
+
+   ASSERT_EQ(100.0f, tile_map.get_ceiling_height());
+
+   tile_map.set_ceiling_height(30.0);
+   ASSERT_EQ(30.0f, tile_map.get_ceiling_height());
+}
+
+
 TEST(LabyrinthOfLore_WorldMap_TileMapTest, resize__will_fill_the_tiles_with_the_default_tile)
 {
    LabyrinthOfLore::WorldMap::TileMap tile_map;

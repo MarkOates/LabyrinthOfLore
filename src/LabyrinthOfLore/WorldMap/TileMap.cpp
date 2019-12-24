@@ -10,8 +10,9 @@ namespace LabyrinthOfLore
    namespace WorldMap
    {
       TileMap::TileMap()
-         : width(0)
-         , height(0)
+         : width(0.0f)
+         , height(0.0f)
+         , ceiling_height(100.0f)
          , tiles()
       {}
 
@@ -33,6 +34,12 @@ namespace LabyrinthOfLore
       }
 
 
+      float TileMap::get_ceiling_height()
+      {
+         return ceiling_height;
+      }
+
+
       int TileMap::infer_num_tiles()
       {
          return width * height;
@@ -51,6 +58,12 @@ namespace LabyrinthOfLore
          if (tile_y < 0 || (tile_y >= height)) return -1;
 
          return tiles[tile_x % width + tile_y * width];
+      }
+
+
+      void TileMap::set_ceiling_height(float ceiling_height)
+      {
+         this->ceiling_height = ceiling_height;
       }
 
 
