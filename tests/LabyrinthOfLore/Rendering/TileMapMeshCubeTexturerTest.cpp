@@ -89,47 +89,13 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, while_rendering_wi
    al_clear_to_color(al_color_name("slategray"));
    std::vector<ALLEGRO_VERTEX> cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeBuilder(0, 0, 1.0, 1.0).build_cube();
 
-   //cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeTexturer(&tile_atlas, cube_vertexes).build_textured_cube();
-
-   //for (auto &vertex : cube_vertexes)
-   //{
-      //vertex.color = al_color_name("black");
-      ////vertex.x = -vertex.x;
-   //}
-   //cube_vertexes[0].color = al_color_name("black");
-   //cube_vertexes[1].color = al_color_name("black");
-   //cube_vertexes[2].color = al_color_name("black");
-   //cube_vertexes[3].color = al_color_name("black");
-   //cube_vertexes[4].color = al_color_name("black");
-   //cube_vertexes[5].color = al_color_name("black");
-   cube_vertexes[6].color = al_color_name("black");
-   cube_vertexes[7].color = al_color_name("orange");
-   //cube_vertexes[].color = al_color_name("black");
-   ////for(auto cube_vertex : cube_vertexes[0].u = 0;
-   //cube_vertexes[0].u = 0;
-   //cube_vertexes[0].v = 0;
-
-   //cube_vertexes[1].u = 1.0 * 128;
-   //cube_vertexes[1].v = 0;
-
-   //cube_vertexes[2].u = 0;
-   //cube_vertexes[2].v = 1.0 * 128;
-
-   //cube_vertexes[3].u = 1.0 * 128;
-   //cube_vertexes[3].v = 0;
-
-   //cube_vertexes[4].u = 0;
-   //cube_vertexes[4].v = 1.0 * 128;
-
-   //cube_vertexes[5].u = 1.0 * 128;
-   //cube_vertexes[5].v = 1.0 * 128;
-
+   cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeTexturer(&tile_atlas, cube_vertexes).build_textured_cube();
 
    // draw the scene
 
    al_clear_depth_buffer(1);
 
-   al_draw_prim(&cube_vertexes[0], nullptr, nullptr, 0, cube_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
+   al_draw_prim(&cube_vertexes[0], nullptr, b, 0, cube_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
 
    al_flip_display();
    sleep(2);

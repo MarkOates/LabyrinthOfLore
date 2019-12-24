@@ -34,23 +34,19 @@ if (cube_vertexes.size()!=30)
    throw std::runtime_error(error_message.str());
 }
 
-//cube_vertexes[0].color = al_color_name("black");
-//cube_vertexes[0].v = 0;
-
-//cube_vertexes[1].u = 1.0 * 128;
-//cube_vertexes[1].v = 0;
-
-//cube_vertexes[2].u = 0;
-//cube_vertexes[2].v = 1.0 * 128;
-
-//cube_vertexes[3].u = 1.0 * 128;
-//cube_vertexes[3].v = 0;
-
-//cube_vertexes[4].u = 0;
-//cube_vertexes[4].v = 1.0 * 128;
-
-//cube_vertexes[5].u = 1.0 * 128;
-//cube_vertexes[5].v = 1.0 * 128;
+// top face
+cube_vertexes[0].u = 0;
+cube_vertexes[0].v = 1.0 * 128;
+cube_vertexes[1].u = 1.0 * 128;
+cube_vertexes[1].v = 0;
+cube_vertexes[2].u = 0;
+cube_vertexes[2].v = 0;
+cube_vertexes[3].u = 1.0 * 128;
+cube_vertexes[3].v = 0;
+cube_vertexes[4].u = 0;
+cube_vertexes[4].v = 1.0 * 128;
+cube_vertexes[5].u = 1.0 * 128;
+cube_vertexes[5].v = 1.0 * 128;
 
 return cube_vertexes;
 
