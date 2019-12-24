@@ -16,10 +16,9 @@ namespace LabyrinthOfLore
          int x;
          int y;
          float height;
-         float mul;
 
       public:
-         TileMapMeshPillarBuilder(int x=0, int y=0, float height=1.0f, float mul=1.0f);
+         TileMapMeshPillarBuilder(int x=0, int y=0, float height=1.0f);
          ~TileMapMeshPillarBuilder();
 
 
