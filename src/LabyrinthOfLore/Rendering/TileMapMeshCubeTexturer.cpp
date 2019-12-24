@@ -22,34 +22,34 @@ TileMapMeshCubeTexturer::~TileMapMeshCubeTexturer()
 }
 
 
-std::vector<ALLEGRO_VERTEX> TileMapMeshCubeTexturer::texture_cube()
+std::vector<ALLEGRO_VERTEX> TileMapMeshCubeTexturer::build_textured_cube()
 {
-if (!tile_atlas) throw std::runtime_error("cannot texture_cube with a nullptr tile_atlas");
+if (!tile_atlas) throw std::runtime_error("cannot build_textured_cube with a nullptr tile_atlas");
 if (cube_vertexes.size()!=30)
 {
    std::stringstream error_message;
-   error_message << "cannot texture_cube with cube_vertexes that does not have the expected 30 vertexes. ";
+   error_message << "cannot build_textured_cube with cube_vertexes that does not have the expected 30 vertexes. ";
    error_message << "The passed cube_vertexes has " << cube_vertexes.size() << " vertexes.";
    throw std::runtime_error(error_message.str());
 }
 
-cube_vertexes[0].u = 0;
-cube_vertexes[0].v = 0;
+//cube_vertexes[0].u = 0;
+//cube_vertexes[0].v = 0;
 
-cube_vertexes[1].u = 1.0;
-cube_vertexes[1].v = 0;
+//cube_vertexes[1].u = 1.0;
+//cube_vertexes[1].v = 0;
 
-cube_vertexes[2].u = 0;
-cube_vertexes[2].v = 1.0;
+//cube_vertexes[2].u = 0;
+//cube_vertexes[2].v = 1.0;
 
-cube_vertexes[3].u = 1.0;
-cube_vertexes[3].v = 0;
+//cube_vertexes[3].u = 1.0;
+//cube_vertexes[3].v = 0;
 
-cube_vertexes[4].u = 0;
-cube_vertexes[4].v = 1.0;
+//cube_vertexes[4].u = 0;
+//cube_vertexes[4].v = 1.0;
 
-cube_vertexes[5].u = 1.0;
-cube_vertexes[5].v = 1.0;
+//cube_vertexes[5].u = 1.0;
+//cube_vertexes[5].v = 1.0;
 
 //float front_and_back_u1 = 0;
 //float front_and_back_v1 = 0;

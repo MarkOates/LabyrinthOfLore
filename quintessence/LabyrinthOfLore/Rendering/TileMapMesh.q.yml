@@ -32,7 +32,7 @@ functions:
 
             std::vector<ALLEGRO_VERTEX> cube = {};
             cube = LabyrinthOfLore::Rendering::TileMapMeshCubeBuilder(x, y, tile.get_height()).build_cube();
-            cube = LabyrinthOfLore::Rendering::TileMapMeshCubeTexturer(tile_atlas, cube).texture_cube();
+            cube = LabyrinthOfLore::Rendering::TileMapMeshCubeTexturer(tile_atlas, cube).build_textured_cube();
   
             vertexes.insert(vertexes.end(), cube.begin(), cube.end());
          }
