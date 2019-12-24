@@ -23,14 +23,14 @@ namespace LabyrinthOfLore
          ~TileMapMeshCubeBuilder();
 
 
-      ALLEGRO_VERTEX buildA(float u=0.0f, float v=0.0f);
-      ALLEGRO_VERTEX buildB(float u=0.0f, float v=0.0f);
-      ALLEGRO_VERTEX buildC(float u=0.0f, float v=0.0f);
-      ALLEGRO_VERTEX buildD(float u=0.0f, float v=0.0f);
-      ALLEGRO_VERTEX buildE(float u=0.0f, float v=0.0f);
-      ALLEGRO_VERTEX buildF(float u=0.0f, float v=0.0f);
-      ALLEGRO_VERTEX buildG(float u=0.0f, float v=0.0f);
-      ALLEGRO_VERTEX buildH(float u=0.0f, float v=0.0f);
+      ALLEGRO_VERTEX buildA();
+      ALLEGRO_VERTEX buildB();
+      ALLEGRO_VERTEX buildC();
+      ALLEGRO_VERTEX buildD();
+      ALLEGRO_VERTEX buildE();
+      ALLEGRO_VERTEX buildF();
+      ALLEGRO_VERTEX buildG();
+      ALLEGRO_VERTEX buildH();
       ALLEGRO_COLOR random_color();
       std::vector<ALLEGRO_VERTEX> build_cube();
       };
