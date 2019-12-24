@@ -2,6 +2,7 @@
 #include <gtest/gtest.h>
 
 #include <LabyrinthOfLore/Rendering/TileMapMeshCubeBuilder.hpp>
+#include <LabyrinthOfLore/Rendering/Camera.hpp>
 #include <AllegroFlare/Vec3D.hpp>
 #include <AllegroFlare/Useful.hpp> // for build_vertex
 #include <allegro5/allegro_color.h>
@@ -234,4 +235,24 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeBuilderTest, buildH__with_args__
    ALLEGRO_COLOR white = al_color_name("white");
    LabyrinthOfLore::Rendering::TileMapMeshCubeBuilder tile_map_mesh_cube_builder(7.0, 11.0, 3.0, -1.0);
    ASSERT_EQ_VERTEX(build_vertex(-6.0, 11.0, 0, white, 0, 0), tile_map_mesh_cube_builder.buildH());
+}
+
+TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeBuilderTest, while_rendering_with_the_camera__appears_in_the_scene)
+{
+   LabyrinthOfLore::Rendering::Camera camera(AllegroFlare::vec3d(0, 3, 0)); // facing forward
+   ALLEGRO_BITMAP *surface = al_get_backbuffer(al_get_current_display());
+   ASSERT_NE(nullptr, surface);
+
+   camera.start_projection(surface);
+   al_clear_to_color(al_color_name("pink"));
+
+   std::vector<ALLEGRO_VERTEX> cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeBuilder(0, 0, 1.0, 1.0).build_cube();
+   al_draw_prim(&cube_vertexes[0], nullptr, nullptr, 0, cube_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
+
+   al_flip_display();
+
+   sleep(2);
+
+   //al_destroy_bitmap(surface);
+   SUCCEED();
 }
