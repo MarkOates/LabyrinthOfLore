@@ -99,12 +99,12 @@ int tile_width = 48;
 
 std::vector<ALLEGRO_VERTEX> result = {
   // top:
-  buildA(),
-  buildB(),
-  buildC(),
-  buildB(),
-  buildC(),
-  buildD(),
+  buildA(0, 0),
+  buildB(1, 0),
+  buildC(0, 1),
+  buildB(1, 0),
+  buildC(0, 1),
+  buildD(1, 1),
 
   // front:
   buildC(),

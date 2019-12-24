@@ -7,8 +7,11 @@
 #include <gtest/gtest.h>
 
 #include <LabyrinthOfLore/Rendering/TileMapMeshCubeTexturer.hpp>
+#include <LabyrinthOfLore/Rendering/TileMapMeshCubeBuilder.hpp>
+#include <AllegroFlare/BitmapBin.hpp>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_image.h>
+#include <allegro5/allegro_color.h>
 
 
 
@@ -70,10 +73,22 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, build_textured_cub
 
 TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, build_textured_cube__creates_a_cube_with_the_texture_applied)
 {
-   //AllegroFlare::BitmapBin bitmap_bin;
-   //bitmap_bin.set_path("data/bitmaps");
-   //tile_atlas.load(bitmap_bin["world_texture_tile_atlas-02.png"], 16*3, 16*3, 0);
+   ALLEGRO_BITMAP *b = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/grid-texture-128.png");
+   if (!b) throw std::runtime_error("aaaaaa");
 
-   //LabyrinthOfLore::Rendering::TileMapMeshCubeTexturer tile_map_mesh_cube_texturer;
+   Tileo::TileAtlas tile_atlas;
+   tile_atlas.load(b, 16*3, 16*3, 0);
+
+   std::vector<ALLEGRO_VERTEX> cube = {};
+   cube = LabyrinthOfLore::Rendering::TileMapMeshCubeBuilder(0, 0, 1.0).build_cube();
+   cube = LabyrinthOfLore::Rendering::TileMapMeshCubeTexturer(&tile_atlas, cube).build_textured_cube();
+
+   al_clear_to_color(al_color_name("pink"));
+
+   al_draw_prim(&cube[0], nullptr, nullptr, 0, cube.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
+
+   al_flip_display();
+
+   sleep(2);
 }
 
