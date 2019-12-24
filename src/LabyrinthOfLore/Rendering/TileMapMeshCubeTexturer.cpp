@@ -26,6 +26,7 @@ TileMapMeshCubeTexturer::~TileMapMeshCubeTexturer()
 
 void TileMapMeshCubeTexturer::apply_textures()
 {
+if (!tile_atlas) throw std::runtime_error("cannot apply_textures with a nullptr tile_atlas");
 return;
 
 }
