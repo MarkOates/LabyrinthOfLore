@@ -33,6 +33,24 @@ if (cube_vertexes.size()!=30)
    throw std::runtime_error(error_message.str());
 }
 
+cube_vertexes[0].u = 0;
+cube_vertexes[0].v = 0;
+
+cube_vertexes[1].u = 1.0;
+cube_vertexes[1].v = 0;
+
+cube_vertexes[2].u = 0;
+cube_vertexes[2].v = 1.0;
+
+cube_vertexes[3].u = 1.0;
+cube_vertexes[3].v = 0;
+
+cube_vertexes[4].u = 0;
+cube_vertexes[4].v = 1.0;
+
+cube_vertexes[5].u = 1.0;
+cube_vertexes[5].v = 1.0;
+
 //float front_and_back_u1 = 0;
 //float front_and_back_v1 = 0;
 //float front_and_back_u2 = 0;

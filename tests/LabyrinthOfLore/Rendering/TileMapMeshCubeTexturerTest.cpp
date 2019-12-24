@@ -24,7 +24,7 @@ TEST(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, texture_cube__withou
 {
    Tileo::TileAtlas tile_atlas;
    LabyrinthOfLore::Rendering::TileMapMeshCubeTexturer tile_map_mesh_cube_texturer(&tile_atlas);
-   std::string expected_error_message = "cannot texture_cube with a cube that does not have the expected 30 vertexes";
+   std::string expected_error_message = "cannot texture_cube with cube_vertexes that does not have the expected 30 vertexes. The passed cube_vertexes has 0 vertexes.";
    ASSERT_THROW_WITH_MESSAGE(tile_map_mesh_cube_texturer.texture_cube(), std::runtime_error, expected_error_message);
 }
 
