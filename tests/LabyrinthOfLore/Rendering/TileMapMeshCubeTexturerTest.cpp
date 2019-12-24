@@ -154,7 +154,64 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, while_rendering_wi
    al_draw_prim(&cube_vertexes[0], nullptr, b, 0, cube_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
 
    al_flip_display();
-   sleep(2);
+   sleep(1);
+   SUCCEED();
+}
+
+TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, while_rendering_with_the_camera_facing_towards_the_left_face_should_see_b1)
+{
+   LabyrinthOfLore::Rendering::Camera camera(AllegroFlare::vec3d(-3, 0, 0), 0.25, 0); // facing towards the left face
+   ALLEGRO_BITMAP *surface = al_get_backbuffer(al_get_current_display());
+   ASSERT_NE(nullptr, surface);
+
+   ALLEGRO_BITMAP *b = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/grid-texture-128.png");
+   if (!b) throw std::runtime_error("in test, cannot load test texture \"b\"");
+   Tileo::TileAtlas tile_atlas;
+   tile_atlas.load(b, 128/3, 128/3, 0);
+
+   // setup the scene
+
+   camera.start_projection(surface);
+   al_clear_to_color(al_color_name("slategray"));
+   std::vector<ALLEGRO_VERTEX> cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeBuilder(0, 0, 1.0, 1.0).build_cube();
+
+   cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeTexturer(&tile_atlas, cube_vertexes).build_textured_cube();
+
+   // draw the scene
+
+   al_draw_prim(&cube_vertexes[0], nullptr, b, 0, cube_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
+
+   al_flip_display();
+   sleep(1);
+   SUCCEED();
+}
+
+
+TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, while_rendering_with_the_camera_facing_towards_the_back_face_should_see_b2)
+{
+   LabyrinthOfLore::Rendering::Camera camera(AllegroFlare::vec3d(0, -3, 0), 0.5, 0); // facing towards the back face
+   ALLEGRO_BITMAP *surface = al_get_backbuffer(al_get_current_display());
+   ASSERT_NE(nullptr, surface);
+
+   ALLEGRO_BITMAP *b = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/grid-texture-128.png");
+   if (!b) throw std::runtime_error("in test, cannot load test texture \"b\"");
+   Tileo::TileAtlas tile_atlas;
+   tile_atlas.load(b, 128/3, 128/3, 0);
+
+   // setup the scene
+
+   camera.start_projection(surface);
+   al_clear_to_color(al_color_name("slategray"));
+   std::vector<ALLEGRO_VERTEX> cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeBuilder(0, 0, 1.0, 1.0).build_cube();
+
+   cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeTexturer(&tile_atlas, cube_vertexes).build_textured_cube();
+
+   // draw the scene
+
+   al_draw_prim(&cube_vertexes[0], nullptr, b, 0, cube_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
+
+   al_flip_display();
+   sleep(1);
    SUCCEED();
 }
 

@@ -84,6 +84,36 @@ cube_vertexes[6*2+4].v = v2;//1.0 * 128;
 cube_vertexes[6*2+5].u = u2;//1.0 * 128;
 cube_vertexes[6*2+5].v = v2;//1.0 * 128;
 
+tile_atlas->get_tile_uv(3, &u1, &v1, &u2, &v2);
+// left face
+cube_vertexes[6*3+0].u = u1;
+cube_vertexes[6*3+0].v = v2;//1.0 * 128;
+cube_vertexes[6*3+1].u = u2;//1.0 * 128;
+cube_vertexes[6*3+1].v = v1;
+cube_vertexes[6*3+2].u = u1;
+cube_vertexes[6*3+2].v = v1;
+cube_vertexes[6*3+3].u = u2;//1.0 * 128;
+cube_vertexes[6*3+3].v = v1;
+cube_vertexes[6*3+4].u = u1;
+cube_vertexes[6*3+4].v = v2;//1.0 * 128;
+cube_vertexes[6*3+5].u = u2;//1.0 * 128;
+cube_vertexes[6*3+5].v = v2;//1.0 * 128;
+
+tile_atlas->get_tile_uv(4, &u1, &v1, &u2, &v2);
+// back face
+cube_vertexes[6*4+0].u = u1;
+cube_vertexes[6*4+0].v = v2;//1.0 * 128;
+cube_vertexes[6*4+1].u = u2;//1.0 * 128;
+cube_vertexes[6*4+1].v = v1;
+cube_vertexes[6*4+2].u = u1;
+cube_vertexes[6*4+2].v = v1;
+cube_vertexes[6*4+3].u = u2;//1.0 * 128;
+cube_vertexes[6*4+3].v = v1;
+cube_vertexes[6*4+4].u = u1;
+cube_vertexes[6*4+4].v = v2;//1.0 * 128;
+cube_vertexes[6*4+5].u = u2;//1.0 * 128;
+cube_vertexes[6*4+5].v = v2;//1.0 * 128;
+
 return cube_vertexes;
 
 }
