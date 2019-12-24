@@ -8,6 +8,7 @@
 
 #include <LabyrinthOfLore/Rendering/TileMapMeshCubeTexturer.hpp>
 #include <LabyrinthOfLore/Rendering/TileMapMeshCubeBuilder.hpp>
+#include <LabyrinthOfLore/Rendering/Camera.hpp>
 #include <AllegroFlare/BitmapBin.hpp>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_image.h>
@@ -71,24 +72,67 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, build_textured_cub
    ASSERT_THROW_WITH_MESSAGE(tile_map_mesh_cube_texturer.build_textured_cube(), std::runtime_error, expected_error_message);
 }
 
-TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, build_textured_cube__creates_a_cube_with_the_texture_applied)
+TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, while_rendering_with_the_camera_facing_down)
 {
+   LabyrinthOfLore::Rendering::Camera camera(AllegroFlare::vec3d(0, 0, 3), 0, -0.25); // facing down, towards the top face
+   ALLEGRO_BITMAP *surface = al_get_backbuffer(al_get_current_display());
+   ASSERT_NE(nullptr, surface);
+
    ALLEGRO_BITMAP *b = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/grid-texture-128.png");
-   if (!b) throw std::runtime_error("aaaaaa");
-
+   if (!b) throw std::runtime_error("in test, cannot load test texture \"b\"");
    Tileo::TileAtlas tile_atlas;
-   tile_atlas.load(b, 16*3, 16*3, 0);
+   tile_atlas.load(b, 16, 16, 0);
 
-   std::vector<ALLEGRO_VERTEX> cube = {};
-   cube = LabyrinthOfLore::Rendering::TileMapMeshCubeBuilder(0, 0, 1.0).build_cube();
-   cube = LabyrinthOfLore::Rendering::TileMapMeshCubeTexturer(&tile_atlas, cube).build_textured_cube();
+   // setup the scene
 
-   al_clear_to_color(al_color_name("pink"));
+   camera.start_projection(surface);
+   al_clear_to_color(al_color_name("slategray"));
+   std::vector<ALLEGRO_VERTEX> cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeBuilder(0, 0, 1.0, 1.0).build_cube();
 
-   al_draw_prim(&cube[0], nullptr, nullptr, 0, cube.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
+   //cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeTexturer(&tile_atlas, cube_vertexes).build_textured_cube();
+
+   //for (auto &vertex : cube_vertexes)
+   //{
+      //vertex.color = al_color_name("black");
+      ////vertex.x = -vertex.x;
+   //}
+   //cube_vertexes[0].color = al_color_name("black");
+   //cube_vertexes[1].color = al_color_name("black");
+   //cube_vertexes[2].color = al_color_name("black");
+   //cube_vertexes[3].color = al_color_name("black");
+   //cube_vertexes[4].color = al_color_name("black");
+   //cube_vertexes[5].color = al_color_name("black");
+   cube_vertexes[6].color = al_color_name("black");
+   cube_vertexes[7].color = al_color_name("orange");
+   //cube_vertexes[].color = al_color_name("black");
+   ////for(auto cube_vertex : cube_vertexes[0].u = 0;
+   //cube_vertexes[0].u = 0;
+   //cube_vertexes[0].v = 0;
+
+   //cube_vertexes[1].u = 1.0 * 128;
+   //cube_vertexes[1].v = 0;
+
+   //cube_vertexes[2].u = 0;
+   //cube_vertexes[2].v = 1.0 * 128;
+
+   //cube_vertexes[3].u = 1.0 * 128;
+   //cube_vertexes[3].v = 0;
+
+   //cube_vertexes[4].u = 0;
+   //cube_vertexes[4].v = 1.0 * 128;
+
+   //cube_vertexes[5].u = 1.0 * 128;
+   //cube_vertexes[5].v = 1.0 * 128;
+
+
+   // draw the scene
+
+   al_clear_depth_buffer(1);
+
+   al_draw_prim(&cube_vertexes[0], nullptr, nullptr, 0, cube_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
 
    al_flip_display();
-
    sleep(2);
+   SUCCEED();
 }
 

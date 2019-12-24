@@ -48,7 +48,7 @@ return AllegroFlare::build_vertex(mul*x+1, (y+1), height, al_color_name("green")
 
 ALLEGRO_VERTEX TileMapMeshCubeBuilder::buildE(float u, float v)
 {
-return AllegroFlare::build_vertex(mul*x, (y+1), 0, al_color_name("white"), u, v);
+return AllegroFlare::build_vertex(mul*x, (y+1), 0, al_color_name("dodgerblue"), u, v);
 }
 
 ALLEGRO_VERTEX TileMapMeshCubeBuilder::buildF(float u, float v)
@@ -99,44 +99,44 @@ int tile_width = 48;
 
 std::vector<ALLEGRO_VERTEX> result = {
   // top:
-  buildA(0, 0),
-  buildB(1, 0),
-  buildC(0, 1),
-  buildB(1, 0),
-  buildC(0, 1),
-  buildD(1, 1),
+  //buildC(),
+  //buildB(),
+  //buildA(),
+  //buildB(),
+  //buildC(),
+  //buildD(),
 
   // front:
-  buildC(),
-  buildD(),
-  buildE(),
-  buildD(),
-  buildE(),
-  buildF(),
+  //buildE(),
+  //buildD(),
+  //buildC(),
+  //buildD(),
+  //buildE(),
+  //buildF(),
 
-  // right:
-  buildD(),
-  buildB(),
-  buildF(),
-  buildB(),
-  buildF(),
-  buildH(),
+  // right: // looks correct
+  //buildF(),
+  //buildB(),
+  //buildD(),
+  //buildB(),
+  //buildF(),
+  //buildH(),
 
-  // left:
-  buildA(),
-  buildC(),
+  // left: // looks correct
   buildG(),
+  buildC(),
+  buildA(),
   buildC(),
   buildG(),
   buildE(),
 
   // back:
-  buildB(),
-  buildA(),
-  buildH(),
-  buildA(),
-  buildH(),
-  buildG()
+  //buildH(),
+  //buildA(),
+  //buildB(),
+  //buildA(),
+  //buildH(),
+  //buildG()
 };
 
 for (auto &vertex : result)

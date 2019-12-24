@@ -65,7 +65,7 @@ functions:
       - name: v
         type: float
         default_argument: 0.0f
-    body: return AllegroFlare::build_vertex(mul*x, (y+1), 0, al_color_name("white"), u, v);
+    body: return AllegroFlare::build_vertex(mul*x, (y+1), 0, al_color_name("dodgerblue"), u, v);
   - name: buildF
     type: ALLEGRO_VERTEX
     parameters:
@@ -130,44 +130,44 @@ functions:
 
       std::vector<ALLEGRO_VERTEX> result = {
         // top:
-        buildA(0, 0),
-        buildB(1, 0),
-        buildC(0, 1),
-        buildB(1, 0),
-        buildC(0, 1),
-        buildD(1, 1),
+        //buildC(),
+        //buildB(),
+        //buildA(),
+        //buildB(),
+        //buildC(),
+        //buildD(),
 
         // front:
-        buildC(),
-        buildD(),
-        buildE(),
-        buildD(),
-        buildE(),
-        buildF(),
+        //buildE(),
+        //buildD(),
+        //buildC(),
+        //buildD(),
+        //buildE(),
+        //buildF(),
 
-        // right:
-        buildD(),
-        buildB(),
-        buildF(),
-        buildB(),
-        buildF(),
-        buildH(),
+        // right: // looks correct
+        //buildF(),
+        //buildB(),
+        //buildD(),
+        //buildB(),
+        //buildF(),
+        //buildH(),
 
-        // left:
-        buildA(),
-        buildC(),
+        // left: // looks correct
         buildG(),
+        buildC(),
+        buildA(),
         buildC(),
         buildG(),
         buildE(),
 
         // back:
-        buildB(),
-        buildA(),
-        buildH(),
-        buildA(),
-        buildH(),
-        buildG()
+        //buildH(),
+        //buildA(),
+        //buildB(),
+        //buildA(),
+        //buildH(),
+        //buildG()
       };
 
       for (auto &vertex : result)
