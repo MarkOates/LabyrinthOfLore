@@ -3,9 +3,9 @@ properties:
     type: Tileo::TileAtlas*
     init_with: nullptr
     constructor_arg: true
-  - name: tile_index_for_front_and_back_texture
-    type: int
-    init_with: 0
+  - name: cube
+    type: std::vector<ALLEGRO_VERTEX>*
+    init_with: nullptr
     constructor_arg: true
   - name: tile_index_for_right_and_left_texture
     type: int
@@ -20,7 +20,10 @@ functions:
     type: void
     body: |
       if (!tile_atlas) throw std::runtime_error("cannot apply_textures with a nullptr tile_atlas");
+      if (!cube) throw std::runtime_error("cannot apply_textures with a nullptr cube");
       return;
 dependencies:
   - symbol: Tileo::TileAtlas*
     headers: [ Tileo/TileAtlas.hpp ]
+  - symbol: std::vector<ALLEGRO_VERTEX>*
+    headers: [ vector, allegro5/allegro_primitives.h ]

@@ -20,10 +20,21 @@ TEST(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, apply_textures__with
    ASSERT_THROW_WITH_MESSAGE(tile_map_mesh_cube_texturer.apply_textures(), std::runtime_error, expected_error_message);
 }
 
-TEST(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, apply_textures__with_minimum_parameters__works_without_blowing_up)
+TEST(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, apply_textures__without_a_cube__returns_an_exception)
 {
    Tileo::TileAtlas tile_atlas;
    LabyrinthOfLore::Rendering::TileMapMeshCubeTexturer tile_map_mesh_cube_texturer(&tile_atlas);
+   std::string expected_error_message = "cannot apply_textures with a nullptr cube";
+   ASSERT_THROW_WITH_MESSAGE(tile_map_mesh_cube_texturer.apply_textures(), std::runtime_error, expected_error_message);
+}
+
+TEST(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, apply_textures__with_minimum_arguments__does_not_explode)
+{
+   Tileo::TileAtlas tile_atlas;
+   std::vector<ALLEGRO_VERTEX> cube = {};
+
+   LabyrinthOfLore::Rendering::TileMapMeshCubeTexturer tile_map_mesh_cube_texturer(&tile_atlas, &cube);
+   std::string expected_error_message = "cannot apply_textures with a nullptr tile_atlas";
    tile_map_mesh_cube_texturer.apply_textures();
 }
 

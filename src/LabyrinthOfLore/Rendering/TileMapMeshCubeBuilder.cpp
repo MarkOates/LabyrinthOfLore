@@ -97,6 +97,13 @@ int front_and_back_v = v;
 int right_and_left_u = u;
 int right_and_left_v = v;
 
+// this is the official ordering:
+// top
+// front
+// right
+// left
+// back
+
 std::vector<ALLEGRO_VERTEX> result = {
   // top:
   buildA(top_u, top_v),
