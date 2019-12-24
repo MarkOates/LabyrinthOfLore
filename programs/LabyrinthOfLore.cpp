@@ -133,8 +133,8 @@ int main(int argc, char **argv)
       item_tile_atlas.load(bitmap_bin["spritesheet_4x.png"], 16*4, 16*4, 0);
 
       Tileo::TileAtlas world_texture_tile_atlas;
-      world_texture_tile_atlas.load(bitmap_bin["grid-texture-128.png"], 128/3, 128/3, 0);
-      //world_texture_tile_atlas.load(bitmap_bin["world_texture_tile_atlas-02.png"], 16*3, 16*3, 0);
+      //world_texture_tile_atlas.load(bitmap_bin["grid-texture-128.png"], 128/3, 128/3, 0);
+      world_texture_tile_atlas.load(bitmap_bin["world_texture_tile_atlas-02.png"], 48, 48, 0);
 
       //
 
