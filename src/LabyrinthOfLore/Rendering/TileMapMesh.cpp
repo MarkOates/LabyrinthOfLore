@@ -61,23 +61,23 @@ void TileMapMesh::draw()
 //ALLEGRO_BITMAP *texture = nullptr;
 //if (tile_atlas) texture = tile_atlas->get_bitmap();
 
-ALLEGRO_STATE previous_transform_state;
-al_store_state(&previous_transform_state, ALLEGRO_STATE_TRANSFORM);
+//ALLEGRO_STATE previous_transform_state;
+//al_store_state(&previous_transform_state, ALLEGRO_STATE_TRANSFORM);
 
-ALLEGRO_TRANSFORM transform;
-al_identity_transform(&transform);
-al_rotate_transform_3d(&transform, 1, 0, 0, -ALLEGRO_PI/2);
-al_rotate_transform_3d(&transform, 0, 1, 0, -ALLEGRO_PI/2);
-al_rotate_transform_3d(&transform, 0, 1, 0, -ALLEGRO_PI/2);
-//al_rotate_transform_3d(&transform, 0, 0, 1, -ALLEGRO_PI/2);
-//al_scale_transform_3d(&transform, 1.0, 1.0, 1.0);
-al_translate_transform_3d(&transform, 1.0, 0, 0);
+//ALLEGRO_TRANSFORM transform;
+//al_identity_transform(&transform);
+//al_rotate_transform_3d(&transform, 1, 0, 0, -ALLEGRO_PI/2);
+//al_rotate_transform_3d(&transform, 0, 1, 0, -ALLEGRO_PI/2);
+//al_rotate_transform_3d(&transform, 0, 1, 0, -ALLEGRO_PI/2);
+////al_rotate_transform_3d(&transform, 0, 0, 1, -ALLEGRO_PI/2);
+////al_scale_transform_3d(&transform, 1.0, 1.0, 1.0);
+//al_translate_transform_3d(&transform, 1.0, 0, 0);
 
-al_use_transform(&transform);
+//al_use_transform(&transform);
 
 al_draw_prim(&vertexes[0], nullptr, texture, 0, vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
 
-al_restore_state(&previous_transform_state);
+//al_restore_state(&previous_transform_state);
 
 }
 } // namespace Rendering

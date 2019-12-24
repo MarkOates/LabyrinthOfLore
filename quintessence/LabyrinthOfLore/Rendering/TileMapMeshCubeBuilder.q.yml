@@ -13,7 +13,7 @@ properties:
     constructor_arg: true
   - name: mul
     type: float
-    init_with: -1.0f
+    init_with: 1.0f
     constructor_arg: true
 functions:
   - name: buildA

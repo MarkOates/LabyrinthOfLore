@@ -19,7 +19,7 @@ namespace LabyrinthOfLore
          float mul;
 
       public:
-         TileMapMeshCubeBuilder(int x=0, int y=0, float height=1.0f, float mul=-1.0f);
+         TileMapMeshCubeBuilder(int x=0, int y=0, float height=1.0f, float mul=1.0f);
          ~TileMapMeshCubeBuilder();
 
 
