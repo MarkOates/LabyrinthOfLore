@@ -99,28 +99,28 @@ int tile_width = 48;
 
 std::vector<ALLEGRO_VERTEX> result = {
   // top:
-  //buildC(),
-  //buildB(),
-  //buildA(),
-  //buildB(),
-  //buildC(),
-  //buildD(),
+  buildC(),
+  buildB(),
+  buildA(),
+  buildB(),
+  buildC(),
+  buildD(),
 
   // front:
-  //buildE(),
-  //buildD(),
-  //buildC(),
-  //buildD(),
-  //buildE(),
-  //buildF(),
+  buildE(),
+  buildD(),
+  buildC(),
+  buildD(),
+  buildE(),
+  buildF(),
 
   // right: // looks correct
-  //buildF(),
-  //buildB(),
-  //buildD(),
-  //buildB(),
-  //buildF(),
-  //buildH(),
+  buildF(),
+  buildB(),
+  buildD(),
+  buildB(),
+  buildF(),
+  buildH(),
 
   // left: // looks correct
   buildG(),
@@ -131,18 +131,15 @@ std::vector<ALLEGRO_VERTEX> result = {
   buildE(),
 
   // back:
-  //buildH(),
-  //buildA(),
-  //buildB(),
-  //buildA(),
-  //buildH(),
-  //buildG()
+  buildH(),
+  buildA(),
+  buildB(),
+  buildA(),
+  buildH(),
+  buildG()
 };
 
-for (auto &vertex : result)
-{
-   //vertex.x = -vertex.x;
-}
+for (auto &vertex : result) { float swap = vertex.y; vertex.y = vertex.z; vertex.z = swap; }
 
 return result;
 

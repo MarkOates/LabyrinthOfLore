@@ -248,10 +248,8 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeBuilderTest, while_rendering_wit
    al_clear_to_color(al_color_name("pink"));
    camera.start_projection(surface);
 
-   //al_clear_depth_buffer(1);
-
    std::vector<ALLEGRO_VERTEX> cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeBuilder(0, 0, 1.0, 1.0).build_cube();
-   //cube_vertexes[0].color = al_color_name("black");
+
    al_draw_prim(&cube_vertexes[0], nullptr, nullptr, 0, cube_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
 
    al_flip_display();
@@ -259,37 +257,39 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeBuilderTest, while_rendering_wit
    SUCCEED();
 }
 
-//TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeBuilderTest, while_rendering_with_the_camera_facing_down__appears_at_the_bottom_right_quadrant__near__with_green_in_the_bottom_right_corner)
-//{
-   //LabyrinthOfLore::Rendering::Camera camera(AllegroFlare::vec3d(0, 0, 3), 0.0, -0.25); // facing towards the top face
-   //ALLEGRO_BITMAP *surface = al_get_backbuffer(al_get_current_display());
-   //ASSERT_NE(nullptr, surface);
+TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeBuilderTest, while_rendering_with_the_camera_facing_down__appears_at_the_bottom_right_quadrant__near__with_green_in_the_bottom_right_corner)
+{
+   LabyrinthOfLore::Rendering::Camera camera(AllegroFlare::vec3d(0, 0, 3), 0.0, -0.25); // facing towards the top face
+   ALLEGRO_BITMAP *surface = al_get_backbuffer(al_get_current_display());
+   ASSERT_NE(nullptr, surface);
 
-   //camera.start_projection(surface);
-   //al_clear_to_color(al_color_name("olive"));
+   camera.start_projection(surface);
+   al_clear_to_color(al_color_name("olive"));
 
-   //std::vector<ALLEGRO_VERTEX> cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeBuilder(0, 0, 1.0, 1.0).build_cube();
-   //al_draw_prim(&cube_vertexes[0], nullptr, nullptr, 0, cube_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
+   std::vector<ALLEGRO_VERTEX> cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeBuilder(0, 0, 1.0, 1.0).build_cube();
 
-   //al_flip_display();
-   //sleep(2);
-   //SUCCEED();
-//}
+   al_draw_prim(&cube_vertexes[0], nullptr, nullptr, 0, cube_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
 
-//TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeBuilderTest, while_rendering_with_the_camera_facing_right__appears_at_the_top_right_quadrant__distant__with_red_in_the_bottom_left_corner)
-//{
-   //LabyrinthOfLore::Rendering::Camera camera(AllegroFlare::vec3d(-3, 0, 0), 0.25, 0); // facing towards the left face
-   //ALLEGRO_BITMAP *surface = al_get_backbuffer(al_get_current_display());
-   //ASSERT_NE(nullptr, surface);
+   al_flip_display();
+   sleep(2);
+   SUCCEED();
+}
 
-   //camera.start_projection(surface);
-   //al_clear_to_color(al_color_name("maroon"));
+TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeBuilderTest, while_rendering_with_the_camera_facing_right__appears_at_the_top_right_quadrant__distant__with_red_in_the_bottom_left_corner)
+{
+   LabyrinthOfLore::Rendering::Camera camera(AllegroFlare::vec3d(-3, 0, 0), 0.25, 0); // facing towards the left face
+   ALLEGRO_BITMAP *surface = al_get_backbuffer(al_get_current_display());
+   ASSERT_NE(nullptr, surface);
 
-   //std::vector<ALLEGRO_VERTEX> cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeBuilder(0, 0, 1.0, 1.0).build_cube();
-   //al_draw_prim(&cube_vertexes[0], nullptr, nullptr, 0, cube_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
+   camera.start_projection(surface);
+   al_clear_to_color(al_color_name("maroon"));
 
-   //al_flip_display();
-   //sleep(2);
-   //SUCCEED();
-//}
+   std::vector<ALLEGRO_VERTEX> cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeBuilder(0, 0, 1.0, 1.0).build_cube();
+
+   al_draw_prim(&cube_vertexes[0], nullptr, nullptr, 0, cube_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
+
+   al_flip_display();
+   sleep(2);
+   SUCCEED();
+}
 
