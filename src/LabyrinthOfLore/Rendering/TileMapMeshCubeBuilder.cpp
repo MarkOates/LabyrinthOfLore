@@ -81,7 +81,7 @@ return colors[random.get_random_int(0, colors.size()-1)];
 
 }
 
-std::vector<ALLEGRO_VERTEX> TileMapMeshCubeBuilder::build_cube(float front_and_back_u1, float front_and_back_v1, float front_and_back_u2, float front_and_back_v2, float right_and_left_u1, float right_and_left_v1, float right_and_left_u2, float right_and_left_v2, float top_u1, float top_v1, float top_u2, float top_v2)
+std::vector<ALLEGRO_VERTEX> TileMapMeshCubeBuilder::build_cube()
 {
 ALLEGRO_COLOR cube_color = random_color();
 float u = 0;
@@ -89,25 +89,6 @@ float v = 0; //texture ? al_get_bitmap_width(texture) : 1;
 int tile_width = 48;
 
 //float mul = -1;
-
-//float front_and_back_u1 = u;
-//float front_and_back_v1 = v;
-//float front_and_back_u2 = u;
-//float front_and_back_v2 = v;
-
-//float right_and_left_u1 = u;
-//float right_and_left_v1 = v;
-//float right_and_left_u2 = u;
-//float right_and_left_v2 = v;
-
-//float top_u1 = 0;
-//float top_v1 = 0;
-//float top_u2 = 0;
-//float top_v2 = 0;
-
-//tile_atlas->get_tile_uv(tile_index_for_front_and_back_texture, &front_and_back_u1, &front_and_back_v1, &front_and_back_u2, &front_and_back_v2);
-//tile_atlas->get_tile_uv(tile_index_for_right_and_left_texture, &right_and_left_u_u1, &right_and_left_u_v1, &right_and_left_u_u2, &right_and_left_u_v2);
-//tile_atlas->get_tile_uv(tile_index_for_top_texture, &top_u1, &top_v1, &top_u2, &top_v2);
 
 // this is the official ordering:
 // top
@@ -118,44 +99,44 @@ int tile_width = 48;
 
 std::vector<ALLEGRO_VERTEX> result = {
   // top:
-  buildA(top_u1, top_v1),
-  buildB(top_u2, top_v1),
-  buildC(top_u1, top_v2),
-  buildB(top_u2, top_v1),
-  buildC(top_u1, top_v2),
-  buildD(top_u2, top_v2),
+  buildA(),
+  buildB(),
+  buildC(),
+  buildB(),
+  buildC(),
+  buildD(),
 
   // front:
-  buildC(front_and_back_u1, front_and_back_v1),
-  buildD(front_and_back_u2, front_and_back_v1),
-  buildE(front_and_back_u1, front_and_back_v2),
-  buildD(front_and_back_u2, front_and_back_v1),
-  buildE(front_and_back_u1, front_and_back_v2),
-  buildF(front_and_back_u2, front_and_back_v2),
+  buildC(),
+  buildD(),
+  buildE(),
+  buildD(),
+  buildE(),
+  buildF(),
 
   // right:
-  buildD(right_and_left_u1, right_and_left_v1),
-  buildB(right_and_left_u2, right_and_left_v1),
-  buildF(right_and_left_u1, right_and_left_v2),
-  buildB(right_and_left_u2, right_and_left_v1),
-  buildF(right_and_left_u1, right_and_left_v2),
-  buildH(right_and_left_u2, right_and_left_v2),
+  buildD(),
+  buildB(),
+  buildF(),
+  buildB(),
+  buildF(),
+  buildH(),
 
   // left:
-  buildA(right_and_left_u1, right_and_left_v1),
-  buildC(right_and_left_u2, right_and_left_v1),
-  buildG(right_and_left_u1, right_and_left_v2),
-  buildC(right_and_left_u2, right_and_left_v1),
-  buildG(right_and_left_u1, right_and_left_v2),
-  buildE(right_and_left_u2, right_and_left_v2),
+  buildA(),
+  buildC(),
+  buildG(),
+  buildC(),
+  buildG(),
+  buildE(),
 
   // back:
-  buildB(front_and_back_u1, front_and_back_v1),
-  buildA(front_and_back_u2, front_and_back_v1),
-  buildH(front_and_back_u1, front_and_back_v2),
-  buildA(front_and_back_u2, front_and_back_v1),
-  buildH(front_and_back_u1, front_and_back_v2),
-  buildG(front_and_back_u2, front_and_back_v2),
+  buildB(),
+  buildA(),
+  buildH(),
+  buildA(),
+  buildH(),
+  buildG()
 };
 
 for (auto &vertex : result)

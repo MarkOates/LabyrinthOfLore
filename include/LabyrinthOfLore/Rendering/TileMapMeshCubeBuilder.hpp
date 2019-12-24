@@ -32,7 +32,7 @@ namespace LabyrinthOfLore
       ALLEGRO_VERTEX buildG(float u=0.0f, float v=0.0f);
       ALLEGRO_VERTEX buildH(float u=0.0f, float v=0.0f);
       ALLEGRO_COLOR random_color();
-      std::vector<ALLEGRO_VERTEX> build_cube(float front_and_back_u1=0, float front_and_back_v1=0, float front_and_back_u2=0, float front_and_back_v2=0, float right_and_left_u1=0, float right_and_left_v1=0, float right_and_left_u2=0, float right_and_left_v2=0, float top_u1=0, float top_v1=0, float top_u2=0, float top_v2=0);
+      std::vector<ALLEGRO_VERTEX> build_cube();
       };
    }
 }

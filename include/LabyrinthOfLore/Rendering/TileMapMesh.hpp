@@ -24,6 +24,7 @@ namespace LabyrinthOfLore
          ~TileMapMesh();
 
 
+         std::vector<ALLEGRO_VERTEX> get_vertexes();
       bool build();
       void draw();
       };
