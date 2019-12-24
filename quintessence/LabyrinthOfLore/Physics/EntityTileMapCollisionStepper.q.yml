@@ -13,8 +13,7 @@ properties:
     constructor_arg: true
   - name: ceiling_height
     type: float
-    init_with: "100.0f"
-    static: true
+    init_with: "tile_map.get_ceiling_height()"
     getter: true
   - name: floor_height
     type: float

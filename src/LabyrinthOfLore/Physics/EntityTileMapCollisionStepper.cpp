@@ -15,9 +15,6 @@ namespace Physics
 LabyrinthOfLore::WorldMap::TileMap EntityTileMapCollisionStepper::dummy_tile_map = {};
 
 
-float EntityTileMapCollisionStepper::ceiling_height = 100.0f;
-
-
 float EntityTileMapCollisionStepper::floor_height = 0.0f;
 
 
@@ -30,6 +27,7 @@ float EntityTileMapCollisionStepper::offset_at_collision_edge = 0.001f;
 EntityTileMapCollisionStepper::EntityTileMapCollisionStepper(LabyrinthOfLore::WorldMap::TileMap& tile_map, std::vector<LabyrinthOfLore::Entity::Base*> entities)
    : tile_map(tile_map)
    , entities(entities)
+   , ceiling_height(tile_map.get_ceiling_height())
 {
 }
 

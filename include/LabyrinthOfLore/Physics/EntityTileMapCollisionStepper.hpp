@@ -16,7 +16,7 @@ namespace LabyrinthOfLore
          static LabyrinthOfLore::WorldMap::TileMap dummy_tile_map;
          LabyrinthOfLore::WorldMap::TileMap& tile_map;
          std::vector<LabyrinthOfLore::Entity::Base*> entities;
-         static float ceiling_height;
+         float ceiling_height;
          static float floor_height;
          static float auto_ascend_threshold;
          static float offset_at_collision_edge;
@@ -26,7 +26,7 @@ namespace LabyrinthOfLore
          ~EntityTileMapCollisionStepper();
 
 
-         static float get_ceiling_height();
+         float get_ceiling_height();
          static float get_floor_height();
          static float get_auto_ascend_threshold();
          static float get_offset_at_collision_edge();
