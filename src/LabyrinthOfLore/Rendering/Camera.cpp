@@ -67,8 +67,10 @@ void Camera::set_perspective_transform(ALLEGRO_BITMAP* surface, ALLEGRO_TRANSFOR
 float aspect_ratio = (float)al_get_bitmap_height(surface) / al_get_bitmap_width(surface);
 float multiplier = 0.01; // lower numbers (0.3), while not changing the "far" are a zoom in
 al_perspective_transform(transform,
-  -1 * multiplier, aspect_ratio * multiplier, 1 * multiplier,
-  multiplier, -aspect_ratio * multiplier, 300);
+  -1 * multiplier,
+  aspect_ratio * multiplier, 1 * multiplier,
+  multiplier,
+  -aspect_ratio * multiplier, 300);
 
 }
 
