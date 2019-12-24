@@ -63,6 +63,7 @@ namespace LabyrinthOfLore
 
       void TileMap::set_ceiling_height(float ceiling_height)
       {
+         if (ceiling_height < 1.0) throw std::runtime_error("Cannot set set_ceiling_height in TileMap to a value less than 1.0f.");
          this->ceiling_height = ceiling_height;
       }
 

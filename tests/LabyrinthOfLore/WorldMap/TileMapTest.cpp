@@ -33,6 +33,18 @@ TEST(LabyrinthOfLore_WorldMap_TileMapTest, ceiling_height__has_getters_and_sette
    ASSERT_EQ(30.0f, tile_map.get_ceiling_height());
 }
 
+TEST(LabyrinthOfLore_WorldMap_TileMapTest, ceiling_height__when_attempting_to_set_to_a_value_less_than_one__raises_an_exception)
+{
+   LabyrinthOfLore::WorldMap::TileMap tile_map;
+
+   std::vector<float> invalid_ceiling_height_values = { 0.0f, 0.999f, -1.0f, -999.0f };
+
+   std::string expected_message = "Cannot set set_ceiling_height in TileMap to a value less than 1.0f.";
+   for (auto &invalid_ceiling_height_value : invalid_ceiling_height_values)
+   {
+      ASSERT_THROW_WITH_MESSAGE(tile_map.set_ceiling_height(invalid_ceiling_height_value), std::runtime_error, expected_message)
+   }
+}
 
 TEST(LabyrinthOfLore_WorldMap_TileMapTest, resize__will_fill_the_tiles_with_the_default_tile)
 {
