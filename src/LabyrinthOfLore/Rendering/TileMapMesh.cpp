@@ -29,6 +29,7 @@ bool TileMapMesh::build()
 if (!tile_atlas) throw std::runtime_error("cannot apply_textures with a nullptr tile_atlas");
 
 vertexes.clear();
+ALLEGRO_BITMAP *texture = tile_atlas->get_bitmap();
 
 for (int y=0; y<tile_map.get_height(); y++)
 {
@@ -57,7 +58,7 @@ for (int y=0; y<tile_map.get_height(); y++)
 
       //tile_atlas->get_tile_uv(tile_index_for_front_and_back_texture, &front_and_back_u1, &front_and_back_v1, &front_and_back_u2, &front_and_back_v2);
       //tile_atlas->get_tile_uv(tile_index_for_right_and_left_texture, &right_and_left_u_u1, &right_and_left_u_v1, &right_and_left_u_u2, &right_and_left_u_v2);
-      //tile_atlas->get_tile_uv(tile_index_for_top_texture, &top_u1, &top_v1, &top_u2, &top_v2);
+      tile_atlas->get_tile_uv(tile_index_for_top_texture, &top_u1, &top_v1, &top_u2, &top_v2);
 
 
       std::vector<ALLEGRO_VERTEX> cube = LabyrinthOfLore::Rendering::TileMapMeshCubeBuilder(x, y, tile.get_height())
@@ -70,10 +71,10 @@ for (int y=0; y<tile_map.get_height(); y++)
           right_and_left_v1,
           right_and_left_u2,
           right_and_left_v2,
-          top_u1,
-          top_v1,
-          top_u2,
-          top_v2
+          top_u1 / al_get_bitmap_width(texture),
+          top_v1 / al_get_bitmap_height(texture),
+          top_u2 / al_get_bitmap_width(texture),
+          top_v2 / al_get_bitmap_height(texture)
         );
 
       vertexes.insert(vertexes.end(), cube.begin(), cube.end());
