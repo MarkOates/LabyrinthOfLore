@@ -14,6 +14,8 @@
 #include <LabyrinthOfLore/Rendering/PickingBufferRenderer.hpp>
 #include <LabyrinthOfLore/Rendering/MousePointer.hpp>
 #include <LabyrinthOfLore/Rendering/SpritesBillboarder.hpp>
+#include <LabyrinthOfLore/Rendering/TileTypeDefinition.hpp>
+#include <LabyrinthOfLore/Rendering/TileTypeDictionary.hpp>
 #include <LabyrinthOfLore/Rendering/Hud/Renderer.hpp>
 //#include <LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer.hpp>
 //#include <LabyrinthOfLore/Rendering/Hud/CommandPanelRenderer.hpp>
@@ -66,14 +68,23 @@ std::vector<std::vector<LabyrinthOfLore::WorldMap::Tile>> construct_tile_map_dat
    { { 1, topmost_wall_height },  { 1, 1.0+3.75 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, topmost_wall_height }, },
    { { 1, topmost_wall_height },  { 1, 1.0+4.0 }, { 1, 1.0+5.0 }, { 1, 5.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, topmost_wall_height }, },
    { { 1, topmost_wall_height },  { 1, 1.0 },     { 1, 1.0 }, { 1, 5.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, topmost_wall_height }, },
-   { { 1, topmost_wall_height },  { 1, 1.0 },     { 1, 1.0 }, { 1, 6.0 }, { 1, 1.0 }, { 1, 6.0 }, { 1, 6.0 }, { 2, topmost_wall_height }, },
+   { { 1, topmost_wall_height },  { 1, 1.0 },     { 1, 1.0 }, { 1, 6.0 }, { 1, 1.0 }, { 1, 6.0 }, { 1, 6.0 }, { 1, topmost_wall_height }, },
    { { 1, topmost_wall_height },  { 1, 1.0 },     { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, topmost_wall_height }, },
-   { { 1, topmost_wall_height },  { 1, 1.0 },     { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, topmost_wall_height }, },
+   { { 1, topmost_wall_height },  { 1, 1.0 },     { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 2, topmost_wall_height }, },
    { { 1, topmost_wall_height },  { 1, 1.0 },     { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, topmost_wall_height }, },
    { { 1, topmost_wall_height },  { 1, 1.0 },     { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, topmost_wall_height }, },
    { { 1, topmost_wall_height },  { 1, 1.0 },     { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, topmost_wall_height }, },
    { { 1, topmost_wall_height }, { 1, topmost_wall_height }, { 1, topmost_wall_height }, { 1, topmost_wall_height }, { 1, topmost_wall_height }, { 1, topmost_wall_height }, { 1, topmost_wall_height }, { 1, topmost_wall_height }, },
 };
+
+LabyrinthOfLore::Rendering::TileTypeDictionary build_tile_type_dictionary()
+{
+   int tile_num = 0;
+   return LabyrinthOfLore::Rendering::TileTypeDictionary({
+      { 1, LabyrinthOfLore::Rendering::TileTypeDefinition(tile_num+1, tile_num+1, tile_num) },
+      { 2, LabyrinthOfLore::Rendering::TileTypeDefinition(tile_num+1, tile_num+2, tile_num) },
+   });
+}
 
 
 bool active = true;
@@ -168,8 +179,9 @@ int main(int argc, char **argv)
 
 
       //
+      LabyrinthOfLore::Rendering::TileTypeDictionary tile_type_dictionary = build_tile_type_dictionary();
 
-      LabyrinthOfLore::Rendering::TileMapMesh tile_map_mesh(&world_texture_tile_atlas, tile_map, world_texture_tile_atlas.get_bitmap());
+      LabyrinthOfLore::Rendering::TileMapMesh tile_map_mesh(&world_texture_tile_atlas, tile_type_dictionary, tile_map, world_texture_tile_atlas.get_bitmap());
       tile_map_mesh.build();
 
       AllegroFlare::PickingBuffer picking_buffer(al_get_display_width(display)/resolution_scale, al_get_display_height(display)/resolution_scale, 32);
@@ -226,7 +238,7 @@ int main(int argc, char **argv)
 
       //
 
-      float player_yaw = 0.5;
+      float player_yaw = -0.04;
       float player_pitch = 0.0;
       float player_turning = 0.0;
       float max_player_turning_speed = 0.0023;

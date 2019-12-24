@@ -11,8 +11,9 @@ namespace Rendering
 {
 
 
-TileMapMesh::TileMapMesh(Tileo::TileAtlas* tile_atlas, LabyrinthOfLore::WorldMap::TileMap tile_map, ALLEGRO_BITMAP* texture)
+TileMapMesh::TileMapMesh(Tileo::TileAtlas* tile_atlas, LabyrinthOfLore::Rendering::TileTypeDictionary tile_type_dictionary, LabyrinthOfLore::WorldMap::TileMap tile_map, ALLEGRO_BITMAP* texture)
    : tile_atlas(tile_atlas)
+   , tile_type_dictionary(tile_type_dictionary)
    , tile_map(tile_map)
    , texture(texture)
    , vertexes({})
@@ -43,10 +44,19 @@ for (int y=0; y<tile_map.get_height(); y++)
    for (int x=0; x<tile_map.get_width(); x++)
    {
       LabyrinthOfLore::WorldMap::Tile tile = tile_map.get_tile(x, y);
+      int tile_type = tile.get_type();
+
+      LabyrinthOfLore::Rendering::TileTypeDefinition tile_type_definition = tile_type_dictionary.find_definition(tile_type);
 
       std::vector<ALLEGRO_VERTEX> cube = {};
       cube = LabyrinthOfLore::Rendering::TileMapMeshCubeBuilder(x, y, tile.get_height()).build_cube();
-      cube = LabyrinthOfLore::Rendering::TileMapMeshCubeTexturer(tile_atlas, cube).build_textured_cube();
+      cube = LabyrinthOfLore::Rendering::TileMapMeshCubeTexturer(
+            tile_atlas,
+            cube,
+            tile_type_definition.get_tile_index_for_front_and_back_texture(),
+            tile_type_definition.get_tile_index_for_right_and_left_texture(),
+            tile_type_definition.get_tile_index_for_top_texture()
+         ).build_textured_cube();
 
       vertexes.insert(vertexes.end(), cube.begin(), cube.end());
    }
