@@ -7,6 +7,10 @@ properties:
     type: std::vector<ALLEGRO_VERTEX>*
     init_with: nullptr
     constructor_arg: true
+  - name: tile_index_for_front_and_back_texture
+    type: int
+    init_with: 0
+    constructor_arg: true
   - name: tile_index_for_right_and_left_texture
     type: int
     init_with: 0

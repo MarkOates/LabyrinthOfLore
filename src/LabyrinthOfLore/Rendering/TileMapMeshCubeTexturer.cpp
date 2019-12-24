@@ -10,9 +10,10 @@ namespace Rendering
 {
 
 
-TileMapMeshCubeTexturer::TileMapMeshCubeTexturer(Tileo::TileAtlas* tile_atlas, std::vector<ALLEGRO_VERTEX>* cube, int tile_index_for_right_and_left_texture, int tile_index_for_top_texture)
+TileMapMeshCubeTexturer::TileMapMeshCubeTexturer(Tileo::TileAtlas* tile_atlas, std::vector<ALLEGRO_VERTEX>* cube, int tile_index_for_front_and_back_texture, int tile_index_for_right_and_left_texture, int tile_index_for_top_texture)
    : tile_atlas(tile_atlas)
    , cube(cube)
+   , tile_index_for_front_and_back_texture(tile_index_for_front_and_back_texture)
    , tile_index_for_right_and_left_texture(tile_index_for_right_and_left_texture)
    , tile_index_for_top_texture(tile_index_for_top_texture)
 {
