@@ -34,19 +34,25 @@ if (cube_vertexes.size()!=30)
    throw std::runtime_error(error_message.str());
 }
 
+float u1 = 0;
+float v1 = 0;
+float u2 = 0;
+float v2 = 0;
+tile_atlas->get_tile_uv(7, &u1, &v1, &u2, &v2);
+
 // top face
-cube_vertexes[0].u = 0;
-cube_vertexes[0].v = 1.0 * 128;
-cube_vertexes[1].u = 1.0 * 128;
-cube_vertexes[1].v = 0;
-cube_vertexes[2].u = 0;
-cube_vertexes[2].v = 0;
-cube_vertexes[3].u = 1.0 * 128;
-cube_vertexes[3].v = 0;
-cube_vertexes[4].u = 0;
-cube_vertexes[4].v = 1.0 * 128;
-cube_vertexes[5].u = 1.0 * 128;
-cube_vertexes[5].v = 1.0 * 128;
+cube_vertexes[0].u = u1;
+cube_vertexes[0].v = v2;//1.0 * 128;
+cube_vertexes[1].u = u2;//1.0 * 128;
+cube_vertexes[1].v = v1;
+cube_vertexes[2].u = u1;
+cube_vertexes[2].v = v1;
+cube_vertexes[3].u = u2;//1.0 * 128;
+cube_vertexes[3].v = v1;
+cube_vertexes[4].u = u1;
+cube_vertexes[4].v = v2;//1.0 * 128;
+cube_vertexes[5].u = u2;//1.0 * 128;
+cube_vertexes[5].v = v2;//1.0 * 128;
 
 return cube_vertexes;
 

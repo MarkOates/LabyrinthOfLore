@@ -81,7 +81,7 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, while_rendering_wi
    ALLEGRO_BITMAP *b = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/grid-texture-128.png");
    if (!b) throw std::runtime_error("in test, cannot load test texture \"b\"");
    Tileo::TileAtlas tile_atlas;
-   tile_atlas.load(b, 16, 16, 0);
+   tile_atlas.load(b, 128/3, 128/3, 0);
 
    // setup the scene
 
