@@ -134,8 +134,6 @@ int tile_width = 48;
 // left
 // back
 
-int integer_floor_of_the_height = (int)height;
-
 std::vector<ALLEGRO_VERTEX> result = {};
 
 std::vector<ALLEGRO_VERTEX> top_face = {
