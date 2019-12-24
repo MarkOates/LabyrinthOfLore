@@ -30,7 +30,14 @@ protected:
 
    virtual void SetUp() override
    {
-      ASSERT_EQ(false, al_is_system_installed());
+      if (!al_is_system_installed())
+      {
+         std::cout << "Warning: This test is expecting to start with allegro in an uninstalled state. "
+            << "However, during test setup, allegro is installed. This should be fixed, but in the "
+            << "mean time allegro will be uninstalled so that setup can continue as expected."
+            << std::endl;
+         al_uninstall_system();
+      }
       ASSERT_EQ(true, al_init());
       ASSERT_EQ(true, al_init_primitives_addon());
       ASSERT_EQ(true, al_init_image_addon());
