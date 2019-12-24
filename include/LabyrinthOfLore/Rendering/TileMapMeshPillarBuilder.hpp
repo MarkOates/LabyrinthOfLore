@@ -32,7 +32,7 @@ namespace LabyrinthOfLore
       ALLEGRO_VERTEX buildG();
       ALLEGRO_VERTEX buildH();
       ALLEGRO_COLOR random_color();
-      std::vector<ALLEGRO_VERTEX> build_cube();
+      std::vector<ALLEGRO_VERTEX> build_pillar();
       };
    }
 }

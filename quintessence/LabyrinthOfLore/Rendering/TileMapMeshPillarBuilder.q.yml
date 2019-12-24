@@ -55,7 +55,7 @@ functions:
       return colors[random.get_random_int(0, colors.size()-1)];
     body_dependency_symbols:
       - AllegroFlare::Random
-  - name: build_cube
+  - name: build_pillar
     type: std::vector<ALLEGRO_VERTEX>
     body: |
       ALLEGRO_COLOR cube_color = random_color();

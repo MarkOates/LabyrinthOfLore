@@ -81,7 +81,7 @@ return colors[random.get_random_int(0, colors.size()-1)];
 
 }
 
-std::vector<ALLEGRO_VERTEX> TileMapMeshPillarBuilder::build_cube()
+std::vector<ALLEGRO_VERTEX> TileMapMeshPillarBuilder::build_pillar()
 {
 ALLEGRO_COLOR cube_color = random_color();
 float u = 0;
