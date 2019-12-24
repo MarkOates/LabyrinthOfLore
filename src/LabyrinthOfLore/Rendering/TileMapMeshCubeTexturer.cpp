@@ -38,7 +38,7 @@ float u1 = 0;
 float v1 = 0;
 float u2 = 0;
 float v2 = 0;
-tile_atlas->get_tile_uv(7, &u1, &v1, &u2, &v2);
+tile_atlas->get_tile_uv(3, &u1, &v1, &u2, &v2);
 
 // top face
 cube_vertexes[0].u = u1;

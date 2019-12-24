@@ -46,7 +46,7 @@ for (int y=0; y<tile_map.get_height(); y++)
 
       std::vector<ALLEGRO_VERTEX> cube = {};
       cube = LabyrinthOfLore::Rendering::TileMapMeshCubeBuilder(x, y, tile.get_height()).build_cube();
-      //cube = LabyrinthOfLore::Rendering::TileMapMeshCubeTexturer(tile_atlas, cube).build_textured_cube();
+      cube = LabyrinthOfLore::Rendering::TileMapMeshCubeTexturer(tile_atlas, cube).build_textured_cube();
 
       vertexes.insert(vertexes.end(), cube.begin(), cube.end());
    }
@@ -58,8 +58,8 @@ return true;
 
 void TileMapMesh::draw()
 {
-//ALLEGRO_BITMAP *texture = nullptr;
-//if (tile_atlas) texture = tile_atlas->get_bitmap();
+ALLEGRO_BITMAP *texture = nullptr;
+if (tile_atlas) texture = tile_atlas->get_bitmap();
 
 //ALLEGRO_STATE previous_transform_state;
 //al_store_state(&previous_transform_state, ALLEGRO_STATE_TRANSFORM);
