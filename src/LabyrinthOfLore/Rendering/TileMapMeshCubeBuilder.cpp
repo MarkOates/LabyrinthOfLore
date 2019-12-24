@@ -84,8 +84,8 @@ return colors[random.get_random_int(0, colors.size()-1)];
 std::vector<ALLEGRO_VERTEX> TileMapMeshCubeBuilder::build_cube()
 {
 ALLEGRO_COLOR cube_color = random_color();
-int u = 1;
-int v = 1; //texture ? al_get_bitmap_width(texture) : 1;
+int u = 0;
+int v = 0; //texture ? al_get_bitmap_width(texture) : 1;
 int tile_width = 48;
 
 //float mul = -1;
