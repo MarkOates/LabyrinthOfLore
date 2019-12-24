@@ -305,6 +305,30 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, buildH_whole__wit
    ASSERT_EQ_VERTEX(build_vertex(1.0, 0, height_origin, white, 0, 0), tile_map_mesh_cube_builder.buildH_whole(height_origin));
 }
 
+// other functions
+
+TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, needs_partial_height_side_faces_from_top__returns_true_if_the_height_is_not_a_whole_number)
+{
+   std::vector<float> non_whole_number_heights_to_test = { 0.2, 3.6, 0.001, 0.999, 17.781 };
+
+   for (auto non_whole_number_height_to_test : non_whole_number_heights_to_test)
+   {
+      LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_cube_builder(0, 0, non_whole_number_height_to_test);
+      EXPECT_EQ(true, tile_map_mesh_cube_builder.needs_partial_height_side_faces_from_top());
+   }
+}
+
+TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, needs_partial_height_side_faces_from_top__returns_false_if_the_height_is_not_a_whole_number)
+{
+   std::vector<float> whole_number_heights_to_test = { 1.0, 6.0, 93.0, 4.0 };
+
+   for (auto whole_number_height_to_test : whole_number_heights_to_test)
+   {
+      LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_cube_builder(0, 0, whole_number_height_to_test);
+      EXPECT_EQ(false, tile_map_mesh_cube_builder.needs_partial_height_side_faces_from_top());
+   }
+}
+
 // facing tests
 
 TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, while_rendering_with_the_camera_facing_forward__appears_at_the_top_right_quadrant__near__with_green_in_the_top_right_corner)

@@ -92,6 +92,11 @@ functions:
         type: float
         default_argument: 0.0f
     body: return AllegroFlare::build_vertex(x+1, y, height_origin, al_color_name("white"), 0, 0);
+  - name: needs_partial_height_side_faces_from_top
+    type: bool
+    body: return !AllegroFlare::basically_equal(height, (int)height, 0.00001f);
+    body_dependency_symbols:
+      - AllegroFlare::basically_equal
   - name: random_color
     type: ALLEGRO_COLOR
     body: |
@@ -188,6 +193,8 @@ dependencies:
     headers: [ allegro5/allegro_primitives.h ]
   - symbol: ALLEGRO_COLOR
     headers: [ allegro5/allegro.h ]
+  - symbol: AllegroFlare::basically_equal
+    headers: [ AllegroFlare/Useful.hpp ]
   - symbol: AllegroFlare::build_vertex
     headers: [ AllegroFlare/Useful.hpp ]
   - symbol: al_color_name

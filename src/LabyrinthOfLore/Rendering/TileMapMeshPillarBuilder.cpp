@@ -1,6 +1,7 @@
 
 
 #include <LabyrinthOfLore/Rendering/TileMapMeshPillarBuilder.hpp>
+#include <AllegroFlare/Useful.hpp>
 #include <AllegroFlare/Random.hpp>
 #include <AllegroFlare/Useful.hpp>
 #include <allegro5/allegro_color.h>
@@ -105,6 +106,11 @@ ALLEGRO_VERTEX TileMapMeshPillarBuilder::buildH_whole(float height_origin)
 return AllegroFlare::build_vertex(x+1, y, height_origin, al_color_name("white"), 0, 0);
 }
 
+bool TileMapMeshPillarBuilder::needs_partial_height_side_faces_from_top()
+{
+return !AllegroFlare::basically_equal(height, (int)height, 0.00001f);
+}
+
 ALLEGRO_COLOR TileMapMeshPillarBuilder::random_color()
 {
 static AllegroFlare::Random random;
@@ -135,6 +141,7 @@ int tile_width = 48;
 // back
 
 std::vector<ALLEGRO_VERTEX> result = {};
+std::vector<ALLEGRO_VERTEX> side_faces = {};
 
 std::vector<ALLEGRO_VERTEX> top_face = {
   // top:
