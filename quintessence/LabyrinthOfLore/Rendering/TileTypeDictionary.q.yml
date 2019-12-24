@@ -1,0 +1,12 @@
+functions:
+  - name: find_definition
+    type: LabyrinthOfLore::Rendering::TileTypeDefinition
+    parameters:
+      - name: tile_type
+        type: int
+        default_argument: 0
+    body: |
+      return LabyrinthOfLore::Rendering::TileTypeDefinition();
+dependencies:
+  - symbol: LabyrinthOfLore::Rendering::TileTypeDefinition
+    headers: [ LabyrinthOfLore/Rendering/TileTypeDefinition.hpp ]
