@@ -3,7 +3,7 @@ properties:
     type: Tileo::TileAtlas*
     init_with: nullptr
     constructor_arg: true
-  - name: cube
+  - name: cube_vertexes
     type: std::vector<ALLEGRO_VERTEX>
     init_with: "{}"
     constructor_arg: true
@@ -24,11 +24,11 @@ functions:
     type: std::vector<ALLEGRO_VERTEX>
     body: |
       if (!tile_atlas) throw std::runtime_error("cannot texture_cube with a nullptr tile_atlas");
-      if (cube.size()!=30)
+      if (cube_vertexes.size()!=30)
       {
          std::stringstream error_message;
-         error_message << "cannot texture_cube with a cube that does not have the expected 30 vertexes. ";
-         error_message << "The passed cube has " << cube.size() << " vertexes.";
+         error_message << "cannot texture_cube with cube_vertexes that does not have the expected 30 vertexes. ";
+         error_message << "The passed cube_vertexes has " << cube_vertexes.size() << " vertexes.";
          throw std::runtime_error(error_message.str());
       }
 
@@ -69,7 +69,7 @@ functions:
       //tile_atlas->get_tile_uv(tile_index_for_top_texture, &top_u1, &top_v1, &top_u2, &top_v2);
 
 
-      return cube;
+      return cube_vertexes;
     body_dependency_symbols:
       - std::stringstream
 dependencies:

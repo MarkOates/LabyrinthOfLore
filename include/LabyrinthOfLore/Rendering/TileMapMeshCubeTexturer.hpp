@@ -14,10 +14,10 @@ namespace LabyrinthOfLore
       {
       private:
          Tileo::TileAtlas* tile_atlas;
-         std::vector<ALLEGRO_VERTEX> cube;
+         std::vector<ALLEGRO_VERTEX> cube_vertexes;
 
       public:
-         TileMapMeshCubeTexturer(Tileo::TileAtlas* tile_atlas=nullptr, std::vector<ALLEGRO_VERTEX> cube={});
+         TileMapMeshCubeTexturer(Tileo::TileAtlas* tile_atlas=nullptr, std::vector<ALLEGRO_VERTEX> cube_vertexes={});
          ~TileMapMeshCubeTexturer();
 
 

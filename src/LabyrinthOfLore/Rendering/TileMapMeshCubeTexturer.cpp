@@ -10,9 +10,9 @@ namespace Rendering
 {
 
 
-TileMapMeshCubeTexturer::TileMapMeshCubeTexturer(Tileo::TileAtlas* tile_atlas, std::vector<ALLEGRO_VERTEX> cube)
+TileMapMeshCubeTexturer::TileMapMeshCubeTexturer(Tileo::TileAtlas* tile_atlas, std::vector<ALLEGRO_VERTEX> cube_vertexes)
    : tile_atlas(tile_atlas)
-   , cube(cube)
+   , cube_vertexes(cube_vertexes)
 {
 }
 
@@ -25,11 +25,11 @@ TileMapMeshCubeTexturer::~TileMapMeshCubeTexturer()
 std::vector<ALLEGRO_VERTEX> TileMapMeshCubeTexturer::texture_cube()
 {
 if (!tile_atlas) throw std::runtime_error("cannot texture_cube with a nullptr tile_atlas");
-if (cube.size()!=30)
+if (cube_vertexes.size()!=30)
 {
    std::stringstream error_message;
-   error_message << "cannot texture_cube with a cube that does not have the expected 30 vertexes. ";
-   error_message << "The passed cube has " << cube.size() << " vertexes.";
+   error_message << "cannot texture_cube with cube_vertexes that does not have the expected 30 vertexes. ";
+   error_message << "The passed cube_vertexes has " << cube_vertexes.size() << " vertexes.";
    throw std::runtime_error(error_message.str());
 }
 
@@ -70,7 +70,7 @@ if (cube.size()!=30)
 //tile_atlas->get_tile_uv(tile_index_for_top_texture, &top_u1, &top_v1, &top_u2, &top_v2);
 
 
-return cube;
+return cube_vertexes;
 
 }
 } // namespace Rendering
