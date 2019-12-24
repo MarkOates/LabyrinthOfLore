@@ -24,7 +24,7 @@ namespace LabyrinthOfLore
          ~TileMapMeshCubeTexturer();
 
 
-      std::vector<ALLEGRO_VERTEX> build_textured_cube();
+      std::vector<ALLEGRO_VERTEX> build_textured_cube(bool scale_for_unit_sized_texture=true);
       };
    }
 }

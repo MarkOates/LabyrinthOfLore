@@ -26,7 +26,7 @@ TileMapMeshCubeTexturer::~TileMapMeshCubeTexturer()
 }
 
 
-std::vector<ALLEGRO_VERTEX> TileMapMeshCubeTexturer::build_textured_cube()
+std::vector<ALLEGRO_VERTEX> TileMapMeshCubeTexturer::build_textured_cube(bool scale_for_unit_sized_texture)
 {
 if (!tile_atlas) throw std::runtime_error("cannot build_textured_cube with a nullptr tile_atlas");
 if (cube_vertexes.size()!=30)
@@ -119,10 +119,13 @@ cube_vertexes[6*4+5].v = v2;//1.0 * 128;
 
 ALLEGRO_BITMAP *texture = tile_atlas->get_bitmap();
 
-for (auto &cube_vertex : cube_vertexes)
+if (scale_for_unit_sized_texture)
 {
-   cube_vertex.u /= al_get_bitmap_width(texture);
-   cube_vertex.v /= -al_get_bitmap_height(texture);
+   for (auto &cube_vertex : cube_vertexes)
+   {
+      cube_vertex.u /= al_get_bitmap_width(texture);
+      cube_vertex.v /= -al_get_bitmap_height(texture);
+   }
 }
 
 return cube_vertexes;

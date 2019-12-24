@@ -61,7 +61,7 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, build_textured_cub
 {
    LabyrinthOfLore::Rendering::TileMapMeshCubeTexturer tile_map_mesh_cube_texturer;
    std::string expected_error_message = "cannot build_textured_cube with a nullptr tile_atlas";
-   ASSERT_THROW_WITH_MESSAGE(tile_map_mesh_cube_texturer.build_textured_cube(), std::runtime_error, expected_error_message);
+   ASSERT_THROW_WITH_MESSAGE(tile_map_mesh_cube_texturer.build_textured_cube(false), std::runtime_error, expected_error_message);
 }
 
 TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, build_textured_cube__without_a_cube__returns_an_exception)
@@ -69,7 +69,7 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, build_textured_cub
    Tileo::TileAtlas tile_atlas;
    LabyrinthOfLore::Rendering::TileMapMeshCubeTexturer tile_map_mesh_cube_texturer(&tile_atlas);
    std::string expected_error_message = "cannot build_textured_cube with cube_vertexes that does not have the expected 30 vertexes. The passed cube_vertexes has 0 vertexes.";
-   ASSERT_THROW_WITH_MESSAGE(tile_map_mesh_cube_texturer.build_textured_cube(), std::runtime_error, expected_error_message);
+   ASSERT_THROW_WITH_MESSAGE(tile_map_mesh_cube_texturer.build_textured_cube(false), std::runtime_error, expected_error_message);
 }
 
 // facing tests
@@ -91,14 +91,14 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, while_rendering_wi
    al_clear_to_color(al_color_name("slategray"));
    std::vector<ALLEGRO_VERTEX> cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeBuilder(0, 0, 1.0, 1.0).build_cube();
 
-   cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeTexturer(&tile_atlas, cube_vertexes, 0, 0, 1).build_textured_cube();
+   cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeTexturer(&tile_atlas, cube_vertexes, 0, 0, 1).build_textured_cube(false);
 
    // draw the scene
 
    al_draw_prim(&cube_vertexes[0], nullptr, b, 0, cube_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
 
    al_flip_display();
-   sleep(1);
+   //sleep(1);
    SUCCEED();
 }
 
@@ -119,14 +119,14 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, while_rendering_wi
    al_clear_to_color(al_color_name("slategray"));
    std::vector<ALLEGRO_VERTEX> cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeBuilder(0, 0, 1.0, 1.0).build_cube();
 
-   cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeTexturer(&tile_atlas, cube_vertexes, 1, 0, 0).build_textured_cube();
+   cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeTexturer(&tile_atlas, cube_vertexes, 1, 0, 0).build_textured_cube(false);
 
    // draw the scene
 
    al_draw_prim(&cube_vertexes[0], nullptr, b, 0, cube_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
 
    al_flip_display();
-   sleep(1);
+   //sleep(1);
    SUCCEED();
 }
 
@@ -147,14 +147,14 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, while_rendering_wi
    al_clear_to_color(al_color_name("slategray"));
    std::vector<ALLEGRO_VERTEX> cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeBuilder(0, 0, 1.0, 1.0).build_cube();
 
-   cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeTexturer(&tile_atlas, cube_vertexes, 0, 1, 0).build_textured_cube();
+   cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeTexturer(&tile_atlas, cube_vertexes, 0, 1, 0).build_textured_cube(false);
 
    // draw the scene
 
    al_draw_prim(&cube_vertexes[0], nullptr, b, 0, cube_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
 
    al_flip_display();
-   sleep(1);
+   //sleep(1);
    SUCCEED();
 }
 
@@ -175,14 +175,14 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, while_rendering_wi
    al_clear_to_color(al_color_name("slategray"));
    std::vector<ALLEGRO_VERTEX> cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeBuilder(0, 0, 1.0, 1.0).build_cube();
 
-   cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeTexturer(&tile_atlas, cube_vertexes, 0, 1, 0).build_textured_cube();
+   cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeTexturer(&tile_atlas, cube_vertexes, 0, 1, 0).build_textured_cube(false);
 
    // draw the scene
 
    al_draw_prim(&cube_vertexes[0], nullptr, b, 0, cube_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
 
    al_flip_display();
-   sleep(1);
+   //sleep(1);
    SUCCEED();
 }
 
@@ -204,14 +204,14 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, while_rendering_wi
    al_clear_to_color(al_color_name("slategray"));
    std::vector<ALLEGRO_VERTEX> cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeBuilder(0, 0, 1.0, 1.0).build_cube();
 
-   cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeTexturer(&tile_atlas, cube_vertexes, 1, 0, 0).build_textured_cube();
+   cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeTexturer(&tile_atlas, cube_vertexes, 1, 0, 0).build_textured_cube(false);
 
    // draw the scene
 
    al_draw_prim(&cube_vertexes[0], nullptr, b, 0, cube_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
 
    al_flip_display();
-   sleep(1);
+   //sleep(1);
    SUCCEED();
 }
 
