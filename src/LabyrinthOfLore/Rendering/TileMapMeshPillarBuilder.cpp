@@ -141,7 +141,7 @@ int tile_width = 48;
 // back
 
 std::vector<ALLEGRO_VERTEX> result = {};
-std::vector<ALLEGRO_VERTEX> side_faces = {};
+std::vector<ALLEGRO_VERTEX> partial_height_side_faces_from_top = {};
 
 std::vector<ALLEGRO_VERTEX> top_face = {
   // top:
@@ -155,7 +155,7 @@ std::vector<ALLEGRO_VERTEX> top_face = {
 
 if (true) //(needs_partial_height_side_faces_from_top)
 {
-   side_faces = {
+   partial_height_side_faces_from_top = {
       // front:
       buildE(),
       buildD(),
@@ -191,7 +191,7 @@ if (true) //(needs_partial_height_side_faces_from_top)
 }
 
 result.insert(result.begin(), top_face.begin(), top_face.end());
-result.insert(result.begin(), side_faces.begin(), side_faces.end());
+result.insert(result.begin(), partial_height_side_faces_from_top.begin(), partial_height_side_faces_from_top.end());
 
 for (auto &vertex : result) { float swap = vertex.y; vertex.y = vertex.z; vertex.z = swap; }
 
