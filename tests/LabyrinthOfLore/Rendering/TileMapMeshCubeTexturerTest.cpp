@@ -72,6 +72,15 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, build_textured_cub
    ASSERT_THROW_WITH_MESSAGE(tile_map_mesh_cube_texturer.build_textured_cube(false), std::runtime_error, expected_error_message);
 }
 
+TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, build_textured_cube__with_a_tile_atlas_that_does_not_have_a_bitmap__raises_an_exception)
+{
+   Tileo::TileAtlas tile_atlas;
+   std::vector<ALLEGRO_VERTEX> cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshCubeBuilder(0, 0, 1.0, 1.0).build_cube();
+   LabyrinthOfLore::Rendering::TileMapMeshCubeTexturer tile_map_mesh_cube_texturer(&tile_atlas, cube_vertexes);
+   std::string expected_error_message = "Cannot build_textured_cube with a nullptr tile_atlas bitmap.";
+   ASSERT_THROW_WITH_MESSAGE(tile_map_mesh_cube_texturer.build_textured_cube(false), std::runtime_error, expected_error_message);
+}
+
 // facing tests
 
 TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, while_rendering_with_the_camera_facing_down_should_see_a2)

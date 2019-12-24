@@ -36,6 +36,8 @@ if (cube_vertexes.size()!=30)
    error_message << "The passed cube_vertexes has " << cube_vertexes.size() << " vertexes.";
    throw std::runtime_error(error_message.str());
 }
+ALLEGRO_BITMAP *texture = tile_atlas->get_bitmap();
+if (!texture) throw std::runtime_error("Cannot build_textured_cube with a nullptr tile_atlas bitmap.");
 
 float u1 = 0;
 float v1 = 0;
@@ -116,8 +118,6 @@ cube_vertexes[6*4+4].u = u1;
 cube_vertexes[6*4+4].v = v2;//1.0 * 128;
 cube_vertexes[6*4+5].u = u2;//1.0 * 128;
 cube_vertexes[6*4+5].v = v2;//1.0 * 128;
-
-ALLEGRO_BITMAP *texture = tile_atlas->get_bitmap();
 
 if (scale_for_unit_sized_texture)
 {
