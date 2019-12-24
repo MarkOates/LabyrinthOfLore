@@ -2,6 +2,7 @@
 
 
 #include <LabyrinthOfLore/Rendering/TileTypeDefinition.hpp>
+#include <vector>
 
 
 namespace LabyrinthOfLore
@@ -11,9 +12,10 @@ namespace LabyrinthOfLore
       class TileTypeDictionary
       {
       private:
+         std::vector<LabyrinthOfLore::Rendering::TileTypeDefinition> definitions;
 
       public:
-         TileTypeDictionary();
+         TileTypeDictionary(std::vector<LabyrinthOfLore::Rendering::TileTypeDefinition> definitions={});
          ~TileTypeDictionary();
 
 

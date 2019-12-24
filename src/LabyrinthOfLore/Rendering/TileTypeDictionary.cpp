@@ -10,7 +10,8 @@ namespace Rendering
 {
 
 
-TileTypeDictionary::TileTypeDictionary()
+TileTypeDictionary::TileTypeDictionary(std::vector<LabyrinthOfLore::Rendering::TileTypeDefinition> definitions)
+   : definitions(definitions)
 {
 }
 

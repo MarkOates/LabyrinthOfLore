@@ -1,3 +1,8 @@
+properties:
+  - name: definitions
+    type: std::vector<LabyrinthOfLore::Rendering::TileTypeDefinition>
+    init_with: "{}"
+    constructor_arg: true
 functions:
   - name: find_definition
     type: LabyrinthOfLore::Rendering::TileTypeDefinition
@@ -10,3 +15,5 @@ functions:
 dependencies:
   - symbol: LabyrinthOfLore::Rendering::TileTypeDefinition
     headers: [ LabyrinthOfLore/Rendering/TileTypeDefinition.hpp ]
+  - symbol: std::vector<LabyrinthOfLore::Rendering::TileTypeDefinition>
+    headers: [ vector, LabyrinthOfLore/Rendering/TileTypeDefinition.hpp ]
