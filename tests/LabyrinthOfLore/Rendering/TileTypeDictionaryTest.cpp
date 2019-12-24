@@ -15,11 +15,21 @@ TEST(LabyrinthOfLore_Rendering_TileTypeDictionaryTest, can_be_created_without_bl
    LabyrinthOfLore::Rendering::TileTypeDictionary tile_type_dictionary;
 }
 
-TEST(LabyrinthOfLore_Rendering_TileTypeDictionaryTest, find_definition__returns_the_definition_in_the_dictionary)
+TEST(LabyrinthOfLore_Rendering_TileTypeDictionaryTest, find_definition__without_definitions__returns_the_expected_default)
 {
    LabyrinthOfLore::Rendering::TileTypeDictionary tile_type_dictionary;
 
    LabyrinthOfLore::Rendering::TileTypeDefinition expected_definition;
+   EXPECT_EQ_TILE_TYPE_DEFINITION(expected_definition, tile_type_dictionary.find_definition(0));
+}
+
+TEST(LabyrinthOfLore_Rendering_TileTypeDictionaryTest, find_definition__returns_the_definition_in_the_dictionary)
+{
+   LabyrinthOfLore::Rendering::TileTypeDictionary tile_type_dictionary({
+         { 0, LabyrinthOfLore::Rendering::TileTypeDefinition{ 3, 2, 1 } },
+      });
+
+   LabyrinthOfLore::Rendering::TileTypeDefinition expected_definition(3, 2, 1);
    EXPECT_EQ_TILE_TYPE_DEFINITION(expected_definition, tile_type_dictionary.find_definition(0));
 }
 

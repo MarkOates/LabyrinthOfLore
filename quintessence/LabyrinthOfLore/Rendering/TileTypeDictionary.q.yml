@@ -1,6 +1,6 @@
 properties:
   - name: definitions
-    type: std::vector<LabyrinthOfLore::Rendering::TileTypeDefinition>
+    type: std::map<int, LabyrinthOfLore::Rendering::TileTypeDefinition>
     init_with: "{}"
     constructor_arg: true
 functions:
@@ -11,9 +11,10 @@ functions:
         type: int
         default_argument: 0
     body: |
-      return LabyrinthOfLore::Rendering::TileTypeDefinition();
+      if (definitions.find(tile_type) == definitions.end()) return LabyrinthOfLore::Rendering::TileTypeDefinition();
+      return definitions[tile_type];
 dependencies:
   - symbol: LabyrinthOfLore::Rendering::TileTypeDefinition
     headers: [ LabyrinthOfLore/Rendering/TileTypeDefinition.hpp ]
-  - symbol: std::vector<LabyrinthOfLore::Rendering::TileTypeDefinition>
-    headers: [ vector, LabyrinthOfLore/Rendering/TileTypeDefinition.hpp ]
+  - symbol: std::map<int, LabyrinthOfLore::Rendering::TileTypeDefinition>
+    headers: [ map, LabyrinthOfLore/Rendering/TileTypeDefinition.hpp ]

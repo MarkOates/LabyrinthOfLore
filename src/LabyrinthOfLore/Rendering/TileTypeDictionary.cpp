@@ -10,7 +10,7 @@ namespace Rendering
 {
 
 
-TileTypeDictionary::TileTypeDictionary(std::vector<LabyrinthOfLore::Rendering::TileTypeDefinition> definitions)
+TileTypeDictionary::TileTypeDictionary(std::map<int, LabyrinthOfLore::Rendering::TileTypeDefinition> definitions)
    : definitions(definitions)
 {
 }
@@ -23,7 +23,8 @@ TileTypeDictionary::~TileTypeDictionary()
 
 LabyrinthOfLore::Rendering::TileTypeDefinition TileTypeDictionary::find_definition(int tile_type)
 {
-return LabyrinthOfLore::Rendering::TileTypeDefinition();
+if (definitions.find(tile_type) == definitions.end()) return LabyrinthOfLore::Rendering::TileTypeDefinition();
+return definitions[tile_type];
 
 }
 } // namespace Rendering
