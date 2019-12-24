@@ -47,22 +47,22 @@ return AllegroFlare::build_vertex(x+1, (y+1), height, al_color_name("green"), 0,
 
 ALLEGRO_VERTEX TileMapMeshPillarBuilder::buildE()
 {
-return AllegroFlare::build_vertex(x, (y+1), 0, al_color_name("dodgerblue"), 0, 0);
+return AllegroFlare::build_vertex(x, (y+1), (int)height, al_color_name("dodgerblue"), 0, 0);
 }
 
 ALLEGRO_VERTEX TileMapMeshPillarBuilder::buildF()
 {
-return AllegroFlare::build_vertex(x+1, (y+1), 0, al_color_name("white"), 0, 0);
+return AllegroFlare::build_vertex(x+1, (y+1), (int)height, al_color_name("white"), 0, 0);
 }
 
 ALLEGRO_VERTEX TileMapMeshPillarBuilder::buildG()
 {
-return AllegroFlare::build_vertex(x, y, 0, al_color_name("red"), 0, 0);
+return AllegroFlare::build_vertex(x, y, (int)height, al_color_name("red"), 0, 0);
 }
 
 ALLEGRO_VERTEX TileMapMeshPillarBuilder::buildH()
 {
-return AllegroFlare::build_vertex(x+1, y, 0, al_color_name("white"), 0, 0);
+return AllegroFlare::build_vertex(x+1, y, (int)height, al_color_name("white"), 0, 0);
 }
 
 ALLEGRO_VERTEX TileMapMeshPillarBuilder::buildA_whole(float height_origin)

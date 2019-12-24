@@ -26,16 +26,16 @@ functions:
     body: return AllegroFlare::build_vertex(x+1, (y+1), height, al_color_name("green"), 0, 0);
   - name: buildE
     type: ALLEGRO_VERTEX
-    body: return AllegroFlare::build_vertex(x, (y+1), 0, al_color_name("dodgerblue"), 0, 0);
+    body: return AllegroFlare::build_vertex(x, (y+1), (int)height, al_color_name("dodgerblue"), 0, 0);
   - name: buildF
     type: ALLEGRO_VERTEX
-    body: return AllegroFlare::build_vertex(x+1, (y+1), 0, al_color_name("white"), 0, 0);
+    body: return AllegroFlare::build_vertex(x+1, (y+1), (int)height, al_color_name("white"), 0, 0);
   - name: buildG
     type: ALLEGRO_VERTEX
-    body: return AllegroFlare::build_vertex(x, y, 0, al_color_name("red"), 0, 0);
+    body: return AllegroFlare::build_vertex(x, y, (int)height, al_color_name("red"), 0, 0);
   - name: buildH
     type: ALLEGRO_VERTEX
-    body: return AllegroFlare::build_vertex(x+1, y, 0, al_color_name("white"), 0, 0);
+    body: return AllegroFlare::build_vertex(x+1, y, (int)height, al_color_name("white"), 0, 0);
   - name: buildA_whole
     type: ALLEGRO_VERTEX
     parameters:
