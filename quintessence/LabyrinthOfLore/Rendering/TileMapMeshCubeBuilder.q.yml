@@ -55,7 +55,7 @@ functions:
       - name: v
         type: float
         default_argument: 0.0f
-    body: return AllegroFlare::build_vertex(mul*x+1, (y+1), height, al_color_name("white"), u, v);
+    body: return AllegroFlare::build_vertex(mul*x+1, (y+1), height, al_color_name("green"), u, v);
   - name: buildE
     type: ALLEGRO_VERTEX
     parameters:
@@ -85,7 +85,7 @@ functions:
       - name: v
         type: float
         default_argument: 0.0f
-    body: return AllegroFlare::build_vertex(mul*x, y, 0, al_color_name("white"), u, v);
+    body: return AllegroFlare::build_vertex(mul*x, y, 0, al_color_name("red"), u, v);
   - name: buildH
     type: ALLEGRO_VERTEX
     parameters:

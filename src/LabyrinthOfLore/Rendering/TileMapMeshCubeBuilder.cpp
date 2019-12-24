@@ -43,7 +43,7 @@ return AllegroFlare::build_vertex(mul*x, (y+1), height, al_color_name("white"), 
 
 ALLEGRO_VERTEX TileMapMeshCubeBuilder::buildD(float u, float v)
 {
-return AllegroFlare::build_vertex(mul*x+1, (y+1), height, al_color_name("white"), u, v);
+return AllegroFlare::build_vertex(mul*x+1, (y+1), height, al_color_name("green"), u, v);
 }
 
 ALLEGRO_VERTEX TileMapMeshCubeBuilder::buildE(float u, float v)
@@ -58,7 +58,7 @@ return AllegroFlare::build_vertex(mul*x+1, (y+1), 0, al_color_name("white"), u, 
 
 ALLEGRO_VERTEX TileMapMeshCubeBuilder::buildG(float u, float v)
 {
-return AllegroFlare::build_vertex(mul*x, y, 0, al_color_name("white"), u, v);
+return AllegroFlare::build_vertex(mul*x, y, 0, al_color_name("red"), u, v);
 }
 
 ALLEGRO_VERTEX TileMapMeshCubeBuilder::buildH(float u, float v)
