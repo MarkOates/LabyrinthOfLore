@@ -253,7 +253,7 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeBuilderTest, while_rendering_wit
    al_draw_prim(&cube_vertexes[0], nullptr, nullptr, 0, cube_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
 
    al_flip_display();
-   sleep(2);
+   //sleep(2);
    SUCCEED();
 }
 
@@ -271,7 +271,7 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeBuilderTest, while_rendering_wit
    al_draw_prim(&cube_vertexes[0], nullptr, nullptr, 0, cube_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
 
    al_flip_display();
-   sleep(2);
+   //sleep(2);
    SUCCEED();
 }
 
@@ -289,7 +289,7 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeBuilderTest, while_rendering_wit
    al_draw_prim(&cube_vertexes[0], nullptr, nullptr, 0, cube_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
 
    al_flip_display();
-   sleep(2);
+   //sleep(2);
    SUCCEED();
 }
 
