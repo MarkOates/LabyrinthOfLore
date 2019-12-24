@@ -38,28 +38,60 @@ functions:
     body: return AllegroFlare::build_vertex(x+1, y, 0, al_color_name("white"), 0, 0);
   - name: buildA_whole
     type: ALLEGRO_VERTEX
-    body: return AllegroFlare::build_vertex(x, y, height, al_color_name("white"), 0, 0);
+    parameters:
+      - name: height_origin
+        type: float
+        default_argument: 0.0f
+    body: return AllegroFlare::build_vertex(x, y, height_origin+1, al_color_name("white"), 0, 0);
   - name: buildB_whole
     type: ALLEGRO_VERTEX
-    body: return AllegroFlare::build_vertex(x+1, y, height, al_color_name("white"), 0, 0);
+    parameters:
+      - name: height_origin
+        type: float
+        default_argument: 0.0f
+    body: return AllegroFlare::build_vertex(x+1, y, height_origin+1, al_color_name("white"), 0, 0);
   - name: buildC_whole
     type: ALLEGRO_VERTEX
-    body: return AllegroFlare::build_vertex(x, (y+1), height, al_color_name("white"), 0, 0);
+    parameters:
+      - name: height_origin
+        type: float
+        default_argument: 0.0f
+    body: return AllegroFlare::build_vertex(x, (y+1), height_origin+1, al_color_name("white"), 0, 0);
   - name: buildD_whole
     type: ALLEGRO_VERTEX
-    body: return AllegroFlare::build_vertex(x+1, (y+1), height, al_color_name("green"), 0, 0);
+    parameters:
+      - name: height_origin
+        type: float
+        default_argument: 0.0f
+    body: return AllegroFlare::build_vertex(x+1, (y+1), height_origin+1, al_color_name("green"), 0, 0);
   - name: buildE_whole
     type: ALLEGRO_VERTEX
-    body: return AllegroFlare::build_vertex(x, (y+1), 0, al_color_name("dodgerblue"), 0, 0);
+    parameters:
+      - name: height_origin
+        type: float
+        default_argument: 0.0f
+    body: return AllegroFlare::build_vertex(x, (y+1), height_origin, al_color_name("dodgerblue"), 0, 0);
   - name: buildF_whole
     type: ALLEGRO_VERTEX
-    body: return AllegroFlare::build_vertex(x+1, (y+1), 0, al_color_name("white"), 0, 0);
+    parameters:
+      - name: height_origin
+        type: float
+        default_argument: 0.0f
+    body: return AllegroFlare::build_vertex(x+1, (y+1), height_origin, al_color_name("white"), 0, 0);
   - name: buildG_whole
     type: ALLEGRO_VERTEX
-    body: return AllegroFlare::build_vertex(x, y, 0, al_color_name("red"), 0, 0);
+    parameters:
+      - name: height_origin
+        type: float
+        default_argument: 0.0f
+    body: return AllegroFlare::build_vertex(x, y, height_origin, al_color_name("red"), 0, 0);
   - name: buildH_whole
     type: ALLEGRO_VERTEX
-    body: return AllegroFlare::build_vertex(x+1, y, 0, al_color_name("white"), 0, 0);
+    parameters:
+      - name: height_origin
+        type: float
+        default_argument: 0.0f
+    body: return AllegroFlare::build_vertex(x+1, y, height_origin, al_color_name("white"), 0, 0);
   - name: random_color
     type: ALLEGRO_COLOR
     body: |

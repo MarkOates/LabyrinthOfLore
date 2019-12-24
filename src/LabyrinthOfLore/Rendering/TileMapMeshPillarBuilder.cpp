@@ -65,44 +65,44 @@ ALLEGRO_VERTEX TileMapMeshPillarBuilder::buildH()
 return AllegroFlare::build_vertex(x+1, y, 0, al_color_name("white"), 0, 0);
 }
 
-ALLEGRO_VERTEX TileMapMeshPillarBuilder::buildA_whole()
+ALLEGRO_VERTEX TileMapMeshPillarBuilder::buildA_whole(float height_origin)
 {
-return AllegroFlare::build_vertex(x, y, height, al_color_name("white"), 0, 0);
+return AllegroFlare::build_vertex(x, y, height_origin+1, al_color_name("white"), 0, 0);
 }
 
-ALLEGRO_VERTEX TileMapMeshPillarBuilder::buildB_whole()
+ALLEGRO_VERTEX TileMapMeshPillarBuilder::buildB_whole(float height_origin)
 {
-return AllegroFlare::build_vertex(x+1, y, height, al_color_name("white"), 0, 0);
+return AllegroFlare::build_vertex(x+1, y, height_origin+1, al_color_name("white"), 0, 0);
 }
 
-ALLEGRO_VERTEX TileMapMeshPillarBuilder::buildC_whole()
+ALLEGRO_VERTEX TileMapMeshPillarBuilder::buildC_whole(float height_origin)
 {
-return AllegroFlare::build_vertex(x, (y+1), height, al_color_name("white"), 0, 0);
+return AllegroFlare::build_vertex(x, (y+1), height_origin+1, al_color_name("white"), 0, 0);
 }
 
-ALLEGRO_VERTEX TileMapMeshPillarBuilder::buildD_whole()
+ALLEGRO_VERTEX TileMapMeshPillarBuilder::buildD_whole(float height_origin)
 {
-return AllegroFlare::build_vertex(x+1, (y+1), height, al_color_name("green"), 0, 0);
+return AllegroFlare::build_vertex(x+1, (y+1), height_origin+1, al_color_name("green"), 0, 0);
 }
 
-ALLEGRO_VERTEX TileMapMeshPillarBuilder::buildE_whole()
+ALLEGRO_VERTEX TileMapMeshPillarBuilder::buildE_whole(float height_origin)
 {
-return AllegroFlare::build_vertex(x, (y+1), 0, al_color_name("dodgerblue"), 0, 0);
+return AllegroFlare::build_vertex(x, (y+1), height_origin, al_color_name("dodgerblue"), 0, 0);
 }
 
-ALLEGRO_VERTEX TileMapMeshPillarBuilder::buildF_whole()
+ALLEGRO_VERTEX TileMapMeshPillarBuilder::buildF_whole(float height_origin)
 {
-return AllegroFlare::build_vertex(x+1, (y+1), 0, al_color_name("white"), 0, 0);
+return AllegroFlare::build_vertex(x+1, (y+1), height_origin, al_color_name("white"), 0, 0);
 }
 
-ALLEGRO_VERTEX TileMapMeshPillarBuilder::buildG_whole()
+ALLEGRO_VERTEX TileMapMeshPillarBuilder::buildG_whole(float height_origin)
 {
-return AllegroFlare::build_vertex(x, y, 0, al_color_name("red"), 0, 0);
+return AllegroFlare::build_vertex(x, y, height_origin, al_color_name("red"), 0, 0);
 }
 
-ALLEGRO_VERTEX TileMapMeshPillarBuilder::buildH_whole()
+ALLEGRO_VERTEX TileMapMeshPillarBuilder::buildH_whole(float height_origin)
 {
-return AllegroFlare::build_vertex(x+1, y, 0, al_color_name("white"), 0, 0);
+return AllegroFlare::build_vertex(x+1, y, height_origin, al_color_name("white"), 0, 0);
 }
 
 ALLEGRO_COLOR TileMapMeshPillarBuilder::random_color()
