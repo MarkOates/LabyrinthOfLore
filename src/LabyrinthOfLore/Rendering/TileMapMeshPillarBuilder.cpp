@@ -65,6 +65,46 @@ ALLEGRO_VERTEX TileMapMeshPillarBuilder::buildH()
 return AllegroFlare::build_vertex(x+1, y, 0, al_color_name("white"), 0, 0);
 }
 
+ALLEGRO_VERTEX TileMapMeshPillarBuilder::buildA_whole()
+{
+return AllegroFlare::build_vertex(x, y, height, al_color_name("white"), 0, 0);
+}
+
+ALLEGRO_VERTEX TileMapMeshPillarBuilder::buildB_whole()
+{
+return AllegroFlare::build_vertex(x+1, y, height, al_color_name("white"), 0, 0);
+}
+
+ALLEGRO_VERTEX TileMapMeshPillarBuilder::buildC_whole()
+{
+return AllegroFlare::build_vertex(x, (y+1), height, al_color_name("white"), 0, 0);
+}
+
+ALLEGRO_VERTEX TileMapMeshPillarBuilder::buildD_whole()
+{
+return AllegroFlare::build_vertex(x+1, (y+1), height, al_color_name("green"), 0, 0);
+}
+
+ALLEGRO_VERTEX TileMapMeshPillarBuilder::buildE_whole()
+{
+return AllegroFlare::build_vertex(x, (y+1), 0, al_color_name("dodgerblue"), 0, 0);
+}
+
+ALLEGRO_VERTEX TileMapMeshPillarBuilder::buildF_whole()
+{
+return AllegroFlare::build_vertex(x+1, (y+1), 0, al_color_name("white"), 0, 0);
+}
+
+ALLEGRO_VERTEX TileMapMeshPillarBuilder::buildG_whole()
+{
+return AllegroFlare::build_vertex(x, y, 0, al_color_name("red"), 0, 0);
+}
+
+ALLEGRO_VERTEX TileMapMeshPillarBuilder::buildH_whole()
+{
+return AllegroFlare::build_vertex(x+1, y, 0, al_color_name("white"), 0, 0);
+}
+
 ALLEGRO_COLOR TileMapMeshPillarBuilder::random_color()
 {
 static AllegroFlare::Random random;
