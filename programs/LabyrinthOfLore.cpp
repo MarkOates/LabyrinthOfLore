@@ -168,7 +168,7 @@ int main(int argc, char **argv)
 
       //
 
-      LabyrinthOfLore::Rendering::TileMapMesh tile_map_mesh(&world_texture_tile_atlas, tile_map, billboarding_tester_sprite);
+      LabyrinthOfLore::Rendering::TileMapMesh tile_map_mesh(&world_texture_tile_atlas, tile_map, world_texture_tile_atlas.get_bitmap());
       tile_map_mesh.build();
 
       AllegroFlare::PickingBuffer picking_buffer(al_get_display_width(display)/resolution_scale, al_get_display_height(display)/resolution_scale, 32);
