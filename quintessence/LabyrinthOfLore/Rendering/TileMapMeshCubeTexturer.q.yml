@@ -36,21 +36,51 @@ functions:
       float v1 = 0;
       float u2 = 0;
       float v2 = 0;
-      tile_atlas->get_tile_uv(3, &u1, &v1, &u2, &v2);
 
+      tile_atlas->get_tile_uv(0, &u1, &v1, &u2, &v2);
       // top face
-      cube_vertexes[0].u = u1;
-      cube_vertexes[0].v = v2;//1.0 * 128;
-      cube_vertexes[1].u = u2;//1.0 * 128;
-      cube_vertexes[1].v = v1;
-      cube_vertexes[2].u = u1;
-      cube_vertexes[2].v = v1;
-      cube_vertexes[3].u = u2;//1.0 * 128;
-      cube_vertexes[3].v = v1;
-      cube_vertexes[4].u = u1;
-      cube_vertexes[4].v = v2;//1.0 * 128;
-      cube_vertexes[5].u = u2;//1.0 * 128;
-      cube_vertexes[5].v = v2;//1.0 * 128;
+      cube_vertexes[6*0+0].u = u1;
+      cube_vertexes[6*0+0].v = v2;//1.0 * 128;
+      cube_vertexes[6*0+1].u = u2;//1.0 * 128;
+      cube_vertexes[6*0+1].v = v1;
+      cube_vertexes[6*0+2].u = u1;
+      cube_vertexes[6*0+2].v = v1;
+      cube_vertexes[6*0+3].u = u2;//1.0 * 128;
+      cube_vertexes[6*0+3].v = v1;
+      cube_vertexes[6*0+4].u = u1;
+      cube_vertexes[6*0+4].v = v2;//1.0 * 128;
+      cube_vertexes[6*0+5].u = u2;//1.0 * 128;
+      cube_vertexes[6*0+5].v = v2;//1.0 * 128;
+
+      tile_atlas->get_tile_uv(1, &u1, &v1, &u2, &v2);
+      // front face
+      cube_vertexes[6*1+0].u = u1;
+      cube_vertexes[6*1+0].v = v2;//1.0 * 128;
+      cube_vertexes[6*1+1].u = u2;//1.0 * 128;
+      cube_vertexes[6*1+1].v = v1;
+      cube_vertexes[6*1+2].u = u1;
+      cube_vertexes[6*1+2].v = v1;
+      cube_vertexes[6*1+3].u = u2;//1.0 * 128;
+      cube_vertexes[6*1+3].v = v1;
+      cube_vertexes[6*1+4].u = u1;
+      cube_vertexes[6*1+4].v = v2;//1.0 * 128;
+      cube_vertexes[6*1+5].u = u2;//1.0 * 128;
+      cube_vertexes[6*1+5].v = v2;//1.0 * 128;
+
+      tile_atlas->get_tile_uv(2, &u1, &v1, &u2, &v2);
+      // right face
+      cube_vertexes[6*2+0].u = u1;
+      cube_vertexes[6*2+0].v = v2;//1.0 * 128;
+      cube_vertexes[6*2+1].u = u2;//1.0 * 128;
+      cube_vertexes[6*2+1].v = v1;
+      cube_vertexes[6*2+2].u = u1;
+      cube_vertexes[6*2+2].v = v1;
+      cube_vertexes[6*2+3].u = u2;//1.0 * 128;
+      cube_vertexes[6*2+3].v = v1;
+      cube_vertexes[6*2+4].u = u1;
+      cube_vertexes[6*2+4].v = v2;//1.0 * 128;
+      cube_vertexes[6*2+5].u = u2;//1.0 * 128;
+      cube_vertexes[6*2+5].v = v2;//1.0 * 128;
 
       return cube_vertexes;
     body_dependency_symbols:
