@@ -265,6 +265,33 @@ TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
 }
 
 TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
+      with_an_entity__process_step__uses_the_ceiling_height_from_the_tile_map)
+{
+   float ceiling_height = 4.0f;
+   LabyrinthOfLore::WorldMap::TileMap tile_map;
+   tile_map.resize(10, 10, LabyrinthOfLore::WorldMap::Tile(0, -10.0));
+   tile_map.set_ceiling_height(ceiling_height);
+   LabyrinthOfLore::Entity::Base entity = LabyrinthOfLore::Entity::Base();
+   std::vector<LabyrinthOfLore::Entity::Base*> entities = { &entity };
+
+   entity.get_placement_ref().position = AllegroFlare::vec3d(0.0, 0.0, ceiling_height - 0.5);
+   entity.get_velocity_ref().position = AllegroFlare::vec3d(0.0, 0.0, 1.0);
+
+   LabyrinthOfLore::Physics::EntityTileMapCollisionStepper entity_tile_map_collision_stepper(tile_map, entities);
+   entity_tile_map_collision_stepper.process_step();
+
+   allegro_flare::placement3d actual_placement = entity.get_placement_ref();
+   EXPECT_EQ(0.0f, actual_placement.position.x);
+   EXPECT_EQ(0.0f, actual_placement.position.y);
+   EXPECT_EQ(3.999f, actual_placement.position.z);
+
+   allegro_flare::placement3d actual_velocity = entity.get_velocity_ref();
+   EXPECT_EQ(0.0f, actual_velocity.position.x);
+   EXPECT_EQ(0.0f, actual_velocity.position.y);
+   EXPECT_EQ(0.0f, actual_velocity.position.z);
+}
+
+TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
       with_an_entity__process_step__will_not_move_an_entity_lower_than_the_floor__but_will_position_it_at_the_miniumum_plus_a_small_offset__and_will_set_the_vertical_velocity_to_0)
 {
    LabyrinthOfLore::WorldMap::TileMap tile_map;
