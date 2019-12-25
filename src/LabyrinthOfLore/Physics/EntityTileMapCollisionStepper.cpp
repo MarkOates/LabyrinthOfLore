@@ -117,8 +117,7 @@ for (auto &entity : entities)
         int collided_tile_y = int(posY);
         int collided_tile_type = tile_map.get_tile(collided_tile_x, collided_tile_y).get_type();
         LabyrinthOfLore::WorldMap::tile_face_t collided_tile_face_collided_with = LabyrinthOfLore::WorldMap::TILE_FACE_NONE;
-        //float collided_force = abs(dirX * moveSpeed); // I don't know for certain about this one
-        float collided_force = 0.3;
+        float collided_force = abs(dirX * moveSpeed);
 
          // a new tile space has been entered
          LabyrinthOfLore::Physics::EntityTileMapCollisionEvent collision_event(
