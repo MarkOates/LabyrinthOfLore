@@ -1,8 +1,8 @@
 
 
 #include <LabyrinthOfLore/Rendering/TileMapMesh.hpp>
-#include <LabyrinthOfLore/Rendering/TileMapMeshCubeBuilder.hpp>
-#include <LabyrinthOfLore/Rendering/TileMapMeshCubeTexturer.hpp>
+#include <LabyrinthOfLore/Rendering/TileMapMeshPillarBuilder.hpp>
+#include <LabyrinthOfLore/Rendering/TileMapMeshPillarTexturer.hpp>
 
 
 namespace LabyrinthOfLore
@@ -48,17 +48,20 @@ for (int y=0; y<tile_map.get_height(); y++)
 
       LabyrinthOfLore::Rendering::TileTypeDefinition tile_type_definition = tile_type_dictionary.find_definition(tile_type);
 
-      std::vector<ALLEGRO_VERTEX> cube = {};
-      cube = LabyrinthOfLore::Rendering::TileMapMeshCubeBuilder(x, y, tile.get_height()).build_cube();
-      cube = LabyrinthOfLore::Rendering::TileMapMeshCubeTexturer(
+      std::vector<ALLEGRO_VERTEX> pillar = {};
+      LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder builder(x, y, tile.get_height());
+      pillar = builder.build_pillar();
+      pillar = LabyrinthOfLore::Rendering::TileMapMeshPillarTexturer(
             tile_atlas,
-            cube,
+            pillar,
             tile_type_definition.get_tile_index_for_front_and_back_texture(),
             tile_type_definition.get_tile_index_for_right_and_left_texture(),
-            tile_type_definition.get_tile_index_for_top_texture()
-         ).build_textured_cube();
+            tile_type_definition.get_tile_index_for_top_texture(),
+            builder.needs_partial_height_side_faces_from_top(),
+            builder.get_height()
+         ).build_textured_pillar();
 
-      vertexes.insert(vertexes.end(), cube.begin(), cube.end());
+      vertexes.insert(vertexes.end(), pillar.begin(), pillar.end());
    }
 }
 
