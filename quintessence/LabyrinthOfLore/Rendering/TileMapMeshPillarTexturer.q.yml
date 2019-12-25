@@ -19,6 +19,14 @@ properties:
     type: int
     init_with: 0
     constructor_arg: true
+  - name: first_front_back_left_right_vertex_set_is_of_partial_height
+    type: bool
+    init_with: false
+    constructor_arg: true
+  - name: height
+    type: float
+    init_with: -1
+    constructor_arg: true
 functions:
   - name: infer_number_of_front_right_left_back_sets_of_vertexes
     type: int
