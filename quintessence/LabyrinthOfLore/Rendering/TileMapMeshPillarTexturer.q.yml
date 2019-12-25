@@ -28,11 +28,12 @@ functions:
         default_argument: true
     body: |
       if (!tile_atlas) throw std::runtime_error("cannot build_textured_pillar with a nullptr tile_atlas");
-      if (pillar_vertexes.size()!=30)
+      if (((pillar_vertexes.size()-6) % 24) != 0)
       {
          std::stringstream error_message;
-         error_message << "cannot build_textured_pillar with pillar_vertexes that does not have the expected 30 vertexes. ";
-         error_message << "The passed pillar_vertexes has " << pillar_vertexes.size() << " vertexes.";
+         error_message << "cannot build_textured_pillar with pillar_vertexes that does not have the expected number of vertexes. ";
+         error_message << "Expecting 6 verticies for the top, and then an additional multiple of 24 faces for each height above 0. ";
+         error_message << "The passed pillar_vertexes have/has " << pillar_vertexes.size() << " vertexe(s).";
          throw std::runtime_error(error_message.str());
       }
       ALLEGRO_BITMAP *texture = tile_atlas->get_bitmap();
