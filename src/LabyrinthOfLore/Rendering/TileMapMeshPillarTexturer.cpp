@@ -11,13 +11,13 @@ namespace Rendering
 {
 
 
-TileMapMeshPillarTexturer::TileMapMeshPillarTexturer(Tileo::TileAtlas* tile_atlas, std::vector<ALLEGRO_VERTEX> pillar_vertexes, int tile_index_for_front_and_back_texture, int tile_index_for_right_and_left_texture, int tile_index_for_top_texture, bool first_front_back_left_right_vertex_set_is_of_partial_height, float height)
+TileMapMeshPillarTexturer::TileMapMeshPillarTexturer(Tileo::TileAtlas* tile_atlas, std::vector<ALLEGRO_VERTEX> pillar_vertexes, int tile_index_for_front_and_back_texture, int tile_index_for_right_and_left_texture, int tile_index_for_top_texture, bool needs_partial_height_side_faces_from_top, float height)
    : tile_atlas(tile_atlas)
    , pillar_vertexes(pillar_vertexes)
    , tile_index_for_front_and_back_texture(tile_index_for_front_and_back_texture)
    , tile_index_for_right_and_left_texture(tile_index_for_right_and_left_texture)
    , tile_index_for_top_texture(tile_index_for_top_texture)
-   , first_front_back_left_right_vertex_set_is_of_partial_height(first_front_back_left_right_vertex_set_is_of_partial_height)
+   , needs_partial_height_side_faces_from_top(needs_partial_height_side_faces_from_top)
    , height(height)
 {
 }

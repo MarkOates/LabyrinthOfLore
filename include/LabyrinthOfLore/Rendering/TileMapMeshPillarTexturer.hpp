@@ -18,11 +18,11 @@ namespace LabyrinthOfLore
          int tile_index_for_front_and_back_texture;
          int tile_index_for_right_and_left_texture;
          int tile_index_for_top_texture;
-         bool first_front_back_left_right_vertex_set_is_of_partial_height;
+         bool needs_partial_height_side_faces_from_top;
          float height;
 
       public:
-         TileMapMeshPillarTexturer(Tileo::TileAtlas* tile_atlas=nullptr, std::vector<ALLEGRO_VERTEX> pillar_vertexes={}, int tile_index_for_front_and_back_texture=0, int tile_index_for_right_and_left_texture=0, int tile_index_for_top_texture=0, bool first_front_back_left_right_vertex_set_is_of_partial_height=false, float height=-1);
+         TileMapMeshPillarTexturer(Tileo::TileAtlas* tile_atlas=nullptr, std::vector<ALLEGRO_VERTEX> pillar_vertexes={}, int tile_index_for_front_and_back_texture=0, int tile_index_for_right_and_left_texture=0, int tile_index_for_top_texture=0, bool needs_partial_height_side_faces_from_top=false, float height=-1);
          ~TileMapMeshPillarTexturer();
 
 

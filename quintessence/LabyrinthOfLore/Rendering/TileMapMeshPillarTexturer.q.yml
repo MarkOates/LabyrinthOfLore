@@ -19,7 +19,7 @@ properties:
     type: int
     init_with: 0
     constructor_arg: true
-  - name: first_front_back_left_right_vertex_set_is_of_partial_height
+  - name: needs_partial_height_side_faces_from_top
     type: bool
     init_with: false
     constructor_arg: true
