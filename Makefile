@@ -138,7 +138,7 @@ tests: $(INDIVIDUAL_TEST_EXECUTABLES) bin/run_all_tests
 
 
 run_tests: tests
-	bin/run_all_tests --gtest_filter=*while_rendering_with_the_camera_facing_towards_the_front_face__and_with_a_height_ppartway_between_1_and_2__should_see_2_a2_textured_faces*
+	bin/run_all_tests --gtest_filter=*$(FOCUSED_COMPONENT_NAME)*
 
 
 
