@@ -50,7 +50,7 @@ protected:
 };
 
 
-void ASSERT_EQ_VERTEX(ALLEGRO_VERTEX first_vertex, ALLEGRO_VERTEX second_vertex)
+static void ASSERT_EQ_VERTEX(ALLEGRO_VERTEX first_vertex, ALLEGRO_VERTEX second_vertex)
 {
    ASSERT_EQ(first_vertex.x, second_vertex.x);
    ASSERT_EQ(first_vertex.y, second_vertex.y);
