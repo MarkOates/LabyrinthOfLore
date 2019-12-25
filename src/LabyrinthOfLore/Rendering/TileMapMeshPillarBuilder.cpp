@@ -153,7 +153,7 @@ std::vector<ALLEGRO_VERTEX> top_face = {
   buildD()
 };
 
-if (true) //(needs_partial_height_side_faces_from_top)
+if (needs_partial_height_side_faces_from_top())
 {
    partial_height_side_faces_from_top = {
       // front:
