@@ -101,7 +101,7 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, infer_number_of_
 
 // facing tests
 
-TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, while_rendering_with_the_camera_facing_down_should_see_a2)
+TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, while_rendering_with_the_camera_facing_down_should_see_a2_on_the_bottom_right_of_origin)
 {
    LabyrinthOfLore::Rendering::Camera camera(AllegroFlare::vec3d(0, 0, 3), 0, -0.25); // facing down, towards the top face
    ALLEGRO_BITMAP *surface = al_get_backbuffer(al_get_current_display());
@@ -129,7 +129,7 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, while_rendering_
    SUCCEED();
 }
 
-TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, while_rendering_with_the_camera_facing_towards_the_front_face_should_see_a2)
+TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, while_rendering_with_the_camera_facing_towards_the_front_face_should_see_a2_on_the_top_right_closer)
 {
    LabyrinthOfLore::Rendering::Camera camera(AllegroFlare::vec3d(0, 3, 0), 0, 0); // facing towards the front face
    ALLEGRO_BITMAP *surface = al_get_backbuffer(al_get_current_display());
@@ -157,7 +157,7 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, while_rendering_
    SUCCEED();
 }
 
-TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, while_rendering_with_the_camera_facing_towards_the_right_face_should_see_a2)
+TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, while_rendering_with_the_camera_facing_towards_the_right_face_should_see_a2_on_the_top_left_closer)
 {
    LabyrinthOfLore::Rendering::Camera camera(AllegroFlare::vec3d(3, 0, 0), -0.25, 0); // facing towards the right face
    ALLEGRO_BITMAP *surface = al_get_backbuffer(al_get_current_display());
@@ -185,7 +185,7 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, while_rendering_
    SUCCEED();
 }
 
-TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, while_rendering_with_the_camera_facing_towards_the_left_face_should_see_a2)
+TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, while_rendering_with_the_camera_facing_towards_the_left_face_should_see_a2_on_the_top_right_further)
 {
    LabyrinthOfLore::Rendering::Camera camera(AllegroFlare::vec3d(-3, 0, 0), 0.25, 0); // facing towards the left face
    ALLEGRO_BITMAP *surface = al_get_backbuffer(al_get_current_display());
