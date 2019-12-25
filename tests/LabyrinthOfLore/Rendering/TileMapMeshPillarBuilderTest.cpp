@@ -329,6 +329,18 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, needs_partial_hei
    }
 }
 
+TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, build_pillar__partway_above_the_0_height__returns_the_expected_number_of_vertexes)
+{
+   std::vector<ALLEGRO_VERTEX> cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder(0, 0, 0.2).build_pillar();
+   ASSERT_EQ(30, cube_vertexes.size());
+}
+
+TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, build_pillar__at_a_0_height__returns_only_the_6_vertexes__hint_its_just_the_top_face)
+{
+   std::vector<ALLEGRO_VERTEX> cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder(0, 0, 0).build_pillar();
+   ASSERT_EQ(6, cube_vertexes.size());
+}
+
 // facing tests
 
 TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, while_rendering_with_the_camera_facing_forward__with_a_non_whole_number_height__renders_a_partial_height_pillar)
