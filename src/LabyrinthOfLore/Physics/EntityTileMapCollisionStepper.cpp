@@ -1,6 +1,8 @@
 
 
 #include <LabyrinthOfLore/Physics/EntityTileMapCollisionStepper.hpp>
+#include <LabyrinthOfLore/Physics/EntityTileMapCollisionEvent.hpp>
+#include <LabyrinthOfLore/WorldMap/TileFaceEnum.hpp>
 #include <cmath>
 #include <algorithm>
 #include <algorithm>
@@ -75,6 +77,8 @@ return dummy_tile_map;
 
 void EntityTileMapCollisionStepper::process_step()
 {
+events_from_last_processed_step.clear();
+
 for (auto &entity : entities)
 {
    AllegroFlare::vec2d player_xy = AllegroFlare::vec2d(
@@ -103,14 +107,32 @@ for (auto &entity : entities)
    {
       posX += dirX * moveSpeed;
    }
+   else
+   {
+      // collided at tile [int(posX + dirX * moveSpeed), int(posY)]
+      // LabyrinthOfLore::Entity::Base* _entity == entity;
+      // _tile_type == tile_map.get_tile(, int(posY)).get_type()
+      // _tile_face_collided_with = if ((dirX * moveSpeed) > 0) collided into TILE_FACE_RIGHT otherwise collided into TILE_FACE_LEFT
+      // _force == dirX * moveSpeed
+      // _tile_x = int(posX + dirX * moveSpeed)
+      // _tile_y = int(posY)
+
+      LabyrinthOfLore::Physics::EntityTileMapCollisionEvent collision_event(entity, 13, 1, 0, LabyrinthOfLore::WorldMap::TILE_FACE_LEFT, 1.0);
+      events_from_last_processed_step.push_back(collision_event);
+   }
    if(tile_map.get_tile(int(posX), int(posY + dirY * moveSpeed)).get_height() <= (posZ + get_auto_ascend_threshold()))
    {
       posY += dirY * moveSpeed;
+   }
+   else
+   {
+      // collided at tile [int(posX), int(posY + dirY * moveSpeed)]
    }
    if ((posZ + dirZ) < tile_map.get_tile(int(posX), int(posY)).get_height())
    {
       posZ = tile_map.get_tile(int(posX), int(posY)).get_height() + get_offset_at_collision_edge();
       entity->get_velocity_ref().position.z = 0.0f;
+      // collided down onto tile for sure
    }
    else
    {
