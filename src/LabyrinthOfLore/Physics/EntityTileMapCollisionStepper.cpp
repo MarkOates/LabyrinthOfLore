@@ -132,7 +132,6 @@ for (auto &entity : entities)
    }
    else
    {
-      // collided at tile [int(posX), int(posY + dirY * moveSpeed)]
       LabyrinthOfLore::Entity::Base* colliding_entity = entity;
       int collided_tile_x = int(posX);
       int collided_tile_y = int(posY + dirY * moveSpeed);
