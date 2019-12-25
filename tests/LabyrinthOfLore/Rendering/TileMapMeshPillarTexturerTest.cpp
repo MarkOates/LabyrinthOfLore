@@ -268,7 +268,7 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, while_rendering_
    al_draw_prim(&pillar_vertexes[0], nullptr, b, 0, pillar_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
 
    al_flip_display();
-   sleep(1);
+   //sleep(1);
    SUCCEED();
 }
 
@@ -296,7 +296,7 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, while_rendering_
    al_draw_prim(&pillar_vertexes[0], nullptr, b, 0, pillar_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
 
    al_flip_display();
-   sleep(1);
+   //sleep(1);
    SUCCEED();
 }
 
@@ -325,7 +325,36 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, while_rendering_
    al_draw_prim(&pillar_vertexes[0], nullptr, b, 0, pillar_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
 
    al_flip_display();
-   sleep(1);
+   //sleep(1);
+   SUCCEED();
+}
+
+
+TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, while_rendering_with_the_camera_facing_towards_the_back_face__and_with_a_height_partway_between_two_larger_numbers__should_see_multiple_a2_textured_faces)
+{
+   LabyrinthOfLore::Rendering::Camera camera(AllegroFlare::vec3d(0, -7, 0), 0.5, 0); // facing towards the back face
+   ALLEGRO_BITMAP *surface = al_get_backbuffer(al_get_current_display());
+   ASSERT_NE(nullptr, surface);
+
+   ALLEGRO_BITMAP *b = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/grid-texture-128.png");
+   if (!b) throw std::runtime_error("in test, cannot load test texture \"b\"");
+   Tileo::TileAtlas tile_atlas;
+   tile_atlas.load(b, 128/3, 128/3, 0);
+
+   // setup the scene
+
+   camera.start_projection(surface);
+   al_clear_to_color(al_color_name("black"));
+   std::vector<ALLEGRO_VERTEX> pillar_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder(0, 0, 4.6).build_pillar();
+
+   pillar_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarTexturer(&tile_atlas, pillar_vertexes, 0, 1, 0).build_textured_pillar(false);
+
+   // draw the scene
+
+   al_draw_prim(&pillar_vertexes[0], nullptr, b, 0, pillar_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
+
+   al_flip_display();
+   //sleep(1);
    SUCCEED();
 }
 
