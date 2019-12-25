@@ -27,6 +27,12 @@ TileMapMeshPillarBuilder::~TileMapMeshPillarBuilder()
 }
 
 
+float TileMapMeshPillarBuilder::get_height()
+{
+   return height;
+}
+
+
 ALLEGRO_VERTEX TileMapMeshPillarBuilder::buildA()
 {
 return AllegroFlare::build_vertex(x, y, height, al_color_name("white"), 0, 0);

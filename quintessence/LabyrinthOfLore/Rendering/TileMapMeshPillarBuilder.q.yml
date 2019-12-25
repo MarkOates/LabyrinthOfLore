@@ -11,6 +11,7 @@ properties:
     type: float
     init_with: 1.0f
     constructor_arg: true
+    getter: true
 functions:
   - name: buildA
     type: ALLEGRO_VERTEX

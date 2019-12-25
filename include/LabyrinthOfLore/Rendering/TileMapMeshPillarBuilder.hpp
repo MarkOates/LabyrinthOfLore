@@ -22,6 +22,7 @@ namespace LabyrinthOfLore
          ~TileMapMeshPillarBuilder();
 
 
+         float get_height();
       ALLEGRO_VERTEX buildA();
       ALLEGRO_VERTEX buildB();
       ALLEGRO_VERTEX buildC();
