@@ -193,7 +193,7 @@ if (needs_partial_height_side_faces_from_top())
   };
 }
 
-for (unsigned z=0; z<infer_number_of_whole_number_cubes_from_bottom(); z++)
+for (int z=0; z<infer_number_of_whole_number_cubes_from_bottom(); z++)
 {
    float height_origin = z;
 
