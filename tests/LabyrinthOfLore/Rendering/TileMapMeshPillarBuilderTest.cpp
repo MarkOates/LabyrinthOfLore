@@ -331,9 +331,27 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, needs_partial_hei
 
 // facing tests
 
+TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, while_rendering_with_the_camera_facing_forward__with_a_non_whole_number_height__renders_a_partial_height_pillar)
+{
+   LabyrinthOfLore::Rendering::Camera camera(AllegroFlare::vec3d(0, 3, 0), 0, 0); // facing towards the front face
+   ALLEGRO_BITMAP *surface = al_get_backbuffer(al_get_current_display());
+   ASSERT_NE(nullptr, surface);
+
+   al_clear_to_color(al_color_name("chartreuse"));
+   camera.start_projection(surface);
+
+   std::vector<ALLEGRO_VERTEX> cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder(0, 0, 1.2).build_pillar();
+
+   al_draw_prim(&cube_vertexes[0], nullptr, nullptr, 0, cube_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
+
+   al_flip_display();
+   sleep(2);
+   SUCCEED();
+}
+
 TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, while_rendering_with_the_camera_facing_forward__appears_at_the_top_right_quadrant__near__with_green_in_the_top_right_corner)
 {
-   LabyrinthOfLore::Rendering::Camera camera(AllegroFlare::vec3d(0.5, 3, 0.5), 0, 0); // facing towards the front face
+   LabyrinthOfLore::Rendering::Camera camera(AllegroFlare::vec3d(0, 3, 0), 0, 0); // facing towards the front face
    ALLEGRO_BITMAP *surface = al_get_backbuffer(al_get_current_display());
    ASSERT_NE(nullptr, surface);
 
@@ -342,6 +360,9 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, while_rendering_w
 
    std::vector<ALLEGRO_VERTEX> cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder(0, 0, 1.0).build_pillar();
 
+   // looks like a small flat box in the top right, with green in the top right vertex, a blue "central" vertex on the left of the box,
+   // and a red vertex on the box's bottom left.  It should appear that there is no bottom face, and you can see the inside edge on the
+   // right where the back side of the green vertex is shown
    al_draw_prim(&cube_vertexes[0], nullptr, nullptr, 0, cube_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
 
    al_flip_display();
