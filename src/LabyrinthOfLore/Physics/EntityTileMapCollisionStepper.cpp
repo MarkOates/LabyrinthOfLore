@@ -152,8 +152,31 @@ for (auto &entity : entities)
    }
    if(tile_map.get_tile(int(posX), int(posY + dirY * moveSpeed)).get_height() <= (posZ + get_auto_ascend_threshold()))
    {
+      float previous_posY = posY;
       posY += dirY * moveSpeed;
+      float now_posY = posY;
+
       // if currenty!=nexty, create a collision event into the nexty tile, with a face of NONE
+      if ((int)previous_posY != (int)now_posY)
+      {
+        LabyrinthOfLore::Entity::Base* colliding_entity = entity;
+        int collided_tile_x = int(posX);
+        int collided_tile_y = int(posY);
+        int collided_tile_type = tile_map.get_tile(collided_tile_x, collided_tile_y).get_type();
+        LabyrinthOfLore::WorldMap::tile_face_t collided_tile_face_collided_with = LabyrinthOfLore::WorldMap::TILE_FACE_NONE;
+        float collided_force = abs(dirY * moveSpeed);
+
+         // a new tile space has been entered
+         LabyrinthOfLore::Physics::EntityTileMapCollisionEvent collision_event(
+              colliding_entity,
+              collided_tile_type,
+              collided_tile_x,
+              collided_tile_y,
+              collided_tile_face_collided_with,
+              collided_force
+            );
+         events_from_last_processed_step.push_back(collision_event);
+      }
    }
    else
    {
