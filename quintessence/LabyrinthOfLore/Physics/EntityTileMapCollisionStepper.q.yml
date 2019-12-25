@@ -30,6 +30,10 @@ properties:
     init_with: "0.001f"
     static: true
     getter: true
+  - name: events_from_last_processed_step
+    type: std::vector<LabyrinthOfLore::Physics::EntityTileMapCollisionEvent>
+    init_with: "{}"
+    getter: true
 functions:
   - name: get_dummy_tile_map
     type: LabyrinthOfLore::WorldMap::TileMap&
@@ -117,3 +121,5 @@ dependencies:
     headers: [ algorithm ]
   - symbol: std::max
     headers: [ algorithm ]
+  - symbol: std::vector<LabyrinthOfLore::Physics::EntityTileMapCollisionEvent>
+    headers: [ vector, LabyrinthOfLore/Physics/EntityTileMapCollisionEvent.hpp ]

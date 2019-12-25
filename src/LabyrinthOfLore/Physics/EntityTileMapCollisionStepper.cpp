@@ -28,6 +28,7 @@ EntityTileMapCollisionStepper::EntityTileMapCollisionStepper(LabyrinthOfLore::Wo
    : tile_map(tile_map)
    , entities(entities)
    , ceiling_height(tile_map.get_ceiling_height())
+   , events_from_last_processed_step({})
 {
 }
 
@@ -58,6 +59,12 @@ float EntityTileMapCollisionStepper::get_auto_ascend_threshold()
 float EntityTileMapCollisionStepper::get_offset_at_collision_edge()
 {
    return offset_at_collision_edge;
+}
+
+
+std::vector<LabyrinthOfLore::Physics::EntityTileMapCollisionEvent> EntityTileMapCollisionStepper::get_events_from_last_processed_step()
+{
+   return events_from_last_processed_step;
 }
 
 

@@ -564,3 +564,13 @@ TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest,
    EXPECT_NEAR(0.25f, actual_placement.position.y, FLOATING_POINT_ERROR_MARGIN);
 }
 
+// collision event responses
+
+TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest, events_from_last_processed_step__has_a_getter_and_has_the_expected_default_value)
+{
+   LabyrinthOfLore::Physics::EntityTileMapCollisionStepper entity_tile_map_collision_stepper;
+
+   entity_tile_map_collision_stepper.get_events_from_last_processed_step();
+   SUCCEED();
+}
+
