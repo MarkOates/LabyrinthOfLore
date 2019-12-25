@@ -26,6 +26,13 @@ TileMapMeshPillarTexturer::~TileMapMeshPillarTexturer()
 }
 
 
+int TileMapMeshPillarTexturer::infer_number_of_front_right_left_back_sets_of_vertexes()
+{
+if (pillar_vertexes.size() <= 6) return 0;
+return (pillar_vertexes.size()-6) / 24;
+
+}
+
 std::vector<ALLEGRO_VERTEX> TileMapMeshPillarTexturer::build_textured_pillar(bool scale_for_unit_sized_texture)
 {
 if (!tile_atlas) throw std::runtime_error("cannot build_textured_pillar with a nullptr tile_atlas");

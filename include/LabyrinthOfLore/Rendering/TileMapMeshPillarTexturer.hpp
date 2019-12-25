@@ -24,6 +24,7 @@ namespace LabyrinthOfLore
          ~TileMapMeshPillarTexturer();
 
 
+      int infer_number_of_front_right_left_back_sets_of_vertexes();
       std::vector<ALLEGRO_VERTEX> build_textured_pillar(bool scale_for_unit_sized_texture=true);
       };
    }

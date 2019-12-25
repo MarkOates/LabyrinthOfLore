@@ -20,6 +20,11 @@ properties:
     init_with: 0
     constructor_arg: true
 functions:
+  - name: infer_number_of_front_right_left_back_sets_of_vertexes
+    type: int
+    body: |
+       if (pillar_vertexes.size() <= 6) return 0;
+       return (pillar_vertexes.size()-6) / 24;
   - name: build_textured_pillar
     type: std::vector<ALLEGRO_VERTEX>
     parameters:

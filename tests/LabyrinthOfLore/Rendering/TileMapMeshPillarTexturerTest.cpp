@@ -81,6 +81,24 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, build_textured_p
    ASSERT_THROW_WITH_MESSAGE(tile_map_mesh_pillar_texturer.build_textured_pillar(false), std::runtime_error, expected_error_message);
 }
 
+TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, infer_number_of_front_right_left_back_sets_of_vertexes__returns_the_expected_number)
+{
+   Tileo::TileAtlas tile_atlas;
+   std::vector<ALLEGRO_VERTEX> pillar_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder(0, 0, 2.0).build_pillar();
+   LabyrinthOfLore::Rendering::TileMapMeshPillarTexturer tile_map_mesh_pillar_texturer(&tile_atlas, pillar_vertexes);
+
+   ASSERT_EQ(2, tile_map_mesh_pillar_texturer.infer_number_of_front_right_left_back_sets_of_vertexes());
+}
+
+TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, infer_number_of_front_right_left_back_sets_of_vertexes__returns_the_expected_number__2)
+{
+   Tileo::TileAtlas tile_atlas;
+   std::vector<ALLEGRO_VERTEX> pillar_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder(0, 0, 6.2).build_pillar();
+   LabyrinthOfLore::Rendering::TileMapMeshPillarTexturer tile_map_mesh_pillar_texturer(&tile_atlas, pillar_vertexes);
+
+   ASSERT_EQ(7, tile_map_mesh_pillar_texturer.infer_number_of_front_right_left_back_sets_of_vertexes());
+}
+
 // facing tests
 
 TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, while_rendering_with_the_camera_facing_down_should_see_a2)
