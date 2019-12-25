@@ -110,14 +110,21 @@ for (auto &entity : entities)
    else
    {
       // collided at tile [int(posX + dirX * moveSpeed), int(posY)]
-      // LabyrinthOfLore::Entity::Base* _entity == entity;
-      // _tile_type == tile_map.get_tile(, int(posY)).get_type()
-      // _tile_face_collided_with = if ((dirX * moveSpeed) > 0) collided into TILE_FACE_RIGHT otherwise collided into TILE_FACE_LEFT
-      // _force == dirX * moveSpeed
-      // _tile_x = int(posX + dirX * moveSpeed)
-      // _tile_y = int(posY)
+      LabyrinthOfLore::Entity::Base* colliding_entity = entity;
+      int collided_tile_type = tile_map.get_tile(int(posX + dirX * moveSpeed), int(posY)).get_type();
+      int collided_tile_x = int(posX + dirX * moveSpeed);
+      int collided_tile_y = int(posY);
+      LabyrinthOfLore::WorldMap::tile_face_t collided_tile_face_collided_with = ((dirX * moveSpeed) > 0) ? LabyrinthOfLore::WorldMap::TILE_FACE_LEFT : LabyrinthOfLore::WorldMap::TILE_FACE_RIGHT;
+      float collided_force = dirX * moveSpeed;
 
-      LabyrinthOfLore::Physics::EntityTileMapCollisionEvent collision_event(entity, 13, 1, 0, LabyrinthOfLore::WorldMap::TILE_FACE_LEFT, 1.0);
+      LabyrinthOfLore::Physics::EntityTileMapCollisionEvent collision_event(
+            colliding_entity,
+            collided_tile_type,
+            collided_tile_x,
+            collided_tile_y,
+            collided_tile_face_collided_with,
+            collided_force
+         );
       events_from_last_processed_step.push_back(collision_event);
    }
    if(tile_map.get_tile(int(posX), int(posY + dirY * moveSpeed)).get_height() <= (posZ + get_auto_ascend_threshold()))
