@@ -91,7 +91,6 @@ for (auto &entity : entities)
    double posX = entity->get_placement_ref().position.x;
    double posY = entity->get_placement_ref().position.y;
    double posZ = entity->get_placement_ref().position.z;
-   int worldMap[100][100] = { 0 };
 
    if(tile_map.get_tile(int(posX + dirX * moveSpeed), int(posY)).get_height() <= (posZ + get_auto_ascend_threshold()))
    {
