@@ -238,7 +238,7 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, while_rendering_
    al_draw_prim(&pillar_vertexes[0], nullptr, b, 0, pillar_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
 
    al_flip_display();
-   //sleep(1);
+   sleep(1);
    SUCCEED();
 }
 
@@ -259,16 +259,23 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, while_rendering_
 
    camera.start_projection(surface);
    al_clear_to_color(al_color_name("orange"));
-   std::vector<ALLEGRO_VERTEX> pillar_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder(0, 0, 1.4).build_pillar();
+   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder builder(0, 0, 1.4);
+   std::vector<ALLEGRO_VERTEX> pillar_vertexes = builder.build_pillar();
 
-   pillar_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarTexturer(&tile_atlas, pillar_vertexes, 1, 0, 0).build_textured_pillar(false);
+   pillar_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarTexturer(
+         &tile_atlas,
+         pillar_vertexes,
+         1, 0, 0,
+         builder.needs_partial_height_side_faces_from_top(),
+         builder.get_height()
+      ).build_textured_pillar(false);
 
    // draw the scene
 
    al_draw_prim(&pillar_vertexes[0], nullptr, b, 0, pillar_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
 
    al_flip_display();
-   //sleep(1);
+   sleep(1);
    SUCCEED();
 }
 
@@ -287,16 +294,23 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, while_rendering_
 
    camera.start_projection(surface);
    al_clear_to_color(al_color_name("black"));
-   std::vector<ALLEGRO_VERTEX> pillar_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder(0, 0, 1.4).build_pillar();
+   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder builder(0, 0, 1.4);
+   std::vector<ALLEGRO_VERTEX> pillar_vertexes = builder.build_pillar();
 
-   pillar_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarTexturer(&tile_atlas, pillar_vertexes, 0, 1, 0).build_textured_pillar(false);
+   pillar_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarTexturer(
+         &tile_atlas,
+         pillar_vertexes,
+         0, 1, 0,
+         builder.needs_partial_height_side_faces_from_top(),
+         builder.get_height()
+      ).build_textured_pillar(false);
 
    // draw the scene
 
    al_draw_prim(&pillar_vertexes[0], nullptr, b, 0, pillar_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
 
    al_flip_display();
-   //sleep(1);
+   sleep(1);
    SUCCEED();
 }
 
@@ -316,16 +330,22 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, while_rendering_
 
    camera.start_projection(surface);
    al_clear_to_color(al_color_name("black"));
-   std::vector<ALLEGRO_VERTEX> pillar_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder(0, 0, 1.4).build_pillar();
+   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder builder(0, 0, 1.4);
+   std::vector<ALLEGRO_VERTEX> pillar_vertexes = builder.build_pillar();
 
-   pillar_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarTexturer(&tile_atlas, pillar_vertexes, 0, 1, 0).build_textured_pillar(false);
+   pillar_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarTexturer(
+         &tile_atlas, pillar_vertexes,
+         0, 1, 0,
+         builder.needs_partial_height_side_faces_from_top(),
+         builder.get_height()
+      ).build_textured_pillar(false);
 
    // draw the scene
 
    al_draw_prim(&pillar_vertexes[0], nullptr, b, 0, pillar_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
 
    al_flip_display();
-   //sleep(1);
+   sleep(1);
    SUCCEED();
 }
 
@@ -345,16 +365,22 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, while_rendering_
 
    camera.start_projection(surface);
    al_clear_to_color(al_color_name("black"));
-   std::vector<ALLEGRO_VERTEX> pillar_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder(0, 0, 4.6).build_pillar();
+   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder builder(0, 0, 4.6);
+   std::vector<ALLEGRO_VERTEX> pillar_vertexes = builder.build_pillar();
 
-   pillar_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarTexturer(&tile_atlas, pillar_vertexes, 1, 0, 0).build_textured_pillar(false);
+   pillar_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarTexturer(
+         &tile_atlas, pillar_vertexes,
+         1, 0, 0,
+         builder.needs_partial_height_side_faces_from_top(),
+         builder.get_height()
+      ).build_textured_pillar(false);
 
    // draw the scene
 
    al_draw_prim(&pillar_vertexes[0], nullptr, b, 0, pillar_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
 
    al_flip_display();
-   //sleep(1);
+   sleep(1);
    SUCCEED();
 }
 

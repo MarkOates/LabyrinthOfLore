@@ -3,6 +3,7 @@
 #include <LabyrinthOfLore/Rendering/TileMapMeshPillarTexturer.hpp>
 #include <sstream>
 #include <allegro5/allegro_color.h>
+#include <cmath>
 
 
 namespace LabyrinthOfLore
@@ -75,6 +76,8 @@ if (infer_number_of_front_right_left_back_sets_of_vertexes() > 0)
    int initial_index = 0;
 
    tile_atlas->get_tile_uv(tile_index_for_front_and_back_texture, &u1, &v1, &u2, &v2);
+   if (needs_partial_height_side_faces_from_top) { v1 = (v1 - v2) * fmod(height, 1.0) + v2; }
+
    // front face
    pillar_vertexes[6*(initial_index+1)+0].u = u1;
    pillar_vertexes[6*(initial_index+1)+0].v = v2;//1.0 * 128;
@@ -90,6 +93,7 @@ if (infer_number_of_front_right_left_back_sets_of_vertexes() > 0)
    pillar_vertexes[6*(initial_index+1)+5].v = v2;//1.0 * 128;
 
    tile_atlas->get_tile_uv(tile_index_for_right_and_left_texture, &u1, &v1, &u2, &v2);
+   if (needs_partial_height_side_faces_from_top) { v1 = (v1 - v2) * fmod(height, 1.0) + v2; }
    // right face
    pillar_vertexes[6*(initial_index+2)+0].u = u1;
    pillar_vertexes[6*(initial_index+2)+0].v = v2;//1.0 * 128;
@@ -105,6 +109,7 @@ if (infer_number_of_front_right_left_back_sets_of_vertexes() > 0)
    pillar_vertexes[6*(initial_index+2)+5].v = v2;//1.0 * 128;
 
    tile_atlas->get_tile_uv(tile_index_for_right_and_left_texture, &u1, &v1, &u2, &v2);
+   if (needs_partial_height_side_faces_from_top) { v1 = (v1 - v2) * fmod(height, 1.0) + v2; }
    // left face
    pillar_vertexes[6*(initial_index+3)+0].u = u1;
    pillar_vertexes[6*(initial_index+3)+0].v = v2;//1.0 * 128;
@@ -120,6 +125,7 @@ if (infer_number_of_front_right_left_back_sets_of_vertexes() > 0)
    pillar_vertexes[6*(initial_index+3)+5].v = v2;//1.0 * 128;
 
    tile_atlas->get_tile_uv(tile_index_for_front_and_back_texture, &u1, &v1, &u2, &v2);
+   if (needs_partial_height_side_faces_from_top) { v1 = (v1 - v2) * fmod(height, 1.0) + v2; }
    // back face
    pillar_vertexes[6*(initial_index+4)+0].u = u1;
    pillar_vertexes[6*(initial_index+4)+0].v = v2;//1.0 * 128;
