@@ -67,65 +67,68 @@ pillar_vertexes[6*0+4].v = v2;//1.0 * 128;
 pillar_vertexes[6*0+5].u = u2;//1.0 * 128;
 pillar_vertexes[6*0+5].v = v2;//1.0 * 128;
 
+
+int pass_num = 0;
+
 tile_atlas->get_tile_uv(tile_index_for_front_and_back_texture, &u1, &v1, &u2, &v2);
 // front face
-pillar_vertexes[6*1+0].u = u1;
-pillar_vertexes[6*1+0].v = v2;//1.0 * 128;
-pillar_vertexes[6*1+1].u = u2;//1.0 * 128;
-pillar_vertexes[6*1+1].v = v1;
-pillar_vertexes[6*1+2].u = u1;
-pillar_vertexes[6*1+2].v = v1;
-pillar_vertexes[6*1+3].u = u2;//1.0 * 128;
-pillar_vertexes[6*1+3].v = v1;
-pillar_vertexes[6*1+4].u = u1;
-pillar_vertexes[6*1+4].v = v2;//1.0 * 128;
-pillar_vertexes[6*1+5].u = u2;//1.0 * 128;
-pillar_vertexes[6*1+5].v = v2;//1.0 * 128;
+pillar_vertexes[6*(pass_num+1)+0].u = u1;
+pillar_vertexes[6*(pass_num+1)+0].v = v2;//1.0 * 128;
+pillar_vertexes[6*(pass_num+1)+1].u = u2;//1.0 * 128;
+pillar_vertexes[6*(pass_num+1)+1].v = v1;
+pillar_vertexes[6*(pass_num+1)+2].u = u1;
+pillar_vertexes[6*(pass_num+1)+2].v = v1;
+pillar_vertexes[6*(pass_num+1)+3].u = u2;//1.0 * 128;
+pillar_vertexes[6*(pass_num+1)+3].v = v1;
+pillar_vertexes[6*(pass_num+1)+4].u = u1;
+pillar_vertexes[6*(pass_num+1)+4].v = v2;//1.0 * 128;
+pillar_vertexes[6*(pass_num+1)+5].u = u2;//1.0 * 128;
+pillar_vertexes[6*(pass_num+1)+5].v = v2;//1.0 * 128;
 
 tile_atlas->get_tile_uv(tile_index_for_right_and_left_texture, &u1, &v1, &u2, &v2);
 // right face
-pillar_vertexes[6*2+0].u = u1;
-pillar_vertexes[6*2+0].v = v2;//1.0 * 128;
-pillar_vertexes[6*2+1].u = u2;//1.0 * 128;
-pillar_vertexes[6*2+1].v = v1;
-pillar_vertexes[6*2+2].u = u1;
-pillar_vertexes[6*2+2].v = v1;
-pillar_vertexes[6*2+3].u = u2;//1.0 * 128;
-pillar_vertexes[6*2+3].v = v1;
-pillar_vertexes[6*2+4].u = u1;
-pillar_vertexes[6*2+4].v = v2;//1.0 * 128;
-pillar_vertexes[6*2+5].u = u2;//1.0 * 128;
-pillar_vertexes[6*2+5].v = v2;//1.0 * 128;
+pillar_vertexes[6*(pass_num+2)+0].u = u1;
+pillar_vertexes[6*(pass_num+2)+0].v = v2;//1.0 * 128;
+pillar_vertexes[6*(pass_num+2)+1].u = u2;//1.0 * 128;
+pillar_vertexes[6*(pass_num+2)+1].v = v1;
+pillar_vertexes[6*(pass_num+2)+2].u = u1;
+pillar_vertexes[6*(pass_num+2)+2].v = v1;
+pillar_vertexes[6*(pass_num+2)+3].u = u2;//1.0 * 128;
+pillar_vertexes[6*(pass_num+2)+3].v = v1;
+pillar_vertexes[6*(pass_num+2)+4].u = u1;
+pillar_vertexes[6*(pass_num+2)+4].v = v2;//1.0 * 128;
+pillar_vertexes[6*(pass_num+2)+5].u = u2;//1.0 * 128;
+pillar_vertexes[6*(pass_num+2)+5].v = v2;//1.0 * 128;
 
 tile_atlas->get_tile_uv(tile_index_for_right_and_left_texture, &u1, &v1, &u2, &v2);
 // left face
-pillar_vertexes[6*3+0].u = u1;
-pillar_vertexes[6*3+0].v = v2;//1.0 * 128;
-pillar_vertexes[6*3+1].u = u2;//1.0 * 128;
-pillar_vertexes[6*3+1].v = v1;
-pillar_vertexes[6*3+2].u = u1;
-pillar_vertexes[6*3+2].v = v1;
-pillar_vertexes[6*3+3].u = u2;//1.0 * 128;
-pillar_vertexes[6*3+3].v = v1;
-pillar_vertexes[6*3+4].u = u1;
-pillar_vertexes[6*3+4].v = v2;//1.0 * 128;
-pillar_vertexes[6*3+5].u = u2;//1.0 * 128;
-pillar_vertexes[6*3+5].v = v2;//1.0 * 128;
+pillar_vertexes[6*(pass_num+3)+0].u = u1;
+pillar_vertexes[6*(pass_num+3)+0].v = v2;//1.0 * 128;
+pillar_vertexes[6*(pass_num+3)+1].u = u2;//1.0 * 128;
+pillar_vertexes[6*(pass_num+3)+1].v = v1;
+pillar_vertexes[6*(pass_num+3)+2].u = u1;
+pillar_vertexes[6*(pass_num+3)+2].v = v1;
+pillar_vertexes[6*(pass_num+3)+3].u = u2;//1.0 * 128;
+pillar_vertexes[6*(pass_num+3)+3].v = v1;
+pillar_vertexes[6*(pass_num+3)+4].u = u1;
+pillar_vertexes[6*(pass_num+3)+4].v = v2;//1.0 * 128;
+pillar_vertexes[6*(pass_num+3)+5].u = u2;//1.0 * 128;
+pillar_vertexes[6*(pass_num+3)+5].v = v2;//1.0 * 128;
 
 tile_atlas->get_tile_uv(tile_index_for_front_and_back_texture, &u1, &v1, &u2, &v2);
 // back face
-pillar_vertexes[6*4+0].u = u1;
-pillar_vertexes[6*4+0].v = v2;//1.0 * 128;
-pillar_vertexes[6*4+1].u = u2;//1.0 * 128;
-pillar_vertexes[6*4+1].v = v1;
-pillar_vertexes[6*4+2].u = u1;
-pillar_vertexes[6*4+2].v = v1;
-pillar_vertexes[6*4+3].u = u2;//1.0 * 128;
-pillar_vertexes[6*4+3].v = v1;
-pillar_vertexes[6*4+4].u = u1;
-pillar_vertexes[6*4+4].v = v2;//1.0 * 128;
-pillar_vertexes[6*4+5].u = u2;//1.0 * 128;
-pillar_vertexes[6*4+5].v = v2;//1.0 * 128;
+pillar_vertexes[6*(pass_num+4)+0].u = u1;
+pillar_vertexes[6*(pass_num+4)+0].v = v2;//1.0 * 128;
+pillar_vertexes[6*(pass_num+4)+1].u = u2;//1.0 * 128;
+pillar_vertexes[6*(pass_num+4)+1].v = v1;
+pillar_vertexes[6*(pass_num+4)+2].u = u1;
+pillar_vertexes[6*(pass_num+4)+2].v = v1;
+pillar_vertexes[6*(pass_num+4)+3].u = u2;//1.0 * 128;
+pillar_vertexes[6*(pass_num+4)+3].v = v1;
+pillar_vertexes[6*(pass_num+4)+4].u = u1;
+pillar_vertexes[6*(pass_num+4)+4].v = v2;//1.0 * 128;
+pillar_vertexes[6*(pass_num+4)+5].u = u2;//1.0 * 128;
+pillar_vertexes[6*(pass_num+4)+5].v = v2;//1.0 * 128;
 
 if (scale_for_unit_sized_texture)
 {
