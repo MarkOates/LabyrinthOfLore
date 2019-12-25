@@ -62,7 +62,7 @@ void ASSERT_EQ_VERTEX(ALLEGRO_VERTEX first_vertex, ALLEGRO_VERTEX second_vertex)
 
 TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, can_be_created_without_blowing_up)
 {
-   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_cube_builder;
+   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_pillar_builder;
 }
 
 // buildN()
@@ -70,57 +70,57 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, can_be_created_wi
 TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, buildA__builds_the_expected_named_vertex_point)
 {
    ALLEGRO_COLOR white = al_color_name("white");
-   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_cube_builder(0, 0, 3.0);
-   ASSERT_EQ_VERTEX(build_vertex(0, 0, 3.0, white, 0, 0), tile_map_mesh_cube_builder.buildA());
+   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_pillar_builder(0, 0, 3.0);
+   ASSERT_EQ_VERTEX(build_vertex(0, 0, 3.0, white, 0, 0), tile_map_mesh_pillar_builder.buildA());
 }
 
 TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, buildB__builds_the_expected_named_vertex_point)
 {
    ALLEGRO_COLOR white = al_color_name("white");
-   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_cube_builder(0, 0, 3.0);
-   ASSERT_EQ_VERTEX(build_vertex(1.0, 0, 3.0, white, 0, 0), tile_map_mesh_cube_builder.buildB());
+   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_pillar_builder(0, 0, 3.0);
+   ASSERT_EQ_VERTEX(build_vertex(1.0, 0, 3.0, white, 0, 0), tile_map_mesh_pillar_builder.buildB());
 }
 
 TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, buildC__builds_the_expected_named_vertex_point)
 {
    ALLEGRO_COLOR white = al_color_name("white");
-   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_cube_builder(0, 0, 3.0);
-   ASSERT_EQ_VERTEX(build_vertex(0, 1.0, 3.0, white, 0, 0), tile_map_mesh_cube_builder.buildC());
+   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_pillar_builder(0, 0, 3.0);
+   ASSERT_EQ_VERTEX(build_vertex(0, 1.0, 3.0, white, 0, 0), tile_map_mesh_pillar_builder.buildC());
 }
 
 TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, buildD__builds_the_expected_named_vertex_point)
 {
    ALLEGRO_COLOR white = al_color_name("white");
-   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_cube_builder(0, 0, 3.0);
-   ASSERT_EQ_VERTEX(build_vertex(1.0, 1.0, 3.0, white, 0, 0), tile_map_mesh_cube_builder.buildD());
+   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_pillar_builder(0, 0, 3.0);
+   ASSERT_EQ_VERTEX(build_vertex(1.0, 1.0, 3.0, white, 0, 0), tile_map_mesh_pillar_builder.buildD());
 }
 
 TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, buildE__builds_the_expected_named_vertex_point)
 {
    ALLEGRO_COLOR white = al_color_name("white");
-   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_cube_builder(0, 0, 3.0);
-   ASSERT_EQ_VERTEX(build_vertex(0, 1.0, 3.0, white, 0, 0), tile_map_mesh_cube_builder.buildE());
+   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_pillar_builder(0, 0, 3.0);
+   ASSERT_EQ_VERTEX(build_vertex(0, 1.0, 3.0, white, 0, 0), tile_map_mesh_pillar_builder.buildE());
 }
 
 TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, buildF__builds_the_expected_named_vertex_point)
 {
    ALLEGRO_COLOR white = al_color_name("white");
-   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_cube_builder(0, 0, 3.0);
-   ASSERT_EQ_VERTEX(build_vertex(1.0, 1.0, 3.0, white, 0, 0), tile_map_mesh_cube_builder.buildF());
+   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_pillar_builder(0, 0, 3.0);
+   ASSERT_EQ_VERTEX(build_vertex(1.0, 1.0, 3.0, white, 0, 0), tile_map_mesh_pillar_builder.buildF());
 }
 
 TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, buildG__builds_the_expected_named_vertex_point)
 {
    ALLEGRO_COLOR white = al_color_name("white");
-   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_cube_builder(0, 0, 3.0);
-   ASSERT_EQ_VERTEX(build_vertex(0, 0, 3.0, white, 0, 0), tile_map_mesh_cube_builder.buildG());
+   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_pillar_builder(0, 0, 3.0);
+   ASSERT_EQ_VERTEX(build_vertex(0, 0, 3.0, white, 0, 0), tile_map_mesh_pillar_builder.buildG());
 }
 
 TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, buildH__builds_the_expected_named_vertex_point)
 {
    ALLEGRO_COLOR white = al_color_name("white");
-   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_cube_builder(0, 0, 3.0);
-   ASSERT_EQ_VERTEX(build_vertex(1.0, 0, 3.0, white, 0, 0), tile_map_mesh_cube_builder.buildH());
+   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_pillar_builder(0, 0, 3.0);
+   ASSERT_EQ_VERTEX(build_vertex(1.0, 0, 3.0, white, 0, 0), tile_map_mesh_pillar_builder.buildH());
 }
 
 // buildN() with clamp expectation
@@ -128,57 +128,57 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, buildH__builds_th
 TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, buildA__builds_the_expected_named_vertex_point__and_is_unaffected_by_clamping)
 {
    ALLEGRO_COLOR white = al_color_name("white");
-   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_cube_builder(0, 0, 3.6);
-   ASSERT_EQ_VERTEX(build_vertex(0, 0, 3.6, white, 0, 0), tile_map_mesh_cube_builder.buildA());
+   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_pillar_builder(0, 0, 3.6);
+   ASSERT_EQ_VERTEX(build_vertex(0, 0, 3.6, white, 0, 0), tile_map_mesh_pillar_builder.buildA());
 }
 
 TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, buildB__builds_the_expected_named_vertex_point__and_is_unaffected_by_clamping)
 {
    ALLEGRO_COLOR white = al_color_name("white");
-   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_cube_builder(0, 0, 3.6);
-   ASSERT_EQ_VERTEX(build_vertex(1.0, 0, 3.6, white, 0, 0), tile_map_mesh_cube_builder.buildB());
+   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_pillar_builder(0, 0, 3.6);
+   ASSERT_EQ_VERTEX(build_vertex(1.0, 0, 3.6, white, 0, 0), tile_map_mesh_pillar_builder.buildB());
 }
 
 TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, buildC__builds_the_expected_named_vertex_point__and_is_unaffected_by_clamping)
 {
    ALLEGRO_COLOR white = al_color_name("white");
-   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_cube_builder(0, 0, 3.6);
-   ASSERT_EQ_VERTEX(build_vertex(0, 1.0, 3.6, white, 0, 0), tile_map_mesh_cube_builder.buildC());
+   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_pillar_builder(0, 0, 3.6);
+   ASSERT_EQ_VERTEX(build_vertex(0, 1.0, 3.6, white, 0, 0), tile_map_mesh_pillar_builder.buildC());
 }
 
 TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, buildD__builds_the_expected_named_vertex_point__and_is_unaffected_by_clamping)
 {
    ALLEGRO_COLOR white = al_color_name("white");
-   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_cube_builder(0, 0, 3.6);
-   ASSERT_EQ_VERTEX(build_vertex(1.0, 1.0, 3.6, white, 0, 0), tile_map_mesh_cube_builder.buildD());
+   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_pillar_builder(0, 0, 3.6);
+   ASSERT_EQ_VERTEX(build_vertex(1.0, 1.0, 3.6, white, 0, 0), tile_map_mesh_pillar_builder.buildD());
 }
 
 TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, buildE__builds_the_expected_named_vertex_point__and_clamps_at_the_bottom_integer_edge)
 {
    ALLEGRO_COLOR white = al_color_name("white");
-   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_cube_builder(0, 0, 3.6);
-   ASSERT_EQ_VERTEX(build_vertex(0, 1.0, 3.0, white, 0, 0), tile_map_mesh_cube_builder.buildE());
+   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_pillar_builder(0, 0, 3.6);
+   ASSERT_EQ_VERTEX(build_vertex(0, 1.0, 3.0, white, 0, 0), tile_map_mesh_pillar_builder.buildE());
 }
 
 TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, buildF__builds_the_expected_named_vertex_point__and_clamps_at_the_bottom_integer_edge)
 {
    ALLEGRO_COLOR white = al_color_name("white");
-   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_cube_builder(0, 0, 3.6);
-   ASSERT_EQ_VERTEX(build_vertex(1.0, 1.0, 3.0, white, 0, 0), tile_map_mesh_cube_builder.buildF());
+   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_pillar_builder(0, 0, 3.6);
+   ASSERT_EQ_VERTEX(build_vertex(1.0, 1.0, 3.0, white, 0, 0), tile_map_mesh_pillar_builder.buildF());
 }
 
 TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, buildG__builds_the_expected_named_vertex_point__and_clamps_at_the_bottom_integer_edge)
 {
    ALLEGRO_COLOR white = al_color_name("white");
-   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_cube_builder(0, 0, 3.6);
-   ASSERT_EQ_VERTEX(build_vertex(0, 0, 3.0, white, 0, 0), tile_map_mesh_cube_builder.buildG());
+   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_pillar_builder(0, 0, 3.6);
+   ASSERT_EQ_VERTEX(build_vertex(0, 0, 3.0, white, 0, 0), tile_map_mesh_pillar_builder.buildG());
 }
 
 TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, buildH__builds_the_expected_named_vertex_point__and_clamps_at_the_bottom_integer_edge)
 {
    ALLEGRO_COLOR white = al_color_name("white");
-   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_cube_builder(0, 0, 3.6);
-   ASSERT_EQ_VERTEX(build_vertex(1.0, 0, 3.0, white, 0, 0), tile_map_mesh_cube_builder.buildH());
+   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_pillar_builder(0, 0, 3.6);
+   ASSERT_EQ_VERTEX(build_vertex(1.0, 0, 3.0, white, 0, 0), tile_map_mesh_pillar_builder.buildH());
 }
 
 // buildN_whole
@@ -186,57 +186,57 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, buildH__builds_th
 TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, buildA_whole__builds_the_expected_named_vertex_point)
 {
    ALLEGRO_COLOR white = al_color_name("white");
-   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_cube_builder;
-   ASSERT_EQ_VERTEX(build_vertex(0, 0, 1.0, white, 0, 0), tile_map_mesh_cube_builder.buildA_whole());
+   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_pillar_builder;
+   ASSERT_EQ_VERTEX(build_vertex(0, 0, 1.0, white, 0, 0), tile_map_mesh_pillar_builder.buildA_whole());
 }
 
 TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, buildB_whole__builds_the_expected_named_vertex_point)
 {
    ALLEGRO_COLOR white = al_color_name("white");
-   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_cube_builder;
-   ASSERT_EQ_VERTEX(build_vertex(1.0, 0, 1.0, white, 0, 0), tile_map_mesh_cube_builder.buildB_whole());
+   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_pillar_builder;
+   ASSERT_EQ_VERTEX(build_vertex(1.0, 0, 1.0, white, 0, 0), tile_map_mesh_pillar_builder.buildB_whole());
 }
 
 TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, buildC_whole__builds_the_expected_named_vertex_point)
 {
    ALLEGRO_COLOR white = al_color_name("white");
-   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_cube_builder;
-   ASSERT_EQ_VERTEX(build_vertex(0, 1.0, 1.0, white, 0, 0), tile_map_mesh_cube_builder.buildC_whole());
+   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_pillar_builder;
+   ASSERT_EQ_VERTEX(build_vertex(0, 1.0, 1.0, white, 0, 0), tile_map_mesh_pillar_builder.buildC_whole());
 }
 
 TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, buildD_whole__builds_the_expected_named_vertex_point)
 {
    ALLEGRO_COLOR white = al_color_name("white");
-   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_cube_builder;
-   ASSERT_EQ_VERTEX(build_vertex(1.0, 1.0, 1.0, white, 0, 0), tile_map_mesh_cube_builder.buildD_whole());
+   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_pillar_builder;
+   ASSERT_EQ_VERTEX(build_vertex(1.0, 1.0, 1.0, white, 0, 0), tile_map_mesh_pillar_builder.buildD_whole());
 }
 
 TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, buildE_whole__builds_the_expected_named_vertex_point)
 {
    ALLEGRO_COLOR white = al_color_name("white");
-   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_cube_builder;
-   ASSERT_EQ_VERTEX(build_vertex(0, 1.0, 0, white, 0, 0), tile_map_mesh_cube_builder.buildE_whole());
+   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_pillar_builder;
+   ASSERT_EQ_VERTEX(build_vertex(0, 1.0, 0, white, 0, 0), tile_map_mesh_pillar_builder.buildE_whole());
 }
 
 TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, buildF_whole__builds_the_expected_named_vertex_point)
 {
    ALLEGRO_COLOR white = al_color_name("white");
-   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_cube_builder;
-   ASSERT_EQ_VERTEX(build_vertex(1.0, 1.0, 0, white, 0, 0), tile_map_mesh_cube_builder.buildF_whole());
+   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_pillar_builder;
+   ASSERT_EQ_VERTEX(build_vertex(1.0, 1.0, 0, white, 0, 0), tile_map_mesh_pillar_builder.buildF_whole());
 }
 
 TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, buildG_whole__builds_the_expected_named_vertex_point)
 {
    ALLEGRO_COLOR white = al_color_name("white");
-   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_cube_builder;
-   ASSERT_EQ_VERTEX(build_vertex(0, 0, 0, white, 0, 0), tile_map_mesh_cube_builder.buildG_whole());
+   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_pillar_builder;
+   ASSERT_EQ_VERTEX(build_vertex(0, 0, 0, white, 0, 0), tile_map_mesh_pillar_builder.buildG_whole());
 }
 
 TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, buildH_whole__builds_the_expected_named_vertex_point)
 {
    ALLEGRO_COLOR white = al_color_name("white");
-   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_cube_builder;
-   ASSERT_EQ_VERTEX(build_vertex(1.0, 0, 0, white, 0, 0), tile_map_mesh_cube_builder.buildH_whole());
+   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_pillar_builder;
+   ASSERT_EQ_VERTEX(build_vertex(1.0, 0, 0, white, 0, 0), tile_map_mesh_pillar_builder.buildH_whole());
 }
 
 // buildN_whole with "height_origin" argument
@@ -245,64 +245,64 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, buildA_whole__wit
 {
    float height_origin = 6.0;
    ALLEGRO_COLOR white = al_color_name("white");
-   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_cube_builder;
-   ASSERT_EQ_VERTEX(build_vertex(0, 0, height_origin+1, white, 0, 0), tile_map_mesh_cube_builder.buildA_whole(height_origin));
+   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_pillar_builder;
+   ASSERT_EQ_VERTEX(build_vertex(0, 0, height_origin+1, white, 0, 0), tile_map_mesh_pillar_builder.buildA_whole(height_origin));
 }
 
 TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, buildB_whole__with_a_height_origin__builds_the_expected_named_vertex_point)
 {
    float height_origin = 6.0;
    ALLEGRO_COLOR white = al_color_name("white");
-   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_cube_builder;
-   ASSERT_EQ_VERTEX(build_vertex(1.0, 0, height_origin+1, white, 0, 0), tile_map_mesh_cube_builder.buildB_whole(height_origin));
+   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_pillar_builder;
+   ASSERT_EQ_VERTEX(build_vertex(1.0, 0, height_origin+1, white, 0, 0), tile_map_mesh_pillar_builder.buildB_whole(height_origin));
 }
 
 TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, buildC_whole__with_a_height_origin__builds_the_expected_named_vertex_point)
 {
    float height_origin = 6.0;
    ALLEGRO_COLOR white = al_color_name("white");
-   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_cube_builder;
-   ASSERT_EQ_VERTEX(build_vertex(0, 1.0, height_origin+1, white, 0, 0), tile_map_mesh_cube_builder.buildC_whole(height_origin));
+   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_pillar_builder;
+   ASSERT_EQ_VERTEX(build_vertex(0, 1.0, height_origin+1, white, 0, 0), tile_map_mesh_pillar_builder.buildC_whole(height_origin));
 }
 
 TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, buildD_whole__with_a_height_origin__builds_the_expected_named_vertex_point)
 {
    float height_origin = 6.0;
    ALLEGRO_COLOR white = al_color_name("white");
-   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_cube_builder;
-   ASSERT_EQ_VERTEX(build_vertex(1.0, 1.0, height_origin+1, white, 0, 0), tile_map_mesh_cube_builder.buildD_whole(height_origin));
+   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_pillar_builder;
+   ASSERT_EQ_VERTEX(build_vertex(1.0, 1.0, height_origin+1, white, 0, 0), tile_map_mesh_pillar_builder.buildD_whole(height_origin));
 }
 
 TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, buildE_whole__with_a_height_origin__builds_the_expected_named_vertex_point)
 {
    float height_origin = 6.0;
    ALLEGRO_COLOR white = al_color_name("white");
-   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_cube_builder;
-   ASSERT_EQ_VERTEX(build_vertex(0, 1.0, height_origin, white, 0, 0), tile_map_mesh_cube_builder.buildE_whole(height_origin));
+   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_pillar_builder;
+   ASSERT_EQ_VERTEX(build_vertex(0, 1.0, height_origin, white, 0, 0), tile_map_mesh_pillar_builder.buildE_whole(height_origin));
 }
 
 TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, buildF_whole__with_a_height_origin__builds_the_expected_named_vertex_point)
 {
    float height_origin = 6.0;
    ALLEGRO_COLOR white = al_color_name("white");
-   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_cube_builder;
-   ASSERT_EQ_VERTEX(build_vertex(1.0, 1.0, height_origin, white, 0, 0), tile_map_mesh_cube_builder.buildF_whole(height_origin));
+   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_pillar_builder;
+   ASSERT_EQ_VERTEX(build_vertex(1.0, 1.0, height_origin, white, 0, 0), tile_map_mesh_pillar_builder.buildF_whole(height_origin));
 }
 
 TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, buildG_whole__with_a_height_origin__builds_the_expected_named_vertex_point)
 {
    float height_origin = 6.0;
    ALLEGRO_COLOR white = al_color_name("white");
-   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_cube_builder;
-   ASSERT_EQ_VERTEX(build_vertex(0, 0, height_origin, white, 0, 0), tile_map_mesh_cube_builder.buildG_whole(height_origin));
+   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_pillar_builder;
+   ASSERT_EQ_VERTEX(build_vertex(0, 0, height_origin, white, 0, 0), tile_map_mesh_pillar_builder.buildG_whole(height_origin));
 }
 
 TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, buildH_whole__with_a_height_origin__builds_the_expected_named_vertex_point)
 {
    float height_origin = 6.0;
    ALLEGRO_COLOR white = al_color_name("white");
-   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_cube_builder;
-   ASSERT_EQ_VERTEX(build_vertex(1.0, 0, height_origin, white, 0, 0), tile_map_mesh_cube_builder.buildH_whole(height_origin));
+   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_pillar_builder;
+   ASSERT_EQ_VERTEX(build_vertex(1.0, 0, height_origin, white, 0, 0), tile_map_mesh_pillar_builder.buildH_whole(height_origin));
 }
 
 // other functions
@@ -313,8 +313,8 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, needs_partial_hei
 
    for (auto non_whole_number_height_to_test : non_whole_number_heights_to_test)
    {
-      LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_cube_builder(0, 0, non_whole_number_height_to_test);
-      EXPECT_EQ(true, tile_map_mesh_cube_builder.needs_partial_height_side_faces_from_top());
+      LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_pillar_builder(0, 0, non_whole_number_height_to_test);
+      EXPECT_EQ(true, tile_map_mesh_pillar_builder.needs_partial_height_side_faces_from_top());
    }
 }
 
@@ -324,21 +324,21 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, needs_partial_hei
 
    for (auto whole_number_height_to_test : whole_number_heights_to_test)
    {
-      LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_cube_builder(0, 0, whole_number_height_to_test);
-      EXPECT_EQ(false, tile_map_mesh_cube_builder.needs_partial_height_side_faces_from_top());
+      LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_pillar_builder(0, 0, whole_number_height_to_test);
+      EXPECT_EQ(false, tile_map_mesh_pillar_builder.needs_partial_height_side_faces_from_top());
    }
 }
 
 TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, build_pillar__partway_above_the_0_height__returns_the_expected_number_of_vertexes)
 {
-   std::vector<ALLEGRO_VERTEX> cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder(0, 0, 0.2).build_pillar();
-   ASSERT_EQ(30, cube_vertexes.size());
+   std::vector<ALLEGRO_VERTEX> pillar_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder(0, 0, 0.2).build_pillar();
+   ASSERT_EQ(30, pillar_vertexes.size());
 }
 
 TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, build_pillar__at_a_0_height__returns_only_the_6_vertexes__hint_its_just_the_top_face)
 {
-   std::vector<ALLEGRO_VERTEX> cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder(0, 0, 0).build_pillar();
-   ASSERT_EQ(6, cube_vertexes.size());
+   std::vector<ALLEGRO_VERTEX> pillar_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder(0, 0, 0).build_pillar();
+   ASSERT_EQ(6, pillar_vertexes.size());
 }
 
 // facing tests
@@ -352,9 +352,9 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, while_rendering_w
    al_clear_to_color(al_color_name("chartreuse"));
    camera.start_projection(surface);
 
-   std::vector<ALLEGRO_VERTEX> cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder(0, 0, 1.2).build_pillar();
+   std::vector<ALLEGRO_VERTEX> pillar_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder(0, 0, 1.2).build_pillar();
 
-   al_draw_prim(&cube_vertexes[0], nullptr, nullptr, 0, cube_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
+   al_draw_prim(&pillar_vertexes[0], nullptr, nullptr, 0, pillar_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
 
    al_flip_display();
    //sleep(2);
@@ -370,12 +370,12 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, while_rendering_w
    al_clear_to_color(al_color_name("pink"));
    camera.start_projection(surface);
 
-   std::vector<ALLEGRO_VERTEX> cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder(0, 0, 1.0).build_pillar();
+   std::vector<ALLEGRO_VERTEX> pillar_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder(0, 0, 1.0).build_pillar();
 
    // looks like a small flat box in the top right, with green in the top right vertex, a blue "central" vertex on the left of the box,
    // and a red vertex on the box's bottom left.  It should appear that there is no bottom face, and you can see the inside edge on the
    // right where the back side of the green vertex is shown
-   al_draw_prim(&cube_vertexes[0], nullptr, nullptr, 0, cube_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
+   al_draw_prim(&pillar_vertexes[0], nullptr, nullptr, 0, pillar_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
 
    al_flip_display();
    //sleep(2);
@@ -391,9 +391,9 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, while_rendering_w
    camera.start_projection(surface);
    al_clear_to_color(al_color_name("olive"));
 
-   std::vector<ALLEGRO_VERTEX> cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder(0, 0, 1.0).build_pillar();
+   std::vector<ALLEGRO_VERTEX> pillar_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder(0, 0, 1.0).build_pillar();
 
-   al_draw_prim(&cube_vertexes[0], nullptr, nullptr, 0, cube_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
+   al_draw_prim(&pillar_vertexes[0], nullptr, nullptr, 0, pillar_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
 
    al_flip_display();
    //sleep(2);
@@ -409,9 +409,9 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, while_rendering_w
    camera.start_projection(surface);
    al_clear_to_color(al_color_name("maroon"));
 
-   std::vector<ALLEGRO_VERTEX> cube_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder(0, 0, 1.0).build_pillar();
+   std::vector<ALLEGRO_VERTEX> pillar_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder(0, 0, 1.0).build_pillar();
 
-   al_draw_prim(&cube_vertexes[0], nullptr, nullptr, 0, cube_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
+   al_draw_prim(&pillar_vertexes[0], nullptr, nullptr, 0, pillar_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
 
    al_flip_display();
    //sleep(2);
