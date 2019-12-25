@@ -244,7 +244,7 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, while_rendering_
 
 // multiple units high tests
 
-TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, while_rendering_with_the_camera_facing_towards_the_front_face__and_with_a_height_ppartway_between_0_and_1__should_see_the_textured_face_wihtout_stretching)
+TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, while_rendering_with_the_camera_facing_towards_the_front_face__and_with_a_height_partway_between_1_and_2__should_see_2_a2_textured_faces)
 {
    LabyrinthOfLore::Rendering::Camera camera(AllegroFlare::vec3d(0, 3, 0), 0, 0); // facing towards the front face
    ALLEGRO_BITMAP *surface = al_get_backbuffer(al_get_current_display());
@@ -258,10 +258,67 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, while_rendering_
    // setup the scene
 
    camera.start_projection(surface);
-   al_clear_to_color(al_color_name("slategray"));
+   al_clear_to_color(al_color_name("orange"));
    std::vector<ALLEGRO_VERTEX> pillar_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder(0, 0, 1.4).build_pillar();
 
    pillar_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarTexturer(&tile_atlas, pillar_vertexes, 1, 0, 0).build_textured_pillar(false);
+
+   // draw the scene
+
+   al_draw_prim(&pillar_vertexes[0], nullptr, b, 0, pillar_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
+
+   al_flip_display();
+   sleep(1);
+   SUCCEED();
+}
+
+TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, while_rendering_with_the_camera_facing_towards_the_left_face__and_with_a_height_partway_between_1_and_2__should_see_two_a2_textured_faces)
+{
+   LabyrinthOfLore::Rendering::Camera camera(AllegroFlare::vec3d(-3, 0, 0), 0.25, 0); // facing towards the left face
+   ALLEGRO_BITMAP *surface = al_get_backbuffer(al_get_current_display());
+   ASSERT_NE(nullptr, surface);
+
+   ALLEGRO_BITMAP *b = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/grid-texture-128.png");
+   if (!b) throw std::runtime_error("in test, cannot load test texture \"b\"");
+   Tileo::TileAtlas tile_atlas;
+   tile_atlas.load(b, 128/3, 128/3, 0);
+
+   // setup the scene
+
+   camera.start_projection(surface);
+   al_clear_to_color(al_color_name("black"));
+   std::vector<ALLEGRO_VERTEX> pillar_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder(0, 0, 1.4).build_pillar();
+
+   pillar_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarTexturer(&tile_atlas, pillar_vertexes, 0, 1, 0).build_textured_pillar(false);
+
+   // draw the scene
+
+   al_draw_prim(&pillar_vertexes[0], nullptr, b, 0, pillar_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
+
+   al_flip_display();
+   sleep(1);
+   SUCCEED();
+}
+
+
+TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, while_rendering_with_the_camera_facing_towards_the_right_face__and_with_a_height_partway_between_1_and_2__should_see_two_a2_textured_faces)
+{
+   LabyrinthOfLore::Rendering::Camera camera(AllegroFlare::vec3d(3, 0, 0), -0.25, 0); // facing towards the right face
+   ALLEGRO_BITMAP *surface = al_get_backbuffer(al_get_current_display());
+   ASSERT_NE(nullptr, surface);
+
+   ALLEGRO_BITMAP *b = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/grid-texture-128.png");
+   if (!b) throw std::runtime_error("in test, cannot load test texture \"b\"");
+   Tileo::TileAtlas tile_atlas;
+   tile_atlas.load(b, 128/3, 128/3, 0);
+
+   // setup the scene
+
+   camera.start_projection(surface);
+   al_clear_to_color(al_color_name("black"));
+   std::vector<ALLEGRO_VERTEX> pillar_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder(0, 0, 1.4).build_pillar();
+
+   pillar_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarTexturer(&tile_atlas, pillar_vertexes, 0, 1, 0).build_textured_pillar(false);
 
    // draw the scene
 
