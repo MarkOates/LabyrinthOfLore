@@ -114,7 +114,7 @@ for (auto &entity : entities)
       int collided_tile_x = int(posX + dirX * moveSpeed);
       int collided_tile_y = int(posY);
       LabyrinthOfLore::WorldMap::tile_face_t collided_tile_face_collided_with = ((dirX * moveSpeed) > 0) ? LabyrinthOfLore::WorldMap::TILE_FACE_LEFT : LabyrinthOfLore::WorldMap::TILE_FACE_RIGHT;
-      float collided_force = dirX * moveSpeed;
+      float collided_force = abs(dirX * moveSpeed);
 
       LabyrinthOfLore::Physics::EntityTileMapCollisionEvent collision_event(
             colliding_entity,

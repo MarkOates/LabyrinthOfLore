@@ -584,7 +584,7 @@ TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest, events_from_last
    SUCCEED();
 }
 
-TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest, get_events_from_last_processed_step__after_a_step__returns_the_expected_collision_events)
+TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest, get_events_from_last_processed_step__after_a_step__returns_the_expected_collision_events__moving_right)
 {
    LabyrinthOfLore::WorldMap::TileMap tile_map;
    tile_map.resize(2, 1, LabyrinthOfLore::WorldMap::Tile(0, 10.0));
@@ -602,6 +602,36 @@ TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest, get_events_from_
 
    std::vector<LabyrinthOfLore::Physics::EntityTileMapCollisionEvent> expected_collision_events = {
       LabyrinthOfLore::Physics::EntityTileMapCollisionEvent(&entity, 13, 1, 0, LabyrinthOfLore::WorldMap::TILE_FACE_LEFT, 1.0)
+   };
+
+   std::vector<LabyrinthOfLore::Physics::EntityTileMapCollisionEvent> actual_collision_events = entity_tile_map_collision_stepper.get_events_from_last_processed_step();
+
+   ASSERT_EQ(expected_collision_events.size(), actual_collision_events.size());
+
+   for (unsigned i=0; i<expected_collision_events.size(); i++)
+   {
+      EXPECT_EQ_COLLISION_EVENT(expected_collision_events[i], actual_collision_events[i]);
+   }
+}
+
+TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest, get_events_from_last_processed_step__after_a_step__returns_the_expected_collision_events__moving_left)
+{
+   LabyrinthOfLore::WorldMap::TileMap tile_map;
+   tile_map.resize(2, 1, LabyrinthOfLore::WorldMap::Tile(0, 10.0));
+   LabyrinthOfLore::Entity::Base entity = LabyrinthOfLore::Entity::Base();
+   std::vector<LabyrinthOfLore::Entity::Base*> entities = { &entity };
+
+   float auto_ascend_threshold = LabyrinthOfLore::Physics::EntityTileMapCollisionStepper::get_auto_ascend_threshold();
+
+   entity.get_placement_ref().position = AllegroFlare::vec3d(1.5, 0.5, 10.001);
+   entity.get_velocity_ref().position = AllegroFlare::vec3d(-0.971, 0.0, 0.0);
+   tile_map.set_tile(0, 0, LabyrinthOfLore::WorldMap::Tile(7, 10.001 + auto_ascend_threshold + 0.001));
+
+   LabyrinthOfLore::Physics::EntityTileMapCollisionStepper entity_tile_map_collision_stepper(tile_map, entities);
+   entity_tile_map_collision_stepper.process_step();
+
+   std::vector<LabyrinthOfLore::Physics::EntityTileMapCollisionEvent> expected_collision_events = {
+      LabyrinthOfLore::Physics::EntityTileMapCollisionEvent(&entity, 7, 0, 0, LabyrinthOfLore::WorldMap::TILE_FACE_RIGHT, 0.971)
    };
 
    std::vector<LabyrinthOfLore::Physics::EntityTileMapCollisionEvent> actual_collision_events = entity_tile_map_collision_stepper.get_events_from_last_processed_step();
