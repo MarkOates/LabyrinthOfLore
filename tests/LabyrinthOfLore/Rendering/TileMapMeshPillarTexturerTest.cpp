@@ -347,7 +347,7 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, while_rendering_
    al_clear_to_color(al_color_name("black"));
    std::vector<ALLEGRO_VERTEX> pillar_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder(0, 0, 4.6).build_pillar();
 
-   pillar_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarTexturer(&tile_atlas, pillar_vertexes, 0, 1, 0).build_textured_pillar(false);
+   pillar_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarTexturer(&tile_atlas, pillar_vertexes, 1, 0, 0).build_textured_pillar(false);
 
    // draw the scene
 
