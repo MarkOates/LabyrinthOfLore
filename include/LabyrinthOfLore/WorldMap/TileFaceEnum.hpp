@@ -12,7 +12,7 @@ namespace LabyrinthOfLore
          TILE_FACE_LEFT,
          TILE_FACE_RIGHT,
          TILE_FACE_TOP,
-         TILE_FACE_BOTTOM
+         TILE_FACE_BOTTOM,
       };
    } // namespace WorldMap
 } // namespace LabyrinthOfLore
