@@ -234,9 +234,9 @@ for (int z=0; z<infer_number_of_whole_number_cubes_from_bottom(); z++)
    whole_height_side_faces_from_bottom.insert(whole_height_side_faces_from_bottom.begin(), vertexes_from_this_pass.begin(), vertexes_from_this_pass.end());
 }
 
-result.insert(result.begin(), top_face.begin(), top_face.end());
-result.insert(result.begin(), partial_height_side_faces_from_top.begin(), partial_height_side_faces_from_top.end());
-result.insert(result.begin(), whole_height_side_faces_from_bottom.begin(), whole_height_side_faces_from_bottom.end());
+result.insert(result.end(), top_face.begin(), top_face.end());
+result.insert(result.end(), partial_height_side_faces_from_top.begin(), partial_height_side_faces_from_top.end());
+result.insert(result.end(), whole_height_side_faces_from_bottom.begin(), whole_height_side_faces_from_bottom.end());
 
 for (auto &vertex : result) { float swap = vertex.y; vertex.y = vertex.z; vertex.z = swap; }
 
