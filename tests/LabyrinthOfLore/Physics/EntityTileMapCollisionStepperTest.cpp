@@ -707,19 +707,19 @@ TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest, get_events_from_
 TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest, get_events_from_last_processed_step__after_a_step__returns_the_expected_collision_events__when_falling)
 {
    LabyrinthOfLore::WorldMap::TileMap tile_map;
-   tile_map.resize(1, 1, LabyrinthOfLore::WorldMap::Tile(0, 10.0));
+   tile_map.resize(3, 3, LabyrinthOfLore::WorldMap::Tile(0, 10.0));
    LabyrinthOfLore::Entity::Base entity = LabyrinthOfLore::Entity::Base();
    std::vector<LabyrinthOfLore::Entity::Base*> entities = { &entity };
 
-   entity.get_placement_ref().position = AllegroFlare::vec3d(0.5, 0.5, 10.5);
+   entity.get_placement_ref().position = AllegroFlare::vec3d(2.5, 1.5, 10.5);
    entity.get_velocity_ref().position = AllegroFlare::vec3d(0.0, 0.0, -0.729);
-   tile_map.set_tile(0, 0, LabyrinthOfLore::WorldMap::Tile(0, 10.0));
+   tile_map.set_tile(2, 1, LabyrinthOfLore::WorldMap::Tile(129, 10.0));
 
    LabyrinthOfLore::Physics::EntityTileMapCollisionStepper entity_tile_map_collision_stepper(tile_map, entities);
    entity_tile_map_collision_stepper.process_step();
 
    std::vector<LabyrinthOfLore::Physics::EntityTileMapCollisionEvent> expected_collision_events = {
-      LabyrinthOfLore::Physics::EntityTileMapCollisionEvent(&entity, 127, 0, 0, LabyrinthOfLore::WorldMap::TILE_FACE_TOP, 0.729)
+      LabyrinthOfLore::Physics::EntityTileMapCollisionEvent(&entity, 129, 2, 1, LabyrinthOfLore::WorldMap::TILE_FACE_TOP, 0.729)
    };
 
    std::vector<LabyrinthOfLore::Physics::EntityTileMapCollisionEvent> actual_collision_events = entity_tile_map_collision_stepper.get_events_from_last_processed_step();
