@@ -358,10 +358,17 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, build_pillar__at_
    ASSERT_EQ(6, pillar_vertexes.size());
 }
 
-TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, build_pillar__partway_above_a_whole_number_height__returns_the_expected_number_of_vertexes)
+TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, build_pillar__partway_above_a_height_of_1__returns_the_expected_number_of_vertexes)
 {
    std::vector<ALLEGRO_VERTEX> pillar_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder(0, 0, 1.7).build_pillar();
    ASSERT_EQ(30+24, pillar_vertexes.size());
+}
+
+TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, build_pillar__partway_above_a_whole_number_height__returns_the_expected_number_of_vertexes)
+{
+   int heights_above = 5;
+   std::vector<ALLEGRO_VERTEX> pillar_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder(0, 0, heights_above+0.7).build_pillar();
+   ASSERT_EQ(30+24*heights_above, pillar_vertexes.size());
 }
 
 // facing tests
