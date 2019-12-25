@@ -764,3 +764,39 @@ TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest, get_events_from_
    }
 }
 
+TEST(LabyrinthOfLore_Physics_EntityTileMapCollisionStepperTest, get_events_from_last_processed_step__after_a_step__returns_events_when_multiple_entities_are_involved)
+{
+   LabyrinthOfLore::WorldMap::TileMap tile_map;
+   tile_map.resize(2, 2, LabyrinthOfLore::WorldMap::Tile(0, 10.0));
+
+   LabyrinthOfLore::Entity::Base entity1 = LabyrinthOfLore::Entity::Base();
+   LabyrinthOfLore::Entity::Base entity2 = LabyrinthOfLore::Entity::Base();
+   std::vector<LabyrinthOfLore::Entity::Base*> entities = { &entity1, &entity2 };
+
+   tile_map.set_tile(0, 0, LabyrinthOfLore::WorldMap::Tile(82, 20.0));
+   tile_map.set_tile(1, 1, LabyrinthOfLore::WorldMap::Tile(928, 20.0));
+
+   entity1.get_placement_ref().position = AllegroFlare::vec3d(0.5, 1.5, 10.5);
+   entity1.get_velocity_ref().position = AllegroFlare::vec3d(0.0, -0.611, 0.0);
+
+   entity2.get_placement_ref().position = AllegroFlare::vec3d(1.5, 0.5, 10.5);
+   entity2.get_velocity_ref().position = AllegroFlare::vec3d(0.0, 0.987, 0.0);
+
+   LabyrinthOfLore::Physics::EntityTileMapCollisionStepper entity_tile_map_collision_stepper(tile_map, entities);
+   entity_tile_map_collision_stepper.process_step();
+
+   std::vector<LabyrinthOfLore::Physics::EntityTileMapCollisionEvent> expected_collision_events = {
+      LabyrinthOfLore::Physics::EntityTileMapCollisionEvent(&entity1, 82, 0, 0, LabyrinthOfLore::WorldMap::TILE_FACE_FRONT, 0.611),
+      LabyrinthOfLore::Physics::EntityTileMapCollisionEvent(&entity2, 928, 1, 1, LabyrinthOfLore::WorldMap::TILE_FACE_BACK, 0.987),
+   };
+
+   std::vector<LabyrinthOfLore::Physics::EntityTileMapCollisionEvent> actual_collision_events = entity_tile_map_collision_stepper.get_events_from_last_processed_step();
+
+   ASSERT_EQ(expected_collision_events.size(), actual_collision_events.size());
+
+   for (unsigned i=0; i<expected_collision_events.size(); i++)
+   {
+      EXPECT_EQ_COLLISION_EVENT(expected_collision_events[i], actual_collision_events[i]);
+   }
+}
+
