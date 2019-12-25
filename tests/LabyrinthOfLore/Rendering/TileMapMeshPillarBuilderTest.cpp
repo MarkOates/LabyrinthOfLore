@@ -358,6 +358,12 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, build_pillar__at_
    ASSERT_EQ(6, pillar_vertexes.size());
 }
 
+TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, build_pillar__partway_above_a_whole_number_height__returns_the_expected_number_of_vertexes)
+{
+   std::vector<ALLEGRO_VERTEX> pillar_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder(0, 0, 1.7).build_pillar();
+   ASSERT_EQ(30+24, pillar_vertexes.size());
+}
+
 // facing tests
 
 TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, while_rendering_with_the_camera_facing_forward__with_a_non_whole_number_height__renders_a_partial_height_pillar)
@@ -367,6 +373,24 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, while_rendering_w
    ASSERT_NE(nullptr, surface);
 
    al_clear_to_color(al_color_name("chartreuse"));
+   camera.start_projection(surface);
+
+   std::vector<ALLEGRO_VERTEX> pillar_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder(0, 0, 1.2).build_pillar();
+
+   al_draw_prim(&pillar_vertexes[0], nullptr, nullptr, 0, pillar_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
+
+   al_flip_display();
+   //sleep(2);
+   SUCCEED();
+}
+
+TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, while_rendering_with_the_camera_the_left_face__with_a_non_whole_number_height__renders_a_partial_height_pillar)
+{
+   LabyrinthOfLore::Rendering::Camera camera(AllegroFlare::vec3d(-3, 0, 0), 0.25, 0); // facing towards the left face
+   ALLEGRO_BITMAP *surface = al_get_backbuffer(al_get_current_display());
+   ASSERT_NE(nullptr, surface);
+
+   al_clear_to_color(al_color_name("slategrey"));
    camera.start_projection(surface);
 
    std::vector<ALLEGRO_VERTEX> pillar_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder(0, 0, 1.2).build_pillar();
