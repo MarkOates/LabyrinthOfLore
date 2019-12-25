@@ -115,11 +115,6 @@ functions:
   - name: build_pillar
     type: std::vector<ALLEGRO_VERTEX>
     body: |
-      ALLEGRO_COLOR pillar_color = random_color();
-      float u = 0;
-      float v = 0; //texture ? al_get_bitmap_width(texture) : 1;
-      int tile_width = 48;
-
       // this is the official ordering:
       // top
       // front

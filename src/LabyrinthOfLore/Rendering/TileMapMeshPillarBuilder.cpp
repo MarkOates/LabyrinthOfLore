@@ -128,11 +128,6 @@ return colors[random.get_random_int(0, colors.size()-1)];
 
 std::vector<ALLEGRO_VERTEX> TileMapMeshPillarBuilder::build_pillar()
 {
-ALLEGRO_COLOR pillar_color = random_color();
-float u = 0;
-float v = 0; //texture ? al_get_bitmap_width(texture) : 1;
-int tile_width = 48;
-
 // this is the official ordering:
 // top
 // front
