@@ -74,7 +74,6 @@ functions:
          }
          else
          {
-            // collided at tile [int(posX + dirX * moveSpeed), int(posY)]
             LabyrinthOfLore::Entity::Base* colliding_entity = entity;
             int collided_tile_type = tile_map.get_tile(int(posX + dirX * moveSpeed), int(posY)).get_type();
             int collided_tile_x = int(posX + dirX * moveSpeed);
