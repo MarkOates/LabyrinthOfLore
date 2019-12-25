@@ -22,6 +22,7 @@ properties:
   - name: tile_face_collided_with
     type: LabyrinthOfLore::WorldMap::tile_face_t
     init_with: LabyrinthOfLore::WorldMap::TILE_FACE_NONE
+    constructor_arg: true
     getter: true
   - name: force
     type: float

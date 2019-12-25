@@ -10,12 +10,12 @@ namespace Physics
 {
 
 
-EntityTileMapCollisionEvent::EntityTileMapCollisionEvent(LabyrinthOfLore::Entity::Base* entity, int tile_type, int tile_x, int tile_y, float force)
+EntityTileMapCollisionEvent::EntityTileMapCollisionEvent(LabyrinthOfLore::Entity::Base* entity, int tile_type, int tile_x, int tile_y, LabyrinthOfLore::WorldMap::tile_face_t tile_face_collided_with, float force)
    : entity(entity)
    , tile_type(tile_type)
    , tile_x(tile_x)
    , tile_y(tile_y)
-   , tile_face_collided_with(LabyrinthOfLore::WorldMap::TILE_FACE_NONE)
+   , tile_face_collided_with(tile_face_collided_with)
    , force(force)
 {
 }
