@@ -97,6 +97,14 @@ functions:
     body: return !AllegroFlare::basically_equal(height, (int)height, 0.00001f);
     body_dependency_symbols:
       - AllegroFlare::basically_equal
+  - name: infer_number_of_whole_number_cubes_from_bottom
+    type: int
+    body: |
+      return (int)height;
+    type: bool
+    body: return !AllegroFlare::basically_equal(height, (int)height, 0.00001f);
+    body_dependency_symbols:
+      - AllegroFlare::basically_equal
   - name: random_color
     type: ALLEGRO_COLOR
     body: |

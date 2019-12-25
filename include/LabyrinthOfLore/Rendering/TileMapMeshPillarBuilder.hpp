@@ -39,6 +39,7 @@ namespace LabyrinthOfLore
       ALLEGRO_VERTEX buildG_whole(float height_origin=0.0f);
       ALLEGRO_VERTEX buildH_whole(float height_origin=0.0f);
       bool needs_partial_height_side_faces_from_top();
+      int infer_number_of_whole_number_cubes_from_bottom();
       ALLEGRO_COLOR random_color();
       std::vector<ALLEGRO_VERTEX> build_pillar();
       };

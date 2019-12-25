@@ -329,6 +329,23 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, needs_partial_hei
    }
 }
 
+TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, infer_number_of_whole_number_cubes_from_bottom__returns_the_number_of_whole_height_cubes_to_be_created_from_the_bottom)
+{
+   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder tile_map_mesh_pillar_builder;
+
+   tile_map_mesh_pillar_builder = LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder(0, 0, 0.2);
+   ASSERT_EQ(0, tile_map_mesh_pillar_builder.infer_number_of_whole_number_cubes_from_bottom());
+
+   tile_map_mesh_pillar_builder = LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder(0, 0, 1.0);
+   ASSERT_EQ(1, tile_map_mesh_pillar_builder.infer_number_of_whole_number_cubes_from_bottom());
+
+   tile_map_mesh_pillar_builder = LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder(0, 0, 6.98);
+   ASSERT_EQ(6, tile_map_mesh_pillar_builder.infer_number_of_whole_number_cubes_from_bottom());
+
+   tile_map_mesh_pillar_builder = LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder(0, 0, 6.001);
+   ASSERT_EQ(6, tile_map_mesh_pillar_builder.infer_number_of_whole_number_cubes_from_bottom());
+}
+
 TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, build_pillar__partway_above_the_0_height__returns_the_expected_number_of_vertexes)
 {
    std::vector<ALLEGRO_VERTEX> pillar_vertexes = LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder(0, 0, 0.2).build_pillar();
