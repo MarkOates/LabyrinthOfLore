@@ -77,16 +77,6 @@ int main(int argc, char **argv)
 
       //
 
-      AllegroFlare::FontBin font_bin;
-      font_bin.set_path("data/fonts");
-
-      AllegroFlare::BitmapBin bitmap_bin;
-      bitmap_bin.set_path("data/bitmaps");
-
-
-
-      //
-
       bool shutdown_program = false;
 
       ALLEGRO_EVENT_QUEUE *event_queue = al_create_event_queue();
@@ -100,6 +90,16 @@ int main(int argc, char **argv)
       ALLEGRO_TIMER *primary_timer = al_create_timer(1.0/60.0);
       al_register_event_source(event_queue, al_get_timer_event_source(primary_timer));
       al_start_timer(primary_timer);
+
+
+      //
+
+      AllegroFlare::FontBin font_bin;
+      font_bin.set_path("data/fonts");
+
+      AllegroFlare::BitmapBin bitmap_bin;
+      bitmap_bin.set_path("data/bitmaps");
+
 
 
       //
@@ -141,6 +141,8 @@ int main(int argc, char **argv)
       //
 
       font_bin.operator[]("gameovercre1.ttf -12");
+
+      //
 
       std::vector<LabyrinthOfLore::Entity::Base*> entities = {};
       LabyrinthOfLore::Rendering::Camera camera({0, 0, 0}, 0.0, 0.0);
