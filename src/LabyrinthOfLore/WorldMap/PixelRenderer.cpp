@@ -14,8 +14,9 @@ namespace WorldMap
 {
 
 
-PixelRenderer::PixelRenderer(LabyrinthOfLore::WorldMap::TileMap tile_map)
+PixelRenderer::PixelRenderer(LabyrinthOfLore::WorldMap::TileMap tile_map, float ground_level)
    : tile_map(tile_map)
+   , ground_level(ground_level)
 {
 }
 
@@ -45,7 +46,7 @@ int tile_height = 1;
 
 float bottom_height = 0.0;
 float top_height = 2.0;
-ALLEGRO_COLOR tile_color = al_color_name("chartreuse");
+ALLEGRO_COLOR tile_color = al_color_name("white");
 
 for (unsigned y=0; y<tile_map.get_height(); y++)
   for (unsigned x=0; x<tile_map.get_width(); x++)

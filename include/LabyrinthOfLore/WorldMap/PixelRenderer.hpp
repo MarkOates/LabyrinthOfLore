@@ -13,9 +13,10 @@ namespace LabyrinthOfLore
       {
       private:
          LabyrinthOfLore::WorldMap::TileMap tile_map;
+         float ground_level;
 
       public:
-         PixelRenderer(LabyrinthOfLore::WorldMap::TileMap tile_map={});
+         PixelRenderer(LabyrinthOfLore::WorldMap::TileMap tile_map={}, float ground_level=1.0);
          ~PixelRenderer();
 
 

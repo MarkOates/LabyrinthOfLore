@@ -3,6 +3,10 @@ properties:
     type: LabyrinthOfLore::WorldMap::TileMap
     init_with: "{}"
     constructor_arg: true
+  - name: ground_level
+    type: float
+    init_with: 1.0
+    constructor_arg: true
 functions:
   - name: initialize
     type: void
@@ -25,7 +29,7 @@ functions:
 
       float bottom_height = 0.0;
       float top_height = 2.0;
-      ALLEGRO_COLOR tile_color = al_color_name("chartreuse");
+      ALLEGRO_COLOR tile_color = al_color_name("white");
 
       for (unsigned y=0; y<tile_map.get_height(); y++)
         for (unsigned x=0; x<tile_map.get_width(); x++)
