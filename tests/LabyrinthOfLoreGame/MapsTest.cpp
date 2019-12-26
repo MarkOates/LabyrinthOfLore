@@ -72,6 +72,6 @@ TEST_F(LabyrinthOfLoreGame_MapsTest, run__returns_the_expected_response)
    LabyrinthOfLoreGame::Maps maps;
    std::vector<std::vector<LabyrinthOfLore::WorldMap::Tile>> actual_construct_tile_map_data = maps.build_construct_tile_map_data();
 
-   al_flip_display();
-   sleep(2);
+   //al_flip_display();
+   //sleep(2);
 }
