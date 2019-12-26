@@ -1,7 +1,7 @@
 
 
 #include <LabyrinthOfLoreGame/Maps/TheUnderworld.hpp>
-
+#include <LabyrinthOfLore/WorldMap/TileMapLoader.hpp>
 
 
 namespace LabyrinthOfLoreGame
@@ -19,6 +19,11 @@ TheUnderworld::~TheUnderworld()
 {
 }
 
+
+LabyrinthOfLore::WorldMap::TileMap TheUnderworld::build_the_underworld()
+{
+return LabyrinthOfLore::WorldMap::TileMapLoader(build_the_underworld_data()).build_tile_map();
+}
 
 std::vector<std::vector<LabyrinthOfLore::WorldMap::Tile>> TheUnderworld::build_the_underworld_data()
 {
