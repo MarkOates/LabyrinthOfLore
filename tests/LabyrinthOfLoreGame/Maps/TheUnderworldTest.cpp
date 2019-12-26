@@ -66,13 +66,7 @@ protected:
 
 TEST_F(LabyrinthOfLoreGame_Maps_TheUnderworldTest, can_be_created_without_blowing_up)
 {
-   //LabyrinthOfLore::Maps::TheUnderworld the_underworld.build_the_underworld();
-
-   //LabyrinthOfLore::WorldMap::TileMap tile_map = LabyrinthOfLore::WorldMap::TileMapLoader(tile_map_data).build_tile_map();
-
-
-   //EXPECT_EQ(99, 
-   //EXPECT_EQ(90, 
+   LabyrinthOfLoreGame::Maps::TheUnderworld the_underworld;
 }
 
 
