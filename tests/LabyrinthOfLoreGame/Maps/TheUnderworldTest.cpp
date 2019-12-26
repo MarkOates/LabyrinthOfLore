@@ -51,7 +51,7 @@ protected:
       //ASSERT_EQ(ALLEGRO_OPENGL, al_get_new_display_flags() & ALLEGRO_OPENGL);
       //ASSERT_EQ(ALLEGRO_PROGRAMMABLE_PIPELINE, al_get_new_display_flags() & ALLEGRO_PROGRAMMABLE_PIPELINE);
 
-      ALLEGRO_DISPLAY *display = al_create_display(800, 600);
+      ALLEGRO_DISPLAY *display = al_create_display(1920, 1920);
       ASSERT_NE(nullptr, display);
    }
 
