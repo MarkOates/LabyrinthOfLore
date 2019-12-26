@@ -10,6 +10,10 @@
 #include <LabyrinthOfLoreGame/Maps.hpp>
 
 
+#include <LabyrinthOfLore/WorldMap/PixelRenderer.hpp>
+#include <LabyrinthOfLore/WorldMap/TileMapLoader.hpp>
+
+
 #include <allegro5/allegro_color.h>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_image.h>
@@ -30,7 +34,7 @@ protected:
 
    virtual void SetUp() override
    {
-      if (!al_is_system_installed())
+      if (al_is_system_installed())
       {
          std::cout << "Warning: This test is expecting to start with allegro in an uninstalled state. "
             << "However, during test setup, allegro is installed. This should be fixed, but in the "
@@ -60,18 +64,34 @@ protected:
 
 
 
-#include <LabyrinthOfLoreGame/Maps.hpp>
-
 TEST_F(LabyrinthOfLoreGame_MapsTest, can_be_created_without_blowing_up)
 {
-   LabyrinthOfLoreGame::Maps maps;
+   LabyrinthOfLore::WorldMap::PixelRenderer pixel_renderer;
 }
+
 
 TEST_F(LabyrinthOfLoreGame_MapsTest, run__returns_the_expected_response)
 {
    LabyrinthOfLoreGame::Maps maps;
-   std::vector<std::vector<LabyrinthOfLore::WorldMap::Tile>> actual_construct_tile_map_data = maps.build_construct_tile_map_data();
+   std::vector<std::vector<LabyrinthOfLore::WorldMap::Tile>> tile_map_data = maps.build_construct_tile_map_data();
 
-   //al_flip_display();
-   //sleep(2);
+   LabyrinthOfLore::WorldMap::TileMap tile_map = LabyrinthOfLore::WorldMap::TileMapLoader(tile_map_data).build_tile_map();
+
+   LabyrinthOfLore::WorldMap::PixelRenderer pixel_renderer(tile_map);
+
+   ALLEGRO_BITMAP *render = pixel_renderer.create_render();
+
+   ALLEGRO_TRANSFORM transform;
+   al_identity_transform(&transform);
+   al_scale_transform(&transform, 24, 24);
+   al_use_transform(&transform);
+
+   al_draw_bitmap(render, 0, 0, 0);
+
+   al_flip_display();
+   sleep(1);
+
+   al_destroy_bitmap(render);
 }
+
+
