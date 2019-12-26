@@ -7,7 +7,7 @@
    catch (...) { FAIL() << "Expected " # raised_exception_type; }
 
 
-#include <LabyrinthOfLoreGame/Maps.hpp>
+#include <LabyrinthOfLoreGame/Maps/Construct.hpp>
 
 
 #include <LabyrinthOfLore/WorldMap/PixelRenderer.hpp>
@@ -20,13 +20,13 @@
 #include <AllegroFlare/Useful.hpp> // for TAU
 
 
-class LabyrinthOfLoreGame_MapsTest : public ::testing::Test
+class LabyrinthOfLoreGame_Maps_ConstructTest : public ::testing::Test
 {
 protected:
    ALLEGRO_DISPLAY *display;
    float near_threshold;
 
-   LabyrinthOfLoreGame_MapsTest()
+   LabyrinthOfLoreGame_Maps_ConstructTest()
       : display(nullptr)
       , near_threshold(0.0001f)
    {
@@ -64,15 +64,15 @@ protected:
 
 
 
-TEST_F(LabyrinthOfLoreGame_MapsTest, can_be_created_without_blowing_up)
+TEST_F(LabyrinthOfLoreGame_Maps_ConstructTest, can_be_created_without_blowing_up)
 {
    LabyrinthOfLore::WorldMap::PixelRenderer pixel_renderer;
 }
 
 
-TEST_F(LabyrinthOfLoreGame_MapsTest, run__returns_the_expected_response)
+TEST_F(LabyrinthOfLoreGame_Maps_ConstructTest, run__returns_the_expected_response)
 {
-   LabyrinthOfLoreGame::Maps maps;
+   LabyrinthOfLoreGame::Maps::Construct maps;
    std::vector<std::vector<LabyrinthOfLore::WorldMap::Tile>> tile_map_data = maps.build_construct_tile_map_data();
 
    LabyrinthOfLore::WorldMap::TileMap tile_map = LabyrinthOfLore::WorldMap::TileMapLoader(tile_map_data).build_tile_map();
@@ -95,9 +95,9 @@ TEST_F(LabyrinthOfLoreGame_MapsTest, run__returns_the_expected_response)
 }
 
 
-TEST_F(LabyrinthOfLoreGame_MapsTest, build_the_underworld_data__returns_the_expected_data)
+TEST_F(LabyrinthOfLoreGame_Maps_ConstructTest, build_the_underworld_data__returns_the_expected_data)
 {
-   LabyrinthOfLoreGame::Maps maps;
+   LabyrinthOfLoreGame::Maps::Construct maps;
    std::vector<std::vector<LabyrinthOfLore::WorldMap::Tile>> tile_map_data = maps.build_the_underworld_data();
 
    LabyrinthOfLore::WorldMap::TileMap tile_map = LabyrinthOfLore::WorldMap::TileMapLoader(tile_map_data).build_tile_map();
