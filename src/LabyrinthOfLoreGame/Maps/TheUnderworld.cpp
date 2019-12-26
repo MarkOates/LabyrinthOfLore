@@ -29,8 +29,8 @@ std::vector<std::vector<LabyrinthOfLore::WorldMap::Tile>> TheUnderworld::build_t
 {
 float topmost_wall_height = 2.0;
 float &t = topmost_wall_height;
-float ground_level = 1.0f;
-float &_ = ground_level;
+float floor_level = 0.0f;
+float &_ = floor_level;
 
 std::vector<std::vector<LabyrinthOfLore::WorldMap::Tile>> construct_tile_map_data = {
    {
