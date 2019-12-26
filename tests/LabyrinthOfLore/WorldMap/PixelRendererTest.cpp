@@ -95,7 +95,7 @@ TEST_F(LabyrinthOfLore_WorldMap_PixelRendererTest, run__returns_the_expected_res
    al_draw_bitmap(render, 0, 0, 0);
 
    al_flip_display();
-   sleep(1);
+   //sleep(1);
 
    al_destroy_bitmap(render);
 }
