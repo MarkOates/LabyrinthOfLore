@@ -44,47 +44,8 @@
 using AllegroFlare::radians_to_degrees;
 using AllegroFlare::Random;
 
-float topmost_wall_height = 2.0;
-
-std::vector<std::vector<LabyrinthOfLore::WorldMap::Tile>> construct_tile_map_data = {
-   { { 1, topmost_wall_height }, { 1, topmost_wall_height }, { 1, topmost_wall_height }, { 1, topmost_wall_height }, { 1, topmost_wall_height }, { 1, topmost_wall_height }, { 1, topmost_wall_height }, { 1, topmost_wall_height }, },
-   { { 1, topmost_wall_height },  { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, topmost_wall_height }, },
-   { { 1, topmost_wall_height },  { 1, 1.0 },     { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, topmost_wall_height }, },
-   { { 1, topmost_wall_height },  { 1, 1.0 },     { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, topmost_wall_height }, },
-   { { 1, topmost_wall_height },  { 1, 1.0+0.25 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, topmost_wall_height }, },
-   { { 1, topmost_wall_height },  { 1, 1.0+0.50 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, topmost_wall_height }, },
-   { { 1, topmost_wall_height },  { 1, 1.0+0.75 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, topmost_wall_height }, },
-   { { 1, topmost_wall_height },  { 1, 1.0+1.0 }, { 1, 1.0+5.0 }, { 1, 5.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, topmost_wall_height }, },
-   { { 1, topmost_wall_height },  { 1, 1.0+1.25 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, topmost_wall_height }, },
-   { { 1, topmost_wall_height },  { 1, 1.0+1.50 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, topmost_wall_height }, },
-   { { 1, topmost_wall_height },  { 1, 1.0+1.75 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, topmost_wall_height }, },
-   { { 1, topmost_wall_height },  { 1, 1.0+2.0 }, { 1, 1.0+5.0 }, { 1, 5.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, topmost_wall_height }, },
-   { { 1, topmost_wall_height },  { 1, 1.0+2.25 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, topmost_wall_height }, },
-   { { 1, topmost_wall_height },  { 1, 1.0+2.50 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, topmost_wall_height }, },
-   { { 1, topmost_wall_height },  { 1, 1.0+2.75 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, topmost_wall_height }, },
-   { { 1, topmost_wall_height },  { 1, 1.0+3.0 }, { 1, 1.0+5.0 }, { 1, 5.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, topmost_wall_height }, },
-   { { 1, topmost_wall_height },  { 1, 1.0+3.25 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, topmost_wall_height }, },
-   { { 1, topmost_wall_height },  { 1, 1.0+3.50 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, topmost_wall_height }, },
-   { { 1, topmost_wall_height },  { 1, 1.0+3.75 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, topmost_wall_height }, },
-   { { 1, topmost_wall_height },  { 1, 1.0+4.0 }, { 1, 1.0+5.0 }, { 1, 5.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, topmost_wall_height }, },
-   { { 1, topmost_wall_height },  { 1, 1.0 },     { 1, 1.0 }, { 1, 5.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, topmost_wall_height }, },
-   { { 1, topmost_wall_height },  { 1, 1.0 },     { 1, 1.0 }, { 1, 6.0 }, { 1, 1.0 }, { 1, 6.0 }, { 1, 6.0 }, { 1, topmost_wall_height }, },
-   { { 1, topmost_wall_height },  { 1, 1.0 },     { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, topmost_wall_height }, },
-   { { 1, topmost_wall_height },  { 1, 1.0 },     { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 2, topmost_wall_height }, },
-   { { 1, topmost_wall_height },  { 1, 1.0 },     { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, topmost_wall_height }, },
-   { { 1, topmost_wall_height },  { 1, 1.0 },     { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, topmost_wall_height }, },
-   { { 1, topmost_wall_height },  { 1, 1.0 },     { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, topmost_wall_height }, },
-   { { 1, topmost_wall_height }, { 1, topmost_wall_height }, { 1, topmost_wall_height }, { 1, topmost_wall_height }, { 1, topmost_wall_height }, { 1, topmost_wall_height }, { 1, topmost_wall_height }, { 1, topmost_wall_height }, },
-};
-
-LabyrinthOfLore::Rendering::TileTypeDictionary build_tile_type_dictionary()
-{
-   int tile_num = 0;
-   return LabyrinthOfLore::Rendering::TileTypeDictionary({
-      { 1, LabyrinthOfLore::Rendering::TileTypeDefinition(tile_num+1, tile_num+1, tile_num) },
-      { 2, LabyrinthOfLore::Rendering::TileTypeDefinition(tile_num+1, tile_num+2, tile_num) },
-   });
-}
+#include <LabyrinthOfLoreGame/Maps.hpp>
+#include <LabyrinthOfLoreGame/TileTypeDictionary.hpp>
 
 
 bool active = true;
@@ -130,7 +91,8 @@ int main(int argc, char **argv)
 
       //
 
-      LabyrinthOfLore::WorldMap::TileMap tile_map = LabyrinthOfLore::WorldMap::TileMapLoader(construct_tile_map_data).build_tile_map();
+      LabyrinthOfLoreGame::Maps game_maps;
+      LabyrinthOfLore::WorldMap::TileMap tile_map = LabyrinthOfLore::WorldMap::TileMapLoader(game_maps.build_construct_tile_map_data()).build_tile_map();
 
       //
 
@@ -179,7 +141,8 @@ int main(int argc, char **argv)
 
 
       //
-      LabyrinthOfLore::Rendering::TileTypeDictionary tile_type_dictionary = build_tile_type_dictionary();
+      LabyrinthOfLoreGame::TileTypeDictionary game_tile_type_dictionary;
+      LabyrinthOfLore::Rendering::TileTypeDictionary tile_type_dictionary = game_tile_type_dictionary.build_tile_type_dictionary();
 
       LabyrinthOfLore::Rendering::TileMapMesh tile_map_mesh(&world_texture_tile_atlas, tile_type_dictionary, tile_map, world_texture_tile_atlas.get_bitmap());
       tile_map_mesh.build();
