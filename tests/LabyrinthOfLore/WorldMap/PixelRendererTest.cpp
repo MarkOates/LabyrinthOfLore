@@ -75,7 +75,7 @@ TEST_F(LabyrinthOfLore_WorldMap_PixelRendererTest, run__returns_the_expected_res
 
    std::vector<std::vector<LabyrinthOfLore::WorldMap::Tile>> tile_map_data = {
       { { 1, t }, { 1, t }, { 1, t }, { 1, t }, { 1, t }, { 1, t }, { 1, t }, { 1, t }, },
-      { { 1, t },  { 1, _ },      { 1, _ },     { 1, _ }, { 1, _ }, { 1, _ }, { 1, _ }, { 1, t }, },
+      { { 1, t },  { 1, _+0.25f },      { 1, _ },     { 1, _ }, { 1, _ }, { 1, _ }, { 1, _ }, { 1, t }, },
       { { 1, t },  { 1, _ },      { 1, _ },     { 1, _ }, { 1, _ }, { 1, _ }, { 1, _ }, { 1, t }, },
       { { 1, t },  { 1, _ },      { 1, _ },     { 1, _ }, { 1, _ }, { 1, _ }, { 1, _ }, { 1, t }, },
       { { 1, t }, { 1, t }, { 1, t }, { 1, t }, { 1, t }, { 1, t }, { 1, t }, { 1, t }, },
@@ -85,7 +85,13 @@ TEST_F(LabyrinthOfLore_WorldMap_PixelRendererTest, run__returns_the_expected_res
 
    LabyrinthOfLore::WorldMap::PixelRenderer pixel_renderer(tile_map);
 
+   ALLEGRO_TRANSFORM transform;
+   al_identity_transform(&transform);
+   al_scale_transform(&transform, 24, 24);
+
+   al_use_transform(&transform);
    pixel_renderer.render();
+
    al_flip_display();
    sleep(2);
 }
