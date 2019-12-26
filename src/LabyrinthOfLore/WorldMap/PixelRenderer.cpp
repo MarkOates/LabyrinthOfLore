@@ -34,6 +34,10 @@ al_init_primitives_addon();
 ALLEGRO_BITMAP* PixelRenderer::create_render()
 {
 ALLEGRO_BITMAP *result = al_create_bitmap(tile_map.get_width(), tile_map.get_height());
+ALLEGRO_STATE previous_state;
+al_store_state(&previous_state, ALLEGRO_STATE_TARGET_BITMAP);
+
+al_set_target_bitmap(result);
 al_clear_to_color(al_map_rgba_f(0, 0, 0, 0));
 
 int tile_width = 1;
@@ -59,6 +63,8 @@ for (unsigned y=0; y<tile_map.get_height(); y++)
          this_tile_color
       );
    }
+
+al_restore_state(&previous_state);
 
 return result;
 
