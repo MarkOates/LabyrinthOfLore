@@ -83,74 +83,6 @@ int main(int argc, char **argv)
       AllegroFlare::BitmapBin bitmap_bin;
       bitmap_bin.set_path("data/bitmaps");
 
-      //
-
-      font_bin.operator[]("gameovercre1.ttf -12");
-
-      std::vector<LabyrinthOfLore::Entity::Base*> entities = {};
-      LabyrinthOfLore::Rendering::Camera camera({0, 0, 0}, 0.0, 0.0);
-
-      //
-
-      LabyrinthOfLoreGame::Maps game_maps;
-      LabyrinthOfLore::WorldMap::TileMap tile_map = LabyrinthOfLore::WorldMap::TileMapLoader(game_maps.build_construct_tile_map_data()).build_tile_map();
-
-      //
-
-      ALLEGRO_BITMAP *tile_mesh_texture = al_load_bitmap("data/bitmaps/billboarding_tester_sprite.png");
-      if (!tile_mesh_texture) throw std::runtime_error("could not load tile_mesh_texture");
-
-      ALLEGRO_BITMAP *billboarding_tester_sprite = al_load_bitmap("data/bitmaps/billboarding_tester_sprite.png");
-      if (!billboarding_tester_sprite) throw std::runtime_error("could not load billboarding_tester_sprite.png");
-
-      Tileo::TileAtlas item_tile_atlas;
-      item_tile_atlas.load(bitmap_bin["spritesheet_4x.png"], 16*4, 16*4, 0);
-
-      Tileo::TileAtlas world_texture_tile_atlas;
-      //world_texture_tile_atlas.load(bitmap_bin["grid-texture-128.png"], 128/3, 128/3, 0);
-      world_texture_tile_atlas.load(bitmap_bin["world_texture_tile_atlas-02.png"], 48, 48, 0);
-
-      //
-
-      LabyrinthOfLore::Entity::Base* camera_entity = new LabyrinthOfLore::Entity::Base;
-      camera_entity->get_placement_ref().position = AllegroFlare::vec3d(1.5, 1.5, 1.01);
-
-      entities.push_back(camera_entity);
-
-
-      Random random;
-
-      for (int y=1; y<3; y++)
-      {
-         for (int x=1; x<3; x++)
-         {
-            LabyrinthOfLore::Entity::Base* entity = new LabyrinthOfLore::Entity::Base;
-            entity->set_billboard_at_camera(true);
-            entity->set_bitmap(item_tile_atlas.get_bitmap(8));
-            entity->get_placement_ref().size = AllegroFlare::vec3d(al_get_bitmap_width(billboarding_tester_sprite), al_get_bitmap_height(billboarding_tester_sprite), 0.0);
-            entity->get_placement_ref().scale = AllegroFlare::vec3d(0.005, 0.005, 0.005);
-            entity->get_placement_ref().align = AllegroFlare::vec3d(0.5, 1.0, 0.0);
-            entity->get_placement_ref().position = AllegroFlare::vec3d(x + 0.5, y + 0.5, 1.01);
-            entity->get_placement_ref().rotation = AllegroFlare::vec3d(0, random.get_random_float(-1, 1), 0);
-            //entity->get_placement_ref().rotation = AllegroFlare::vec3d(random.get_random_float(-1, 1), random.get_random_float(-1, 1), random.get_random_float(-1, 1));
-
-            entities.push_back(entity);
-
-            std::cout << "entity made " << std::endl;
-         }
-      }
-
-
-
-      //
-
-      LabyrinthOfLoreGame::TileTypeDictionary game_tile_type_dictionary;
-      LabyrinthOfLore::Rendering::TileTypeDictionary tile_type_dictionary = game_tile_type_dictionary.build_tile_type_dictionary();
-
-      //
-
-      LabyrinthOfLore::Rendering::TileMapMesh tile_map_mesh(&world_texture_tile_atlas, tile_type_dictionary, tile_map, world_texture_tile_atlas.get_bitmap());
-      tile_map_mesh.build();
 
 
       //
@@ -169,20 +101,6 @@ int main(int argc, char **argv)
       al_register_event_source(event_queue, al_get_timer_event_source(primary_timer));
       al_start_timer(primary_timer);
 
-      //
-
-      float player_yaw = -0.04;
-      float player_pitch = 0.0;
-      float player_turning = 0.0;
-      float max_player_turning_speed = 0.0023;
-      float player_movement_magnitude = 0.0;
-
-      int player_mouse_x = 0;
-      int player_mouse_y = 0;
-
-      camera_entity->get_velocity_ref().position = {0.0, 0.0, 0};
-      camera_entity->get_placement_ref().position = {2.5, 2.5, 0.0};
-      //camera_entity->get_placement_ref().rotation = {2.5, 2.5, 0.0};
 
       //
 
@@ -219,6 +137,89 @@ int main(int argc, char **argv)
 
       ALLEGRO_BITMAP *hud_rendering_surface = al_create_sub_bitmap(buffer_buffer, 0, 0, al_get_bitmap_width(buffer_buffer), al_get_bitmap_height(buffer_buffer));
       if (!hud_rendering_surface) throw std::runtime_error("could not create hud_rendering_surface");
+
+      //
+
+      font_bin.operator[]("gameovercre1.ttf -12");
+
+      std::vector<LabyrinthOfLore::Entity::Base*> entities = {};
+      LabyrinthOfLore::Rendering::Camera camera({0, 0, 0}, 0.0, 0.0);
+
+      //
+
+      LabyrinthOfLoreGame::Maps game_maps;
+      LabyrinthOfLore::WorldMap::TileMap tile_map = LabyrinthOfLore::WorldMap::TileMapLoader(game_maps.build_construct_tile_map_data()).build_tile_map();
+
+      //
+
+      ALLEGRO_BITMAP *tile_mesh_texture = al_load_bitmap("data/bitmaps/billboarding_tester_sprite.png");
+      if (!tile_mesh_texture) throw std::runtime_error("could not load tile_mesh_texture");
+
+      ALLEGRO_BITMAP *billboarding_tester_sprite = al_load_bitmap("data/bitmaps/billboarding_tester_sprite.png");
+      if (!billboarding_tester_sprite) throw std::runtime_error("could not load billboarding_tester_sprite.png");
+
+      Tileo::TileAtlas item_tile_atlas;
+      item_tile_atlas.load(bitmap_bin["spritesheet_4x.png"], 16*4, 16*4, 0);
+
+      Tileo::TileAtlas world_texture_tile_atlas;
+      //world_texture_tile_atlas.load(bitmap_bin["grid-texture-128.png"], 128/3, 128/3, 0);
+      world_texture_tile_atlas.load(bitmap_bin["world_texture_tile_atlas-02.png"], 48, 48, 0);
+
+      //
+
+      LabyrinthOfLore::Entity::Base* camera_entity = new LabyrinthOfLore::Entity::Base;
+      camera_entity->get_placement_ref().position = AllegroFlare::vec3d(1.5, 1.5, 1.01);
+
+      float player_yaw = -0.04;
+      float player_pitch = 0.0;
+      float player_turning = 0.0;
+      float max_player_turning_speed = 0.0023;
+      float player_movement_magnitude = 0.0;
+
+      int player_mouse_x = 0;
+      int player_mouse_y = 0;
+
+      camera_entity->get_velocity_ref().position = {0.0, 0.0, 0};
+      camera_entity->get_placement_ref().position = {2.5, 2.5, 0.0};
+      //camera_entity->get_placement_ref().rotation = {2.5, 2.5, 0.0};
+
+      entities.push_back(camera_entity);
+
+      //
+
+      Random random;
+
+      for (int y=1; y<3; y++)
+      {
+         for (int x=1; x<3; x++)
+         {
+            LabyrinthOfLore::Entity::Base* entity = new LabyrinthOfLore::Entity::Base;
+            entity->set_billboard_at_camera(true);
+            entity->set_bitmap(item_tile_atlas.get_bitmap(8));
+            entity->get_placement_ref().size = AllegroFlare::vec3d(al_get_bitmap_width(billboarding_tester_sprite), al_get_bitmap_height(billboarding_tester_sprite), 0.0);
+            entity->get_placement_ref().scale = AllegroFlare::vec3d(0.005, 0.005, 0.005);
+            entity->get_placement_ref().align = AllegroFlare::vec3d(0.5, 1.0, 0.0);
+            entity->get_placement_ref().position = AllegroFlare::vec3d(x + 0.5, y + 0.5, 1.01);
+            entity->get_placement_ref().rotation = AllegroFlare::vec3d(0, random.get_random_float(-1, 1), 0);
+            //entity->get_placement_ref().rotation = AllegroFlare::vec3d(random.get_random_float(-1, 1), random.get_random_float(-1, 1), random.get_random_float(-1, 1));
+
+            entities.push_back(entity);
+
+            std::cout << "entity made " << std::endl;
+         }
+      }
+
+
+
+      //
+
+      LabyrinthOfLoreGame::TileTypeDictionary game_tile_type_dictionary;
+      LabyrinthOfLore::Rendering::TileTypeDictionary tile_type_dictionary = game_tile_type_dictionary.build_tile_type_dictionary();
+
+      //
+
+      LabyrinthOfLore::Rendering::TileMapMesh tile_map_mesh(&world_texture_tile_atlas, tile_type_dictionary, tile_map, world_texture_tile_atlas.get_bitmap());
+      tile_map_mesh.build();
 
       //
 
