@@ -85,14 +85,18 @@ TEST_F(LabyrinthOfLore_WorldMap_PixelRendererTest, run__returns_the_expected_res
 
    LabyrinthOfLore::WorldMap::PixelRenderer pixel_renderer(tile_map);
 
+   ALLEGRO_BITMAP *render = pixel_renderer.create_render();
+
    ALLEGRO_TRANSFORM transform;
    al_identity_transform(&transform);
    al_scale_transform(&transform, 24, 24);
-
    al_use_transform(&transform);
-   pixel_renderer.render();
+
+   al_draw_bitmap(render, 0, 0, 0);
 
    al_flip_display();
    sleep(2);
+
+   al_destroy_bitmap(render);
 }
 

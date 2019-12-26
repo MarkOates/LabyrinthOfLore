@@ -31,8 +31,11 @@ al_init_primitives_addon();
 
 }
 
-void PixelRenderer::render()
+ALLEGRO_BITMAP* PixelRenderer::create_render()
 {
+ALLEGRO_BITMAP *result = al_create_bitmap(tile_map.get_width(), tile_map.get_height());
+al_clear_to_color(al_map_rgba_f(0, 0, 0, 0));
+
 int tile_width = 1;
 int tile_height = 1;
 
@@ -56,7 +59,8 @@ for (unsigned y=0; y<tile_map.get_height(); y++)
          this_tile_color
       );
    }
-return;
+
+return result;
 
 }
 } // namespace WorldMap

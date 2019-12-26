@@ -10,9 +10,12 @@ functions:
       al_init_primitives_addon();
     body_dependency_symbols:
       - al_init_primitives_addon
-  - name: render
-    type: void
+  - name: create_render
+    type: ALLEGRO_BITMAP*
     body: |
+      ALLEGRO_BITMAP *result = al_create_bitmap(tile_map.get_width(), tile_map.get_height());
+      al_clear_to_color(al_map_rgba_f(0, 0, 0, 0));
+
       int tile_width = 1;
       int tile_height = 1;
 
@@ -36,7 +39,8 @@ functions:
                this_tile_color
             );
          }
-      return;
+
+      return result;
     body_dependency_symbols:
       - AllegroFlare::color::color
       - LabyrinthOfLore::WorldMap::Tile
@@ -53,5 +57,7 @@ dependencies:
     headers: [ allegro5/allegro_primitives.h ]
   - symbol: al_color_name
     headers: [ allegro5/allegro_color.h ]
+  - symbol: ALLEGRO_BITMAP*
+    headers: [ allegro5/allegro.h ]
   - symbol: al_init_primitives_addon
     headers: [ allegro5/allegro_primitives.h ]

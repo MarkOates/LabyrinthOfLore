@@ -2,6 +2,7 @@
 
 
 #include <LabyrinthOfLore/WorldMap/TileMap.hpp>
+#include <allegro5/allegro.h>
 
 
 namespace LabyrinthOfLore
@@ -19,7 +20,7 @@ namespace LabyrinthOfLore
 
 
       void initialize();
-      void render();
+      ALLEGRO_BITMAP* create_render();
       };
    }
 }
