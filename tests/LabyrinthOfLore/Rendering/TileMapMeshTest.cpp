@@ -41,3 +41,25 @@ TEST(LabyrinthOfLore_Rendering_TileMapMeshTest, build__with_a_single_cube__retur
    ASSERT_EQ(30, tile_map_mesh.get_vertexes().size());
    al_destroy_bitmap(tile_atlas_bitmap);
 }
+
+TEST(LabyrinthOfLore_Rendering_TileMapMeshTest, build__on_tile_types_of_0__does_not_create_verticies)
+{
+   al_init();
+   al_init_image_addon();
+
+   Tileo::TileAtlas tile_atlas;
+   ALLEGRO_BITMAP *tile_atlas_bitmap = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/grid-texture-128.png");
+   ASSERT_NE(nullptr, tile_atlas_bitmap);
+   tile_atlas.load(tile_atlas_bitmap, 128/3, 128/3, 0);
+
+   LabyrinthOfLore::Rendering::TileTypeDictionary tile_type_dictionary;
+
+   std::vector<std::vector<LabyrinthOfLore::WorldMap::Tile>> tile_map_data = { { LabyrinthOfLore::WorldMap::Tile(0, 0.0) } };
+   LabyrinthOfLore::WorldMap::TileMap tile_map = LabyrinthOfLore::WorldMap::TileMapLoader(tile_map_data).build_tile_map();
+
+   LabyrinthOfLore::Rendering::TileMapMesh tile_map_mesh(&tile_atlas, tile_type_dictionary, tile_map);
+   tile_map_mesh.build();
+   ASSERT_EQ(0, tile_map_mesh.get_vertexes().size());
+   al_destroy_bitmap(tile_atlas_bitmap);
+}
+

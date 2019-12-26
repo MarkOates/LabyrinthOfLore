@@ -31,6 +31,8 @@ float topmost_wall_height = 2.0;
 float &t = topmost_wall_height;
 float floor_level = 0.0f;
 float &_ = floor_level;
+float ground_level = 6.0f;
+float &g = ground_level;
 
 std::vector<std::vector<LabyrinthOfLore::WorldMap::Tile>> construct_tile_map_data = {
    {
