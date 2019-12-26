@@ -44,7 +44,7 @@
 using AllegroFlare::radians_to_degrees;
 using AllegroFlare::Random;
 
-#include <LabyrinthOfLoreGame/Maps.hpp>
+#include <LabyrinthOfLoreGame/Maps/Construct.hpp>
 #include <LabyrinthOfLoreGame/TileTypeDictionary.hpp>
 
 
@@ -149,8 +149,8 @@ int main(int argc, char **argv)
 
       //
 
-      LabyrinthOfLoreGame::Maps game_maps;
-      LabyrinthOfLore::WorldMap::TileMap tile_map = LabyrinthOfLore::WorldMap::TileMapLoader(game_maps.build_construct_tile_map_data()).build_tile_map();
+      LabyrinthOfLoreGame::Maps::Construct construct_map;
+      LabyrinthOfLore::WorldMap::TileMap tile_map = LabyrinthOfLore::WorldMap::TileMapLoader(construct_map.build_construct_tile_map_data()).build_tile_map();
 
       //
 
