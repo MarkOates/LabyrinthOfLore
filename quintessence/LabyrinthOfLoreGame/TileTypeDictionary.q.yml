@@ -1,0 +1,12 @@
+functions:
+  - name: build_dictionary
+    type: LabyrinthOfLore::Rendering::TileTypeDictionary
+    body: |
+       int tile_num = 0;
+       return LabyrinthOfLore::Rendering::TileTypeDictionary({
+          { 1, LabyrinthOfLore::Rendering::TileTypeDefinition(tile_num+1, tile_num+1, tile_num) },
+          { 2, LabyrinthOfLore::Rendering::TileTypeDefinition(tile_num+1, tile_num+2, tile_num) },
+       });
+dependencies:
+  - symbol: LabyrinthOfLore::Rendering::TileTypeDictionary
+    headers: [ LabyrinthOfLore/Rendering/TileTypeDictionary.hpp ]
