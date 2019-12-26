@@ -69,8 +69,8 @@ main:
 	@make quintessences
 	$(call output_terminal_message,"Make all the component object files")
 	@make objects
-	$(call output_terminal_message,"Make all the test objects")
-	@make test_objects
+	#$(call output_terminal_message,"Make all the test objects")
+	#@make test_objects
 	#$(call output_terminal_message,"Make all the test executables")
 	#@make tests
 	#$(call output_terminal_message,"Run the tests for all the components")
