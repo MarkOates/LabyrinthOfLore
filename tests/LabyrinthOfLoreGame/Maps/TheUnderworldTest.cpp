@@ -63,10 +63,19 @@ protected:
 };
 
 
-
 TEST_F(LabyrinthOfLoreGame_Maps_TheUnderworldTest, can_be_created_without_blowing_up)
 {
    LabyrinthOfLoreGame::Maps::TheUnderworld the_underworld;
+}
+
+
+TEST_F(LabyrinthOfLoreGame_Maps_TheUnderworldTest, build_the_underworld__returns_a_map_of_the_expected_width_and_height)
+{
+   LabyrinthOfLoreGame::Maps::TheUnderworld the_underworld;
+   LabyrinthOfLore::WorldMap::TileMap tile_map = the_underworld.build_the_underworld();
+
+   EXPECT_EQ(99, tile_map.get_width());
+   EXPECT_EQ(90, tile_map.get_height());
 }
 
 
@@ -91,5 +100,4 @@ TEST_F(LabyrinthOfLoreGame_Maps_TheUnderworldTest, build_the_underworld_data__re
 
    al_destroy_bitmap(render);
 }
-
 
