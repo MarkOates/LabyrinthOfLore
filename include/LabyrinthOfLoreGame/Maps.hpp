@@ -17,6 +17,7 @@ namespace LabyrinthOfLoreGame
 
 
    std::vector<std::vector<LabyrinthOfLore::WorldMap::Tile>> build_construct_tile_map_data();
+   std::vector<std::vector<LabyrinthOfLore::WorldMap::Tile>> build_the_underworld_data();
    };
 }
 

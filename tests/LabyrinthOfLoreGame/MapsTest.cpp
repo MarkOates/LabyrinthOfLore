@@ -83,12 +83,35 @@ TEST_F(LabyrinthOfLoreGame_MapsTest, run__returns_the_expected_response)
 
    ALLEGRO_TRANSFORM transform;
    al_identity_transform(&transform);
-   al_scale_transform(&transform, 24, 24);
+   al_scale_transform(&transform, 16, 16);
    al_use_transform(&transform);
 
    al_draw_bitmap(render, 0, 0, 0);
 
    al_flip_display();
+   //sleep(1);
+
+   al_destroy_bitmap(render);
+}
+
+
+TEST_F(LabyrinthOfLoreGame_MapsTest, build_the_underworld_data__returns_the_expected_data)
+{
+   LabyrinthOfLoreGame::Maps maps;
+   std::vector<std::vector<LabyrinthOfLore::WorldMap::Tile>> tile_map_data = maps.build_the_underworld_data();
+
+   LabyrinthOfLore::WorldMap::TileMap tile_map = LabyrinthOfLore::WorldMap::TileMapLoader(tile_map_data).build_tile_map();
+
+   // display_the_bitmap
+   LabyrinthOfLore::WorldMap::PixelRenderer pixel_renderer(tile_map);
+   ALLEGRO_BITMAP *render = pixel_renderer.create_render();
+   ALLEGRO_TRANSFORM transform;
+   al_identity_transform(&transform);
+   al_scale_transform(&transform, 16, 16);
+   al_use_transform(&transform);
+   al_draw_bitmap(render, 0, 0, 0);
+   al_flip_display();
+
    sleep(1);
 
    al_destroy_bitmap(render);
