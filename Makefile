@@ -71,10 +71,10 @@ main:
 	@make objects
 	$(call output_terminal_message,"Make all the test objects")
 	@make test_objects
-	$(call output_terminal_message,"Make all the test executables")
-	@make tests
-	$(call output_terminal_message,"Run the tests for all the components")
-	@make run_tests
+	#$(call output_terminal_message,"Make all the test executables")
+	#@make tests
+	#$(call output_terminal_message,"Run the tests for all the components")
+	#@make run_tests
 	$(call output_terminal_message,"Celebrate passing all tests")
 	@make celebrate_passing_tests
 	$(call output_terminal_message,"Build the library")
