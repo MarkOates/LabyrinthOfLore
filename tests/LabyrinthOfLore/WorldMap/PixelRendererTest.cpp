@@ -30,7 +30,7 @@ protected:
 
    virtual void SetUp() override
    {
-      if (!al_is_system_installed())
+      if (al_is_system_installed())
       {
          std::cout << "Warning: This test is expecting to start with allegro in an uninstalled state. "
             << "However, during test setup, allegro is installed. This should be fixed, but in the "
@@ -60,13 +60,17 @@ protected:
 
 
 
-TEST(LabyrinthOfLore_WorldMap_PixelRendererTest, can_be_created_without_blowing_up)
+TEST_F(LabyrinthOfLore_WorldMap_PixelRendererTest, can_be_created_without_blowing_up)
 {
    LabyrinthOfLore::WorldMap::PixelRenderer pixel_renderer;
 }
 
-TEST(LabyrinthOfLore_WorldMap_PixelRendererTest, run__returns_the_expected_response)
+TEST_F(LabyrinthOfLore_WorldMap_PixelRendererTest, run__returns_the_expected_response)
 {
    LabyrinthOfLore::WorldMap::PixelRenderer pixel_renderer;
+
+   pixel_renderer.render();
+   al_flip_display();
+   sleep(2);
 }
 
