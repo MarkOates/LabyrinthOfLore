@@ -33,8 +33,8 @@ al_init_primitives_addon();
 
 void PixelRenderer::render()
 {
-int tile_width = 32;
-int tile_height = 32;
+int tile_width = 1;
+int tile_height = 1;
 
 float bottom_height = 0.0;
 float top_height = 10.0;
@@ -46,7 +46,7 @@ for (unsigned y=0; y<tile_map.get_height(); y++)
       LabyrinthOfLore::WorldMap::Tile tile = tile_map.get_tile(x, y);
       float height_float = tile.get_height() / top_height;
 
-      ALLEGRO_COLOR this_tile_color = AllegroFlare::color::color(tile_color, height_float);
+      ALLEGRO_COLOR this_tile_color = tile_color; //AllegroFlare::color::color(tile_color, height_float);
 
       al_draw_filled_rectangle(
          x * tile_width,

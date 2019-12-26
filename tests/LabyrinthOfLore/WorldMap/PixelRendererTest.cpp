@@ -8,6 +8,7 @@
 
 
 #include <LabyrinthOfLore/WorldMap/PixelRenderer.hpp>
+#include <LabyrinthOfLore/WorldMap/TileMapLoader.hpp>
 
 
 #include <allegro5/allegro_color.h>
@@ -67,7 +68,22 @@ TEST_F(LabyrinthOfLore_WorldMap_PixelRendererTest, can_be_created_without_blowin
 
 TEST_F(LabyrinthOfLore_WorldMap_PixelRendererTest, run__returns_the_expected_response)
 {
-   LabyrinthOfLore::WorldMap::PixelRenderer pixel_renderer;
+   float topmost_wall_height = 2.0;
+   float &t = topmost_wall_height;
+   float ground_level = 1.0f;
+   float &_ = ground_level;
+
+   std::vector<std::vector<LabyrinthOfLore::WorldMap::Tile>> tile_map_data = {
+      { { 1, t }, { 1, t }, { 1, t }, { 1, t }, { 1, t }, { 1, t }, { 1, t }, { 1, t }, },
+      { { 1, t },  { 1, _ },      { 1, _ },     { 1, _ }, { 1, _ }, { 1, _ }, { 1, _ }, { 1, t }, },
+      { { 1, t },  { 1, _ },      { 1, _ },     { 1, _ }, { 1, _ }, { 1, _ }, { 1, _ }, { 1, t }, },
+      { { 1, t },  { 1, _ },      { 1, _ },     { 1, _ }, { 1, _ }, { 1, _ }, { 1, _ }, { 1, t }, },
+      { { 1, t }, { 1, t }, { 1, t }, { 1, t }, { 1, t }, { 1, t }, { 1, t }, { 1, t }, },
+   };
+
+   LabyrinthOfLore::WorldMap::TileMap tile_map = LabyrinthOfLore::WorldMap::TileMapLoader(tile_map_data).build_tile_map();
+
+   LabyrinthOfLore::WorldMap::PixelRenderer pixel_renderer(tile_map);
 
    pixel_renderer.render();
    al_flip_display();
