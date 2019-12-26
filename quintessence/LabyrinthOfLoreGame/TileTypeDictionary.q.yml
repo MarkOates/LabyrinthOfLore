@@ -1,5 +1,5 @@
 functions:
-  - name: build_dictionary
+  - name: build_tile_type_dictionary
     type: LabyrinthOfLore::Rendering::TileTypeDictionary
     body: |
        int tile_num = 0;

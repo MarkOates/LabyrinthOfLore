@@ -8,10 +8,10 @@ TEST(LabyrinthOfLoreGame_TileTypeDictionaryTest, can_be_created_without_blowing_
    LabyrinthOfLoreGame::TileTypeDictionary tile_type_dictionary;
 }
 
-TEST(LabyrinthOfLoreGame_TileTypeDictionaryTest, build_dictionary__returns_a_dictionary_with_the_expected_values)
+TEST(LabyrinthOfLoreGame_TileTypeDictionaryTest, build_tile_type_dictionary__returns_a_dictionary_with_the_expected_values)
 {
    //LabyrinthOfLore::Rendering::TileTypeDictionary;
 
    LabyrinthOfLoreGame::TileTypeDictionary tile_type_dictionary;
-   tile_type_dictionary.build_dictionary();
+   tile_type_dictionary.build_tile_type_dictionary();
 }

@@ -18,7 +18,7 @@ TileTypeDictionary::~TileTypeDictionary()
 }
 
 
-LabyrinthOfLore::Rendering::TileTypeDictionary TileTypeDictionary::build_dictionary()
+LabyrinthOfLore::Rendering::TileTypeDictionary TileTypeDictionary::build_tile_type_dictionary()
 {
 int tile_num = 0;
 return LabyrinthOfLore::Rendering::TileTypeDictionary({

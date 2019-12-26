@@ -15,7 +15,7 @@ namespace LabyrinthOfLoreGame
       ~TileTypeDictionary();
 
 
-   LabyrinthOfLore::Rendering::TileTypeDictionary build_dictionary();
+   LabyrinthOfLore::Rendering::TileTypeDictionary build_tile_type_dictionary();
    };
 }
 
