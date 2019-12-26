@@ -16,7 +16,7 @@ YAML_CPP_INCLUDE_DIR=$(YAML_CPP_DIR)/include
 
 QUINTESSENCE_BUILDER_EXECUTABLE=~/Repos/blast/bin/programs/quintessence_from_yaml
 QUINTESSENCE_BUILDER_FLAGS=--less_verbose
-FOCUSED_COMPONENT_NAME=LabyrinthOfLoreGame/Maps
+FOCUSED_COMPONENT_NAME=LabyrinthOfLoreGame/TileTypeDictionary
 
 
 ALLEGRO_LIBS=allegro_color allegro_font allegro_ttf allegro_dialog allegro_audio allegro_acodec allegro_primitives allegro_image allegro
