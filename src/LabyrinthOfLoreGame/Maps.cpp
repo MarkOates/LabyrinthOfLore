@@ -28,7 +28,7 @@ std::vector<std::vector<LabyrinthOfLore::WorldMap::Tile>> construct_tile_map_dat
    { { 1, topmost_wall_height },  { 1, 1.0 },      { 1, 1.0 },     { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, topmost_wall_height }, },
    { { 1, topmost_wall_height },  { 1, 1.0 },      { 1, 1.0 },     { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, topmost_wall_height }, },
    { { 1, topmost_wall_height },  { 1, 1.0+0.25 }, { 1, 1.0 },     { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, topmost_wall_height }, },
-   { { 1, topmost_wall_height },  { 1, 1.0+0.50 }, { 1, 1.0 },     { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, topmost_wall_height }, },
+   { { 1, topmost_wall_height },  { 1, 1.0+0.50 }, { 1, 1.0 },     { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 2, topmost_wall_height }, },
    { { 1, topmost_wall_height },  { 1, 1.0+0.75 }, { 1, 1.0 },     { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, topmost_wall_height }, },
    { { 1, topmost_wall_height },  { 1, 1.0+1.0 },  { 1, 1.0+5.0 }, { 1, 5.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, topmost_wall_height }, },
    { { 1, topmost_wall_height },  { 1, 1.0+1.25 }, { 1, 1.0 },     { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, 1.0 }, { 1, topmost_wall_height }, },

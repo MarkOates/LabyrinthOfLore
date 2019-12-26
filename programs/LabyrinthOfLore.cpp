@@ -79,12 +79,13 @@ int main(int argc, char **argv)
 
       AllegroFlare::FontBin font_bin;
       font_bin.set_path("data/fonts");
-      font_bin.operator[]("gameovercre1.ttf -12");
 
       AllegroFlare::BitmapBin bitmap_bin;
       bitmap_bin.set_path("data/bitmaps");
 
       //
+
+      font_bin.operator[]("gameovercre1.ttf -12");
 
       std::vector<LabyrinthOfLore::Entity::Base*> entities = {};
       LabyrinthOfLore::Rendering::Camera camera({0, 0, 0}, 0.0, 0.0);
@@ -140,47 +141,16 @@ int main(int argc, char **argv)
       }
 
 
+
       //
+
       LabyrinthOfLoreGame::TileTypeDictionary game_tile_type_dictionary;
       LabyrinthOfLore::Rendering::TileTypeDictionary tile_type_dictionary = game_tile_type_dictionary.build_tile_type_dictionary();
 
-      LabyrinthOfLore::Rendering::TileMapMesh tile_map_mesh(&world_texture_tile_atlas, tile_type_dictionary, tile_map, world_texture_tile_atlas.get_bitmap());
-      tile_map_mesh.build();
-
-      AllegroFlare::PickingBuffer picking_buffer(al_get_display_width(display)/resolution_scale, al_get_display_height(display)/resolution_scale, 32);
-      picking_buffer.initialize();
-
-      LabyrinthOfLore::Shader::ClampedColor clamped_color_shader;
-      clamped_color_shader.initialize();
-
-      LabyrinthOfLore::Shader::DepthDarken depth_darken_shader;
-      depth_darken_shader.initialize();
-
-
       //
 
-      int previous_depth = al_get_new_bitmap_depth();
-      int previous_samples = al_get_new_bitmap_samples();
-      ALLEGRO_STATE previous_state;
-      al_store_state(&previous_state, ALLEGRO_STATE_BITMAP);
-
-      al_set_new_bitmap_depth(32);
-      al_set_new_bitmap_samples(0);
-      //ALLEGRO_BITMAP *bmp = al_create_bitmap(w, h);
-
-      ALLEGRO_BITMAP *buffer_buffer = al_create_bitmap(al_get_display_width(display)/resolution_scale, al_get_display_height(display)/resolution_scale);
-      //ALLEGRO_BITMAP *buffer_buffer = al_get_backbuffer(display);
-
-      al_restore_state(&previous_state);
-      al_set_new_bitmap_depth(previous_depth);
-      al_set_new_bitmap_samples(previous_samples);
-
-
-      ALLEGRO_BITMAP *scene_rendering_surface = al_create_sub_bitmap(buffer_buffer, 0, 0, al_get_bitmap_width(buffer_buffer), al_get_bitmap_height(buffer_buffer));
-      if (!scene_rendering_surface) throw std::runtime_error("could not create scene_rendering_surface");
-
-      ALLEGRO_BITMAP *hud_rendering_surface = al_create_sub_bitmap(buffer_buffer, 0, 0, al_get_bitmap_width(buffer_buffer), al_get_bitmap_height(buffer_buffer));
-      if (!hud_rendering_surface) throw std::runtime_error("could not create hud_rendering_surface");
+      LabyrinthOfLore::Rendering::TileMapMesh tile_map_mesh(&world_texture_tile_atlas, tile_type_dictionary, tile_map, world_texture_tile_atlas.get_bitmap());
+      tile_map_mesh.build();
 
 
       //
@@ -213,6 +183,42 @@ int main(int argc, char **argv)
       camera_entity->get_velocity_ref().position = {0.0, 0.0, 0};
       camera_entity->get_placement_ref().position = {2.5, 2.5, 0.0};
       //camera_entity->get_placement_ref().rotation = {2.5, 2.5, 0.0};
+
+      //
+
+      AllegroFlare::PickingBuffer picking_buffer(al_get_display_width(display)/resolution_scale, al_get_display_height(display)/resolution_scale, 32);
+      picking_buffer.initialize();
+
+      LabyrinthOfLore::Shader::ClampedColor clamped_color_shader;
+      clamped_color_shader.initialize();
+
+      LabyrinthOfLore::Shader::DepthDarken depth_darken_shader;
+      depth_darken_shader.initialize();
+
+      //
+
+      int previous_depth = al_get_new_bitmap_depth();
+      int previous_samples = al_get_new_bitmap_samples();
+      ALLEGRO_STATE previous_state;
+      al_store_state(&previous_state, ALLEGRO_STATE_BITMAP);
+
+      al_set_new_bitmap_depth(32);
+      al_set_new_bitmap_samples(0);
+      //ALLEGRO_BITMAP *bmp = al_create_bitmap(w, h);
+
+      ALLEGRO_BITMAP *buffer_buffer = al_create_bitmap(al_get_display_width(display)/resolution_scale, al_get_display_height(display)/resolution_scale);
+      //ALLEGRO_BITMAP *buffer_buffer = al_get_backbuffer(display);
+
+      al_restore_state(&previous_state);
+      al_set_new_bitmap_depth(previous_depth);
+      al_set_new_bitmap_samples(previous_samples);
+
+
+      ALLEGRO_BITMAP *scene_rendering_surface = al_create_sub_bitmap(buffer_buffer, 0, 0, al_get_bitmap_width(buffer_buffer), al_get_bitmap_height(buffer_buffer));
+      if (!scene_rendering_surface) throw std::runtime_error("could not create scene_rendering_surface");
+
+      ALLEGRO_BITMAP *hud_rendering_surface = al_create_sub_bitmap(buffer_buffer, 0, 0, al_get_bitmap_width(buffer_buffer), al_get_bitmap_height(buffer_buffer));
+      if (!hud_rendering_surface) throw std::runtime_error("could not create hud_rendering_surface");
 
       //
 
