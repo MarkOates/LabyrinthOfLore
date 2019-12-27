@@ -23,6 +23,7 @@ BitmapTileMapLoader::~BitmapTileMapLoader()
 
 LabyrinthOfLore::WorldMap::TileMap BitmapTileMapLoader::load()
 {
+if (!source_bitmap) throw std::runtime_error("could WorldBitmap::BitmapTileMapLoader.load with a nullptr source_bitmap");
 return {};
 
 }
