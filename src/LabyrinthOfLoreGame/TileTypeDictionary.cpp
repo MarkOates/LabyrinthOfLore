@@ -29,13 +29,13 @@ return LabyrinthOfLore::Rendering::TileTypeDictionary({
    { spawn_point, LabyrinthOfLore::Rendering::TileTypeDefinition(tile_num+1, tile_num+1, tile_num) }, // spawn point
    
    // doors out
-   { number_for_door_no(0), LabyrinthOfLore::Rendering::TileTypeDefinition(tile_num+1, tile_num+2, tile_num) }, // door to level 
-   { number_for_door_no(1), LabyrinthOfLore::Rendering::TileTypeDefinition(tile_num+1, tile_num+2, tile_num) },
-   { number_for_door_no(2), LabyrinthOfLore::Rendering::TileTypeDefinition(tile_num+1, tile_num+2, tile_num) },
-   { number_for_door_no(3), LabyrinthOfLore::Rendering::TileTypeDefinition(tile_num+1, tile_num+2, tile_num) },
-   { number_for_door_no(4), LabyrinthOfLore::Rendering::TileTypeDefinition(tile_num+1, tile_num+2, tile_num) },
-   { number_for_door_no(5), LabyrinthOfLore::Rendering::TileTypeDefinition(tile_num+1, tile_num+2, tile_num) },
-   { number_for_door_no(6), LabyrinthOfLore::Rendering::TileTypeDefinition(tile_num+1, tile_num+2, tile_num) },
+   { number_for_door_no(0), LabyrinthOfLore::Rendering::TileTypeDefinition(tile_num+2, tile_num+2, tile_num) }, // door to level 
+   { number_for_door_no(1), LabyrinthOfLore::Rendering::TileTypeDefinition(tile_num+2, tile_num+2, tile_num) },
+   { number_for_door_no(2), LabyrinthOfLore::Rendering::TileTypeDefinition(tile_num+2, tile_num+2, tile_num) },
+   { number_for_door_no(3), LabyrinthOfLore::Rendering::TileTypeDefinition(tile_num+2, tile_num+2, tile_num) },
+   { number_for_door_no(4), LabyrinthOfLore::Rendering::TileTypeDefinition(tile_num+2, tile_num+2, tile_num) },
+   { number_for_door_no(5), LabyrinthOfLore::Rendering::TileTypeDefinition(tile_num+2, tile_num+2, tile_num) },
+   { number_for_door_no(6), LabyrinthOfLore::Rendering::TileTypeDefinition(tile_num+2, tile_num+2, tile_num) },
 });
 
 }
