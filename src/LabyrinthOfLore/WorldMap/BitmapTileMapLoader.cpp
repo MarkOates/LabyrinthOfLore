@@ -38,12 +38,6 @@ return al_get_pixel(source_bitmap, x, y);
 
 }
 
-bool BitmapTileMapLoader::validate()
-{
-return true;
-
-}
-
 ALLEGRO_COLOR BitmapTileMapLoader::pick_index_null_color()
 {
 return pick_color(get_index_column_x(), 0);
@@ -97,6 +91,12 @@ return pick_color(get_index_column_x(), 11);
 ALLEGRO_COLOR BitmapTileMapLoader::pick_index_gm1_color()
 {
 return pick_color(get_index_column_x(), 12);
+}
+
+bool BitmapTileMapLoader::validate()
+{
+return true;
+
 }
 
 LabyrinthOfLore::WorldMap::TileMap BitmapTileMapLoader::load()

@@ -24,10 +24,6 @@ functions:
       int h = al_get_bitmap_height(source_bitmap);
       if (y >= h) throw std::runtime_error("cannot pick_color at a coordinate beyond the height of the source_bitmap.");
       return al_get_pixel(source_bitmap, x, y);
-  - name: validate
-    type: bool
-    body: |
-      return true;
   - name: pick_index_null_color
     type: ALLEGRO_COLOR
     body: return pick_color(get_index_column_x(), 0);
@@ -61,6 +57,10 @@ functions:
   - name: pick_index_gm1_color
     type: ALLEGRO_COLOR
     body: return pick_color(get_index_column_x(), 12);
+  - name: validate
+    type: bool
+    body: |
+      return true;
   - name: load
     type: LabyrinthOfLore::WorldMap::TileMap
     body: |
