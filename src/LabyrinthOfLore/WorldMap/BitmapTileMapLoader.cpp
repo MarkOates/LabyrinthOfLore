@@ -134,12 +134,13 @@ for (unsigned y=0; y<final_tile_map_height; y++)
    {
       ALLEGRO_COLOR this_pixel_color = al_get_pixel(source_bitmap, x, y);
       if (colors_are_equal(this_pixel_color, pick_index_null_color())) continue;
-      if (colors_are_equal(this_pixel_color, pick_index_top_color())) result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(1, map_height));
-      if (colors_are_equal(this_pixel_color, pick_index_ground_color())) result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(1, ground_height));
-      if (colors_are_equal(this_pixel_color, pick_index_gp_color())) result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(1, ground_height+0.25));
-      if (colors_are_equal(this_pixel_color, pick_index_gpp_color())) result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(1, ground_height+0.5));
-      if (colors_are_equal(this_pixel_color, pick_index_gppp_color())) result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(1, ground_height+0.75));
-      if (colors_are_equal(this_pixel_color, pick_index_g1_color())) result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(1, ground_height+1.0));
+      else if (colors_are_equal(this_pixel_color, pick_index_top_color())) result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(1, map_height));
+      else if (colors_are_equal(this_pixel_color, pick_index_ground_color())) result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(1, ground_height));
+
+      else if (colors_are_equal(this_pixel_color, pick_index_gp_color())) result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(1, ground_height+0.25));
+      else if (colors_are_equal(this_pixel_color, pick_index_gpp_color())) result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(1, ground_height+0.5));
+      else if (colors_are_equal(this_pixel_color, pick_index_gppp_color())) result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(1, ground_height+0.75));
+      else if (colors_are_equal(this_pixel_color, pick_index_g1_color())) result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(1, ground_height+1.0));
    }
 
 return result;
