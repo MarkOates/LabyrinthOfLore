@@ -10,8 +10,9 @@ namespace WorldMap
 {
 
 
-Level::Level(std::string name, LabyrinthOfLore::WorldMap::TileMap tile_map)
+Level::Level(std::string name, float ground_height, LabyrinthOfLore::WorldMap::TileMap tile_map)
    : name(name)
+   , ground_height(ground_height)
    , tile_map(tile_map)
 {
 }
@@ -25,6 +26,12 @@ Level::~Level()
 std::string Level::get_name()
 {
    return name;
+}
+
+
+float Level::get_ground_height()
+{
+   return ground_height;
 }
 
 

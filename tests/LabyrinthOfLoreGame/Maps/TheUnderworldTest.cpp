@@ -116,4 +116,18 @@ TEST_F(LabyrinthOfLoreGame_Maps_TheUnderworldTest, build_the_underworld__has_a_0
    EXPECT_EQ(0, tile_map.get_tile(0, 0).get_type());
 }
 
+//TEST_F(LabyrinthOfLoreGame_Maps_TheUnderworldTest, build_the_underworld__has_the_expected_elevation_at_the_sparting_place)
+//{
+   //std::string real_source_location = "/Users/markoates/Repos/LabyrinthOfLore/bin/programs/";
+   //std::string bitmap_source_filename = "data/bitmaps/the_underworld.png";
+
+   //std::string full_source_location = real_source_location + bitmap_source_filename;
+
+   //LabyrinthOfLoreGame::Maps::TheUnderworld the_underworld(full_source_location);
+   //LabyrinthOfLore::WorldMap::TileMap tile_map = the_underworld.build_the_underworld();
+
+   //EXPECT_EQ(1, tile_map.get_tile(40, 87).get_type());
+//}
+
+
 

@@ -4,6 +4,11 @@ properties:
     init_with: "\"Unmade World\""
     getter: true
     constructor_arg: true
+  - name: ground_height
+    type: float
+    init_with: "1"
+    getter: true
+    constructor_arg: true
   - name: tile_map
     type: LabyrinthOfLore::WorldMap::TileMap
     init_with: "{}"
