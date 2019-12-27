@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include <LabyrinthOfLore/WorldMap/Map.hpp>
+#include <LabyrinthOfLore/WorldMap/Level.hpp>
 #include <vector>
 
 
@@ -10,10 +10,10 @@ namespace LabyrinthOfLoreGame
    class World
    {
    private:
-      std::vector<LabyrinthOfLore::WorldMap::Map> maps;
+      std::vector<LabyrinthOfLore::WorldMap::Level> maps;
 
    public:
-      World(std::vector<LabyrinthOfLore::WorldMap::Map> maps={});
+      World(std::vector<LabyrinthOfLore::WorldMap::Level> maps={});
       ~World();
 
 
