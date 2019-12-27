@@ -1,0 +1,14 @@
+properties:
+  - name: name
+    type: std::string
+    init_with: "\"Unmade World\""
+    getter: true
+    constructor_arg: true
+  - name: tile_map
+    type: LabyrinthOfLore::WorldMap::TileMap
+    init_with: "{}"
+    getter: true
+    constructor_arg: true
+dependencies:
+  - symbol: LabyrinthOfLore::WorldMap::TileMap
+    headers: [ LabyrinthOfLore/WorldMap/TileMap.hpp ]
