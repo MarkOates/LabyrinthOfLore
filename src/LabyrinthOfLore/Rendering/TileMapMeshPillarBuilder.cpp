@@ -18,6 +18,7 @@ TileMapMeshPillarBuilder::TileMapMeshPillarBuilder(int x, int y, float height)
    : x(x)
    , y(y)
    , height(height)
+   , remove_left_face(false)
 {
 }
 
@@ -164,7 +165,9 @@ std::vector<ALLEGRO_VERTEX> top_face = {
 
 if (needs_partial_height_side_faces_from_top())
 {
-   partial_height_side_faces_from_top = {
+   partial_height_side_faces_from_top = {};
+
+   std::vector<ALLEGRO_VERTEX> front_face = {
       // front:
       buildE(),
       buildD(),
@@ -172,7 +175,9 @@ if (needs_partial_height_side_faces_from_top())
       buildD(),
       buildE(),
       buildF(),
+   };
 
+   std::vector<ALLEGRO_VERTEX> right_face = {
       // right: // looks correct
       buildF(),
       buildB(),
@@ -180,7 +185,9 @@ if (needs_partial_height_side_faces_from_top())
       buildB(),
       buildF(),
       buildH(),
+   };
 
+   std::vector<ALLEGRO_VERTEX> left_face = {
       // left: // looks correct
       buildG(),
       buildC(),
@@ -188,7 +195,9 @@ if (needs_partial_height_side_faces_from_top())
       buildC(),
       buildG(),
       buildE(),
+   };
 
+   std::vector<ALLEGRO_VERTEX> back_face = {
       // back:
       buildH(),
       buildA(),
@@ -196,7 +205,12 @@ if (needs_partial_height_side_faces_from_top())
       buildA(),
       buildH(),
       buildG()
-  };
+   };
+
+   partial_height_side_faces_from_top.insert(partial_height_side_faces_from_top.end(), front_face.begin(), front_face.end());
+   partial_height_side_faces_from_top.insert(partial_height_side_faces_from_top.end(), right_face.begin(), right_face.end());
+   partial_height_side_faces_from_top.insert(partial_height_side_faces_from_top.end(), left_face.begin(), left_face.end());
+   partial_height_side_faces_from_top.insert(partial_height_side_faces_from_top.end(), back_face.begin(), back_face.end());
 }
 
 for (int z=0; z<infer_number_of_whole_number_cubes_from_bottom(); z++)

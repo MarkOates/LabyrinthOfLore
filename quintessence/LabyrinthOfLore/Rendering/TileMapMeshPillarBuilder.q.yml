@@ -12,6 +12,10 @@ properties:
     init_with: 1.0f
     constructor_arg: true
     getter: true
+  - name: remove_left_face
+    type: bool
+    init_with: false
+    constructor_arg: false
 functions:
   - name: buildA
     type: ALLEGRO_VERTEX
@@ -147,7 +151,9 @@ functions:
 
       if (needs_partial_height_side_faces_from_top())
       {
-         partial_height_side_faces_from_top = {
+         partial_height_side_faces_from_top = {};
+
+         std::vector<ALLEGRO_VERTEX> front_face = {
             // front:
             buildE(),
             buildD(),
@@ -155,7 +161,9 @@ functions:
             buildD(),
             buildE(),
             buildF(),
+         };
 
+         std::vector<ALLEGRO_VERTEX> right_face = {
             // right: // looks correct
             buildF(),
             buildB(),
@@ -163,7 +171,9 @@ functions:
             buildB(),
             buildF(),
             buildH(),
+         };
 
+         std::vector<ALLEGRO_VERTEX> left_face = {
             // left: // looks correct
             buildG(),
             buildC(),
@@ -171,7 +181,9 @@ functions:
             buildC(),
             buildG(),
             buildE(),
+         };
 
+         std::vector<ALLEGRO_VERTEX> back_face = {
             // back:
             buildH(),
             buildA(),
@@ -179,7 +191,12 @@ functions:
             buildA(),
             buildH(),
             buildG()
-        };
+         };
+
+         partial_height_side_faces_from_top.insert(partial_height_side_faces_from_top.end(), front_face.begin(), front_face.end());
+         partial_height_side_faces_from_top.insert(partial_height_side_faces_from_top.end(), right_face.begin(), right_face.end());
+         partial_height_side_faces_from_top.insert(partial_height_side_faces_from_top.end(), left_face.begin(), left_face.end());
+         partial_height_side_faces_from_top.insert(partial_height_side_faces_from_top.end(), back_face.begin(), back_face.end());
       }
 
       for (int z=0; z<infer_number_of_whole_number_cubes_from_bottom(); z++)
