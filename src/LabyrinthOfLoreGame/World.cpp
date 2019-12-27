@@ -19,10 +19,6 @@ World::~World()
 }
 
 
-std::string World::run()
-{
-return "Hello World!";
-}
 } // namespace LabyrinthOfLoreGame
 
 

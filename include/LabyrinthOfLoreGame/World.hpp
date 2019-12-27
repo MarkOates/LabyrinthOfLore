@@ -2,7 +2,6 @@
 
 
 #include <LabyrinthOfLore/WorldMap/Map.hpp>
-#include <string>
 #include <vector>
 
 
@@ -18,7 +17,6 @@ namespace LabyrinthOfLoreGame
       ~World();
 
 
-   std::string run();
    };
 }
 
