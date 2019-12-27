@@ -124,6 +124,14 @@ TEST(LabyrinthOfLore_WorldMap_BitmapTileMapLoaderTest, pick_index_G_color__retur
    actual_color = bitmap_tile_map_loader.pick_index_gpp_color();
    EXPECT_EQ_COLOR(expected_color, actual_color);
 
+   expected_color = al_color_html("5fcde4");
+   actual_color = bitmap_tile_map_loader.pick_index_gppp_color();
+   EXPECT_EQ_COLOR(expected_color, actual_color);
+
+   expected_color = al_color_html("cbdbfc");
+   actual_color = bitmap_tile_map_loader.pick_index_g1_color();
+   EXPECT_EQ_COLOR(expected_color, actual_color);
+
    al_uninstall_system();
    SUCCEED();
 }
