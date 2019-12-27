@@ -1,0 +1,11 @@
+properties:
+  - name: events
+    type: std::vector<LabyrinthOfLore::Physics::EntityTileMapCollisionEvent>
+    init_with: "{}"
+    constructor_arg: true
+functions:
+  - name: process
+    body: return;
+dependencies:
+  - symbol: std::vector<LabyrinthOfLore::Physics::EntityTileMapCollisionEvent>
+    headers: [ vector, LabyrinthOfLore/Physics/EntityTileMapCollisionEvent.hpp ]
