@@ -274,6 +274,8 @@ int main(int argc, char **argv)
             if (this_event.keyboard.keycode == ALLEGRO_KEY_W) player_movement_magnitude = 0.022;
             if (this_event.keyboard.keycode == ALLEGRO_KEY_D) player_turning = max_player_turning_speed;
             if (this_event.keyboard.keycode == ALLEGRO_KEY_S) player_movement_magnitude = -0.022;
+
+            if (this_event.keyboard.keycode == ALLEGRO_KEY_T) depth_darken_shader.toggle_torch();
             break;
          case ALLEGRO_EVENT_KEY_UP:
             if (this_event.keyboard.keycode == ALLEGRO_KEY_A) player_turning = 0.0;
