@@ -117,9 +117,11 @@ if (!source_bitmap) throw std::runtime_error("could WorldBitmap::BitmapTileMapLo
 
 int final_tile_map_width = infer_tile_map_width();
 int final_tile_map_height = infer_tile_map_height();
-//for (unsigne
 
-return {};
+LabyrinthOfLore::WorldMap::TileMap result;
+result.resize(final_tile_map_width, final_tile_map_height);
+
+return result;
 
 }
 } // namespace WorldMap

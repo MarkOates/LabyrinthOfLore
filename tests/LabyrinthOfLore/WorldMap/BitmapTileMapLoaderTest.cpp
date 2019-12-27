@@ -210,3 +210,21 @@ TEST(LabyrinthOfLore_WorldMap_BitmapTileMapLoaderTest, infer_tile_map_height__re
    SUCCEED();
 }
 
+TEST(LabyrinthOfLore_WorldMap_BitmapTileMapLoaderTest, load__returns_a_tile_map_with_the_expected_width_and_height)
+{
+   al_init();
+   al_init_image_addon();
+
+   ALLEGRO_BITMAP *source_bitmap = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/test_bitmap_tile_map_loader.png");
+   ASSERT_NE(nullptr, source_bitmap);
+
+   LabyrinthOfLore::WorldMap::BitmapTileMapLoader loader(source_bitmap);
+   LabyrinthOfLore::WorldMap::TileMap tile_map = loader.load();
+
+   EXPECT_EQ(50, tile_map.get_width());
+   EXPECT_EQ(67, tile_map.get_height());
+
+   al_uninstall_system();
+   SUCCEED();
+}
+
