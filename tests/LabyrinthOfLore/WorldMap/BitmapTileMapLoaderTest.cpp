@@ -65,7 +65,7 @@ TEST(LabyrinthOfLore_WorldMap_BitmapTileMapLoaderTest, pick_color__with_a_valid_
 
    LabyrinthOfLore::WorldMap::BitmapTileMapLoader bitmap_tile_map_loader(source_bitmap);
 
-   ALLEGRO_COLOR expected_color = al_color_html("6abe30");
+   ALLEGRO_COLOR expected_color = al_color_html("45283c");
    ALLEGRO_COLOR actual_color = bitmap_tile_map_loader.pick_color(0, 0);
 
    EXPECT_EQ_COLOR(expected_color, actual_color);
