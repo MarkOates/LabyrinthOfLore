@@ -20,6 +20,7 @@ TileMapMeshPillarTexturer::TileMapMeshPillarTexturer(Tileo::TileAtlas* tile_atla
    , tile_index_for_top_texture(tile_index_for_top_texture)
    , needs_partial_height_side_faces_from_top(needs_partial_height_side_faces_from_top)
    , height(height)
+   , left_face_is_removed(false)
 {
 }
 

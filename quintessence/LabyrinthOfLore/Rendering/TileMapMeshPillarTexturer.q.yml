@@ -27,6 +27,10 @@ properties:
     type: float
     init_with: -1
     constructor_arg: true
+  - name: left_face_is_removed
+    type: bool
+    init_with: false
+    constructor_arg: false
 functions:
   - name: infer_number_of_front_right_left_back_sets_of_vertexes
     type: int

@@ -20,6 +20,7 @@ namespace LabyrinthOfLore
          int tile_index_for_top_texture;
          bool needs_partial_height_side_faces_from_top;
          float height;
+         bool left_face_is_removed;
 
       public:
          TileMapMeshPillarTexturer(Tileo::TileAtlas* tile_atlas=nullptr, std::vector<ALLEGRO_VERTEX> pillar_vertexes={}, int tile_index_for_front_and_back_texture=0, int tile_index_for_right_and_left_texture=0, int tile_index_for_top_texture=0, bool needs_partial_height_side_faces_from_top=false, float height=-1);
