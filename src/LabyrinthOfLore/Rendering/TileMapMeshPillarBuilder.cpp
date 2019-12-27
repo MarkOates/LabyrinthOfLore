@@ -217,7 +217,9 @@ for (int z=0; z<infer_number_of_whole_number_cubes_from_bottom(); z++)
 {
    float height_origin = z;
 
-   std::vector<ALLEGRO_VERTEX> vertexes_from_this_pass = {
+   std::vector<ALLEGRO_VERTEX> vertexes_from_this_pass = {};
+
+   std::vector<ALLEGRO_VERTEX> front_face = {
       // front:
       buildE_whole(height_origin),
       buildD_whole(height_origin),
@@ -225,7 +227,9 @@ for (int z=0; z<infer_number_of_whole_number_cubes_from_bottom(); z++)
       buildD_whole(height_origin),
       buildE_whole(height_origin),
       buildF_whole(height_origin),
+   };
 
+   std::vector<ALLEGRO_VERTEX> right_face = {
       // right: // looks correct
       buildF_whole(height_origin),
       buildB_whole(height_origin),
@@ -233,7 +237,9 @@ for (int z=0; z<infer_number_of_whole_number_cubes_from_bottom(); z++)
       buildB_whole(height_origin),
       buildF_whole(height_origin),
       buildH_whole(height_origin),
+   };
 
+   std::vector<ALLEGRO_VERTEX> left_face = {
       // left: // looks correct
       buildG_whole(height_origin),
       buildC_whole(height_origin),
@@ -241,7 +247,9 @@ for (int z=0; z<infer_number_of_whole_number_cubes_from_bottom(); z++)
       buildC_whole(height_origin),
       buildG_whole(height_origin),
       buildE_whole(height_origin),
+   };
 
+   std::vector<ALLEGRO_VERTEX> back_face = {
       // back:
       buildH_whole(height_origin),
       buildA_whole(height_origin),
@@ -250,6 +258,11 @@ for (int z=0; z<infer_number_of_whole_number_cubes_from_bottom(); z++)
       buildH_whole(height_origin),
       buildG_whole(height_origin)
    };
+
+   vertexes_from_this_pass.insert(vertexes_from_this_pass.end(), front_face.begin(), front_face.end());
+   vertexes_from_this_pass.insert(vertexes_from_this_pass.end(), right_face.begin(), right_face.end());
+   vertexes_from_this_pass.insert(vertexes_from_this_pass.end(), left_face.begin(), left_face.end());
+   vertexes_from_this_pass.insert(vertexes_from_this_pass.end(), back_face.begin(), back_face.end());
 
    whole_height_side_faces_from_bottom.insert(whole_height_side_faces_from_bottom.begin(), vertexes_from_this_pass.begin(), vertexes_from_this_pass.end());
 }
