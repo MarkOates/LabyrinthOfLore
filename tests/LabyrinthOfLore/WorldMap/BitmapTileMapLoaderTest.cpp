@@ -235,8 +235,14 @@ TEST(LabyrinthOfLore_WorldMap_BitmapTileMapLoaderTest, colors_are_equal__returns
 
    LabyrinthOfLore::WorldMap::BitmapTileMapLoader loader(nullptr);
 
+   EXPECT_EQ(true, loader.colors_are_equal(al_color_html("000000"), al_color_html("000000")));
    EXPECT_EQ(true, loader.colors_are_equal(al_color_html("ac3232"), al_color_html("ac3232")));
+   EXPECT_EQ(true, loader.colors_are_equal(al_color_html("6abe30"), al_color_html("6abe30")));
+   EXPECT_EQ(true, loader.colors_are_equal(al_color_html("ffffff"), al_color_html("ffffff")));
+
    EXPECT_EQ(false, loader.colors_are_equal(al_color_html("ac3232"), al_color_html("ac3231")));
+   EXPECT_EQ(false, loader.colors_are_equal(al_color_html("ac3232"), al_color_html("ac3132")));
+   EXPECT_EQ(false, loader.colors_are_equal(al_color_html("ac3232"), al_color_html("ab3232")));
 
    al_uninstall_system();
    SUCCEED();
