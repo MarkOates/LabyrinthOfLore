@@ -113,7 +113,7 @@ TEST_F(LabyrinthOfLoreGame_Maps_TheUnderworldTest, build_the_underworld__has_a_0
    LabyrinthOfLoreGame::Maps::TheUnderworld the_underworld(full_source_location);
    LabyrinthOfLore::WorldMap::TileMap tile_map = the_underworld.build_the_underworld();
 
-   //EXPECT_EQ(0, tile_map.get_tile(0, 0).get_type());
+   EXPECT_EQ(0, tile_map.get_tile(0, 0).get_type());
 }
 
 
