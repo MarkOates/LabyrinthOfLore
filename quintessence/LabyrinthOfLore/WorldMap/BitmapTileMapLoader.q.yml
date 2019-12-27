@@ -102,7 +102,7 @@ functions:
       float floor_height = 0.0f;
 
       for (unsigned y=0; y<final_tile_map_height; y++)
-         for (unsigned x=0; x<final_tile_map_height; x++)
+         for (unsigned x=0; x<final_tile_map_width; x++)
          {
             ALLEGRO_COLOR this_pixel_color = al_get_pixel(source_bitmap, x, y);
             if (colors_are_equal(this_pixel_color, pick_index_null_color())) result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(0, floor_height));
