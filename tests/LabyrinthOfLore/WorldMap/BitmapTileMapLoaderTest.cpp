@@ -74,3 +74,22 @@ TEST(LabyrinthOfLore_WorldMap_BitmapTileMapLoaderTest, pick_color__with_a_valid_
    SUCCEED();
 }
 
+TEST(LabyrinthOfLore_WorldMap_BitmapTileMapLoaderTest, pick_index_null_color__returns_the_expected_value)
+{
+   al_init();
+   al_init_image_addon();
+
+   ALLEGRO_BITMAP *source_bitmap = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/test_bitmap_tile_map_loader.png");
+   ASSERT_NE(nullptr, source_bitmap);
+
+   LabyrinthOfLore::WorldMap::BitmapTileMapLoader bitmap_tile_map_loader(source_bitmap);
+
+   ALLEGRO_COLOR expected_color = al_color_html("45283c");
+   ALLEGRO_COLOR actual_color = bitmap_tile_map_loader.pick_index_null_color();
+
+   EXPECT_EQ_COLOR(expected_color, actual_color);
+
+   al_uninstall_system();
+   SUCCEED();
+}
+

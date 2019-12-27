@@ -20,7 +20,10 @@ namespace LabyrinthOfLore
          ~BitmapTileMapLoader();
 
 
+      int get_index_column_x();
       ALLEGRO_COLOR pick_color(int x=0, int y=0);
+      bool validate();
+      ALLEGRO_COLOR pick_index_null_color();
       LabyrinthOfLore::WorldMap::TileMap load();
       };
    }
