@@ -58,12 +58,26 @@ functions:
         {
            vec4 tmp = texture2D(al_tex, varying_texcoord);
 
-           float depth_value = gl_FragCoord.a;
-           //float inverse_tint_intensity = 1.0 - tint_intensity;
-           tmp.r = tmp.r * depth_value;
-           tmp.g = tmp.g * depth_value;
-           tmp.b = tmp.b * depth_value;
-           //tmp.a = tmp.a;
+           bool torch_on = false;
+           if (!torch_on)
+           {
+              //float depth_value = (gl_FragCoord.a < 0.2) ? 0.0 : gl_FragCoord.a;
+              float depth_value = smoothstep(0.05, 0.3, (gl_FragCoord.a * 0.5)) * 0.2; // ? 0.0 : gl_FragCoord.a;
+              //float inverse_tint_intensity = 1.0 - tint_intensity;
+              tmp.r = tmp.r * depth_value;
+              tmp.g = tmp.g * (depth_value + 0.004);
+              tmp.b = tmp.b * (depth_value + 0.02);
+              //tmp.a = tmp.a;
+           }
+           else
+           {
+              float depth_value = gl_FragCoord.a;
+              //float inverse_tint_intensity = 1.0 - tint_intensity;
+              tmp.r = tmp.r * depth_value;
+              tmp.g = tmp.g * depth_value;
+              tmp.b = tmp.b * depth_value;
+              //tmp.a = tmp.a;
+           }
 
            gl_FragColor = tmp;
         }
