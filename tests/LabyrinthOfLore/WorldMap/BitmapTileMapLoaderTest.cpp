@@ -103,7 +103,7 @@ TEST(LabyrinthOfLore_WorldMap_BitmapTileMapLoaderTest, pick_index_I_color__retur
    SUCCEED();
 }
 
-TEST(LabyrinthOfLore_WorldMap_BitmapTileMapLoaderTest, pick_index_G_color__returns_the_expected_height_colors)
+TEST(LabyrinthOfLore_WorldMap_BitmapTileMapLoaderTest, pick_index_G_color__returns_the_expected_higher_elevation_colors)
 {
    al_init();
    al_init_image_addon();
