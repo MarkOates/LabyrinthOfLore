@@ -16,6 +16,7 @@
 #include <LabyrinthOfLore/Hud/VitalityAndManaBar.hpp>
 #include <LabyrinthOfLore/Rendering/MousePointer.hpp>
 #include <allegro5/allegro.h>
+#include <allegro5/allegro_font.h>
 
 
 namespace LabyrinthOfLore
@@ -48,6 +49,7 @@ namespace LabyrinthOfLore
             ~Renderer();
 
 
+         ALLEGRO_FONT* get_basic_lettering_font();
          void render_message_scroll();
          void render_command_panel();
          void render_vitality_and_mana_bar();

@@ -40,6 +40,7 @@
 #include <AllegroFlare/Random.hpp>
 #include <allegro_flare/placement2d.h>
 #include <AllegroFlare/Useful.hpp>
+#include <allegro5/allegro_ttf.h>
 #include <cmath>
 
 using AllegroFlare::radians_to_degrees;
@@ -58,6 +59,7 @@ int main(int argc, char **argv)
    {
       al_init();
       al_init_font_addon();
+      al_init_ttf_addon();
       al_init_image_addon();
       al_init_primitives_addon();
 
@@ -142,7 +144,7 @@ int main(int argc, char **argv)
 
       //
 
-      font_bin.operator[]("gameovercre1.ttf -12");
+      font_bin.operator[]("gameovercre1.ttf -14");
 
       //
 

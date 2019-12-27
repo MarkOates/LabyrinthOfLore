@@ -33,8 +33,8 @@ if (!message_scroll) throw std::runtime_error("Cannot draw MessageScrollRenderer
 
 place.start_transform();
 
-al_draw_filled_rounded_rectangle(0, 0, place.size.x, place.size.y, 6, 6, al_color_name("red"));
-al_draw_text(font, al_color_name("white"), 0, 0, 0, message_scroll->get_text().c_str());
+//al_draw_filled_rounded_rectangle(0, 0, place.size.x, place.size.y, 6, 6, al_color_name("red"));
+al_draw_multiline_text(font, al_color_name("gray"), 0, 0, place.size.x, al_get_font_line_height(font), 0, message_scroll->get_text().c_str());
 
 place.restore_transform();
 return;

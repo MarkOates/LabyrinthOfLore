@@ -51,9 +51,14 @@ Renderer::~Renderer()
 }
 
 
+ALLEGRO_FONT* Renderer::get_basic_lettering_font()
+{
+return font_bin->operator[]("Commodore_Rounded_v1.2.ttf -14");
+}
+
 void Renderer::render_message_scroll()
 {
-ALLEGRO_FONT *font = font_bin->operator[]("gameovercre1.ttf -12");
+ALLEGRO_FONT *font = get_basic_lettering_font();
 allegro_flare::placement3d placement{0, 0, 0};
 placement.size = AllegroFlare::vec3d(450, 80, 0);
 placement.scale = AllegroFlare::vec3d(2.0, 2.0, 2.0);
@@ -241,17 +246,17 @@ al_identity_transform(&transform);
 al_use_transform(&transform);
 
 render_message_scroll();
-render_command_panel();
-render_vitality_and_mana_bar();
-render_character_panel();
-render_map_button();
-render_rune_shelf();
-render_compass();
-render_rotate_character_panel_button();
-render_commands_hint_pane();
-render_current_spells();
-render_view_frame();
-render_title_text();
+//render_command_panel();
+//render_vitality_and_mana_bar();
+//render_character_panel();
+//render_map_button();
+//render_rune_shelf();
+//render_compass();
+//render_rotate_character_panel_button();
+//render_commands_hint_pane();
+//render_current_spells();
+//render_view_frame();
+//render_title_text();
 
 if (mouse_pointer) mouse_pointer->render();
 
