@@ -16,7 +16,6 @@ YAML_CPP_INCLUDE_DIR=$(YAML_CPP_DIR)/include
 
 QUINTESSENCE_BUILDER_EXECUTABLE=~/Repos/blast/bin/programs/quintessence_from_yaml
 QUINTESSENCE_BUILDER_FLAGS=--less_verbose
-FOCUSED_COMPONENT_NAME=LabyrinthOfLore/WorldMap/BitmapTileMapLoader
 
 
 ALLEGRO_LIBS=allegro_color allegro_font allegro_ttf allegro_dialog allegro_audio allegro_acodec allegro_primitives allegro_image allegro
@@ -69,12 +68,12 @@ main:
 	@make quintessences
 	$(call output_terminal_message,"Make all the component object files")
 	@make objects
-	#$(call output_terminal_message,"Make all the test objects")
-	#@make test_objects
-	#$(call output_terminal_message,"Make all the test executables")
-	#@make tests
-	#$(call output_terminal_message,"Run the tests for all the components")
-	#@make run_tests
+	$(call output_terminal_message,"Make all the test objects")
+	@make test_objects
+	$(call output_terminal_message,"Make all the test executables")
+	@make tests
+	$(call output_terminal_message,"Run the tests for all the components")
+	@make run_tests
 	$(call output_terminal_message,"Celebrate passing all tests")
 	@make celebrate_passing_tests
 	$(call output_terminal_message,"Build the library")
