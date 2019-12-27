@@ -170,3 +170,43 @@ TEST(LabyrinthOfLore_WorldMap_BitmapTileMapLoaderTest, pick_index_G_color__retur
    SUCCEED();
 }
 
+TEST(LabyrinthOfLore_WorldMap_BitmapTileMapLoaderTest, infer_tile_map_width__returns_the_final_width_of_the__tile_map__which_should_be_2_less_than_the_source_bitmap_width)
+{
+   al_init();
+   al_init_image_addon();
+
+   ALLEGRO_BITMAP *source_bitmap = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/test_bitmap_tile_map_loader.png");
+   ASSERT_NE(nullptr, source_bitmap);
+
+   LabyrinthOfLore::WorldMap::BitmapTileMapLoader bitmap_tile_map_loader(source_bitmap);
+
+   int source_bitmap_width = al_get_bitmap_width(source_bitmap);
+   int expected_tile_map_height = source_bitmap_width - 2;
+
+   EXPECT_EQ(52, source_bitmap_width);
+   EXPECT_EQ(expected_tile_map_height, bitmap_tile_map_loader.infer_tile_map_width());
+
+   al_uninstall_system();
+   SUCCEED();
+}
+
+TEST(LabyrinthOfLore_WorldMap_BitmapTileMapLoaderTest, infer_tile_map_height__returns_the_final_height_of_the__tile_map__which_should_be_equal_to_the_source_bitmap_height)
+{
+   al_init();
+   al_init_image_addon();
+
+   ALLEGRO_BITMAP *source_bitmap = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/test_bitmap_tile_map_loader.png");
+   ASSERT_NE(nullptr, source_bitmap);
+
+   LabyrinthOfLore::WorldMap::BitmapTileMapLoader bitmap_tile_map_loader(source_bitmap);
+
+   int source_bitmap_height = al_get_bitmap_height(source_bitmap);
+   int expected_tile_map_height = source_bitmap_height;
+
+   EXPECT_EQ(67, source_bitmap_height);
+   EXPECT_EQ(expected_tile_map_height, bitmap_tile_map_loader.infer_tile_map_height());
+
+   al_uninstall_system();
+   SUCCEED();
+}
+

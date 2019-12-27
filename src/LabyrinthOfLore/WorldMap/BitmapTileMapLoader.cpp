@@ -27,6 +27,18 @@ return al_get_bitmap_width(source_bitmap) - 1;
 
 }
 
+int BitmapTileMapLoader::infer_tile_map_width()
+{
+return al_get_bitmap_width(source_bitmap) - 2;
+
+}
+
+int BitmapTileMapLoader::infer_tile_map_height()
+{
+return al_get_bitmap_height(source_bitmap);
+
+}
+
 ALLEGRO_COLOR BitmapTileMapLoader::pick_color(int x, int y)
 {
 if (!source_bitmap) throw std::runtime_error("cannot pick_color with nullptr source_bitmap.");
@@ -102,6 +114,11 @@ return true;
 LabyrinthOfLore::WorldMap::TileMap BitmapTileMapLoader::load()
 {
 if (!source_bitmap) throw std::runtime_error("could WorldBitmap::BitmapTileMapLoader.load with a nullptr source_bitmap");
+
+int final_tile_map_width = infer_tile_map_width();
+int final_tile_map_height = infer_tile_map_height();
+//for (unsigne
+
 return {};
 
 }

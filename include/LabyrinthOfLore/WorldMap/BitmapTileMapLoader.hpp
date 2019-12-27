@@ -21,6 +21,8 @@ namespace LabyrinthOfLore
 
 
       int get_index_column_x();
+      int infer_tile_map_width();
+      int infer_tile_map_height();
       ALLEGRO_COLOR pick_color(int x=0, int y=0);
       ALLEGRO_COLOR pick_index_null_color();
       ALLEGRO_COLOR pick_index_top_color();

@@ -8,6 +8,14 @@ functions:
     type: int
     body: |
       return al_get_bitmap_width(source_bitmap) - 1;
+  - name: infer_tile_map_width
+    type: int
+    body: |
+      return al_get_bitmap_width(source_bitmap) - 2;
+  - name: infer_tile_map_height
+    type: int
+    body: |
+      return al_get_bitmap_height(source_bitmap);
   - name: pick_color
     type: ALLEGRO_COLOR
     parameters:
@@ -65,6 +73,11 @@ functions:
     type: LabyrinthOfLore::WorldMap::TileMap
     body: |
       if (!source_bitmap) throw std::runtime_error("could WorldBitmap::BitmapTileMapLoader.load with a nullptr source_bitmap");
+
+      int final_tile_map_width = infer_tile_map_width();
+      int final_tile_map_height = infer_tile_map_height();
+      //for (unsigne
+
       return {};
 dependencies:
   - symbol: ALLEGRO_BITMAP*
