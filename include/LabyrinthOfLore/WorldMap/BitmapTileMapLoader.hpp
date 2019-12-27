@@ -24,6 +24,8 @@ namespace LabyrinthOfLore
       ALLEGRO_COLOR pick_color(int x=0, int y=0);
       bool validate();
       ALLEGRO_COLOR pick_index_null_color();
+      ALLEGRO_COLOR pick_index_top_color();
+      ALLEGRO_COLOR pick_index_ground_color();
       LabyrinthOfLore::WorldMap::TileMap load();
       };
    }

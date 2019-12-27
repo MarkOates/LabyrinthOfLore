@@ -31,6 +31,12 @@ functions:
   - name: pick_index_null_color
     type: ALLEGRO_COLOR
     body: return pick_color(get_index_column_x(), 0);
+  - name: pick_index_top_color
+    type: ALLEGRO_COLOR
+    body: return pick_color(get_index_column_x(), 1);
+  - name: pick_index_ground_color
+    type: ALLEGRO_COLOR
+    body: return pick_color(get_index_column_x(), 2);
   - name: load
     type: LabyrinthOfLore::WorldMap::TileMap
     body: |
