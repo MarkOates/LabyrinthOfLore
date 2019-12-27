@@ -49,6 +49,18 @@ functions:
   - name: pick_index_g1_color
     type: ALLEGRO_COLOR
     body: return pick_color(get_index_column_x(), 8);
+  - name: pick_index_gm_color
+    type: ALLEGRO_COLOR
+    body: return pick_color(get_index_column_x(), 9);
+  - name: pick_index_gmm_color
+    type: ALLEGRO_COLOR
+    body: return pick_color(get_index_column_x(), 10);
+  - name: pick_index_gmmm_color
+    type: ALLEGRO_COLOR
+    body: return pick_color(get_index_column_x(), 11);
+  - name: pick_index_gm1_color
+    type: ALLEGRO_COLOR
+    body: return pick_color(get_index_column_x(), 12);
   - name: load
     type: LabyrinthOfLore::WorldMap::TileMap
     body: |

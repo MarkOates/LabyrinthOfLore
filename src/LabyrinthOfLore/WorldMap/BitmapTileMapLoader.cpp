@@ -79,6 +79,26 @@ ALLEGRO_COLOR BitmapTileMapLoader::pick_index_g1_color()
 return pick_color(get_index_column_x(), 8);
 }
 
+ALLEGRO_COLOR BitmapTileMapLoader::pick_index_gm_color()
+{
+return pick_color(get_index_column_x(), 9);
+}
+
+ALLEGRO_COLOR BitmapTileMapLoader::pick_index_gmm_color()
+{
+return pick_color(get_index_column_x(), 10);
+}
+
+ALLEGRO_COLOR BitmapTileMapLoader::pick_index_gmmm_color()
+{
+return pick_color(get_index_column_x(), 11);
+}
+
+ALLEGRO_COLOR BitmapTileMapLoader::pick_index_gm1_color()
+{
+return pick_color(get_index_column_x(), 12);
+}
+
 LabyrinthOfLore::WorldMap::TileMap BitmapTileMapLoader::load()
 {
 if (!source_bitmap) throw std::runtime_error("could WorldBitmap::BitmapTileMapLoader.load with a nullptr source_bitmap");
