@@ -6,6 +6,20 @@
    catch ( raised_exception_type const &err ) { EXPECT_EQ(err.what(), std::string( raised_exception_message )); } \
    catch (...) { FAIL() << "Expected " # raised_exception_type; }
 
+
+#include <allegro5/allegro.h>
+
+#define FLOATING_POINT_ERROR_MARGIN (0.00001f)
+
+static void EXPECT_EQ_COLOR(ALLEGRO_COLOR expected, ALLEGRO_COLOR actual)
+{
+   EXPECT_EQ(expected.r, actual.r);
+   EXPECT_EQ(expected.g, actual.g);
+   EXPECT_EQ(expected.b, actual.b);
+   EXPECT_EQ(expected.a, actual.a);
+}
+
+
 #include <LabyrinthOfLore/WorldMap/BitmapTileMapLoader.hpp>
 
 #include <allegro5/allegro.h>
@@ -36,6 +50,25 @@ TEST(LabyrinthOfLore_WorldMap_BitmapTileMapLoaderTest, load__with_a_valid_bitmap
 
    LabyrinthOfLore::WorldMap::BitmapTileMapLoader bitmap_tile_map_loader(source_bitmap);
    LabyrinthOfLore::WorldMap::TileMap actual_tile_map = bitmap_tile_map_loader.load();
+
+   al_uninstall_system();
+   SUCCEED();
+}
+
+TEST(LabyrinthOfLore_WorldMap_BitmapTileMapLoaderTest, pick_color__with_a_valid_bitmap__picks_the_color)
+{
+   al_init();
+   al_init_image_addon();
+
+   ALLEGRO_BITMAP *source_bitmap = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/test_bitmap_tile_map_loader.png");
+   ASSERT_NE(nullptr, source_bitmap);
+
+   LabyrinthOfLore::WorldMap::BitmapTileMapLoader bitmap_tile_map_loader(source_bitmap);
+
+   ALLEGRO_COLOR expected_color = al_color_html("6abe30");
+   ALLEGRO_COLOR actual_color = bitmap_tile_map_loader.pick_color(0, 0);
+
+   EXPECT_EQ_COLOR(expected_color, actual_color);
 
    al_uninstall_system();
    SUCCEED();

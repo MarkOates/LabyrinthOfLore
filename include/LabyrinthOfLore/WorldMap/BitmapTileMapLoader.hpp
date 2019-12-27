@@ -3,6 +3,7 @@
 
 #include <LabyrinthOfLore/WorldMap/TileMap.hpp>
 #include <allegro5/allegro.h>
+#include <allegro5/allegro_color.h>
 
 
 namespace LabyrinthOfLore
@@ -19,6 +20,7 @@ namespace LabyrinthOfLore
          ~BitmapTileMapLoader();
 
 
+      ALLEGRO_COLOR pick_color(int x=0, int y=0);
       LabyrinthOfLore::WorldMap::TileMap load();
       };
    }

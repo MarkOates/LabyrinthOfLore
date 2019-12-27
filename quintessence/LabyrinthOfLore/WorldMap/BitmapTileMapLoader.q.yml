@@ -4,6 +4,22 @@ properties:
     init_with: nullptr
     constructor_arg: true
 functions:
+  - name: pick_color
+    type: ALLEGRO_COLOR
+    parameters:
+      - name: x
+        type: int
+        default_argument: 0
+      - name: y
+        type: int
+        default_argument: 0
+    body: |
+      if (!source_bitmap) throw std::runtime_error("cannot pick_color with nullptr source_bitmap.");
+      int w = al_get_bitmap_width(source_bitmap);
+      if (w <= 1) throw std::runtime_error("cannot pick_color with source_bitmap less than 2 columns width");
+      int h = al_get_bitmap_height(source_bitmap);
+      if (y >= h) throw std::runtime_error("cannot pick_color with source_bitmap more than the columns width of the bitmap");
+      return al_get_pixel(source_bitmap, x, y);
   - name: load
     type: LabyrinthOfLore::WorldMap::TileMap
     body: |
@@ -12,5 +28,7 @@ functions:
 dependencies:
   - symbol: ALLEGRO_BITMAP*
     headers: [ allegro5/allegro.h ]
+  - symbol: ALLEGRO_COLOR
+    headers: [ allegro5/allegro_color.h ]
   - symbol: LabyrinthOfLore::WorldMap::TileMap
     headers: [ LabyrinthOfLore/WorldMap/TileMap.hpp ]
