@@ -75,9 +75,20 @@ static const std::string source = R"DELIM(
   void main()
   {
      vec4 tmp = texture2D(al_tex, varying_texcoord);
+     vec4 torch_color = vec4(0.96, 0.804, 0.2941, 1.0);
+     float noise = 1.0; //noise1(3)* 0.1 + 0.9;
 
-     bool torch_on = false;
-     if (!torch_on)
+     bool torch_on = true;
+     if (torch_on)
+     {
+        float depth_value = gl_FragCoord.a;
+        //float inverse_tint_intensity = 1.0 - tint_intensity;
+        tmp.r = tmp.r * depth_value * torch_color.r * noise;
+        tmp.g = tmp.g * depth_value * torch_color.g * noise;
+        tmp.b = tmp.b * depth_value * torch_color.b * noise;
+        //tmp.a = tmp.a;
+     }
+     else
      {
         //float depth_value = (gl_FragCoord.a < 0.2) ? 0.0 : gl_FragCoord.a;
         float depth_value = smoothstep(0.05, 0.3, (gl_FragCoord.a * 0.5)) * 0.2; // ? 0.0 : gl_FragCoord.a;
@@ -85,15 +96,6 @@ static const std::string source = R"DELIM(
         tmp.r = tmp.r * depth_value;
         tmp.g = tmp.g * (depth_value + 0.004);
         tmp.b = tmp.b * (depth_value + 0.02);
-        //tmp.a = tmp.a;
-     }
-     else
-     {
-        float depth_value = gl_FragCoord.a;
-        //float inverse_tint_intensity = 1.0 - tint_intensity;
-        tmp.r = tmp.r * depth_value;
-        tmp.g = tmp.g * depth_value;
-        tmp.b = tmp.b * depth_value;
         //tmp.a = tmp.a;
      }
 
