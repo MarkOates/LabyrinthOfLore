@@ -21,9 +21,9 @@ BitmapTileMapLoader::~BitmapTileMapLoader()
 }
 
 
-void BitmapTileMapLoader::load()
+LabyrinthOfLore::WorldMap::TileMap BitmapTileMapLoader::load()
 {
-return;
+return {};
 
 }
 } // namespace WorldMap

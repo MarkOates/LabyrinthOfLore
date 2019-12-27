@@ -1,6 +1,7 @@
 #pragma once
 
 
+#include <LabyrinthOfLore/WorldMap/TileMap.hpp>
 #include <allegro5/allegro.h>
 
 
@@ -18,7 +19,7 @@ namespace LabyrinthOfLore
          ~BitmapTileMapLoader();
 
 
-      void load();
+      LabyrinthOfLore::WorldMap::TileMap load();
       };
    }
 }

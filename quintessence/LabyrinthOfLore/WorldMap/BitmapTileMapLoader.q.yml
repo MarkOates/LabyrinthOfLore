@@ -5,9 +5,11 @@ properties:
     constructor_arg: true
 functions:
   - name: load
-    type: void
+    type: LabyrinthOfLore::WorldMap::TileMap
     body: |
-      return;
+      return {};
 dependencies:
   - symbol: ALLEGRO_BITMAP*
     headers: [ allegro5/allegro.h ]
+  - symbol: LabyrinthOfLore::WorldMap::TileMap
+    headers: [ LabyrinthOfLore/WorldMap/TileMap.hpp ]
