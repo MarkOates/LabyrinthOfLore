@@ -10,7 +10,8 @@ namespace WorldMap
 {
 
 
-BitmapTileMapLoader::BitmapTileMapLoader()
+BitmapTileMapLoader::BitmapTileMapLoader(ALLEGRO_BITMAP* source_bitmap)
+   : source_bitmap(source_bitmap)
 {
 }
 
@@ -20,9 +21,10 @@ BitmapTileMapLoader::~BitmapTileMapLoader()
 }
 
 
-std::string BitmapTileMapLoader::run()
+void BitmapTileMapLoader::load()
 {
-return "Hello World!";
+return;
+
 }
 } // namespace WorldMap
 } // namespace LabyrinthOfLore

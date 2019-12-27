@@ -1,4 +1,13 @@
+properties:
+  - name: source_bitmap
+    type: ALLEGRO_BITMAP*
+    init_with: nullptr
+    constructor_arg: true
 functions:
-  - name: run
-    type: std::string
-    body: return "Hello World!";
+  - name: load
+    type: void
+    body: |
+      return;
+dependencies:
+  - symbol: ALLEGRO_BITMAP*
+    headers: [ allegro5/allegro.h ]

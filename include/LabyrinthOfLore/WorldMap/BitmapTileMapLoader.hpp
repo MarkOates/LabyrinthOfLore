@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include <string>
+#include <allegro5/allegro.h>
 
 
 namespace LabyrinthOfLore
@@ -11,13 +11,14 @@ namespace LabyrinthOfLore
       class BitmapTileMapLoader
       {
       private:
+         ALLEGRO_BITMAP* source_bitmap;
 
       public:
-         BitmapTileMapLoader();
+         BitmapTileMapLoader(ALLEGRO_BITMAP* source_bitmap=nullptr);
          ~BitmapTileMapLoader();
 
 
-      std::string run();
+      void load();
       };
    }
 }

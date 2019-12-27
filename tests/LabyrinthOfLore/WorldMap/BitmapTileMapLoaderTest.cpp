@@ -8,9 +8,11 @@ TEST(LabyrinthOfLore_WorldMap_BitmapTileMapLoaderTest, can_be_created_without_bl
    LabyrinthOfLore::WorldMap::BitmapTileMapLoader bitmap_tile_map_loader;
 }
 
-TEST(LabyrinthOfLore_WorldMap_BitmapTileMapLoaderTest, run__returns_the_expected_response)
+TEST(LabyrinthOfLore_WorldMap_BitmapTileMapLoaderTest, load__accepts_default_arguments_without_blowing_up)
 {
-   LabyrinthOfLore::WorldMap::BitmapTileMapLoader bitmap_tile_map_loader;
-   std::string expected_string = "Hello World!";
-   EXPECT_EQ(expected_string, bitmap_tile_map_loader.run());
+   ALLEGRO_BITMAP *source_bitmap = nullptr;
+
+   LabyrinthOfLore::WorldMap::BitmapTileMapLoader bitmap_tile_map_loader(source_bitmap);
+   bitmap_tile_map_loader.load();
+   SUCCEED();
 }
