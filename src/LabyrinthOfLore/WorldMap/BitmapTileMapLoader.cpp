@@ -21,6 +21,11 @@ BitmapTileMapLoader::~BitmapTileMapLoader()
 }
 
 
+bool BitmapTileMapLoader::colors_are_equal(ALLEGRO_COLOR c1, ALLEGRO_COLOR c2)
+{
+if (c1.r != c2.r) return false; if (c1.g != c2.g) return false; if (c1.b != c2.b) return false; if (c1.a != c2.a) return false; return true;
+}
+
 int BitmapTileMapLoader::get_index_column_x()
 {
 return al_get_bitmap_width(source_bitmap) - 1;
@@ -120,6 +125,16 @@ int final_tile_map_height = infer_tile_map_height();
 
 LabyrinthOfLore::WorldMap::TileMap result;
 result.resize(final_tile_map_width, final_tile_map_height);
+
+float map_height = 12.0f;
+
+for (unsigned y=0; y<final_tile_map_height; y++)
+   for (unsigned x=0; x<final_tile_map_height; x++)
+   {
+      ALLEGRO_COLOR this_pixel_color = al_get_pixel(source_bitmap, x, y);
+      if (colors_are_equal(this_pixel_color, pick_index_null_color())) continue;
+      if (colors_are_equal(this_pixel_color, pick_index_top_color())) result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(1, map_height));
+   }
 
 return result;
 

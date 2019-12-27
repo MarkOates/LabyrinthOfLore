@@ -20,6 +20,7 @@ namespace LabyrinthOfLore
          ~BitmapTileMapLoader();
 
 
+      bool colors_are_equal(ALLEGRO_COLOR c1={}, ALLEGRO_COLOR c2={});
       int get_index_column_x();
       int infer_tile_map_width();
       int infer_tile_map_height();
