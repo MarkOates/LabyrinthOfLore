@@ -1,0 +1,12 @@
+properties:
+  - name: maps
+    type: std::vector<LabyrinthOfLore::WorldMap::Map>
+    init_with: "{}"
+    constructor_arg: true
+functions:
+  - name: run
+    type: std::string
+    body: return "Hello World!";
+dependencies:
+  - symbol: std::vector<LabyrinthOfLore::WorldMap::Map>
+    headers: [ vector, LabyrinthOfLore/WorldMap/Map.hpp ]
