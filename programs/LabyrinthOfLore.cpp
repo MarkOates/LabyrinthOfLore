@@ -152,7 +152,7 @@ int main(int argc, char **argv)
       //
 
       LabyrinthOfLoreGame::Maps::TheUnderworld the_underworld_tile_map;
-      LabyrinthOfLore::WorldMap::Level the_underworld = LabyrinthOfLore::WorldMap::Level("The Underworld", 6.0f, the_underworld_tile_map.build_the_underworld());
+      LabyrinthOfLore::WorldMap::Level the_underworld = LabyrinthOfLore::WorldMap::Level("The Underworld", 2.0f, the_underworld_tile_map.build_the_underworld());
 
       LabyrinthOfLore::WorldMap::TileMap tile_map = the_underworld.get_tile_map();
 
@@ -176,7 +176,7 @@ int main(int argc, char **argv)
       LabyrinthOfLore::Entity::Base* camera_entity = new LabyrinthOfLore::Entity::Base;
       //camera_entity->get_placement_ref().position = AllegroFlare::vec3d(1.5, 90.5, 1.01);
 
-      float player_yaw = -0.04;
+      float player_yaw = -0.04 - 0.5;
       float player_pitch = 0.0;
       float player_turning = 0.0;
       float max_player_turning_speed = 0.0023;

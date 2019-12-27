@@ -37,7 +37,7 @@ namespace LabyrinthOfLore
       ALLEGRO_COLOR pick_index_gmmm_color();
       ALLEGRO_COLOR pick_index_gm1_color();
       bool validate();
-      LabyrinthOfLore::WorldMap::TileMap load();
+      LabyrinthOfLore::WorldMap::TileMap load(float map_height=4.0f, float ground_height=2.0f);
       };
    }
 }
