@@ -260,11 +260,11 @@ TEST(LabyrinthOfLore_WorldMap_BitmapTileMapLoaderTest, load__correctly_picks_out
    LabyrinthOfLore::WorldMap::TileMap tile_map = loader.load();
 
    EXPECT_EQ(1, tile_map.get_tile(13, 5).get_type());
-   EXPECT_EQ(12.0, tile_map.get_tile(13, 5).get_height());
+   EXPECT_EQ(4.0, tile_map.get_tile(13, 5).get_height());
    EXPECT_EQ(1, tile_map.get_tile(16, 22).get_type());
-   EXPECT_EQ(12.0, tile_map.get_tile(16, 22).get_height());
+   EXPECT_EQ(4.0, tile_map.get_tile(16, 22).get_height());
    EXPECT_EQ(1, tile_map.get_tile(7, 17).get_type());
-   EXPECT_EQ(12.0, tile_map.get_tile(7, 17).get_height());
+   EXPECT_EQ(4.0, tile_map.get_tile(7, 17).get_height());
 
    al_uninstall_system();
    SUCCEED();
@@ -281,9 +281,9 @@ LabyrinthOfLore::WorldMap::BitmapTileMapLoader loader(source_bitmap);
    LabyrinthOfLore::WorldMap::TileMap tile_map = loader.load();
 
    EXPECT_EQ(1, tile_map.get_tile(13, 14).get_type());
-   EXPECT_EQ(6.0, tile_map.get_tile(13, 14).get_height());
+   EXPECT_EQ(2.0, tile_map.get_tile(13, 14).get_height());
    EXPECT_EQ(1, tile_map.get_tile(16, 17).get_type());
-   EXPECT_EQ(6.0, tile_map.get_tile(16, 17).get_height());
+   EXPECT_EQ(2.0, tile_map.get_tile(16, 17).get_height());
 
    al_uninstall_system();
    SUCCEED();
@@ -301,13 +301,13 @@ TEST(LabyrinthOfLore_WorldMap_BitmapTileMapLoaderTest, load__correctly_picks_out
    LabyrinthOfLore::WorldMap::TileMap tile_map = loader.load();
 
    EXPECT_EQ(1, tile_map.get_tile(14, 19).get_type());
-   EXPECT_EQ(6.25, tile_map.get_tile(14, 19).get_height());
+   EXPECT_EQ(2.25, tile_map.get_tile(14, 19).get_height());
    EXPECT_EQ(1, tile_map.get_tile(15, 21).get_type());
-   EXPECT_EQ(6.5, tile_map.get_tile(15, 21).get_height());
+   EXPECT_EQ(2.5, tile_map.get_tile(15, 21).get_height());
    EXPECT_EQ(1, tile_map.get_tile(15, 24).get_type());
-   EXPECT_EQ(6.75, tile_map.get_tile(15, 24).get_height());
+   EXPECT_EQ(2.75, tile_map.get_tile(15, 24).get_height());
    EXPECT_EQ(1, tile_map.get_tile(15, 25).get_type());
-   EXPECT_EQ(7.0, tile_map.get_tile(15, 25).get_height());
+   EXPECT_EQ(3.0, tile_map.get_tile(15, 25).get_height());
 
 
    al_uninstall_system();
@@ -327,13 +327,13 @@ TEST(LabyrinthOfLore_WorldMap_BitmapTileMapLoaderTest, load__correctly_picks_out
    LabyrinthOfLore::WorldMap::TileMap tile_map = loader.load();
 
    EXPECT_EQ(1, tile_map.get_tile(9, 13).get_type());
-   EXPECT_EQ(5.75, tile_map.get_tile(9, 13).get_height());
+   EXPECT_EQ(1.75, tile_map.get_tile(9, 13).get_height());
    EXPECT_EQ(1, tile_map.get_tile(9, 10).get_type());
-   EXPECT_EQ(5.5, tile_map.get_tile(9, 10).get_height());
+   EXPECT_EQ(1.5, tile_map.get_tile(9, 10).get_height());
    EXPECT_EQ(1, tile_map.get_tile(7, 8).get_type());
-   EXPECT_EQ(5.25, tile_map.get_tile(7, 8).get_height());
+   EXPECT_EQ(1.25, tile_map.get_tile(7, 8).get_height());
    EXPECT_EQ(1, tile_map.get_tile(6, 14).get_type());
-   EXPECT_EQ(5.0, tile_map.get_tile(6, 14).get_height());
+   EXPECT_EQ(1.0, tile_map.get_tile(6, 14).get_height());
 
 
    al_uninstall_system();
