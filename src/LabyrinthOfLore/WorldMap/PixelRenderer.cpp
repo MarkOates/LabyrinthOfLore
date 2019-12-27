@@ -14,7 +14,7 @@ namespace WorldMap
 {
 
 
-PixelRenderer::PixelRenderer(LabyrinthOfLore::WorldMap::TileMap tile_map, LabyrinthOfLore::WorldMap::TileTypeDictionary tile_type_dictionary, float ground_level)
+PixelRenderer::PixelRenderer(LabyrinthOfLore::WorldMap::TileMap tile_map, LabyrinthOfLore::Rendering::TileTypeDictionary tile_type_dictionary, float ground_level)
    : tile_map(tile_map)
    , tile_type_dictionary(tile_type_dictionary)
    , ground_level(ground_level)
