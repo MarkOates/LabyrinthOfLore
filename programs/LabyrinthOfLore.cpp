@@ -51,6 +51,9 @@ using AllegroFlare::Random;
 #include <LabyrinthOfLoreGame/TileTypeDictionary.hpp>
 
 
+#define USER_EVENT_APPEND_MESSAGE_TO_MESSAGE_SCROLL ALLEGRO_GET_EVENT_TYPE('A','p','d','M')
+
+
 bool active = true;
 
 int main(int argc, char **argv)
@@ -276,6 +279,7 @@ int main(int argc, char **argv)
          case ALLEGRO_EVENT_MOUSE_AXES:
             player_mouse_x = this_event.mouse.x;
             player_mouse_y = this_event.mouse.y;
+            // observe mouse enter and mouse exit, emit game events if needed 
             break;
          case ALLEGRO_EVENT_MOUSE_BUTTON_DOWN:
             {
@@ -283,6 +287,7 @@ int main(int argc, char **argv)
                player_mouse_y = this_event.mouse.y;
                int picked_id = picking_buffer.get_id(player_mouse_x/resolution_scale, player_mouse_y/resolution_scale);
                std::cout << "Picked ID: " << picked_id << std::endl;
+               // observe clicked item, emit game events if needed 
                break;
             }
          case ALLEGRO_EVENT_KEY_DOWN:
@@ -293,6 +298,8 @@ int main(int argc, char **argv)
             if (this_event.keyboard.keycode == ALLEGRO_KEY_S) player_movement_magnitude = -0.022;
 
             if (this_event.keyboard.keycode == ALLEGRO_KEY_T) depth_darken_shader.toggle_torch();
+            break;
+         case USER_EVENT_APPEND_MESSAGE_TO_MESSAGE_SCROLL:
             break;
          case ALLEGRO_EVENT_KEY_UP:
             if (this_event.keyboard.keycode == ALLEGRO_KEY_A) player_turning = 0.0;
@@ -313,6 +320,8 @@ int main(int argc, char **argv)
 
                LabyrinthOfLore::Physics::EntityTileMapCollisionStepper entity_tile_map_collision_stepper(tile_map, entities);
                entity_tile_map_collision_stepper.process_step();
+
+               // observe tile map collision events, emit game events if needed 
 
                camera.get_position_ref() = camera_entity->get_placement_ref().position + AllegroFlare::vec3d(0, 0, 0.65);//{5, 20, 2.01 + 0.5};
                camera.get_yaw_ref() = player_yaw + 0.5;// + sin(al_get_time()) * 0.02;
