@@ -16,6 +16,7 @@ namespace LabyrinthOfLoreGame
 
 
    LabyrinthOfLore::Rendering::TileTypeDictionary build_tile_type_dictionary();
+   int number_for_door_no(int door_number=0);
    };
 }
 

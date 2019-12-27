@@ -3,6 +3,10 @@ properties:
     type: LabyrinthOfLore::WorldMap::TileMap
     init_with: "{}"
     constructor_arg: true
+  - name: tile_type_dictionary
+    type: LabyrinthOfLore::WorldMap::TileTypeDictionary
+    init_with: "{}"
+    constructor_arg: true
   - name: ground_level
     type: float
     init_with: 1.0
@@ -63,6 +67,8 @@ dependencies:
     headers: [ LabyrinthOfLore/WorldMap/TileMap.hpp ]
   - symbol: LabyrinthOfLore::WorldMap::Tile
     headers: [ LabyrinthOfLore/WorldMap/Tile.hpp ]
+  - symbol: LabyrinthOfLore::WorldMap::TileTypeDictionary
+    headers: [ LabyrinthOfLore/WorldMap/TileTypeDictionary.hpp ]
   - symbol: al_draw_filled_rectangle
     headers: [ allegro5/allegro_primitives.h ]
   - symbol: al_color_name

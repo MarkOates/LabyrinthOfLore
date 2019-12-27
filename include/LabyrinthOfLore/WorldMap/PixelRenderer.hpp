@@ -2,6 +2,7 @@
 
 
 #include <LabyrinthOfLore/WorldMap/TileMap.hpp>
+#include <LabyrinthOfLore/WorldMap/TileTypeDictionary.hpp>
 #include <allegro5/allegro.h>
 
 
@@ -13,10 +14,11 @@ namespace LabyrinthOfLore
       {
       private:
          LabyrinthOfLore::WorldMap::TileMap tile_map;
+         LabyrinthOfLore::WorldMap::TileTypeDictionary tile_type_dictionary;
          float ground_level;
 
       public:
-         PixelRenderer(LabyrinthOfLore::WorldMap::TileMap tile_map={}, float ground_level=1.0);
+         PixelRenderer(LabyrinthOfLore::WorldMap::TileMap tile_map={}, LabyrinthOfLore::WorldMap::TileTypeDictionary tile_type_dictionary={}, float ground_level=1.0);
          ~PixelRenderer();
 
 

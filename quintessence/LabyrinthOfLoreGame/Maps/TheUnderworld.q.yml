@@ -13,6 +13,18 @@ functions:
       float &_ = floor_level;
       float ground_level = 6.0f;
       float &g = ground_level;
+      int level_number_doors_start = 20;
+
+      int D0 = level_number_doors_start + 0;
+      int D1 = level_number_doors_start + 1;
+      int D2 = level_number_doors_start + 2;
+      int D3 = level_number_doors_start + 3;
+      int D4 = level_number_doors_start + 4;
+      int D5 = level_number_doors_start + 5;
+      int D6 = level_number_doors_start + 6;
+      int D7 = level_number_doors_start + 7;
+      int D8 = level_number_doors_start + 8;
+      int D9 = level_number_doors_start + 9;
 
       std::vector<std::vector<LabyrinthOfLore::WorldMap::Tile>> construct_tile_map_data = {
          {
