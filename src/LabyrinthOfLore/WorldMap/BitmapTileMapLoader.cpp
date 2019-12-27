@@ -1,7 +1,7 @@
 
 
 #include <LabyrinthOfLore/WorldMap/BitmapTileMapLoader.hpp>
-
+#include <sstream>
 
 
 namespace LabyrinthOfLore
@@ -149,6 +149,12 @@ for (unsigned y=0; y<final_tile_map_height; y++)
       else if (colors_are_equal(this_pixel_color, pick_index_gmm_color())) result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(1, ground_height-0.5));
       else if (colors_are_equal(this_pixel_color, pick_index_gmmm_color())) result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(1, ground_height-0.75));
       else if (colors_are_equal(this_pixel_color, pick_index_gm1_color())) result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(1, ground_height-1.0));
+      else
+      {
+         std::stringstream error_message;
+         error_message << "Unexpected color at pixel (" << x << ", " << y << ")";
+         throw std::runtime_error(error_message.str());
+      }
    }
 
 al_unlock_bitmap(source_bitmap);
