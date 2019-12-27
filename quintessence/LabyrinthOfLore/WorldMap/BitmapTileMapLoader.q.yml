@@ -99,12 +99,13 @@ functions:
 
       float map_height = 12.0f;
       float ground_height = 6.0f;
+      float floor_height = 0.0f;
 
       for (unsigned y=0; y<final_tile_map_height; y++)
          for (unsigned x=0; x<final_tile_map_height; x++)
          {
             ALLEGRO_COLOR this_pixel_color = al_get_pixel(source_bitmap, x, y);
-            if (colors_are_equal(this_pixel_color, pick_index_null_color())) continue;
+            if (colors_are_equal(this_pixel_color, pick_index_null_color())) result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(0, floor_height));
             else if (colors_are_equal(this_pixel_color, pick_index_top_color())) result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(1, map_height));
             else if (colors_are_equal(this_pixel_color, pick_index_ground_color())) result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(1, ground_height));
 
