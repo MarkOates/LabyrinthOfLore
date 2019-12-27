@@ -270,3 +270,23 @@ TEST(LabyrinthOfLore_WorldMap_BitmapTileMapLoaderTest, load__correctly_picks_out
    SUCCEED();
 }
 
+TEST(LabyrinthOfLore_WorldMap_BitmapTileMapLoaderTest, load__correctly_picks_out_ground_tiles)
+{
+   al_init();
+   al_init_image_addon();
+
+   ALLEGRO_BITMAP *source_bitmap = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/test_bitmap_tile_map_loader.png");
+   ASSERT_NE(nullptr, source_bitmap);
+
+   LabyrinthOfLore::WorldMap::BitmapTileMapLoader loader(source_bitmap);
+   LabyrinthOfLore::WorldMap::TileMap tile_map = loader.load();
+
+   EXPECT_EQ(1, tile_map.get_tile(8, 8).get_type());
+   EXPECT_EQ(6.0, tile_map.get_tile(8, 8).get_height());
+   EXPECT_EQ(1, tile_map.get_tile(16, 21).get_type());
+   EXPECT_EQ(6.0, tile_map.get_tile(16, 21).get_height());
+
+   al_uninstall_system();
+   SUCCEED();
+}
+

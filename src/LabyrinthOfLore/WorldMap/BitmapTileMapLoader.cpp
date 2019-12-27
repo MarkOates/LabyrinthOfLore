@@ -127,6 +127,7 @@ LabyrinthOfLore::WorldMap::TileMap result;
 result.resize(final_tile_map_width, final_tile_map_height);
 
 float map_height = 12.0f;
+float ground_height = 6.0f;
 
 for (unsigned y=0; y<final_tile_map_height; y++)
    for (unsigned x=0; x<final_tile_map_height; x++)
@@ -134,6 +135,7 @@ for (unsigned y=0; y<final_tile_map_height; y++)
       ALLEGRO_COLOR this_pixel_color = al_get_pixel(source_bitmap, x, y);
       if (colors_are_equal(this_pixel_color, pick_index_null_color())) continue;
       if (colors_are_equal(this_pixel_color, pick_index_top_color())) result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(1, map_height));
+      if (colors_are_equal(this_pixel_color, pick_index_ground_color())) result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(1, ground_height));
    }
 
 return result;
