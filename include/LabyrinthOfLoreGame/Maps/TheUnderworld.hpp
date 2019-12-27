@@ -1,9 +1,8 @@
 #pragma once
 
 
-#include <LabyrinthOfLore/WorldMap/Tile.hpp>
 #include <LabyrinthOfLore/WorldMap/TileMap.hpp>
-#include <vector>
+#include <string>
 
 
 namespace LabyrinthOfLoreGame
@@ -13,14 +12,15 @@ namespace LabyrinthOfLoreGame
       class TheUnderworld
       {
       private:
+         std::string bitmap_source_filename;
 
       public:
-         TheUnderworld();
+         TheUnderworld(std::string bitmap_source_filename="data/bitmaps/the_underworld.png");
          ~TheUnderworld();
 
 
+         std::string get_bitmap_source_filename();
       LabyrinthOfLore::WorldMap::TileMap build_the_underworld();
-      std::vector<std::vector<LabyrinthOfLore::WorldMap::Tile>> build_the_underworld_data();
       };
    }
 }

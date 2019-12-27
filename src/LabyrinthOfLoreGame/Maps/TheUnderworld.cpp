@@ -1,7 +1,10 @@
 
 
 #include <LabyrinthOfLoreGame/Maps/TheUnderworld.hpp>
-#include <LabyrinthOfLore/WorldMap/TileMapLoader.hpp>
+#include <sstream>
+#include <LabyrinthOfLore/WorldMap/BitmapTileMapLoader.hpp>
+#include <allegro5/allegro.h>
+#include <allegro5/allegro_image.h>
 
 
 namespace LabyrinthOfLoreGame
@@ -10,7 +13,8 @@ namespace Maps
 {
 
 
-TheUnderworld::TheUnderworld()
+TheUnderworld::TheUnderworld(std::string bitmap_source_filename)
+   : bitmap_source_filename(bitmap_source_filename)
 {
 }
 
@@ -20,33 +24,26 @@ TheUnderworld::~TheUnderworld()
 }
 
 
-LabyrinthOfLore::WorldMap::TileMap TheUnderworld::build_the_underworld()
+std::string TheUnderworld::get_bitmap_source_filename()
 {
-return LabyrinthOfLore::WorldMap::TileMapLoader(build_the_underworld_data()).build_tile_map();
+   return bitmap_source_filename;
 }
 
-std::vector<std::vector<LabyrinthOfLore::WorldMap::Tile>> TheUnderworld::build_the_underworld_data()
+
+LabyrinthOfLore::WorldMap::TileMap TheUnderworld::build_the_underworld()
 {
-float topmost_wall_height = 2.0;
-float &t = topmost_wall_height;
-float floor_level = 0.0f;
-float &_ = floor_level;
-float ground_level = 6.0f;
-float &g = ground_level;
-int level_number_doors_start = 20;
-
-int D0 = level_number_doors_start + 0;
-int D1 = level_number_doors_start + 1;
-int D2 = level_number_doors_start + 2;
-int D3 = level_number_doors_start + 3;
-int D4 = level_number_doors_start + 4;
-int D5 = level_number_doors_start + 5;
-int D6 = level_number_doors_start + 6;
-int D7 = level_number_doors_start + 7;
-int D8 = level_number_doors_start + 8;
-int D9 = level_number_doors_start + 9;
-
-return {};
+// could use a al_is_image_addon_installed() here
+ALLEGRO_BITMAP *bitmap_source = al_load_bitmap(bitmap_source_filename.c_str());
+if (!bitmap_source)
+{
+  std::stringstream error_message;
+  error_message << "was unable to load bitmap ";
+  error_message << "\"" << bitmap_source_filename << "\" ";
+  error_message << "when calling build_the_underworld.";
+  throw std::runtime_error(error_message.str());
+}
+LabyrinthOfLore::WorldMap::BitmapTileMapLoader loader(bitmap_source);
+return loader.load();
 
 }
 } // namespace Maps

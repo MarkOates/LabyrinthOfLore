@@ -69,35 +69,12 @@ TEST_F(LabyrinthOfLoreGame_Maps_TheUnderworldTest, can_be_created_without_blowin
 }
 
 
-TEST_F(LabyrinthOfLoreGame_Maps_TheUnderworldTest, build_the_underworld__returns_a_map_of_the_expected_width_and_height)
+TEST_F(LabyrinthOfLoreGame_Maps_TheUnderworldTest, build_the_underworld__without_a_proper_bitmap_source_filename__raises_an_exception)
 {
-   LabyrinthOfLoreGame::Maps::TheUnderworld the_underworld;
-   LabyrinthOfLore::WorldMap::TileMap tile_map = the_underworld.build_the_underworld();
+   std::string not_present_filename = "foo/bar/a_file_that_does_not_exist.php";
+   LabyrinthOfLoreGame::Maps::TheUnderworld the_underworld(not_present_filename);
 
-   EXPECT_EQ(99, tile_map.get_width());
-   EXPECT_EQ(90, tile_map.get_height());
-}
-
-
-TEST_F(LabyrinthOfLoreGame_Maps_TheUnderworldTest, build_the_underworld_data__returns_the_expected_data)
-{
-   LabyrinthOfLoreGame::Maps::TheUnderworld maps;
-   std::vector<std::vector<LabyrinthOfLore::WorldMap::Tile>> tile_map_data = maps.build_the_underworld_data();
-
-   LabyrinthOfLore::WorldMap::TileMap tile_map = LabyrinthOfLore::WorldMap::TileMapLoader(tile_map_data).build_tile_map();
-
-   // display_the_bitmap
-   LabyrinthOfLore::WorldMap::PixelRenderer pixel_renderer(tile_map);
-   ALLEGRO_BITMAP *render = pixel_renderer.create_render();
-   ALLEGRO_TRANSFORM transform;
-   al_identity_transform(&transform);
-   al_scale_transform(&transform, 16, 16);
-   al_use_transform(&transform);
-   al_draw_bitmap(render, 0, 0, 0);
-   al_flip_display();
-
-   sleep(1);
-
-   al_destroy_bitmap(render);
+   std::string expected_error_message = "was unable to load bitmap \"foo/bar/a_file_that_does_not_exist.php\" when calling build_the_underworld.";
+   ASSERT_THROW_WITH_MESSAGE(the_underworld.build_the_underworld(), std::runtime_error, expected_error_message);
 }
 
