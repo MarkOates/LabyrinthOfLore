@@ -19,6 +19,7 @@ QUINTESSENCE_BUILDER_FLAGS=--less_verbose
 #FOCUSED_COMPONENT_NAME=LabyrinthOfLore/WorldMap/BitmapTileMapLoader
 #FOCUSED_COMPONENT_NAME=LabyrinthOfLore/WorldMap/Level
 #FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Rendering/TileMapMeshPillarBuilder
+FOCUSED_COMPONENT_NAME=LabyrinthOfLoreGame/EntityTileMapCollisionEventProcessor
 
 
 ALLEGRO_LIBS=allegro_color allegro_font allegro_ttf allegro_dialog allegro_audio allegro_acodec allegro_primitives allegro_image allegro

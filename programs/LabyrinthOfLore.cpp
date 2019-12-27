@@ -49,6 +49,7 @@ using AllegroFlare::Random;
 #include <LabyrinthOfLoreGame/Maps/Construct.hpp>
 #include <LabyrinthOfLoreGame/Maps/TheUnderworld.hpp>
 #include <LabyrinthOfLoreGame/TileTypeDictionary.hpp>
+#include <LabyrinthOfLoreGame/EntityTileMapCollisionEventProcessor.hpp>
 
 
 #define USER_EVENT_APPEND_MESSAGE_TO_MESSAGE_SCROLL ALLEGRO_GET_EVENT_TYPE('A','p','d','M')
@@ -322,6 +323,8 @@ int main(int argc, char **argv)
                entity_tile_map_collision_stepper.process_step();
 
                // observe tile map collision events, emit game events if needed 
+               std::vector<LabyrinthOfLore::Physics::EntityTileMapCollisionEvent> collision_stepper_events = entity_tile_map_collision_stepper.get_events_from_last_processed_step();
+               LabyrinthOfLoreGame::EntityTileMapCollisionEventProcessor entity_tile_map_collision_event_processor(collision_stepper_events);
 
                camera.get_position_ref() = camera_entity->get_placement_ref().position + AllegroFlare::vec3d(0, 0, 0.65);//{5, 20, 2.01 + 0.5};
                camera.get_yaw_ref() = player_yaw + 0.5;// + sin(al_get_time()) * 0.02;
