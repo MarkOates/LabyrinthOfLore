@@ -186,7 +186,7 @@ int main(int argc, char **argv)
       int player_mouse_y = 0;
 
       camera_entity->get_velocity_ref().position = {0.0, 0.0, 0};
-      camera_entity->get_placement_ref().position = {40.5, 87.5, the_underworld.get_ground_height()+1.001f };
+      camera_entity->get_placement_ref().position = {40.5, 87.5, the_underworld.get_ground_height()+0.001f };
       //camera_entity->get_placement_ref().rotation = {2.5, 2.5, 0.0};
 
       //camera.get_position_ref() = camera_entity->get_placement_ref().position + AllegroFlare::vec3d(0, 0, 0.65); //{5, 20, 2.01 + 0.5};

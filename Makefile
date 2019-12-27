@@ -16,6 +16,7 @@ YAML_CPP_INCLUDE_DIR=$(YAML_CPP_DIR)/include
 
 QUINTESSENCE_BUILDER_EXECUTABLE=~/Repos/blast/bin/programs/quintessence_from_yaml
 QUINTESSENCE_BUILDER_FLAGS=--less_verbose
+#FOCUSED_COMPONENT_NAME=LabyrinthOfLore/WorldMap/BitmapTileMapLoader
 #FOCUSED_COMPONENT_NAME=LabyrinthOfLore/WorldMap/Level
 FOCUSED_COMPONENT_NAME=LabyrinthOfLoreGame/Maps/TheUnderworld
 
