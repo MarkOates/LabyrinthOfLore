@@ -89,8 +89,8 @@ TEST_F(LabyrinthOfLoreGame_Maps_TheUnderworldTest, build_the_underworld__returns
    LabyrinthOfLoreGame::Maps::TheUnderworld the_underworld(full_source_location);
    LabyrinthOfLore::WorldMap::TileMap tile_map = the_underworld.build_the_underworld();
 
-   //EXPECT_EQ(99, tile_map.get_width());
-   //EXPECT_EQ(90, tile_map.get_height());
+   EXPECT_EQ(99, tile_map.get_width());
+   EXPECT_EQ(90, tile_map.get_height());
 }
 
 
