@@ -79,6 +79,15 @@ TEST_F(LabyrinthOfLoreGame_Maps_TheUnderworldTest, build_the_underworld__without
 }
 
 
+TEST_F(LabyrinthOfLoreGame_Maps_TheUnderworldTest, get_bitmap_source_filename__returns_the_expected_default_filename)
+{
+   LabyrinthOfLoreGame::Maps::TheUnderworld the_underworld;
+
+   std::string expected_production_bitmap_location = "data/bitmaps/the_underworld.png";
+   EXPECT_EQ(expected_production_bitmap_location, the_underworld.get_bitmap_source_filename());
+}
+
+
 TEST_F(LabyrinthOfLoreGame_Maps_TheUnderworldTest, build_the_underworld__returns_a_map_of_the_expected_width_and_height)
 {
    std::string real_source_location = "/Users/markoates/Repos/LabyrinthOfLore/bin/programs/";
@@ -91,6 +100,20 @@ TEST_F(LabyrinthOfLoreGame_Maps_TheUnderworldTest, build_the_underworld__returns
 
    EXPECT_EQ(99, tile_map.get_width());
    EXPECT_EQ(90, tile_map.get_height());
+}
+
+
+TEST_F(LabyrinthOfLoreGame_Maps_TheUnderworldTest, build_the_underworld__has_a_0_tile_in_the_top_left)
+{
+   std::string real_source_location = "/Users/markoates/Repos/LabyrinthOfLore/bin/programs/";
+   std::string bitmap_source_filename = "data/bitmaps/the_underworld.png";
+
+   std::string full_source_location = real_source_location + bitmap_source_filename;
+
+   LabyrinthOfLoreGame::Maps::TheUnderworld the_underworld(full_source_location);
+   LabyrinthOfLore::WorldMap::TileMap tile_map = the_underworld.build_the_underworld();
+
+   //EXPECT_EQ(0, tile_map.get_tile(0, 0).get_type());
 }
 
 
