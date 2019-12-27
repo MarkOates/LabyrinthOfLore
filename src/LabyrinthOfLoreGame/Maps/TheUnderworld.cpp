@@ -43,7 +43,7 @@ if (!bitmap_source)
   throw std::runtime_error(error_message.str());
 }
 LabyrinthOfLore::WorldMap::BitmapTileMapLoader loader(bitmap_source);
-return loader.load();
+return loader.load(2.0, 1.0);
 
 }
 } // namespace Maps
