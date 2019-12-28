@@ -286,6 +286,11 @@ int main(int argc, char **argv)
 
       //
 
+
+      Game game;
+      game.initialize();
+
+
       while(!shutdown_program)
       {
          ALLEGRO_EVENT this_event, next_event;
@@ -328,6 +333,7 @@ int main(int argc, char **argv)
             if (this_event.keyboard.keycode == ALLEGRO_KEY_S) player_movement_magnitude = 0.0;
             break;
          case ALLEGRO_EVENT_TIMER:
+            game.run_timer_step();
             {
                player_yaw += player_turning;
 
