@@ -55,6 +55,11 @@ for (int y=0; y<tile_map.get_height(); y++)
       }
       else
       {
+         bool do_not_include_front_face = false;
+         bool do_not_include_right_face = false;
+         bool do_not_include_left_face = false;
+         bool do_not_include_back_face = false;
+
          std::vector<ALLEGRO_VERTEX> pillar = {};
          LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder builder(x, y, tile.get_height());
          pillar = builder.build_pillar();
