@@ -1,11 +1,11 @@
 properties:
   - name: collisions_at_start
-    type: std::vector<std::tuple<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>>
+    type: std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>>
     init_with: "{}"
     constructor_arg: false
     getter: true
   - name: collisions_at_end
-    type: std::vector<std::tuple<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>>
+    type: std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>>
     init_with: "{}"
     constructor_arg: false
     getter: true
@@ -18,9 +18,9 @@ functions:
     - name: zones
       type: std::vector<LabyrinthOfLore::WorldMap::Zone*>
       default_argument: "{}"
-    type: std::vector<std::tuple<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>>
+    type: std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>>
     body: |
-      std::vector<std::tuple<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>> result;
+      std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>> result;
 
       for (auto &entity : entities)
       {
@@ -66,5 +66,3 @@ dependencies:
     headers: [ vector, LabyrinthOfLore/WorldMap/Zone.hpp ]
   - symbol: std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>>
     headers: [ vector, utility, LabyrinthOfLore/Entity/Base.hpp, LabyrinthOfLore/WorldMap/Zone.hpp ]
-  - symbol: std::vector<std::tuple<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>>
-    headers: [ vector, tuple, LabyrinthOfLore/Entity/Base.hpp, LabyrinthOfLore/WorldMap/Zone.hpp ]
