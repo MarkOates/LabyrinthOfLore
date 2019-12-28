@@ -189,6 +189,13 @@ int main(int argc, char **argv)
 
       std::map<std::string, LabyrinthOfLore::WorldMap::Level> levels = {
          { THE_UNDERWORLD_IDENTIFIER, LabyrinthOfLore::WorldMap::Level("The Underworld", 2.0f, LabyrinthOfLoreGame::Maps::TheUnderworld().build_the_underworld()) },
+         { THE_UNDERWORLD_IDENTIFIER, LabyrinthOfLore::WorldMap::Level("The Cave", 2.0f, LabyrinthOfLoreGame::Maps::TheUnderworld().build_the_underworld()) },
+         { THE_UNDERWORLD_IDENTIFIER, LabyrinthOfLore::WorldMap::Level("An Abandoned Temple", 2.0f, LabyrinthOfLoreGame::Maps::TheUnderworld().build_the_underworld()) },
+         { THE_UNDERWORLD_IDENTIFIER, LabyrinthOfLore::WorldMap::Level("Dungeon of the Cursed", 2.0f, LabyrinthOfLoreGame::Maps::TheUnderworld().build_the_underworld()) },
+         { THE_UNDERWORLD_IDENTIFIER, LabyrinthOfLore::WorldMap::Level("Temple of Water", 2.0f, LabyrinthOfLoreGame::Maps::TheUnderworld().build_the_underworld()) },
+         { THE_UNDERWORLD_IDENTIFIER, LabyrinthOfLore::WorldMap::Level("World of Fire", 2.0f, LabyrinthOfLoreGame::Maps::TheUnderworld().build_the_underworld()) },
+         { THE_UNDERWORLD_IDENTIFIER, LabyrinthOfLore::WorldMap::Level("Final Temple", 2.0f, LabyrinthOfLoreGame::Maps::TheUnderworld().build_the_underworld()) },
+         { THE_UNDERWORLD_IDENTIFIER, LabyrinthOfLore::WorldMap::Level("Village of the Forgotten", 2.0f, LabyrinthOfLoreGame::Maps::TheUnderworld().build_the_underworld()) },
       };
 
       LabyrinthOfLore::WorldMap::TileMap tile_map = levels[THE_UNDERWORLD_IDENTIFIER].get_tile_map();
