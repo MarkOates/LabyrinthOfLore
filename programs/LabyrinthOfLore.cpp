@@ -55,6 +55,9 @@ using AllegroFlare::Random;
 #define USER_EVENT_APPEND_MESSAGE_TO_MESSAGE_SCROLL ALLEGRO_GET_EVENT_TYPE('A','p','d','M')
 
 
+static const std::string THE_UNDERWORLD_IDENTIFIER = "the_underworld";
+
+
 class Game
 {
 public:
@@ -185,11 +188,10 @@ int main(int argc, char **argv)
       //
 
       std::map<std::string, LabyrinthOfLore::WorldMap::Level> levels = {
-         { "the_underworld", LabyrinthOfLore::WorldMap::Level("The Underworld", 2.0f, LabyrinthOfLoreGame::Maps::TheUnderworld().build_the_underworld()) },
+         { THE_UNDERWORLD_IDENTIFIER, LabyrinthOfLore::WorldMap::Level("The Underworld", 2.0f, LabyrinthOfLoreGame::Maps::TheUnderworld().build_the_underworld()) },
       };
 
-
-      LabyrinthOfLore::WorldMap::TileMap tile_map = levels["the_underworld"].get_tile_map();
+      LabyrinthOfLore::WorldMap::TileMap tile_map = levels[THE_UNDERWORLD_IDENTIFIER].get_tile_map();
 
       //
 
@@ -221,7 +223,7 @@ int main(int argc, char **argv)
       int player_mouse_y = 0;
 
       camera_entity->get_velocity_ref().position = {0.0, 0.0, 0};
-      camera_entity->get_placement_ref().position = {40.5, 87.5, levels[0].get_ground_height()+0.001f };
+      camera_entity->get_placement_ref().position = {40.5, 87.5, levels[THE_UNDERWORLD_IDENTIFIER].get_ground_height()+0.001f };
       //camera_entity->get_placement_ref().rotation = {2.5, 2.5, 0.0};
 
       //camera.get_position_ref() = camera_entity->get_placement_ref().position + AllegroFlare::vec3d(0, 0, 0.65); //{5, 20, 2.01 + 0.5};
