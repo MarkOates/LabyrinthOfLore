@@ -1,4 +1,18 @@
+properties:
+  - name: entities
+    type: std::vector<LabyrinthOfLore::Entity::Base*>
+    init_with: "{}"
+    constructor_arg: true
+  - name: zones
+    type: std::vector<LabyrinthOfLore::WorldMap::Zone*>
+    init_with: "{}"
+    constructor_arg: true
 functions:
   - name: run
     type: std::string
     body: return "Hello World!";
+dependencies:
+  - symbol: std::vector<LabyrinthOfLore::Entity::Base*>
+    headers: [ vector, LabyrinthOfLore/Entity/Base.hpp ]
+  - symbol: std::vector<LabyrinthOfLore::WorldMap::Zone*>
+    headers: [ vector, LabyrinthOfLore/WorldMap/Zone.hpp ]

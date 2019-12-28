@@ -10,7 +10,9 @@ namespace Physics
 {
 
 
-EntityZoneCollisionObserver::EntityZoneCollisionObserver()
+EntityZoneCollisionObserver::EntityZoneCollisionObserver(std::vector<LabyrinthOfLore::Entity::Base*> entities, std::vector<LabyrinthOfLore::WorldMap::Zone*> zones)
+   : entities(entities)
+   , zones(zones)
 {
 }
 
