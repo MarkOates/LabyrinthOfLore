@@ -55,6 +55,10 @@ functions:
     body: |
       collisions_at_end = get_collided(entities, zones);
       return;
+  - name: collisions_added
+    type: std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>>
+    body: |
+      return {};
 dependencies:
   - symbol: std::vector<LabyrinthOfLore::Entity::Base*>
     headers: [ vector, LabyrinthOfLore/Entity/Base.hpp ]

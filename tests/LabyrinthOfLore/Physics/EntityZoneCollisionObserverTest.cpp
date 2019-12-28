@@ -3,6 +3,8 @@
 
 #include <LabyrinthOfLore/Physics/EntityZoneCollisionObserver.hpp>
 
+using AllegroFlare::vec3d;
+
 TEST(LabyrinthOfLore_Physics_EntityZoneCollisionObserverTest, can_be_created_without_blowing_up)
 {
    LabyrinthOfLore::Physics::EntityZoneCollisionObserver entity_zone_collision_observer;
