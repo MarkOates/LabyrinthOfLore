@@ -33,6 +33,7 @@ namespace LabyrinthOfLore
 
       void assign_texture_to_face(int this_face_start_index=0, int index_num_for_tile=0, bool needs_partial_height_side_faces_from_top=false);
       int infer_number_of_front_right_left_back_sets_of_vertexes();
+      int calculate_number_of_side_vertexes_per_layer();
       std::vector<ALLEGRO_VERTEX> build_textured_pillar(bool scale_for_unit_sized_texture=true);
       };
    }

@@ -68,10 +68,21 @@ return (pillar_vertexes.size()-6) / 24;
 
 }
 
+int TileMapMeshPillarTexturer::calculate_number_of_side_vertexes_per_layer()
+{
+int total = 30-6; // removes the top
+if (front_face_is_removed) total -= 6;
+if (right_face_is_removed) total -= 6;
+if (left_face_is_removed) total -= 6;
+if (back_face_is_removed) total -= 6;
+return total;
+
+}
+
 std::vector<ALLEGRO_VERTEX> TileMapMeshPillarTexturer::build_textured_pillar(bool scale_for_unit_sized_texture)
 {
 if (!tile_atlas) throw std::runtime_error("cannot build_textured_pillar with a nullptr tile_atlas");
-if (((pillar_vertexes.size()-6) % 24) != 0)
+if (((pillar_vertexes.size()-(6 * (!top_face_is_removed))) % (calculate_number_of_side_vertexes_per_layer())) != 0)
 {
    std::stringstream error_message;
    error_message << "cannot build_textured_pillar with pillar_vertexes that does not have the expected number of vertexes. ";
