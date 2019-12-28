@@ -37,7 +37,7 @@ float v1 = 0;
 float u2 = 0;
 float v2 = 0;
 
-tile_atlas->get_tile_uv(tile_index_for_front_and_back_texture, &u1, &v1, &u2, &v2);
+tile_atlas->get_tile_uv(tile_index, &u1, &v1, &u2, &v2);
 pillar_vertexes[this_face_start_index+0].u = u1;
 pillar_vertexes[this_face_start_index+0].v = v2;//1.0 * 128;
 pillar_vertexes[this_face_start_index+1].u = u2;//1.0 * 128;
