@@ -21,6 +21,12 @@ EntityZoneCollisionObserver::~EntityZoneCollisionObserver()
 }
 
 
+std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>> EntityZoneCollisionObserver::get_collisions_at_start()
+{
+   return collisions_at_start;
+}
+
+
 std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>> EntityZoneCollisionObserver::get_collided(std::vector<LabyrinthOfLore::Entity::Base*> entities, std::vector<LabyrinthOfLore::WorldMap::Zone*> zones)
 {
 std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>> result;
@@ -37,8 +43,9 @@ return result;
 
 }
 
-void EntityZoneCollisionObserver::observe_start(std::vector<LabyrinthOfLore::Entity::Base*> entities, std::vector<LabyrinthOfLore::WorldMap::Zone*> zones)
+void EntityZoneCollisionObserver::observe_start_state(std::vector<LabyrinthOfLore::Entity::Base*> entities, std::vector<LabyrinthOfLore::WorldMap::Zone*> zones)
 {
+collisions_at_start = get_collided(entities, zones);
 return;
 
 }
