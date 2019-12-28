@@ -184,11 +184,12 @@ int main(int argc, char **argv)
 
       //
 
-      std::vector<LabyrinthOfLore::WorldMap::Level> levels = {
-         LabyrinthOfLore::WorldMap::Level("The Underworld", 2.0f, LabyrinthOfLoreGame::Maps::TheUnderworld().build_the_underworld()),
+      std::map<std::string, LabyrinthOfLore::WorldMap::Level> levels = {
+         { "the_underworld", LabyrinthOfLore::WorldMap::Level("The Underworld", 2.0f, LabyrinthOfLoreGame::Maps::TheUnderworld().build_the_underworld()) },
       };
 
-      LabyrinthOfLore::WorldMap::TileMap tile_map = levels[0].get_tile_map();
+
+      LabyrinthOfLore::WorldMap::TileMap tile_map = levels["the_underworld"].get_tile_map();
 
       //
 
