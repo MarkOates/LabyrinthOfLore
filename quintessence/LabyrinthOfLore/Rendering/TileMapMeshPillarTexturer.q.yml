@@ -30,23 +30,23 @@ properties:
   - name: top_face_is_removed
     type: bool
     init_with: false
-    constructor_arg: false
+    constructor_arg: true
   - name: front_face_is_removed
     type: bool
     init_with: false
-    constructor_arg: false
+    constructor_arg: true
   - name: right_face_is_removed
     type: bool
     init_with: false
-    constructor_arg: false
+    constructor_arg: true
   - name: left_face_is_removed
     type: bool
     init_with: false
-    constructor_arg: false
+    constructor_arg: true
   - name: back_face_is_removed
     type: bool
     init_with: false
-    constructor_arg: false
+    constructor_arg: true
 functions:
   - name: assign_texture_to_face
     type: void

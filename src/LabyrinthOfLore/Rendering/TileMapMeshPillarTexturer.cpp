@@ -12,7 +12,7 @@ namespace Rendering
 {
 
 
-TileMapMeshPillarTexturer::TileMapMeshPillarTexturer(Tileo::TileAtlas* tile_atlas, std::vector<ALLEGRO_VERTEX> pillar_vertexes, int tile_index_for_front_and_back_texture, int tile_index_for_right_and_left_texture, int tile_index_for_top_texture, bool needs_partial_height_side_faces_from_top, float height)
+TileMapMeshPillarTexturer::TileMapMeshPillarTexturer(Tileo::TileAtlas* tile_atlas, std::vector<ALLEGRO_VERTEX> pillar_vertexes, int tile_index_for_front_and_back_texture, int tile_index_for_right_and_left_texture, int tile_index_for_top_texture, bool needs_partial_height_side_faces_from_top, float height, bool top_face_is_removed, bool front_face_is_removed, bool right_face_is_removed, bool left_face_is_removed, bool back_face_is_removed)
    : tile_atlas(tile_atlas)
    , pillar_vertexes(pillar_vertexes)
    , tile_index_for_front_and_back_texture(tile_index_for_front_and_back_texture)
@@ -20,11 +20,11 @@ TileMapMeshPillarTexturer::TileMapMeshPillarTexturer(Tileo::TileAtlas* tile_atla
    , tile_index_for_top_texture(tile_index_for_top_texture)
    , needs_partial_height_side_faces_from_top(needs_partial_height_side_faces_from_top)
    , height(height)
-   , top_face_is_removed(false)
-   , front_face_is_removed(false)
-   , right_face_is_removed(false)
-   , left_face_is_removed(false)
-   , back_face_is_removed(false)
+   , top_face_is_removed(top_face_is_removed)
+   , front_face_is_removed(front_face_is_removed)
+   , right_face_is_removed(right_face_is_removed)
+   , left_face_is_removed(left_face_is_removed)
+   , back_face_is_removed(back_face_is_removed)
 {
 }
 
