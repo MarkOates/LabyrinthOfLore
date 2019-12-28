@@ -5,6 +5,7 @@
 #include <LabyrinthOfLore/Entity/Base.hpp>
 #include <LabyrinthOfLore/WorldMap/Zone.hpp>
 #include <tuple>
+#include <utility>
 #include <vector>
 
 
@@ -28,6 +29,7 @@ namespace LabyrinthOfLore
       std::vector<std::tuple<LabyrinthOfLore::Entity::Base*, AllegroFlare::vec3d, LabyrinthOfLore::WorldMap::Zone*>> get_collided(std::vector<LabyrinthOfLore::Entity::Base*> entities={}, std::vector<LabyrinthOfLore::WorldMap::Zone*> zones={});
       void observe_start_state(std::vector<LabyrinthOfLore::Entity::Base*> entities={}, std::vector<LabyrinthOfLore::WorldMap::Zone*> zones={});
       void observe_end_state(std::vector<LabyrinthOfLore::Entity::Base*> entities={}, std::vector<LabyrinthOfLore::WorldMap::Zone*> zones={});
+      std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>> collisions_added();
       };
    }
 }
