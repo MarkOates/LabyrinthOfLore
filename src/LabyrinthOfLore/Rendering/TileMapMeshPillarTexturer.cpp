@@ -79,8 +79,6 @@ this_face_start_index += num_vertexes_in_face;
 
 if (infer_number_of_front_right_left_back_sets_of_vertexes() > 0)
 {
-   int initial_index = 0;
-
    tile_atlas->get_tile_uv(tile_index_for_front_and_back_texture, &u1, &v1, &u2, &v2);
    if (needs_partial_height_side_faces_from_top) { v1 = (v1 - v2) * fmod(height, 1.0) + v2; }
 
@@ -157,8 +155,6 @@ if (infer_number_of_front_right_left_back_sets_of_vertexes() > 0)
 
 for (int pass_num=1; pass_num<infer_number_of_front_right_left_back_sets_of_vertexes(); pass_num++)
 {
-   int initial_index = pass_num * 4;
-
    tile_atlas->get_tile_uv(tile_index_for_front_and_back_texture, &u1, &v1, &u2, &v2);
    // front face
    pillar_vertexes[this_face_start_index+0].u = u1;
