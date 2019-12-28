@@ -1,3 +1,8 @@
+FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Physics/EntityZoneCollisionObserver
+FOCUSED_TEST_FILTER=
+
+
+
 PROJECT_NAME=mylibrary
 VERSION_NUMBER=0.0.1
 LIBS_ROOT=/Users/markoates/Repos
@@ -16,9 +21,6 @@ YAML_CPP_INCLUDE_DIR=$(YAML_CPP_DIR)/include
 
 QUINTESSENCE_BUILDER_EXECUTABLE=~/Repos/blast/bin/programs/quintessence_from_yaml
 QUINTESSENCE_BUILDER_FLAGS=--less_verbose
-#FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Physics/EntityZoneCollisionObserver
-FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Physics/EntityZoneCollisionObserver
-FOCUSED_TEST_FILTER=
 
 
 ALLEGRO_LIBS=allegro_color allegro_font allegro_ttf allegro_dialog allegro_audio allegro_acodec allegro_primitives allegro_image allegro
