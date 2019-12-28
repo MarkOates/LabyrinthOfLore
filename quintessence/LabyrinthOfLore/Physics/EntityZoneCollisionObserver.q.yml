@@ -58,7 +58,20 @@ functions:
   - name: collisions_added
     type: std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>>
     body: |
-      return {};
+       typedef std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>> t;
+       t v1;
+       t v2;
+       t diff;
+
+       std::set_difference(
+         collisions_at_end.begin(), collisions_at_end.end(),
+         collisions_at_start.begin(), collisions_at_start.end(),
+         std::inserter(diff, diff.begin())
+       );
+
+       return diff; //diff;
+    body_dependency_symbols:
+      - std::set_difference
 dependencies:
   - symbol: std::vector<LabyrinthOfLore::Entity::Base*>
     headers: [ vector, LabyrinthOfLore/Entity/Base.hpp ]
@@ -66,3 +79,5 @@ dependencies:
     headers: [ vector, LabyrinthOfLore/WorldMap/Zone.hpp ]
   - symbol: std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>>
     headers: [ vector, utility, LabyrinthOfLore/Entity/Base.hpp, LabyrinthOfLore/WorldMap/Zone.hpp ]
+  - symbol: std::set_difference
+    headers: [ algorithm ]
