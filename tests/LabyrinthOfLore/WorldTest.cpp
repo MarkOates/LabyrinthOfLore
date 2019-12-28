@@ -1,10 +1,10 @@
 
 #include <gtest/gtest.h>
 
-#include <LabyrinthOfLoreGame/World.hpp>
+#include <LabyrinthOfLore/World.hpp>
 
-TEST(LabyrinthOfLoreGame_WorldTest, can_be_created_without_blowing_up)
+TEST(LabyrinthOfLore_WorldTest, can_be_created_without_blowing_up)
 {
-   LabyrinthOfLoreGame::World world;
+   LabyrinthOfLore::World world;
 }
 
