@@ -66,12 +66,6 @@ collisions_at_end = get_collided(entities, zones);
 return;
 
 }
-
-std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>> EntityZoneCollisionObserver::collisions_added()
-{
-return {};
-
-}
 } // namespace Physics
 } // namespace LabyrinthOfLore
 
