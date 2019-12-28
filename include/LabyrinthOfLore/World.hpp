@@ -10,10 +10,10 @@ namespace LabyrinthOfLore
    class World
    {
    private:
-      std::vector<LabyrinthOfLore::WorldMap::Level> maps;
+      std::vector<LabyrinthOfLore::WorldMap::Level> levels;
 
    public:
-      World(std::vector<LabyrinthOfLore::WorldMap::Level> maps={});
+      World(std::vector<LabyrinthOfLore::WorldMap::Level> levels={});
       ~World();
 
 

@@ -1,5 +1,5 @@
 properties:
-  - name: maps
+  - name: levels
     type: std::vector<LabyrinthOfLore::WorldMap::Level>
     init_with: "{}"
     constructor_arg: true
