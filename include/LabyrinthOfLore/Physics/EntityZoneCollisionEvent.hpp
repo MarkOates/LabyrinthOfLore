@@ -17,7 +17,7 @@ namespace LabyrinthOfLore
          LabyrinthOfLore::Physics::zone_collision_event_t event_type;
 
       public:
-         EntityZoneCollisionEvent(int zone_id=0, LabyrinthOfLore::Entity::Base* entity=nullptr, LabyrinthOfLore::Physics::zone_collision_event_t event_type=LabyrinthOfLore::Physics::COLLISION_EVENT_NONE);
+         EntityZoneCollisionEvent(int zone_id=-1, LabyrinthOfLore::Entity::Base* entity=nullptr, LabyrinthOfLore::Physics::zone_collision_event_t event_type=LabyrinthOfLore::Physics::COLLISION_EVENT_NONE);
          ~EntityZoneCollisionEvent();
 
 
