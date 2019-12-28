@@ -66,10 +66,7 @@ return;
 
 std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>> EntityZoneCollisionObserver::collisions_added()
 {
-typedef std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>> t;
-t v1;
-t v2;
-t diff;
+std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>> diff;
 
 std::set_difference(
   collisions_at_end.begin(), collisions_at_end.end(),
@@ -77,7 +74,7 @@ std::set_difference(
   std::inserter(diff, diff.begin())
 );
 
-return diff; //diff;
+return diff;
 
 }
 } // namespace Physics
