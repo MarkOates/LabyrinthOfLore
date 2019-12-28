@@ -26,6 +26,42 @@ Zone::~Zone()
 }
 
 
+float Zone::get_x1()
+{
+   return x1;
+}
+
+
+float Zone::get_y1()
+{
+   return y1;
+}
+
+
+float Zone::get_z1()
+{
+   return z1;
+}
+
+
+float Zone::get_x2()
+{
+   return x2;
+}
+
+
+float Zone::get_y2()
+{
+   return y2;
+}
+
+
+float Zone::get_z2()
+{
+   return z2;
+}
+
+
 bool Zone::collides(AllegroFlare::vec3d point)
 {
 return true;

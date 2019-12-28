@@ -23,6 +23,12 @@ namespace LabyrinthOfLore
          ~Zone();
 
 
+         float get_x1();
+         float get_y1();
+         float get_z1();
+         float get_x2();
+         float get_y2();
+         float get_z2();
       bool collides(AllegroFlare::vec3d point={});
       };
    }
