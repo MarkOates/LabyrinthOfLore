@@ -29,7 +29,7 @@ TEST(LabyrinthOfLore_Physics_EntityZoneCollisionObserverTest, get_collided__retu
    LabyrinthOfLore::Physics::EntityZoneCollisionObserver entity_zone_collision_observer;
 
    std::vector<std::tuple<LabyrinthOfLore::Entity::Base*, vec3d, LabyrinthOfLore::WorldMap::Zone*>> expected_collided = {
-      { entities[0], {}, zones[0] },
+      { entities[0], { 0.5, 0.5, 0.5 }, zones[0] },
    };
    std::vector<std::tuple<LabyrinthOfLore::Entity::Base*, vec3d, LabyrinthOfLore::WorldMap::Zone*>> actual_collided = entity_zone_collision_observer.get_collided(entities, zones);
 
@@ -72,7 +72,7 @@ TEST(LabyrinthOfLore_Physics_EntityZoneCollisionObserverTest, observe_start_stat
    entity_zone_collision_observer.observe_start_state(entities, zones);
 
    std::vector<std::tuple<LabyrinthOfLore::Entity::Base*, vec3d, LabyrinthOfLore::WorldMap::Zone*>> expected_collided = {
-      { entities[0], {}, zones[0] },
+      { entities[0], { 0.5, 0.5, 0.5 }, zones[0] },
    };
    std::vector<std::tuple<LabyrinthOfLore::Entity::Base*, vec3d, LabyrinthOfLore::WorldMap::Zone*>> actual_collided = entity_zone_collision_observer.get_collisions_at_start();
 
@@ -97,8 +97,8 @@ TEST(LabyrinthOfLore_Physics_EntityZoneCollisionObserverTest, observe_end_state_
    entity_zone_collision_observer.observe_end_state(entities, zones);
 
    std::vector<std::tuple<LabyrinthOfLore::Entity::Base*, vec3d, LabyrinthOfLore::WorldMap::Zone*>> expected_collided = {
-      { entities[0], {}, zones[0] },
-      { entities[1], {}, zones[1] },
+      { entities[0], { 1.5, 1.5, 1.5 }, zones[0] },
+      { entities[1], { 0.5, 0.5, 0.5 }, zones[1] },
    };
    std::vector<std::tuple<LabyrinthOfLore::Entity::Base*, vec3d, LabyrinthOfLore::WorldMap::Zone*>> actual_collided = entity_zone_collision_observer.get_collisions_at_end();
 

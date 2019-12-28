@@ -42,7 +42,10 @@ for (auto &entity : entities)
 {
    for (auto &zone : zones)
    {
-      if (zone->collides(entity->get_placement_ref().position)) result.push_back({ entity, {}, zone });
+      if (zone->collides(entity->get_placement_ref().position))
+      {
+         result.push_back({ entity, entity->get_placement_ref().position, zone });
+      }
    }
 }
 
