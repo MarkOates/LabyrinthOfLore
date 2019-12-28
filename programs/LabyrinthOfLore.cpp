@@ -60,10 +60,16 @@ class Game
 public:
    AllegroFlare::FontBin font_bin;
    AllegroFlare::BitmapBin bitmap_bin;
+   ALLEGRO_DISPLAY *display;
+   float resolution_scale;
+   AllegroFlare::PickingBuffer picking_buffer;
 
-   Game()
+   Game(ALLEGRO_DISPLAY *display, float resolution_scale)
       : font_bin()
       , bitmap_bin()
+      , display(display)
+      , resolution_scale(resolution_scale)
+      , picking_buffer(al_get_display_width(display)/resolution_scale, al_get_display_height(display)/resolution_scale, 32)
    {
    }
    ~Game()
@@ -74,6 +80,8 @@ public:
    {
       font_bin.set_path("data/fonts");
       bitmap_bin.set_path("data/bitmaps");
+
+      picking_buffer.initialize();
    }
    void run_timer_step()
    {
@@ -130,15 +138,12 @@ int main(int argc, char **argv)
 
 
 
-      Game game;
+      Game game(display, resolution_scale);
       game.initialize();
 
 
 
       //
-
-      AllegroFlare::PickingBuffer picking_buffer(al_get_display_width(display)/resolution_scale, al_get_display_height(display)/resolution_scale, 32);
-      picking_buffer.initialize();
 
       LabyrinthOfLore::Shader::ClampedColor clamped_color_shader;
       clamped_color_shader.initialize();
@@ -309,7 +314,7 @@ int main(int argc, char **argv)
             {
                player_mouse_x = this_event.mouse.x;
                player_mouse_y = this_event.mouse.y;
-               int picked_id = picking_buffer.get_id(player_mouse_x/resolution_scale, player_mouse_y/resolution_scale);
+               int picked_id = game.picking_buffer.get_id(player_mouse_x/resolution_scale, player_mouse_y/resolution_scale);
                std::cout << "Picked ID: " << picked_id << std::endl;
                // observe clicked item, emit game events if needed 
                break;
@@ -368,7 +373,7 @@ int main(int argc, char **argv)
 
                al_clear_depth_buffer(1);
                al_set_render_state(ALLEGRO_DEPTH_TEST, 1);
-               LabyrinthOfLore::Rendering::PickingBufferRenderer picking_buffer_renderer(&picking_buffer, &camera, tile_map_mesh, entities, &clamped_color_shader);
+               LabyrinthOfLore::Rendering::PickingBufferRenderer picking_buffer_renderer(&game.picking_buffer, &camera, tile_map_mesh, entities, &clamped_color_shader);
                picking_buffer_renderer.render();
 
                //
