@@ -385,3 +385,46 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, while_rendering_
 }
 
 
+TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, assign_texture_to_face__can_be_called_wihtout_blowing_up)
+{
+   ALLEGRO_BITMAP *b = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/grid-texture-128.png");
+   if (!b) throw std::runtime_error("in test, cannot load test texture \"b\"");
+   Tileo::TileAtlas tile_atlas;
+   tile_atlas.load(b, 128/3, 128/3, 0);
+
+   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder builder(0, 0, 4.6);
+   std::vector<ALLEGRO_VERTEX> pillar_vertexes = builder.build_pillar();
+
+   LabyrinthOfLore::Rendering::TileMapMeshPillarTexturer pillar_texturer(
+         &tile_atlas, pillar_vertexes,
+         1, 0, 0,
+         builder.needs_partial_height_side_faces_from_top(),
+         builder.get_height()
+      );
+
+   pillar_texturer.assign_texture_to_face();
+}
+
+
+TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, assign_texture_to_face__assigning_to_a_start_index_that_is_not_a_multiple_of_6_raises_an_exception)
+{
+   ALLEGRO_BITMAP *b = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/grid-texture-128.png");
+   if (!b) throw std::runtime_error("in test, cannot load test texture \"b\"");
+   Tileo::TileAtlas tile_atlas;
+   tile_atlas.load(b, 128/3, 128/3, 0);
+
+   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder builder(0, 0, 4.6);
+   std::vector<ALLEGRO_VERTEX> pillar_vertexes = builder.build_pillar();
+
+   LabyrinthOfLore::Rendering::TileMapMeshPillarTexturer pillar_texturer(
+         &tile_atlas, pillar_vertexes,
+         1, 0, 0,
+         builder.needs_partial_height_side_faces_from_top(),
+         builder.get_height()
+      );
+
+   std::string expected_error_message = "expecting assign_texture_to_face to have a this_face_start_index that is a multiple of 6";
+   ASSERT_THROW_WITH_MESSAGE(pillar_texturer.assign_texture_to_face(7), std::runtime_error, expected_error_message);
+}
+
+

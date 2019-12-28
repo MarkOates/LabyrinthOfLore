@@ -32,6 +32,8 @@ TileMapMeshPillarTexturer::~TileMapMeshPillarTexturer()
 
 void TileMapMeshPillarTexturer::assign_texture_to_face(int this_face_start_index, int tile_index)
 {
+if (this_face_start_index % 6) throw std::runtime_error("expecting assign_texture_to_face to have a this_face_start_index that is a multiple of 6");
+
 float u1 = 0;
 float v1 = 0;
 float u2 = 0;
