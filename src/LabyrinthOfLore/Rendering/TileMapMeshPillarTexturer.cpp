@@ -30,7 +30,7 @@ TileMapMeshPillarTexturer::~TileMapMeshPillarTexturer()
 }
 
 
-void TileMapMeshPillarTexturer::assign_texture_to_face(int this_face_start_index, int index_num_for_tile)
+void TileMapMeshPillarTexturer::assign_texture_to_face(int this_face_start_index, int index_num_for_tile, bool needs_partial_height_side_faces_from_top)
 {
 if ((this_face_start_index % 6) != 0) throw std::runtime_error("expecting assign_texture_to_face to have a this_face_start_index that is a multiple of 6");
 
@@ -40,6 +40,7 @@ float u2 = 0;
 float v2 = 0;
 
 tile_atlas->get_tile_uv(index_num_for_tile, &u1, &v1, &u2, &v2);
+if (needs_partial_height_side_faces_from_top) { v1 = (v1 - v2) * fmod(height, 1.0) + v2; }
 pillar_vertexes[this_face_start_index+0].u = u1;
 pillar_vertexes[this_face_start_index+0].v = v2;//1.0 * 128;
 pillar_vertexes[this_face_start_index+1].u = u2;//1.0 * 128;
