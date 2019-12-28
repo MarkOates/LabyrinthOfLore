@@ -121,6 +121,12 @@ int main(int argc, char **argv)
 
       //
 
+
+
+      Game game;
+      game.initialize();
+
+
       AllegroFlare::FontBin font_bin;
       font_bin.set_path("data/fonts");
 
@@ -285,10 +291,6 @@ int main(int argc, char **argv)
       LabyrinthOfLore::Hud::TitleText title_text;
 
       //
-
-
-      Game game;
-      game.initialize();
 
 
       while(!shutdown_program)
