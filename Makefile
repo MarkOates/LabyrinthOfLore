@@ -17,7 +17,7 @@ YAML_CPP_INCLUDE_DIR=$(YAML_CPP_DIR)/include
 QUINTESSENCE_BUILDER_EXECUTABLE=~/Repos/blast/bin/programs/quintessence_from_yaml
 QUINTESSENCE_BUILDER_FLAGS=--less_verbose
 FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Rendering/TileMapMeshPillarBuilder
-FOCUSED_TEST_NAME=build_pillar__with_do_not_include_top_face_option__returns_the_expected_number_of_vertexes
+FOCUSED_TEST_FILTER=*
 
 
 ALLEGRO_LIBS=allegro_color allegro_font allegro_ttf allegro_dialog allegro_audio allegro_acodec allegro_primitives allegro_image allegro
@@ -92,6 +92,9 @@ main:
 
 
 focus:
+	$(call output_terminal_message,"Announce built type")
+	@echo "Focusing build on \033[48;5;27m$(FOCUSED_COMPONENT_NAME)$(TERMINAL_COLOR_RESET)"
+	@echo "testing filter in $(FOCUSED_TEST_FILTER)"
 	$(call output_terminal_message,"Compose componets from all quintessence files")
 	@make quintessences
 	$(call output_terminal_message,"Make all the component object files")
