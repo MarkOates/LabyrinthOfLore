@@ -189,6 +189,21 @@ int main(int argc, char **argv)
 
       //
 
+      ALLEGRO_BITMAP *tile_mesh_texture = al_load_bitmap("data/bitmaps/billboarding_tester_sprite.png");
+      if (!tile_mesh_texture) throw std::runtime_error("could not load tile_mesh_texture");
+
+      ALLEGRO_BITMAP *billboarding_tester_sprite = al_load_bitmap("data/bitmaps/billboarding_tester_sprite.png");
+      if (!billboarding_tester_sprite) throw std::runtime_error("could not load billboarding_tester_sprite.png");
+
+      Tileo::TileAtlas item_tile_atlas;
+      item_tile_atlas.load(game.bitmap_bin["spritesheet_4x.png"], 16*4, 16*4, 0);
+
+      Tileo::TileAtlas world_texture_tile_atlas;
+      //world_texture_tile_atlas.load(bitmap_bin["grid-texture-128.png"], 128/3, 128/3, 0);
+      world_texture_tile_atlas.load(game.bitmap_bin["world_texture_tile_atlas-02.png"], 48, 48, 0);
+
+      //
+
       std::vector<LabyrinthOfLore::Entity::Base*> entities = {};
       LabyrinthOfLore::Rendering::Camera camera({0, 0, 0}, 0.0, 0.0);
 
@@ -207,20 +222,6 @@ int main(int argc, char **argv)
 
       LabyrinthOfLore::WorldMap::TileMap tile_map = levels[THE_UNDERWORLD_IDENTIFIER].get_tile_map();
 
-      //
-
-      ALLEGRO_BITMAP *tile_mesh_texture = al_load_bitmap("data/bitmaps/billboarding_tester_sprite.png");
-      if (!tile_mesh_texture) throw std::runtime_error("could not load tile_mesh_texture");
-
-      ALLEGRO_BITMAP *billboarding_tester_sprite = al_load_bitmap("data/bitmaps/billboarding_tester_sprite.png");
-      if (!billboarding_tester_sprite) throw std::runtime_error("could not load billboarding_tester_sprite.png");
-
-      Tileo::TileAtlas item_tile_atlas;
-      item_tile_atlas.load(game.bitmap_bin["spritesheet_4x.png"], 16*4, 16*4, 0);
-
-      Tileo::TileAtlas world_texture_tile_atlas;
-      //world_texture_tile_atlas.load(bitmap_bin["grid-texture-128.png"], 128/3, 128/3, 0);
-      world_texture_tile_atlas.load(game.bitmap_bin["world_texture_tile_atlas-02.png"], 48, 48, 0);
 
       //
 
