@@ -69,6 +69,20 @@ functions:
        return diff;
     body_dependency_symbols:
       - std::set_difference
+  - name: collisions_removed
+    type: std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>>
+    body: |
+       std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>> diff;
+
+       std::set_difference(
+         collisions_at_start.begin(), collisions_at_start.end(),
+         collisions_at_end.begin(), collisions_at_end.end(),
+         std::inserter(diff, diff.begin())
+       );
+
+       return diff;
+    body_dependency_symbols:
+      - std::set_difference
 dependencies:
   - symbol: std::vector<LabyrinthOfLore::Entity::Base*>
     headers: [ vector, LabyrinthOfLore/Entity/Base.hpp ]

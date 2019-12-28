@@ -133,3 +133,28 @@ TEST(LabyrinthOfLore_Physics_EntityZoneCollisionObserverTest, collisions_added__
    for (auto &zone : zones) delete zone;
 }
 
+TEST(LabyrinthOfLore_Physics_EntityZoneCollisionObserverTest, collisions_removed__returns_the_new_collisions_that_occurred_between_the_start_and_end_state)
+{
+   std::vector<LabyrinthOfLore::Entity::Base*> entities = {
+      new LabyrinthOfLore::Entity::Base(nullptr, nullptr, { 0.5, 0.5, 0.5 }),
+   };
+   std::vector<LabyrinthOfLore::WorldMap::Zone*> zones = {
+      new LabyrinthOfLore::WorldMap::Zone(0, 0, 0, 1, 1, 1),
+   };
+
+   LabyrinthOfLore::Physics::EntityZoneCollisionObserver entity_zone_collision_observer;
+   entity_zone_collision_observer.observe_start_state(entities, zones);
+   entities[0]->get_placement_ref().position += vec3d(1.0, 1.0, 1.0);
+   entity_zone_collision_observer.observe_end_state(entities, zones);
+
+   std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>> expected_collisions_removed = {
+      { entities[0], zones[0] },
+   };
+   std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>> actual_collisions_removed = entity_zone_collision_observer.collisions_removed();
+
+   ASSERT_EQ(expected_collisions_removed, actual_collisions_removed);
+
+   for (auto &entity : entities) delete entity;
+   for (auto &zone : zones) delete zone;
+}
+
