@@ -1,8 +1,8 @@
 properties:
   - name: levels
-    type: std::vector<LabyrinthOfLore::WorldMap::Level>
+    type: std::map<std::string, LabyrinthOfLore::WorldMap::Level>
     init_with: "{}"
     constructor_arg: true
 dependencies:
-  - symbol: std::vector<LabyrinthOfLore::WorldMap::Level>
-    headers: [ vector, LabyrinthOfLore/WorldMap/Level.hpp ]
+  - symbol: std::map<std::string, LabyrinthOfLore::WorldMap::Level>
+    headers: [ map, LabyrinthOfLore/WorldMap/Level.hpp ]

@@ -8,7 +8,7 @@ namespace LabyrinthOfLore
 {
 
 
-World::World(std::vector<LabyrinthOfLore::WorldMap::Level> levels)
+World::World(std::map<std::string, LabyrinthOfLore::WorldMap::Level> levels)
    : levels(levels)
 {
 }

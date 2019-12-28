@@ -2,7 +2,7 @@
 
 
 #include <LabyrinthOfLore/WorldMap/Level.hpp>
-#include <vector>
+#include <map>
 
 
 namespace LabyrinthOfLore
@@ -10,10 +10,10 @@ namespace LabyrinthOfLore
    class World
    {
    private:
-      std::vector<LabyrinthOfLore::WorldMap::Level> levels;
+      std::map<std::string, LabyrinthOfLore::WorldMap::Level> levels;
 
    public:
-      World(std::vector<LabyrinthOfLore::WorldMap::Level> levels={});
+      World(std::map<std::string, LabyrinthOfLore::WorldMap::Level> levels={});
       ~World();
 
 
