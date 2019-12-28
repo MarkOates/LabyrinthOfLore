@@ -466,3 +466,14 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, while_rendering_w
    SUCCEED();
 }
 
+// "remove face" tests
+
+
+TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, build_pillar__with_remove_left_face_option__returns_the_expected_number_of_vertexes)
+{
+   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder builder(0, 0, 0.2, true);
+   std::vector<ALLEGRO_VERTEX> pillar_vertexes = builder.build_pillar();
+
+   ASSERT_EQ(30-6, pillar_vertexes.size());
+}
+

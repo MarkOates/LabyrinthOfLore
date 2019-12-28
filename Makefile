@@ -18,8 +18,8 @@ QUINTESSENCE_BUILDER_EXECUTABLE=~/Repos/blast/bin/programs/quintessence_from_yam
 QUINTESSENCE_BUILDER_FLAGS=--less_verbose
 #FOCUSED_COMPONENT_NAME=LabyrinthOfLore/WorldMap/BitmapTileMapLoader
 #FOCUSED_COMPONENT_NAME=LabyrinthOfLore/WorldMap/Level
-#FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Rendering/TileMapMeshPillarBuilder
-FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Rendering/TileMapMeshPillarTexturer
+FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Rendering/TileMapMeshPillarBuilder
+#FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Rendering/TileMapMeshPillarTexturer
 #FOCUSED_COMPONENT_NAME=LabyrinthOfLoreGame/EntityTileMapCollisionEventProcessor
 
 

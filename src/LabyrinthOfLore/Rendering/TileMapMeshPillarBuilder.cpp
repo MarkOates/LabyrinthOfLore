@@ -14,11 +14,11 @@ namespace Rendering
 {
 
 
-TileMapMeshPillarBuilder::TileMapMeshPillarBuilder(int x, int y, float height)
+TileMapMeshPillarBuilder::TileMapMeshPillarBuilder(int x, int y, float height, bool remove_left_face)
    : x(x)
    , y(y)
    , height(height)
-   , remove_left_face(false)
+   , remove_left_face(remove_left_face)
 {
 }
 
@@ -209,7 +209,7 @@ if (needs_partial_height_side_faces_from_top())
 
    partial_height_side_faces_from_top.insert(partial_height_side_faces_from_top.end(), front_face.begin(), front_face.end());
    partial_height_side_faces_from_top.insert(partial_height_side_faces_from_top.end(), right_face.begin(), right_face.end());
-   partial_height_side_faces_from_top.insert(partial_height_side_faces_from_top.end(), left_face.begin(), left_face.end());
+   if (!remove_left_face) partial_height_side_faces_from_top.insert(partial_height_side_faces_from_top.end(), left_face.begin(), left_face.end());
    partial_height_side_faces_from_top.insert(partial_height_side_faces_from_top.end(), back_face.begin(), back_face.end());
 }
 
@@ -261,7 +261,7 @@ for (int z=0; z<infer_number_of_whole_number_cubes_from_bottom(); z++)
 
    vertexes_from_this_pass.insert(vertexes_from_this_pass.end(), front_face.begin(), front_face.end());
    vertexes_from_this_pass.insert(vertexes_from_this_pass.end(), right_face.begin(), right_face.end());
-   vertexes_from_this_pass.insert(vertexes_from_this_pass.end(), left_face.begin(), left_face.end());
+   if (!remove_left_face) vertexes_from_this_pass.insert(vertexes_from_this_pass.end(), left_face.begin(), left_face.end());
    vertexes_from_this_pass.insert(vertexes_from_this_pass.end(), back_face.begin(), back_face.end());
 
    whole_height_side_faces_from_bottom.insert(whole_height_side_faces_from_bottom.begin(), vertexes_from_this_pass.begin(), vertexes_from_this_pass.end());

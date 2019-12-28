@@ -15,7 +15,7 @@ properties:
   - name: remove_left_face
     type: bool
     init_with: false
-    constructor_arg: false
+    constructor_arg: true
 functions:
   - name: buildA
     type: ALLEGRO_VERTEX
@@ -195,7 +195,7 @@ functions:
 
          partial_height_side_faces_from_top.insert(partial_height_side_faces_from_top.end(), front_face.begin(), front_face.end());
          partial_height_side_faces_from_top.insert(partial_height_side_faces_from_top.end(), right_face.begin(), right_face.end());
-         partial_height_side_faces_from_top.insert(partial_height_side_faces_from_top.end(), left_face.begin(), left_face.end());
+         if (!remove_left_face) partial_height_side_faces_from_top.insert(partial_height_side_faces_from_top.end(), left_face.begin(), left_face.end());
          partial_height_side_faces_from_top.insert(partial_height_side_faces_from_top.end(), back_face.begin(), back_face.end());
       }
 
@@ -247,7 +247,7 @@ functions:
 
          vertexes_from_this_pass.insert(vertexes_from_this_pass.end(), front_face.begin(), front_face.end());
          vertexes_from_this_pass.insert(vertexes_from_this_pass.end(), right_face.begin(), right_face.end());
-         vertexes_from_this_pass.insert(vertexes_from_this_pass.end(), left_face.begin(), left_face.end());
+         if (!remove_left_face) vertexes_from_this_pass.insert(vertexes_from_this_pass.end(), left_face.begin(), left_face.end());
          vertexes_from_this_pass.insert(vertexes_from_this_pass.end(), back_face.begin(), back_face.end());
 
          whole_height_side_faces_from_bottom.insert(whole_height_side_faces_from_bottom.begin(), vertexes_from_this_pass.begin(), vertexes_from_this_pass.end());

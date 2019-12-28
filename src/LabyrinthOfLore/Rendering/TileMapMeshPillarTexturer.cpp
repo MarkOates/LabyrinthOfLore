@@ -102,8 +102,11 @@ if (infer_number_of_front_right_left_back_sets_of_vertexes() > 0)
    this_face_start_index += num_vertexes_in_face;
 
    // left face
-   assign_texture_to_face(this_face_start_index, tile_index_for_right_and_left_texture, needs_partial_height_side_faces_from_top);
-   this_face_start_index += num_vertexes_in_face;
+   if (!left_face_is_removed)
+   {
+     assign_texture_to_face(this_face_start_index, tile_index_for_right_and_left_texture, needs_partial_height_side_faces_from_top);
+     this_face_start_index += num_vertexes_in_face;
+   }
 
    // back face
    assign_texture_to_face(this_face_start_index, tile_index_for_front_and_back_texture, needs_partial_height_side_faces_from_top);
@@ -121,8 +124,11 @@ for (int pass_num=1; pass_num<infer_number_of_front_right_left_back_sets_of_vert
    this_face_start_index += num_vertexes_in_face;
 
    // left face
-   assign_texture_to_face(this_face_start_index, tile_index_for_right_and_left_texture);
-   this_face_start_index += num_vertexes_in_face;
+   if (!left_face_is_removed)
+   {
+     assign_texture_to_face(this_face_start_index, tile_index_for_right_and_left_texture);
+     this_face_start_index += num_vertexes_in_face;
+   }
 
    // back face
    assign_texture_to_face(this_face_start_index, tile_index_for_front_and_back_texture);
