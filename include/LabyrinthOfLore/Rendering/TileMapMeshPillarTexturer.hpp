@@ -27,7 +27,7 @@ namespace LabyrinthOfLore
          ~TileMapMeshPillarTexturer();
 
 
-      void assign_texture_to_face(int this_face_start_index=0, int tile_index=0);
+      void assign_texture_to_face(int this_face_start_index=0, int index_num_for_tile=0);
       int infer_number_of_front_right_left_back_sets_of_vertexes();
       std::vector<ALLEGRO_VERTEX> build_textured_pillar(bool scale_for_unit_sized_texture=true);
       };
