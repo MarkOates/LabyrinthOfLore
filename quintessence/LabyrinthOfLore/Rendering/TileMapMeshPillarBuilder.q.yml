@@ -12,6 +12,10 @@ properties:
     init_with: 1.0f
     constructor_arg: true
     getter: true
+  - name: do_not_include_top_face
+    type: bool
+    init_with: false
+    constructor_arg: true
   - name: do_not_include_front_face
     type: bool
     init_with: false

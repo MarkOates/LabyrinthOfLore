@@ -16,13 +16,14 @@ namespace LabyrinthOfLore
          int x;
          int y;
          float height;
+         bool do_not_include_top_face;
          bool do_not_include_front_face;
          bool do_not_include_right_face;
          bool do_not_include_left_face;
          bool do_not_include_back_face;
 
       public:
-         TileMapMeshPillarBuilder(int x=0, int y=0, float height=1.0f, bool do_not_include_front_face=false, bool do_not_include_right_face=false, bool do_not_include_left_face=false, bool do_not_include_back_face=false);
+         TileMapMeshPillarBuilder(int x=0, int y=0, float height=1.0f, bool do_not_include_top_face=false, bool do_not_include_front_face=false, bool do_not_include_right_face=false, bool do_not_include_left_face=false, bool do_not_include_back_face=false);
          ~TileMapMeshPillarBuilder();
 
 

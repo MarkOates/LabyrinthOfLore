@@ -14,10 +14,11 @@ namespace Rendering
 {
 
 
-TileMapMeshPillarBuilder::TileMapMeshPillarBuilder(int x, int y, float height, bool do_not_include_front_face, bool do_not_include_right_face, bool do_not_include_left_face, bool do_not_include_back_face)
+TileMapMeshPillarBuilder::TileMapMeshPillarBuilder(int x, int y, float height, bool do_not_include_top_face, bool do_not_include_front_face, bool do_not_include_right_face, bool do_not_include_left_face, bool do_not_include_back_face)
    : x(x)
    , y(y)
    , height(height)
+   , do_not_include_top_face(do_not_include_top_face)
    , do_not_include_front_face(do_not_include_front_face)
    , do_not_include_right_face(do_not_include_right_face)
    , do_not_include_left_face(do_not_include_left_face)
