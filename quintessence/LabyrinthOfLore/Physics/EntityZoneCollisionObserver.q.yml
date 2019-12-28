@@ -7,6 +7,10 @@ properties:
     type: std::vector<LabyrinthOfLore::WorldMap::Zone*>
     init_with: "{}"
     constructor_arg: true
+  - name: collisions_at_start
+    type: std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>>
+    init_with: "{}"
+    constructor_arg: false
 functions:
   - name: get_collided
     type: std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>>
@@ -22,6 +26,17 @@ functions:
       }
 
       return result;
+  - name: observe_start
+    type: void
+    parameters:
+    - name: entities
+      type: std::vector<LabyrinthOfLore::Entity::Base*>
+      default_argument: "{}"
+    - name: zones
+      type: std::vector<LabyrinthOfLore::WorldMap::Zone*>
+      default_argument: "{}"
+    body: |
+      return;
 dependencies:
   - symbol: std::vector<LabyrinthOfLore::Entity::Base*>
     headers: [ vector, LabyrinthOfLore/Entity/Base.hpp ]

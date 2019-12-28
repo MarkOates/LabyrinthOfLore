@@ -16,6 +16,7 @@ namespace LabyrinthOfLore
       private:
          std::vector<LabyrinthOfLore::Entity::Base*> entities;
          std::vector<LabyrinthOfLore::WorldMap::Zone*> zones;
+         std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>> collisions_at_start;
 
       public:
          EntityZoneCollisionObserver(std::vector<LabyrinthOfLore::Entity::Base*> entities={}, std::vector<LabyrinthOfLore::WorldMap::Zone*> zones={});
@@ -23,6 +24,7 @@ namespace LabyrinthOfLore
 
 
       std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>> get_collided();
+      void observe_start(std::vector<LabyrinthOfLore::Entity::Base*> entities={}, std::vector<LabyrinthOfLore::WorldMap::Zone*> zones={});
       };
    }
 }

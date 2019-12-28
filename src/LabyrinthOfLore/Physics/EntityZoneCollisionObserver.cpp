@@ -13,6 +13,7 @@ namespace Physics
 EntityZoneCollisionObserver::EntityZoneCollisionObserver(std::vector<LabyrinthOfLore::Entity::Base*> entities, std::vector<LabyrinthOfLore::WorldMap::Zone*> zones)
    : entities(entities)
    , zones(zones)
+   , collisions_at_start({})
 {
 }
 
@@ -35,6 +36,12 @@ for (auto &entity : entities)
 }
 
 return result;
+
+}
+
+void EntityZoneCollisionObserver::observe_start(std::vector<LabyrinthOfLore::Entity::Base*> entities, std::vector<LabyrinthOfLore::WorldMap::Zone*> zones)
+{
+return;
 
 }
 } // namespace Physics
