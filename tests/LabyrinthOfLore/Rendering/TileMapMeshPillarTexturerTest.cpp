@@ -21,10 +21,12 @@ class LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest : public ::testing
 protected:
    ALLEGRO_DISPLAY *display;
    float near_threshold;
+   int sleep_duration;
 
    LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest()
       : display(nullptr)
       , near_threshold(0.0001f)
+      , sleep_duration(0)
    {
    }
 
@@ -125,7 +127,7 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, while_rendering_
    al_draw_prim(&pillar_vertexes[0], nullptr, b, 0, pillar_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
 
    al_flip_display();
-   //sleep(1);
+   sleep(sleep_duration);
    SUCCEED();
 }
 
@@ -153,7 +155,7 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, while_rendering_
    al_draw_prim(&pillar_vertexes[0], nullptr, b, 0, pillar_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
 
    al_flip_display();
-   //sleep(1);
+   sleep(sleep_duration);
    SUCCEED();
 }
 
@@ -181,7 +183,7 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, while_rendering_
    al_draw_prim(&pillar_vertexes[0], nullptr, b, 0, pillar_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
 
    al_flip_display();
-   //sleep(1);
+   sleep(sleep_duration);
    SUCCEED();
 }
 
@@ -209,7 +211,7 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, while_rendering_
    al_draw_prim(&pillar_vertexes[0], nullptr, b, 0, pillar_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
 
    al_flip_display();
-   //sleep(1);
+   sleep(sleep_duration);
    SUCCEED();
 }
 
@@ -238,7 +240,7 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, while_rendering_
    al_draw_prim(&pillar_vertexes[0], nullptr, b, 0, pillar_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
 
    al_flip_display();
-   //sleep(1);
+   sleep(sleep_duration);
    SUCCEED();
 }
 
@@ -275,7 +277,7 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, while_rendering_
    al_draw_prim(&pillar_vertexes[0], nullptr, b, 0, pillar_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
 
    al_flip_display();
-   //sleep(1);
+   sleep(sleep_duration);
    SUCCEED();
 }
 
@@ -310,7 +312,7 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, while_rendering_
    al_draw_prim(&pillar_vertexes[0], nullptr, b, 0, pillar_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
 
    al_flip_display();
-   //sleep(1);
+   sleep(sleep_duration);
    SUCCEED();
 }
 
@@ -345,7 +347,7 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, while_rendering_
    al_draw_prim(&pillar_vertexes[0], nullptr, b, 0, pillar_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
 
    al_flip_display();
-   //sleep(1);
+   sleep(sleep_duration);
    SUCCEED();
 }
 
@@ -380,7 +382,7 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, while_rendering_
    al_draw_prim(&pillar_vertexes[0], nullptr, b, 0, pillar_vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
 
    al_flip_display();
-   //sleep(1);
+   sleep(sleep_duration);
    SUCCEED();
 }
 
