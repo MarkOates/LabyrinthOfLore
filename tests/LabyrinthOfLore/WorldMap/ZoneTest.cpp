@@ -28,3 +28,45 @@ TEST(LabyrinthOfLore_WorldMap_ZoneTest, collides__returns_true_when_the_point_li
    EXPECT_EQ(true, zone.collides(point));
 }
 
+TEST(LabyrinthOfLore_WorldMap_ZoneTest, collides__returns_false_when_the_point_lies_outside_the_zone_to_the_right)
+{
+   LabyrinthOfLore::WorldMap::Zone zone;
+   vec3d point(0.2+1.0, 0.5, 0.7);
+   EXPECT_EQ(false, zone.collides(point));
+}
+
+TEST(LabyrinthOfLore_WorldMap_ZoneTest, collides__returns_false_when_the_point_lies_inside_the_zone_to_the_left)
+{
+   LabyrinthOfLore::WorldMap::Zone zone;
+   vec3d point(0.2-1.0, 0.5, 0.7);
+   EXPECT_EQ(false, zone.collides(point));
+}
+
+TEST(LabyrinthOfLore_WorldMap_ZoneTest, collides__returns_false_when_the_point_lies_outside_the_zone_to_the_back)
+{
+   LabyrinthOfLore::WorldMap::Zone zone;
+   vec3d point(0.2, 0.5+1.0, 0.7);
+   EXPECT_EQ(false, zone.collides(point));
+}
+
+TEST(LabyrinthOfLore_WorldMap_ZoneTest, collides__returns_false_when_the_point_lies_inside_the_zone_to_the_front)
+{
+   LabyrinthOfLore::WorldMap::Zone zone;
+   vec3d point(0.2, 0.5-1.0, 0.7);
+   EXPECT_EQ(false, zone.collides(point));
+}
+
+TEST(LabyrinthOfLore_WorldMap_ZoneTest, collides__returns_false_when_the_point_lies_outside_the_zone_below)
+{
+   LabyrinthOfLore::WorldMap::Zone zone;
+   vec3d point(0.2, 0.5, 0.7+1.0);
+   EXPECT_EQ(false, zone.collides(point));
+}
+
+TEST(LabyrinthOfLore_WorldMap_ZoneTest, collides__returns_false_when_the_point_lies_inside_the_zone_above)
+{
+   LabyrinthOfLore::WorldMap::Zone zone;
+   vec3d point(0.2, 0.5, 0.7-1.0);
+   EXPECT_EQ(false, zone.collides(point));
+}
+
