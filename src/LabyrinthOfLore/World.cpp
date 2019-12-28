@@ -1,10 +1,10 @@
 
 
-#include <LabyrinthOfLoreGame/World.hpp>
+#include <LabyrinthOfLore/World.hpp>
 
 
 
-namespace LabyrinthOfLoreGame
+namespace LabyrinthOfLore
 {
 
 
@@ -19,6 +19,6 @@ World::~World()
 }
 
 
-} // namespace LabyrinthOfLoreGame
+} // namespace LabyrinthOfLore
 
 
