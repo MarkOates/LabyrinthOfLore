@@ -1,6 +1,7 @@
 #pragma once
 
 
+#include <AllegroFlare/Vec3D.hpp>
 
 
 namespace LabyrinthOfLore
@@ -22,7 +23,7 @@ namespace LabyrinthOfLore
          ~Zone();
 
 
-      bool collides();
+      bool collides(AllegroFlare::vec3d point={});
       };
    }
 }

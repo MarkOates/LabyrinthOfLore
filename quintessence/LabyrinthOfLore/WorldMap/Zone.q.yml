@@ -20,5 +20,12 @@ properties:
 functions:
   - name: collides
     type: bool
+    parameters:
+      - name: point
+        type: AllegroFlare::vec3d
+        default_argument: "{}"
     body: |
-      return;
+      return true;
+dependencies:
+  - symbol: AllegroFlare::vec3d
+    headers: [ AllegroFlare/Vec3D.hpp ]

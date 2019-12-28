@@ -26,9 +26,9 @@ Zone::~Zone()
 }
 
 
-bool Zone::collides()
+bool Zone::collides(AllegroFlare::vec3d point)
 {
-return;
+return true;
 
 }
 } // namespace WorldMap
