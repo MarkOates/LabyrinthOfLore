@@ -11,7 +11,17 @@ functions:
   - name: get_collided
     type: std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>>
     body: |
-      return {};
+      std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>> result;
+
+      for (auto &entity : entities)
+      {
+         for (auto &zone : zones)
+         {
+            if (zone->collides(entity->get_placement_ref().position)) result.push_back({ entity, zone });
+         }
+      }
+
+      return result;
 dependencies:
   - symbol: std::vector<LabyrinthOfLore::Entity::Base*>
     headers: [ vector, LabyrinthOfLore/Entity/Base.hpp ]

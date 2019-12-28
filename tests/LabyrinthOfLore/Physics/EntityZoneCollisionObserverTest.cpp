@@ -8,9 +8,30 @@ TEST(LabyrinthOfLore_Physics_EntityZoneCollisionObserverTest, can_be_created_wit
    LabyrinthOfLore::Physics::EntityZoneCollisionObserver entity_zone_collision_observer;
 }
 
-TEST(LabyrinthOfLore_Physics_EntityZoneCollisionObserverTest, get_collided__returns_entities_and_zones_that_are_colliding)
+TEST(LabyrinthOfLore_Physics_EntityZoneCollisionObserverTest, get_collided__can_be_called_with_defaults_and_does_not_blow_up)
 {
    LabyrinthOfLore::Physics::EntityZoneCollisionObserver entity_zone_collision_observer;
    entity_zone_collision_observer.get_collided();
+   SUCCEED();
+}
+
+TEST(LabyrinthOfLore_Physics_EntityZoneCollisionObserverTest, get_collided__returns_entities_and_zones_that_are_colliding)
+{
+   std::vector<LabyrinthOfLore::Entity::Base*> entities = {
+      new LabyrinthOfLore::Entity::Base(nullptr, nullptr, { 0.5, 0.5, 0.5 })
+   };
+   std::vector<LabyrinthOfLore::WorldMap::Zone*> zones = {
+      new LabyrinthOfLore::WorldMap::Zone(0, 0, 0, 1, 1, 1)
+   };
+
+   LabyrinthOfLore::Physics::EntityZoneCollisionObserver entity_zone_collision_observer(entities, zones);
+   entity_zone_collision_observer.get_collided();
+
+   std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>> expected_collided = {
+      { entities[0], zones[0] },
+   };
+
+   for (auto &entity : entities) delete entity;
+   for (auto &zone : zones) delete zone;
 }
 

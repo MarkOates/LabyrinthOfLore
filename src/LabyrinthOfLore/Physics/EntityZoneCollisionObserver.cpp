@@ -24,7 +24,17 @@ EntityZoneCollisionObserver::~EntityZoneCollisionObserver()
 
 std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>> EntityZoneCollisionObserver::get_collided()
 {
-return {};
+std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>> result;
+
+for (auto &entity : entities)
+{
+   for (auto &zone : zones)
+   {
+      if (zone->collides(entity->get_placement_ref().position)) result.push_back({ entity, zone });
+   }
+}
+
+return result;
 
 }
 } // namespace Physics
