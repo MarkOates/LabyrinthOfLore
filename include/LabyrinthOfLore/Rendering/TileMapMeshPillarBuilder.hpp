@@ -16,10 +16,10 @@ namespace LabyrinthOfLore
          int x;
          int y;
          float height;
-         bool remove_left_face;
+         bool do_not_include_left_face;
 
       public:
-         TileMapMeshPillarBuilder(int x=0, int y=0, float height=1.0f, bool remove_left_face=false);
+         TileMapMeshPillarBuilder(int x=0, int y=0, float height=1.0f, bool do_not_include_left_face=false);
          ~TileMapMeshPillarBuilder();
 
 
