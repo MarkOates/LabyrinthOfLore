@@ -56,6 +56,13 @@ using AllegroFlare::Random;
 
 
 static const std::string THE_UNDERWORLD_IDENTIFIER = "the_underworld";
+static const std::string THE_CAVE_IDENTIFIER = "the_cave";
+static const std::string AN_ABANDONED_TEMPLE_IDENTIFIER = "an_abandoned_temple";
+static const std::string DUNGEON_OF_THE_CURSED_IDENTIFIER = "dungeon_of_the_cursed";
+static const std::string TEMPLE_OF_WATER_IDENTIFIER = "temple_of_water";
+static const std::string WORLD_OF_FIRE_IDENTIFIER = "world_of_fire";
+static const std::string FINAL_TEMPLE_IDENTIFIER = "final_temple";
+static const std::string VILLAGE_OF_THE_FORGOTTEN_IDENTIFIER = "village_of_the_forgotten";
 
 
 class Game
@@ -189,13 +196,13 @@ int main(int argc, char **argv)
 
       std::map<std::string, LabyrinthOfLore::WorldMap::Level> levels = {
          { THE_UNDERWORLD_IDENTIFIER, LabyrinthOfLore::WorldMap::Level("The Underworld", 2.0f, LabyrinthOfLoreGame::Maps::TheUnderworld().build_the_underworld()) },
-         { THE_UNDERWORLD_IDENTIFIER, LabyrinthOfLore::WorldMap::Level("The Cave", 2.0f, LabyrinthOfLoreGame::Maps::TheUnderworld().build_the_underworld()) },
-         { THE_UNDERWORLD_IDENTIFIER, LabyrinthOfLore::WorldMap::Level("An Abandoned Temple", 2.0f, LabyrinthOfLoreGame::Maps::TheUnderworld().build_the_underworld()) },
-         { THE_UNDERWORLD_IDENTIFIER, LabyrinthOfLore::WorldMap::Level("Dungeon of the Cursed", 2.0f, LabyrinthOfLoreGame::Maps::TheUnderworld().build_the_underworld()) },
-         { THE_UNDERWORLD_IDENTIFIER, LabyrinthOfLore::WorldMap::Level("Temple of Water", 2.0f, LabyrinthOfLoreGame::Maps::TheUnderworld().build_the_underworld()) },
-         { THE_UNDERWORLD_IDENTIFIER, LabyrinthOfLore::WorldMap::Level("World of Fire", 2.0f, LabyrinthOfLoreGame::Maps::TheUnderworld().build_the_underworld()) },
-         { THE_UNDERWORLD_IDENTIFIER, LabyrinthOfLore::WorldMap::Level("Final Temple", 2.0f, LabyrinthOfLoreGame::Maps::TheUnderworld().build_the_underworld()) },
-         { THE_UNDERWORLD_IDENTIFIER, LabyrinthOfLore::WorldMap::Level("Village of the Forgotten", 2.0f, LabyrinthOfLoreGame::Maps::TheUnderworld().build_the_underworld()) },
+         { THE_CAVE_IDENTIFIER, LabyrinthOfLore::WorldMap::Level("The Cave", 2.0f, LabyrinthOfLoreGame::Maps::TheUnderworld().build_the_underworld()) },
+         { AN_ABANDONED_TEMPLE_IDENTIFIER, LabyrinthOfLore::WorldMap::Level("An Abandoned Temple", 2.0f, LabyrinthOfLoreGame::Maps::TheUnderworld().build_the_underworld()) },
+         { DUNGEON_OF_THE_CURSED_IDENTIFIER, LabyrinthOfLore::WorldMap::Level("Dungeon of the Cursed", 2.0f, LabyrinthOfLoreGame::Maps::TheUnderworld().build_the_underworld()) },
+         { TEMPLE_OF_WATER_IDENTIFIER, LabyrinthOfLore::WorldMap::Level("Temple of Water", 2.0f, LabyrinthOfLoreGame::Maps::TheUnderworld().build_the_underworld()) },
+         { WORLD_OF_FIRE_IDENTIFIER, LabyrinthOfLore::WorldMap::Level("World of Fire", 2.0f, LabyrinthOfLoreGame::Maps::TheUnderworld().build_the_underworld()) },
+         { FINAL_TEMPLE_IDENTIFIER, LabyrinthOfLore::WorldMap::Level("Final Temple", 2.0f, LabyrinthOfLoreGame::Maps::TheUnderworld().build_the_underworld()) },
+         { VILLAGE_OF_THE_FORGOTTEN_IDENTIFIER, LabyrinthOfLore::WorldMap::Level("Village of the Forgotten", 2.0f, LabyrinthOfLoreGame::Maps::TheUnderworld().build_the_underworld()) },
       };
 
       LabyrinthOfLore::WorldMap::TileMap tile_map = levels[THE_UNDERWORLD_IDENTIFIER].get_tile_map();
