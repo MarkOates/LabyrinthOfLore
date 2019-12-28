@@ -22,9 +22,10 @@ EntityZoneCollisionObserver::~EntityZoneCollisionObserver()
 }
 
 
-std::string EntityZoneCollisionObserver::run()
+std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>> EntityZoneCollisionObserver::get_collided()
 {
-return "Hello World!";
+return {};
+
 }
 } // namespace Physics
 } // namespace LabyrinthOfLore

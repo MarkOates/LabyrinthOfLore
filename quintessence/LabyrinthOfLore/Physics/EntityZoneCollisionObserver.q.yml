@@ -8,11 +8,14 @@ properties:
     init_with: "{}"
     constructor_arg: true
 functions:
-  - name: run
-    type: std::string
-    body: return "Hello World!";
+  - name: get_collided
+    type: std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>>
+    body: |
+      return {};
 dependencies:
   - symbol: std::vector<LabyrinthOfLore::Entity::Base*>
     headers: [ vector, LabyrinthOfLore/Entity/Base.hpp ]
   - symbol: std::vector<LabyrinthOfLore::WorldMap::Zone*>
     headers: [ vector, LabyrinthOfLore/WorldMap/Zone.hpp ]
+  - symbol: std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>>
+    headers: [ vector, utility, LabyrinthOfLore/Entity/Base.hpp, LabyrinthOfLore/WorldMap/Zone.hpp ]

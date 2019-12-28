@@ -3,7 +3,7 @@
 
 #include <LabyrinthOfLore/Entity/Base.hpp>
 #include <LabyrinthOfLore/WorldMap/Zone.hpp>
-#include <string>
+#include <utility>
 #include <vector>
 
 
@@ -22,7 +22,7 @@ namespace LabyrinthOfLore
          ~EntityZoneCollisionObserver();
 
 
-      std::string run();
+      std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>> get_collided();
       };
    }
 }

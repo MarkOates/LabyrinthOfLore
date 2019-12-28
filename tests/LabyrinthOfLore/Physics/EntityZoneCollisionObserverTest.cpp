@@ -8,9 +8,9 @@ TEST(LabyrinthOfLore_Physics_EntityZoneCollisionObserverTest, can_be_created_wit
    LabyrinthOfLore::Physics::EntityZoneCollisionObserver entity_zone_collision_observer;
 }
 
-TEST(LabyrinthOfLore_Physics_EntityZoneCollisionObserverTest, run__returns_the_expected_response)
+TEST(LabyrinthOfLore_Physics_EntityZoneCollisionObserverTest, get_collided__returns_entities_and_zones_that_are_colliding)
 {
    LabyrinthOfLore::Physics::EntityZoneCollisionObserver entity_zone_collision_observer;
-   std::string expected_string = "Hello World!";
-   EXPECT_EQ(expected_string, entity_zone_collision_observer.run());
+   entity_zone_collision_observer.get_collided();
 }
+
