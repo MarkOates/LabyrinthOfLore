@@ -1,0 +1,24 @@
+properties:
+  - name: x1
+    type: float
+    init_with: 0.0f
+  - name: y1
+    type: float
+    init_with: 0.0f
+  - name: z1
+    type: float
+    init_with: 0.0f
+  - name: x2
+    type: float
+    init_with: 1.0f
+  - name: y2
+    type: float
+    init_with: 1.0f
+  - name: z2
+    type: float
+    init_with: 1.0f
+functions:
+  - name: collides
+    type: bool
+    body: |
+      return;
