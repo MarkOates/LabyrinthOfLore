@@ -55,13 +55,23 @@ for (int y=0; y<tile_map.get_height(); y++)
       }
       else
       {
+         bool do_not_include_top_face = false;
          bool do_not_include_front_face = false;
          bool do_not_include_right_face = false;
          bool do_not_include_left_face = false;
          bool do_not_include_back_face = false;
 
          std::vector<ALLEGRO_VERTEX> pillar = {};
-         LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder builder(x, y, tile.get_height());
+         LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder builder(
+               x,
+               y,
+               tile.get_height(),
+               do_not_include_top_face,
+               do_not_include_front_face,
+               do_not_include_right_face,
+               do_not_include_left_face,
+               do_not_include_back_face
+            );
          pillar = builder.build_pillar();
          pillar = LabyrinthOfLore::Rendering::TileMapMeshPillarTexturer(
                tile_atlas,
@@ -70,7 +80,12 @@ for (int y=0; y<tile_map.get_height(); y++)
                tile_type_definition.get_tile_index_for_right_and_left_texture(),
                tile_type_definition.get_tile_index_for_top_texture(),
                builder.needs_partial_height_side_faces_from_top(),
-               builder.get_height()
+               builder.get_height(),
+               do_not_include_top_face,
+               do_not_include_front_face,
+               do_not_include_right_face,
+               do_not_include_left_face,
+               do_not_include_back_face
             ).build_textured_pillar();
 
          vertexes.insert(vertexes.end(), pillar.begin(), pillar.end());
