@@ -469,9 +469,47 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, while_rendering_w
 // "do_not_include face" tests
 
 
+TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, build_pillar__with_do_not_include_top_face_option__returns_the_expected_number_of_vertexes)
+{
+                                                                        // top    front  right  left  back
+   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder builder(0, 0, 0.2, true, false, false, false, false);
+   std::vector<ALLEGRO_VERTEX> pillar_vertexes = builder.build_pillar();
+
+   ASSERT_EQ(30-6, pillar_vertexes.size());
+}
+
+TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, build_pillar__with_do_not_include_front_face_option__returns_the_expected_number_of_vertexes)
+{
+                                                                        // top    front  right  left  back
+   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder builder(0, 0, 0.2, false, true, false, false, false);
+   std::vector<ALLEGRO_VERTEX> pillar_vertexes = builder.build_pillar();
+
+   ASSERT_EQ(30-6, pillar_vertexes.size());
+}
+
+TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, build_pillar__with_do_not_include_right_face_option__returns_the_expected_number_of_vertexes)
+{
+                                                                        // top    front  right  left  back
+   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder builder(0, 0, 0.2, false, false, true, false, false);
+   std::vector<ALLEGRO_VERTEX> pillar_vertexes = builder.build_pillar();
+
+   ASSERT_EQ(30-6, pillar_vertexes.size());
+}
+
+
 TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, build_pillar__with_do_not_include_left_face_option__returns_the_expected_number_of_vertexes)
 {
+                                                                        // top    front  right  left  back
    LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder builder(0, 0, 0.2, false, false, false, true, false);
+   std::vector<ALLEGRO_VERTEX> pillar_vertexes = builder.build_pillar();
+
+   ASSERT_EQ(30-6, pillar_vertexes.size());
+}
+
+TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarBuilderTest, build_pillar__with_do_not_include_back_face_option__returns_the_expected_number_of_vertexes)
+{
+                                                                        // top    front  right  left  back
+   LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder builder(0, 0, 0.2, false, false, false, false, true);
    std::vector<ALLEGRO_VERTEX> pillar_vertexes = builder.build_pillar();
 
    ASSERT_EQ(30-6, pillar_vertexes.size());

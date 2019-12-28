@@ -211,10 +211,10 @@ if (needs_partial_height_side_faces_from_top())
       buildG()
    };
 
-   partial_height_side_faces_from_top.insert(partial_height_side_faces_from_top.end(), front_face.begin(), front_face.end());
-   partial_height_side_faces_from_top.insert(partial_height_side_faces_from_top.end(), right_face.begin(), right_face.end());
+   if (!do_not_include_front_face) partial_height_side_faces_from_top.insert(partial_height_side_faces_from_top.end(), front_face.begin(), front_face.end());
+   if (!do_not_include_right_face) partial_height_side_faces_from_top.insert(partial_height_side_faces_from_top.end(), right_face.begin(), right_face.end());
    if (!do_not_include_left_face) partial_height_side_faces_from_top.insert(partial_height_side_faces_from_top.end(), left_face.begin(), left_face.end());
-   partial_height_side_faces_from_top.insert(partial_height_side_faces_from_top.end(), back_face.begin(), back_face.end());
+   if (!do_not_include_back_face) partial_height_side_faces_from_top.insert(partial_height_side_faces_from_top.end(), back_face.begin(), back_face.end());
 }
 
 for (int z=0; z<infer_number_of_whole_number_cubes_from_bottom(); z++)
@@ -263,15 +263,15 @@ for (int z=0; z<infer_number_of_whole_number_cubes_from_bottom(); z++)
       buildG_whole(height_origin)
    };
 
-   vertexes_from_this_pass.insert(vertexes_from_this_pass.end(), front_face.begin(), front_face.end());
-   vertexes_from_this_pass.insert(vertexes_from_this_pass.end(), right_face.begin(), right_face.end());
+   if (!do_not_include_front_face) vertexes_from_this_pass.insert(vertexes_from_this_pass.end(), front_face.begin(), front_face.end());
+   if (!do_not_include_right_face) vertexes_from_this_pass.insert(vertexes_from_this_pass.end(), right_face.begin(), right_face.end());
    if (!do_not_include_left_face) vertexes_from_this_pass.insert(vertexes_from_this_pass.end(), left_face.begin(), left_face.end());
-   vertexes_from_this_pass.insert(vertexes_from_this_pass.end(), back_face.begin(), back_face.end());
+   if (!do_not_include_back_face) vertexes_from_this_pass.insert(vertexes_from_this_pass.end(), back_face.begin(), back_face.end());
 
    whole_height_side_faces_from_bottom.insert(whole_height_side_faces_from_bottom.begin(), vertexes_from_this_pass.begin(), vertexes_from_this_pass.end());
 }
 
-result.insert(result.end(), top_face.begin(), top_face.end());
+if (!do_not_include_top_face) result.insert(result.end(), top_face.begin(), top_face.end());
 result.insert(result.end(), partial_height_side_faces_from_top.begin(), partial_height_side_faces_from_top.end());
 result.insert(result.end(), whole_height_side_faces_from_bottom.begin(), whole_height_side_faces_from_bottom.end());
 
