@@ -58,7 +58,12 @@ using AllegroFlare::Random;
 class Game
 {
 public:
+   AllegroFlare::FontBin font_bin;
+   AllegroFlare::BitmapBin bitmap_bin;
+
    Game()
+      : font_bin()
+      , bitmap_bin()
    {
    }
    ~Game()
@@ -67,6 +72,8 @@ public:
 
    void initialize()
    {
+      font_bin.set_path("data/fonts");
+      bitmap_bin.set_path("data/bitmaps");
    }
    void run_timer_step()
    {
@@ -127,13 +134,6 @@ int main(int argc, char **argv)
       game.initialize();
 
 
-      AllegroFlare::FontBin font_bin;
-      font_bin.set_path("data/fonts");
-
-      AllegroFlare::BitmapBin bitmap_bin;
-      bitmap_bin.set_path("data/bitmaps");
-
-
 
       //
 
@@ -171,9 +171,6 @@ int main(int argc, char **argv)
       ALLEGRO_BITMAP *hud_rendering_surface = al_create_sub_bitmap(buffer_buffer, 0, 0, al_get_bitmap_width(buffer_buffer), al_get_bitmap_height(buffer_buffer));
       if (!hud_rendering_surface) throw std::runtime_error("could not create hud_rendering_surface");
 
-      //
-
-      font_bin.operator[]("gameovercre1.ttf -14");
 
       //
 
@@ -196,11 +193,11 @@ int main(int argc, char **argv)
       if (!billboarding_tester_sprite) throw std::runtime_error("could not load billboarding_tester_sprite.png");
 
       Tileo::TileAtlas item_tile_atlas;
-      item_tile_atlas.load(bitmap_bin["spritesheet_4x.png"], 16*4, 16*4, 0);
+      item_tile_atlas.load(game.bitmap_bin["spritesheet_4x.png"], 16*4, 16*4, 0);
 
       Tileo::TileAtlas world_texture_tile_atlas;
       //world_texture_tile_atlas.load(bitmap_bin["grid-texture-128.png"], 128/3, 128/3, 0);
-      world_texture_tile_atlas.load(bitmap_bin["world_texture_tile_atlas-02.png"], 48, 48, 0);
+      world_texture_tile_atlas.load(game.bitmap_bin["world_texture_tile_atlas-02.png"], 48, 48, 0);
 
       //
 
@@ -386,7 +383,7 @@ int main(int argc, char **argv)
                LabyrinthOfLore::Rendering::MousePointer mouse_pointer(player_mouse_x, player_mouse_y);
                LabyrinthOfLore::Rendering::Hud::Renderer hud_renderer(
                      al_get_backbuffer(display),
-                     &font_bin,
+                     &game.font_bin,
                      &message_scroll,
                      &command_panel,
                      &vitality_and_mana_bar,
