@@ -392,9 +392,6 @@ int main(int argc, char **argv)
          current_tile_map,
          current_tile_map_mesh
       );
-      //{
-      //current_tile_map = levels[THE_UNDERWORLD_IDENTIFIER].get_tile_map();
-      //current_tile_map_mesh = meshes[THE_UNDERWORLD_IDENTIFIER];
 
       //
 
