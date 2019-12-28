@@ -27,7 +27,23 @@ properties:
     type: float
     init_with: -1
     constructor_arg: true
+  - name: top_face_is_removed
+    type: bool
+    init_with: false
+    constructor_arg: false
+  - name: front_face_is_removed
+    type: bool
+    init_with: false
+    constructor_arg: false
+  - name: right_face_is_removed
+    type: bool
+    init_with: false
+    constructor_arg: false
   - name: left_face_is_removed
+    type: bool
+    init_with: false
+    constructor_arg: false
+  - name: back_face_is_removed
     type: bool
     init_with: false
     constructor_arg: false
