@@ -55,6 +55,25 @@ using AllegroFlare::Random;
 #define USER_EVENT_APPEND_MESSAGE_TO_MESSAGE_SCROLL ALLEGRO_GET_EVENT_TYPE('A','p','d','M')
 
 
+class Game
+{
+public:
+   Game()
+   {
+   }
+   ~Game()
+   {
+   }
+
+   void initialize()
+   {
+   }
+   void run_timer_step()
+   {
+   }
+};
+
+
 bool active = true;
 
 int main(int argc, char **argv)
