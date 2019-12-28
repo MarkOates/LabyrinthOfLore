@@ -30,6 +30,30 @@ TileMapMeshPillarTexturer::~TileMapMeshPillarTexturer()
 }
 
 
+void TileMapMeshPillarTexturer::assign_texture_to_face(int this_face_start_index, int tile_index)
+{
+float u1 = 0;
+float v1 = 0;
+float u2 = 0;
+float v2 = 0;
+
+tile_atlas->get_tile_uv(tile_index_for_front_and_back_texture, &u1, &v1, &u2, &v2);
+pillar_vertexes[this_face_start_index+0].u = u1;
+pillar_vertexes[this_face_start_index+0].v = v2;//1.0 * 128;
+pillar_vertexes[this_face_start_index+1].u = u2;//1.0 * 128;
+pillar_vertexes[this_face_start_index+1].v = v1;
+pillar_vertexes[this_face_start_index+2].u = u1;
+pillar_vertexes[this_face_start_index+2].v = v1;
+pillar_vertexes[this_face_start_index+3].u = u2;//1.0 * 128;
+pillar_vertexes[this_face_start_index+3].v = v1;
+pillar_vertexes[this_face_start_index+4].u = u1;
+pillar_vertexes[this_face_start_index+4].v = v2;//1.0 * 128;
+pillar_vertexes[this_face_start_index+5].u = u2;//1.0 * 128;
+pillar_vertexes[this_face_start_index+5].v = v2;//1.0 * 128;
+return;
+
+}
+
 int TileMapMeshPillarTexturer::infer_number_of_front_right_left_back_sets_of_vertexes()
 {
 if (pillar_vertexes.size() <= 6) return 0;
