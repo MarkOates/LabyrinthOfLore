@@ -259,6 +259,7 @@ int main(int argc, char **argv)
 
       for (auto &mesh : meshes) { mesh.second.build(); }
 
+      //
 
       LabyrinthOfLore::WorldMap::TileMap tile_map = levels[THE_UNDERWORLD_IDENTIFIER].get_tile_map();
       LabyrinthOfLore::Rendering::TileMapMesh tile_map_mesh = meshes[THE_UNDERWORLD_IDENTIFIER];
