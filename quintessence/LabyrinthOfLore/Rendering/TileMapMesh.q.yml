@@ -61,8 +61,11 @@ functions:
          }
       }
 
+      std::cout << "TileMapMesh has been built.  The mesh contains " << vertexes.size() << " vertexes.";
+
       return true;
     body_dependency_symbols:
+      - std::cout
       - LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder
       - LabyrinthOfLore::Rendering::TileMapMeshPillarTexturer
   - name: draw
@@ -111,5 +114,7 @@ dependencies:
     headers: [ allegro5/allegro_color.h ]
   - symbol: AllegroFlare::build_vertex
     headers: [ AllegroFlare/Useful.hpp ]
+  - symbol: std::cout
+    headers: [ iostream ]
   - symbol: Tileo::TileAtlas*
     headers: [ Tileo/TileAtlas.hpp ]

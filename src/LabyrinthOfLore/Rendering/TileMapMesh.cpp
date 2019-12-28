@@ -1,6 +1,7 @@
 
 
 #include <LabyrinthOfLore/Rendering/TileMapMesh.hpp>
+#include <iostream>
 #include <LabyrinthOfLore/Rendering/TileMapMeshPillarBuilder.hpp>
 #include <LabyrinthOfLore/Rendering/TileMapMeshPillarTexturer.hpp>
 
@@ -71,6 +72,8 @@ for (int y=0; y<tile_map.get_height(); y++)
       }
    }
 }
+
+std::cout << "TileMapMesh has been built.  The mesh contains " << vertexes.size() << " vertexes.";
 
 return true;
 
