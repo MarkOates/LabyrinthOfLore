@@ -229,8 +229,6 @@ int main(int argc, char **argv)
 
 
       LabyrinthOfLore::WorldMap::TileMap tile_map = levels[THE_UNDERWORLD_IDENTIFIER].get_tile_map();
-      //LabyrinthOfLore::Rendering::TileMapMesh tile_map_mesh(&world_texture_tile_atlas, tile_type_dictionary, tile_map, world_texture_tile_atlas.get_bitmap());
-      //tile_map_mesh.build();
 
       std::map<std::string, LabyrinthOfLore::Rendering::TileMapMesh> meshes = {
          { THE_UNDERWORLD_IDENTIFIER,           LabyrinthOfLore::Rendering::TileMapMesh(&world_texture_tile_atlas, tile_type_dictionary, tile_map, world_texture_tile_atlas.get_bitmap()) },
