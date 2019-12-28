@@ -69,8 +69,9 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, build_textured_p
 TEST_F(LabyrinthOfLore_Rendering_TileMapMeshPillarTexturerTest, build_textured_pillar__without_a_pillar__returns_an_exception)
 {
    Tileo::TileAtlas tile_atlas;
-   LabyrinthOfLore::Rendering::TileMapMeshPillarTexturer tile_map_mesh_pillar_texturer(&tile_atlas);
-   std::string expected_error_message = "cannot build_textured_pillar with pillar_vertexes that does not have the expected number of vertexes. Expecting 6 verticies for the top, and then an additional multiple of 24 faces for each height above 0. The passed pillar_vertexes have/has 0 vertexe(s).";
+   std::vector<ALLEGRO_VERTEX> wrong_number_of_vertexes = { ALLEGRO_VERTEX{} };
+   LabyrinthOfLore::Rendering::TileMapMeshPillarTexturer tile_map_mesh_pillar_texturer(&tile_atlas, wrong_number_of_vertexes);
+   std::string expected_error_message = "cannot build_textured_pillar with pillar_vertexes that does not have the expected number of vertexes. Expecting 6 verticies for the top, and then an additional multiple of 6 for each face. The passed pillar_vertexes have/has 1 vertexe(s).";
    ASSERT_THROW_WITH_MESSAGE(tile_map_mesh_pillar_texturer.build_textured_pillar(false), std::runtime_error, expected_error_message);
 }
 
