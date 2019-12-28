@@ -202,10 +202,6 @@ int main(int argc, char **argv)
       Tileo::TileAtlas world_texture_tile_atlas;
       //world_texture_tile_atlas.load(bitmap_bin["grid-texture-128.png"], 128/3, 128/3, 0);
       world_texture_tile_atlas.load(game.bitmap_bin["world_texture_tile_atlas-02.png"], 48, 48, 0);
-      //
-
-      std::vector<LabyrinthOfLore::Entity::Base*> entities = {};
-      LabyrinthOfLore::Rendering::Camera camera({0, 0, 0}, 0.0, 0.0);
 
       //
 
@@ -281,6 +277,10 @@ int main(int argc, char **argv)
       LabyrinthOfLore::Rendering::TileMapMesh tile_map_mesh = meshes[THE_UNDERWORLD_IDENTIFIER];
 
       //
+      //
+
+      std::vector<LabyrinthOfLore::Entity::Base*> entities = {};
+      LabyrinthOfLore::Rendering::Camera camera({0, 0, 0}, 0.0, 0.0);
 
       LabyrinthOfLore::Entity::Base* camera_entity = new LabyrinthOfLore::Entity::Base;
       //camera_entity->get_placement_ref().position = AllegroFlare::vec3d(1.5, 90.5, 1.01);
