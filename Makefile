@@ -16,7 +16,8 @@ YAML_CPP_INCLUDE_DIR=$(YAML_CPP_DIR)/include
 
 QUINTESSENCE_BUILDER_EXECUTABLE=~/Repos/blast/bin/programs/quintessence_from_yaml
 QUINTESSENCE_BUILDER_FLAGS=--less_verbose
-FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Physics/EntityZoneCollisionObserver
+#FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Physics/EntityZoneCollisionObserver
+FOCUSED_COMPONENT_NAME=LabyrinthOfLore/WorldMap/Zone
 FOCUSED_TEST_FILTER=
 
 

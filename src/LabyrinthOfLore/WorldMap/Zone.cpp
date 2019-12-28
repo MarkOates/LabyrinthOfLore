@@ -10,13 +10,13 @@ namespace WorldMap
 {
 
 
-Zone::Zone()
-   : x1(0.0f)
-   , y1(0.0f)
-   , z1(0.0f)
-   , x2(1.0f)
-   , y2(1.0f)
-   , z2(1.0f)
+Zone::Zone(float x1, float y1, float z1, float x2, float y2, float z2)
+   : x1(x1)
+   , y1(y1)
+   , z1(z1)
+   , x2(x2)
+   , y2(y2)
+   , z2(z2)
 {
 }
 

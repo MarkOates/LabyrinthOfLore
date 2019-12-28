@@ -2,26 +2,32 @@ properties:
   - name: x1
     type: float
     init_with: 0.0f
+    constructor_arg: true
     getter: true
   - name: y1
     type: float
     init_with: 0.0f
+    constructor_arg: true
     getter: true
   - name: z1
     type: float
     init_with: 0.0f
+    constructor_arg: true
     getter: true
   - name: x2
     type: float
     init_with: 1.0f
+    constructor_arg: true
     getter: true
   - name: y2
     type: float
     init_with: 1.0f
+    constructor_arg: true
     getter: true
   - name: z2
     type: float
     init_with: 1.0f
+    constructor_arg: true
     getter: true
 functions:
   - name: collides
