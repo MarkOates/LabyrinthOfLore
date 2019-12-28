@@ -209,6 +209,11 @@ int main(int argc, char **argv)
 
       //
 
+      LabyrinthOfLoreGame::TileTypeDictionary game_tile_type_dictionary;
+      LabyrinthOfLore::Rendering::TileTypeDictionary tile_type_dictionary = game_tile_type_dictionary.build_tile_type_dictionary();
+
+      //
+
       std::map<std::string, LabyrinthOfLore::WorldMap::Level> levels = {
          { THE_UNDERWORLD_IDENTIFIER,           LabyrinthOfLore::WorldMap::Level("The Underworld", 2.0f, LabyrinthOfLoreGame::Maps::TheUnderworld().build_the_underworld()) },
          { THE_CAVE_IDENTIFIER,                 LabyrinthOfLore::WorldMap::Level("The Cave", 2.0f, LabyrinthOfLoreGame::Maps::TheUnderworld().build_the_underworld()) },
@@ -288,11 +293,8 @@ int main(int argc, char **argv)
 
       //
 
-      LabyrinthOfLoreGame::TileTypeDictionary game_tile_type_dictionary;
-      LabyrinthOfLore::Rendering::TileTypeDictionary tile_type_dictionary = game_tile_type_dictionary.build_tile_type_dictionary();
 
-      //
-
+      LabyrinthOfLore::WorldMap::TileMap tile_map = levels[THE_UNDERWORLD_IDENTIFIER].get_tile_map();
       LabyrinthOfLore::Rendering::TileMapMesh tile_map_mesh(&world_texture_tile_atlas, tile_type_dictionary, tile_map, world_texture_tile_atlas.get_bitmap());
       tile_map_mesh.build();
 
