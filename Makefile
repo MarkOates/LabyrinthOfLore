@@ -16,12 +16,8 @@ YAML_CPP_INCLUDE_DIR=$(YAML_CPP_DIR)/include
 
 QUINTESSENCE_BUILDER_EXECUTABLE=~/Repos/blast/bin/programs/quintessence_from_yaml
 QUINTESSENCE_BUILDER_FLAGS=--less_verbose
-#FOCUSED_COMPONENT_NAME=LabyrinthOfLore/WorldMap/BitmapTileMapLoader
-#FOCUSED_COMPONENT_NAME=LabyrinthOfLore/WorldMap/Level
-#FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Rendering/TileMapMeshPillarBuilder
-#FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Rendering/TileMapMeshPillarTexturer
-#FOCUSED_COMPONENT_NAME=LabyrinthOfLoreGame/EntityTileMapCollisionEventProcessor
-FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Rendering/TileMapMesh
+FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Rendering/TileMapMeshPillarBuilder
+FOCUSED_TEST_NAME=build_pillar__with_do_not_include_top_face_option__returns_the_expected_number_of_vertexes
 
 
 ALLEGRO_LIBS=allegro_color allegro_font allegro_ttf allegro_dialog allegro_audio allegro_acodec allegro_primitives allegro_image allegro
@@ -103,7 +99,7 @@ focus:
 	$(call output_terminal_message,"Make the focused component test")
 	@make bin/tests/$(FOCUSED_COMPONENT_NAME)Test
 	$(call output_terminal_message,"Run the focused component test")
-	@./bin/tests/$(FOCUSED_COMPONENT_NAME)Test
+	@./bin/tests/$(FOCUSED_COMPONENT_NAME)Test --gtest_filter=*$(FOCUSED_TEST_NAME)*
 	$(call output_terminal_message,"Make all the programs")
 	@make programs
 	$(call output_terminal_message,"Celebrate passing focused component tests")
@@ -143,7 +139,7 @@ tests: $(INDIVIDUAL_TEST_EXECUTABLES) bin/run_all_tests
 
 
 run_tests: tests
-	bin/run_all_tests --gtest_filter=*$(FOCUSED_COMPONENT_NAME)*
+	bin/run_all_tests
 
 
 
