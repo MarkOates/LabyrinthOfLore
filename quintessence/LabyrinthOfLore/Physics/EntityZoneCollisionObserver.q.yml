@@ -4,6 +4,11 @@ properties:
     init_with: "{}"
     constructor_arg: false
     getter: true
+  - name: collisions_at_end
+    type: std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>>
+    init_with: "{}"
+    constructor_arg: false
+    getter: true
 functions:
   - name: get_collided
     parameters:
@@ -37,6 +42,18 @@ functions:
       default_argument: "{}"
     body: |
       collisions_at_start = get_collided(entities, zones);
+      return;
+  - name: observe_end_state
+    type: void
+    parameters:
+    - name: entities
+      type: std::vector<LabyrinthOfLore::Entity::Base*>
+      default_argument: "{}"
+    - name: zones
+      type: std::vector<LabyrinthOfLore::WorldMap::Zone*>
+      default_argument: "{}"
+    body: |
+      collisions_at_end = get_collided(entities, zones);
       return;
 dependencies:
   - symbol: std::vector<LabyrinthOfLore::Entity::Base*>
