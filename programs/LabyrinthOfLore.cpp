@@ -184,10 +184,11 @@ int main(int argc, char **argv)
 
       //
 
-      LabyrinthOfLoreGame::Maps::TheUnderworld the_underworld_tile_map;
-      LabyrinthOfLore::WorldMap::Level the_underworld = LabyrinthOfLore::WorldMap::Level("The Underworld", 2.0f, the_underworld_tile_map.build_the_underworld());
+      std::vector<LabyrinthOfLore::WorldMap::Level> levels = {
+         LabyrinthOfLore::WorldMap::Level("The Underworld", 2.0f, LabyrinthOfLoreGame::Maps::TheUnderworld().build_the_underworld()),
+      };
 
-      LabyrinthOfLore::WorldMap::TileMap tile_map = the_underworld.get_tile_map();
+      LabyrinthOfLore::WorldMap::TileMap tile_map = levels[0].get_tile_map();
 
       //
 
@@ -219,7 +220,7 @@ int main(int argc, char **argv)
       int player_mouse_y = 0;
 
       camera_entity->get_velocity_ref().position = {0.0, 0.0, 0};
-      camera_entity->get_placement_ref().position = {40.5, 87.5, the_underworld.get_ground_height()+0.001f };
+      camera_entity->get_placement_ref().position = {40.5, 87.5, levels[0].get_ground_height()+0.001f };
       //camera_entity->get_placement_ref().rotation = {2.5, 2.5, 0.0};
 
       //camera.get_position_ref() = camera_entity->get_placement_ref().position + AllegroFlare::vec3d(0, 0, 0.65); //{5, 20, 2.01 + 0.5};
