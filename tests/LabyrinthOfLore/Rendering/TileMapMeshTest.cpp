@@ -63,7 +63,7 @@ TEST(LabyrinthOfLore_Rendering_TileMapMeshTest, build__on_tile_types_of_0__does_
    al_destroy_bitmap(tile_atlas_bitmap);
 }
 
-TEST(LabyrinthOfLore_Rendering_TileMapMeshTest, build__when_building_two_tiles_of_equal_height_next_to_each_other_vertically__skips_adding_their_ajacent_faces)
+TEST(DISABLED_LabyrinthOfLore_Rendering_TileMapMeshTest, build__when_building_two_tiles_of_equal_height_next_to_each_other_vertically__skips_adding_their_ajacent_faces)
 {
    al_init();
    al_init_image_addon();
@@ -85,7 +85,7 @@ TEST(LabyrinthOfLore_Rendering_TileMapMeshTest, build__when_building_two_tiles_o
 }
 
 
-TEST(LabyrinthOfLore_Rendering_TileMapMeshTest, build__when_building_two_tiles_of_inequal_height_next_to_each_other_vertically__skips_adding_the_shorter_pillars_ajacent_face)
+TEST(DISABLED_LabyrinthOfLore_Rendering_TileMapMeshTest, build__when_building_two_tiles_of_inequal_height_next_to_each_other_vertically__skips_adding_the_shorter_pillars_ajacent_face)
 {
    al_init();
    al_init_image_addon();

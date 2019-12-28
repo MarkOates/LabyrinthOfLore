@@ -275,8 +275,6 @@ if (!do_not_include_top_face) result.insert(result.end(), top_face.begin(), top_
 result.insert(result.end(), partial_height_side_faces_from_top.begin(), partial_height_side_faces_from_top.end());
 result.insert(result.end(), whole_height_side_faces_from_bottom.begin(), whole_height_side_faces_from_bottom.end());
 
-for (auto &vertex : result) { float swap = vertex.y; vertex.y = vertex.z; vertex.z = swap; }
-
 return result;
 
 }

@@ -60,11 +60,12 @@ for (int y=0; y<tile_map.get_height(); y++)
          LabyrinthOfLore::WorldMap::Tile tile_to_the_left = tile_map.get_tile(x-1, y);
          LabyrinthOfLore::WorldMap::Tile tile_in_front = tile_map.get_tile(x, y+1);
 
+         float threshold = 0.00001f;
          bool do_not_include_top_face = false;
-         bool do_not_include_front_face = (tile_in_front.get_height() >= tile.get_height());
-         bool do_not_include_right_face = false;
-         bool do_not_include_left_face = false; //(tile_to_the_left.get_height() >= tile.get_height());
-         bool do_not_include_back_face = (tile_behind.get_height() >= tile.get_height());
+         bool do_not_include_front_face = false; //(tile_in_front.get_height() >= (tile.get_height() - threshold));
+         bool do_not_include_right_face = false; //(tile_to_the_right.get_height() >= (tile.get_height() - threshold));
+         bool do_not_include_left_face = false; //(tile_to_the_left.get_height() >= (tile.get_height() - threshold));
+         bool do_not_include_back_face = false; //(tile_behind.get_height() >= (tile.get_height() - threshold));
 
          std::vector<ALLEGRO_VERTEX> pillar = {};
          LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder builder(
@@ -97,6 +98,8 @@ for (int y=0; y<tile_map.get_height(); y++)
       }
    }
 }
+
+for (auto &vertex : vertexes) { float swap = vertex.y; vertex.y = vertex.z; vertex.z = swap; }
 
 std::cout << "TileMapMesh has been built.  The mesh contains " << vertexes.size() << " vertexes.";
 
