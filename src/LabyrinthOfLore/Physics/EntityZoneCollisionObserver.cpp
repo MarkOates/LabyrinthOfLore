@@ -10,10 +10,8 @@ namespace Physics
 {
 
 
-EntityZoneCollisionObserver::EntityZoneCollisionObserver(std::vector<LabyrinthOfLore::Entity::Base*> entities, std::vector<LabyrinthOfLore::WorldMap::Zone*> zones)
-   : entities(entities)
-   , zones(zones)
-   , collisions_at_start({})
+EntityZoneCollisionObserver::EntityZoneCollisionObserver()
+   : collisions_at_start({})
 {
 }
 
@@ -23,7 +21,7 @@ EntityZoneCollisionObserver::~EntityZoneCollisionObserver()
 }
 
 
-std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>> EntityZoneCollisionObserver::get_collided()
+std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>> EntityZoneCollisionObserver::get_collided(std::vector<LabyrinthOfLore::Entity::Base*> entities, std::vector<LabyrinthOfLore::WorldMap::Zone*> zones)
 {
 std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>> result;
 

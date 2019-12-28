@@ -24,12 +24,12 @@ TEST(LabyrinthOfLore_Physics_EntityZoneCollisionObserverTest, get_collided__retu
       new LabyrinthOfLore::WorldMap::Zone(0, 0, 0, 1, 1, 1)
    };
 
-   LabyrinthOfLore::Physics::EntityZoneCollisionObserver entity_zone_collision_observer(entities, zones);
+   LabyrinthOfLore::Physics::EntityZoneCollisionObserver entity_zone_collision_observer;
 
    std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>> expected_collided = {
       { entities[0], zones[0] },
    };
-   std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>> actual_collided = entity_zone_collision_observer.get_collided();
+   std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>> actual_collided = entity_zone_collision_observer.get_collided(entities, zones);
 
    ASSERT_EQ(expected_collided, actual_collided);
 
@@ -46,10 +46,10 @@ TEST(LabyrinthOfLore_Physics_EntityZoneCollisionObserverTest, get_collided__does
       new LabyrinthOfLore::WorldMap::Zone(0, 0, 0, 1, 1, 1)
    };
 
-   LabyrinthOfLore::Physics::EntityZoneCollisionObserver entity_zone_collision_observer(entities, zones);
+   LabyrinthOfLore::Physics::EntityZoneCollisionObserver entity_zone_collision_observer;
 
    std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>> expected_collided = {};
-   std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>> actual_collided = entity_zone_collision_observer.get_collided();
+   std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>> actual_collided = entity_zone_collision_observer.get_collided(entities, zones);
 
    ASSERT_EQ(expected_collided, actual_collided);
 

@@ -1,18 +1,17 @@
 properties:
-  - name: entities
-    type: std::vector<LabyrinthOfLore::Entity::Base*>
-    init_with: "{}"
-    constructor_arg: true
-  - name: zones
-    type: std::vector<LabyrinthOfLore::WorldMap::Zone*>
-    init_with: "{}"
-    constructor_arg: true
   - name: collisions_at_start
     type: std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>>
     init_with: "{}"
     constructor_arg: false
 functions:
   - name: get_collided
+    parameters:
+    - name: entities
+      type: std::vector<LabyrinthOfLore::Entity::Base*>
+      default_argument: "{}"
+    - name: zones
+      type: std::vector<LabyrinthOfLore::WorldMap::Zone*>
+      default_argument: "{}"
     type: std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>>
     body: |
       std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>> result;
