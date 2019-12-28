@@ -100,6 +100,28 @@ public:
 
 
 
+void move_player_to_level(
+      LabyrinthOfLore::Entity::Base* player_entity,
+      std::map<std::string, LabyrinthOfLore::WorldMap::Level> &levels,
+      std::map<std::string, LabyrinthOfLore::Rendering::TileMapMesh> &meshes,
+      std::string level_identifier,
+      AllegroFlare::vec3d spawn_point,
+      LabyrinthOfLore::WorldMap::TileMap &current_tile_map,
+      LabyrinthOfLore::Rendering::TileMapMesh &current_tile_map_mesh
+   )
+{
+   current_tile_map = levels[level_identifier].get_tile_map();
+   current_tile_map_mesh = meshes[level_identifier];
+
+   // set the player's position
+   player_entity->get_placement_ref().position = spawn_point;
+
+   // reset the players's velocity - so no funny stuff, ok buddy? ;)
+   player_entity->get_velocity_ref().position = AllegroFlare::vec3d(0.0, 0.0, 0.0);
+}
+
+
+
 bool active = true;
 
 int main(int argc, char **argv)
@@ -290,8 +312,8 @@ int main(int argc, char **argv)
       int player_mouse_x = 0;
       int player_mouse_y = 0;
 
-      player_entity->get_velocity_ref().position = {0.0, 0.0, 0};
-      player_entity->get_placement_ref().position = {40.5, 87.5, levels[THE_UNDERWORLD_IDENTIFIER].get_ground_height()+0.001f };
+      player_entity->get_velocity_ref().position = {0.0, 0.0, 0.0};
+      player_entity->get_placement_ref().position = {0.0, 0.0, 0.0};
       //player_entity->get_placement_ref().rotation = {2.5, 2.5, 0.0};
 
       //camera.get_position_ref() = player_entity->get_placement_ref().position + AllegroFlare::vec3d(0, 0, 0.65); //{5, 20, 2.01 + 0.5};
@@ -359,8 +381,20 @@ int main(int argc, char **argv)
       LabyrinthOfLore::WorldMap::TileMap current_tile_map;
       LabyrinthOfLore::Rendering::TileMapMesh current_tile_map_mesh;
 
-      current_tile_map = levels[THE_UNDERWORLD_IDENTIFIER].get_tile_map();
-      current_tile_map_mesh = meshes[THE_UNDERWORLD_IDENTIFIER];
+      //
+
+      move_player_to_level(
+         player_entity,
+         levels,
+         meshes,
+         THE_UNDERWORLD_IDENTIFIER,
+         {40.5, 87.5, levels[THE_UNDERWORLD_IDENTIFIER].get_ground_height()+0.001f },
+         current_tile_map,
+         current_tile_map_mesh
+      );
+      //{
+      //current_tile_map = levels[THE_UNDERWORLD_IDENTIFIER].get_tile_map();
+      //current_tile_map_mesh = meshes[THE_UNDERWORLD_IDENTIFIER];
 
       //
 
