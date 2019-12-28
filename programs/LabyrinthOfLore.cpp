@@ -99,6 +99,7 @@ public:
 };
 
 
+
 bool active = true;
 
 int main(int argc, char **argv)
@@ -201,7 +202,6 @@ int main(int argc, char **argv)
       Tileo::TileAtlas world_texture_tile_atlas;
       //world_texture_tile_atlas.load(bitmap_bin["grid-texture-128.png"], 128/3, 128/3, 0);
       world_texture_tile_atlas.load(game.bitmap_bin["world_texture_tile_atlas-02.png"], 48, 48, 0);
-
       //
 
       std::vector<LabyrinthOfLore::Entity::Base*> entities = {};
@@ -225,7 +225,12 @@ int main(int argc, char **argv)
          { VILLAGE_OF_THE_FORGOTTEN_IDENTIFIER, LabyrinthOfLore::WorldMap::Level("Village of the Forgotten", 2.0f, LabyrinthOfLoreGame::Maps::TheUnderworld().build_the_underworld()) },
       };
 
+      //
+
+
       LabyrinthOfLore::WorldMap::TileMap tile_map = levels[THE_UNDERWORLD_IDENTIFIER].get_tile_map();
+      LabyrinthOfLore::Rendering::TileMapMesh tile_map_mesh(&world_texture_tile_atlas, tile_type_dictionary, tile_map, world_texture_tile_atlas.get_bitmap());
+      tile_map_mesh.build();
 
 
       //
@@ -290,13 +295,6 @@ int main(int argc, char **argv)
       }
 
 
-
-      //
-
-
-      LabyrinthOfLore::WorldMap::TileMap tile_map = levels[THE_UNDERWORLD_IDENTIFIER].get_tile_map();
-      LabyrinthOfLore::Rendering::TileMapMesh tile_map_mesh(&world_texture_tile_atlas, tile_type_dictionary, tile_map, world_texture_tile_atlas.get_bitmap());
-      tile_map_mesh.build();
 
       //
 
