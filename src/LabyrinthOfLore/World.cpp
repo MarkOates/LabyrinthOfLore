@@ -19,6 +19,12 @@ World::~World()
 }
 
 
+std::map<std::string, LabyrinthOfLore::WorldMap::Level> &World::get_levels_ref()
+{
+   return levels;
+}
+
+
 } // namespace LabyrinthOfLore
 
 
