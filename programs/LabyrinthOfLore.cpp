@@ -356,11 +356,11 @@ int main(int argc, char **argv)
 
       //
 
-      LabyrinthOfLore::WorldMap::TileMap tile_map;
-      LabyrinthOfLore::Rendering::TileMapMesh tile_map_mesh;
+      LabyrinthOfLore::WorldMap::TileMap current_tile_map;
+      LabyrinthOfLore::Rendering::TileMapMesh current_tile_map_mesh;
 
-      tile_map = levels[THE_UNDERWORLD_IDENTIFIER].get_tile_map();
-      tile_map_mesh = meshes[THE_UNDERWORLD_IDENTIFIER];
+      current_tile_map = levels[THE_UNDERWORLD_IDENTIFIER].get_tile_map();
+      current_tile_map_mesh = meshes[THE_UNDERWORLD_IDENTIFIER];
 
       //
 
@@ -417,7 +417,7 @@ int main(int argc, char **argv)
                LabyrinthOfLore::Physics::GravityStepper gravity_stepper(entities);
                gravity_stepper.process_step();
 
-               LabyrinthOfLore::Physics::EntityTileMapCollisionStepper entity_tile_map_collision_stepper(tile_map, entities);
+               LabyrinthOfLore::Physics::EntityTileMapCollisionStepper entity_tile_map_collision_stepper(current_tile_map, entities);
                entity_tile_map_collision_stepper.process_step();
 
                // observe tile map collision events, emit game events if needed 
@@ -435,14 +435,14 @@ int main(int argc, char **argv)
 
                //
 
-               LabyrinthOfLore::Rendering::SceneRenderer scene_renderer(scene_rendering_surface, &camera, tile_map_mesh, entities, &depth_darken_shader);
+               LabyrinthOfLore::Rendering::SceneRenderer scene_renderer(scene_rendering_surface, &camera, current_tile_map_mesh, entities, &depth_darken_shader);
                scene_renderer.render();
 
                //
 
                al_clear_depth_buffer(1);
                al_set_render_state(ALLEGRO_DEPTH_TEST, 1);
-               LabyrinthOfLore::Rendering::PickingBufferRenderer picking_buffer_renderer(&game.picking_buffer, &camera, tile_map_mesh, entities, &clamped_color_shader);
+               LabyrinthOfLore::Rendering::PickingBufferRenderer picking_buffer_renderer(&game.picking_buffer, &camera, current_tile_map_mesh, entities, &clamped_color_shader);
                picking_buffer_renderer.render();
 
                //
