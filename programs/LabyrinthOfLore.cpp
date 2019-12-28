@@ -278,8 +278,8 @@ int main(int argc, char **argv)
       std::vector<LabyrinthOfLore::Entity::Base*> entities = {};
       LabyrinthOfLore::Rendering::Camera camera({0, 0, 0}, 0.0, 0.0);
 
-      LabyrinthOfLore::Entity::Base* camera_entity = new LabyrinthOfLore::Entity::Base;
-      //camera_entity->get_placement_ref().position = AllegroFlare::vec3d(1.5, 90.5, 1.01);
+      LabyrinthOfLore::Entity::Base* player_entity = new LabyrinthOfLore::Entity::Base;
+      //player_entity->get_placement_ref().position = AllegroFlare::vec3d(1.5, 90.5, 1.01);
 
       float player_yaw = -0.04 - 0.5;
       float player_pitch = 0.0;
@@ -290,13 +290,13 @@ int main(int argc, char **argv)
       int player_mouse_x = 0;
       int player_mouse_y = 0;
 
-      camera_entity->get_velocity_ref().position = {0.0, 0.0, 0};
-      camera_entity->get_placement_ref().position = {40.5, 87.5, levels[THE_UNDERWORLD_IDENTIFIER].get_ground_height()+0.001f };
-      //camera_entity->get_placement_ref().rotation = {2.5, 2.5, 0.0};
+      player_entity->get_velocity_ref().position = {0.0, 0.0, 0};
+      player_entity->get_placement_ref().position = {40.5, 87.5, levels[THE_UNDERWORLD_IDENTIFIER].get_ground_height()+0.001f };
+      //player_entity->get_placement_ref().rotation = {2.5, 2.5, 0.0};
 
-      //camera.get_position_ref() = camera_entity->get_placement_ref().position + AllegroFlare::vec3d(0, 0, 0.65); //{5, 20, 2.01 + 0.5};
+      //camera.get_position_ref() = player_entity->get_placement_ref().position + AllegroFlare::vec3d(0, 0, 0.65); //{5, 20, 2.01 + 0.5};
 
-      entities.push_back(camera_entity);
+      entities.push_back(player_entity);
 
       //
 
@@ -411,8 +411,8 @@ int main(int argc, char **argv)
                player_yaw += player_turning;
 
                AllegroFlare::vec2d view_vector_2d = AllegroFlare::vec2d::polar_coords((player_yaw + 0.25) * ALLEGRO_PI*2, player_movement_magnitude);
-               camera_entity->get_velocity_ref().position.x = view_vector_2d.x; //view_vector_2d.x;
-               camera_entity->get_velocity_ref().position.y = view_vector_2d.y; //view_vector_2d.y;
+               player_entity->get_velocity_ref().position.x = view_vector_2d.x; //view_vector_2d.x;
+               player_entity->get_velocity_ref().position.y = view_vector_2d.y; //view_vector_2d.y;
 
                LabyrinthOfLore::Physics::GravityStepper gravity_stepper(entities);
                gravity_stepper.process_step();
@@ -424,7 +424,7 @@ int main(int argc, char **argv)
                std::vector<LabyrinthOfLore::Physics::EntityTileMapCollisionEvent> collision_stepper_events = entity_tile_map_collision_stepper.get_events_from_last_processed_step();
                LabyrinthOfLoreGame::EntityTileMapCollisionEventProcessor entity_tile_map_collision_event_processor(collision_stepper_events);
 
-               camera.get_position_ref() = camera_entity->get_placement_ref().position + AllegroFlare::vec3d(0, 0, 0.65);//{5, 20, 2.01 + 0.5};
+               camera.get_position_ref() = player_entity->get_placement_ref().position + AllegroFlare::vec3d(0, 0, 0.65);//{5, 20, 2.01 + 0.5};
                camera.get_yaw_ref() = player_yaw + 0.5;// + sin(al_get_time()) * 0.02;
                camera.get_pitch_ref() = player_pitch - 0.02;;// + sin((al_get_time()+2.345)*0.8534) * 0.02;
 
