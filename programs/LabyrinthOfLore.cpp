@@ -439,6 +439,7 @@ int main(int argc, char **argv)
          { 4, Door(TEMPLE_OF_WATER_IDENTIFIER, 55.5, 57.5, -5.0, 0.5) },
          { 5, Door(WORLD_OF_FIRE_IDENTIFIER, 19.5, 58.5, -5.0, 0.5) },
          { 6, Door(FINAL_TEMPLE_IDENTIFIER, 39.5, 57.5, -5.0, 0.5) },
+         { 7, Door(VILLAGE_OF_THE_FORGOTTEN_IDENTIFIER, 28.5, 30.5, -5.0, 0.25) },
          { 11, Door(THE_UNDERWORLD_IDENTIFIER, 40.5, 87.5+18, levels[THE_UNDERWORLD_IDENTIFIER].get_ground_height()+0.001f, 0.5 ), },
          //{ 3, Door(DUNGEON_OF_THE_CURSED_IDENTIFIER, 0.0, 0.0, 0.0, 0.0) },
          //{ 4, Door(TEMPLE_OF_WATER_IDENTIFIER, 0.0, 0.0, 0.0, 0.0) },
@@ -624,7 +625,7 @@ int main(int argc, char **argv)
             }
             if (this_event.keyboard.keycode == ALLEGRO_KEY_0)
             {
-               go_into_door( doors.at(6), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
+               go_into_door( doors.at(7), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
             }
             break;
          case USER_EVENT_APPEND_MESSAGE_TO_MESSAGE_SCROLL:
