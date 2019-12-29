@@ -43,7 +43,7 @@ functions:
       float time_changed_at = title_text->get_time_changed_at();
       float time_now = al_get_time();
       float time_since_time_changed_at = time_now - time_changed_at;
-      float opacity = (time_since_time_changed_at <= 3.0) ? 1.0f : 0.0f; 
+      float opacity = (time_since_time_changed_at <= 3.0) ? smoothstep(0.5, 1.5, time_since_time_changed_at) : smoothstep(7.5, 4.5, time_since_time_changed_at);
 
       if (opacity >= 0.0001)
       {
