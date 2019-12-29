@@ -159,9 +159,7 @@ void go_into_door(
       float &player_yaw,
       LabyrinthOfLore::WorldMap::TileMap &current_tile_map,
       LabyrinthOfLore::Rendering::TileMapMesh &current_tile_map_mesh,
-      LabyrinthOfLore::Hud::TitleText &title_text,
-      std::string top_text,
-      std::string headline_text
+      LabyrinthOfLore::Hud::TitleText &title_text
    )
 {
    move_player_to_level(
@@ -176,8 +174,8 @@ void go_into_door(
 
    set_title_text(
       title_text,
-      top_text,
-      headline_text
+      "Level n",
+      levels[door.level_identifier].get_name()
    );
 
    player_yaw = door.spawn_facing_yaw;
@@ -528,9 +526,7 @@ int main(int argc, char **argv)
          player_yaw,
          current_tile_map,
          current_tile_map_mesh,
-         title_text,
-         "Level 0",
-         levels[THE_UNDERWORLD_IDENTIFIER].get_name()
+         title_text
       );
 
 
@@ -595,9 +591,7 @@ int main(int argc, char **argv)
                   player_yaw,
                   current_tile_map,
                   current_tile_map_mesh,
-                  title_text,
-                  "Level 0",
-                  levels[THE_UNDERWORLD_IDENTIFIER].get_name()
+                  title_text
                );
             }
             if (this_event.keyboard.keycode == ALLEGRO_KEY_1)
@@ -610,9 +604,7 @@ int main(int argc, char **argv)
                   player_yaw,
                   current_tile_map,
                   current_tile_map_mesh,
-                  title_text,
-                  "Level 1",
-                  levels[THE_CAVE_IDENTIFIER].get_name()
+                  title_text
                );
             }
             break;
