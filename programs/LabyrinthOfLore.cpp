@@ -155,6 +155,8 @@ void go_into_door(
       std::map<std::string, LabyrinthOfLore::Rendering::TileMapMesh> &meshes,
       std::string level_identifier,
       AllegroFlare::vec3d spawn_point,
+      float spawn_facing_yaw,
+      float &player_yaw,
       LabyrinthOfLore::WorldMap::TileMap &current_tile_map,
       LabyrinthOfLore::Rendering::TileMapMesh &current_tile_map_mesh,
       LabyrinthOfLore::Hud::TitleText &title_text,
@@ -177,6 +179,8 @@ void go_into_door(
       top_text,
       headline_text
    );
+
+   player_yaw = spawn_facing_yaw;
 }
 
 
