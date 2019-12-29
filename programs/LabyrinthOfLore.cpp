@@ -65,6 +65,25 @@ static const std::string FINAL_TEMPLE_IDENTIFIER = "final_temple";
 static const std::string VILLAGE_OF_THE_FORGOTTEN_IDENTIFIER = "village_of_the_forgotten";
 
 
+class Door
+{
+public:
+   std::string level_identiifer;
+   float spawn_x;
+   float spawn_y;
+   float spawn_z;
+
+   Door(std::string level_identiifer, float spawn_x, float spawn_y, float spawn_z)
+      : level_identiifer(level_identiifer)
+      , spawn_x(spawn_x)
+      , spawn_y(spawn_y)
+      , spawn_z(spawn_z)
+   {}
+
+   ~Door();
+};
+
+
 class Game
 {
 public:
@@ -126,6 +145,7 @@ void set_title_text(LabyrinthOfLore::Hud::TitleText &title_text, std::string top
 {
    title_text.set(top_text, headline_text);
 };
+
 
 
 bool active = true;
