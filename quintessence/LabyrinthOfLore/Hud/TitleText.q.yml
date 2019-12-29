@@ -1,7 +1,7 @@
 properties:
   - name: above_text
     type: std::string
-    init_with: "\"Level: N\""
+    init_with: "\"Level N\""
     getter: true
     setter: true
   - name: headline_text

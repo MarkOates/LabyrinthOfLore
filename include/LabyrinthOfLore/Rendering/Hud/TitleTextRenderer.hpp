@@ -4,6 +4,7 @@
 #include <LabyrinthOfLore/Hud/TitleText.hpp>
 #include <allegro5/allegro_font.h>
 #include <allegro_flare/placement3d.h>
+#include <string>
 
 
 namespace LabyrinthOfLore
@@ -24,6 +25,7 @@ namespace LabyrinthOfLore
             ~TitleTextRenderer();
 
 
+         std::string decorated_title();
          void render();
          };
       }

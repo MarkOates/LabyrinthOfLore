@@ -11,7 +11,7 @@ namespace Hud
 
 
 TitleText::TitleText()
-   : above_text("Level: N")
+   : above_text("Level N")
    , headline_text("The Undefined Level")
 {
 }
