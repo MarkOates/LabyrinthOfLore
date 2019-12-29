@@ -405,7 +405,7 @@ int main(int argc, char **argv)
       //};
 
       std::map<char, Door> doors = {
-         { 1, Door(THE_CAVE_IDENTIFIER, 32.5, 12.5, -5.0, 0.0) },
+         { 1, Door(THE_CAVE_IDENTIFIER, 32.5, 12.5, -5.0, 0.5) },
          { 11, Door(THE_UNDERWORLD_IDENTIFIER, 40.5, 87.5, levels[THE_UNDERWORLD_IDENTIFIER].get_ground_height()+0.001f, 0.5 ), },
          //{ 2, Door(AN_ABANDONED_TEMPLE_IDENTIFIER, 0.0, 0.0, 0.0, 0.0) },
          //{ 3, Door(DUNGEON_OF_THE_CURSED_IDENTIFIER, 0.0, 0.0, 0.0, 0.0) },
