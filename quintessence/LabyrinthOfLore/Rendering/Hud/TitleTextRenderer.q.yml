@@ -20,8 +20,9 @@ functions:
 
       place.start_transform();
 
-      al_draw_rounded_rectangle(0, 0, place.size.x, place.size.y, 6, 6, al_color_name("red"), 3.0);
-      al_draw_text(font, al_color_name("white"), 0, 0, 0, " - title text - ");
+      //al_draw_rounded_rectangle(0, 0, place.size.x, place.size.y, 6, 6, al_color_name("red"), 3.0);
+      al_draw_text(font, al_color_name("white"), place.size.x/2, place.size.y/2 - 10, ALLEGRO_ALIGN_CENTER, title_text->get_above_text().c_str());
+      al_draw_text(font, al_color_name("white"), place.size.x/2, place.size.y/2 + 10, ALLEGRO_ALIGN_CENTER, title_text->get_headline_text().c_str());
 
       place.restore_transform();
       return;

@@ -264,7 +264,7 @@ functions:
       //render_commands_hint_pane();
       //render_current_spells();
       //render_view_frame();
-      //render_title_text();
+      render_title_text();
 
       if (mouse_pointer) mouse_pointer->render();
 

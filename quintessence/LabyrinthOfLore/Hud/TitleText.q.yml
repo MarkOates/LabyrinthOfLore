@@ -1,4 +1,11 @@
-functions:
-  - name: run
+properties:
+  - name: above_text
     type: std::string
-    body: return "Hello World!";
+    init_with: "\"Level: N\""
+    getter: true
+    setter: true
+  - name: headline_text
+    type: std::string
+    init_with: "\"The Undefined Level\""
+    getter: true
+    setter: true
