@@ -215,6 +215,10 @@ void process_collision_stepper_events(
          {
             go_into_door(doors.at(3), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
          }
+         else if (current_level_identifier == DUNGEON_OF_THE_CURSED_IDENTIFIER && tile_x == 1 && tile_y == 24)
+         {
+            go_into_door(doors.at(13), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
+         }
          // the player encountered a new collision
       }
    }
@@ -477,7 +481,7 @@ int main(int argc, char **argv)
       std::map<char, Door> doors = {
          { 1, Door(THE_CAVE_IDENTIFIER, 32.5, 12.5, -5.0, 0.5) },
          { 2, Door(AN_ABANDONED_TEMPLE_IDENTIFIER, 19.5, 43.5, -5.0, 0.5) },
-         { 3, Door(DUNGEON_OF_THE_CURSED_IDENTIFIER, 1.5, 24.5, -5.0, -0.25) },
+         { 3, Door(DUNGEON_OF_THE_CURSED_IDENTIFIER, 2.5, 24.5, -5.0, -0.25) },
          { 4, Door(TEMPLE_OF_WATER_IDENTIFIER, 55.5, 57.5, -5.0, 0.5) },
          { 5, Door(WORLD_OF_FIRE_IDENTIFIER, 19.5, 58.5, -5.0, 0.5) },
          { 6, Door(FINAL_TEMPLE_IDENTIFIER, 39.5, 57.5, -5.0, 0.5) },
@@ -664,7 +668,7 @@ int main(int argc, char **argv)
             }
             if (this_event.keyboard.keycode == ALLEGRO_KEY_0)
             {
-               go_into_door( doors.at(16), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
+               go_into_door( doors.at(13), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
             }
             break;
          case USER_EVENT_APPEND_MESSAGE_TO_MESSAGE_SCROLL:
