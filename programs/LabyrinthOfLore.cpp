@@ -173,7 +173,7 @@ void go_into_door(
 
    set_title_text(
       title_text,
-      "Level n",
+      "",
       levels[door.level_identifier].get_name()
    );
 
@@ -450,18 +450,6 @@ int main(int argc, char **argv)
          { 15, Door(THE_UNDERWORLD_IDENTIFIER, 103.5, 2.5, -5.0, 0.0 ), },
          { 16, Door(THE_UNDERWORLD_IDENTIFIER, 40.5, 31.5, -5.0, 0.0 ), },
          { 17, Door(THE_UNDERWORLD_IDENTIFIER, 24.5, 55.5, -5.0, -0.25 ), },
-         //{ 3, Door(DUNGEON_OF_THE_CURSED_IDENTIFIER, 0.0, 0.0, 0.0, 0.0) },
-         //{ 4, Door(TEMPLE_OF_WATER_IDENTIFIER, 0.0, 0.0, 0.0, 0.0) },
-         //{ 5, Door(WORLD_OF_FIRE_IDENTIFIER, 0.0, 0.0, 0.0, 0.0) },
-         //{ 6, Door(FINAL_TEMPLE_IDENTIFIER, 0.0, 0.0, 0.0, 0.0) },
-         //{ 7, Door(VILLAGE_OF_THE_FORGOTTEN_IDENTIFIER, 0.0, 0.0, 0.0, 0.0) },
-         //{ 1, Door(THE_CAVE_IDENTIFIER, 0.0, 0.0, 0.0, 0.0) },
-         //{ 2, Door(AN_ABANDONED_TEMPLE_IDENTIFIER, 0.0, 0.0, 0.0, 0.0) },
-         //{ 3, Door(DUNGEON_OF_THE_CURSED_IDENTIFIER, 0.0, 0.0, 0.0, 0.0) },
-         //{ 4, Door(TEMPLE_OF_WATER_IDENTIFIER, 0.0, 0.0, 0.0, 0.0) },
-         //{ 5, Door(WORLD_OF_FIRE_IDENTIFIER, 0.0, 0.0, 0.0, 0.0) },
-         //{ 6, Door(FINAL_TEMPLE_IDENTIFIER, 0.0, 0.0, 0.0, 0.0) },
-         //{ 7, Door(VILLAGE_OF_THE_FORGOTTEN_IDENTIFIER, 0.0, 0.0, 0.0, 0.0) },
       };
 
 
