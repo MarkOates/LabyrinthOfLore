@@ -392,6 +392,11 @@ int main(int argc, char **argv)
          },
       };
 
+      // build all the meshes
+
+      for (auto &mesh : meshes) { mesh.second.build(); }
+
+
 
       //std::map<int, std::string> map_names = {
          //{ 0, THE_UNDERWORLD_IDENTIFIER },
@@ -421,10 +426,6 @@ int main(int argc, char **argv)
          //{ 6, Door(FINAL_TEMPLE_IDENTIFIER, 0.0, 0.0, 0.0, 0.0) },
          //{ 7, Door(VILLAGE_OF_THE_FORGOTTEN_IDENTIFIER, 0.0, 0.0, 0.0, 0.0) },
       };
-
-      // build all the meshes
-
-      for (auto &mesh : meshes) { mesh.second.build(); }
 
 
       //
