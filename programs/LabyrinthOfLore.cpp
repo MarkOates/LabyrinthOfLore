@@ -482,7 +482,7 @@ int main(int argc, char **argv)
       //
 
       int x = 42;
-      int y = 59;
+      int y = 59+18;
       //int sprite_sheet_width = al_get_bitmap_width(item_tile_atlas.get_bitmap());
       int torch_id = 9*13+6;
       ALLEGRO_BITMAP *bitmap = item_tile_atlas.get_bitmap(9*13+6);
