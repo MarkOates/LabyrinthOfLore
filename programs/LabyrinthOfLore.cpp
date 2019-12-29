@@ -479,12 +479,12 @@ int main(int argc, char **argv)
       //};
 
       std::map<char, Door> doors = {
-         { 1, Door(THE_CAVE_IDENTIFIER, 32.5, 12.5, -5.0, 0.5) },
-         { 2, Door(AN_ABANDONED_TEMPLE_IDENTIFIER, 19.5, 43.5, -5.0, 0.5) },
+         { 1, Door(THE_CAVE_IDENTIFIER, 32.5, 13.5, -5.0, 0.5) },
+         { 2, Door(AN_ABANDONED_TEMPLE_IDENTIFIER, 19.5, 42.5, -5.0, 0.5) },
          { 3, Door(DUNGEON_OF_THE_CURSED_IDENTIFIER, 2.5, 24.5, -5.0, -0.25) },
          { 4, Door(TEMPLE_OF_WATER_IDENTIFIER, 55.5, 57.5, -5.0, 0.5) },
-         { 5, Door(WORLD_OF_FIRE_IDENTIFIER, 19.5, 58.5, -5.0, 0.5) },
-         { 6, Door(FINAL_TEMPLE_IDENTIFIER, 39.5, 57.5, -5.0, 0.5) },
+         { 5, Door(WORLD_OF_FIRE_IDENTIFIER, 19.5, 57.5, -5.0, 0.5) },
+         { 6, Door(FINAL_TEMPLE_IDENTIFIER, 39.5, 56.5, -5.0, 0.5) },
          { 7, Door(VILLAGE_OF_THE_FORGOTTEN_IDENTIFIER, 28.5, 30.5, -5.0, 0.25) },
 
          { 10, Door(THE_UNDERWORLD_IDENTIFIER, 40.5, 88.5+18, -5.0, 0.5 ), }, // this is the primary spawn point, the game start
