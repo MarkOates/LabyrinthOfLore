@@ -284,7 +284,7 @@ int main(int argc, char **argv)
       float resolution_scale = 3;
 
 
-      ALLEGRO_DISPLAY *display = al_create_display(1920, 1080);
+      ALLEGRO_DISPLAY *display = al_create_display(1920+300, 1080+180);
 
       //
 
