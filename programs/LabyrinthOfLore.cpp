@@ -407,6 +407,7 @@ int main(int argc, char **argv)
       //};
 
       std::map<char, Door> doors = {
+         { 1, Door(THE_CAVE_IDENTIFIER, 32.5, 12.5, -5.0, 0.0) },
          { 11, Door(THE_UNDERWORLD_IDENTIFIER, 40.5, 87.5, levels[THE_UNDERWORLD_IDENTIFIER].get_ground_height()+0.001f, 0.5 ), },
          //{ 2, Door(AN_ABANDONED_TEMPLE_IDENTIFIER, 0.0, 0.0, 0.0, 0.0) },
          //{ 3, Door(DUNGEON_OF_THE_CURSED_IDENTIFIER, 0.0, 0.0, 0.0, 0.0) },
@@ -583,6 +584,37 @@ int main(int argc, char **argv)
             if (this_event.keyboard.keycode == ALLEGRO_KEY_S) player_movement_magnitude = -0.022;
 
             if (this_event.keyboard.keycode == ALLEGRO_KEY_T) depth_darken_shader.toggle_torch();
+
+            if (this_event.keyboard.keycode == ALLEGRO_KEY_1)
+            {
+               go_into_door(
+                  doors.at(11),
+                  player_entity,
+                  levels,
+                  meshes,
+                  player_yaw,
+                  current_tile_map,
+                  current_tile_map_mesh,
+                  title_text,
+                  "Level 0",
+                  levels[THE_UNDERWORLD_IDENTIFIER].get_name()
+               );
+            }
+            if (this_event.keyboard.keycode == ALLEGRO_KEY_1)
+            {
+               go_into_door(
+                  doors.at(1),
+                  player_entity,
+                  levels,
+                  meshes,
+                  player_yaw,
+                  current_tile_map,
+                  current_tile_map_mesh,
+                  title_text,
+                  "Level 1",
+                  levels[THE_CAVE_IDENTIFIER].get_name()
+               );
+            }
             break;
          case USER_EVENT_APPEND_MESSAGE_TO_MESSAGE_SCROLL:
             break;
