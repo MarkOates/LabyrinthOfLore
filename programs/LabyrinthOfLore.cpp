@@ -80,7 +80,7 @@ public:
       , spawn_z(spawn_z)
    {}
 
-   ~Door();
+   ~Door() {}
 };
 
 
@@ -313,6 +313,28 @@ int main(int argc, char **argv)
                                                    world_texture_tile_atlas.get_bitmap()
                                                 ),
          },
+      };
+
+
+      //std::map<int, std::string> map_names = {
+         //{ 0, THE_UNDERWORLD_IDENTIFIER },
+         //{ 1, THE_CAVE_IDENTIFIER },
+         //{ 2, AN_ABANDONED_TEMPLE_IDENTIFIER },
+         //{ 3, DUNGEON_OF_THE_CURSED_IDENTIFIER },
+         //{ 4, TEMPLE_OF_WATER_IDENTIFIER },
+         //{ 5, WORLD_OF_FIRE_IDENTIFIER },
+         //{ 6, FINAL_TEMPLE_IDENTIFIER },
+         //{ 7, VILLAGE_OF_THE_FORGOTTEN_IDENTIFIER },
+      //};
+
+      std::map<int, Door> doors = {
+         { 1, Door(THE_CAVE_IDENTIFIER, 0.0, 0.0, 0.0) },
+         { 2, Door(AN_ABANDONED_TEMPLE_IDENTIFIER, 0.0, 0.0, 0.0) },
+         { 3, Door(DUNGEON_OF_THE_CURSED_IDENTIFIER, 0.0, 0.0, 0.0) },
+         { 4, Door(TEMPLE_OF_WATER_IDENTIFIER, 0.0, 0.0, 0.0) },
+         { 5, Door(WORLD_OF_FIRE_IDENTIFIER, 0.0, 0.0, 0.0) },
+         { 6, Door(FINAL_TEMPLE_IDENTIFIER, 0.0, 0.0, 0.0) },
+         { 7, Door(VILLAGE_OF_THE_FORGOTTEN_IDENTIFIER, 0.0, 0.0, 0.0) },
       };
 
       // build all the meshes
