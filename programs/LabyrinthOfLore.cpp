@@ -667,7 +667,7 @@ int main(int argc, char **argv)
 
             if (this_event.keyboard.keycode == ALLEGRO_KEY_T) depth_darken_shader.toggle_torch();
 
-            if (this_event.keyboard.keycode == ALLEGRO_KEY_1)
+            if (this_event.keyboard.keycode == ALLEGRO_KEY_0)
             {
                go_into_door(
                   doors.at(10),
@@ -680,10 +680,20 @@ int main(int argc, char **argv)
                   title_text
                );
             }
-            if (this_event.keyboard.keycode == ALLEGRO_KEY_0)
-            {
+            else if (this_event.keyboard.keycode == ALLEGRO_KEY_1)
+               go_into_door( doors.at(11), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
+            else if (this_event.keyboard.keycode == ALLEGRO_KEY_2)
+               go_into_door( doors.at(12), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
+            else if (this_event.keyboard.keycode == ALLEGRO_KEY_3)
                go_into_door( doors.at(13), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
-            }
+            else if (this_event.keyboard.keycode == ALLEGRO_KEY_4)
+               go_into_door( doors.at(14), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
+            else if (this_event.keyboard.keycode == ALLEGRO_KEY_5)
+               go_into_door( doors.at(15), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
+            else if (this_event.keyboard.keycode == ALLEGRO_KEY_6)
+               go_into_door( doors.at(16), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
+            else if (this_event.keyboard.keycode == ALLEGRO_KEY_7)
+               go_into_door( doors.at(16), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
             break;
          case USER_EVENT_APPEND_MESSAGE_TO_MESSAGE_SCROLL:
             break;
