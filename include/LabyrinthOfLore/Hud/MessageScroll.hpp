@@ -14,7 +14,7 @@ namespace LabyrinthOfLore
          std::string text;
 
       public:
-         MessageScroll();
+         MessageScroll(std::string text="Hello, brave soul. Adventure awaits you.");
          ~MessageScroll();
 
 

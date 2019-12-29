@@ -10,8 +10,8 @@ namespace Hud
 {
 
 
-MessageScroll::MessageScroll()
-   : text("Hello, brave soul. Adventure awaits you.")
+MessageScroll::MessageScroll(std::string text)
+   : text(text)
 {
 }
 
