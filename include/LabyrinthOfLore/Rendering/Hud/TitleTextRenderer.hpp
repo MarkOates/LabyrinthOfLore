@@ -25,6 +25,7 @@ namespace LabyrinthOfLore
             ~TitleTextRenderer();
 
 
+         float smoothstep(float edge0=0.0f, float edge1=0.0f, float x=0.0f);
          std::string decorated_title();
          void render();
          };

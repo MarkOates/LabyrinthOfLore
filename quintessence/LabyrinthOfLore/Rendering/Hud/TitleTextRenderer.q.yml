@@ -12,6 +12,25 @@ properties:
     init_with: "allegro_flare::placement3d{}"
     constructor_arg: true
 functions:
+  - name: smoothstep
+    type: float
+    parameters:
+      - name: edge0
+        type: float
+        default_argument: 0.0f
+      - name: edge1
+        type: float
+        default_argument: 0.0f
+      - name: x
+        type: float
+        default_argument: 0.0f
+    body: |
+      // Scale, bias and saturate x to 0..1 range
+      x = AllegroFlare::clamp((x - edge0) / (edge1 - edge0), 0.0f, 1.0f);
+      // Evaluate polynomial
+      return x * x * (3 - 2 * x);
+    body_dependency_symbols:
+      - AllegroFlare::clamp<float>
   - name: decorated_title
     type: std::string
     body: return std::string("- ") + title_text->get_headline_text() + " -";
@@ -64,6 +83,8 @@ dependencies:
     headers: [ allegro_flare/placement3d.h ]
   - symbol: x
     headers: [ y ]
+  - symbol: AllegroFlare::clamp<float>
+    headers: [ AllegroFlare/Useful.hpp ]
 functions:
   - name: run
     type: std::string
