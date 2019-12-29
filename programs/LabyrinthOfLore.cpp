@@ -181,6 +181,42 @@ void go_into_door(
 }
 
 
+void process_collision_stepper_events(
+      std::vector<LabyrinthOfLore::Physics::EntityTileMapCollisionEvent> &collision_stepper_events,
+      LabyrinthOfLore::Entity::Base* player_entity,
+      std::map<std::string, LabyrinthOfLore::WorldMap::Level> &levels,
+
+      // dependencies for go_into_door
+      std::map<char, Door> doors,
+      //LabyrinthOfLore::Entity::Base* player_entity,
+      //std::map<std::string, LabyrinthOfLore::WorldMap::Level> &levels,
+      std::map<std::string, LabyrinthOfLore::Rendering::TileMapMesh> &meshes,
+      float &player_yaw,
+      LabyrinthOfLore::WorldMap::TileMap &current_tile_map,
+      LabyrinthOfLore::Rendering::TileMapMesh &current_tile_map_mesh,
+      LabyrinthOfLore::Hud::TitleText &title_text
+
+   )
+{
+   for (auto &collision_stepper_event : collision_stepper_events)
+   {
+      if (collision_stepper_event.get_entity() == player_entity)
+      {
+         int tile_x = collision_stepper_event.get_tile_x();
+         int tile_y = collision_stepper_event.get_tile_y();
+
+         if (tile_x == 72 && tile_y == 92)
+         {
+            go_into_door(doors.at(10), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
+         }
+         // the player encountered a new collision
+      }
+   }
+   //entity_tile_map_collision_stepper.get_events_from_last_processed_step();
+   //title_text.set(top_text, headline_text, al_get_time());
+};
+
+
 
 bool active = true;
 
@@ -650,7 +686,23 @@ int main(int argc, char **argv)
 
                // observe tile map collision events, emit game events if needed 
                std::vector<LabyrinthOfLore::Physics::EntityTileMapCollisionEvent> collision_stepper_events = entity_tile_map_collision_stepper.get_events_from_last_processed_step();
-               LabyrinthOfLoreGame::EntityTileMapCollisionEventProcessor entity_tile_map_collision_event_processor(collision_stepper_events);
+
+               process_collision_stepper_events(
+                     collision_stepper_events,
+                     player_entity,
+                     levels,
+
+                     // dependencies for go_into_door
+                     doors,
+                     //LabyrinthOfLore::Entity::Base* player_entity,
+                     //std::map<std::string, LabyrinthOfLore::WorldMap::Level> &levels,
+                     meshes,
+                     player_yaw,
+                     current_tile_map,
+                     current_tile_map_mesh,
+                     title_text
+               );
+               //LabyrinthOfLoreGame::EntityTileMapCollisionEventProcessor entity_tile_map_collision_event_processor(collision_stepper_events);
 
                camera.get_position_ref() = player_entity->get_placement_ref().position + AllegroFlare::vec3d(0, 0, 0.65);//{5, 20, 2.01 + 0.5};
                camera.get_yaw_ref() = player_yaw + 0.5;// + sin(al_get_time()) * 0.02;
