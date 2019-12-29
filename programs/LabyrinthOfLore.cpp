@@ -66,6 +66,10 @@ static const std::string FINAL_TEMPLE_IDENTIFIER = "final_temple";
 static const std::string VILLAGE_OF_THE_FORGOTTEN_IDENTIFIER = "village_of_the_forgotten";
 
 
+
+std::string current_level_identifier = THE_UNDERWORLD_IDENTIFIER;
+
+
 class Door
 {
 public:
@@ -140,6 +144,8 @@ void move_player_to_level(
 
    // reset the players's velocity - so no funny stuff, ok buddy? ;)
    player_entity->get_velocity_ref().position = AllegroFlare::vec3d(0.0, 0.0, 0.0);
+
+   current_level_identifier = level_identifier;
 }
 
 
@@ -205,9 +211,9 @@ void process_collision_stepper_events(
          int tile_x = collision_stepper_event.get_tile_x();
          int tile_y = collision_stepper_event.get_tile_y();
 
-         if (tile_x == 72 && tile_y == 92)
+         if (current_level_identifier == THE_UNDERWORLD_IDENTIFIER && tile_x == 72 && tile_y == 92)
          {
-            go_into_door(doors.at(10), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
+            go_into_door(doors.at(3), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
          }
          // the player encountered a new collision
       }
