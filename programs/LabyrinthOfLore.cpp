@@ -438,7 +438,7 @@ int main(int argc, char **argv)
          { 2, Door(AN_ABANDONED_TEMPLE_IDENTIFIER, 19.5, 43.5, -5.0, 0.5) },
          { 3, Door(DUNGEON_OF_THE_CURSED_IDENTIFIER, 1.5, 24.5, -5.0, -0.25) },
          { 4, Door(TEMPLE_OF_WATER_IDENTIFIER, 55.5, 57.5, -5.0, 0.5) },
-         { 11, Door(THE_UNDERWORLD_IDENTIFIER, 40.5, 87.5, levels[THE_UNDERWORLD_IDENTIFIER].get_ground_height()+0.001f, 0.5 ), },
+         { 11, Door(THE_UNDERWORLD_IDENTIFIER, 40.5, 87.5+18, levels[THE_UNDERWORLD_IDENTIFIER].get_ground_height()+0.001f, 0.5 ), },
          //{ 3, Door(DUNGEON_OF_THE_CURSED_IDENTIFIER, 0.0, 0.0, 0.0, 0.0) },
          //{ 4, Door(TEMPLE_OF_WATER_IDENTIFIER, 0.0, 0.0, 0.0, 0.0) },
          //{ 5, Door(WORLD_OF_FIRE_IDENTIFIER, 0.0, 0.0, 0.0, 0.0) },
