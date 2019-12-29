@@ -1,0 +1,40 @@
+properties:
+  - name: bitmap_source_filename
+    type: std::string
+    init_with: "\"data/bitmaps/the_underworld.png\""
+    constructor_arg: true
+    getter: true
+functions:
+  - name: build
+    type: LabyrinthOfLore::WorldMap::TileMap
+    body: |
+      // could use a al_is_image_addon_installed() here
+      ALLEGRO_BITMAP *bitmap_source = al_load_bitmap(bitmap_source_filename.c_str());
+      if (!bitmap_source)
+      {
+        std::stringstream error_message;
+        error_message << "was unable to load bitmap ";
+        error_message << "\"" << bitmap_source_filename << "\" ";
+        error_message << "when calling build.";
+        throw std::runtime_error(error_message.str());
+      }
+      LabyrinthOfLore::WorldMap::BitmapTileMapLoader loader(bitmap_source);
+      return loader.load(2.0, 1.0);
+    body_dependency_symbols:
+      - std::stringstream
+      - LabyrinthOfLore::WorldMap::BitmapTileMapLoader
+      - al_load_bitmap
+dependencies:
+  - symbol: LabyrinthOfLore::WorldMap::BitmapTileMapLoader
+    headers: [ LabyrinthOfLore/WorldMap/BitmapTileMapLoader.hpp ]
+  - symbol: std::vector<std::vector<LabyrinthOfLore::WorldMap::Tile>>
+    headers: [ vector, LabyrinthOfLore/WorldMap/Tile.hpp ]
+  - symbol: LabyrinthOfLore::WorldMap::TileMap
+    headers: [ LabyrinthOfLore/WorldMap/TileMap.hpp ]
+  - symbol: LabyrinthOfLore::WorldMap::BitmapTileMapLoader
+    headers: [ LabyrinthOfLore/WorldMap/BitmapTileMapLoader.hpp ]
+  - symbol: std::stringstream
+    headers: [ sstream ]
+  - symbol: al_load_bitmap
+    headers: [ allegro5/allegro.h, allegro5/allegro_image.h ]
+

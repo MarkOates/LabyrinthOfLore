@@ -1,4 +1,4 @@
-FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Rendering/Hud/TitleTextRenderer
+FOCUSED_COMPONENT_NAME=LabyrinthOfLore/WorldMap/BitmapFilenameToWorldBuilder
 FOCUSED_TEST_FILTER=
 
 
