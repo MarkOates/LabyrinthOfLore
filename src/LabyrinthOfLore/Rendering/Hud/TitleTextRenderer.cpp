@@ -2,6 +2,7 @@
 
 #include <LabyrinthOfLore/Rendering/Hud/TitleTextRenderer.hpp>
 #include <allegro5/allegro_color.h>
+#include <allegro5/allegro_color.h>
 #include <allegro5/allegro_primitives.h>
 
 
@@ -36,13 +37,29 @@ void TitleTextRenderer::render()
 if (!font) throw std::runtime_error("Cannot draw TitleText with a nullptr font");
 if (!title_text) throw std::runtime_error("Cannot draw TitleText with a nullptr title_text");
 
-place.start_transform();
+float time_changed_at = title_text->get_time_changed_at();
+float time_now = al_get_time();
+float time_since_time_changed_at = time_now - time_changed_at;
+float opacity = (time_since_time_changed_at <= 3.0) ? 1.0f : 0.0f; 
 
-//al_draw_rounded_rectangle(0, 0, place.size.x, place.size.y, 6, 6, al_color_name("red"), 3.0);
-al_draw_text(font, al_color_name("white"), place.size.x/2, place.size.y/2 - 10, ALLEGRO_ALIGN_CENTER, title_text->get_above_text().c_str());
-al_draw_text(font, al_color_name("white"), place.size.x/2, place.size.y/2 + 10, ALLEGRO_ALIGN_CENTER, decorated_title().c_str());
+if (opacity >= 0.0001)
+{
+  place.start_transform();
 
-place.restore_transform();
+  ALLEGRO_COLOR color = al_color_name("white");
+
+  color.r *= opacity;
+  color.g *= opacity;
+  color.b *= opacity;
+  color.a *= opacity;
+
+  //al_draw_rounded_rectangle(0, 0, place.size.x, place.size.y, 6, 6, al_color_name("red"), 3.0);
+  al_draw_text(font, color, place.size.x/2, place.size.y/2 - 10, ALLEGRO_ALIGN_CENTER, title_text->get_above_text().c_str());
+  al_draw_text(font, color, place.size.x/2, place.size.y/2 + 10, ALLEGRO_ALIGN_CENTER, decorated_title().c_str());
+
+  place.restore_transform();
+}
+
 return;
 
 }

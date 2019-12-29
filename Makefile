@@ -1,4 +1,4 @@
-FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Hud/TitleText
+FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Rendering/Hud/TitleTextRenderer
 FOCUSED_TEST_FILTER=
 
 
