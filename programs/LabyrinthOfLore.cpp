@@ -323,7 +323,7 @@ int main(int argc, char **argv)
          { TEMPLE_OF_WATER_IDENTIFIER,          LabyrinthOfLore::WorldMap::Level(
                                                    "Temple of Water",
                                                    2.0f,
-                                                   LabyrinthOfLore::WorldMap::BitmapFilenameToWorldBuilder("data/bitmaps/temple_of_water.png").build()
+                                                   LabyrinthOfLore::WorldMap::BitmapFilenameToWorldBuilder("data/bitmaps/temple_of_water.png", 6.0, 1.25).build()
                                                 )
          },
          { WORLD_OF_FIRE_IDENTIFIER,            LabyrinthOfLore::WorldMap::Level(
@@ -436,6 +436,8 @@ int main(int argc, char **argv)
       std::map<char, Door> doors = {
          { 1, Door(THE_CAVE_IDENTIFIER, 32.5, 12.5, -5.0, 0.5) },
          { 2, Door(AN_ABANDONED_TEMPLE_IDENTIFIER, 19.5, 43.5, -5.0, 0.5) },
+         { 3, Door(DUNGEON_OF_THE_CURSED_IDENTIFIER, 1.5, 24.5, -5.0, -0.25) },
+         { 4, Door(TEMPLE_OF_WATER_IDENTIFIER, 55.5, 57.5, -5.0, 0.5) },
          { 11, Door(THE_UNDERWORLD_IDENTIFIER, 40.5, 87.5, levels[THE_UNDERWORLD_IDENTIFIER].get_ground_height()+0.001f, 0.5 ), },
          //{ 3, Door(DUNGEON_OF_THE_CURSED_IDENTIFIER, 0.0, 0.0, 0.0, 0.0) },
          //{ 4, Door(TEMPLE_OF_WATER_IDENTIFIER, 0.0, 0.0, 0.0, 0.0) },
@@ -621,7 +623,7 @@ int main(int argc, char **argv)
             }
             if (this_event.keyboard.keycode == ALLEGRO_KEY_0)
             {
-               go_into_door( doors.at(2), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
+               go_into_door( doors.at(4), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
             }
             break;
          case USER_EVENT_APPEND_MESSAGE_TO_MESSAGE_SCROLL:
