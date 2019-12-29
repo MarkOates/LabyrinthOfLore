@@ -12,11 +12,12 @@ namespace Rendering
 {
 
 
-TileMapMesh::TileMapMesh(Tileo::TileAtlas* tile_atlas, LabyrinthOfLore::Rendering::TileTypeDictionary tile_type_dictionary, LabyrinthOfLore::WorldMap::TileMap tile_map, ALLEGRO_BITMAP* texture)
+TileMapMesh::TileMapMesh(Tileo::TileAtlas* tile_atlas, LabyrinthOfLore::Rendering::TileTypeDictionary tile_type_dictionary, LabyrinthOfLore::WorldMap::TileMap tile_map, ALLEGRO_BITMAP* texture, int offset_to_first_texture_index)
    : tile_atlas(tile_atlas)
    , tile_type_dictionary(tile_type_dictionary)
    , tile_map(tile_map)
    , texture(texture)
+   , offset_to_first_texture_index(offset_to_first_texture_index)
    , vertexes({})
 {
 }
@@ -82,9 +83,9 @@ for (int y=0; y<tile_map.get_height(); y++)
          pillar = LabyrinthOfLore::Rendering::TileMapMeshPillarTexturer(
                tile_atlas,
                pillar,
-               tile_type_definition.get_tile_index_for_front_and_back_texture(),
-               tile_type_definition.get_tile_index_for_right_and_left_texture(),
-               tile_type_definition.get_tile_index_for_top_texture(),
+               tile_type_definition.get_tile_index_for_front_and_back_texture()+offset_to_first_texture_index,
+               tile_type_definition.get_tile_index_for_right_and_left_texture()+offset_to_first_texture_index,
+               tile_type_definition.get_tile_index_for_top_texture()+offset_to_first_texture_index,
                builder.needs_partial_height_side_faces_from_top(),
                builder.get_height(),
                do_not_include_top_face,
