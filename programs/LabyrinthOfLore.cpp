@@ -146,7 +146,7 @@ void move_player_to_level(
 
 void set_title_text(LabyrinthOfLore::Hud::TitleText &title_text, std::string top_text, std::string headline_text)
 {
-   title_text.set(top_text, headline_text);
+   title_text.set(top_text, headline_text, al_get_time());
 };
 
 
@@ -406,8 +406,8 @@ int main(int argc, char **argv)
 
       std::map<char, Door> doors = {
          { 1, Door(THE_CAVE_IDENTIFIER, 32.5, 12.5, -5.0, 0.5) },
+         { 2, Door(AN_ABANDONED_TEMPLE_IDENTIFIER, 19.5, 43.5, -5.0, 0.5) },
          { 11, Door(THE_UNDERWORLD_IDENTIFIER, 40.5, 87.5, levels[THE_UNDERWORLD_IDENTIFIER].get_ground_height()+0.001f, 0.5 ), },
-         //{ 2, Door(AN_ABANDONED_TEMPLE_IDENTIFIER, 0.0, 0.0, 0.0, 0.0) },
          //{ 3, Door(DUNGEON_OF_THE_CURSED_IDENTIFIER, 0.0, 0.0, 0.0, 0.0) },
          //{ 4, Door(TEMPLE_OF_WATER_IDENTIFIER, 0.0, 0.0, 0.0, 0.0) },
          //{ 5, Door(WORLD_OF_FIRE_IDENTIFIER, 0.0, 0.0, 0.0, 0.0) },
@@ -594,18 +594,9 @@ int main(int argc, char **argv)
                   title_text
                );
             }
-            if (this_event.keyboard.keycode == ALLEGRO_KEY_1)
+            if (this_event.keyboard.keycode == ALLEGRO_KEY_0)
             {
-               go_into_door(
-                  doors.at(1),
-                  player_entity,
-                  levels,
-                  meshes,
-                  player_yaw,
-                  current_tile_map,
-                  current_tile_map_mesh,
-                  title_text
-               );
+               go_into_door( doors.at(2), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
             }
             break;
          case USER_EVENT_APPEND_MESSAGE_TO_MESSAGE_SCROLL:
