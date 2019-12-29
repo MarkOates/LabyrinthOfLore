@@ -211,13 +211,27 @@ void process_collision_stepper_events(
          int tile_x = collision_stepper_event.get_tile_x();
          int tile_y = collision_stepper_event.get_tile_y();
 
-         if (current_level_identifier == THE_UNDERWORLD_IDENTIFIER && tile_x == 72 && tile_y == 92)
+                               //level_identifier_str, tile_x, tile_y, door_number_to_enter
+         std::vector<std::tuple<std::string, int, int, int>> door_datas = {
+            { THE_UNDERWORLD_IDENTIFIER, 72, 92, 3 },
+            { DUNGEON_OF_THE_CURSED_IDENTIFIER, 1, 24, 13 },
+         };
+
+         //if (current_level_identifier == THE_UNDERWORLD_IDENTIFIER && tile_x == 72 && tile_y == 92)
+         //{
+            //go_into_door(doors.at(3), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
+         //}
+         //else if (current_level_identifier == DUNGEON_OF_THE_CURSED_IDENTIFIER && tile_x == 1 && tile_y == 24)
+         //{
+            //go_into_door(doors.at(13), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
+         //}
+
+         for (auto door_data : door_datas)
          {
-            go_into_door(doors.at(3), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
-         }
-         else if (current_level_identifier == DUNGEON_OF_THE_CURSED_IDENTIFIER && tile_x == 1 && tile_y == 24)
-         {
-            go_into_door(doors.at(13), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
+            if (current_level_identifier == std::get<0>(door_data) && tile_x == std::get<1>(door_data) && tile_y == std::get<2>(door_data))
+            {
+               go_into_door(doors.at(std::get<3>(door_data)), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
+            }
          }
          // the player encountered a new collision
       }
