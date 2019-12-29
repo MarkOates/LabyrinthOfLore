@@ -20,6 +20,8 @@ namespace LabyrinthOfLore
          void set_text(std::string text);
 
          std::string get_text();
+      std::string append_text(std::string text_to_append="");
+      void clear_text();
       };
    }
 }

@@ -33,6 +33,16 @@ std::string MessageScroll::get_text()
 }
 
 
+std::string MessageScroll::append_text(std::string text_to_append)
+{
+text += text_to_append;
+
+}
+
+void MessageScroll::clear_text()
+{
+text.clear();
+}
 } // namespace Hud
 } // namespace LabyrinthOfLore
 

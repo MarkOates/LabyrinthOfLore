@@ -4,3 +4,15 @@ properties:
     init_with: "\"Hello, brave soul. Adventure awaits you.\""
     getter: true
     setter: true
+functions:
+  - name: append_text
+    type: std::string
+    parameters:
+      - name: text_to_append
+        type: std::string
+        default_argument: "\"\""
+    body: |
+      text += text_to_append;
+  - name: clear_text
+    type: void
+    body: text.clear();
