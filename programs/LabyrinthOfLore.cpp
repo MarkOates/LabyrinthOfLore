@@ -307,37 +307,37 @@ int main(int argc, char **argv)
          { THE_CAVE_IDENTIFIER,                 LabyrinthOfLore::WorldMap::Level(
                                                    "The Cave",
                                                    2.0f,
-                                                   LabyrinthOfLore::WorldMap::BitmapFilenameToWorldBuilder("data/bitmaps/the_underworld.png").build()
+                                                   LabyrinthOfLore::WorldMap::BitmapFilenameToWorldBuilder("data/bitmaps/the_cave.png").build()
                                                 )
          },
          { AN_ABANDONED_TEMPLE_IDENTIFIER,      LabyrinthOfLore::WorldMap::Level(
                                                    "An Abandoned Temple",
                                                    2.0f,
-                                                   LabyrinthOfLore::WorldMap::BitmapFilenameToWorldBuilder("data/bitmaps/the_underworld.png").build()
+                                                   LabyrinthOfLore::WorldMap::BitmapFilenameToWorldBuilder("data/bitmaps/an_abandoned_temple.png").build()
                                                 )
          },
          { DUNGEON_OF_THE_CURSED_IDENTIFIER,    LabyrinthOfLore::WorldMap::Level(
                                                    "Dungeon of the Cursed",
                                                    2.0f,
-                                                   LabyrinthOfLore::WorldMap::BitmapFilenameToWorldBuilder("data/bitmaps/the_underworld.png").build()
+                                                   LabyrinthOfLore::WorldMap::BitmapFilenameToWorldBuilder("data/bitmaps/dungeon_of_the_cursed.png").build()
                                                 )
          },
          { TEMPLE_OF_WATER_IDENTIFIER,          LabyrinthOfLore::WorldMap::Level(
                                                    "Temple of Water",
                                                    2.0f,
-                                                   LabyrinthOfLore::WorldMap::BitmapFilenameToWorldBuilder("data/bitmaps/the_underworld.png").build()
+                                                   LabyrinthOfLore::WorldMap::BitmapFilenameToWorldBuilder("data/bitmaps/temple_of_water.png").build()
                                                 )
          },
          { WORLD_OF_FIRE_IDENTIFIER,            LabyrinthOfLore::WorldMap::Level(
                                                    "World of Fire",
                                                    2.0f,
-                                                   LabyrinthOfLore::WorldMap::BitmapFilenameToWorldBuilder("data/bitmaps/the_underworld.png").build()
+                                                   LabyrinthOfLore::WorldMap::BitmapFilenameToWorldBuilder("data/bitmaps/world_of_fire.png").build()
                                                 )
          },
          { FINAL_TEMPLE_IDENTIFIER,             LabyrinthOfLore::WorldMap::Level(
                                                    "Final Temple",
                                                    2.0f,
-                                                   LabyrinthOfLore::WorldMap::BitmapFilenameToWorldBuilder("data/bitmaps/the_underworld.png").build()
+                                                   LabyrinthOfLore::WorldMap::BitmapFilenameToWorldBuilder("data/bitmaps/final_temple.png").build()
                                                 )
          },
          { VILLAGE_OF_THE_FORGOTTEN_IDENTIFIER, LabyrinthOfLore::WorldMap::Level(
