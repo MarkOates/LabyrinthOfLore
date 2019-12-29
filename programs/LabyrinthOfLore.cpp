@@ -213,8 +213,26 @@ void process_collision_stepper_events(
 
                                //level_identifier_str, tile_x, tile_y, door_number_to_enter
          std::vector<std::tuple<std::string, int, int, int>> door_datas = {
-            { THE_UNDERWORLD_IDENTIFIER, 72, 92, 3 },
+            { THE_CAVE_IDENTIFIER, 32, 14, 11 },
+            { THE_UNDERWORLD_IDENTIFIER, 56, 24, 1 },
+
+            { AN_ABANDONED_TEMPLE_IDENTIFIER, 19, 43, 12 },
+            { THE_UNDERWORLD_IDENTIFIER, 42, 44, 2 },
+
             { DUNGEON_OF_THE_CURSED_IDENTIFIER, 1, 24, 13 },
+            { THE_UNDERWORLD_IDENTIFIER, 72, 92, 3 },
+
+            { TEMPLE_OF_WATER_IDENTIFIER, 55, 58, 14 },
+            { THE_UNDERWORLD_IDENTIFIER, 25, 20, 4 },
+
+            { WORLD_OF_FIRE_IDENTIFIER, 19, 58, 15 },
+            { THE_UNDERWORLD_IDENTIFIER, 103, 1, 5 },
+
+            { FINAL_TEMPLE_IDENTIFIER, 39, 57, 16 },
+            { THE_UNDERWORLD_IDENTIFIER, 40, 30, 6 },
+
+            { VILLAGE_OF_THE_FORGOTTEN_IDENTIFIER, 29, 30, 17 },
+            { THE_UNDERWORLD_IDENTIFIER, 23, 55, 7 },
          };
 
          //if (current_level_identifier == THE_UNDERWORLD_IDENTIFIER && tile_x == 72 && tile_y == 92)
@@ -363,14 +381,14 @@ int main(int argc, char **argv)
          },
          { THE_CAVE_IDENTIFIER,                 LabyrinthOfLore::WorldMap::Level(
                                                    "The Cave",
-                                                   2.0f,
-                                                   LabyrinthOfLore::WorldMap::BitmapFilenameToWorldBuilder("data/bitmaps/the_cave.png").build()
+                                                   3.0f,
+                                                   LabyrinthOfLore::WorldMap::BitmapFilenameToWorldBuilder("data/bitmaps/the_cave.png", 3.0).build()
                                                 )
          },
          { AN_ABANDONED_TEMPLE_IDENTIFIER,      LabyrinthOfLore::WorldMap::Level(
                                                    "An Abandoned Temple",
-                                                   2.5f,
-                                                   LabyrinthOfLore::WorldMap::BitmapFilenameToWorldBuilder("data/bitmaps/an_abandoned_temple.png", 2.5, 1.0).build()
+                                                   3.0f,
+                                                   LabyrinthOfLore::WorldMap::BitmapFilenameToWorldBuilder("data/bitmaps/an_abandoned_temple.png", 3.0, 1.0).build()
                                                 )
          },
          { DUNGEON_OF_THE_CURSED_IDENTIFIER,    LabyrinthOfLore::WorldMap::Level(
