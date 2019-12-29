@@ -13,8 +13,10 @@ namespace WorldMap
 {
 
 
-BitmapFilenameToWorldBuilder::BitmapFilenameToWorldBuilder(std::string bitmap_source_filename)
+BitmapFilenameToWorldBuilder::BitmapFilenameToWorldBuilder(std::string bitmap_source_filename, float top_height, float ground_height)
    : bitmap_source_filename(bitmap_source_filename)
+   , top_height(top_height)
+   , ground_height(ground_height)
 {
 }
 
@@ -27,6 +29,18 @@ BitmapFilenameToWorldBuilder::~BitmapFilenameToWorldBuilder()
 std::string BitmapFilenameToWorldBuilder::get_bitmap_source_filename()
 {
    return bitmap_source_filename;
+}
+
+
+float BitmapFilenameToWorldBuilder::get_top_height()
+{
+   return top_height;
+}
+
+
+float BitmapFilenameToWorldBuilder::get_ground_height()
+{
+   return ground_height;
 }
 
 
@@ -43,7 +57,7 @@ if (!bitmap_source)
   throw std::runtime_error(error_message.str());
 }
 LabyrinthOfLore::WorldMap::BitmapTileMapLoader loader(bitmap_source);
-return loader.load(2.0, 1.0);
+return loader.load(top_height, ground_height);
 
 }
 } // namespace WorldMap

@@ -4,6 +4,16 @@ properties:
     init_with: "\"data/bitmaps/the_underworld.png\""
     constructor_arg: true
     getter: true
+  - name: top_height
+    type: float
+    init_with: 2.0f
+    constructor_arg: true
+    getter: true
+  - name: ground_height
+    type: float
+    init_with: 1.0f
+    constructor_arg: true
+    getter: true
 functions:
   - name: build
     type: LabyrinthOfLore::WorldMap::TileMap
@@ -19,7 +29,7 @@ functions:
         throw std::runtime_error(error_message.str());
       }
       LabyrinthOfLore::WorldMap::BitmapTileMapLoader loader(bitmap_source);
-      return loader.load(2.0, 1.0);
+      return loader.load(top_height, ground_height);
     body_dependency_symbols:
       - std::stringstream
       - LabyrinthOfLore::WorldMap::BitmapTileMapLoader
