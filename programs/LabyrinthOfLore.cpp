@@ -122,6 +122,12 @@ void move_player_to_level(
 
 
 
+void set_title_text(LabyrinthOfLore::Hud::TitleText &title_text, std::string top_text, std::string headline_text)
+{
+   title_text.set(top_text, headline_text);
+};
+
+
 bool active = true;
 
 int main(int argc, char **argv)
@@ -391,6 +397,12 @@ int main(int argc, char **argv)
          {40.5, 87.5, levels[THE_UNDERWORLD_IDENTIFIER].get_ground_height()+0.001f },
          current_tile_map,
          current_tile_map_mesh
+      );
+
+      set_title_text(
+         title_text,
+         "Level 0",
+         levels[THE_UNDERWORLD_IDENTIFIER].get_name()
       );
 
       //
