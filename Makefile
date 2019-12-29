@@ -1,4 +1,4 @@
-FOCUSED_COMPONENT_NAME=LabyrinthOfLore/WorldMap/Level
+FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Hud/TitleText
 FOCUSED_TEST_FILTER=
 
 

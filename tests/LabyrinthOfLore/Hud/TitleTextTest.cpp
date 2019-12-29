@@ -11,6 +11,10 @@ TEST(LabyrinthOfLore_Hud_TitleTextTest, can_be_created_without_blowing_up)
 TEST(LabyrinthOfLore_Hud_TitleTextTest, run__returns_the_expected_response)
 {
    LabyrinthOfLore::Hud::TitleText title_text;
-   std::string expected_string = "Hello World!";
-   EXPECT_EQ(expected_string, title_text.run());
+
+   title_text.set("Hello", "World", 1.03f);
+
+   EXPECT_EQ("Hello", title_text.get_above_text());
+   EXPECT_EQ("World", title_text.get_headline_text());
+   EXPECT_EQ(1.03f, title_text.get_time_changed_at());
 }

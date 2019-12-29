@@ -3,9 +3,28 @@ properties:
     type: std::string
     init_with: "\"Level N\""
     getter: true
-    setter: true
   - name: headline_text
     type: std::string
     init_with: "\"The Undefined Level\""
     getter: true
-    setter: true
+  - name: time_changed_at
+    type: float
+    init_with: 0
+    getter: true
+functions:
+  - name: set
+    type: void
+    parameters:
+      - name: above_text
+        type: std::string
+        default_argument: "\"\""
+      - name: headline_text
+        type: std::string
+        default_argument: "\"\""
+      - name: time_now
+        type: float
+        default_argument: 0.0f
+    body: |
+      this->above_text = above_text;
+      this->headline_text = headline_text;
+      time_changed_at = time_now;
