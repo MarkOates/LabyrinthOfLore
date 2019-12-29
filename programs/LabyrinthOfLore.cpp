@@ -150,18 +150,6 @@ void set_title_text(LabyrinthOfLore::Hud::TitleText &title_text, std::string top
 };
 
 
-void append_message_to_message_scroll(LabyrinthOfLore::Hud::MessageScroll &message_scroll, std::string text)
-{
-   message_scroll.append_text(text);
-}
-
-
-void clear_message_scroll_text(LabyrinthOfLore::Hud::MessageScroll &message_scroll)
-{
-   message_scroll.clear_text();
-}
-
-
 void go_into_door(
       Door door,
       LabyrinthOfLore::Entity::Base* player_entity,
@@ -534,7 +522,7 @@ int main(int argc, char **argv)
 
       //
 
-      LabyrinthOfLore::Hud::MessageScroll message_scroll("def");
+      LabyrinthOfLore::Hud::MessageScroll message_scroll("");
       LabyrinthOfLore::Hud::CommandPanel command_panel;
       LabyrinthOfLore::Hud::VitalityAndManaBar vitality_and_mana_bar;
       LabyrinthOfLore::Hud::CharacterPanel character_panel;
