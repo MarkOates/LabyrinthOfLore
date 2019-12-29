@@ -110,6 +110,26 @@ ALLEGRO_COLOR BitmapTileMapLoader::pick_index_gm1_color()
 return pick_color(get_index_column_x(), 12);
 }
 
+ALLEGRO_COLOR BitmapTileMapLoader::pick_index_g1p_color()
+{
+return pick_color(get_index_column_x(), 13);
+}
+
+ALLEGRO_COLOR BitmapTileMapLoader::pick_index_g1pp_color()
+{
+return pick_color(get_index_column_x(), 14);
+}
+
+ALLEGRO_COLOR BitmapTileMapLoader::pick_index_g1ppp_color()
+{
+return pick_color(get_index_column_x(), 15);
+}
+
+ALLEGRO_COLOR BitmapTileMapLoader::pick_index_g2_color()
+{
+return pick_color(get_index_column_x(), 16);
+}
+
 bool BitmapTileMapLoader::validate()
 {
 return true;
@@ -149,6 +169,12 @@ for (unsigned y=0; y<final_tile_map_height; y++)
       else if (colors_are_equal(this_pixel_color, pick_index_gmm_color())) result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(1, ground_height-0.5));
       else if (colors_are_equal(this_pixel_color, pick_index_gmmm_color())) result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(1, ground_height-0.75));
       else if (colors_are_equal(this_pixel_color, pick_index_gm1_color())) result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(1, ground_height-1.0));
+
+      else if (colors_are_equal(this_pixel_color, pick_index_g1p_color())) result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(1, ground_height+1.25));
+      else if (colors_are_equal(this_pixel_color, pick_index_g1pp_color())) result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(1, ground_height+1.5));
+      else if (colors_are_equal(this_pixel_color, pick_index_g1ppp_color())) result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(1, ground_height+1.75));
+      else if (colors_are_equal(this_pixel_color, pick_index_g2_color())) result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(1, ground_height+2.0));
+
       else
       {
          std::stringstream error_message;
