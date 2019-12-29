@@ -298,7 +298,7 @@ int main(int argc, char **argv)
          { THE_UNDERWORLD_IDENTIFIER,           LabyrinthOfLore::WorldMap::Level(
                                                    "The Underworld",
                                                    2.0f,
-                                                   LabyrinthOfLore::WorldMap::BitmapFilenameToWorldBuilder("data/bitmaps/the_underworld.png").build()
+                                                   LabyrinthOfLore::WorldMap::BitmapFilenameToWorldBuilder("data/bitmaps/the_underworld.png", 3.0).build()
                                                 )
          },
          { THE_CAVE_IDENTIFIER,                 LabyrinthOfLore::WorldMap::Level(
@@ -441,7 +441,15 @@ int main(int argc, char **argv)
          { 6, Door(FINAL_TEMPLE_IDENTIFIER, 39.5, 57.5, -5.0, 0.5) },
          { 7, Door(VILLAGE_OF_THE_FORGOTTEN_IDENTIFIER, 28.5, 30.5, -5.0, 0.25) },
 
-         { 10, Door(THE_UNDERWORLD_IDENTIFIER, 40.5, 87.5+18, -5.0, 0.5 ), },
+         { 10, Door(THE_UNDERWORLD_IDENTIFIER, 40.5, 88.5+18, -5.0, 0.5 ), }, // this is the primary spawn point, the game start
+
+         { 11, Door(THE_UNDERWORLD_IDENTIFIER, 56.5, 25.5, -5.0, 0.0 ), },
+         { 12, Door(THE_UNDERWORLD_IDENTIFIER, 42.5, 45.5, -5.0, 0.25 ), },
+         { 13, Door(THE_UNDERWORLD_IDENTIFIER, 71.5, 92.5, -5.0, 0.25 ), },
+         { 14, Door(THE_UNDERWORLD_IDENTIFIER, 25.5, 21.5, -5.0, 0.0 ), },
+         { 15, Door(THE_UNDERWORLD_IDENTIFIER, 103.5, 2.5, -5.0, 0.0 ), },
+         { 16, Door(THE_UNDERWORLD_IDENTIFIER, 40.5, 31.5, -5.0, 0.0 ), },
+         { 17, Door(THE_UNDERWORLD_IDENTIFIER, 24.5, 55.5, -5.0, -0.25 ), },
          //{ 3, Door(DUNGEON_OF_THE_CURSED_IDENTIFIER, 0.0, 0.0, 0.0, 0.0) },
          //{ 4, Door(TEMPLE_OF_WATER_IDENTIFIER, 0.0, 0.0, 0.0, 0.0) },
          //{ 5, Door(WORLD_OF_FIRE_IDENTIFIER, 0.0, 0.0, 0.0, 0.0) },
@@ -626,7 +634,7 @@ int main(int argc, char **argv)
             }
             if (this_event.keyboard.keycode == ALLEGRO_KEY_0)
             {
-               go_into_door( doors.at(7), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
+               go_into_door( doors.at(16), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
             }
             break;
          case USER_EVENT_APPEND_MESSAGE_TO_MESSAGE_SCROLL:
