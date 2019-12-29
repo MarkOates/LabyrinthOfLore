@@ -68,16 +68,18 @@ static const std::string VILLAGE_OF_THE_FORGOTTEN_IDENTIFIER = "village_of_the_f
 class Door
 {
 public:
-   std::string level_identiifer;
+   std::string level_identifier;
    float spawn_x;
    float spawn_y;
    float spawn_z;
+   float spawn_facing_yaw;
 
-   Door(std::string level_identiifer, float spawn_x, float spawn_y, float spawn_z)
-      : level_identiifer(level_identiifer)
+   Door(std::string level_identifier, float spawn_x, float spawn_y, float spawn_z, float spawn_facing_yaw)
+      : level_identifier(level_identifier)
       , spawn_x(spawn_x)
       , spawn_y(spawn_y)
       , spawn_z(spawn_z)
+      , spawn_facing_yaw(spawn_facing_yaw)
    {}
 
    ~Door() {}
@@ -153,9 +155,6 @@ void go_into_door(
       LabyrinthOfLore::Entity::Base* player_entity,
       std::map<std::string, LabyrinthOfLore::WorldMap::Level> &levels,
       std::map<std::string, LabyrinthOfLore::Rendering::TileMapMesh> &meshes,
-      std::string level_identifier,
-      AllegroFlare::vec3d spawn_point,
-      float spawn_facing_yaw,
       float &player_yaw,
       LabyrinthOfLore::WorldMap::TileMap &current_tile_map,
       LabyrinthOfLore::Rendering::TileMapMesh &current_tile_map_mesh,
@@ -168,8 +167,8 @@ void go_into_door(
       player_entity,
       levels,
       meshes,
-      level_identifier,
-      spawn_point,
+      door.level_identifier,
+      AllegroFlare::vec3d(door.spawn_x, door.spawn_y, door.spawn_z),
       current_tile_map,
       current_tile_map_mesh
    );
@@ -180,7 +179,7 @@ void go_into_door(
       headline_text
    );
 
-   player_yaw = spawn_facing_yaw;
+   player_yaw = door.spawn_facing_yaw;
 }
 
 
@@ -364,14 +363,21 @@ int main(int argc, char **argv)
          //{ 7, VILLAGE_OF_THE_FORGOTTEN_IDENTIFIER },
       //};
 
-      std::map<int, Door> doors = {
-         { 1, Door(THE_CAVE_IDENTIFIER, 0.0, 0.0, 0.0) },
-         { 2, Door(AN_ABANDONED_TEMPLE_IDENTIFIER, 0.0, 0.0, 0.0) },
-         { 3, Door(DUNGEON_OF_THE_CURSED_IDENTIFIER, 0.0, 0.0, 0.0) },
-         { 4, Door(TEMPLE_OF_WATER_IDENTIFIER, 0.0, 0.0, 0.0) },
-         { 5, Door(WORLD_OF_FIRE_IDENTIFIER, 0.0, 0.0, 0.0) },
-         { 6, Door(FINAL_TEMPLE_IDENTIFIER, 0.0, 0.0, 0.0) },
-         { 7, Door(VILLAGE_OF_THE_FORGOTTEN_IDENTIFIER, 0.0, 0.0, 0.0) },
+      std::map<char, Door> doors = {
+         { 11, Door(THE_UNDERWORLD_IDENTIFIER, 40.5, 87.5, levels[THE_UNDERWORLD_IDENTIFIER].get_ground_height()+0.001f, 0.0 ), },
+         //{ 2, Door(AN_ABANDONED_TEMPLE_IDENTIFIER, 0.0, 0.0, 0.0, 0.0) },
+         //{ 3, Door(DUNGEON_OF_THE_CURSED_IDENTIFIER, 0.0, 0.0, 0.0, 0.0) },
+         //{ 4, Door(TEMPLE_OF_WATER_IDENTIFIER, 0.0, 0.0, 0.0, 0.0) },
+         //{ 5, Door(WORLD_OF_FIRE_IDENTIFIER, 0.0, 0.0, 0.0, 0.0) },
+         //{ 6, Door(FINAL_TEMPLE_IDENTIFIER, 0.0, 0.0, 0.0, 0.0) },
+         //{ 7, Door(VILLAGE_OF_THE_FORGOTTEN_IDENTIFIER, 0.0, 0.0, 0.0, 0.0) },
+         //{ 1, Door(THE_CAVE_IDENTIFIER, 0.0, 0.0, 0.0, 0.0) },
+         //{ 2, Door(AN_ABANDONED_TEMPLE_IDENTIFIER, 0.0, 0.0, 0.0, 0.0) },
+         //{ 3, Door(DUNGEON_OF_THE_CURSED_IDENTIFIER, 0.0, 0.0, 0.0, 0.0) },
+         //{ 4, Door(TEMPLE_OF_WATER_IDENTIFIER, 0.0, 0.0, 0.0, 0.0) },
+         //{ 5, Door(WORLD_OF_FIRE_IDENTIFIER, 0.0, 0.0, 0.0, 0.0) },
+         //{ 6, Door(FINAL_TEMPLE_IDENTIFIER, 0.0, 0.0, 0.0, 0.0) },
+         //{ 7, Door(VILLAGE_OF_THE_FORGOTTEN_IDENTIFIER, 0.0, 0.0, 0.0, 0.0) },
       };
 
       // build all the meshes
@@ -467,22 +473,38 @@ int main(int argc, char **argv)
       LabyrinthOfLore::Rendering::TileMapMesh current_tile_map_mesh;
 
       //
+         //{40.5, 87.5, levels[THE_UNDERWORLD_IDENTIFIER].get_ground_height()+0.001f },
 
-      move_player_to_level(
+
+      go_into_door(
+         doors.at(11),
          player_entity,
          levels,
          meshes,
-         THE_UNDERWORLD_IDENTIFIER,
-         {40.5, 87.5, levels[THE_UNDERWORLD_IDENTIFIER].get_ground_height()+0.001f },
+         player_yaw,
          current_tile_map,
-         current_tile_map_mesh
-      );
-
-      set_title_text(
+         current_tile_map_mesh,
          title_text,
          "Level 0",
          levels[THE_UNDERWORLD_IDENTIFIER].get_name()
       );
+
+
+
+      //move_player_to_level(
+         //player_entity,
+         //levels,
+         //meshes,
+         //&player_yaw,
+         //current_tile_map,
+         //current_tile_map_mesh
+      //);
+
+      //set_title_text(
+         //title_text,
+         //"Level 0",
+         //levels[THE_UNDERWORLD_IDENTIFIER].get_name()
+      //);
 
       //
 
