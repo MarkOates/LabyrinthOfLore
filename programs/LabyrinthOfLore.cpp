@@ -47,8 +47,6 @@
 using AllegroFlare::radians_to_degrees;
 using AllegroFlare::Random;
 
-#include <LabyrinthOfLoreGame/Maps/Construct.hpp>
-#include <LabyrinthOfLoreGame/Maps/TheUnderworld.hpp>
 #include <LabyrinthOfLoreGame/TileTypeDictionary.hpp>
 #include <LabyrinthOfLoreGame/EntityTileMapCollisionEventProcessor.hpp>
 
