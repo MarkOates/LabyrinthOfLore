@@ -3,7 +3,6 @@ properties:
     type: std::string
     init_with: "\"Hello, brave soul. Adventure awaits you.\""
     getter: true
-    setter: true
 functions:
   - name: append_text
     type: std::string

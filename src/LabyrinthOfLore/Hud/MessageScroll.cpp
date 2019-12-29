@@ -21,12 +21,6 @@ MessageScroll::~MessageScroll()
 }
 
 
-void MessageScroll::set_text(std::string text)
-{
-   this->text = text;
-}
-
-
 std::string MessageScroll::get_text()
 {
    return text;
