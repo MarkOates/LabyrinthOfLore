@@ -148,6 +148,39 @@ void set_title_text(LabyrinthOfLore::Hud::TitleText &title_text, std::string top
 
 
 
+void go_into_door(
+      Door door,
+      LabyrinthOfLore::Entity::Base* player_entity,
+      std::map<std::string, LabyrinthOfLore::WorldMap::Level> &levels,
+      std::map<std::string, LabyrinthOfLore::Rendering::TileMapMesh> &meshes,
+      std::string level_identifier,
+      AllegroFlare::vec3d spawn_point,
+      LabyrinthOfLore::WorldMap::TileMap &current_tile_map,
+      LabyrinthOfLore::Rendering::TileMapMesh &current_tile_map_mesh,
+      LabyrinthOfLore::Hud::TitleText &title_text,
+      std::string top_text,
+      std::string headline_text
+   )
+{
+   move_player_to_level(
+      player_entity,
+      levels,
+      meshes,
+      level_identifier,
+      spawn_point,
+      current_tile_map,
+      current_tile_map_mesh
+   );
+
+   set_title_text(
+      title_text,
+      top_text,
+      headline_text
+   );
+}
+
+
+
 bool active = true;
 
 int main(int argc, char **argv)
