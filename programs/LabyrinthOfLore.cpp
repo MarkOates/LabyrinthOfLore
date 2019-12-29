@@ -343,7 +343,7 @@ int main(int argc, char **argv)
          { VILLAGE_OF_THE_FORGOTTEN_IDENTIFIER, LabyrinthOfLore::WorldMap::Level(
                                                    "Village of the Forgotten",
                                                    2.0f,
-                                                   LabyrinthOfLore::WorldMap::BitmapFilenameToWorldBuilder("data/bitmaps/the_underworld.png").build()
+                                                   LabyrinthOfLore::WorldMap::BitmapFilenameToWorldBuilder("data/bitmaps/village_of_the_forgotten.png").build()
                                                 )
          },
       };
