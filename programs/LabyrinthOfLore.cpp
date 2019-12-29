@@ -42,6 +42,7 @@
 #include <AllegroFlare/Useful.hpp>
 #include <allegro5/allegro_ttf.h>
 #include <cmath>
+#include <LabyrinthOfLore/WorldMap/BitmapFilenameToWorldBuilder.hpp>
 
 using AllegroFlare::radians_to_degrees;
 using AllegroFlare::Random;
@@ -293,6 +294,8 @@ int main(int argc, char **argv)
       LabyrinthOfLore::Rendering::TileTypeDictionary tile_type_dictionary = game_tile_type_dictionary.build_tile_type_dictionary();
 
       //
+
+      //LabyrinthOfLoreGame::WorldMap::BitmapFilenameToWorldBuilder("data/bitmaps/the_underworld.png");
 
       std::map<std::string, LabyrinthOfLore::WorldMap::Level> levels = {
          { THE_UNDERWORLD_IDENTIFIER,           LabyrinthOfLore::WorldMap::Level("The Underworld", 2.0f, LabyrinthOfLoreGame::Maps::TheUnderworld().build_the_underworld()) },
