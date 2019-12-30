@@ -1,6 +1,7 @@
 
 
 #include <LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer.hpp>
+#include <AllegroFlare/Useful.hpp>
 #include <vector>
 #include <utility>
 #include <string>
@@ -34,6 +35,15 @@ MessageScrollRenderer::~MessageScrollRenderer()
 {
 }
 
+
+float MessageScrollRenderer::smoothstep(float edge0, float edge1, float x)
+{
+// Scale, bias and saturate x to 0..1 range
+x = AllegroFlare::clamp((x - edge0) / (edge1 - edge0), 0.0f, 1.0f);
+// Evaluate polynomial
+return x * x * (3 - 2 * x);
+
+}
 
 bool MessageScrollRenderer::multiline_draw_callback(int line_num, const char* line, int size, void* extra)
 {

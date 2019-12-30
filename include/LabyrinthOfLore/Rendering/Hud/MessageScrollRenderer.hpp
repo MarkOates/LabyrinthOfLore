@@ -26,6 +26,7 @@ namespace LabyrinthOfLore
             ~MessageScrollRenderer();
 
 
+         float smoothstep(float edge0=0.0f, float edge1=0.0f, float x=0.0f);
          static bool multiline_draw_callback(int line_num=0, const char* line=nullptr, int size=0, void* extra=nullptr);
          void render();
          };

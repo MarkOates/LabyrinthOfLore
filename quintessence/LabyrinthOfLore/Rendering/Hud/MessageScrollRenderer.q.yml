@@ -20,6 +20,25 @@ properties:
     type: int
     init_with: 0
 functions:
+  - name: smoothstep
+    type: float
+    parameters:
+      - name: edge0
+        type: float
+        default_argument: 0.0f
+      - name: edge1
+        type: float
+        default_argument: 0.0f
+      - name: x
+        type: float
+        default_argument: 0.0f
+    body: |
+      // Scale, bias and saturate x to 0..1 range
+      x = AllegroFlare::clamp((x - edge0) / (edge1 - edge0), 0.0f, 1.0f);
+      // Evaluate polynomial
+      return x * x * (3 - 2 * x);
+    body_dependency_symbols:
+      - AllegroFlare::clamp<float>
   - name: multiline_draw_callback
     static: true
     type: bool
@@ -95,3 +114,5 @@ dependencies:
     headers: [ ]
   - symbol: const char*
     headers: [ ]
+  - symbol: AllegroFlare::clamp<float>
+    headers: [ AllegroFlare/Useful.hpp ]
