@@ -1,5 +1,6 @@
-FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Entity/Selector
+#FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Entity/Selector
 #FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Rendering/TileMapMeshPillarBuilder
+FOCUSED_COMPONENT_NAME=LabyrinthOfLore/WorldMap/BitmapTileMapLoader
 FOCUSED_TEST_FILTER=
 
 
