@@ -31,7 +31,11 @@ MessageScrollRenderer::~MessageScrollRenderer()
 
 bool MessageScrollRenderer::multiline_draw_callback(int line_num, const char* line, int size, void* extra)
 {
+//this functions callback signature:
 //bool (*cb)(int line_num, const char *line, int size, void *extra)
+
+ALLEGRO_FONT *font = (ALLEGRO_FONT *)extra;
+al_draw_text(font, al_color_name("gray"), 0, line_num * 6, 0, line);
 return true;
 
 }
@@ -48,7 +52,7 @@ std::vector<std::pair<float, std::string>> last_3_messages = message_scroll->get
 
 //for (unsigned i=0; i<last_3_messages.size(); i++)
 //{
- al_draw_multiline_text(font, al_color_name("gray"), 0, 0, place.size.x, al_get_font_line_height(font), 0, message_scroll->get_text().c_str());
+   al_do_multiline_text(font, place.size.x, message_scroll->get_text().c_str(), LabyrinthOfLore::Rendering::Hud::MessageScrollRenderer::multiline_draw_callback, font);
 //}
 
 place.restore_transform();
