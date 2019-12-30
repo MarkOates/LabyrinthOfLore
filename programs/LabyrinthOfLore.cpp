@@ -235,6 +235,20 @@ void process_cheat_keyboard_keydown_event(
 //}
 
 
+void process_click_event(
+      float player_mouse_x,
+      float player_mouse_y,
+      AllegroFlare::PickingBuffer &picking_buffer,
+      float resolution_scale 
+   )
+{
+   int picked_id = picking_buffer.get_id(player_mouse_x/resolution_scale, player_mouse_y/resolution_scale);
+   std::cout << "Picked ID: " << picked_id << std::endl;
+         // observe clicked item, emit game events if needed 
+}
+
+
+
 
 void process_keyboard_keydown_event(
       ALLEGRO_EVENT &this_event,
@@ -668,11 +682,11 @@ int main(int argc, char **argv)
 
       //
       LabyrinthOfLore::Entity::ThingDictionary thing_dictionary({
-          { ITEM_TORCH_ID,                         LabyrinthOfLore::Entity::ThingDefinition("a",   "torch",           &item_tile_atlas,      6 + 9*14)  },
-          { ITEM_RING_OF_LOFT_ID,                  LabyrinthOfLore::Entity::ThingDefinition("the", "ring of loft",    &item_tile_atlas,      10+13*14)  },
-          { ITEM_INFINITY_TORCH_ID,                LabyrinthOfLore::Entity::ThingDefinition("the", "infinity torch",  &item_tile_atlas,      6 + 9*14)  },
-          { ITEM_TORCH_FUEL_ID,                    LabyrinthOfLore::Entity::ThingDefinition("some","torch fuel",      &item_tile_atlas,      27 + 5*14) },
-          { MAN_AT_THE_ENTRANCE_TO_THE_CAVE,       LabyrinthOfLore::Entity::ThingDefinition("","a man",               &character_tile_atlas, 4 + 11*7)  },
+          { ITEM_TORCH_ID,                         LabyrinthOfLore::Entity::ThingDefinition("a",   "torch",                          &item_tile_atlas,      6 + 9*14)  },
+          { ITEM_RING_OF_LOFT_ID,                  LabyrinthOfLore::Entity::ThingDefinition("the", "ring of loft",                   &item_tile_atlas,      10+13*14)  },
+          { ITEM_INFINITY_TORCH_ID,                LabyrinthOfLore::Entity::ThingDefinition("the", "infinity torch",                 &item_tile_atlas,      6 + 9*14)  },
+          { ITEM_TORCH_FUEL_ID,                    LabyrinthOfLore::Entity::ThingDefinition("some","torch fuel",                     &item_tile_atlas,      27 + 5*14) },
+          { MAN_AT_THE_ENTRANCE_TO_THE_CAVE,       LabyrinthOfLore::Entity::ThingDefinition("","a man at the entrance of the cave",  &character_tile_atlas, 4 + 11*7)  },
       });
 
 
@@ -864,8 +878,16 @@ int main(int argc, char **argv)
             {
                player_mouse_x = this_event.mouse.x;
                player_mouse_y = this_event.mouse.y;
-               int picked_id = game.picking_buffer.get_id(player_mouse_x/resolution_scale, player_mouse_y/resolution_scale);
-               std::cout << "Picked ID: " << picked_id << std::endl;
+
+               process_click_event(
+                  player_mouse_x,
+                  player_mouse_y,
+                  game.picking_buffer,
+                  resolution_scale 
+               );
+
+               //int picked_id = game.picking_buffer.get_id(player_mouse_x/resolution_scale, player_mouse_y/resolution_scale);
+               //std::cout << "Picked ID: " << picked_id << std::endl;
                // observe clicked item, emit game events if needed 
                break;
             }
