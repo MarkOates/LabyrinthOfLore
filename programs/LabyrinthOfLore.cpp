@@ -47,6 +47,7 @@
 #include <LabyrinthOfLore/WorldMap/BitmapFilenameToWorldBuilder.hpp>
 #include <LabyrinthOfLore/Entity/ThingDefinition.hpp>
 #include <LabyrinthOfLore/Entity/ThingDictionary.hpp>
+//#include <algorithm> // for std::max
 
 #include <AllegroFlare/Inventory.hpp>
 
@@ -206,11 +207,24 @@ void process_cheat_keyboard_keydown_event(
 {
    bool shift = this_event.keyboard.modifiers & ALLEGRO_KEYMOD_SHIFT;
 
-   if (shift)
-   {
-      if (this_event.keyboard.keycode == ALLEGRO_KEY_R) player_inventory.add_item(ITEM_RING_OF_LOFT_ID);
-   }
+   if (!shift) return;
+
+   if (this_event.keyboard.keycode == ALLEGRO_KEY_R) player_inventory.add_item(ITEM_RING_OF_LOFT_ID);
 }
+
+
+
+//void equip_item(int item_id, LabyrinthOfLore::Entity::Base *player_entity)
+//{
+   //if (item_id == ITEM_RING_OF_LOFT_ID) player->set("loft");
+//}
+
+
+
+//void unequip_item(int item_id, LabyrinthOfLore::Entity::Base *player_entity)
+//{
+   //if (item_id == ITEM_RING_OF_LOFT_ID) player->remove("loft");
+//}
 
 
 
@@ -242,6 +256,22 @@ void process_keyboard_keydown_event(
       go_into_door(doors.at(6), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
    else if (this_event.keyboard.keycode == ALLEGRO_KEY_7)
       go_into_door(doors.at(6), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
+}
+
+
+void process_post_gravity_effects(
+      std::vector<LabyrinthOfLore::Entity::Base*> &entities_in_the_current_level
+   )
+{
+   for (auto &entity : entities_in_the_current_level)
+   {
+      //if (entity->exists("loft")) entity->get_velocity_ref().position.z = -0.25 / 60.0f;
+      // THIS IS LOFT:
+      entity->get_velocity_ref().position.z = std::max(entity->get_velocity_ref().position.z, -0.25f / 60.0f);
+
+      // THIS IS levitation:
+      entity->get_velocity_ref().position.z = 0;
+   }
 }
 
 
@@ -701,15 +731,18 @@ int main(int argc, char **argv)
          //{40.5, 87.5, levels[THE_UNDERWORLD_IDENTIFIER].get_ground_height()+0.001f },
 
 
-      move_player_to_level(
-            player_entity,
-            levels,
-            meshes,
-            TEMPLE_OF_WATER_IDENTIFIER,
-            { 28, 13, 0 },
-            current_tile_map,
-            current_tile_map_mesh
-      );
+      //move_player_to_level(
+            //player_entity,
+            //levels,
+            //meshes,
+            //TEMPLE_OF_WATER_IDENTIFIER,
+            //{ 27, 14, 0 },
+            //current_tile_map,
+            //current_tile_map_mesh
+      //);
+
+      player_yaw += 0.5;
+         
       //move_player_to_level(
          //player_entity,
          //levels,
@@ -728,16 +761,16 @@ int main(int argc, char **argv)
       //
 
       // start game
-      //go_into_door(
-         //doors.at(10),
-         //player_entity,
-         //levels,
-         //meshes,
-         //player_yaw,
-         //current_tile_map,
-         //current_tile_map_mesh,
-         //title_text
-      //);
+      go_into_door(
+         doors.at(10),
+         player_entity,
+         levels,
+         meshes,
+         player_yaw,
+         current_tile_map,
+         current_tile_map_mesh,
+         title_text
+      );
 
 
       while(!shutdown_program)
@@ -812,6 +845,8 @@ int main(int argc, char **argv)
 
                LabyrinthOfLore::Physics::GravityStepper gravity_stepper(entities_in_the_current_level);
                gravity_stepper.process_step();
+
+               // process_post_gravity_effects(entities_in_the_current_level);
 
                LabyrinthOfLore::Physics::EntityTileMapCollisionStepper entity_tile_map_collision_stepper(current_tile_map, entities_in_the_current_level);
                entity_tile_map_collision_stepper.process_step();
