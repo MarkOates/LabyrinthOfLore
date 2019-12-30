@@ -428,6 +428,9 @@ void process_collision_stepper_events(
 };
 
 
+
+
+
 void add_thing_to_world(
       std::vector<LabyrinthOfLore::Entity::Base*> &all_entities,
       LabyrinthOfLore::Entity::ThingDictionary &thing_dictionary,
@@ -459,6 +462,11 @@ void add_thing_to_world(
 
    all_entities.push_back(entity);
 }
+
+
+
+
+
 
 
 
@@ -753,11 +761,11 @@ int main(int argc, char **argv)
 
       //
       LabyrinthOfLore::Entity::ThingDictionary thing_dictionary({
-          { ITEM_TORCH_ID,                         LabyrinthOfLore::Entity::ThingDefinition("a",   "torch",                          &item_tile_atlas,      6 + 9*14)  },
-          { ITEM_RING_OF_LOFT_ID,                  LabyrinthOfLore::Entity::ThingDefinition("the", "ring of loft",                   &item_tile_atlas,      10+13*14)  },
-          { ITEM_INFINITY_TORCH_ID,                LabyrinthOfLore::Entity::ThingDefinition("the", "infinity torch",                 &item_tile_atlas,      6 + 9*14)  },
-          { ITEM_TORCH_FUEL_ID,                    LabyrinthOfLore::Entity::ThingDefinition("some","torch fuel",                     &item_tile_atlas,      27 + 5*14) },
-          { MAN_AT_THE_ENTRANCE_TO_THE_CAVE,       LabyrinthOfLore::Entity::ThingDefinition("","a goblin at the entrance of the cave",  &character_tile_atlas, 4 + 11*7)  },
+          { ITEM_TORCH_ID,                         LabyrinthOfLore::Entity::ThingDefinition("a",   "torch",                                 &item_tile_atlas,      6 + 9*14)  },
+          { ITEM_RING_OF_LOFT_ID,                  LabyrinthOfLore::Entity::ThingDefinition("the", "ring of loft",                          &item_tile_atlas,      10+13*14)  },
+          { ITEM_INFINITY_TORCH_ID,                LabyrinthOfLore::Entity::ThingDefinition("the", "infinity torch",                        &item_tile_atlas,      6 + 9*14)  },
+          { ITEM_TORCH_FUEL_ID,                    LabyrinthOfLore::Entity::ThingDefinition("some","torch fuel",                            &item_tile_atlas,      27 + 5*14) },
+          { MAN_AT_THE_ENTRANCE_TO_THE_CAVE,       LabyrinthOfLore::Entity::ThingDefinition("",    "a goblin at the entrance of the cave",  &character_tile_atlas, 4 + 11*7)  },
       });
 
 
