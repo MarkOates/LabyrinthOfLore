@@ -1,4 +1,4 @@
-FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Entity/ThingDefinition
+FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Hud/CharacterPanel
 FOCUSED_TEST_FILTER=
 
 

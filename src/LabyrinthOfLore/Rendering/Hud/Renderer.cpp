@@ -248,7 +248,7 @@ al_use_transform(&transform);
 render_message_scroll();
 //render_command_panel();
 //render_vitality_and_mana_bar();
-//render_character_panel();
+render_character_panel();
 //render_map_button();
 //render_rune_shelf();
 //render_compass();

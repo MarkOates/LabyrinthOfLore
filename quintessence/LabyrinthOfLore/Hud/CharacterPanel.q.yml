@@ -1,4 +1,18 @@
+properties:
+  - name: player_inventory
+    type: AllegroFlare::Inventory*
+    init_with: nullptr
+    constructor_arg: true
+  - name: thing_dictionary
+    type: LabyrinthOfLore::Entity::ThingDictionary*
+    init_with: nullptr
+    constructor_arg: true
 functions:
   - name: run
     type: std::string
     body: return "Hello World!";
+dependencies:
+  - symbol: AllegroFlare::Inventory*
+    headers: [ AllegroFlare/Inventory.hpp ]
+  - symbol: LabyrinthOfLore::Entity::ThingDictionary*
+    headers: [ LabyrinthOfLore/Entity/ThingDictionary.hpp ]
