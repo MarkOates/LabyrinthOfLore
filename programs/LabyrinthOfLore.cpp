@@ -261,7 +261,7 @@ void process_thing_look_click(
    }
    else // else will use the default messaging
    {
-      message_scroll.append_text(you_see_a(thing_definition));
+      message_scroll.append_message(al_get_time(), you_see_a(thing_definition));
    }
 }
 
@@ -286,7 +286,7 @@ void process_click_event(
    //if (
    if (picked_id == 0)
    {
-      message_scroll.append_text("You see nothing of interest.");
+      message_scroll.append_message(al_get_time(), "You see nothing of interest.");
    }
    else
    {
