@@ -232,15 +232,6 @@ void process_collision_stepper_events(
             { THE_UNDERWORLD_IDENTIFIER, 23, 55, 7 },
          };
 
-         //if (current_level_identifier == THE_UNDERWORLD_IDENTIFIER && tile_x == 72 && tile_y == 92)
-         //{
-            //go_into_door(doors.at(3), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
-         //}
-         //else if (current_level_identifier == DUNGEON_OF_THE_CURSED_IDENTIFIER && tile_x == 1 && tile_y == 24)
-         //{
-            //go_into_door(doors.at(13), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
-         //}
-
          for (auto door_data : door_datas)
          {
             if (current_level_identifier == std::get<0>(door_data) && tile_x == std::get<1>(door_data) && tile_y == std::get<2>(door_data))
