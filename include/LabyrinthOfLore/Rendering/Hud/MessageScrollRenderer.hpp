@@ -18,6 +18,7 @@ namespace LabyrinthOfLore
             ALLEGRO_FONT* font;
             LabyrinthOfLore::Hud::MessageScroll* message_scroll;
             allegro_flare::placement3d place;
+            static float message_display_length_sec;
             static int __dirty_total_line_count;
 
          public:

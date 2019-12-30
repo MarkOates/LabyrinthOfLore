@@ -16,6 +16,9 @@ namespace Hud
 {
 
 
+float MessageScrollRenderer::message_display_length_sec = 7.0f;
+
+
 int MessageScrollRenderer::__dirty_total_line_count = 0;
 
 
@@ -55,10 +58,15 @@ place.start_transform();
 //al_draw_filled_rounded_rectangle(0, 0, place.size.x, place.size.y, 6, 6, al_color_name("red"));
 std::vector<std::pair<float, std::string>> last_3_messages = message_scroll->get_last_3_messages();
 
+float time_now = al_get_time();
+
 __dirty_total_line_count = 0;
 for (unsigned i=0; i<last_3_messages.size(); i++)
 {
    std::pair<float, std::string> this_message = last_3_messages[i];
+   float message_time = this_message.first;
+   if (time_now >= (message_time + message_display_length_sec)) break;
+
    std::string message_text = this_message.second;
 
    al_do_multiline_text(font, place.size.x, message_text.c_str(), LabyrinthOfLore::Rendering::Hud::MessageScrollRenderer::multiline_draw_callback, font);
