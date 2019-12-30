@@ -67,6 +67,9 @@ static const std::string FINAL_TEMPLE_IDENTIFIER = "final_temple";
 static const std::string VILLAGE_OF_THE_FORGOTTEN_IDENTIFIER = "village_of_the_forgotten";
 
 
+#define THING_ID_KEY ("thing_id")
+
+
 enum item_id_t
 {
    ITEM_NO_ID = 0,
@@ -246,7 +249,7 @@ void process_click_event(
    )
 {
    int picked_id = picking_buffer.get_id(player_mouse_x/resolution_scale, player_mouse_y/resolution_scale);
-   std::cout << "Picked ID: " << picked_id << std::endl;
+   //std::cout << "Picked ID: " << picked_id << std::endl;
          // observe clicked item, emit game events if needed 
 
    // HERE
@@ -259,7 +262,28 @@ void process_click_event(
    }
    else
    {
-      //
+      int thing_id = -1;
+      for (auto &entity : all_entities)
+      {
+         if (entity->get_id() == picked_id)
+         {
+            thing_id = entity->get_as_int(THING_ID_KEY);
+            break;
+         }
+      }
+
+      if (thing_id == -1)
+      {
+         throw std::runtime_error("attempted to extract thing_id from a picked entity_id, but the picked entity did not have a \"thing_id\" attribute, which should never happen.");
+      }
+      else
+      {
+         if (thing_id == MAN_AT_THE_ENTRANCE_TO_THE_CAVE) 
+         {
+            message_scroll.append_text("Ah, a weary traveler.");
+         }
+         //LabyrinthOfLore::Entity::ThingDefinition thing_definition = thing_dictionary.find_definition(thing_id);
+      }
    }
 }
 
@@ -397,7 +421,7 @@ void add_thing_to_world(
    entity->set_billboard_at_camera(billboard_at_camera);
    entity->set_bitmap(bitmap);
    entity->set_identifier_for_level_within(level_identifier);
-   entity->set("thing_id", thing_id);
+   entity->set(THING_ID_KEY, thing_id);
    entity->get_placement_ref().size = AllegroFlare::vec3d(al_get_bitmap_width(bitmap), al_get_bitmap_height(bitmap), 0.0);
    entity->get_placement_ref().size = AllegroFlare::vec3d(al_get_bitmap_width(bitmap), al_get_bitmap_height(bitmap), 0.0);
    entity->get_placement_ref().scale = AllegroFlare::vec3d(0.005*4, 0.005*4, 0.005*4);
