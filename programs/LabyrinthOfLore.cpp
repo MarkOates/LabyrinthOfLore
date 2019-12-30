@@ -176,7 +176,7 @@ void go_into_door(
 
    set_title_text(
       title_text,
-      "",
+      levels[door.level_identifier].get_heading(),
       levels[door.level_identifier].get_name()
    );
 
@@ -365,48 +365,56 @@ int main(int argc, char **argv)
 
       std::map<std::string, LabyrinthOfLore::WorldMap::Level> levels = {
          { THE_UNDERWORLD_IDENTIFIER,           LabyrinthOfLore::WorldMap::Level(
+                                                   "",
                                                    "The Underworld",
                                                    2.0f,
                                                    LabyrinthOfLore::WorldMap::BitmapFilenameToWorldBuilder("data/bitmaps/the_underworld.png", 3.0).build()
                                                 )
          },
          { THE_CAVE_IDENTIFIER,                 LabyrinthOfLore::WorldMap::Level(
+                                                   "Level 1",
                                                    "The Cave",
                                                    3.0f,
                                                    LabyrinthOfLore::WorldMap::BitmapFilenameToWorldBuilder("data/bitmaps/the_cave.png", 3.0).build()
                                                 )
          },
          { AN_ABANDONED_TEMPLE_IDENTIFIER,      LabyrinthOfLore::WorldMap::Level(
+                                                   "Level 2",
                                                    "An Abandoned Temple",
                                                    3.0f,
                                                    LabyrinthOfLore::WorldMap::BitmapFilenameToWorldBuilder("data/bitmaps/an_abandoned_temple.png", 3.0, 1.0).build()
                                                 )
          },
          { DUNGEON_OF_THE_CURSED_IDENTIFIER,    LabyrinthOfLore::WorldMap::Level(
+                                                   "Level 3",
                                                    "Dungeon of the Cursed",
                                                    2.0f,
                                                    LabyrinthOfLore::WorldMap::BitmapFilenameToWorldBuilder("data/bitmaps/dungeon_of_the_cursed.png").build()
                                                 )
          },
          { TEMPLE_OF_WATER_IDENTIFIER,          LabyrinthOfLore::WorldMap::Level(
+                                                   "Level 4",
                                                    "Temple of Water",
                                                    2.0f,
                                                    LabyrinthOfLore::WorldMap::BitmapFilenameToWorldBuilder("data/bitmaps/temple_of_water.png", 6.0, 1.25).build()
                                                 )
          },
          { WORLD_OF_FIRE_IDENTIFIER,            LabyrinthOfLore::WorldMap::Level(
+                                                   "Level 5",
                                                    "World of Fire",
                                                    5.0f,
                                                    LabyrinthOfLore::WorldMap::BitmapFilenameToWorldBuilder("data/bitmaps/world_of_fire.png", 5.0).build()
                                                 )
          },
          { FINAL_TEMPLE_IDENTIFIER,             LabyrinthOfLore::WorldMap::Level(
+                                                   "",
                                                    "Final Temple",
                                                    3.0f,
                                                    LabyrinthOfLore::WorldMap::BitmapFilenameToWorldBuilder("data/bitmaps/final_temple.png", 3.0).build()
                                                 )
          },
          { VILLAGE_OF_THE_FORGOTTEN_IDENTIFIER, LabyrinthOfLore::WorldMap::Level(
+                                                   "",
                                                    "Village of the Forgotten",
                                                    2.0f,
                                                    LabyrinthOfLore::WorldMap::BitmapFilenameToWorldBuilder("data/bitmaps/village_of_the_forgotten.png").build()
