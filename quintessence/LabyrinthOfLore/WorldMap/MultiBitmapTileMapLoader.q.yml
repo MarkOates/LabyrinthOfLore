@@ -1,4 +1,8 @@
 properties:
+  - name: tile_map
+    type: LabyrinthOfLore::WorldMap::TileMap*
+    init_with: nullptr
+    constructor_arg: true
   - name: source_bitmap
     type: ALLEGRO_BITMAP*
     init_with: nullptr
@@ -96,7 +100,7 @@ functions:
     type: bool
     body: |
       return true;
-  - name: load
+  - name: load_and_process
     type: LabyrinthOfLore::WorldMap::TileMap
     parameters:
       - name: top_height
@@ -106,7 +110,8 @@ functions:
         type: float
         default_argument: 2.0f
     body: |
-      if (!source_bitmap) throw std::runtime_error("could WorldBitmap::MultiBitmapTileMapLoader.load with a nullptr source_bitmap");
+      if (!tile_map) throw std::runtime_error("could WorldBitmap::MultiBitmapTileMapLoader.load with a nullptr tile_map.");
+      if (!source_bitmap) throw std::runtime_error("could WorldBitmap::MultiBitmapTileMapLoader.load with a nullptr source_bitmap.");
 
       al_lock_bitmap(source_bitmap, ALLEGRO_PIXEL_FORMAT_ANY, ALLEGRO_LOCK_READONLY);
 

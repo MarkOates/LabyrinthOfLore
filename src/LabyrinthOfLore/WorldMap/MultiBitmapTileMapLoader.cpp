@@ -10,8 +10,9 @@ namespace WorldMap
 {
 
 
-MultiBitmapTileMapLoader::MultiBitmapTileMapLoader(ALLEGRO_BITMAP* source_bitmap)
-   : source_bitmap(source_bitmap)
+MultiBitmapTileMapLoader::MultiBitmapTileMapLoader(LabyrinthOfLore::WorldMap::TileMap* tile_map, ALLEGRO_BITMAP* source_bitmap)
+   : tile_map(tile_map)
+   , source_bitmap(source_bitmap)
 {
 }
 
@@ -136,9 +137,10 @@ return true;
 
 }
 
-LabyrinthOfLore::WorldMap::TileMap MultiBitmapTileMapLoader::load(float top_height, float ground_height)
+LabyrinthOfLore::WorldMap::TileMap MultiBitmapTileMapLoader::load_and_process(float top_height, float ground_height)
 {
-if (!source_bitmap) throw std::runtime_error("could WorldBitmap::MultiBitmapTileMapLoader.load with a nullptr source_bitmap");
+if (!tile_map) throw std::runtime_error("could WorldBitmap::MultiBitmapTileMapLoader.load with a nullptr tile_map.");
+if (!source_bitmap) throw std::runtime_error("could WorldBitmap::MultiBitmapTileMapLoader.load with a nullptr source_bitmap.");
 
 al_lock_bitmap(source_bitmap, ALLEGRO_PIXEL_FORMAT_ANY, ALLEGRO_LOCK_READONLY);
 

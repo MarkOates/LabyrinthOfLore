@@ -13,10 +13,11 @@ namespace LabyrinthOfLore
       class MultiBitmapTileMapLoader
       {
       private:
+         LabyrinthOfLore::WorldMap::TileMap* tile_map;
          ALLEGRO_BITMAP* source_bitmap;
 
       public:
-         MultiBitmapTileMapLoader(ALLEGRO_BITMAP* source_bitmap=nullptr);
+         MultiBitmapTileMapLoader(LabyrinthOfLore::WorldMap::TileMap* tile_map=nullptr, ALLEGRO_BITMAP* source_bitmap=nullptr);
          ~MultiBitmapTileMapLoader();
 
 
@@ -41,7 +42,7 @@ namespace LabyrinthOfLore
       ALLEGRO_COLOR pick_index_g1ppp_color();
       ALLEGRO_COLOR pick_index_g2_color();
       bool validate();
-      LabyrinthOfLore::WorldMap::TileMap load(float top_height=4.0f, float ground_height=2.0f);
+      LabyrinthOfLore::WorldMap::TileMap load_and_process(float top_height=4.0f, float ground_height=2.0f);
       };
    }
 }
