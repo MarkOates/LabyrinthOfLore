@@ -701,19 +701,15 @@ int main(int argc, char **argv)
          //{40.5, 87.5, levels[THE_UNDERWORLD_IDENTIFIER].get_ground_height()+0.001f },
 
 
-      go_into_door(
-         doors.at(10),
-         player_entity,
-         levels,
-         meshes,
-         player_yaw,
-         current_tile_map,
-         current_tile_map_mesh,
-         title_text
+      move_player_to_level(
+            player_entity,
+            levels,
+            meshes,
+            TEMPLE_OF_WATER_IDENTIFIER,
+            { 28, 13, 0 },
+            current_tile_map,
+            current_tile_map_mesh
       );
-
-
-
       //move_player_to_level(
          //player_entity,
          //levels,
@@ -730,6 +726,18 @@ int main(int argc, char **argv)
       //);
 
       //
+
+      // start game
+      //go_into_door(
+         //doors.at(10),
+         //player_entity,
+         //levels,
+         //meshes,
+         //player_yaw,
+         //current_tile_map,
+         //current_tile_map_mesh,
+         //title_text
+      //);
 
 
       while(!shutdown_program)
