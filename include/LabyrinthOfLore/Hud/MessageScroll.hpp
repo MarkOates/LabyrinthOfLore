@@ -2,6 +2,8 @@
 
 
 #include <string>
+#include <utility>
+#include <vector>
 
 
 namespace LabyrinthOfLore
@@ -12,6 +14,7 @@ namespace LabyrinthOfLore
       {
       private:
          std::string text;
+         std::vector<std::pair<float, std::string>> messages;
 
       public:
          MessageScroll(std::string text="Hello, brave soul. Adventure awaits you.");
@@ -19,6 +22,7 @@ namespace LabyrinthOfLore
 
 
          std::string get_text();
+      std::vector<std::pair<float, std::string>> get_last_3_messages();
       void append_text(std::string text_to_append="");
       void clear_text();
       };

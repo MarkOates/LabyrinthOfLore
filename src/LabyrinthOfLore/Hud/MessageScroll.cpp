@@ -12,6 +12,7 @@ namespace Hud
 
 MessageScroll::MessageScroll(std::string text)
    : text(text)
+   , messages({})
 {
 }
 
@@ -26,6 +27,16 @@ std::string MessageScroll::get_text()
    return text;
 }
 
+
+std::vector<std::pair<float, std::string>> MessageScroll::get_last_3_messages()
+{
+if (messages.empty()) return {};
+if (messages.size() == 1) return { messages[messages.size()-1] };
+if (messages.size() == 2) return { messages[messages.size()-1], messages[messages.size()-2] };
+if (messages.size() >= 3) return { messages[messages.size()-1], messages[messages.size()-2], messages[messages.size()-3] };
+return {};
+
+}
 
 void MessageScroll::append_text(std::string text_to_append)
 {

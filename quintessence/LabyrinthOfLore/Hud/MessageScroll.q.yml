@@ -4,7 +4,18 @@ properties:
     init_with: "\"Hello, brave soul. Adventure awaits you.\""
     getter: true
     constructor_arg: true
+  - name: messages
+    type: std::vector<std::pair<float, std::string>>
+    init_with: "{}"
 functions:
+  - name: get_last_3_messages
+    type: std::vector<std::pair<float, std::string>>
+    body: |
+      if (messages.empty()) return {};
+      if (messages.size() == 1) return { messages[messages.size()-1] };
+      if (messages.size() == 2) return { messages[messages.size()-1], messages[messages.size()-2] };
+      if (messages.size() >= 3) return { messages[messages.size()-1], messages[messages.size()-2], messages[messages.size()-3] };
+      return {};
   - name: append_text
     type: void
     parameters:
@@ -17,3 +28,6 @@ functions:
   - name: clear_text
     type: void
     body: text.clear();
+dependencies:
+  - symbol: std::vector<std::pair<float, std::string>>
+    headers: [ vector, utility, string ]
