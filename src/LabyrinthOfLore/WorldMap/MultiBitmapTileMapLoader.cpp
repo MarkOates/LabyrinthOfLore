@@ -72,7 +72,7 @@ return true;
 
 }
 
-LabyrinthOfLore::WorldMap::TileMap MultiBitmapTileMapLoader::load_and_process(float top_height, float ground_height)
+void MultiBitmapTileMapLoader::load_and_process(float top_height, float ground_height)
 {
 if (!tile_map) throw std::runtime_error("could not WorldBitmap::MultiBitmapTileMapLoader.load with a nullptr tile_map.");
 if (!source_bitmap) throw std::runtime_error("could not WorldBitmap::MultiBitmapTileMapLoader.load with a nullptr source_bitmap.");
@@ -90,8 +90,8 @@ al_lock_bitmap(source_bitmap, ALLEGRO_PIXEL_FORMAT_ANY, ALLEGRO_LOCK_READONLY);
 int final_tile_map_width = infer_tile_map_width();
 int final_tile_map_height = infer_tile_map_height();
 
-LabyrinthOfLore::WorldMap::TileMap result;
-result.resize(final_tile_map_width, final_tile_map_height);
+//LabyrinthOfLore::WorldMap::TileMap result;
+//result.resize(final_tile_map_width, final_tile_map_height);
 
 //float map_height = 4.0f;
 //float ground_height = 2.0f;
@@ -103,19 +103,19 @@ for (unsigned y=0; y<final_tile_map_height; y++)
       ALLEGRO_COLOR this_pixel_color = al_get_pixel(source_bitmap, x, y);
 
       if (colors_are_equal(this_pixel_color, pick_door_color()))
-         result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(2, tile_map->get_tile(x, y).get_height()));
+         tile_map->set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(2, tile_map->get_tile(x, y).get_height() + 1.0));
 
-      else
-      {
+      //else
+      //{
          //std::stringstream error_message;
          //error_message << "Unexpected color at pixel (" << x << ", " << y << ")";
          //throw std::runtime_error(error_message.str());
-      }
+      //}
    }
 
 al_unlock_bitmap(source_bitmap);
 
-return result;
+//return result;
 
 }
 } // namespace WorldMap

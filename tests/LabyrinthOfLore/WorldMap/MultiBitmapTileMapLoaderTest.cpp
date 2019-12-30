@@ -71,7 +71,7 @@ TEST(LabyrinthOfLore_WorldMap_MultiBitmapTileMapLoaderTest, load_and_process__th
    al_uninstall_system();
 }
 
-TEST(LabyrinthOfLore_WorldMap_MultiBitmapTileMapLoaderTest, load__with_a_valid_bitmap__succeeds)
+TEST(LabyrinthOfLore_WorldMap_MultiBitmapTileMapLoaderTest, load_and_process__succeeds_with_valid_arguments)
 {
    al_init();
    al_init_image_addon();
@@ -82,7 +82,7 @@ TEST(LabyrinthOfLore_WorldMap_MultiBitmapTileMapLoaderTest, load__with_a_valid_b
    ASSERT_NE(nullptr, source_bitmap);
 
    LabyrinthOfLore::WorldMap::MultiBitmapTileMapLoader bitmap_tile_map_loader(&tile_map, source_bitmap);
-   LabyrinthOfLore::WorldMap::TileMap actual_tile_map = bitmap_tile_map_loader.load_and_process();
+   bitmap_tile_map_loader.load_and_process();
 
    al_uninstall_system();
    SUCCEED();
@@ -94,7 +94,6 @@ TEST(LabyrinthOfLore_WorldMap_MultiBitmapTileMapLoaderTest, pick_color__with_a_v
    al_init_image_addon();
 
    LabyrinthOfLore::WorldMap::TileMap tile_map;
-   tile_map.resize(49, 66);
    ALLEGRO_BITMAP *source_bitmap = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/test_bitmap_tile_map_loader-multi.png");
    ASSERT_NE(nullptr, source_bitmap);
 
@@ -104,6 +103,31 @@ TEST(LabyrinthOfLore_WorldMap_MultiBitmapTileMapLoaderTest, pick_color__with_a_v
    ALLEGRO_COLOR actual_color = bitmap_tile_map_loader.pick_color(0, 0);
 
    EXPECT_EQ_COLOR(expected_color, actual_color);
+
+   al_uninstall_system();
+   SUCCEED();
+}
+
+TEST(LabyrinthOfLore_WorldMap_MultiBitmapTileMapLoaderTest, load_and_process__on_door_tiles__will_change_the_tile_type_to_2_and_increases_the_height_by_1_unit)
+{
+   al_init();
+   al_init_image_addon();
+
+   int expected_door_x = 15;
+   int expected_door_y = 25;
+   float door_height = 1.2;
+
+   LabyrinthOfLore::WorldMap::TileMap tile_map;
+   tile_map.resize(50, 67, LabyrinthOfLore::WorldMap::Tile(1, door_height));
+   ALLEGRO_BITMAP *source_bitmap = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/test_bitmap_tile_map_loader-multi.png");
+   ASSERT_NE(nullptr, source_bitmap);
+
+   LabyrinthOfLore::WorldMap::MultiBitmapTileMapLoader bitmap_tile_map_loader(&tile_map, source_bitmap);
+
+   bitmap_tile_map_loader.load_and_process();
+
+   EXPECT_EQ(2, tile_map.get_tile(expected_door_x, expected_door_y).get_type());
+   EXPECT_NEAR(door_height+1.0, tile_map.get_tile(expected_door_x, expected_door_y).get_height(), FLOATING_POINT_ERROR_MARGIN);
 
    al_uninstall_system();
    SUCCEED();

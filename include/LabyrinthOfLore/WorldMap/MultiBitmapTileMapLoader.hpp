@@ -29,7 +29,7 @@ namespace LabyrinthOfLore
       ALLEGRO_COLOR pick_index_null_color();
       ALLEGRO_COLOR pick_door_color();
       bool validate();
-      LabyrinthOfLore::WorldMap::TileMap load_and_process(float top_height=4.0f, float ground_height=2.0f);
+      void load_and_process(float top_height=4.0f, float ground_height=2.0f);
       };
    }
 }
