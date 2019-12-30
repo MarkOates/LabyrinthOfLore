@@ -42,6 +42,7 @@
 #include <AllegroFlare/Useful.hpp>
 #include <allegro5/allegro_ttf.h>
 #include <cmath>
+#include <LabyrinthOfLore/WorldMap/MultiBitmapFilenameToWorldBuilder.hpp>
 #include <LabyrinthOfLore/WorldMap/BitmapFilenameToWorldBuilder.hpp>
 
 using AllegroFlare::radians_to_degrees;
@@ -395,7 +396,7 @@ int main(int argc, char **argv)
                                                    "",
                                                    "The Underworld",
                                                    2.0f,
-                                                   LabyrinthOfLore::WorldMap::BitmapFilenameToWorldBuilder("data/bitmaps/the_underworld.png", 3.0).build()
+                                                   LabyrinthOfLore::WorldMap::MultiBitmapFilenameToWorldBuilder("data/bitmaps/the_underworld.png", "data/bitmaps/the_underworld-type.png", 3.0).build()
                                                 )
          },
          { THE_CAVE_IDENTIFIER,                 LabyrinthOfLore::WorldMap::Level(

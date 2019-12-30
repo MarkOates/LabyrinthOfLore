@@ -77,6 +77,20 @@ if (!tile_type_bitmap_source)
 LabyrinthOfLore::WorldMap::TileMap result = LabyrinthOfLore::WorldMap::BitmapTileMapLoader(elevation_bitmap_source).load(top_height, ground_height);
 LabyrinthOfLore::WorldMap::MultiBitmapTileMapLoader(&result, tile_type_bitmap_source).load_and_process();
 
+// Special note!!
+// This section of the code will take any of the door tiles (type "2"), and will raise their height by 1.0 so that they stand above ground level.
+// In the future, there are many variants that could be used, but this should be added "up_the_pike" so-to-speak
+for (unsigned y=0; y<result.get_height(); y++)
+   for (unsigned x=0; x<result.get_width(); x++)
+   {
+      if (result.get_tile(x, y).get_type() == 2)
+      {
+         LabyrinthOfLore::WorldMap::Tile result_tile = result.get_tile(x, y);
+         result_tile.set_height(result_tile.get_height() + 1.0);
+         result.set_tile(x, y, result_tile);
+      }
+   }
+
 return result;
 
 }
