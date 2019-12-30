@@ -1,4 +1,9 @@
 properties:
+  - name: heading
+    type: std::string
+    init_with: "\"Level 0\""
+    getter: true
+    constructor_arg: true
   - name: name
     type: std::string
     init_with: "\"Unmade World\""
