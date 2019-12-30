@@ -597,7 +597,7 @@ int main(int argc, char **argv)
       //
       LabyrinthOfLore::Entity::ThingDictionary thing_dictionary({
           { ITEM_TORCH_ID,               LabyrinthOfLore::Entity::ThingDefinition("a",   "torch",            6 + 9*13) },
-          { ITEM_RING_OF_LOFT_ID,        LabyrinthOfLore::Entity::ThingDefinition("the", "amulet of loft",   10+ 9*13) },
+          { ITEM_RING_OF_LOFT_ID,        LabyrinthOfLore::Entity::ThingDefinition("the", "ring of loft",     10+13*13) },
           { ITEM_INFINITY_TORCH_ID,      LabyrinthOfLore::Entity::ThingDefinition("the", "infinity torch",   6 + 9*13) },
       });
 
