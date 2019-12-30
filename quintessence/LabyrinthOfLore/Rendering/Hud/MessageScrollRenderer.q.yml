@@ -12,6 +12,25 @@ properties:
     init_with: "allegro_flare::placement3d{}"
     constructor_arg: true
 functions:
+  - name: multiline_draw_callback
+    static: true
+    type: bool
+    parameters:
+      - name: line_num
+        type: int
+        default_argument: 0
+      - name: line
+        type: const char*
+        default_argument: nullptr
+      - name: size
+        type: int
+        default_argument: 0
+      - name: extra
+        type: void*
+        default_argument: nullptr
+    body: |
+      //bool (*cb)(int line_num, const char *line, int size, void *extra)
+      return true;
   - name: render
     type: void
     body: |
@@ -21,11 +40,17 @@ functions:
       place.start_transform();
 
       //al_draw_filled_rounded_rectangle(0, 0, place.size.x, place.size.y, 6, 6, al_color_name("red"));
-      al_draw_multiline_text(font, al_color_name("gray"), 0, 0, place.size.x, al_get_font_line_height(font), 0, message_scroll->get_text().c_str());
+      std::vector<std::pair<float, std::string>> last_3_messages = message_scroll->get_last_3_messages();
+
+      //for (unsigned i=0; i<last_3_messages.size(); i++)
+      //{
+       al_draw_multiline_text(font, al_color_name("gray"), 0, 0, place.size.x, al_get_font_line_height(font), 0, message_scroll->get_text().c_str());
+      //}
 
       place.restore_transform();
       return;
     body_dependency_symbols:
+      - std::vector<std::pair<float, std::string>>
       - al_color_name
       - al_draw_rounded_rectangle
 dependencies:
@@ -41,3 +66,9 @@ dependencies:
     headers: [ allegro_flare/placement3d.h ]
   - symbol: x
     headers: [ y ]
+  - symbol: std::vector<std::pair<float, std::string>>
+    headers: [ vector, utility, string ]
+  - symbol: void*
+    headers: [ ]
+  - symbol: const char*
+    headers: [ ]
