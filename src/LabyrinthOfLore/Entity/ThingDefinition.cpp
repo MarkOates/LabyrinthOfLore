@@ -10,9 +10,10 @@ namespace Entity
 {
 
 
-ThingDefinition::ThingDefinition(std::string article, std::string name, int tile_atlas_index_id)
+ThingDefinition::ThingDefinition(std::string article, std::string name, Tileo::TileAtlas* tile_atlas, int tile_atlas_index_id)
    : article(article)
    , name(name)
+   , tile_atlas(tile_atlas)
    , tile_atlas_index_id(tile_atlas_index_id)
 {
 }
@@ -32,6 +33,12 @@ std::string ThingDefinition::get_article()
 std::string ThingDefinition::get_name()
 {
    return name;
+}
+
+
+Tileo::TileAtlas* ThingDefinition::get_tile_atlas()
+{
+   return tile_atlas;
 }
 
 

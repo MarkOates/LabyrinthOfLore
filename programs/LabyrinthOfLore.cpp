@@ -72,7 +72,11 @@ enum item_id_t
    ITEM_NO_ID = 0,
    ITEM_TORCH_ID,
    ITEM_RING_OF_LOFT_ID,
-   ITEM_INFINITY_TORCH_ID
+   ITEM_INFINITY_TORCH_ID,
+   ITEM_TORCH_FUEL_ID,
+
+   // characters
+   MAN_AT_THE_ENTRANCE_TO_THE_CAVE
 };
 
 
@@ -128,6 +132,10 @@ public:
       bitmap_bin.set_path("data/bitmaps");
 
       picking_buffer.initialize();
+
+      // preload the logo
+
+      //bitmap_bin.get("logo-fo-sho.png");
    }
    void run_timer_step()
    {
@@ -393,6 +401,8 @@ int main(int argc, char **argv)
 
 
 
+
+
       //
 
       LabyrinthOfLore::Shader::ClampedColor clamped_color_shader;
@@ -436,7 +446,10 @@ int main(int argc, char **argv)
       if (!billboarding_tester_sprite) throw std::runtime_error("could not load billboarding_tester_sprite.png");
 
       Tileo::TileAtlas item_tile_atlas;
-      item_tile_atlas.load(game.bitmap_bin["spritesheet_4x.png"], 16*4, 16*4, 0);
+      item_tile_atlas.load(game.bitmap_bin["item_spritesheet_full.png"], 16, 16, 0);
+
+      Tileo::TileAtlas character_tile_atlas;
+      character_tile_atlas.load(game.bitmap_bin["item_spritesheet_full.png"], 32, 32, 0);
 
       Tileo::TileAtlas world_texture_tile_atlas;
       //world_texture_tile_atlas.load(bitmap_bin["grid-texture-128.png"], 128/3, 128/3, 0);
@@ -624,9 +637,11 @@ int main(int argc, char **argv)
 
       //
       LabyrinthOfLore::Entity::ThingDictionary thing_dictionary({
-          { ITEM_TORCH_ID,               LabyrinthOfLore::Entity::ThingDefinition("a",   "torch",            6 + 9*13) },
-          { ITEM_RING_OF_LOFT_ID,        LabyrinthOfLore::Entity::ThingDefinition("the", "ring of loft",     10+13*13) },
-          { ITEM_INFINITY_TORCH_ID,      LabyrinthOfLore::Entity::ThingDefinition("the", "infinity torch",   6 + 9*13) },
+          { ITEM_TORCH_ID,                         LabyrinthOfLore::Entity::ThingDefinition("a",   "torch",           &item_tile_atlas, 6 + 9*13) },
+          { ITEM_RING_OF_LOFT_ID,                  LabyrinthOfLore::Entity::ThingDefinition("the", "ring of loft",    &item_tile_atlas, 10+13*13) },
+          { ITEM_INFINITY_TORCH_ID,                LabyrinthOfLore::Entity::ThingDefinition("the", "infinity torch",  &item_tile_atlas, 6 + 9*13) },
+          { ITEM_TORCH_FUEL_ID,                    LabyrinthOfLore::Entity::ThingDefinition("some","torch fuel",      &item_tile_atlas, 27 + 5*13) },
+          { MAN_AT_THE_ENTRANCE_TO_THE_CAVE,       LabyrinthOfLore::Entity::ThingDefinition("","a man",               &character_tile_atlas, 27 + 5*13) },
       });
 
 
