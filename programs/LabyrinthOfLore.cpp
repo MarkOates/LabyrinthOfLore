@@ -239,12 +239,28 @@ void process_click_event(
       float player_mouse_x,
       float player_mouse_y,
       AllegroFlare::PickingBuffer &picking_buffer,
-      float resolution_scale 
+      float resolution_scale,
+      std::vector<LabyrinthOfLore::Entity::Base *> &all_entities,
+      LabyrinthOfLore::Entity::ThingDictionary &thing_dictionary,
+      LabyrinthOfLore::Hud::MessageScroll &message_scroll
    )
 {
    int picked_id = picking_buffer.get_id(player_mouse_x/resolution_scale, player_mouse_y/resolution_scale);
    std::cout << "Picked ID: " << picked_id << std::endl;
          // observe clicked item, emit game events if needed 
+
+   // HERE
+   //all_entities
+
+   //if (
+   if (picked_id == 0)
+   {
+      message_scroll.append_text("You see nothing of interest.");
+   }
+   else
+   {
+      //
+   }
 }
 
 
@@ -361,15 +377,17 @@ void process_collision_stepper_events(
 
 
 void add_thing_to_world(
-      std::vector<LabyrinthOfLore::Entity::Base*> *all_entities,
-      LabyrinthOfLore::Entity::ThingDefinition thing_definition,
+      std::vector<LabyrinthOfLore::Entity::Base*> &all_entities,
+      LabyrinthOfLore::Entity::ThingDictionary &thing_dictionary,
+      int thing_id,
       std::string level_identifier,
       AllegroFlare::vec3d position,
       bool billboard_at_camera=true
    )
 {
-   if (!all_entities) throw std::runtime_error("cannot add_thing_to_world with a nullptr all_entities"); 
+   //if (!all_entities) throw std::runtime_error("cannot add_thing_to_world with a nullptr all_entities"); 
 
+   LabyrinthOfLore::Entity::ThingDefinition thing_definition = thing_dictionary.find_definition(thing_id);
    Tileo::TileAtlas *this_things_tile_atlas = thing_definition.get_tile_atlas();
    if (!this_things_tile_atlas) throw std::runtime_error("cannot add_thing_to_world with a nullptr this_things_tile_atlas on the thing_definition"); 
 
@@ -379,6 +397,7 @@ void add_thing_to_world(
    entity->set_billboard_at_camera(billboard_at_camera);
    entity->set_bitmap(bitmap);
    entity->set_identifier_for_level_within(level_identifier);
+   entity->set("thing_id", thing_id);
    entity->get_placement_ref().size = AllegroFlare::vec3d(al_get_bitmap_width(bitmap), al_get_bitmap_height(bitmap), 0.0);
    entity->get_placement_ref().size = AllegroFlare::vec3d(al_get_bitmap_width(bitmap), al_get_bitmap_height(bitmap), 0.0);
    entity->get_placement_ref().scale = AllegroFlare::vec3d(0.005*4, 0.005*4, 0.005*4);
@@ -386,7 +405,7 @@ void add_thing_to_world(
    entity->get_placement_ref().position = position; //AllegroFlare::vec3d(x + 0.5, y + 0.5, 3.01);
    ////entity->get_placement_ref().rotation = AllegroFlare::vec3d(0, random.get_random_float(-1, 1), 0);
 
-   all_entities->push_back(entity);
+   all_entities.push_back(entity);
 }
 
 
@@ -729,8 +748,15 @@ int main(int argc, char **argv)
 
       //add_thing_to_world(LabyrinthOfLore::Entity::ThingDefinition, std::string level_identifier, placement3d placement, billboard_at_camera);
 
-      add_thing_to_world(&all_entities, thing_dictionary.find_definition(ITEM_TORCH_ID),                   THE_UNDERWORLD_IDENTIFIER, {  42.5,  77.5, 3.0 }, true);
-      add_thing_to_world(&all_entities, thing_dictionary.find_definition(MAN_AT_THE_ENTRANCE_TO_THE_CAVE), THE_CAVE_IDENTIFIER,       {  31.5,  9.5, 1.0 },  true);
+      //std::vector<LabyrinthOfLore::Entity::Base*> *all_entities,
+      //LabyrinthOfLore::Entity::ThingDictionary &thing_dictionary,
+      //int thing_id,
+      //std::string level_identifier,
+      //AllegroFlare::vec3d position,
+      //bool billboard_at_camera=true
+
+      add_thing_to_world(all_entities, thing_dictionary, ITEM_TORCH_ID,                   THE_UNDERWORLD_IDENTIFIER, {  42.5,  77.5, 3.0 }, true);
+      add_thing_to_world(all_entities, thing_dictionary, MAN_AT_THE_ENTRANCE_TO_THE_CAVE, THE_CAVE_IDENTIFIER,       {  31.5,  9.5, 1.0 },  true);
 
 
       //for (int y=0; y<36; y++)
@@ -883,7 +909,10 @@ int main(int argc, char **argv)
                   player_mouse_x,
                   player_mouse_y,
                   game.picking_buffer,
-                  resolution_scale 
+                  resolution_scale,
+                  all_entities,
+                  thing_dictionary,
+                  message_scroll
                );
 
                //int picked_id = game.picking_buffer.get_id(player_mouse_x/resolution_scale, player_mouse_y/resolution_scale);

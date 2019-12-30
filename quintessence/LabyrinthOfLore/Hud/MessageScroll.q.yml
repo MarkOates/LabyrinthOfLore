@@ -6,13 +6,14 @@ properties:
     constructor_arg: true
 functions:
   - name: append_text
-    type: std::string
+    type: void
     parameters:
       - name: text_to_append
         type: std::string
         default_argument: "\"\""
     body: |
-      text += text_to_append;
+      text += std::string("\n") + text_to_append;
+      return;
   - name: clear_text
     type: void
     body: text.clear();

@@ -27,9 +27,10 @@ std::string MessageScroll::get_text()
 }
 
 
-std::string MessageScroll::append_text(std::string text_to_append)
+void MessageScroll::append_text(std::string text_to_append)
 {
-text += text_to_append;
+text += std::string("\n") + text_to_append;
+return;
 
 }
 
