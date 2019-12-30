@@ -20,7 +20,7 @@ TEST(LabyrinthOfLore_Physics_EntityZoneCollisionObserverTest, get_collided__can_
 TEST(LabyrinthOfLore_Physics_EntityZoneCollisionObserverTest, get_collided__returns_entities_and_zones_that_are_colliding)
 {
    std::vector<LabyrinthOfLore::Entity::Base*> entities = {
-      new LabyrinthOfLore::Entity::Base(nullptr, nullptr, { 0.5, 0.5, 0.5 })
+      new LabyrinthOfLore::Entity::Base(nullptr, nullptr, "", { 0.5, 0.5, 0.5 })
    };
    std::vector<LabyrinthOfLore::WorldMap::Zone*> zones = {
       new LabyrinthOfLore::WorldMap::Zone(0, 0, 0, 1, 1, 1)
@@ -42,7 +42,7 @@ TEST(LabyrinthOfLore_Physics_EntityZoneCollisionObserverTest, get_collided__retu
 TEST(LabyrinthOfLore_Physics_EntityZoneCollisionObserverTest, get_collided__does_not_return_entities_and_zones_that_are_not_colliding)
 {
    std::vector<LabyrinthOfLore::Entity::Base*> entities = {
-      new LabyrinthOfLore::Entity::Base(nullptr, nullptr, { 1.5, -1.5, 0.5 })
+      new LabyrinthOfLore::Entity::Base(nullptr, nullptr, "", { 1.5, -1.5, 0.5 })
    };
    std::vector<LabyrinthOfLore::WorldMap::Zone*> zones = {
       new LabyrinthOfLore::WorldMap::Zone(0, 0, 0, 1, 1, 1)
@@ -62,7 +62,7 @@ TEST(LabyrinthOfLore_Physics_EntityZoneCollisionObserverTest, get_collided__does
 TEST(LabyrinthOfLore_Physics_EntityZoneCollisionObserverTest, observe_start_state__will_store_collisions_for_the_passed_entities_and_zones__as_the_starting_state)
 {
    std::vector<LabyrinthOfLore::Entity::Base*> entities = {
-      new LabyrinthOfLore::Entity::Base(nullptr, nullptr, { 0.5, 0.5, 0.5 })
+      new LabyrinthOfLore::Entity::Base(nullptr, nullptr, "", { 0.5, 0.5, 0.5 })
    };
    std::vector<LabyrinthOfLore::WorldMap::Zone*> zones = {
       new LabyrinthOfLore::WorldMap::Zone(0, 0, 0, 1, 1, 1)
@@ -85,8 +85,8 @@ TEST(LabyrinthOfLore_Physics_EntityZoneCollisionObserverTest, observe_start_stat
 TEST(LabyrinthOfLore_Physics_EntityZoneCollisionObserverTest, observe_end_state__will_store_collisions_for_the_passed_entities_and_zones__as_the_ending_state)
 {
    std::vector<LabyrinthOfLore::Entity::Base*> entities = {
-      new LabyrinthOfLore::Entity::Base(nullptr, nullptr, { 1.5, 1.5, 1.5 }),
-      new LabyrinthOfLore::Entity::Base(nullptr, nullptr, { 0.5, 0.5, 0.5 }),
+      new LabyrinthOfLore::Entity::Base(nullptr, nullptr, "", { 1.5, 1.5, 1.5 }),
+      new LabyrinthOfLore::Entity::Base(nullptr, nullptr, "", { 0.5, 0.5, 0.5 }),
    };
    std::vector<LabyrinthOfLore::WorldMap::Zone*> zones = {
       new LabyrinthOfLore::WorldMap::Zone(1, 1, 1, 2, 2, 2),
@@ -111,7 +111,7 @@ TEST(LabyrinthOfLore_Physics_EntityZoneCollisionObserverTest, observe_end_state_
 TEST(LabyrinthOfLore_Physics_EntityZoneCollisionObserverTest, collisions_added__returns_the_new_collisions_that_occurred_between_the_start_and_end_state)
 {
    std::vector<LabyrinthOfLore::Entity::Base*> entities = {
-      new LabyrinthOfLore::Entity::Base(nullptr, nullptr, { -0.5, -0.5, -0.5 }),
+      new LabyrinthOfLore::Entity::Base(nullptr, nullptr, "", { -0.5, -0.5, -0.5 }),
    };
    std::vector<LabyrinthOfLore::WorldMap::Zone*> zones = {
       new LabyrinthOfLore::WorldMap::Zone(0, 0, 0, 1, 1, 1),
@@ -136,7 +136,7 @@ TEST(LabyrinthOfLore_Physics_EntityZoneCollisionObserverTest, collisions_added__
 TEST(LabyrinthOfLore_Physics_EntityZoneCollisionObserverTest, collisions_removed__returns_the_new_collisions_that_occurred_between_the_start_and_end_state)
 {
    std::vector<LabyrinthOfLore::Entity::Base*> entities = {
-      new LabyrinthOfLore::Entity::Base(nullptr, nullptr, { 0.5, 0.5, 0.5 }),
+      new LabyrinthOfLore::Entity::Base(nullptr, nullptr, "", { 0.5, 0.5, 0.5 }),
    };
    std::vector<LabyrinthOfLore::WorldMap::Zone*> zones = {
       new LabyrinthOfLore::WorldMap::Zone(0, 0, 0, 1, 1, 1),
@@ -163,7 +163,7 @@ TEST(LabyrinthOfLore_Physics_EntityZoneCollisionObserverTest, complex_example)
    typedef std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>> t;
 
    std::vector<LabyrinthOfLore::Entity::Base*> entities = {
-      new LabyrinthOfLore::Entity::Base(nullptr, nullptr, { 0.5, 0.5, 0.5 }),
+      new LabyrinthOfLore::Entity::Base(nullptr, nullptr, "", { 0.5, 0.5, 0.5 }),
    };
    std::vector<LabyrinthOfLore::WorldMap::Zone*> zones = {
       new LabyrinthOfLore::WorldMap::Zone(0, 0, 0, 1, 1, 1),

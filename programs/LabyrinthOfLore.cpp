@@ -5,6 +5,7 @@
 
 
 #include <LabyrinthOfLore/Entity/Base.hpp>
+#include <LabyrinthOfLore/Entity/Selector.hpp>
 #include <LabyrinthOfLore/WorldMap/Tile.hpp>
 #include <LabyrinthOfLore/WorldMap/TileMapLoader.hpp>
 #include <LabyrinthOfLore/WorldMap/Level.hpp>
@@ -148,6 +149,7 @@ void move_player_to_level(
    current_tile_map_mesh = meshes[level_identifier];
 
    // set the player's position
+   player_entity->get_identifier_for_level_within() = level_identifier;
    player_entity->get_placement_ref().position = spawn_point;
 
    // reset the players's velocity - so no funny stuff, ok buddy? ;)
@@ -606,7 +608,7 @@ int main(int argc, char **argv)
       //
       //
 
-      std::vector<LabyrinthOfLore::Entity::Base*> entities = {};
+      std::vector<LabyrinthOfLore::Entity::Base*> all_entities = {};
       LabyrinthOfLore::Rendering::Camera camera({0, 0, 0}, 0.0, 0.0);
 
       LabyrinthOfLore::Entity::Base* player_entity = new LabyrinthOfLore::Entity::Base;
@@ -628,7 +630,7 @@ int main(int argc, char **argv)
 
       //camera.get_position_ref() = player_entity->get_placement_ref().position + AllegroFlare::vec3d(0, 0, 0.65); //{5, 20, 2.01 + 0.5};
 
-      entities.push_back(player_entity);
+      all_entities.push_back(player_entity);
 
       //
 
@@ -647,7 +649,7 @@ int main(int argc, char **argv)
       entity->get_placement_ref().align = AllegroFlare::vec3d(0.5, 1.0, 0.0);
       entity->get_placement_ref().position = AllegroFlare::vec3d(x + 0.5, y + 0.5, 3.01);
       //entity->get_placement_ref().rotation = AllegroFlare::vec3d(0, random.get_random_float(-1, 1), 0);
-      entities.push_back(entity);
+      all_entities.push_back(entity);
 
       //Random random;
 
@@ -666,7 +668,7 @@ int main(int argc, char **argv)
             //entity->get_placement_ref().rotation = AllegroFlare::vec3d(0, random.get_random_float(-1, 1), 0);
             ////entity->get_placement_ref().rotation = AllegroFlare::vec3d(random.get_random_float(-1, 1), random.get_random_float(-1, 1), random.get_random_float(-1, 1));
 
-            //entities.push_back(entity);
+            //all_entities.push_back(entity);
 
             //std::cout << "entity made " << std::endl;
          //}
@@ -797,10 +799,12 @@ int main(int argc, char **argv)
                player_entity->get_velocity_ref().position.x = view_vector_2d.x; //view_vector_2d.x;
                player_entity->get_velocity_ref().position.y = view_vector_2d.y; //view_vector_2d.y;
 
-               LabyrinthOfLore::Physics::GravityStepper gravity_stepper(entities);
+               std::vector<LabyrinthOfLore::Entity::Base*> entities_in_the_current_level = LabyrinthOfLore::Entity::Selector(all_entities).select_within_level(current_level_identifier);
+
+               LabyrinthOfLore::Physics::GravityStepper gravity_stepper(entities_in_the_current_level);
                gravity_stepper.process_step();
 
-               LabyrinthOfLore::Physics::EntityTileMapCollisionStepper entity_tile_map_collision_stepper(current_tile_map, entities);
+               LabyrinthOfLore::Physics::EntityTileMapCollisionStepper entity_tile_map_collision_stepper(current_tile_map, entities_in_the_current_level);
                entity_tile_map_collision_stepper.process_step();
 
                // observe tile map collision events, emit game events if needed 
@@ -829,19 +833,19 @@ int main(int argc, char **argv)
 
                //
 
-               LabyrinthOfLore::Rendering::SpritesBillboarder sprites_billboarder(camera, entities);
+               LabyrinthOfLore::Rendering::SpritesBillboarder sprites_billboarder(camera, entities_in_the_current_level);
                sprites_billboarder.process();
 
                //
 
-               LabyrinthOfLore::Rendering::SceneRenderer scene_renderer(scene_rendering_surface, &camera, current_tile_map_mesh, entities, &depth_darken_shader);
+               LabyrinthOfLore::Rendering::SceneRenderer scene_renderer(scene_rendering_surface, &camera, current_tile_map_mesh, entities_in_the_current_level, &depth_darken_shader);
                scene_renderer.render();
 
                //
 
                al_clear_depth_buffer(1);
                al_set_render_state(ALLEGRO_DEPTH_TEST, 1);
-               LabyrinthOfLore::Rendering::PickingBufferRenderer picking_buffer_renderer(&game.picking_buffer, &camera, current_tile_map_mesh, entities, &clamped_color_shader);
+               LabyrinthOfLore::Rendering::PickingBufferRenderer picking_buffer_renderer(&game.picking_buffer, &camera, current_tile_map_mesh, entities_in_the_current_level, &clamped_color_shader);
                picking_buffer_renderer.render();
 
                //
