@@ -640,6 +640,8 @@ int main(int argc, char **argv)
       LabyrinthOfLore::Entity::Base* entity = new LabyrinthOfLore::Entity::Base;
       entity->set_billboard_at_camera(true);
       entity->set_bitmap(bitmap);
+      entity->set_identifier_for_level_within(THE_UNDERWORLD_IDENTIFIER);
+      entity->get_placement_ref().size = AllegroFlare::vec3d(al_get_bitmap_width(bitmap), al_get_bitmap_height(bitmap), 0.0);
       entity->get_placement_ref().size = AllegroFlare::vec3d(al_get_bitmap_width(bitmap), al_get_bitmap_height(bitmap), 0.0);
       entity->get_placement_ref().scale = AllegroFlare::vec3d(0.005, 0.005, 0.005);
       entity->get_placement_ref().align = AllegroFlare::vec3d(0.5, 1.0, 0.0);

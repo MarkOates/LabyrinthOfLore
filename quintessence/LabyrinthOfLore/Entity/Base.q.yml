@@ -15,6 +15,12 @@ properties:
     constructor_arg: true
     setter: true
     getter: true
+  - name: identifier_for_level_within
+    type: std::string
+    init_with: "\"\""
+    constructor_arg: true
+    setter: true
+    getter: true
   - name: placement
     type: allegro_flare::placement3d
     init_with: "{}"

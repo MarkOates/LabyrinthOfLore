@@ -1,0 +1,24 @@
+properties:
+  - name: all_entities
+    type: std::vector<LabyrinthOfLore::Entity::Base*>
+    init_with: "{}"
+    constructor_arg: true
+functions:
+  - name: select_within_level
+    type: std::vector<LabyrinthOfLore::Entity::Base*>
+    parameters:
+      - name: level_identifier
+        type: std::string
+        default_argument: "\"\""
+    body: |
+      std::vector<LabyrinthOfLore::Entity::Base*> result;
+
+      for (auto &entity : all_entities)
+      {
+         if (entity->get_identifier_for_level_within() == level_identifier) result.push_back(entity);
+      }
+
+      return result;
+dependencies:
+  - symbol: std::vector<LabyrinthOfLore::Entity::Base*>
+    headers: [ vector, LabyrinthOfLore/Entity/Base.hpp ] 
