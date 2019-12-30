@@ -47,9 +47,6 @@
 using AllegroFlare::radians_to_degrees;
 using AllegroFlare::Random;
 
-#include <LabyrinthOfLoreGame/EntityTileMapCollisionEventProcessor.hpp>
-
-
 #define USER_EVENT_APPEND_MESSAGE_TO_MESSAGE_SCROLL ALLEGRO_GET_EVENT_TYPE('A','p','d','M')
 
 
@@ -386,8 +383,7 @@ int main(int argc, char **argv)
 
       LabyrinthOfLore::Rendering::TileTypeDictionary tile_type_dictionary({
           { 1,           LabyrinthOfLore::Rendering::TileTypeDefinition(1, 1, 0) },
-          { 2,           LabyrinthOfLore::Rendering::TileTypeDefinition(1, 2, 0) },
-          { 3,           LabyrinthOfLore::Rendering::TileTypeDefinition(1, 3, 0) },
+          { 2,           LabyrinthOfLore::Rendering::TileTypeDefinition(2, 2, 0) },
       });
 
       //
