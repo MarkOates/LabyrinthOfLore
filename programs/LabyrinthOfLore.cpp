@@ -571,7 +571,7 @@ int main(int argc, char **argv)
 
       //
       LabyrinthOfLore::Entity::ThingDictionary thing_dictionary({
-          { ITEM_TORCH_ID,           LabyrinthOfLore::Entity::ThingDefinition("a", "torch") },
+          { ITEM_TORCH_ID,           LabyrinthOfLore::Entity::ThingDefinition("a", "torch", 9*13+6) },
       });
 
 
@@ -607,8 +607,8 @@ int main(int argc, char **argv)
       int x = 42;
       int y = 59+18;
       //int sprite_sheet_width = al_get_bitmap_width(item_tile_atlas.get_bitmap());
-      int torch_id = 9*13+6;
-      ALLEGRO_BITMAP *bitmap = item_tile_atlas.get_bitmap(9*13+6);
+      //int torch_id = 9*13+6;
+      ALLEGRO_BITMAP *bitmap = item_tile_atlas.get_bitmap(thing_dictionary.find_definition(ITEM_TORCH_ID).get_tile_atlas_index_id());
       LabyrinthOfLore::Entity::Base* entity = new LabyrinthOfLore::Entity::Base;
       entity->set_billboard_at_camera(true);
       entity->set_bitmap(bitmap);

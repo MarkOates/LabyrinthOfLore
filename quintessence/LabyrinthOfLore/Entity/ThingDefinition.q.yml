@@ -9,6 +9,11 @@ properties:
     init_with: "\"unnamed thing\""
     constructor_arg: true
     getter: true
+  - name: tile_atlas_index_id
+    type: int
+    init_with: -1
+    constructor_arg: true
+    getter: true
 functions:
   - name: infer_decorated_name
     type: std::string
