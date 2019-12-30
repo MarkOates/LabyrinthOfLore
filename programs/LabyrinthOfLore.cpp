@@ -363,8 +363,11 @@ int main(int argc, char **argv)
 
       //
 
-      LabyrinthOfLoreGame::TileTypeDictionary game_tile_type_dictionary;
-      LabyrinthOfLore::Rendering::TileTypeDictionary tile_type_dictionary = game_tile_type_dictionary.build_tile_type_dictionary();
+      LabyrinthOfLore::Rendering::TileTypeDictionary tile_type_dictionary({
+          { 1,           LabyrinthOfLore::Rendering::TileTypeDefinition(1, 1, 0) },
+          { 2,           LabyrinthOfLore::Rendering::TileTypeDefinition(1, 2, 0) },
+          { 3,           LabyrinthOfLore::Rendering::TileTypeDefinition(1, 2, 0) },
+      });
 
       //
 
