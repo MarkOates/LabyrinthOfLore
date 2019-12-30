@@ -238,6 +238,15 @@ void process_cheat_keyboard_keydown_event(
 //}
 
 
+void process_thing_look_click(
+      int thing_id,
+      LabyrinthOfLore::Hud::MessageScroll &message_scroll
+      )
+{
+   if (thing_id == MAN_AT_THE_ENTRANCE_TO_THE_CAVE) message_scroll.append_text("You see a goblin at the entrance to the cave.");
+}
+
+
 void process_click_event(
       float player_mouse_x,
       float player_mouse_y,
@@ -278,11 +287,10 @@ void process_click_event(
       }
       else
       {
-         if (thing_id == MAN_AT_THE_ENTRANCE_TO_THE_CAVE) 
-         {
-            message_scroll.append_text("You see a goblin at the entrance to the cave.");
-         }
-         //LabyrinthOfLore::Entity::ThingDefinition thing_definition = thing_dictionary.find_definition(thing_id);
+         process_thing_look_click(
+               thing_id,
+               message_scroll
+            );
       }
    }
 }
