@@ -149,7 +149,7 @@ void move_player_to_level(
    current_tile_map_mesh = meshes[level_identifier];
 
    // set the player's position
-   player_entity->get_identifier_for_level_within() = level_identifier;
+   player_entity->set_identifier_for_level_within(level_identifier);
    player_entity->get_placement_ref().position = spawn_point;
 
    // reset the players's velocity - so no funny stuff, ok buddy? ;)
@@ -625,6 +625,7 @@ int main(int argc, char **argv)
       int player_mouse_y = 0;
 
       player_entity->get_velocity_ref().position = {0.0, 0.0, 0.0};
+      player_entity->set_identifier_for_level_within(THE_UNDERWORLD_IDENTIFIER);
       player_entity->get_placement_ref().position = {0.0, 0.0, 0.0};
       //player_entity->get_placement_ref().rotation = {2.5, 2.5, 0.0};
 
