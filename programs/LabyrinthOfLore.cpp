@@ -280,7 +280,7 @@ void process_click_event(
       {
          if (thing_id == MAN_AT_THE_ENTRANCE_TO_THE_CAVE) 
          {
-            message_scroll.append_text("You see a man at the entrance to the cave.");
+            message_scroll.append_text("You see a goblin at the entrance to the cave.");
          }
          //LabyrinthOfLore::Entity::ThingDefinition thing_definition = thing_dictionary.find_definition(thing_id);
       }
