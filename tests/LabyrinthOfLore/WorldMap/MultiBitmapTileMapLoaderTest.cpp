@@ -108,7 +108,7 @@ TEST(LabyrinthOfLore_WorldMap_MultiBitmapTileMapLoaderTest, pick_color__with_a_v
    SUCCEED();
 }
 
-TEST(LabyrinthOfLore_WorldMap_MultiBitmapTileMapLoaderTest, load_and_process__on_door_tiles__will_change_the_tile_type_to_2_and_increases_the_height_by_1_unit)
+TEST(LabyrinthOfLore_WorldMap_MultiBitmapTileMapLoaderTest, load_and_process__on_door_tiles__will_change_the_tile_type_to_2)
 {
    al_init();
    al_init_image_addon();
@@ -127,7 +127,7 @@ TEST(LabyrinthOfLore_WorldMap_MultiBitmapTileMapLoaderTest, load_and_process__on
    bitmap_tile_map_loader.load_and_process();
 
    EXPECT_EQ(2, tile_map.get_tile(expected_door_x, expected_door_y).get_type());
-   EXPECT_NEAR(door_height+1.0, tile_map.get_tile(expected_door_x, expected_door_y).get_height(), FLOATING_POINT_ERROR_MARGIN);
+   EXPECT_NEAR(door_height, tile_map.get_tile(expected_door_x, expected_door_y).get_height(), FLOATING_POINT_ERROR_MARGIN);
 
    al_uninstall_system();
    SUCCEED();

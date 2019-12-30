@@ -103,7 +103,7 @@ for (unsigned y=0; y<final_tile_map_height; y++)
       ALLEGRO_COLOR this_pixel_color = al_get_pixel(source_bitmap, x, y);
 
       if (colors_are_equal(this_pixel_color, pick_door_color()))
-         tile_map->set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(2, tile_map->get_tile(x, y).get_height() + 1.0));
+         tile_map->set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(2, tile_map->get_tile(x, y).get_height()));
 
       //else
       //{
