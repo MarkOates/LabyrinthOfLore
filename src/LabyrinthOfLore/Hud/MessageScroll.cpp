@@ -45,6 +45,13 @@ return;
 
 }
 
+void MessageScroll::append_message(float time_of_message, std::string text_to_append)
+{
+messages.push_back({ time_of_message, text_to_append });
+return;
+
+}
+
 void MessageScroll::clear_text()
 {
 text.clear();

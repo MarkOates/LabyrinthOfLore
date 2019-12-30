@@ -25,6 +25,18 @@ functions:
     body: |
       text += std::string("\n") + text_to_append;
       return;
+  - name: append_message
+    type: void
+    parameters:
+      - name: time_of_message
+        type: float
+        default_argument: 0.0f
+      - name: text_to_append
+        type: std::string
+        default_argument: "\"\""
+    body: |
+      messages.push_back({ time_of_message, text_to_append });
+      return;
   - name: clear_text
     type: void
     body: text.clear();

@@ -24,6 +24,7 @@ namespace LabyrinthOfLore
          std::string get_text();
       std::vector<std::pair<float, std::string>> get_last_3_messages();
       void append_text(std::string text_to_append="");
+      void append_message(float time_of_message=0.0f, std::string text_to_append="");
       void clear_text();
       };
    }
