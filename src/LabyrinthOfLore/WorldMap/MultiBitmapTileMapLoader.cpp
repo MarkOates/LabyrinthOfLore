@@ -139,8 +139,16 @@ return true;
 
 LabyrinthOfLore::WorldMap::TileMap MultiBitmapTileMapLoader::load_and_process(float top_height, float ground_height)
 {
-if (!tile_map) throw std::runtime_error("could WorldBitmap::MultiBitmapTileMapLoader.load with a nullptr tile_map.");
-if (!source_bitmap) throw std::runtime_error("could WorldBitmap::MultiBitmapTileMapLoader.load with a nullptr source_bitmap.");
+if (!tile_map) throw std::runtime_error("could not WorldBitmap::MultiBitmapTileMapLoader.load with a nullptr tile_map.");
+if (!source_bitmap) throw std::runtime_error("could not WorldBitmap::MultiBitmapTileMapLoader.load with a nullptr source_bitmap.");
+
+if (al_get_bitmap_width(source_bitmap) != tile_map->get_width())
+{
+   std::stringstream error_message;
+   error_message << "Could not WorldBitmap::MultiBitmapTileMapLoader.load with a tile_map and source_bitmap that are of different dimensions. "
+      << "The bitmap is (" << al_get_bitmap_width(source_bitmap) << "," << al_get_bitmap_height(source_bitmap) << ") and the tile_map is (" << tile_map->get_width() << "," << tile_map->get_height() << ")";
+   throw std::runtime_error(error_message.str());
+}
 
 al_lock_bitmap(source_bitmap, ALLEGRO_PIXEL_FORMAT_ANY, ALLEGRO_LOCK_READONLY);
 

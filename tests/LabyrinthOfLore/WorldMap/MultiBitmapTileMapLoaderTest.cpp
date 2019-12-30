@@ -37,7 +37,7 @@ TEST(LabyrinthOfLore_WorldMap_MultiBitmapTileMapLoaderTest, load_and_process__th
 
    LabyrinthOfLore::WorldMap::MultiBitmapTileMapLoader bitmap_tile_map_loader(tile_map, source_bitmap);
 
-   std::string expected_message = "could WorldBitmap::MultiBitmapTileMapLoader.load with a nullptr tile_map.";
+   std::string expected_message = "could not WorldBitmap::MultiBitmapTileMapLoader.load with a nullptr tile_map.";
    ASSERT_THROW_WITH_MESSAGE(bitmap_tile_map_loader.load_and_process(), std::runtime_error, expected_message);
 }
 
@@ -48,20 +48,26 @@ TEST(LabyrinthOfLore_WorldMap_MultiBitmapTileMapLoaderTest, load_and_process__th
 
    LabyrinthOfLore::WorldMap::MultiBitmapTileMapLoader bitmap_tile_map_loader(tile_map, source_bitmap);
 
-   std::string expected_message = "could WorldBitmap::MultiBitmapTileMapLoader.load with a nullptr source_bitmap.";
+   std::string expected_message = "could not WorldBitmap::MultiBitmapTileMapLoader.load with a nullptr source_bitmap.";
    ASSERT_THROW_WITH_MESSAGE(bitmap_tile_map_loader.load_and_process(), std::runtime_error, expected_message);
 
    delete tile_map;
 }
 
-//TEST(LabyrinthOfLore_WorldMap_MultiBitmapTileMapLoaderTest, load_and_process__throws_an_exception_if_there_is_a_nullptr_source_bitmap)
-//{
-   //LabyrinthOfLore::WorldMap::TileMap *tile_map = nullptr;
-   //ALLEGRO_BITMAP *source_bitmap = nullptr;
+TEST(LabyrinthOfLore_WorldMap_MultiBitmapTileMapLoaderTest, load_and_process__throws_an_exception_if_the_tile_map_dimensions_do_not_match_the_bitmap_dimensions)
+{
+   al_init();
 
-   //LabyrinthOfLore::WorldMap::MultiBitmapTileMapLoader bitmap_tile_map_loader(tile_map, source_bitmap);
+   LabyrinthOfLore::WorldMap::TileMap tile_map;
+   tile_map.resize(7, 9);
+   ALLEGRO_BITMAP *source_bitmap = al_create_bitmap(tile_map.get_width()+1, tile_map.get_height());
 
-   //std::string expected_message = "could WorldBitmap::MultiBitmapTileMapLoader.load with a nullptr source_bitmap";
-   //ASSERT_THROW_WITH_MESSAGE(bitmap_tile_map_loader.load_and_process(), std::runtime_error, expected_message);
-//}
+   LabyrinthOfLore::WorldMap::MultiBitmapTileMapLoader bitmap_tile_map_loader(&tile_map, source_bitmap);
+
+   std::string expected_message = "Could not WorldBitmap::MultiBitmapTileMapLoader.load with a tile_map and source_bitmap that are of different dimensions. The bitmap is (8,9) and the tile_map is (7,9)";
+   ASSERT_THROW_WITH_MESSAGE(bitmap_tile_map_loader.load_and_process(), std::runtime_error, expected_message);
+
+   al_destroy_bitmap(source_bitmap);
+   al_uninstall_system();
+}
 
