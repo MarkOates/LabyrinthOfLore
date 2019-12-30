@@ -238,12 +238,31 @@ void process_cheat_keyboard_keydown_event(
 //}
 
 
+std::string you_see_a(LabyrinthOfLore::Entity::ThingDefinition &thing_definition)
+{
+    std::stringstream message;
+    message << "You see " << thing_definition.infer_decorated_name() << ".";
+    return message.str();
+}
+
+
 void process_thing_look_click(
       int thing_id,
+      LabyrinthOfLore::Entity::ThingDictionary &thing_dictionary,
       LabyrinthOfLore::Hud::MessageScroll &message_scroll
       )
 {
-   if (thing_id == MAN_AT_THE_ENTRANCE_TO_THE_CAVE) message_scroll.append_text("You see a goblin at the entrance to the cave.");
+   LabyrinthOfLore::Entity::ThingDefinition &thing_definition = thing_dictionary.find_definition_ref(thing_id);
+
+   // for custom messages:
+   //if (thing_id == MAN_AT_THE_ENTRANCE_TO_THE_CAVE)
+   if (thing_id == -1) // do this pattern for custom messages
+   {
+   }
+   else // else will use the default messaging
+   {
+      message_scroll.append_text(you_see_a(thing_definition));
+   }
 }
 
 
@@ -289,6 +308,7 @@ void process_click_event(
       {
          process_thing_look_click(
                thing_id,
+               thing_dictionary,
                message_scroll
             );
       }
@@ -737,7 +757,7 @@ int main(int argc, char **argv)
           { ITEM_RING_OF_LOFT_ID,                  LabyrinthOfLore::Entity::ThingDefinition("the", "ring of loft",                   &item_tile_atlas,      10+13*14)  },
           { ITEM_INFINITY_TORCH_ID,                LabyrinthOfLore::Entity::ThingDefinition("the", "infinity torch",                 &item_tile_atlas,      6 + 9*14)  },
           { ITEM_TORCH_FUEL_ID,                    LabyrinthOfLore::Entity::ThingDefinition("some","torch fuel",                     &item_tile_atlas,      27 + 5*14) },
-          { MAN_AT_THE_ENTRANCE_TO_THE_CAVE,       LabyrinthOfLore::Entity::ThingDefinition("","a man at the entrance of the cave",  &character_tile_atlas, 4 + 11*7)  },
+          { MAN_AT_THE_ENTRANCE_TO_THE_CAVE,       LabyrinthOfLore::Entity::ThingDefinition("","a goblin at the entrance of the cave",  &character_tile_atlas, 4 + 11*7)  },
       });
 
 

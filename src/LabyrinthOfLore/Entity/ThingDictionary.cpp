@@ -27,6 +27,13 @@ if (definitions.find(tile_type) == definitions.end()) return LabyrinthOfLore::En
 return definitions[tile_type];
 
 }
+
+LabyrinthOfLore::Entity::ThingDefinition& ThingDictionary::find_definition_ref(int tile_type)
+{
+if (definitions.find(tile_type) == definitions.end()) throw std::runtime_error("cannot find_definition_ref in the ThingDictionary. It doesn't exist.");
+return definitions[tile_type];
+
+}
 } // namespace Entity
 } // namespace LabyrinthOfLore
 
