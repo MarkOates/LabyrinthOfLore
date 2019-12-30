@@ -255,7 +255,7 @@ void process_keyboard_keydown_event(
    else if (this_event.keyboard.keycode == ALLEGRO_KEY_6)
       go_into_door(doors.at(6), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
    else if (this_event.keyboard.keycode == ALLEGRO_KEY_7)
-      go_into_door(doors.at(6), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
+      go_into_door(doors.at(7), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
 }
 
 
