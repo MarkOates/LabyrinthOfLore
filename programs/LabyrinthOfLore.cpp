@@ -649,27 +649,28 @@ int main(int argc, char **argv)
       //entity->get_placement_ref().rotation = AllegroFlare::vec3d(0, random.get_random_float(-1, 1), 0);
       entities.push_back(entity);
 
-      Random random;
+      //Random random;
 
-      for (int y=1; y<3; y++)
-      {
-         for (int x=1; x<3; x++)
-         {
-            LabyrinthOfLore::Entity::Base* entity = new LabyrinthOfLore::Entity::Base;
-            entity->set_billboard_at_camera(true);
-            entity->set_bitmap(item_tile_atlas.get_bitmap(9*8));
-            entity->get_placement_ref().size = AllegroFlare::vec3d(al_get_bitmap_width(billboarding_tester_sprite), al_get_bitmap_height(billboarding_tester_sprite), 0.0);
-            entity->get_placement_ref().scale = AllegroFlare::vec3d(0.005, 0.005, 0.005);
-            entity->get_placement_ref().align = AllegroFlare::vec3d(0.5, 1.0, 0.0);
-            entity->get_placement_ref().position = AllegroFlare::vec3d(x + 0.5, y + 0.5, 1.01);
-            entity->get_placement_ref().rotation = AllegroFlare::vec3d(0, random.get_random_float(-1, 1), 0);
-            //entity->get_placement_ref().rotation = AllegroFlare::vec3d(random.get_random_float(-1, 1), random.get_random_float(-1, 1), random.get_random_float(-1, 1));
+      //for (int y=1; y<3; y++)
+      //{
+         //for (int x=1; x<3; x++)
+         //{
+            //LabyrinthOfLore::Entity::Base* entity = new LabyrinthOfLore::Entity::Base;
+            //entity->set_billboard_at_camera(true);
+            //entity->set_bitmap(item_tile_atlas.get_bitmap(9*8));
+            //entity->set_identifier_for_level_within(THE_UNDERWORLD_IDENTIFIER);
+            //entity->get_placement_ref().size = AllegroFlare::vec3d(al_get_bitmap_width(billboarding_tester_sprite), al_get_bitmap_height(billboarding_tester_sprite), 0.0);
+            //entity->get_placement_ref().scale = AllegroFlare::vec3d(0.005, 0.005, 0.005);
+            //entity->get_placement_ref().align = AllegroFlare::vec3d(0.5, 1.0, 0.0);
+            //entity->get_placement_ref().position = AllegroFlare::vec3d(x + 0.5, y + 0.5, 1.01);
+            //entity->get_placement_ref().rotation = AllegroFlare::vec3d(0, random.get_random_float(-1, 1), 0);
+            ////entity->get_placement_ref().rotation = AllegroFlare::vec3d(random.get_random_float(-1, 1), random.get_random_float(-1, 1), random.get_random_float(-1, 1));
 
-            entities.push_back(entity);
+            //entities.push_back(entity);
 
-            std::cout << "entity made " << std::endl;
-         }
-      }
+            //std::cout << "entity made " << std::endl;
+         //}
+      //}
 
 
 
