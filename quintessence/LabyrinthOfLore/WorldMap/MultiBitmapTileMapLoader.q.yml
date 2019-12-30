@@ -54,48 +54,9 @@ functions:
   - name: pick_index_null_color
     type: ALLEGRO_COLOR
     body: return pick_color(get_index_column_x(), 0);
-  - name: pick_index_top_color
+  - name: pick_door_color
     type: ALLEGRO_COLOR
     body: return pick_color(get_index_column_x(), 1);
-  - name: pick_index_ground_color
-    type: ALLEGRO_COLOR
-    body: return pick_color(get_index_column_x(), 2);
-  - name: pick_index_gp_color
-    type: ALLEGRO_COLOR
-    body: return pick_color(get_index_column_x(), 5);
-  - name: pick_index_gpp_color
-    type: ALLEGRO_COLOR
-    body: return pick_color(get_index_column_x(), 6);
-  - name: pick_index_gppp_color
-    type: ALLEGRO_COLOR
-    body: return pick_color(get_index_column_x(), 7);
-  - name: pick_index_g1_color
-    type: ALLEGRO_COLOR
-    body: return pick_color(get_index_column_x(), 8);
-  - name: pick_index_gm_color
-    type: ALLEGRO_COLOR
-    body: return pick_color(get_index_column_x(), 9);
-  - name: pick_index_gmm_color
-    type: ALLEGRO_COLOR
-    body: return pick_color(get_index_column_x(), 10);
-  - name: pick_index_gmmm_color
-    type: ALLEGRO_COLOR
-    body: return pick_color(get_index_column_x(), 11);
-  - name: pick_index_gm1_color
-    type: ALLEGRO_COLOR
-    body: return pick_color(get_index_column_x(), 12);
-  - name: pick_index_g1p_color
-    type: ALLEGRO_COLOR
-    body: return pick_color(get_index_column_x(), 13);
-  - name: pick_index_g1pp_color
-    type: ALLEGRO_COLOR
-    body: return pick_color(get_index_column_x(), 14);
-  - name: pick_index_g1ppp_color
-    type: ALLEGRO_COLOR
-    body: return pick_color(get_index_column_x(), 15);
-  - name: pick_index_g2_color
-    type: ALLEGRO_COLOR
-    body: return pick_color(get_index_column_x(), 16);
   - name: validate
     type: bool
     body: |
@@ -137,30 +98,15 @@ functions:
          for (unsigned x=0; x<final_tile_map_width; x++)
          {
             ALLEGRO_COLOR this_pixel_color = al_get_pixel(source_bitmap, x, y);
-            if (colors_are_equal(this_pixel_color, pick_index_null_color())) result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(0, floor_height));
-            else if (colors_are_equal(this_pixel_color, pick_index_top_color())) result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(1, top_height));
-            else if (colors_are_equal(this_pixel_color, pick_index_ground_color())) result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(1, ground_height));
 
-            else if (colors_are_equal(this_pixel_color, pick_index_gp_color())) result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(1, ground_height+0.25));
-            else if (colors_are_equal(this_pixel_color, pick_index_gpp_color())) result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(1, ground_height+0.5));
-            else if (colors_are_equal(this_pixel_color, pick_index_gppp_color())) result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(1, ground_height+0.75));
-            else if (colors_are_equal(this_pixel_color, pick_index_g1_color())) result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(1, ground_height+1.0));
-
-            else if (colors_are_equal(this_pixel_color, pick_index_gm_color())) result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(1, ground_height-0.25));
-            else if (colors_are_equal(this_pixel_color, pick_index_gmm_color())) result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(1, ground_height-0.5));
-            else if (colors_are_equal(this_pixel_color, pick_index_gmmm_color())) result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(1, ground_height-0.75));
-            else if (colors_are_equal(this_pixel_color, pick_index_gm1_color())) result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(1, ground_height-1.0));
-
-            else if (colors_are_equal(this_pixel_color, pick_index_g1p_color())) result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(1, ground_height+1.25));
-            else if (colors_are_equal(this_pixel_color, pick_index_g1pp_color())) result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(1, ground_height+1.5));
-            else if (colors_are_equal(this_pixel_color, pick_index_g1ppp_color())) result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(1, ground_height+1.75));
-            else if (colors_are_equal(this_pixel_color, pick_index_g2_color())) result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(1, ground_height+2.0));
+            if (colors_are_equal(this_pixel_color, pick_door_color()))
+               result.set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(2, tile_map->get_tile(x, y).get_height()));
 
             else
             {
-               std::stringstream error_message;
-               error_message << "Unexpected color at pixel (" << x << ", " << y << ")";
-               throw std::runtime_error(error_message.str());
+               //std::stringstream error_message;
+               //error_message << "Unexpected color at pixel (" << x << ", " << y << ")";
+               //throw std::runtime_error(error_message.str());
             }
          }
 
