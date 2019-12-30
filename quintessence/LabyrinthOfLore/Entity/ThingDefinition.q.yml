@@ -1,4 +1,14 @@
-functions:
-  - name: run
+properties:
+  - name: article
     type: std::string
-    body: return "Hello World!";
+    init_with: "\"an\""
+    getter: true
+  - name: name
+    type: std::string
+    init_with: "\"unnamed thing\""
+    getter: true
+functions:
+  - name: decorated_name
+    type: std::string
+    body: |
+      return article + " " + name;

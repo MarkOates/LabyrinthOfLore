@@ -11,13 +11,17 @@ namespace LabyrinthOfLore
       class ThingDefinition
       {
       private:
+         std::string article;
+         std::string name;
 
       public:
          ThingDefinition();
          ~ThingDefinition();
 
 
-      std::string run();
+         std::string get_article();
+         std::string get_name();
+      std::string decorated_name();
       };
    }
 }

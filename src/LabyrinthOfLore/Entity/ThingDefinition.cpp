@@ -11,6 +11,8 @@ namespace Entity
 
 
 ThingDefinition::ThingDefinition()
+   : article("an")
+   , name("unnamed thing")
 {
 }
 
@@ -20,9 +22,22 @@ ThingDefinition::~ThingDefinition()
 }
 
 
-std::string ThingDefinition::run()
+std::string ThingDefinition::get_article()
 {
-return "Hello World!";
+   return article;
+}
+
+
+std::string ThingDefinition::get_name()
+{
+   return name;
+}
+
+
+std::string ThingDefinition::decorated_name()
+{
+return article + " " + name;
+
 }
 } // namespace Entity
 } // namespace LabyrinthOfLore
