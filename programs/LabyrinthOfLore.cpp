@@ -47,6 +47,8 @@
 #include <LabyrinthOfLore/Entity/ThingDefinition.hpp>
 #include <LabyrinthOfLore/Entity/ThingDictionary.hpp>
 
+#include <AllegroFlare/Inventory.hpp>
+
 using AllegroFlare::radians_to_degrees;
 using AllegroFlare::Random;
 
@@ -66,7 +68,9 @@ static const std::string VILLAGE_OF_THE_FORGOTTEN_IDENTIFIER = "village_of_the_f
 enum item_id_t
 {
    ITEM_NO_ID = 0,
-   ITEM_TORCH_ID
+   ITEM_TORCH_ID,
+   ITEM_RING_OF_LOFT_ID,
+   ITEM_INFINITY_TORCH_ID
 };
 
 
@@ -189,6 +193,27 @@ void go_into_door(
 
    player_yaw = door.spawn_facing_yaw;
 }
+
+
+
+void process_cheat_keyboard_keydown_event(
+      ALLEGRO_EVENT &this_event,
+      AllegroFlare::Inventory &player_inventory
+      //LabyInventory &player_inventory
+   )
+{
+   bool shift = this_event.keyboard.modifiers & ALLEGRO_KEYMOD_SHIFT;
+
+   if (shift)
+   {
+      if (this_event.keyboard.keycode == ALLEGRO_KEY_R)
+      {
+         player_inventory.add_item(ITEM_RING_OF_LOFT_ID);
+         throw std::runtime_error("item!");
+      }
+   }
+}
+
 
 
 void process_keyboard_keydown_event(
@@ -571,9 +596,16 @@ int main(int argc, char **argv)
 
       //
       LabyrinthOfLore::Entity::ThingDictionary thing_dictionary({
-          { ITEM_TORCH_ID,           LabyrinthOfLore::Entity::ThingDefinition("a", "torch", 9*13+6) },
+          { ITEM_TORCH_ID,               LabyrinthOfLore::Entity::ThingDefinition("a",   "torch",            6 + 9*13) },
+          { ITEM_RING_OF_LOFT_ID,        LabyrinthOfLore::Entity::ThingDefinition("the", "amulet of loft",   10+ 9*13) },
+          { ITEM_INFINITY_TORCH_ID,      LabyrinthOfLore::Entity::ThingDefinition("the", "infinity torch",   6 + 9*13) },
       });
 
+
+
+      //
+
+      AllegroFlare::Inventory player_inventory;
 
       //
       //
@@ -722,7 +754,7 @@ int main(int argc, char **argv)
                // observe clicked item, emit game events if needed 
                break;
             }
-         case ALLEGRO_EVENT_KEY_DOWN:
+         case ALLEGRO_EVENT_KEY_CHAR: // using key down does not capture the SHIFT modifier for cheats
             if (this_event.keyboard.keycode == ALLEGRO_KEY_ESCAPE) shutdown_program = true;
             if (this_event.keyboard.keycode == ALLEGRO_KEY_A) player_turning = -max_player_turning_speed;
             if (this_event.keyboard.keycode == ALLEGRO_KEY_W) player_movement_magnitude = 0.022;
@@ -730,14 +762,11 @@ int main(int argc, char **argv)
             if (this_event.keyboard.keycode == ALLEGRO_KEY_S) player_movement_magnitude = -0.022;
 
             if (this_event.keyboard.keycode == ALLEGRO_KEY_T) depth_darken_shader.toggle_torch();
-            break;
-         case USER_EVENT_APPEND_MESSAGE_TO_MESSAGE_SCROLL:
-            break;
-         case ALLEGRO_EVENT_KEY_UP:
-            if (this_event.keyboard.keycode == ALLEGRO_KEY_A) player_turning = 0.0;
-            if (this_event.keyboard.keycode == ALLEGRO_KEY_W) player_movement_magnitude = 0.0;
-            if (this_event.keyboard.keycode == ALLEGRO_KEY_D) player_turning = 0.0;
-            if (this_event.keyboard.keycode == ALLEGRO_KEY_S) player_movement_magnitude = 0.0;
+
+            process_cheat_keyboard_keydown_event(
+               this_event,
+               player_inventory
+            );
 
             process_keyboard_keydown_event(
                this_event,
@@ -750,6 +779,15 @@ int main(int argc, char **argv)
                current_tile_map_mesh,
                title_text
             );
+            break;
+         case USER_EVENT_APPEND_MESSAGE_TO_MESSAGE_SCROLL:
+            break;
+         case ALLEGRO_EVENT_KEY_UP:
+            if (this_event.keyboard.keycode == ALLEGRO_KEY_A) player_turning = 0.0;
+            if (this_event.keyboard.keycode == ALLEGRO_KEY_W) player_movement_magnitude = 0.0;
+            if (this_event.keyboard.keycode == ALLEGRO_KEY_D) player_turning = 0.0;
+            if (this_event.keyboard.keycode == ALLEGRO_KEY_S) player_movement_magnitude = 0.0;
+
             break;
          case ALLEGRO_EVENT_TIMER:
             game.run_timer_step();
