@@ -21,6 +21,7 @@ namespace LabyrinthOfLore
          ~CharacterPanel();
 
 
+      bool has_item(int item_id=0);
       std::string run();
       };
    }

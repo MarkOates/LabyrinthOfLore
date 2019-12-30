@@ -206,11 +206,7 @@ void process_cheat_keyboard_keydown_event(
 
    if (shift)
    {
-      if (this_event.keyboard.keycode == ALLEGRO_KEY_R)
-      {
-         player_inventory.add_item(ITEM_RING_OF_LOFT_ID);
-         throw std::runtime_error("item!");
-      }
+      if (this_event.keyboard.keycode == ALLEGRO_KEY_R) player_inventory.add_item(ITEM_RING_OF_LOFT_ID);
    }
 }
 
@@ -680,7 +676,7 @@ int main(int argc, char **argv)
       LabyrinthOfLore::Hud::MessageScroll message_scroll("");
       LabyrinthOfLore::Hud::CommandPanel command_panel;
       LabyrinthOfLore::Hud::VitalityAndManaBar vitality_and_mana_bar;
-      LabyrinthOfLore::Hud::CharacterPanel character_panel;
+      LabyrinthOfLore::Hud::CharacterPanel character_panel(&player_inventory, &thing_dictionary);
       LabyrinthOfLore::Hud::MapButton map_button;
       LabyrinthOfLore::Hud::RuneShelf rune_shelf;
       LabyrinthOfLore::Hud::Compass compass;

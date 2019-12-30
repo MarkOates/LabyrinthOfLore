@@ -8,6 +8,15 @@ properties:
     init_with: nullptr
     constructor_arg: true
 functions:
+  - name: has_item
+    parameters:
+      - name: item_id
+        type: int
+        default_argument: 0
+    type: bool
+    body: |
+      if (player_inventory && player_inventory->has_item(item_id)) return true;
+      return false;
   - name: run
     type: std::string
     body: return "Hello World!";
