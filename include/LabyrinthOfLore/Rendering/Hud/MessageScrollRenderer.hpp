@@ -2,6 +2,7 @@
 
 
 #include <LabyrinthOfLore/Hud/MessageScroll.hpp>
+#include <allegro5/allegro_color.h>
 #include <allegro5/allegro_font.h>
 #include <allegro_flare/placement3d.h>
 
@@ -20,6 +21,7 @@ namespace LabyrinthOfLore
             allegro_flare::placement3d place;
             static float message_display_length_sec;
             static int __dirty_total_line_count;
+            static ALLEGRO_COLOR __dirty_this_text_color;
 
          public:
             MessageScrollRenderer(ALLEGRO_FONT* font=nullptr, LabyrinthOfLore::Hud::MessageScroll* message_scroll={}, allegro_flare::placement3d place=allegro_flare::placement3d{});

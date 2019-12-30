@@ -23,6 +23,9 @@ float MessageScrollRenderer::message_display_length_sec = 7.0f;
 int MessageScrollRenderer::__dirty_total_line_count = 0;
 
 
+ALLEGRO_COLOR MessageScrollRenderer::__dirty_this_text_color = {};
+
+
 MessageScrollRenderer::MessageScrollRenderer(ALLEGRO_FONT* font, LabyrinthOfLore::Hud::MessageScroll* message_scroll, allegro_flare::placement3d place)
    : font(font)
    , message_scroll(message_scroll)
@@ -53,7 +56,7 @@ bool MessageScrollRenderer::multiline_draw_callback(int line_num, const char* li
 __dirty_total_line_count++;
 
 ALLEGRO_FONT *font = (ALLEGRO_FONT *)extra;
-al_draw_text(font, al_color_name("gray"), 0, __dirty_total_line_count * al_get_font_line_height(font), 0, line);
+al_draw_text(font, __dirty_this_text_color, 0, __dirty_total_line_count * al_get_font_line_height(font), 0, line);
 return true;
 
 }
@@ -71,6 +74,7 @@ std::vector<std::pair<float, std::string>> last_3_messages = message_scroll->get
 float time_now = al_get_time();
 
 __dirty_total_line_count = 0;
+__dirty_this_text_color = al_color_name("gray");
 for (unsigned i=0; i<last_3_messages.size(); i++)
 {
    std::pair<float, std::string> this_message = last_3_messages[i];

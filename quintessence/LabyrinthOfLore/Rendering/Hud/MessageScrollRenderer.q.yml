@@ -19,6 +19,10 @@ properties:
     static: true
     type: int
     init_with: 0
+  - name: __dirty_this_text_color
+    static: true
+    type: ALLEGRO_COLOR
+    init_with: "{}"
 functions:
   - name: smoothstep
     type: float
@@ -62,7 +66,7 @@ functions:
       __dirty_total_line_count++;
 
       ALLEGRO_FONT *font = (ALLEGRO_FONT *)extra;
-      al_draw_text(font, al_color_name("gray"), 0, __dirty_total_line_count * al_get_font_line_height(font), 0, line);
+      al_draw_text(font, __dirty_this_text_color, 0, __dirty_total_line_count * al_get_font_line_height(font), 0, line);
       return true;
   - name: render
     type: void
@@ -78,6 +82,7 @@ functions:
       float time_now = al_get_time();
 
       __dirty_total_line_count = 0;
+      __dirty_this_text_color = al_color_name("gray");
       for (unsigned i=0; i<last_3_messages.size(); i++)
       {
          std::pair<float, std::string> this_message = last_3_messages[i];
@@ -98,6 +103,8 @@ functions:
 dependencies:
   - symbol: LabyrinthOfLore::Hud::MessageScroll*
     headers: [ LabyrinthOfLore/Hud/MessageScroll.hpp ]
+  - symbol: ALLEGRO_COLOR
+    headers: [ allegro5/allegro_color.h ]
   - symbol: ALLEGRO_FONT*
     headers: [ allegro5/allegro_font.h ]
   - symbol: al_color_name
