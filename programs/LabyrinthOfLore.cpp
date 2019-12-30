@@ -44,6 +44,8 @@
 #include <cmath>
 #include <LabyrinthOfLore/WorldMap/MultiBitmapFilenameToWorldBuilder.hpp>
 #include <LabyrinthOfLore/WorldMap/BitmapFilenameToWorldBuilder.hpp>
+#include <LabyrinthOfLore/Entity/ThingDefinition.hpp>
+#include <LabyrinthOfLore/Entity/ThingDictionary.hpp>
 
 using AllegroFlare::radians_to_degrees;
 using AllegroFlare::Random;
@@ -59,6 +61,13 @@ static const std::string TEMPLE_OF_WATER_IDENTIFIER = "temple_of_water";
 static const std::string WORLD_OF_FIRE_IDENTIFIER = "world_of_fire";
 static const std::string FINAL_TEMPLE_IDENTIFIER = "final_temple";
 static const std::string VILLAGE_OF_THE_FORGOTTEN_IDENTIFIER = "village_of_the_forgotten";
+
+
+enum item_id_t
+{
+   ITEM_NO_ID = 0,
+   ITEM_TORCH_ID
+};
 
 
 
@@ -380,6 +389,8 @@ int main(int argc, char **argv)
       //world_texture_tile_atlas.load(bitmap_bin["grid-texture-128.png"], 128/3, 128/3, 0);
       world_texture_tile_atlas.load(game.bitmap_bin["world_texture_tile_atlas-02.png"], 48, 48, 0);
 
+
+
       //
 
       LabyrinthOfLore::Rendering::TileTypeDictionary tile_type_dictionary({
@@ -559,6 +570,12 @@ int main(int argc, char **argv)
 
 
       //
+      LabyrinthOfLore::Entity::ThingDictionary thing_dictionary({
+          { ITEM_TORCH_ID,           LabyrinthOfLore::Entity::ThingDefinition("a", "torch") },
+      });
+
+
+      //
       //
 
       std::vector<LabyrinthOfLore::Entity::Base*> entities = {};
@@ -566,6 +583,7 @@ int main(int argc, char **argv)
 
       LabyrinthOfLore::Entity::Base* player_entity = new LabyrinthOfLore::Entity::Base;
       //player_entity->get_placement_ref().position = AllegroFlare::vec3d(1.5, 90.5, 1.01);
+      //
 
       float player_yaw = -0.04 - 0.5;
       float player_pitch = 0.0;
