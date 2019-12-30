@@ -14,3 +14,11 @@ TEST(LabyrinthOfLore_Entity_ThingDefinitionTest, name__returns_the_expected_resp
    std::string expected_string = "unnamed thing";
    EXPECT_EQ(expected_string, thing_definition.get_name());
 }
+
+TEST(LabyrinthOfLore_Entity_ThingDefinitionTest, decorated_name__returns_the_expected_string)
+{
+   LabyrinthOfLore::Entity::ThingDefinition thing_definition("the", "amulet of fire");
+   std::string expected_string = "the amulet of fire";
+   EXPECT_EQ(expected_string, thing_definition.infer_decorated_name());
+}
+

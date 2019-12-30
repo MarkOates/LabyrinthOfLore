@@ -2,13 +2,27 @@ properties:
   - name: article
     type: std::string
     init_with: "\"an\""
+    constructor_arg: true
     getter: true
   - name: name
     type: std::string
     init_with: "\"unnamed thing\""
+    constructor_arg: true
     getter: true
 functions:
-  - name: decorated_name
+  - name: infer_decorated_name
     type: std::string
     body: |
-      return article + " " + name;
+      std::stringstream result;
+      if (!article.empty()) result << article << " ";
+      if (!name.empty()) result << name << " ";
+
+      std::string result_str = result.str();
+      if (result_str.size() > 0 && result_str[result_str.size()-1] == ' ') result_str.pop_back();
+
+      return result_str;
+    body_dependency_symbols:
+      - std::stringstream
+dependencies:
+  - symbol: std::stringstream
+    headers: [ sstream ]

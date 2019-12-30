@@ -15,13 +15,13 @@ namespace LabyrinthOfLore
          std::string name;
 
       public:
-         ThingDefinition();
+         ThingDefinition(std::string article="an", std::string name="unnamed thing");
          ~ThingDefinition();
 
 
          std::string get_article();
          std::string get_name();
-      std::string decorated_name();
+      std::string infer_decorated_name();
       };
    }
 }
