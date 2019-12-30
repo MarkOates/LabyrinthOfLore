@@ -348,12 +348,31 @@ void process_collision_stepper_events(
 
 void add_thing_to_world(
       std::vector<LabyrinthOfLore::Entity::Base*> *all_entities,
-      LabyrinthOfLore::Entity::ThingDefinition,
+      LabyrinthOfLore::Entity::ThingDefinition thing_definition,
       std::string level_identifier,
-      allegro_flare::placement3d placement,
+      AllegroFlare::vec3d position,
       bool billboard_at_camera=true
    )
 {
+   if (!all_entities) throw std::runtime_error("cannot add_thing_to_world with a nullptr all_entities"); 
+
+   Tileo::TileAtlas *this_things_tile_atlas = thing_definition.get_tile_atlas();
+   if (!this_things_tile_atlas) throw std::runtime_error("cannot add_thing_to_world with a nullptr this_things_tile_atlas on the thing_definition"); 
+
+   ALLEGRO_BITMAP *bitmap = this_things_tile_atlas->get_bitmap(thing_definition.get_tile_atlas_index_id());
+   LabyrinthOfLore::Entity::Base* entity = new LabyrinthOfLore::Entity::Base;
+
+   entity->set_billboard_at_camera(billboard_at_camera);
+   entity->set_bitmap(bitmap);
+   entity->set_identifier_for_level_within(THE_UNDERWORLD_IDENTIFIER);
+   entity->get_placement_ref().size = AllegroFlare::vec3d(al_get_bitmap_width(bitmap), al_get_bitmap_height(bitmap), 0.0);
+   entity->get_placement_ref().size = AllegroFlare::vec3d(al_get_bitmap_width(bitmap), al_get_bitmap_height(bitmap), 0.0);
+   entity->get_placement_ref().scale = AllegroFlare::vec3d(0.005*4, 0.005*4, 0.005*4);
+   entity->get_placement_ref().align = AllegroFlare::vec3d(0.5, 1.0, 0.0);
+   entity->get_placement_ref().position = position; //AllegroFlare::vec3d(x + 0.5, y + 0.5, 3.01);
+   ////entity->get_placement_ref().rotation = AllegroFlare::vec3d(0, random.get_random_float(-1, 1), 0);
+
+   all_entities->push_back(entity);
 }
 
 
@@ -695,10 +714,23 @@ int main(int argc, char **argv)
 
       //add_thing_to_world(LabyrinthOfLore::Entity::ThingDefinition, std::string level_identifier, placement3d placement, billboard_at_camera);
 
+      add_thing_to_world(
+         &all_entities,
+         thing_dictionary.find_definition(ITEM_TORCH_ID),
+         THE_UNDERWORLD_IDENTIFIER,
+         { 42.5, 77.5, 3.0 },
+         true           // billboard at camera
+      );
 
+      //std::vector<LabyrinthOfLore::Entity::Base*> *all_entities,
+      //LabyrinthOfLore::Entity::ThingDefinition thing_definition,
+      //std::string level_identifier,
+      //AllegroFlare::vec3d position,
+      //bool billboard_at_camera=true
 
       //
 
+      /*
       int x = 42;
       int y = 59+18;
       //int sprite_sheet_width = al_get_bitmap_width(item_tile_atlas.get_bitmap());
@@ -715,6 +747,7 @@ int main(int argc, char **argv)
       entity->get_placement_ref().position = AllegroFlare::vec3d(x + 0.5, y + 0.5, 3.01);
       //entity->get_placement_ref().rotation = AllegroFlare::vec3d(0, random.get_random_float(-1, 1), 0);
       all_entities.push_back(entity);
+      */
 
       //Random random;
 
