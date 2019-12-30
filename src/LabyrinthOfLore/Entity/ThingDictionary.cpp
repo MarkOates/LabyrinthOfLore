@@ -10,7 +10,8 @@ namespace Entity
 {
 
 
-ThingDictionary::ThingDictionary()
+ThingDictionary::ThingDictionary(std::map<int, LabyrinthOfLore::Entity::ThingDefinition> definitions)
+   : definitions(definitions)
 {
 }
 
@@ -20,9 +21,11 @@ ThingDictionary::~ThingDictionary()
 }
 
 
-std::string ThingDictionary::run()
+LabyrinthOfLore::Entity::ThingDefinition ThingDictionary::find_definition(int tile_type)
 {
-return "Hello World!";
+if (definitions.find(tile_type) == definitions.end()) return LabyrinthOfLore::Entity::ThingDefinition();
+return definitions[tile_type];
+
 }
 } // namespace Entity
 } // namespace LabyrinthOfLore

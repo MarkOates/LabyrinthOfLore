@@ -1,7 +1,8 @@
 #pragma once
 
 
-#include <string>
+#include <LabyrinthOfLore/Entity/ThingDefinition.hpp>
+#include <map>
 
 
 namespace LabyrinthOfLore
@@ -11,13 +12,14 @@ namespace LabyrinthOfLore
       class Thing
       {
       private:
+         std::map<int, LabyrinthOfLore::Entity::ThingDefinition> definitions;
 
       public:
-         Thing();
+         Thing(std::map<int, LabyrinthOfLore::Entity::ThingDefinition> definitions={});
          ~Thing();
 
 
-      std::string run();
+      LabyrinthOfLore::Entity::ThingDefinition find_definition(int tile_type=0);
       };
    }
 }

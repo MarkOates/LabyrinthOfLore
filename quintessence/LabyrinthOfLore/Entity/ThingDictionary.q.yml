@@ -1,4 +1,20 @@
+properties:
+  - name: definitions
+    type: std::map<int, LabyrinthOfLore::Entity::ThingDefinition>
+    init_with: "{}"
+    constructor_arg: true
 functions:
-  - name: run
-    type: std::string
-    body: return "Hello World!";
+  - name: find_definition
+    type: LabyrinthOfLore::Entity::ThingDefinition
+    parameters:
+      - name: tile_type
+        type: int
+        default_argument: 0
+    body: |
+      if (definitions.find(tile_type) == definitions.end()) return LabyrinthOfLore::Entity::ThingDefinition();
+      return definitions[tile_type];
+dependencies:
+  - symbol: LabyrinthOfLore::Entity::ThingDefinition
+    headers: [ LabyrinthOfLore/Entity/ThingDefinition.hpp ]
+  - symbol: std::map<int, LabyrinthOfLore::Entity::ThingDefinition>
+    headers: [ map, LabyrinthOfLore/Entity/ThingDefinition.hpp ]
