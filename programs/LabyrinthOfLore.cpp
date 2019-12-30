@@ -346,6 +346,18 @@ void process_collision_stepper_events(
 };
 
 
+void add_thing_to_world(
+      std::vector<LabyrinthOfLore::Entity::Base*> *all_entities,
+      LabyrinthOfLore::Entity::ThingDefinition,
+      std::string level_identifier,
+      allegro_flare::placement3d placement,
+      bool billboard_at_camera=true
+   )
+{
+}
+
+
+
 
 bool active = true;
 
@@ -677,6 +689,13 @@ int main(int argc, char **argv)
       //camera.get_position_ref() = player_entity->get_placement_ref().position + AllegroFlare::vec3d(0, 0, 0.65); //{5, 20, 2.01 + 0.5};
 
       all_entities.push_back(player_entity);
+
+
+
+
+      //add_thing_to_world(LabyrinthOfLore::Entity::ThingDefinition, std::string level_identifier, placement3d placement, billboard_at_camera);
+
+
 
       //
 
