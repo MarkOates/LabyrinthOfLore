@@ -15,10 +15,7 @@ TEST(LabyrinthOfLore_Entity_SelectorTest, select_within_level__can_be_called_wih
    SUCCEED();
 }
 
-//TEST(LabyrinthOfLore_Entity_SelectorTest, select_within_level__returns_entities_that_only_exist_in_a_level)
-//{
-   //LabyrinthOfLore::Entity::Selector selector;
-   //selector.select_all_within_level();
-      //SUCCEED();
-//}
+TEST(DISABLED_LabyrinthOfLore_Entity_SelectorTest, select_within_level__returns_entities_that_only_exist_in_a_level)
+{
+}
 
