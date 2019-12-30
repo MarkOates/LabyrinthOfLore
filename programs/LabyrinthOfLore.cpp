@@ -364,7 +364,7 @@ void add_thing_to_world(
 
    entity->set_billboard_at_camera(billboard_at_camera);
    entity->set_bitmap(bitmap);
-   entity->set_identifier_for_level_within(THE_UNDERWORLD_IDENTIFIER);
+   entity->set_identifier_for_level_within(level_identifier);
    entity->get_placement_ref().size = AllegroFlare::vec3d(al_get_bitmap_width(bitmap), al_get_bitmap_height(bitmap), 0.0);
    entity->get_placement_ref().size = AllegroFlare::vec3d(al_get_bitmap_width(bitmap), al_get_bitmap_height(bitmap), 0.0);
    entity->get_placement_ref().scale = AllegroFlare::vec3d(0.005*4, 0.005*4, 0.005*4);
@@ -668,11 +668,11 @@ int main(int argc, char **argv)
 
       //
       LabyrinthOfLore::Entity::ThingDictionary thing_dictionary({
-          { ITEM_TORCH_ID,                         LabyrinthOfLore::Entity::ThingDefinition("a",   "torch",           &item_tile_atlas, 6 + 9*13) },
-          { ITEM_RING_OF_LOFT_ID,                  LabyrinthOfLore::Entity::ThingDefinition("the", "ring of loft",    &item_tile_atlas, 10+13*13) },
-          { ITEM_INFINITY_TORCH_ID,                LabyrinthOfLore::Entity::ThingDefinition("the", "infinity torch",  &item_tile_atlas, 6 + 9*13) },
-          { ITEM_TORCH_FUEL_ID,                    LabyrinthOfLore::Entity::ThingDefinition("some","torch fuel",      &item_tile_atlas, 27 + 5*13) },
-          { MAN_AT_THE_ENTRANCE_TO_THE_CAVE,       LabyrinthOfLore::Entity::ThingDefinition("","a man",               &character_tile_atlas, 27 + 5*13) },
+          { ITEM_TORCH_ID,                         LabyrinthOfLore::Entity::ThingDefinition("a",   "torch",           &item_tile_atlas,      6 + 9*14)  },
+          { ITEM_RING_OF_LOFT_ID,                  LabyrinthOfLore::Entity::ThingDefinition("the", "ring of loft",    &item_tile_atlas,      10+13*14)  },
+          { ITEM_INFINITY_TORCH_ID,                LabyrinthOfLore::Entity::ThingDefinition("the", "infinity torch",  &item_tile_atlas,      6 + 9*14)  },
+          { ITEM_TORCH_FUEL_ID,                    LabyrinthOfLore::Entity::ThingDefinition("some","torch fuel",      &item_tile_atlas,      27 + 5*14) },
+          { MAN_AT_THE_ENTRANCE_TO_THE_CAVE,       LabyrinthOfLore::Entity::ThingDefinition("","a man",               &character_tile_atlas, 4 + 11*7)  },
       });
 
 
@@ -692,6 +692,7 @@ int main(int argc, char **argv)
       //
 
       float player_yaw = -0.04 - 0.5;
+      float player_camera_ascent = 0.65;
       float player_pitch = 0.0;
       float player_turning = 0.0;
       float max_player_turning_speed = 0.0023;
@@ -714,13 +715,17 @@ int main(int argc, char **argv)
 
       //add_thing_to_world(LabyrinthOfLore::Entity::ThingDefinition, std::string level_identifier, placement3d placement, billboard_at_camera);
 
-      add_thing_to_world(
-         &all_entities,
-         thing_dictionary.find_definition(ITEM_TORCH_ID),
-         THE_UNDERWORLD_IDENTIFIER,
-         { 42.5, 77.5, 3.0 },
-         true           // billboard at camera
-      );
+      add_thing_to_world(&all_entities, thing_dictionary.find_definition(ITEM_TORCH_ID),                   THE_UNDERWORLD_IDENTIFIER, {  42.5,  77.5, 3.0 }, true);
+      add_thing_to_world(&all_entities, thing_dictionary.find_definition(MAN_AT_THE_ENTRANCE_TO_THE_CAVE), THE_CAVE_IDENTIFIER,       {  31.5,  9.5, 1.0 },  true);
+
+
+      //for (int y=0; y<36; y++)
+      //{
+         //for (int x=0; x<40; x++)
+         //{
+            //add_thing_to_world(&all_entities, thing_dictionary.find_definition(ITEM_TORCH_ID), THE_CAVE_IDENTIFIER,       { x + 0.5f, y + 0.5f, 6.0f }, true);
+         //}
+      //}
 
       //std::vector<LabyrinthOfLore::Entity::Base*> *all_entities,
       //LabyrinthOfLore::Entity::ThingDefinition thing_definition,
@@ -938,7 +943,7 @@ int main(int argc, char **argv)
                );
                //LabyrinthOfLoreGame::EntityTileMapCollisionEventProcessor entity_tile_map_collision_event_processor(collision_stepper_events);
 
-               camera.get_position_ref() = player_entity->get_placement_ref().position + AllegroFlare::vec3d(0, 0, 0.65);//{5, 20, 2.01 + 0.5};
+               camera.get_position_ref() = player_entity->get_placement_ref().position + AllegroFlare::vec3d(0, 0, player_camera_ascent); // player_camera_ascent
                camera.get_yaw_ref() = player_yaw + 0.5;// + sin(al_get_time()) * 0.02;
                camera.get_pitch_ref() = player_pitch - 0.02;;// + sin((al_get_time()+2.345)*0.8534) * 0.02;
 
