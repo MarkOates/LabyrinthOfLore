@@ -1,4 +1,4 @@
-FOCUSED_COMPONENT_NAME=LabyrinthOfLore/WorldMap/Level
+FOCUSED_COMPONENT_NAME=LabyrinthOfLore/WorldMap/MultiBitmapTileMapLoader
 FOCUSED_TEST_FILTER=
 
 
