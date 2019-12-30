@@ -199,9 +199,9 @@ void process_keyboard_keydown_event(
    else if (this_event.keyboard.keycode == ALLEGRO_KEY_1)
       go_into_door(doors.at(1), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
    else if (this_event.keyboard.keycode == ALLEGRO_KEY_2)
-      go_into_door(doors.at(2), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
-   else if (this_event.keyboard.keycode == ALLEGRO_KEY_3)
       go_into_door(doors.at(3), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
+   else if (this_event.keyboard.keycode == ALLEGRO_KEY_3)
+      go_into_door(doors.at(2), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
    else if (this_event.keyboard.keycode == ALLEGRO_KEY_4)
       go_into_door(doors.at(4), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
    else if (this_event.keyboard.keycode == ALLEGRO_KEY_5)
@@ -407,14 +407,14 @@ int main(int argc, char **argv)
                                                 )
          },
          { AN_ABANDONED_TEMPLE_IDENTIFIER,      LabyrinthOfLore::WorldMap::Level(
-                                                   "Level 2",
+                                                   "Level 3",
                                                    "An Abandoned Temple",
                                                    3.0f,
                                                    LabyrinthOfLore::WorldMap::BitmapFilenameToWorldBuilder("data/bitmaps/an_abandoned_temple.png", 3.0, 1.0).build()
                                                 )
          },
          { DUNGEON_OF_THE_CURSED_IDENTIFIER,    LabyrinthOfLore::WorldMap::Level(
-                                                   "Level 3",
+                                                   "Level 2",
                                                    "Dungeon of the Cursed",
                                                    2.0f,
                                                    LabyrinthOfLore::WorldMap::BitmapFilenameToWorldBuilder("data/bitmaps/dungeon_of_the_cursed.png").build()
