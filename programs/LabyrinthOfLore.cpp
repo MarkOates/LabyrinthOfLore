@@ -184,6 +184,37 @@ void go_into_door(
 }
 
 
+void process_keyboard_keydown_event(
+      ALLEGRO_EVENT &this_event,
+      std::map<char, Door> doors,
+      LabyrinthOfLore::Entity::Base* player_entity,
+      std::map<std::string, LabyrinthOfLore::WorldMap::Level> &levels,
+      std::map<std::string, LabyrinthOfLore::Rendering::TileMapMesh> &meshes,
+      float &player_yaw,
+      LabyrinthOfLore::WorldMap::TileMap &current_tile_map,
+      LabyrinthOfLore::Rendering::TileMapMesh &current_tile_map_mesh,
+      LabyrinthOfLore::Hud::TitleText &title_text
+   )
+{
+   if (this_event.keyboard.keycode == ALLEGRO_KEY_0)
+      go_into_door(doors.at(10), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
+   else if (this_event.keyboard.keycode == ALLEGRO_KEY_1)
+      go_into_door(doors.at(1), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
+   else if (this_event.keyboard.keycode == ALLEGRO_KEY_2)
+      go_into_door(doors.at(2), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
+   else if (this_event.keyboard.keycode == ALLEGRO_KEY_3)
+      go_into_door(doors.at(3), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
+   else if (this_event.keyboard.keycode == ALLEGRO_KEY_4)
+      go_into_door(doors.at(4), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
+   else if (this_event.keyboard.keycode == ALLEGRO_KEY_5)
+      go_into_door(doors.at(5), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
+   else if (this_event.keyboard.keycode == ALLEGRO_KEY_6)
+      go_into_door(doors.at(6), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
+   else if (this_event.keyboard.keycode == ALLEGRO_KEY_7)
+      go_into_door(doors.at(6), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
+}
+
+
 void process_collision_stepper_events(
       std::vector<LabyrinthOfLore::Physics::EntityTileMapCollisionEvent> &collision_stepper_events,
       LabyrinthOfLore::Entity::Base* player_entity,
@@ -692,6 +723,18 @@ int main(int argc, char **argv)
             if (this_event.keyboard.keycode == ALLEGRO_KEY_W) player_movement_magnitude = 0.0;
             if (this_event.keyboard.keycode == ALLEGRO_KEY_D) player_turning = 0.0;
             if (this_event.keyboard.keycode == ALLEGRO_KEY_S) player_movement_magnitude = 0.0;
+
+            process_keyboard_keydown_event(
+               this_event,
+               doors,
+               player_entity,
+               levels,
+               meshes,
+               player_yaw,
+               current_tile_map,
+               current_tile_map_mesh,
+               title_text
+            );
             break;
          case ALLEGRO_EVENT_TIMER:
             game.run_timer_step();
