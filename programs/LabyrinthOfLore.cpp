@@ -359,7 +359,7 @@ void process_keyboard_keydown_event(
    else if (this_event.keyboard.keycode == ALLEGRO_KEY_T) set_command_mode(command_panel, LabyrinthOfLore::Hud::COMMAND_MODE_TALK);
    else if (this_event.keyboard.keycode == ALLEGRO_KEY_P) set_command_mode(command_panel, LabyrinthOfLore::Hud::COMMAND_MODE_PICKUP);
    else if (this_event.keyboard.keycode == ALLEGRO_KEY_L) set_command_mode(command_panel, LabyrinthOfLore::Hud::COMMAND_MODE_LOOK);
-   else if (this_event.keyboard.keycode == ALLEGRO_KEY_K) set_command_mode(command_panel, LabyrinthOfLore::Hud::COMMAND_MODE_ATTACK);
+   else if (this_event.keyboard.keycode == ALLEGRO_KEY_K || this_event.keyboard.keycode == ALLEGRO_KEY_Z) set_command_mode(command_panel, LabyrinthOfLore::Hud::COMMAND_MODE_ATTACK);
    else if (this_event.keyboard.keycode == ALLEGRO_KEY_U) set_command_mode(command_panel, LabyrinthOfLore::Hud::COMMAND_MODE_USE);
 }
 
