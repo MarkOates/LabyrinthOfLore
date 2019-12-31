@@ -82,14 +82,23 @@ functions:
       float time_now = al_get_time();
 
       __dirty_total_line_count = 0;
-      __dirty_this_text_color = al_color_name("gray");
       for (unsigned i=0; i<last_3_messages.size(); i++)
       {
          std::pair<float, std::string> this_message = last_3_messages[i];
          float message_time = this_message.first;
-         if (time_now >= (message_time + message_display_length_sec)) break;
+         if (time_now >= (message_time + message_display_length_sec + 4.0)) break;
+
+         float message_age = time_now - message_time;
+        __dirty_this_text_color = al_color_name("gray");
 
          std::string message_text = this_message.second;
+         float opacity = 1.0;
+         opacity *= (message_age <= message_display_length_sec/2) ? smoothstep(0.0, 0.2, message_age) : smoothstep(message_display_length_sec, message_display_length_sec-1.0, message_age);
+
+         __dirty_this_text_color.r *= opacity;
+         __dirty_this_text_color.g *= opacity;
+         __dirty_this_text_color.b *= opacity;
+         __dirty_this_text_color.a *= opacity;
 
          al_do_multiline_text(font, place.size.x, message_text.c_str(), LabyrinthOfLore::Rendering::Hud::MessageScrollRenderer::multiline_draw_callback, font);
       }
