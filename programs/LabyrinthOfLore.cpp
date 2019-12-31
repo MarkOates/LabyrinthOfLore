@@ -68,7 +68,8 @@ static const std::string FINAL_TEMPLE_IDENTIFIER = "final_temple";
 static const std::string VILLAGE_OF_THE_FORGOTTEN_IDENTIFIER = "village_of_the_forgotten";
 
 
-#define THING_ID_KEY ("thing_id")
+#define THING_ID_ATTRIBUTE ("thing_id")
+#define CAN_BE_PICKED_UP_ATTRIBUTE ("can_be_picked_up")
 
 
 enum item_id_t
@@ -239,12 +240,23 @@ void process_cheat_keyboard_keydown_event(
 //}
 
 
+
 std::string you_see_a(LabyrinthOfLore::Entity::ThingDefinition &thing_definition)
 {
     std::stringstream message;
     message << "You see " << thing_definition.infer_decorated_name() << ".";
     return message.str();
 }
+
+
+
+std::string you_cannot_pick_up(LabyrinthOfLore::Entity::ThingDefinition &thing_definition)
+{
+    std::stringstream message;
+    message << "You cannot pick up the " << thing_definition.get_name() << ".";
+    return message.str();
+}
+
 
 
 void process_thing_look_click(
@@ -265,6 +277,49 @@ void process_thing_look_click(
       message_scroll.append_message(al_get_time(), you_see_a(thing_definition));
    }
 }
+
+
+
+void process_thing_pickup_click(
+      std::vector<LabyrinthOfLore::Entity::Base *> &all_entities,
+      LabyrinthOfLore::Entity::Base *entity,
+      //int thing_id,
+      LabyrinthOfLore::Entity::ThingDictionary &thing_dictionary,
+      LabyrinthOfLore::Hud::MessageScroll &message_scroll
+      )
+{
+   if (!entity) throw std::runtime_error("Cannot process_thing_pickup_click with a nullptr entity");
+   if (!entity->exists(THING_ID_ATTRIBUTE)) throw std::runtime_error("Cannot process_thing_pickup_click expecting the entity to have a \"thing_id\" but it does not.");
+
+   int thing_id = entity->get_as_int(THING_ID_ATTRIBUTE);
+
+   LabyrinthOfLore::Entity::ThingDefinition &this_thing_definition = thing_dictionary.find_definition_ref(thing_id);
+
+
+   if (entity->exists(CAN_BE_PICKED_UP_ATTRIBUTE))
+   {
+      // add the item to the player's inventory!!!!!!!!!UFUFUFUSDKUUKKYEAAA!!! :D :D
+   }
+   else if (!entity->exists(CAN_BE_PICKED_UP_ATTRIBUTE))
+   {
+      message_scroll.append_message(al_get_time(), you_cannot_pick_up(this_thing_definition));
+   }
+
+   //LabyrinthOfLore::Entity::ThingDefinition &thing_definition = thing_dictionary.find_definition_ref(entith->exists);
+
+   // for custom messages:
+   //if (thing_id == MAN_AT_THE_ENTRANCE_TO_THE_CAVE)
+   //if (thing_id == -1) // do this pattern for custom messages
+   //{
+   //}
+   //else // else will use the default messaging
+   //{
+      ////if () { message_scroll.append_message(al_get_time(), you_see_a(thing_definition)) };
+//
+      ////message_scroll.append_message(al_get_time(), you_see_a(thing_definition));
+   //}
+}
+
 
 
 void process_click_event(
@@ -293,18 +348,20 @@ void process_click_event(
    else
    {
       int thing_id = -1;
+      LabyrinthOfLore::Entity::Base *this_entity = nullptr;
       for (auto &entity : all_entities)
       {
          if (entity->get_id() == picked_id)
          {
-            thing_id = entity->get_as_int(THING_ID_KEY);
+            this_entity = entity;
+            thing_id = entity->get_as_int(THING_ID_ATTRIBUTE);
             break;
          }
       }
 
-      if (thing_id == -1)
+      if (this_entity == nullptr || thing_id == -1)
       {
-         throw std::runtime_error("attempted to extract thing_id from a picked entity_id, but the picked entity did not have a \"thing_id\" attribute, which should never happen.");
+         throw std::runtime_error("attempted to extract thing_id from a picked entity_id, but the picked entity either did not exist, or did not have a \"thing_id\" attribute, which should never happen.");
       }
       else
       {
@@ -312,6 +369,15 @@ void process_click_event(
          {
             process_thing_look_click(
                   thing_id,
+                  thing_dictionary,
+                  message_scroll
+               );
+         }
+         else if (command_panel.get_current_mode() == LabyrinthOfLore::Hud::COMMAND_MODE_PICKUP)
+         {
+            process_thing_pickup_click(
+                  all_entities,
+                  this_entity,
                   thing_dictionary,
                   message_scroll
                );
@@ -456,7 +522,8 @@ void add_thing_to_world(
       int thing_id,
       std::string level_identifier,
       AllegroFlare::vec3d position,
-      bool billboard_at_camera=true
+      bool billboard_at_camera=true,
+      bool can_be_picked_up=true
    )
 {
    //if (!all_entities) throw std::runtime_error("cannot add_thing_to_world with a nullptr all_entities"); 
@@ -471,7 +538,10 @@ void add_thing_to_world(
    entity->set_billboard_at_camera(billboard_at_camera);
    entity->set_bitmap(bitmap);
    entity->set_identifier_for_level_within(level_identifier);
-   entity->set(THING_ID_KEY, thing_id);
+
+   entity->set(THING_ID_ATTRIBUTE, thing_id);
+   if (can_be_picked_up) entity->set(CAN_BE_PICKED_UP_ATTRIBUTE);
+
    entity->get_placement_ref().size = AllegroFlare::vec3d(al_get_bitmap_width(bitmap), al_get_bitmap_height(bitmap), 0.0);
    entity->get_placement_ref().size = AllegroFlare::vec3d(al_get_bitmap_width(bitmap), al_get_bitmap_height(bitmap), 0.0);
    entity->get_placement_ref().scale = AllegroFlare::vec3d(0.005*4, 0.005*4, 0.005*4);
@@ -834,8 +904,8 @@ int main(int argc, char **argv)
       //AllegroFlare::vec3d position,
       //bool billboard_at_camera=true
 
-      add_thing_to_world(all_entities, thing_dictionary, ITEM_TORCH_ID,                   THE_UNDERWORLD_IDENTIFIER, {  42.5,  77.5, 3.0 }, true);
-      add_thing_to_world(all_entities, thing_dictionary, MAN_AT_THE_ENTRANCE_TO_THE_CAVE, THE_CAVE_IDENTIFIER,       {  31.5,  9.5, 1.0 },  true);
+      add_thing_to_world(all_entities, thing_dictionary, ITEM_TORCH_ID,                   THE_UNDERWORLD_IDENTIFIER, {  42.5,  77.5, 3.0 }, true, true);
+      add_thing_to_world(all_entities, thing_dictionary, MAN_AT_THE_ENTRANCE_TO_THE_CAVE, THE_CAVE_IDENTIFIER,       {  31.5,  9.5, 1.0 },  true, false);
 
 
       //for (int y=0; y<36; y++)
