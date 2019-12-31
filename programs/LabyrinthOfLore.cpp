@@ -274,7 +274,8 @@ void process_click_event(
       float resolution_scale,
       std::vector<LabyrinthOfLore::Entity::Base *> &all_entities,
       LabyrinthOfLore::Entity::ThingDictionary &thing_dictionary,
-      LabyrinthOfLore::Hud::MessageScroll &message_scroll
+      LabyrinthOfLore::Hud::MessageScroll &message_scroll,
+      LabyrinthOfLore::Hud::CommandPanel &command_panel
    )
 {
    int picked_id = picking_buffer.get_id(player_mouse_x/resolution_scale, player_mouse_y/resolution_scale);
@@ -307,11 +308,14 @@ void process_click_event(
       }
       else
       {
-         process_thing_look_click(
-               thing_id,
-               thing_dictionary,
-               message_scroll
-            );
+         if (command_panel.get_current_mode() == LabyrinthOfLore::Hud::COMMAND_MODE_LOOK)
+         {
+            process_thing_look_click(
+                  thing_id,
+                  thing_dictionary,
+                  message_scroll
+               );
+         }
       }
    }
 }
@@ -987,7 +991,8 @@ int main(int argc, char **argv)
                   resolution_scale,
                   all_entities,
                   thing_dictionary,
-                  message_scroll
+                  message_scroll,
+                  command_panel
                );
 
                //int picked_id = game.picking_buffer.get_id(player_mouse_x/resolution_scale, player_mouse_y/resolution_scale);
