@@ -24,11 +24,25 @@ functions:
       //for (unsigned i=0; i<)
       //{
       //}
+
+      std::vector<LabyrinthOfLore::Hud::command_mode_t> modes_for_display = {
+         LabyrinthOfLore::Hud::COMMAND_MODE_NONE,
+         LabyrinthOfLore::Hud::COMMAND_MODE_TALK,
+         LabyrinthOfLore::Hud::COMMAND_MODE_PICKUP,
+         LabyrinthOfLore::Hud::COMMAND_MODE_LOOK,
+         LabyrinthOfLore::Hud::COMMAND_MODE_ATTACK,
+         LabyrinthOfLore::Hud::COMMAND_MODE_USE,
+      };
+
+
+
+
       al_draw_text(font, al_color_name("white"), 0, 0, 0, " - command panel - ");
 
       place.restore_transform();
       return;
     body_dependency_symbols:
+      - std::vector<LabyrinthOfLore::Hud::command_mode_t>
       - al_color_name
       - al_draw_rounded_rectangle
 dependencies:
@@ -44,3 +58,5 @@ dependencies:
     headers: [ allegro_flare/placement3d.h ]
   - symbol: x
     headers: [ y ]
+  - symbol: std::vector<LabyrinthOfLore::Hud::command_mode_t>
+    headers: [ vector, LabyrinthOfLore/Hud/CommandPanelModeEnum.hpp ]
