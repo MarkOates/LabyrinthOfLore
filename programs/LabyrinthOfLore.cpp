@@ -48,7 +48,10 @@
 #include <LabyrinthOfLore/Entity/ThingDefinition.hpp>
 #include <LabyrinthOfLore/Entity/ThingDictionary.hpp>
 #include <LabyrinthOfLore/Hud/CommandPanelModeEnum.hpp>
+#include <LabyrinthOfLore/Entity/Cleanup.hpp>
 //#include <algorithm> // for std::max
+
+
 
 #include <AllegroFlare/Inventory.hpp>
 
@@ -243,7 +246,15 @@ void process_cheat_keyboard_keydown_event(
 
 void flag_for_destruction(LabyrinthOfLore::Entity::Base *entity)
 {
-   entity->set(DESTROY_THIS_ITEM_AT_CLEANUP);
+   entity->set(LabyrinthOfLore::Entity::Cleanup::get_CLEANUP_FLAG());
+}
+
+
+
+void cleanup_all_entities_flagged_for_destruction(std::vector<LabyrinthOfLore::Entity::Base *> &all_entities)
+{
+   LabyrinthOfLore::Entity::Cleanup cleanup(&all_entities);
+   cleanup.cleanup();
 }
 
 
@@ -392,7 +403,10 @@ void process_click_event(
    //if (
    if (picked_id == 0)
    {
-      message_scroll.append_message(al_get_time(), "You see nothing of interest.");
+      if (command_panel.get_current_mode() == LabyrinthOfLore::Hud::COMMAND_MODE_LOOK) message_scroll.append_message(al_get_time(), "You see nothing of interest.");
+      if (command_panel.get_current_mode() == LabyrinthOfLore::Hud::COMMAND_MODE_PICKUP) message_scroll.append_message(al_get_time(), "There is nothing for you to pick up.");
+      if (command_panel.get_current_mode() == LabyrinthOfLore::Hud::COMMAND_MODE_USE) message_scroll.append_message(al_get_time(), "You must have an item if you want to use one.");
+      if (command_panel.get_current_mode() == LabyrinthOfLore::Hud::COMMAND_MODE_TALK) message_scroll.append_message(al_get_time(), "There is no one to talk to.");
    }
    else
    {
@@ -1255,6 +1269,8 @@ int main(int argc, char **argv)
                   && next_event.timer.source == this_event.timer.source)
                al_drop_next_event(event_queue);
          }
+
+         cleanup_all_entities_flagged_for_destruction(all_entities);
       }
 
       al_save_bitmap("tmp/buffer_buffer.png", buffer_buffer);
