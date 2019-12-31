@@ -3,6 +3,7 @@ properties:
     type: LabyrinthOfLore::Hud::command_mode_t
     init_with: COMMAND_MODE_NONE
     getter: true
+    setter: true
 functions:
   - name: run
     type: std::string

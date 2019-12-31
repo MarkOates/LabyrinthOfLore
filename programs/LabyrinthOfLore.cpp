@@ -47,6 +47,7 @@
 #include <LabyrinthOfLore/WorldMap/BitmapFilenameToWorldBuilder.hpp>
 #include <LabyrinthOfLore/Entity/ThingDefinition.hpp>
 #include <LabyrinthOfLore/Entity/ThingDictionary.hpp>
+#include <LabyrinthOfLore/Hud/CommandPanelModeEnum.hpp>
 //#include <algorithm> // for std::max
 
 #include <AllegroFlare/Inventory.hpp>
@@ -317,6 +318,12 @@ void process_click_event(
 
 
 
+void set_command_mode(LabyrinthOfLore::Hud::CommandPanel &command_panel, LabyrinthOfLore::Hud::command_mode_t new_command_mode)
+{
+    command_panel.set_current_mode(new_command_mode);
+}
+
+
 
 void process_keyboard_keydown_event(
       ALLEGRO_EVENT &this_event,
@@ -327,7 +334,8 @@ void process_keyboard_keydown_event(
       float &player_yaw,
       LabyrinthOfLore::WorldMap::TileMap &current_tile_map,
       LabyrinthOfLore::Rendering::TileMapMesh &current_tile_map_mesh,
-      LabyrinthOfLore::Hud::TitleText &title_text
+      LabyrinthOfLore::Hud::TitleText &title_text,
+      LabyrinthOfLore::Hud::CommandPanel &command_panel
    )
 {
    if (this_event.keyboard.keycode == ALLEGRO_KEY_0)
@@ -346,6 +354,13 @@ void process_keyboard_keydown_event(
       go_into_door(doors.at(6), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
    else if (this_event.keyboard.keycode == ALLEGRO_KEY_7)
       go_into_door(doors.at(7), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
+
+
+   else if (this_event.keyboard.keycode == ALLEGRO_KEY_T) set_command_mode(command_panel, LabyrinthOfLore::Hud::COMMAND_MODE_TALK);
+   else if (this_event.keyboard.keycode == ALLEGRO_KEY_P) set_command_mode(command_panel, LabyrinthOfLore::Hud::COMMAND_MODE_PICKUP);
+   else if (this_event.keyboard.keycode == ALLEGRO_KEY_L) set_command_mode(command_panel, LabyrinthOfLore::Hud::COMMAND_MODE_LOOK);
+   else if (this_event.keyboard.keycode == ALLEGRO_KEY_K) set_command_mode(command_panel, LabyrinthOfLore::Hud::COMMAND_MODE_ATTACK);
+   else if (this_event.keyboard.keycode == ALLEGRO_KEY_U) set_command_mode(command_panel, LabyrinthOfLore::Hud::COMMAND_MODE_USE);
 }
 
 
@@ -1003,7 +1018,8 @@ int main(int argc, char **argv)
                player_yaw,
                current_tile_map,
                current_tile_map_mesh,
-               title_text
+               title_text,
+               command_panel
             );
             break;
          case USER_EVENT_APPEND_MESSAGE_TO_MESSAGE_SCROLL:

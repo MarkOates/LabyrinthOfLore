@@ -45,7 +45,7 @@ functions:
          std::string this_label = mode_for_display.first;
          LabyrinthOfLore::Hud::command_mode_t this_mode = mode_for_display.second;
 
-         if (command_panel->get_current_mode() == this_mode) this_text_color = al_color_name("gray");
+         if (command_panel->get_current_mode() == this_mode) this_text_color = al_color_name("white");
          i++;
          al_draw_text(font, this_text_color, place.size.x/2, vertical_element_spacing * i, ALLEGRO_ALIGN_CENTRE, this_label.c_str());
       }

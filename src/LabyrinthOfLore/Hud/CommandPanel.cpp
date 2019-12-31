@@ -21,6 +21,12 @@ CommandPanel::~CommandPanel()
 }
 
 
+void CommandPanel::set_current_mode(LabyrinthOfLore::Hud::command_mode_t current_mode)
+{
+   this->current_mode = current_mode;
+}
+
+
 LabyrinthOfLore::Hud::command_mode_t CommandPanel::get_current_mode()
 {
    return current_mode;
