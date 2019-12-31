@@ -70,6 +70,7 @@ static const std::string VILLAGE_OF_THE_FORGOTTEN_IDENTIFIER = "village_of_the_f
 
 #define THING_ID_ATTRIBUTE ("thing_id")
 #define CAN_BE_PICKED_UP_ATTRIBUTE ("can_be_picked_up")
+#define DESTROY_THIS_ITEM_AT_CLEANUP ("destroy_this_item_at_cleanup")
 
 
 enum item_id_t
@@ -240,6 +241,12 @@ void process_cheat_keyboard_keydown_event(
 //}
 
 
+void flag_for_destruction(LabyrinthOfLore::Entity::Base *entity)
+{
+   entity->set(DESTROY_THIS_ITEM_AT_CLEANUP);
+}
+
+
 
 std::string you_see_a(LabyrinthOfLore::Entity::ThingDefinition &thing_definition)
 {
@@ -254,6 +261,24 @@ std::string you_cannot_pick_up(LabyrinthOfLore::Entity::ThingDefinition &thing_d
 {
     std::stringstream message;
     message << "You cannot pick up the " << thing_definition.get_name() << ".";
+    return message.str();
+}
+
+
+
+std::string you_cannot_pick_up__because_you_cannot_carray_this_more_weight(LabyrinthOfLore::Entity::ThingDefinition &thing_definition)
+{
+    std::stringstream message;
+    message << "You cannot pick up the " << thing_definition.get_name() << " because you cannot carry this much more weight.";
+    return message.str();
+}
+
+
+
+std::string you_cannot_pick_up__because_you_cannot_carray_any_more_weight(LabyrinthOfLore::Entity::ThingDefinition &thing_definition)
+{
+    std::stringstream message;
+    message << "You cannot pick up the " << thing_definition.get_name() << " because you cannot carry any more weight.";
     return message.str();
 }
 
@@ -295,7 +320,8 @@ void process_thing_pickup_click(
       //int thing_id,
       LabyrinthOfLore::Entity::ThingDictionary &thing_dictionary,
       LabyrinthOfLore::Hud::MessageScroll &message_scroll,
-      LabyrinthOfLore::Hud::CharacterPanel &character_panel
+      LabyrinthOfLore::Hud::CharacterPanel &character_panel,
+      AllegroFlare::Inventory &player_inventory
       )
 {
    if (!entity) throw std::runtime_error("Cannot process_thing_pickup_click with a nullptr entity");
@@ -308,6 +334,16 @@ void process_thing_pickup_click(
 
    if (entity->exists(CAN_BE_PICKED_UP_ATTRIBUTE))
    {
+      int item_weight = this_thing_definition.get_weight();
+      if (character_panel.calculate_available_remaining_carry_weight() == 0) message_scroll.append_message(al_get_time(), you_cannot_pick_up__because_you_cannot_carray_any_more_weight(this_thing_definition));
+      else if (item_weight > character_panel.calculate_available_remaining_carry_weight()) message_scroll.append_message(al_get_time(), you_cannot_pick_up__because_you_cannot_carray_this_more_weight(this_thing_definition));
+      else
+      {
+         player_inventory.add_item(thing_id);
+         flag_for_destruction(entity); // important! entity is being flagged for destruction here, it will be garbage collected later, in a pass at the end of this immediate event loop event
+         message_scroll.append_message(al_get_time(), you_picked_up(this_thing_definition));
+      }
+
       // add the item to the player's inventory!!!!!!!!!UFUFUFUSDKUUKKYEAAA!!! :D :D
       //message_scroll.append_message(al_get_time(), you_picked_up(this_thing_definition));
    }
@@ -342,7 +378,8 @@ void process_click_event(
       LabyrinthOfLore::Entity::ThingDictionary &thing_dictionary,
       LabyrinthOfLore::Hud::MessageScroll &message_scroll,
       LabyrinthOfLore::Hud::CommandPanel &command_panel,
-      LabyrinthOfLore::Hud::CharacterPanel &character_panel
+      LabyrinthOfLore::Hud::CharacterPanel &character_panel,
+      AllegroFlare::Inventory &player_inventory
    )
 {
    int picked_id = picking_buffer.get_id(player_mouse_x/resolution_scale, player_mouse_y/resolution_scale);
@@ -392,7 +429,8 @@ void process_click_event(
                   this_entity,
                   thing_dictionary,
                   message_scroll,
-                  character_panel
+                  character_panel,
+                  player_inventory
                );
          }
       }
@@ -1076,7 +1114,8 @@ int main(int argc, char **argv)
                   thing_dictionary,
                   message_scroll,
                   command_panel,
-                  character_panel
+                  character_panel,
+                  player_inventory
                );
 
                //int picked_id = game.picking_buffer.get_id(player_mouse_x/resolution_scale, player_mouse_y/resolution_scale);
