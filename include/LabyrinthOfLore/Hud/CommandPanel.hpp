@@ -12,14 +12,14 @@ namespace LabyrinthOfLore
       class CommandPanel
       {
       private:
-         LabyrinthOfLore::Hud::command_mode_t mode;
+         LabyrinthOfLore::Hud::command_mode_t current_mode;
 
       public:
          CommandPanel();
          ~CommandPanel();
 
 
-         LabyrinthOfLore::Hud::command_mode_t get_mode();
+         LabyrinthOfLore::Hud::command_mode_t get_current_mode();
       std::string run();
       };
    }

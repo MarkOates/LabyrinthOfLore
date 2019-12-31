@@ -56,8 +56,13 @@ float vertical_element_spacing = full_height / modes_for_display.size();
 int i = 0;
 for (auto &mode_for_display : modes_for_display)
 {
+   ALLEGRO_COLOR this_text_color = al_color_name("gray");
+   std::string this_label = mode_for_display.first;
+   LabyrinthOfLore::Hud::command_mode_t this_mode = mode_for_display.second;
+
+   if (command_panel->get_current_mode() == this_mode) this_text_color = al_color_name("gray");
    i++;
-   al_draw_text(font, al_color_name("white"), place.size.x/2, vertical_element_spacing * i, ALLEGRO_ALIGN_CENTRE, mode_for_display.first.c_str());
+   al_draw_text(font, this_text_color, place.size.x/2, vertical_element_spacing * i, ALLEGRO_ALIGN_CENTRE, this_label.c_str());
 }
 
 place.restore_transform();

@@ -1,5 +1,5 @@
 properties:
-  - name: mode
+  - name: current_mode
     type: LabyrinthOfLore::Hud::command_mode_t
     init_with: COMMAND_MODE_NONE
     getter: true

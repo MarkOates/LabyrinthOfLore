@@ -11,7 +11,7 @@ namespace Hud
 
 
 CommandPanel::CommandPanel()
-   : mode(COMMAND_MODE_NONE)
+   : current_mode(COMMAND_MODE_NONE)
 {
 }
 
@@ -21,9 +21,9 @@ CommandPanel::~CommandPanel()
 }
 
 
-LabyrinthOfLore::Hud::command_mode_t CommandPanel::get_mode()
+LabyrinthOfLore::Hud::command_mode_t CommandPanel::get_current_mode()
 {
-   return mode;
+   return current_mode;
 }
 
 
