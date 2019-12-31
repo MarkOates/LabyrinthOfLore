@@ -33,7 +33,10 @@ if (!command_panel) throw std::runtime_error("Cannot draw CommandPanelRenderer w
 
 place.start_transform();
 
-al_draw_filled_rounded_rectangle(0, 0, place.size.x, place.size.y, 6, 6, al_color_name("red"));
+//al_draw_filled_rounded_rectangle(0, 0, place.size.x, place.size.y, 6, 6, al_color_name("red"));
+//for (unsigned i=0; i<)
+//{
+//}
 al_draw_text(font, al_color_name("white"), 0, 0, 0, " - command panel - ");
 
 place.restore_transform();

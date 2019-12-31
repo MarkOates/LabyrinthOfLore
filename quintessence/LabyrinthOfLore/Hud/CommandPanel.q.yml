@@ -1,4 +1,12 @@
+properties:
+  - name: mode
+    type: LabyrinthOfLore::Hud::command_mode_t
+    init_with: COMMAND_MODE_NONE
+    getter: true
 functions:
   - name: run
     type: std::string
     body: return "Hello World!";
+dependencies:
+  - symbol: LabyrinthOfLore::Hud::command_mode_t
+    headers: [ LabyrinthOfLore/Hud/CommandPanelModeEnum.hpp ]

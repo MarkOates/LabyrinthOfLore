@@ -11,12 +11,19 @@ namespace Hud
 
 
 CommandPanel::CommandPanel()
+   : mode(COMMAND_MODE_NONE)
 {
 }
 
 
 CommandPanel::~CommandPanel()
 {
+}
+
+
+LabyrinthOfLore::Hud::command_mode_t CommandPanel::get_mode()
+{
+   return mode;
 }
 
 
