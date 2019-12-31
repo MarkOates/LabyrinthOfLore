@@ -2,7 +2,7 @@
 #FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Rendering/TileMapMeshPillarBuilder
 #FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Entity/ThingDefinition
 #FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer
-FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Hud/CommandPanel
+FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Hud/CharacterPanel
 FOCUSED_TEST_FILTER=
 
 

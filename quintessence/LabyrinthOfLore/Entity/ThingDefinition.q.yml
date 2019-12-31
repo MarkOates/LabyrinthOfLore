@@ -19,6 +19,11 @@ properties:
     init_with: -1
     constructor_arg: true
     getter: true
+  - name: weight
+    type: int
+    init_with: 1 
+    constructor_arg: true
+    getter: true
 functions:
   - name: infer_decorated_name
     type: std::string

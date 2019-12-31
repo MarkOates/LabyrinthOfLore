@@ -16,9 +16,10 @@ namespace LabyrinthOfLore
          std::string name;
          Tileo::TileAtlas* tile_atlas;
          int tile_atlas_index_id;
+         int weight;
 
       public:
-         ThingDefinition(std::string article="an", std::string name="unnamed thing", Tileo::TileAtlas* tile_atlas=nullptr, int tile_atlas_index_id=-1);
+         ThingDefinition(std::string article="an", std::string name="unnamed thing", Tileo::TileAtlas* tile_atlas=nullptr, int tile_atlas_index_id=-1, int weight=1);
          ~ThingDefinition();
 
 
@@ -26,6 +27,7 @@ namespace LabyrinthOfLore
          std::string get_name();
          Tileo::TileAtlas* get_tile_atlas();
          int get_tile_atlas_index_id();
+         int get_weight();
       std::string infer_decorated_name();
       };
    }

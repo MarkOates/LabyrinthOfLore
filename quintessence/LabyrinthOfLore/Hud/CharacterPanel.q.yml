@@ -8,6 +8,28 @@ properties:
     init_with: nullptr
     constructor_arg: true
 functions:
+  - name: calculate_total_carry_strength
+    type: int
+    body: |
+      return 10;
+  - name: calculate_current_carry_weight
+    type: int
+    body: |
+      if (!thing_dictionary) throw std::runtime_error("Cannot calculate_total_carry_strength with a nullptr thing_dictionary");
+      if (!player_inventory) throw std::runtime_error("Cannot calculate_total_carry_strength with a nullptr player_inventory");
+
+      int result = 0;
+
+      std::vector<int> &inventory_items = player_inventory->get_items_ref();
+      for (unsigned i=0; i<inventory_items.size(); i++)
+      {
+         int item_weight = thing_dictionary->find_definition(inventory_items[i]).get_weight();
+         result += item_weight;
+      }
+
+      return result;
+    body_dependency_symbols:
+      - std::vector
   - name: has_item
     parameters:
       - name: item_id
@@ -25,3 +47,5 @@ dependencies:
     headers: [ AllegroFlare/Inventory.hpp ]
   - symbol: LabyrinthOfLore::Entity::ThingDictionary*
     headers: [ LabyrinthOfLore/Entity/ThingDictionary.hpp ]
+  - symbol: std::vector
+    headers: [ vector ]

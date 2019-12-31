@@ -259,6 +259,15 @@ std::string you_cannot_pick_up(LabyrinthOfLore::Entity::ThingDefinition &thing_d
 
 
 
+std::string you_picked_up(LabyrinthOfLore::Entity::ThingDefinition &thing_definition)
+{
+    std::stringstream message;
+    message << "You picked up " << thing_definition.infer_decorated_name() << ".";
+    return message.str();
+}
+
+
+
 void process_thing_look_click(
       int thing_id,
       LabyrinthOfLore::Entity::ThingDictionary &thing_dictionary,
@@ -285,7 +294,8 @@ void process_thing_pickup_click(
       LabyrinthOfLore::Entity::Base *entity,
       //int thing_id,
       LabyrinthOfLore::Entity::ThingDictionary &thing_dictionary,
-      LabyrinthOfLore::Hud::MessageScroll &message_scroll
+      LabyrinthOfLore::Hud::MessageScroll &message_scroll,
+      LabyrinthOfLore::Hud::CharacterPanel &character_panel
       )
 {
    if (!entity) throw std::runtime_error("Cannot process_thing_pickup_click with a nullptr entity");
@@ -299,6 +309,7 @@ void process_thing_pickup_click(
    if (entity->exists(CAN_BE_PICKED_UP_ATTRIBUTE))
    {
       // add the item to the player's inventory!!!!!!!!!UFUFUFUSDKUUKKYEAAA!!! :D :D
+      //message_scroll.append_message(al_get_time(), you_picked_up(this_thing_definition));
    }
    else if (!entity->exists(CAN_BE_PICKED_UP_ATTRIBUTE))
    {
@@ -330,7 +341,8 @@ void process_click_event(
       std::vector<LabyrinthOfLore::Entity::Base *> &all_entities,
       LabyrinthOfLore::Entity::ThingDictionary &thing_dictionary,
       LabyrinthOfLore::Hud::MessageScroll &message_scroll,
-      LabyrinthOfLore::Hud::CommandPanel &command_panel
+      LabyrinthOfLore::Hud::CommandPanel &command_panel,
+      LabyrinthOfLore::Hud::CharacterPanel &character_panel
    )
 {
    int picked_id = picking_buffer.get_id(player_mouse_x/resolution_scale, player_mouse_y/resolution_scale);
@@ -379,7 +391,8 @@ void process_click_event(
                   all_entities,
                   this_entity,
                   thing_dictionary,
-                  message_scroll
+                  message_scroll,
+                  character_panel
                );
          }
       }
@@ -850,11 +863,11 @@ int main(int argc, char **argv)
 
       //
       LabyrinthOfLore::Entity::ThingDictionary thing_dictionary({
-          { ITEM_TORCH_ID,                         LabyrinthOfLore::Entity::ThingDefinition("a",   "torch",                                 &item_tile_atlas,      6 + 9*14)  },
-          { ITEM_RING_OF_LOFT_ID,                  LabyrinthOfLore::Entity::ThingDefinition("the", "ring of loft",                          &item_tile_atlas,      10+13*14)  },
-          { ITEM_INFINITY_TORCH_ID,                LabyrinthOfLore::Entity::ThingDefinition("the", "infinity torch",                        &item_tile_atlas,      6 + 9*14)  },
-          { ITEM_TORCH_FUEL_ID,                    LabyrinthOfLore::Entity::ThingDefinition("some","torch fuel",                            &item_tile_atlas,      27 + 5*14) },
-          { MAN_AT_THE_ENTRANCE_TO_THE_CAVE,       LabyrinthOfLore::Entity::ThingDefinition("",    "a goblin at the entrance of the cave",  &character_tile_atlas, 4 + 11*7)  },
+          { ITEM_TORCH_ID,                         LabyrinthOfLore::Entity::ThingDefinition("a",   "torch",                                 &item_tile_atlas,      6 + 9*14,  1)  },
+          { ITEM_RING_OF_LOFT_ID,                  LabyrinthOfLore::Entity::ThingDefinition("the", "ring of loft",                          &item_tile_atlas,      10+13*14,  1)  },
+          { ITEM_INFINITY_TORCH_ID,                LabyrinthOfLore::Entity::ThingDefinition("the", "infinity torch",                        &item_tile_atlas,      6 + 9*14,  1)  },
+          { ITEM_TORCH_FUEL_ID,                    LabyrinthOfLore::Entity::ThingDefinition("some","torch fuel",                            &item_tile_atlas,      27 + 5*14, 1)  },
+          { MAN_AT_THE_ENTRANCE_TO_THE_CAVE,       LabyrinthOfLore::Entity::ThingDefinition("",    "a goblin at the entrance of the cave",  &character_tile_atlas, 4 + 11*7,  1)  },
       });
 
 
@@ -1062,7 +1075,8 @@ int main(int argc, char **argv)
                   all_entities,
                   thing_dictionary,
                   message_scroll,
-                  command_panel
+                  command_panel,
+                  character_panel
                );
 
                //int picked_id = game.picking_buffer.get_id(player_mouse_x/resolution_scale, player_mouse_y/resolution_scale);

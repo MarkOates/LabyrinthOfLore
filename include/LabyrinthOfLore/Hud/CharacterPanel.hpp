@@ -21,6 +21,8 @@ namespace LabyrinthOfLore
          ~CharacterPanel();
 
 
+      int calculate_total_carry_strength();
+      int calculate_current_carry_weight();
       bool has_item(int item_id=0);
       std::string run();
       };
