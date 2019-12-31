@@ -1,0 +1,32 @@
+properties:
+  - name: all_entities
+    type: std::vector<LabyrinthOfLore::Entity::Base*>*
+    init_with: nullptr
+    constructor_arg: true
+  - name: CLEANUP_FLAG
+    static: true
+    const: true
+    init_with: "\"destroy_this_item_at_cleanup\""
+    getter: true
+functions:
+  - name: cleanup
+    type: int
+    body: |
+      if (!all_entities) throw std::runtime_error("Cannot cleanup in Entity/Cleanup with a nullptr all_entities");
+
+      int entities_destroyed = 0;
+      for (int i=0; i<all_entities->size(); i++)
+      {
+          if (all_entities->at(i)->exists(CLEANUP_FLAG))
+          {
+             delete all_entities->at(i);
+             all_entities->erase(all_entities->begin() + i);
+             i--;
+             entities_destroyed++;
+          }
+      }
+
+      return entities_destroyed;
+dependencies:
+  - symbol: std::vector<LabyrinthOfLore::Entity::Base*>*
+    headers: [ vector, LabyrinthOfLore/Entity/Base.hpp ]
