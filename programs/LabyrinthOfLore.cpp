@@ -52,6 +52,30 @@
 //#include <algorithm> // for std::max
 
 
+#include <iostream>
+using namespace std;
+
+void capitalize (string &s)
+{
+   if (s.empty()) return;
+
+    bool cap = true;
+
+    for(unsigned int i = 0; i <= 1; i++)
+    {
+        if (isalpha(s[i]) && cap == true)
+        {
+            s[i] = toupper(s[i]);
+            cap = false;
+        }
+        else if (isspace(s[i]))
+        {
+            cap = true;
+        }
+    }
+}
+
+
 
 #include <AllegroFlare/Inventory.hpp>
 
@@ -73,6 +97,7 @@ static const std::string VILLAGE_OF_THE_FORGOTTEN_IDENTIFIER = "village_of_the_f
 
 #define THING_ID_ATTRIBUTE ("thing_id")
 #define CAN_BE_PICKED_UP_ATTRIBUTE ("can_be_picked_up")
+#define MUST_BE_PICKED_UP_TO_BE_USED ("must_be_picked_up_to_be_used")
 #define DESTROY_THIS_ITEM_AT_CLEANUP ("destroy_this_item_at_cleanup")
 
 
@@ -304,6 +329,28 @@ std::string you_picked_up(LabyrinthOfLore::Entity::ThingDefinition &thing_defini
 
 
 
+std::string you_must_pickup_this_item_to_use_it(LabyrinthOfLore::Entity::ThingDefinition &thing_definition)
+{
+    std::stringstream message;
+    message << "You must pick up " << thing_definition.infer_decorated_name() << " to use it.";
+    return message.str();
+}
+
+
+
+std::string this_cannot_be_used(LabyrinthOfLore::Entity::ThingDefinition &thing_definition)
+{
+    std::stringstream message;
+    message << thing_definition.infer_decorated_name() << " cannot be used.";
+    std::string str_needs_capitalization = message.str();
+
+    capitalize(str_needs_capitalization);
+
+    return str_needs_capitalization;
+}
+
+
+
 void process_thing_look_click(
       int thing_id,
       LabyrinthOfLore::Entity::ThingDictionary &thing_dictionary,
@@ -380,6 +427,38 @@ void process_thing_pickup_click(
 
 
 
+void process_thing_use_click(
+      std::vector<LabyrinthOfLore::Entity::Base *> &all_entities,
+      LabyrinthOfLore::Entity::Base *entity,
+      //int thing_id,
+      LabyrinthOfLore::Entity::ThingDictionary &thing_dictionary,
+      LabyrinthOfLore::Hud::MessageScroll &message_scroll,
+      LabyrinthOfLore::Hud::CharacterPanel &character_panel,
+      AllegroFlare::Inventory &player_inventory
+      )
+{
+   if (!entity) throw std::runtime_error("Cannot process_thing_use_click with a nullptr entity");
+   if (!entity->exists(THING_ID_ATTRIBUTE)) throw std::runtime_error("Cannot process_thing_use_click expecting the entity to have a \"thing_id\" but it does not.");
+
+   int thing_id = entity->get_as_int(THING_ID_ATTRIBUTE);
+
+   LabyrinthOfLore::Entity::ThingDefinition &this_thing_definition = thing_dictionary.find_definition_ref(thing_id);
+
+
+   bool item_can_be_used_without_picking_up; //// WILL NEED TO FINISHE THIS THOUGHT HERE
+
+   if (entity->exists(MUST_BE_PICKED_UP_TO_BE_USED))
+   {
+      message_scroll.append_message(al_get_time(), you_must_pickup_this_item_to_use_it(this_thing_definition));
+   }
+   else
+   {
+      message_scroll.append_message(al_get_time(), this_cannot_be_used(this_thing_definition));
+   }
+}
+
+
+
 void process_click_event(
       float player_mouse_x,
       float player_mouse_y,
@@ -439,6 +518,17 @@ void process_click_event(
          else if (command_panel.get_current_mode() == LabyrinthOfLore::Hud::COMMAND_MODE_PICKUP)
          {
             process_thing_pickup_click(
+                  all_entities,
+                  this_entity,
+                  thing_dictionary,
+                  message_scroll,
+                  character_panel,
+                  player_inventory
+               );
+         }
+         else if (command_panel.get_current_mode() == LabyrinthOfLore::Hud::COMMAND_MODE_USE)
+         {
+            process_thing_use_click(
                   all_entities,
                   this_entity,
                   thing_dictionary,
@@ -588,7 +678,9 @@ void add_thing_to_world(
       std::string level_identifier,
       AllegroFlare::vec3d position,
       bool billboard_at_camera=true,
-      bool can_be_picked_up=true
+      bool can_be_picked_up=true,
+      bool must_be_picked_up_to_be_used=false // this here
+
    )
 {
    //if (!all_entities) throw std::runtime_error("cannot add_thing_to_world with a nullptr all_entities"); 
@@ -606,6 +698,7 @@ void add_thing_to_world(
 
    entity->set(THING_ID_ATTRIBUTE, thing_id);
    if (can_be_picked_up) entity->set(CAN_BE_PICKED_UP_ATTRIBUTE);
+   if (must_be_picked_up_to_be_used) entity->set(MUST_BE_PICKED_UP_TO_BE_USED);
 
    entity->get_placement_ref().size = AllegroFlare::vec3d(al_get_bitmap_width(bitmap), al_get_bitmap_height(bitmap), 0.0);
    entity->get_placement_ref().size = AllegroFlare::vec3d(al_get_bitmap_width(bitmap), al_get_bitmap_height(bitmap), 0.0);
@@ -969,8 +1062,8 @@ int main(int argc, char **argv)
       //AllegroFlare::vec3d position,
       //bool billboard_at_camera=true
 
-      add_thing_to_world(all_entities, thing_dictionary, ITEM_TORCH_ID,                   THE_UNDERWORLD_IDENTIFIER, {  42.5,  77.5, 3.0 }, true, true);
-      add_thing_to_world(all_entities, thing_dictionary, MAN_AT_THE_ENTRANCE_TO_THE_CAVE, THE_CAVE_IDENTIFIER,       {  31.5,  9.5, 1.0 },  true, false);
+      add_thing_to_world(all_entities, thing_dictionary, ITEM_TORCH_ID,                   THE_UNDERWORLD_IDENTIFIER, {  42.5,  77.5, 3.0 }, true, true,  false);
+      add_thing_to_world(all_entities, thing_dictionary, MAN_AT_THE_ENTRANCE_TO_THE_CAVE, THE_CAVE_IDENTIFIER,       {  31.5,  9.5, 1.0 },  true, false, false);
 
 
       //for (int y=0; y<36; y++)
