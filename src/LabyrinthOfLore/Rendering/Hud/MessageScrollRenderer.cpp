@@ -56,7 +56,9 @@ bool MessageScrollRenderer::multiline_draw_callback(int line_num, const char* li
 __dirty_total_line_count++;
 
 ALLEGRO_FONT *font = (ALLEGRO_FONT *)extra;
-al_draw_text(font, __dirty_this_text_color, 0, __dirty_total_line_count * al_get_font_line_height(font), 0, line);
+std::string text_at_line_start = line;
+std::string text_to_draw_in_this_line = text_at_line_start.substr(0, size);
+al_draw_text(font, __dirty_this_text_color, 0, __dirty_total_line_count * al_get_font_line_height(font), 0, text_to_draw_in_this_line.c_str());
 return true;
 
 }
