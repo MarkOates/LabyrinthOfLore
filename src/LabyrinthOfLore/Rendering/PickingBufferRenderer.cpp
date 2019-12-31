@@ -25,7 +25,7 @@ PickingBufferRenderer::~PickingBufferRenderer()
 }
 
 
-void PickingBufferRenderer::render()
+void PickingBufferRenderer::render(bool clip, int target_point_x, int target_point_y)
 {
 if (!picking_buffer) throw std::runtime_error("picking buffer must not be a nullptr");
 if (!camera) throw std::runtime_error("PickingBuffer camera must not be a nullptr");
@@ -35,7 +35,12 @@ ALLEGRO_STATE previous_render_state;
 al_store_state(&previous_render_state, ALLEGRO_STATE_TARGET_BITMAP);
 al_set_target_bitmap(picking_buffer->get_surface_render());
 
+if (clip) al_set_clipping_rectangle(target_point_x - 5, target_point_y - 5, 10, 10);
+
 al_clear_to_color(al_map_rgba_f(0, 0, 0, 0));
+
+al_clear_depth_buffer(1);
+al_set_render_state(ALLEGRO_DEPTH_TEST, 1);
 
 camera->start_projection(picking_buffer->get_surface_render());
 
@@ -49,6 +54,8 @@ for (auto &entity : entities)
 }
 
 clamped_color_shader->deactivate();
+
+if (clip) al_reset_clipping_rectangle();
 
 al_restore_state(&previous_render_state);
 return;

@@ -27,7 +27,7 @@ namespace LabyrinthOfLore
          ~PickingBufferRenderer();
 
 
-      void render();
+      void render(bool clip=false, int target_point_x=0, int target_point_y=0);
       };
    }
 }

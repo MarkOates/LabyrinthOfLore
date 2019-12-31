@@ -1321,10 +1321,8 @@ int main(int argc, char **argv)
 
                //
 
-               al_clear_depth_buffer(1);
-               al_set_render_state(ALLEGRO_DEPTH_TEST, 1);
                LabyrinthOfLore::Rendering::PickingBufferRenderer picking_buffer_renderer(&game.picking_buffer, &camera, current_tile_map_mesh, entities_in_the_current_level, &clamped_color_shader);
-               picking_buffer_renderer.render();
+               picking_buffer_renderer.render(true, player_mouse_x/resolution_scale, player_mouse_y/resolution_scale);
 
                //
 
