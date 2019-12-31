@@ -24,6 +24,7 @@ CharacterPanel::~CharacterPanel()
 
 int CharacterPanel::calculate_total_carry_strength()
 {
+// 10 for now
 return 10;
 
 }
@@ -43,6 +44,12 @@ for (unsigned i=0; i<inventory_items.size(); i++)
 }
 
 return result;
+
+}
+
+int CharacterPanel::calculate_available_remaining_carry_weight()
+{
+return calculate_total_carry_strength() - calculate_current_carry_weight();
 
 }
 

@@ -11,6 +11,7 @@ functions:
   - name: calculate_total_carry_strength
     type: int
     body: |
+      // 10 for now
       return 10;
   - name: calculate_current_carry_weight
     type: int
@@ -30,6 +31,10 @@ functions:
       return result;
     body_dependency_symbols:
       - std::vector
+  - name: calculate_available_remaining_carry_weight
+    type: int
+    body: |
+      return calculate_total_carry_strength() - calculate_current_carry_weight();
   - name: has_item
     parameters:
       - name: item_id
