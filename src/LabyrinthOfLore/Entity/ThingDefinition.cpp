@@ -11,7 +11,7 @@ namespace Entity
 {
 
 
-ThingDefinition::ThingDefinition(std::string article, std::string name, Tileo::TileAtlas* tile_atlas, int tile_atlas_index_id, int weight, int health, std::string mood)
+ThingDefinition::ThingDefinition(std::string article, std::string name, Tileo::TileAtlas* tile_atlas, int tile_atlas_index_id, int weight, int health, std::string mood, std::string condition)
    : article(article)
    , name(name)
    , tile_atlas(tile_atlas)
@@ -19,6 +19,7 @@ ThingDefinition::ThingDefinition(std::string article, std::string name, Tileo::T
    , weight(weight)
    , health(health)
    , mood(mood)
+   , condition(condition)
 {
 }
 
@@ -37,6 +38,12 @@ void ThingDefinition::set_health(int health)
 void ThingDefinition::set_mood(std::string mood)
 {
    this->mood = mood;
+}
+
+
+void ThingDefinition::set_condition(std::string condition)
+{
+   this->condition = condition;
 }
 
 
@@ -82,6 +89,12 @@ std::string ThingDefinition::get_mood()
 }
 
 
+std::string ThingDefinition::get_condition()
+{
+   return condition;
+}
+
+
 bool ThingDefinition::infer_is_dead()
 {
 return (health <= 0);
@@ -106,6 +119,7 @@ std::string ThingDefinition::infer_decorated_name()
 std::stringstream result;
 if (!article.empty()) result << article << " ";
 if (!mood.empty()) result << mood << " ";
+if (!condition.empty()) result << condition << " ";
 if (!name.empty()) result << name << " ";
 
 std::string result_str = result.str();
