@@ -60,11 +60,11 @@ functions:
   - name: you_talk_to
     type: bool
     parameters:
-      - name: possibl_thing_id_talking_to
+      - name: possible_thing_id_talking_to
         type: int
         default_argument: -1
     body: |
-       return thing_id == possibl_thing_id_talking_to;
+       return thing_id == possible_thing_id_talking_to;
   - name: player_has_item
     type: bool
     parameters:
@@ -100,6 +100,19 @@ functions:
       {
          character_speaks("Hello there young one. Look at you. You have so much life. I've been here for far to long, and " \
                           "miss so deeply my loved ones. I wonder if they still think of me...");
+      }
+
+      if (you_talk_to(HARCOURT_IN_THE_VILLAGE))
+      {
+         if (!player_has_item(ITEM_TORCH_FUEL_ID))
+         {
+            character_speaks("It's not so great down here. We all do our best to help each other out. " \
+                             "You look like you're low on torch fuel. Have some of mine.");
+         }
+         else
+         {
+            character_speaks("You look like an avatar I once knew. They were strong and powerful and once saved us all. Maybe you can do the same.");
+         }
       }
 
       return;

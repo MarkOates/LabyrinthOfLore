@@ -32,7 +32,7 @@ namespace LabyrinthOfLoreGame
    void validate_arguments();
    void character_speaks(std::string message="");
    void append_message(std::string message="");
-   bool you_talk_to(int possibl_thing_id_talking_to=-1);
+   bool you_talk_to(int possible_thing_id_talking_to=-1);
    bool player_has_item(int item_id=-1);
    void process(float time_now=0.0f);
    };

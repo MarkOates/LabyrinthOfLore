@@ -13,6 +13,7 @@ enum item_id_t
    // characters
    MAN_AT_THE_ENTRANCE_TO_THE_CAVE,
    CATALINA_IN_THE_VILLAGE,
+   HARCOURT_IN_THE_VILLAGE,
 
    RAT = 100,
 };
