@@ -7,21 +7,9 @@
    catch (...) { FAIL() << "Expected " # raised_exception_type; }
 
 #include <LabyrinthOfLoreGame/TalkInteractions.hpp>
+#include <LabyrinthOfLoreGame/ItemIdEnums.hpp>
 
 
-enum item_id_t
-{
-   ITEM_NO_ID = 0,
-   ITEM_TORCH_ID,
-   ITEM_RING_OF_LOFT_ID,
-   ITEM_INFINITY_TORCH_ID,
-   ITEM_TORCH_FUEL_ID,
-
-   // characters
-   MAN_AT_THE_ENTRANCE_TO_THE_CAVE,
-
-   RAT = 100,
-};
 
 class LabyrinthOfLoreGame_TalkInteractionsTest : public ::testing::Test
 {
@@ -58,6 +46,9 @@ static void ASSERT_SAID(LabyrinthOfLore::Hud::MessageScroll message_scroll, std:
    if (message_scroll_messages.empty()) FAIL() << "\033[33mThe message scroll is empty.";
 
    std::stringstream things_said;
+   things_said << "\033[33mExpecting the following message is the message scroll: [" << std::endl;
+   things_said << "  • " << expected_message << std::endl;
+   things_said << "]" << std::endl;
    things_said << "\033[33mThe following things were said in the message scroll: [" << std::endl;
 
    for (unsigned i=0; i<message_scroll_messages.size(); i++)
@@ -120,6 +111,38 @@ TEST_F(LabyrinthOfLoreGame_TalkInteractionsTest, if_you_talk_to_the_man_at_the_e
 
    LabyrinthOfLoreGame::TalkInteractions talk_interactions(MAN_AT_THE_ENTRANCE_TO_THE_CAVE, &all_entities, &thing_dictionary, &message_scroll, &character_panel, &player_inventory);
    std::string expected_thing_to_say = "Hey traveler! Down this cavern is a runestone of immaginable power. If you dare to go, you'll need to keep a lit torch or the darkness will attack you.";
+
+   talk_interactions.process();
+
+   ASSERT_SAID(message_scroll, expected_thing_to_say);
+}
+
+TEST_F(LabyrinthOfLoreGame_TalkInteractionsTest, with_the_torch_of_truth__talking_to__the_man_at_the_entrance_of_the_cave__he_will_say_something_cool)
+{
+   LabyrinthOfLore::Entity::ThingDictionary thing_dictionary({
+      { MAN_AT_THE_ENTRANCE_TO_THE_CAVE, LabyrinthOfLore::Entity::ThingDefinition() },
+   });
+
+   player_inventory.add_item(ITEM_TORCH_OF_TRUTH);
+
+   LabyrinthOfLoreGame::TalkInteractions talk_interactions(MAN_AT_THE_ENTRANCE_TO_THE_CAVE, &all_entities, &thing_dictionary, &message_scroll, &character_panel, &player_inventory);
+   std::string expected_thing_to_say = "Wowza! I thought the infinity torch you got was cool, but this is... this is... unbelievable!!";
+
+   talk_interactions.process();
+
+   ASSERT_SAID(message_scroll, expected_thing_to_say);
+}
+
+TEST_F(LabyrinthOfLoreGame_TalkInteractionsTest, with_the_infinity_torch__talking_to__the_man_at_the_entrance_of_the_cave__he_will_say_the_expected_message)
+{
+   LabyrinthOfLore::Entity::ThingDictionary thing_dictionary({
+      { MAN_AT_THE_ENTRANCE_TO_THE_CAVE, LabyrinthOfLore::Entity::ThingDefinition() },
+   });
+
+   player_inventory.add_item(ITEM_INFINITY_TORCH_ID);
+
+   LabyrinthOfLoreGame::TalkInteractions talk_interactions(MAN_AT_THE_ENTRANCE_TO_THE_CAVE, &all_entities, &thing_dictionary, &message_scroll, &character_panel, &player_inventory);
+   std::string expected_thing_to_say = "You found the Infinity Torch! Amazing! You are surely a seeker of truth! You have a long quest ahead of you, take this.";
 
    talk_interactions.process();
 

@@ -21,14 +21,19 @@ namespace LabyrinthOfLoreGame
       LabyrinthOfLore::Hud::MessageScroll* message_scroll;
       LabyrinthOfLore::Hud::CharacterPanel* character_panel;
       AllegroFlare::Inventory* player_inventory;
+      float time_now;
       static std::string THING_ID_ATTRIBUTE;
 
    public:
-      TalkInteractions(int thing_id=0, std::vector<LabyrinthOfLore::Entity::Base*>* all_entities=nullptr, LabyrinthOfLore::Entity::ThingDictionary* thing_dictionary=nullptr, LabyrinthOfLore::Hud::MessageScroll* message_scroll=nullptr, LabyrinthOfLore::Hud::CharacterPanel* character_panel=nullptr, AllegroFlare::Inventory* player_inventory=nullptr);
+      TalkInteractions(int thing_id=0, std::vector<LabyrinthOfLore::Entity::Base*>* all_entities=nullptr, LabyrinthOfLore::Entity::ThingDictionary* thing_dictionary=nullptr, LabyrinthOfLore::Hud::MessageScroll* message_scroll=nullptr, LabyrinthOfLore::Hud::CharacterPanel* character_panel=nullptr, AllegroFlare::Inventory* player_inventory=nullptr, float time_now=0.0f);
       ~TalkInteractions();
 
 
    void validate_arguments();
+   void character_speaks(std::string message="");
+   void append_message(std::string message="");
+   bool talking_to(int possibl_thing_id_talking_to=-1);
+   bool player_has_item(int item_id=-1);
    void process(float time_now=0.0f);
    };
 }

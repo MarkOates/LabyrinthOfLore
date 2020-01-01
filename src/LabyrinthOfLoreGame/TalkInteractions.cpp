@@ -2,6 +2,7 @@
 
 #include <LabyrinthOfLoreGame/TalkInteractions.hpp>
 #include <sstream>
+#include <LabyrinthOfLoreGame/ItemIdEnums.hpp>
 
 
 namespace LabyrinthOfLoreGame
@@ -11,13 +12,14 @@ namespace LabyrinthOfLoreGame
 std::string TalkInteractions::THING_ID_ATTRIBUTE = "thing_id";
 
 
-TalkInteractions::TalkInteractions(int thing_id, std::vector<LabyrinthOfLore::Entity::Base*>* all_entities, LabyrinthOfLore::Entity::ThingDictionary* thing_dictionary, LabyrinthOfLore::Hud::MessageScroll* message_scroll, LabyrinthOfLore::Hud::CharacterPanel* character_panel, AllegroFlare::Inventory* player_inventory)
+TalkInteractions::TalkInteractions(int thing_id, std::vector<LabyrinthOfLore::Entity::Base*>* all_entities, LabyrinthOfLore::Entity::ThingDictionary* thing_dictionary, LabyrinthOfLore::Hud::MessageScroll* message_scroll, LabyrinthOfLore::Hud::CharacterPanel* character_panel, AllegroFlare::Inventory* player_inventory, float time_now)
    : thing_id(thing_id)
    , all_entities(all_entities)
    , thing_dictionary(thing_dictionary)
    , message_scroll(message_scroll)
    , character_panel(character_panel)
    , player_inventory(player_inventory)
+   , time_now(time_now)
 {
 }
 
@@ -40,14 +42,47 @@ return;
 
 }
 
+void TalkInteractions::character_speaks(std::string message)
+{
+message_scroll->append_character_dialog(time_now, message);
+
+}
+
+void TalkInteractions::append_message(std::string message)
+{
+message_scroll->append_message(time_now, message);
+
+}
+
+bool TalkInteractions::talking_to(int possibl_thing_id_talking_to)
+{
+return thing_id == possibl_thing_id_talking_to;
+
+}
+
+bool TalkInteractions::player_has_item(int item_id)
+{
+return player_inventory->has_item(item_id);
+
+}
+
 void TalkInteractions::process(float time_now)
 {
 LabyrinthOfLore::Entity::ThingDefinition &this_thing_definition = thing_dictionary->find_definition_ref(thing_id);
 
-if (thing_id == 5)
+if (talking_to(MAN_AT_THE_ENTRANCE_TO_THE_CAVE))
 {
-   std::stringstream character_dialog;
-   message_scroll->append_character_dialog(time_now, "Hey traveler! Down this cavern is a runestone of immaginable power. If you dare to go, you'll need to keep a lit torch or the darkness will attack you.");
+   if (player_has_item(ITEM_INFINITY_TORCH_ID)) {
+      character_speaks("You found the Infinity Torch! Amazing! You are surely a " \
+                       "seeker of truth! You have a long quest ahead of you, take this.");
+   }
+   else if (player_has_item(ITEM_TORCH_OF_TRUTH)) {
+      character_speaks("Wowza! I thought the infinity torch you got was cool, but this is... this is... unbelievable!!");
+   }
+   else {
+      character_speaks("Hey traveler! Down this cavern is a runestone of immaginable power. " \
+                        "If you dare to go, you'll need to keep a lit torch or the darkness will attack you.");
+   }
 }
 
 return;
