@@ -16,7 +16,7 @@ functions:
         default_argument: "{}"
     body: |
       int largest_thing_id = std::max((int)CREATED_THINGS_START, definitions.rbegin()->first);
-      int new_thing_id = largest_thing_id++;
+      int new_thing_id = largest_thing_id + 1;
       definitions[new_thing_id] = thing;
       return new_thing_id;
     body_dependency_symbols:
