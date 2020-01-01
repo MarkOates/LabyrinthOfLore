@@ -1,8 +1,4 @@
 properties:
-  - name: thing_id
-    type: int
-    init_with: 0
-    constructor_arg: true
   - name: thing_definition_factory
     type: LabyrinthOfLoreGame::ThingDefinitionFactory*
     init_with: nullptr
@@ -39,13 +35,12 @@ properties:
 functions:
   - name: validate_arguments
     body: |
-     if (!all_entities) throw std::runtime_error("Cannot process_thing_talk_click with a nullptr all_entities");
      if (!thing_definition_factory) throw std::runtime_error("Cannot process_thing_talk_click with a nullptr thing_definition_factory");
+     if (!all_entities) throw std::runtime_error("Cannot process_thing_talk_click with a nullptr all_entities");
      if (!thing_dictionary) throw std::runtime_error("Cannot process_thing_talk_click with a nullptr thing_dictionary");
      if (!message_scroll) throw std::runtime_error("Cannot process_thing_talk_click with a nullptr message_scroll");
      if (!character_panel) throw std::runtime_error("Cannot process_thing_talk_click with a nullptr character_panel");
      if (!player_inventory) throw std::runtime_error("Cannot process_thing_talk_click with a nullptr player_inventory");
-     thing_dictionary->find_definition_ref(thing_id); // <- will raise an exception if can't be found
 
      return;
   - name: character_speaks
@@ -62,14 +57,6 @@ functions:
         default_argument: "\"\""
     body: |
        message_scroll->append_message(time_now, message);
-  - name: you_talk_to
-    type: bool
-    parameters:
-      - name: possible_thing_id_talking_to
-        type: int
-        default_argument: -1
-    body: |
-       return thing_id == possible_thing_id_talking_to;
   - name: player_has_item
     type: bool
     parameters:
@@ -111,12 +98,12 @@ functions:
         type: float
         default_argument: 0.0f
     body: |
-      this->thing_id = thing_id;
+      //this->thing_id = thing_id;
       LabyrinthOfLore::Entity::ThingDefinition &this_thing_definition = thing_dictionary->find_definition_ref(thing_id);
 
       int new_id = -1;
 
-      if (you_talk_to(MAN_AT_THE_ENTRANCE_TO_THE_CAVE))
+      if (thing_id == MAN_AT_THE_ENTRANCE_TO_THE_CAVE)
       {
          if (player_has_item(ITEM_INFINITY_TORCH_ID)) {
             character_speaks("You found the Infinity Torch! Amazing! You are surely a " \
@@ -131,13 +118,13 @@ functions:
          }
       }
 
-      if (you_talk_to(CATALINA_IN_THE_VILLAGE))
+      if (thing_id == CATALINA_IN_THE_VILLAGE)
       {
          character_speaks("Hello there young one. Look at you. You have so much life. I've been here for far to long, and " \
                           "miss so deeply my loved ones. I wonder if they still think of me...");
       }
 
-      if (you_talk_to(HARCOURT_IN_THE_VILLAGE))
+      if (thing_id == HARCOURT_IN_THE_VILLAGE)
       {
          if (get_player_inventory_count_of_type(THING_TYPE_TORCH_FUEL) < 3)
          {

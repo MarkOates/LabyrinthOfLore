@@ -14,8 +14,8 @@
 class LabyrinthOfLoreGame_InteractionsTest : public ::testing::Test
 {
 protected:
-   std::vector<LabyrinthOfLore::Entity::Base*> all_entities;
    LabyrinthOfLoreGame::ThingDefinitionFactory thing_definition_factory;
+   std::vector<LabyrinthOfLore::Entity::Base*> all_entities;
    LabyrinthOfLore::Entity::ThingDictionary thing_dictionary;
    LabyrinthOfLore::Hud::MessageScroll message_scroll;
    AllegroFlare::Inventory player_inventory;
@@ -23,13 +23,13 @@ protected:
    LabyrinthOfLoreGame::Interactions interactions;
 
    LabyrinthOfLoreGame_InteractionsTest()
-      : all_entities()
-      , thing_definition_factory()
+      : thing_definition_factory()
+      , all_entities()
       , thing_dictionary()
       , message_scroll()
       , player_inventory()
       , character_panel(&player_inventory, &thing_dictionary)
-      , interactions(0, &thing_definition_factory, &all_entities, &thing_dictionary, &message_scroll, &character_panel, &player_inventory)
+      , interactions(&thing_definition_factory, &all_entities, &thing_dictionary, &message_scroll, &character_panel, &player_inventory)
    {
    }
 
@@ -92,16 +92,16 @@ protected:
 
 TEST_F(LabyrinthOfLoreGame_InteractionsTest, validate_arguments__will_raise_an_exception_if_it_cannot_find_the_thing_id)
 {
+   LabyrinthOfLoreGame::ThingDefinitionFactory thing_definition_factory;
    std::vector<LabyrinthOfLore::Entity::Base*> all_entities;
    LabyrinthOfLore::Entity::ThingDictionary thing_dictionary;
-   LabyrinthOfLoreGame::ThingDefinitionFactory thing_definition_factory;
    LabyrinthOfLore::Hud::MessageScroll message_scroll;
    LabyrinthOfLore::Hud::CharacterPanel character_panel;
    AllegroFlare::Inventory player_inventory;
 
-   LabyrinthOfLoreGame::Interactions interactions(0, &thing_definition_factory, &all_entities, &thing_dictionary, &message_scroll, &character_panel, &player_inventory);
+   LabyrinthOfLoreGame::Interactions interactions(nullptr, &all_entities, &thing_dictionary, &message_scroll, &character_panel, &player_inventory);
 
-   std::string expected_error_message = "cannot find_definition_ref in the ThingDictionary. It doesn't exist.";
+   std::string expected_error_message = "Cannot process_thing_talk_click with a nullptr thing_definition_factory";
    ASSERT_THROW_WITH_MESSAGE(interactions.validate_arguments(), std::runtime_error, expected_error_message);
 }
 
@@ -109,10 +109,8 @@ TEST_F(LabyrinthOfLoreGame_InteractionsTest, validate_arguments__will_raise_an_e
 
 TEST_F(LabyrinthOfLoreGame_InteractionsTest, validate_arguments__works_with_the_fixture)
 {
-   LabyrinthOfLoreGame::Interactions interactions(0, &thing_definition_factory, &all_entities, &thing_dictionary, &message_scroll, &character_panel, &player_inventory);
-
-   std::string expected_error_message = "cannot find_definition_ref in the ThingDictionary. It doesn't exist.";
-   ASSERT_THROW_WITH_MESSAGE(interactions.validate_arguments(), std::runtime_error, expected_error_message);
+   interactions.validate_arguments();
+   SUCCEED();
 }
 
 
@@ -206,10 +204,9 @@ TEST_F(LabyrinthOfLoreGame_InteractionsTest, process_talk__if_you_talk_to_harcou
       { HARCOURT_IN_THE_VILLAGE, LabyrinthOfLore::Entity::ThingDefinition() },
    });
 
-   LabyrinthOfLoreGame::Interactions talk_interaction = create_simple_talk_interaction_with(HARCOURT_IN_THE_VILLAGE);
    std::string expected_thing_to_say = "It's not so great down here. We all do our best to help each other out. You look like you're low on torch fuel. Have some of mine.";
 
-   interactions.process_talk();
+   interactions.process_talk(HARCOURT_IN_THE_VILLAGE);
 
    // assert he said the thing
    ASSERT_SAID(expected_thing_to_say);
