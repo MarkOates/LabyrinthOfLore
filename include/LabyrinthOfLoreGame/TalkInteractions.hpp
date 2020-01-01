@@ -29,6 +29,7 @@ namespace LabyrinthOfLoreGame
 
 
    void validate_arguments();
+   void process();
    };
 }
 

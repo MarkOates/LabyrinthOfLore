@@ -37,8 +37,12 @@ if (!character_panel) throw std::runtime_error("Cannot process_thing_talk_click 
 if (!player_inventory) throw std::runtime_error("Cannot process_thing_talk_click with a nullptr player_inventory");
 
 if (!entity->exists(THING_ID_ATTRIBUTE)) throw std::runtime_error("Cannot validate_arguments expecting the entity to have a \"thing_id\" but it does not.");
+return;
 
+}
 
+void TalkInteractions::process()
+{
 return;
 
 }
