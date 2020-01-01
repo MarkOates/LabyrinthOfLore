@@ -41,43 +41,40 @@ protected:
    {
       return LabyrinthOfLoreGame::TalkInteractions(thing_talking_to, &all_entities, &thing_dictionary, &message_scroll, &character_panel, &player_inventory);
    }
-};
 
-
-
-
-static void ASSERT_SAID(LabyrinthOfLore::Hud::MessageScroll message_scroll, std::string expected_message)
-{
-   std::vector<std::tuple<float, std::string, int>> message_scroll_messages = message_scroll.get_messages_ref();
-
-   if (message_scroll_messages.empty()) FAIL() << "\033[33mThe message scroll is empty.";
-
-   std::stringstream things_said;
-   things_said << "\033[33mExpecting the following message is the message scroll: [" << std::endl;
-   things_said << "  • " << expected_message << std::endl;
-   things_said << "]" << std::endl;
-   things_said << "\033[33mThe following things were said in the message scroll: [" << std::endl;
-
-   for (unsigned i=0; i<message_scroll_messages.size(); i++)
+   void ASSERT_SAID(std::string expected_message)
    {
-      float time = std::get<0>(message_scroll_messages[i]);
-      std::string message = std::get<1>(message_scroll_messages[i]);
-      int style = std::get<2>(message_scroll_messages[i]);
+      std::vector<std::tuple<float, std::string, int>> message_scroll_messages = message_scroll.get_messages_ref();
 
-      std::string actual_thing_said = message;
+      if (message_scroll_messages.empty()) FAIL() << "\033[33mThe message scroll is empty.";
 
-      if (expected_message == actual_thing_said)
+      std::stringstream things_said;
+      things_said << "\033[33mExpecting the following message is the message scroll: [" << std::endl;
+      things_said << "  • " << expected_message << std::endl;
+      things_said << "]" << std::endl;
+      things_said << "\033[33mThe following things were said in the message scroll: [" << std::endl;
+
+      for (unsigned i=0; i<message_scroll_messages.size(); i++)
       {
-         SUCCEED();
-         return;
+         float time = std::get<0>(message_scroll_messages[i]);
+         std::string message = std::get<1>(message_scroll_messages[i]);
+         int style = std::get<2>(message_scroll_messages[i]);
+
+         std::string actual_thing_said = message;
+
+         if (expected_message == actual_thing_said)
+         {
+            SUCCEED();
+            return;
+         }
+
+         things_said << "  • \"" << actual_thing_said << "\"" << std::endl;
       }
 
-      things_said << "  • \"" << actual_thing_said << "\"" << std::endl;
+      things_said << "]" << std::endl;
+      FAIL() << things_said.str();
    }
-
-   things_said << "]" << std::endl;
-   FAIL() << things_said.str();
-}
+};
 
 
 
@@ -128,7 +125,7 @@ TEST_F(LabyrinthOfLoreGame_TalkInteractionsTest, if_you_talk_to_the_man_at_the_e
 
    talk_interactions.process();
 
-   ASSERT_SAID(message_scroll, expected_thing_to_say);
+   ASSERT_SAID(expected_thing_to_say);
 }
 
 
@@ -146,7 +143,7 @@ TEST_F(LabyrinthOfLoreGame_TalkInteractionsTest, with_the_torch_of_truth__talkin
 
    talk_interactions.process();
 
-   ASSERT_SAID(message_scroll, expected_thing_to_say);
+   ASSERT_SAID(expected_thing_to_say);
 }
 
 
@@ -164,7 +161,7 @@ TEST_F(LabyrinthOfLoreGame_TalkInteractionsTest, with_the_infinity_torch__talkin
 
    talk_interactions.process();
 
-   ASSERT_SAID(message_scroll, expected_thing_to_say);
+   ASSERT_SAID(expected_thing_to_say);
 }
 
 
@@ -179,7 +176,7 @@ TEST_F(LabyrinthOfLoreGame_TalkInteractionsTest, if_you_talk_to_catalina_in_the_
    std::string expected_thing_to_say = "Hello there young one. Look at you. You have so much life. I've been here for far to long, and miss so deeply my loved ones. I wonder if they still think of me...";
 
    talk_interaction.process();
-   ASSERT_SAID(message_scroll, expected_thing_to_say);
+   ASSERT_SAID(expected_thing_to_say);
 }
 
 
