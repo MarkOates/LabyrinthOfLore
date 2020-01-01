@@ -68,6 +68,13 @@ return player_inventory->has_item(item_id);
 
 }
 
+bool TalkInteractions::player_has_thing_of_type(thing_type_t thing_type)
+{
+if (!character_panel) throw std::runtime_error("cannot player_has_thing_of_type on a nullptr character_panel");
+return character_panel->calculate_count_of_type(thing_type);
+
+}
+
 void TalkInteractions::process(float time_now)
 {
 LabyrinthOfLore::Entity::ThingDefinition &this_thing_definition = thing_dictionary->find_definition_ref(thing_id);
@@ -97,10 +104,10 @@ if (you_talk_to(CATALINA_IN_THE_VILLAGE))
 
 if (you_talk_to(HARCOURT_IN_THE_VILLAGE))
 {
-   //if (!player_has_item_of_type(ITEM_TORCH_FUEL_ID))
+   //if (!player_has_thing_of_type(THING_TYPE_TORCH_FUEL))
    //{
       //character_speaks("It's not so great down here. We all do our best to help each other out. " \
-                       "You look like you're low on torch fuel. Have some of mine.");
+                       //"You look like you're low on torch fuel. Have some of mine.");
 
       //while(character_panel->
       //player_inventory->add_item(thing_dictionary->create_new_definition({THING_TYPE_TORCH_FUEL, "some", "torch fuel"}));

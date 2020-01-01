@@ -6,6 +6,7 @@
 #include <LabyrinthOfLore/Entity/ThingDictionary.hpp>
 #include <LabyrinthOfLore/Hud/CharacterPanel.hpp>
 #include <LabyrinthOfLore/Hud/MessageScroll.hpp>
+#include <LabyrinthOfLoreGame/ItemIdEnums.hpp>
 #include <LabyrinthOfLoreGame/ThingDefinitionFactory.hpp>
 #include <string>
 #include <vector>
@@ -36,6 +37,7 @@ namespace LabyrinthOfLoreGame
    void append_message(std::string message="");
    bool you_talk_to(int possible_thing_id_talking_to=-1);
    bool player_has_item(int item_id=-1);
+   bool player_has_thing_of_type(thing_type_t thing_type=THING_TYPE_UNDEFINED);
    void process(float time_now=0.0f);
    };
 }

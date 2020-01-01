@@ -24,6 +24,7 @@ CharacterPanel::~CharacterPanel()
 
 int CharacterPanel::calculate_count_of_type(thing_type_t thing_type)
 {
+if (!player_inventory) throw std::runtime_error("cannot calculate_count_of_type on a nullptr player_inventory");
 int count = 0;
 std::vector<int> &player_inventory_items = player_inventory->get_items_ref();
 

@@ -18,16 +18,16 @@ protected:
    LabyrinthOfLoreGame::ThingDefinitionFactory thing_definition_factory;
    LabyrinthOfLore::Entity::ThingDictionary thing_dictionary;
    LabyrinthOfLore::Hud::MessageScroll message_scroll;
-   LabyrinthOfLore::Hud::CharacterPanel character_panel;
    AllegroFlare::Inventory player_inventory;
+   LabyrinthOfLore::Hud::CharacterPanel character_panel;
 
    LabyrinthOfLoreGame_TalkInteractionsTest()
       : all_entities()
       , thing_definition_factory()
       , thing_dictionary()
       , message_scroll()
-      , character_panel()
       , player_inventory()
+      , character_panel(&player_inventory, &thing_dictionary)
    {
    }
 
