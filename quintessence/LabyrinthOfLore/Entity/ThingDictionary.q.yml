@@ -5,6 +5,9 @@ properties:
     constructor_arg: true
     getter_ref: true
 functions:
+  - name: size
+    type: int
+    body: return definitions.size();
   - name: create_new_definition
     type: int
     parameters:

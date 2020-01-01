@@ -27,6 +27,11 @@ std::map<int, LabyrinthOfLore::Entity::ThingDefinition> &ThingDictionary::get_de
 }
 
 
+int ThingDictionary::size()
+{
+return definitions.size();
+}
+
 int ThingDictionary::create_new_definition(LabyrinthOfLore::Entity::ThingDefinition thing)
 {
 int largest_thing_id = definitions.rbegin()->first;
