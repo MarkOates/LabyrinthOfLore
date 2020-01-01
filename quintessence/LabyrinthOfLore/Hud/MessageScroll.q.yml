@@ -8,6 +8,15 @@ properties:
     type: std::vector<std::tuple<float, std::string, int>>
     init_with: "{}"
 functions:
+  - name: get_last_message_text
+    type: std::string
+    body: |
+      if (messages.empty()) return {};
+      return std::get<1>(messages[messages.size()-1]);
+  - name: get_messages_ref
+    type: std::vector<std::tuple<float, std::string, int>>
+    body: |
+      return messages;
   - name: get_last_3_messages
     type: std::vector<std::tuple<float, std::string, int>>
     body: |

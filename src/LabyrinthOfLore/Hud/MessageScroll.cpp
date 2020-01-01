@@ -28,6 +28,19 @@ std::string MessageScroll::get_text()
 }
 
 
+std::string MessageScroll::get_last_message_text()
+{
+if (messages.empty()) return {};
+return std::get<1>(messages[messages.size()-1]);
+
+}
+
+std::vector<std::tuple<float, std::string, int>> MessageScroll::get_messages_ref()
+{
+return messages;
+
+}
+
 std::vector<std::tuple<float, std::string, int>> MessageScroll::get_last_3_messages()
 {
 if (messages.empty()) return {};

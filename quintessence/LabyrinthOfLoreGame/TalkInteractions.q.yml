@@ -1,10 +1,10 @@
 properties:
+  - name: thing_id
+    type: int
+    init_with: 0
+    constructor_arg: true
   - name: all_entities
     type: std::vector<LabyrinthOfLore::Entity::Base*>*
-    init_with: nullptr
-    constructor_arg: true
-  - name: entity
-    type: LabyrinthOfLore::Entity::Base*
     init_with: nullptr
     constructor_arg: true
   - name: thing_dictionary
@@ -32,17 +32,30 @@ functions:
   - name: validate_arguments
     body: |
      if (!all_entities) throw std::runtime_error("Cannot process_thing_talk_click with a nullptr all_entities");
-     if (!entity) throw std::runtime_error("Cannot process_thing_talk_click with a nullptr entity");
      if (!thing_dictionary) throw std::runtime_error("Cannot process_thing_talk_click with a nullptr thing_dictionary");
      if (!message_scroll) throw std::runtime_error("Cannot process_thing_talk_click with a nullptr message_scroll");
      if (!character_panel) throw std::runtime_error("Cannot process_thing_talk_click with a nullptr character_panel");
      if (!player_inventory) throw std::runtime_error("Cannot process_thing_talk_click with a nullptr player_inventory");
+     thing_dictionary->find_definition_ref(thing_id); // <- will raise an exception if can't be found
 
-     if (!entity->exists(THING_ID_ATTRIBUTE)) throw std::runtime_error("Cannot validate_arguments expecting the entity to have a \"thing_id\" but it does not.");
      return;
   - name: process
+    parameters:
+      - name: time_now
+        type: float
+        default_argument: 0.0f
     body: |
+      LabyrinthOfLore::Entity::ThingDefinition &this_thing_definition = thing_dictionary->find_definition_ref(thing_id);
+
+      if (thing_id == 6)
+      {
+         std::stringstream character_dialog;
+         message_scroll->append_character_dialog(time_now, "Hey traveler! Down this cavern is a runestone of immaginable power. If you dare to go, you'll need to keep a lit torch, or the darkness will attack you.");
+      }
+
       return;
+    body_dependency_symbols:
+      - std::stringstream
 dependencies:
   - symbol: std::vector<LabyrinthOfLore::Entity::Base*>*
     headers: [ vector, LabyrinthOfLore/Entity/Base.hpp ]
@@ -56,3 +69,5 @@ dependencies:
     headers: [ LabyrinthOfLore/Hud/CharacterPanel.hpp ]
   - symbol: AllegroFlare::Inventory*
     headers: [ AllegroFlare/Inventory.hpp ]
+  - symbol: std::stringstream
+    headers: [ sstream ]
