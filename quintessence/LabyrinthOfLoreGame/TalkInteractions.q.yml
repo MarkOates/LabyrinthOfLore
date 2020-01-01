@@ -57,7 +57,7 @@ functions:
         default_argument: "\"\""
     body: |
        message_scroll->append_message(time_now, message);
-  - name: talking_to
+  - name: you_talk_to
     type: bool
     parameters:
       - name: possibl_thing_id_talking_to
@@ -81,7 +81,7 @@ functions:
     body: |
       LabyrinthOfLore::Entity::ThingDefinition &this_thing_definition = thing_dictionary->find_definition_ref(thing_id);
 
-      if (talking_to(MAN_AT_THE_ENTRANCE_TO_THE_CAVE))
+      if (you_talk_to(MAN_AT_THE_ENTRANCE_TO_THE_CAVE))
       {
          if (player_has_item(ITEM_INFINITY_TORCH_ID)) {
             character_speaks("You found the Infinity Torch! Amazing! You are surely a " \

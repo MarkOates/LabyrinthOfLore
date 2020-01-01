@@ -54,7 +54,7 @@ message_scroll->append_message(time_now, message);
 
 }
 
-bool TalkInteractions::talking_to(int possibl_thing_id_talking_to)
+bool TalkInteractions::you_talk_to(int possibl_thing_id_talking_to)
 {
 return thing_id == possibl_thing_id_talking_to;
 
@@ -70,7 +70,7 @@ void TalkInteractions::process(float time_now)
 {
 LabyrinthOfLore::Entity::ThingDefinition &this_thing_definition = thing_dictionary->find_definition_ref(thing_id);
 
-if (talking_to(MAN_AT_THE_ENTRANCE_TO_THE_CAVE))
+if (you_talk_to(MAN_AT_THE_ENTRANCE_TO_THE_CAVE))
 {
    if (player_has_item(ITEM_INFINITY_TORCH_ID)) {
       character_speaks("You found the Infinity Torch! Amazing! You are surely a " \
