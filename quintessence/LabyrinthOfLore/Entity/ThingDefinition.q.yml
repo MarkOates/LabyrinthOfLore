@@ -1,4 +1,9 @@
 properties:
+  - name: type
+    type: thing_type_t
+    init_with: THING_TYPE_UNDEFINED
+    constructor_arg: true
+    getter: true
   - name: article
     type: std::string
     init_with: "\"an\""
@@ -80,3 +85,5 @@ dependencies:
     headers: [ sstream ]
   - symbol: Tileo::TileAtlas*
     headers: [ Tileo/TileAtlas.hpp ]
+  - symbol: thing_type_t
+    headers: [ LabyrinthOfLoreGame/ItemIdEnums.hpp ]

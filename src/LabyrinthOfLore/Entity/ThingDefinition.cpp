@@ -11,8 +11,9 @@ namespace Entity
 {
 
 
-ThingDefinition::ThingDefinition(std::string article, std::string name, Tileo::TileAtlas* tile_atlas, int tile_atlas_index_id, int weight, int health, std::string mood, std::string condition)
-   : article(article)
+ThingDefinition::ThingDefinition(thing_type_t type, std::string article, std::string name, Tileo::TileAtlas* tile_atlas, int tile_atlas_index_id, int weight, int health, std::string mood, std::string condition)
+   : type(type)
+   , article(article)
    , name(name)
    , tile_atlas(tile_atlas)
    , tile_atlas_index_id(tile_atlas_index_id)
@@ -44,6 +45,12 @@ void ThingDefinition::set_mood(std::string mood)
 void ThingDefinition::set_condition(std::string condition)
 {
    this->condition = condition;
+}
+
+
+thing_type_t ThingDefinition::get_type()
+{
+   return type;
 }
 
 
