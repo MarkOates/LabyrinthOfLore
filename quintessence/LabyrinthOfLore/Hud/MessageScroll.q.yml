@@ -5,11 +5,11 @@ properties:
     getter: true
     constructor_arg: true
   - name: messages
-    type: std::vector<std::pair<float, std::string>>
+    type: std::vector<std::tuple<float, std::string>>
     init_with: "{}"
 functions:
   - name: get_last_3_messages
-    type: std::vector<std::pair<float, std::string>>
+    type: std::vector<std::tuple<float, std::string>>
     body: |
       if (messages.empty()) return {};
       if (messages.size() == 1) return { messages[messages.size()-1] };
@@ -35,10 +35,10 @@ functions:
         type: std::string
         default_argument: "\"\""
     body: |
-      if (!messages.empty() && text_to_append == messages.back().second)
+      if (!messages.empty() && text_to_append == std::get<1>(messages.back())) //.second)
       {
          // update the time of the newest message so it flashes
-         messages.back().first = time_of_message;
+         std::get<0>(messages.back()) = time_of_message;
       }
       else
       {
@@ -50,5 +50,5 @@ functions:
     type: void
     body: text.clear();
 dependencies:
-  - symbol: std::vector<std::pair<float, std::string>>
+  - symbol: std::vector<std::tuple<float, std::string>>
     headers: [ vector, utility, string ]
