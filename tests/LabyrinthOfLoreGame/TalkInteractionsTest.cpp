@@ -13,7 +13,7 @@ TEST(LabyrinthOfLoreGame_TalkInteractionsTest, can_be_created_without_blowing_up
    LabyrinthOfLoreGame::TalkInteractions talk_interactions;
 }
 
-TEST(LabyrinthOfLoreGame_TalkInteractionsTest, process__with_default_values__raises_an_exception_requiring_an_entity_with_a_thing_id)
+TEST(LabyrinthOfLoreGame_TalkInteractionsTest, validate_arguments__with_default_values__raises_an_exception_requiring_an_entity_with_a_thing_id)
 {
     std::vector<LabyrinthOfLore::Entity::Base*> all_entities;
     LabyrinthOfLore::Entity::Base entity;
@@ -23,11 +23,11 @@ TEST(LabyrinthOfLoreGame_TalkInteractionsTest, process__with_default_values__rai
     AllegroFlare::Inventory player_inventory;
 
     LabyrinthOfLoreGame::TalkInteractions talk_interactions(&all_entities, &entity, &thing_dictionary, &message_scroll, &character_panel, &player_inventory);
-    std::string expected_error_message = "Cannot process_thing_talk_click expecting the entity to have a \"thing_id\" but it does not.";
-    ASSERT_THROW_WITH_MESSAGE(talk_interactions.process(), std::runtime_error, expected_error_message);
+    std::string expected_error_message = "Cannot validate_arguments expecting the entity to have a \"thing_id\" but it does not.";
+    ASSERT_THROW_WITH_MESSAGE(talk_interactions.validate_arguments(), std::runtime_error, expected_error_message);
 }
 
-TEST(LabyrinthOfLoreGame_TalkInteractionsTest, process__works_with_safe_values)
+TEST(LabyrinthOfLoreGame_TalkInteractionsTest, validate_arguments__works_with_safe_values)
 {
     std::vector<LabyrinthOfLore::Entity::Base*> all_entities;
     LabyrinthOfLore::Entity::Base entity;
@@ -38,7 +38,7 @@ TEST(LabyrinthOfLoreGame_TalkInteractionsTest, process__works_with_safe_values)
     AllegroFlare::Inventory player_inventory;
 
     LabyrinthOfLoreGame::TalkInteractions talk_interactions(&all_entities, &entity, &thing_dictionary, &message_scroll, &character_panel, &player_inventory);
-    talk_interactions.process();
+    talk_interactions.validate_arguments();
     SUCCEED();
 }
 

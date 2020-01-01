@@ -29,7 +29,7 @@ properties:
     const: true
     init_with: "\"thing_id\""
 functions:
-  - name: process
+  - name: validate_arguments
     body: |
      if (!all_entities) throw std::runtime_error("Cannot process_thing_talk_click with a nullptr all_entities");
      if (!entity) throw std::runtime_error("Cannot process_thing_talk_click with a nullptr entity");
@@ -38,7 +38,7 @@ functions:
      if (!character_panel) throw std::runtime_error("Cannot process_thing_talk_click with a nullptr character_panel");
      if (!player_inventory) throw std::runtime_error("Cannot process_thing_talk_click with a nullptr player_inventory");
 
-     if (!entity->exists(THING_ID_ATTRIBUTE)) throw std::runtime_error("Cannot process_thing_talk_click expecting the entity to have a \"thing_id\" but it does not.");
+     if (!entity->exists(THING_ID_ATTRIBUTE)) throw std::runtime_error("Cannot validate_arguments expecting the entity to have a \"thing_id\" but it does not.");
 
 
      return;

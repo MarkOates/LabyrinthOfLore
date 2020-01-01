@@ -28,7 +28,7 @@ namespace LabyrinthOfLoreGame
       ~TalkInteractions();
 
 
-   void process();
+   void validate_arguments();
    };
 }
 
