@@ -4,6 +4,7 @@
 #include <iostream>
 #include <LabyrinthOfLore/Rendering/TileMapMeshPillarBuilder.hpp>
 #include <LabyrinthOfLore/Rendering/TileMapMeshPillarTexturer.hpp>
+#include <LabyrinthOfLore/WorldMap/TileTypeEnum.hpp>
 
 
 namespace LabyrinthOfLore
@@ -68,6 +69,30 @@ for (int y=0; y<tile_map.get_height(); y++)
          bool do_not_include_left_face = false; //(tile_to_the_left.get_height() >= (tile.get_height() - threshold));
          bool do_not_include_back_face = false; //(tile_behind.get_height() >= (tile.get_height() - threshold));
 
+         int texture_index_for_front_and_back = tile_type_definition.get_tile_index_for_front_and_back_texture()+offset_to_first_texture_index;
+         int texture_index_for_left_and_right = tile_type_definition.get_tile_index_for_right_and_left_texture()+offset_to_first_texture_index;
+         int texture_for_top = tile_type_definition.get_tile_index_for_top_texture()+offset_to_first_texture_index;
+
+         if (tile.get_type() == LabyrinthOfLore::WorldMap::WATER_TILE)
+         {
+            texture_index_for_front_and_back = 0 + 9*10;
+            texture_index_for_left_and_right = 0 + 9*10;
+            texture_for_top = 0 + 9*10;
+         }
+         if (tile.get_type() == LabyrinthOfLore::WorldMap::LAVA_TILE)
+         {
+            texture_index_for_front_and_back = 1 + 9*10;
+            texture_index_for_left_and_right = 1 + 9*10;
+            texture_for_top = 1 + 9*10;
+         }
+         if (tile.get_type() == LabyrinthOfLore::WorldMap::GLOW_WATER_TILE)
+         {
+            texture_index_for_front_and_back = 2 + 9*10;
+            texture_index_for_left_and_right = 2 + 9*10;
+            texture_for_top = 2 + 9*10;
+         }
+
+
          std::vector<ALLEGRO_VERTEX> pillar = {};
          LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder builder(
                x,
@@ -83,9 +108,9 @@ for (int y=0; y<tile_map.get_height(); y++)
          pillar = LabyrinthOfLore::Rendering::TileMapMeshPillarTexturer(
                tile_atlas,
                pillar,
-               tile_type_definition.get_tile_index_for_front_and_back_texture()+offset_to_first_texture_index,
-               tile_type_definition.get_tile_index_for_right_and_left_texture()+offset_to_first_texture_index,
-               tile_type_definition.get_tile_index_for_top_texture()+offset_to_first_texture_index,
+               texture_index_for_front_and_back,
+               texture_index_for_left_and_right,
+               texture_for_top,
                builder.needs_partial_height_side_faces_from_top(),
                builder.get_height(),
                do_not_include_top_face,

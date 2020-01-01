@@ -844,11 +844,11 @@ int main(int argc, char **argv)
       //
 
       LabyrinthOfLore::Rendering::TileTypeDictionary tile_type_dictionary({
-          { LabyrinthOfLore::WorldMap::NORMAL_GROUND_TILE, LabyrinthOfLore::Rendering::TileTypeDefinition(1, 1, 0) },
-          { LabyrinthOfLore::WorldMap::DOOR_TILE,          LabyrinthOfLore::Rendering::TileTypeDefinition(2, 2, 0) },
-          { LabyrinthOfLore::WorldMap::WATER_TILE,         LabyrinthOfLore::Rendering::TileTypeDefinition(2, 2, 0) },
-          { LabyrinthOfLore::WorldMap::LAVA_TILE,          LabyrinthOfLore::Rendering::TileTypeDefinition(2, 2, 0) },
-          { LabyrinthOfLore::WorldMap::GLOW_WATER_TILE,    LabyrinthOfLore::Rendering::TileTypeDefinition(2, 2, 0) },
+          { LabyrinthOfLore::WorldMap::NORMAL_GROUND_TILE, LabyrinthOfLore::Rendering::TileTypeDefinition(1,      1,    0) },
+          { LabyrinthOfLore::WorldMap::DOOR_TILE,          LabyrinthOfLore::Rendering::TileTypeDefinition(2,      2,    0) },
+          { LabyrinthOfLore::WorldMap::WATER_TILE,         LabyrinthOfLore::Rendering::TileTypeDefinition(1,      1,    0 + 9*10) },
+          { LabyrinthOfLore::WorldMap::LAVA_TILE,          LabyrinthOfLore::Rendering::TileTypeDefinition(1,      1,    1 + 9*10) },
+          { LabyrinthOfLore::WorldMap::GLOW_WATER_TILE,    LabyrinthOfLore::Rendering::TileTypeDefinition(1,      1,    2 + 9*10) },
       });
 
       //
@@ -867,7 +867,7 @@ int main(int argc, char **argv)
                                                    "Level 1",
                                                    "The Cave",
                                                    3.0f,
-                                                   LabyrinthOfLore::WorldMap::BitmapFilenameToWorldBuilder("data/bitmaps/the_cave.png", 3.0).build()
+                                                   LabyrinthOfLore::WorldMap::MultiBitmapFilenameToWorldBuilder("data/bitmaps/the_cave.png", "data/bitmaps/the_cave-type.png", 3.0).build()
                                                 )
          },
          { AN_ABANDONED_TEMPLE_IDENTIFIER,      LabyrinthOfLore::WorldMap::Level(
@@ -881,7 +881,7 @@ int main(int argc, char **argv)
                                                    "Level 2",
                                                    "Dungeon of the Cursed",
                                                    2.0f,
-                                                   LabyrinthOfLore::WorldMap::BitmapFilenameToWorldBuilder("data/bitmaps/dungeon_of_the_cursed.png").build()
+                                                   LabyrinthOfLore::WorldMap::MultiBitmapFilenameToWorldBuilder("data/bitmaps/dungeon_of_the_cursed.png", "data/bitmaps/dungeon_of_the_cursed-type.png").build()
                                                 )
          },
          { TEMPLE_OF_WATER_IDENTIFIER,          LabyrinthOfLore::WorldMap::Level(
@@ -895,21 +895,21 @@ int main(int argc, char **argv)
                                                    "Level 5",
                                                    "World of Fire",
                                                    5.0f,
-                                                   LabyrinthOfLore::WorldMap::BitmapFilenameToWorldBuilder("data/bitmaps/world_of_fire.png", 5.0).build()
+                                                   LabyrinthOfLore::WorldMap::MultiBitmapFilenameToWorldBuilder("data/bitmaps/world_of_fire.png", "data/bitmaps/world_of_fire-type.png", 5.0).build()
                                                 )
          },
          { FINAL_TEMPLE_IDENTIFIER,             LabyrinthOfLore::WorldMap::Level(
                                                    "",
                                                    "Final Temple",
                                                    3.0f,
-                                                   LabyrinthOfLore::WorldMap::BitmapFilenameToWorldBuilder("data/bitmaps/final_temple.png", 3.0).build()
+                                                   LabyrinthOfLore::WorldMap::MultiBitmapFilenameToWorldBuilder("data/bitmaps/final_temple.png", "data/bitmaps/final_temple-type.png", 3.0).build()
                                                 )
          },
          { VILLAGE_OF_THE_FORGOTTEN_IDENTIFIER, LabyrinthOfLore::WorldMap::Level(
                                                    "",
                                                    "Village of the Forgotten",
                                                    2.0f,
-                                                   LabyrinthOfLore::WorldMap::BitmapFilenameToWorldBuilder("data/bitmaps/village_of_the_forgotten.png").build()
+                                                   LabyrinthOfLore::WorldMap::MultiBitmapFilenameToWorldBuilder("data/bitmaps/village_of_the_forgotten.png", "data/bitmaps/village_of_the_forgotten-type.png").build()
                                                 )
          },
       };
@@ -1318,33 +1318,37 @@ int main(int argc, char **argv)
                break;
             }
          case ALLEGRO_EVENT_KEY_CHAR: // using key down does not capture the SHIFT modifier for cheats
-            if (this_event.keyboard.keycode == ALLEGRO_KEY_ESCAPE) shutdown_program = true;
-            if (this_event.keyboard.keycode == ALLEGRO_KEY_A) player_turning = -max_player_turning_speed;
-            if (this_event.keyboard.keycode == ALLEGRO_KEY_W) player_movement_magnitude = 0.022;
-            if (this_event.keyboard.keycode == ALLEGRO_KEY_D) player_turning = max_player_turning_speed;
-            if (this_event.keyboard.keycode == ALLEGRO_KEY_S) player_movement_magnitude = -0.022;
+            {
+               bool shift = this_event.keyboard.modifiers & ALLEGRO_KEYMOD_SHIFT;
 
-            if (this_event.keyboard.keycode == ALLEGRO_KEY_T) depth_darken_shader.toggle_torch();
+               if (this_event.keyboard.keycode == ALLEGRO_KEY_ESCAPE) shutdown_program = true;
+               if (this_event.keyboard.keycode == ALLEGRO_KEY_A) player_turning = shift ? 4*-max_player_turning_speed : -max_player_turning_speed;
+               if (this_event.keyboard.keycode == ALLEGRO_KEY_W) player_movement_magnitude = shift ? 0.1 : 0.022;
+               if (this_event.keyboard.keycode == ALLEGRO_KEY_D) player_turning = shift ? 4*max_player_turning_speed : max_player_turning_speed;
+               if (this_event.keyboard.keycode == ALLEGRO_KEY_S) player_movement_magnitude = shift ? -0.1 : -0.022;
 
-            process_cheat_keyboard_keydown_event(
-               this_event,
-               player_inventory
-            );
+               if (this_event.keyboard.keycode == ALLEGRO_KEY_T) depth_darken_shader.toggle_torch();
 
-            process_keyboard_keydown_event(
-               this_event,
-               doors,
-               player_entity,
-               levels,
-               meshes,
-               water_meshes,
-               player_yaw,
-               current_tile_map,
-               current_tile_map_mesh,
-               current_tile_map_water_mesh,
-               title_text,
-               command_panel
-            );
+               process_cheat_keyboard_keydown_event(
+                  this_event,
+                  player_inventory
+               );
+
+               process_keyboard_keydown_event(
+                  this_event,
+                  doors,
+                  player_entity,
+                  levels,
+                  meshes,
+                  water_meshes,
+                  player_yaw,
+                  current_tile_map,
+                  current_tile_map_mesh,
+                  current_tile_map_water_mesh,
+                  title_text,
+                  command_panel
+               );
+            }
             break;
          case USER_EVENT_APPEND_MESSAGE_TO_MESSAGE_SCROLL:
             break;
