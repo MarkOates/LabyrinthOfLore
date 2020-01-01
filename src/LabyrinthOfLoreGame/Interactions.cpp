@@ -39,6 +39,15 @@ return;
 
 }
 
+std::string Interactions::you_have_received_the_(int thing_id)
+{
+LabyrinthOfLore::Entity::ThingDefinition &this_thing_definition = thing_dictionary->find_definition_ref(thing_id);
+std::stringstream message;
+message << "You have received the " << this_thing_definition.infer_decorated_name() << ".";
+return message.str();
+
+}
+
 void Interactions::character_speaks(std::string message)
 {
 message_scroll->append_character_dialog(time_now, message);

@@ -31,6 +31,7 @@ namespace LabyrinthOfLoreGame
 
 
    void validate_arguments();
+   std::string you_have_received_the_(int thing_id={});
    void character_speaks(std::string message="");
    void append_message(std::string message="");
    bool player_has_item(int item_id=-1);

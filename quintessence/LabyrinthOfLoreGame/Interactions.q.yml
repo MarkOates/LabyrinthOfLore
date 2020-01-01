@@ -38,6 +38,17 @@ functions:
      if (!player_inventory) throw std::runtime_error("Cannot process_thing_talk_click with a nullptr player_inventory");
 
      return;
+  - name: you_have_received_the_
+    type: std::string
+    parameters:
+      - name: thing_id
+        type: int
+        default_argument: "{}"
+    body: |
+      LabyrinthOfLore::Entity::ThingDefinition &this_thing_definition = thing_dictionary->find_definition_ref(thing_id);
+      std::stringstream message;
+      message << "You have received the " << this_thing_definition.infer_decorated_name() << ".";
+      return message.str();
   - name: character_speaks
     parameters:
       - name: message
@@ -177,6 +188,8 @@ dependencies:
     headers: [ LabyrinthOfLoreGame/ItemIdEnums.hpp ]
   - symbol: std::stringstream
     headers: [ sstream ]
+  - symbol: LabyrinthOfLore::Entity::ThingDefinition
+    headers: [ LabyrinthOfLore/Entity/ThingDefinition.hpp ]
   - symbol: LabyrinthOfLoreGame::ThingDefinitionFactory*
     headers: [ LabyrinthOfLoreGame/ThingDefinitionFactory.hpp ]
   - symbol: thing_type_t
