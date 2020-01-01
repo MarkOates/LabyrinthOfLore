@@ -3,7 +3,19 @@ properties:
     type: std::map<int, LabyrinthOfLore::Entity::ThingDefinition>
     init_with: "{}"
     constructor_arg: true
+    getter_ref: true
 functions:
+  - name: create_new_definition
+    type: int
+    parameters:
+      - name: thing
+        type: LabyrinthOfLore::Entity::ThingDefinition
+        default_argument: "{}"
+    body: |
+      int largest_thing_id = definitions.rbegin()->first;
+      int new_thing_id = largest_thing_id++;
+      definitions[new_thing_id] = thing;
+      return new_thing_id;
   - name: find_definition
     type: LabyrinthOfLore::Entity::ThingDefinition
     parameters:

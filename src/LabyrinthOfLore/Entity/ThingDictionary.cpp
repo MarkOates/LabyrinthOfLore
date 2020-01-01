@@ -21,6 +21,21 @@ ThingDictionary::~ThingDictionary()
 }
 
 
+std::map<int, LabyrinthOfLore::Entity::ThingDefinition> &ThingDictionary::get_definitions_ref()
+{
+   return definitions;
+}
+
+
+int ThingDictionary::create_new_definition(LabyrinthOfLore::Entity::ThingDefinition thing)
+{
+int largest_thing_id = definitions.rbegin()->first;
+int new_thing_id = largest_thing_id++;
+definitions[new_thing_id] = thing;
+return new_thing_id;
+
+}
+
 LabyrinthOfLore::Entity::ThingDefinition ThingDictionary::find_definition(int tile_type)
 {
 if (definitions.find(tile_type) == definitions.end()) return LabyrinthOfLore::Entity::ThingDefinition();
