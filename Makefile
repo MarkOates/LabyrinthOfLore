@@ -6,7 +6,7 @@
 #FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Entity/Cleanup
 #FOCUSED_COMPONENT_NAME= LabyrinthOfLore/WorldMap/MultiBitmapTileMapLoader
 #FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Rendering/TileMapWaterMesh
-FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Hud/CharacterPanel
+FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Entity/ThingDefinition
 #FOCUSED_TEST_FILTER=
 
 

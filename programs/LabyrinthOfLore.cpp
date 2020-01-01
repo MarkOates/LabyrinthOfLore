@@ -112,7 +112,9 @@ enum item_id_t
    ITEM_TORCH_FUEL_ID,
 
    // characters
-   MAN_AT_THE_ENTRANCE_TO_THE_CAVE
+   MAN_AT_THE_ENTRANCE_TO_THE_CAVE,
+
+   RAT = 100,
 };
 
 
@@ -454,8 +456,6 @@ void process_thing_use_click(
    LabyrinthOfLore::Entity::ThingDefinition &this_thing_definition = thing_dictionary.find_definition_ref(thing_id);
 
 
-   bool item_can_be_used_without_picking_up; //// WILL NEED TO FINISHE THIS THOUGHT HERE
-
    if (entity->exists(MUST_BE_PICKED_UP_TO_BE_USED))
    {
       message_scroll.append_message(al_get_time(), you_must_pickup_this_item_to_use_it(this_thing_definition));
@@ -464,6 +464,39 @@ void process_thing_use_click(
    {
       message_scroll.append_message(al_get_time(), this_cannot_be_used(this_thing_definition));
    }
+}
+
+
+
+void process_thing_attack_click(
+      std::vector<LabyrinthOfLore::Entity::Base *> &all_entities,
+      LabyrinthOfLore::Entity::Base *entity,
+      //int thing_id,
+      LabyrinthOfLore::Entity::ThingDictionary &thing_dictionary,
+      LabyrinthOfLore::Hud::MessageScroll &message_scroll,
+      LabyrinthOfLore::Hud::CharacterPanel &character_panel,
+      AllegroFlare::Inventory &player_inventory
+      )
+{
+   if (!entity) throw std::runtime_error("Cannot process_thing_attack_click with a nullptr entity");
+   if (!entity->exists(THING_ID_ATTRIBUTE)) throw std::runtime_error("Cannot process_thing_attack_click expecting the entity to have a \"thing_id\" but it does not.");
+
+   int thing_id = entity->get_as_int(THING_ID_ATTRIBUTE);
+
+   LabyrinthOfLore::Entity::ThingDefinition &this_thing_definition = thing_dictionary.find_definition_ref(thing_id);
+
+
+   //this_thing_definition
+
+
+   //if (entity->exists(MUST_BE_PICKED_UP_TO_BE_USED))
+   //{
+      ////message_scroll.append_message(al_get_time(), you_must_pickup_this_item_to_use_it(this_thing_definition));
+   //}
+   //else
+   //{
+      //message_scroll.append_message(al_get_time(), this_cannot_be_used(this_thing_definition));
+   //}
 }
 
 
@@ -538,6 +571,17 @@ void process_click_event(
          else if (command_panel.get_current_mode() == LabyrinthOfLore::Hud::COMMAND_MODE_USE)
          {
             process_thing_use_click(
+                  all_entities,
+                  this_entity,
+                  thing_dictionary,
+                  message_scroll,
+                  character_panel,
+                  player_inventory
+               );
+         }
+         else if (command_panel.get_current_mode() == LabyrinthOfLore::Hud::COMMAND_MODE_ATTACK)
+         {
+            process_thing_attack_click(
                   all_entities,
                   this_entity,
                   thing_dictionary,
@@ -1091,12 +1135,14 @@ int main(int argc, char **argv)
 
 
       //
-      LabyrinthOfLore::Entity::ThingDictionary thing_dictionary({
-          { ITEM_TORCH_ID,                         LabyrinthOfLore::Entity::ThingDefinition("a",   "torch",                                 &item_tile_atlas,      6 + 9*14,  1)  },
-          { ITEM_RING_OF_LOFT_ID,                  LabyrinthOfLore::Entity::ThingDefinition("the", "ring of loft",                          &item_tile_atlas,      10+13*14,  1)  },
-          { ITEM_INFINITY_TORCH_ID,                LabyrinthOfLore::Entity::ThingDefinition("the", "infinity torch",                        &item_tile_atlas,      6 + 9*14,  1)  },
-          { ITEM_TORCH_FUEL_ID,                    LabyrinthOfLore::Entity::ThingDefinition("some","torch fuel",                            &item_tile_atlas,      27 + 5*14, 1)  },
-          { MAN_AT_THE_ENTRANCE_TO_THE_CAVE,       LabyrinthOfLore::Entity::ThingDefinition("",    "a goblin at the entrance of the cave",  &character_tile_atlas, 4 + 11*7,  1)  },
+      LabyrinthOfLore::Entity::ThingDictionary thing_dictionary({                                                                          // tile atlas and index            // weight  // health  // mood
+          { ITEM_TORCH_ID,                         LabyrinthOfLore::Entity::ThingDefinition("a",   "torch",                                 &item_tile_atlas,      6 + 9*14,  1,         1)  },
+          { ITEM_RING_OF_LOFT_ID,                  LabyrinthOfLore::Entity::ThingDefinition("the", "ring of loft",                          &item_tile_atlas,      10+13*14,  1,         1)  },
+          { ITEM_INFINITY_TORCH_ID,                LabyrinthOfLore::Entity::ThingDefinition("the", "infinity torch",                        &item_tile_atlas,      6 + 9*14,  1,         1)  },
+          { ITEM_TORCH_FUEL_ID,                    LabyrinthOfLore::Entity::ThingDefinition("some","torch fuel",                            &item_tile_atlas,      27 + 5*14, 1,         1)  },
+          { MAN_AT_THE_ENTRANCE_TO_THE_CAVE,       LabyrinthOfLore::Entity::ThingDefinition("a",   "goblin at the entrance of the cave",  &character_tile_atlas, 4 + 11*7,    1,         10,        "friendly")  },
+
+          { RAT+1,                                 LabyrinthOfLore::Entity::ThingDefinition("",    "rat",                                 &character_tile_atlas, 4 + 12*7,    1,         3)  },
       });
 
 
@@ -1148,6 +1194,9 @@ int main(int argc, char **argv)
 
       add_thing_to_world(all_entities, thing_dictionary, ITEM_TORCH_ID,                   THE_UNDERWORLD_IDENTIFIER, {  42.5,  77.5, 3.0 }, true, true,  false);
       add_thing_to_world(all_entities, thing_dictionary, MAN_AT_THE_ENTRANCE_TO_THE_CAVE, THE_CAVE_IDENTIFIER,       {  31.5,  9.5, 1.0 },  true, false, false);
+
+      // a rat
+      add_thing_to_world(all_entities, thing_dictionary, RAT+1,                           THE_UNDERWORLD_IDENTIFIER, {  40.5,  101.5, 1.0 },  true, false, false);
 
 
       //for (int y=0; y<36; y++)
