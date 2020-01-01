@@ -138,6 +138,11 @@ functions:
          else {
             character_speaks("Hey traveler! Down this cavern is a runestone of immaginable power. " \
                               "If you dare to go, you'll need to keep a lit torch or the darkness will attack you.");
+            if (!player_has_thing_of_type(THING_TYPE_TORCH_FUEL))
+            {
+               player_inventory->add_item(thing_dictionary->create_new_definition({THING_TYPE_TORCH_FUEL, "some", "torch fuel"}));
+               character_speaks("Here, take some torch fuel.");
+            }
          }
       }
 

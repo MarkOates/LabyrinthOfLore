@@ -123,12 +123,31 @@ TEST_F(LabyrinthOfLoreGame_InteractionsTest, process_talk__if_you_talk_to_the_ma
       { MAN_AT_THE_ENTRANCE_TO_THE_CAVE, LabyrinthOfLore::Entity::ThingDefinition() },
    });
 
-   //LabyrinthOfLoreGame::Interactions interactions(MAN_AT_THE_ENTRANCE_TO_THE_CAVE, &thing_definition_factory, &all_entities, &thing_dictionary, &message_scroll, &character_panel, &player_inventory);
    std::string expected_thing_to_say = "Hey traveler! Down this cavern is a runestone of immaginable power. If you dare to go, you'll need to keep a lit torch or the darkness will attack you.";
 
    interactions.process_talk(MAN_AT_THE_ENTRANCE_TO_THE_CAVE);
 
    ASSERT_SAID(expected_thing_to_say);
+}
+
+
+
+TEST_F(LabyrinthOfLoreGame_InteractionsTest, process_talk__when_you_talk_to_the_man_at_the_entrance_of_the_cave__if_you_do_not_have_any_torch_fuel__he_will_give_you_one_torch_fuel)
+{
+   thing_dictionary = LabyrinthOfLore::Entity::ThingDictionary({
+      { MAN_AT_THE_ENTRANCE_TO_THE_CAVE, LabyrinthOfLore::Entity::ThingDefinition() },
+   });
+
+   std::vector<std::string> expected_things_said = {
+      "Hey traveler! Down this cavern is a runestone of immaginable power. If you dare to go, you'll need to keep a lit torch or the darkness will attack you.",
+      "Here, take some torch fuel.",
+   };
+
+   interactions.process_talk(MAN_AT_THE_ENTRANCE_TO_THE_CAVE);
+
+   for (auto &expected_thing_said : expected_things_said) ASSERT_SAID(expected_thing_said);
+
+   ASSERT_EQ(1, character_panel.calculate_count_of_type(THING_TYPE_TORCH_FUEL));
 }
 
 
