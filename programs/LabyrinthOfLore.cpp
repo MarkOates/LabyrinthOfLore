@@ -48,6 +48,7 @@
 #include <LabyrinthOfLore/Entity/ThingDefinition.hpp>
 #include <LabyrinthOfLore/Entity/ThingDictionary.hpp>
 #include <LabyrinthOfLore/Hud/CommandPanelModeEnum.hpp>
+#include <LabyrinthOfLore/WorldMap/TileTypeEnum.hpp>
 #include <LabyrinthOfLore/Entity/Cleanup.hpp>
 //#include <algorithm> // for std::max
 
@@ -831,8 +832,11 @@ int main(int argc, char **argv)
       //
 
       LabyrinthOfLore::Rendering::TileTypeDictionary tile_type_dictionary({
-          { 1,           LabyrinthOfLore::Rendering::TileTypeDefinition(1, 1, 0) },
-          { 2,           LabyrinthOfLore::Rendering::TileTypeDefinition(2, 2, 0) },
+          { LabyrinthOfLore::WorldMap::NORMAL_GROUND_TILE, LabyrinthOfLore::Rendering::TileTypeDefinition(1, 1, 0) },
+          { LabyrinthOfLore::WorldMap::DOOR_TILE,          LabyrinthOfLore::Rendering::TileTypeDefinition(2, 2, 0) },
+          { LabyrinthOfLore::WorldMap::WATER_TILE,         LabyrinthOfLore::Rendering::TileTypeDefinition(2, 2, 0) },
+          { LabyrinthOfLore::WorldMap::LAVA_TILE,          LabyrinthOfLore::Rendering::TileTypeDefinition(2, 2, 0) },
+          { LabyrinthOfLore::WorldMap::GLOW_WATER_TILE,    LabyrinthOfLore::Rendering::TileTypeDefinition(2, 2, 0) },
       });
 
       //
