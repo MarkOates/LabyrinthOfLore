@@ -1451,7 +1451,9 @@ int main(int argc, char **argv)
                if (this_event.keyboard.keycode == ALLEGRO_KEY_D) player_turning = shift ? 4*max_player_turning_speed : max_player_turning_speed;
                if (this_event.keyboard.keycode == ALLEGRO_KEY_S) player_movement_magnitude = shift ? -0.1 : -0.022;
 
-               if (this_event.keyboard.keycode == ALLEGRO_KEY_T) depth_darken_shader.toggle_torch();
+               if (this_event.keyboard.keycode == ALLEGRO_KEY_Y) depth_darken_shader.set_torch_type(0);
+               if (this_event.keyboard.keycode == ALLEGRO_KEY_H) depth_darken_shader.set_torch_type(1);
+               if (this_event.keyboard.keycode == ALLEGRO_KEY_N) depth_darken_shader.set_torch_type(2);
 
                process_cheat_keyboard_keydown_event(
                   this_event,

@@ -12,7 +12,7 @@ namespace LabyrinthOfLore
       class DepthDarken : private LabyrinthOfLore::Shader::Base
       {
       private:
-         bool torch_on;
+         int torch_type;
          bool initialized;
 
       public:
@@ -21,7 +21,7 @@ namespace LabyrinthOfLore
 
 
       void initialize();
-      void toggle_torch();
+      void set_torch_type(int type=0);
       void set_torch_on();
       void set_torch_off();
       void activate();

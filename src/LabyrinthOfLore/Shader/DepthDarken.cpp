@@ -12,7 +12,7 @@ namespace Shader
 
 DepthDarken::DepthDarken()
    : LabyrinthOfLore::Shader::Base(obtain_vertex_source(), obtain_fragment_source())
-   , torch_on(false)
+   , torch_type(0)
    , initialized(false)
 {
 }
@@ -30,28 +30,26 @@ initialized = true;
 
 }
 
-void DepthDarken::toggle_torch()
+void DepthDarken::set_torch_type(int type)
 {
-if (!torch_on) set_torch_on();
-else set_torch_off();
-
+torch_type = type;
 }
 
 void DepthDarken::set_torch_on()
 {
-torch_on = true;
+torch_type = 1;
 }
 
 void DepthDarken::set_torch_off()
 {
-torch_on = false;
+torch_type = 0;
 }
 
 void DepthDarken::activate()
 {
 if (!initialized) throw std::runtime_error("[LabyrinthOfLore::Shader::ClampedColor] Attempting to activate() shader before it has been initialized");
 LabyrinthOfLore::Shader::Base::activate();
-Shader::set_bool("torch_on", torch_on);
+Shader::set_int("torch_type", torch_type);
 
 }
 
@@ -88,19 +86,29 @@ static const std::string source = R"DELIM(
   uniform sampler2D al_tex;
   uniform float tint_intensity;
   uniform vec3 tint;
-  uniform bool torch_on;
+  uniform int torch_type;
   varying vec4 varying_color;
   varying vec2 varying_texcoord;
 
   void main()
   {
      vec4 tmp = texture2D(al_tex, varying_texcoord);
-     vec4 torch_color = (vec4(0.96, 0.804, 0.2941, 1.0) + vec4(1., 1., 1., 1.)) * 0.7;
      //float noise = 1.0; //noise1(3)* 0.1 + 0.9;
 
-     //bool torch_on = false;
-     if (torch_on)
+     //bool torch_type = false;
+     if (torch_type == 1) // regular torch
      {
+        vec4 torch_color = (vec4(0.96, 0.804, 0.2941, 1.0) + vec4(1., 1., 1., 1.)) * 0.7;
+        float depth_value = gl_FragCoord.a;
+        //float inverse_tint_intensity = 1.0 - tint_intensity;
+        tmp.r = tmp.r * depth_value * torch_color.r;// * noise;
+        tmp.g = tmp.g * depth_value * torch_color.g;// * noise;
+        tmp.b = tmp.b * depth_value * torch_color.b;// * noise;
+        //tmp.a = tmp.a;
+     }
+     else if (torch_type == 2) // torch_of_truth
+     {
+        vec4 torch_color = (vec4(0.73, 0.744, 0.79, 1.0) + vec4(1., 1., 1., 1.)) * 0.8;
         float depth_value = gl_FragCoord.a;
         //float inverse_tint_intensity = 1.0 - tint_intensity;
         tmp.r = tmp.r * depth_value * torch_color.r;// * noise;
