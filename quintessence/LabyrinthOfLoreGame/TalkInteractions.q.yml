@@ -1,0 +1,36 @@
+properties:
+  - name: all_entities
+    type: std::vector<LabyrinthOfLore::Entity::Base*>*
+    init_with: nullptr
+  - name: entity
+    type: LabyrinthOfLore::Entity::Base*
+    init_with: nullptr
+  - name: thing_dictionary
+    type: LabyrinthOfLore::Entity::ThingDictionary*
+    init_with: nullptr
+  - name: message_scroll
+    type: LabyrinthOfLore::Hud::MessageScroll*
+    init_with: nullptr
+  - name: character_panel
+    type: LabyrinthOfLore::Hud::CharacterPanel*
+    init_with: nullptr
+  - name: player_inventory
+    type: AllegroFlare::Inventory*
+    init_with: nullptr
+functions:
+  - name: run
+    type: std::string
+    body: return "Hello World!";
+dependencies:
+  - symbol: std::vector<LabyrinthOfLore::Entity::Base*>*
+    headers: [ vector, LabyrinthOfLore/Entity/Base.hpp ]
+  - symbol: LabyrinthOfLore::Entity::Base*
+    headers: [ LabyrinthOfLore/Entity/Base.hpp ]
+  - symbol: LabyrinthOfLore::Entity::ThingDictionary*
+    headers: [ LabyrinthOfLore/Entity/ThingDictionary.hpp ]
+  - symbol: LabyrinthOfLore::Hud::MessageScroll*
+    headers: [ LabyrinthOfLore/Hud/MessageScroll.hpp ]
+  - symbol: LabyrinthOfLore::Hud::CharacterPanel*
+    headers: [ LabyrinthOfLore/Hud/CharacterPanel.hpp ]
+  - symbol: AllegroFlare::Inventory*
+    headers: [ AllegroFlare/Inventory.hpp ]
