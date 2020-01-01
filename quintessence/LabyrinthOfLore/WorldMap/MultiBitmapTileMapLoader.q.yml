@@ -57,6 +57,15 @@ functions:
   - name: pick_door_color
     type: ALLEGRO_COLOR
     body: return pick_color(get_index_column_x(), 1);
+  - name: pick_water_color
+    type: ALLEGRO_COLOR
+    body: return pick_color(get_index_column_x(), 2);
+  - name: pick_lava_color
+    type: ALLEGRO_COLOR
+    body: return pick_color(get_index_column_x(), 3);
+  - name: pick_glow_water_color
+    type: ALLEGRO_COLOR
+    body: return pick_color(get_index_column_x(), 4);
   - name: validate
     type: bool
     body: |
@@ -100,7 +109,16 @@ functions:
             ALLEGRO_COLOR this_pixel_color = al_get_pixel(source_bitmap, x, y);
 
             if (colors_are_equal(this_pixel_color, pick_door_color()))
-               tile_map->set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(2, tile_map->get_tile(x, y).get_height()));
+               tile_map->set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(LabyrinthOfLore::WorldMap::DOOR_TILE, tile_map->get_tile(x, y).get_height()));
+
+            else if (colors_are_equal(this_pixel_color, pick_water_color()))
+               tile_map->set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(LabyrinthOfLore::WorldMap::WATER_TILE, tile_map->get_tile(x, y).get_height()));
+
+            else if (colors_are_equal(this_pixel_color, pick_lava_color()))
+               tile_map->set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(LabyrinthOfLore::WorldMap::LAVA_TILE, tile_map->get_tile(x, y).get_height()));
+
+            else if (colors_are_equal(this_pixel_color, pick_glow_water_color()))
+               tile_map->set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(LabyrinthOfLore::WorldMap::GLOW_WATER_TILE, tile_map->get_tile(x, y).get_height()));
 
             //else
             //{
@@ -115,6 +133,7 @@ functions:
       //return result;
     body_dependency_symbols:
       - std::stringstream
+      - LabyrinthOfLore::WorldMap::tile_type_t
 dependencies:
   - symbol: std::stringstream
     headers: [ sstream ]
@@ -126,3 +145,5 @@ dependencies:
     headers: [ LabyrinthOfLore/WorldMap/TileMap.hpp ]
   - symbol: LabyrinthOfLore::WorldMap::TileMap
     headers: [ LabyrinthOfLore/WorldMap/TileMap.hpp ]
+  - symbol: LabyrinthOfLore::WorldMap::tile_type_t
+    headers: [ LabyrinthOfLore/WorldMap/TileTypeEnum.hpp ]

@@ -2,6 +2,7 @@
 
 #include <LabyrinthOfLore/WorldMap/MultiBitmapTileMapLoader.hpp>
 #include <sstream>
+#include <LabyrinthOfLore/WorldMap/TileTypeEnum.hpp>
 
 
 namespace LabyrinthOfLore
@@ -66,6 +67,21 @@ ALLEGRO_COLOR MultiBitmapTileMapLoader::pick_door_color()
 return pick_color(get_index_column_x(), 1);
 }
 
+ALLEGRO_COLOR MultiBitmapTileMapLoader::pick_water_color()
+{
+return pick_color(get_index_column_x(), 2);
+}
+
+ALLEGRO_COLOR MultiBitmapTileMapLoader::pick_lava_color()
+{
+return pick_color(get_index_column_x(), 3);
+}
+
+ALLEGRO_COLOR MultiBitmapTileMapLoader::pick_glow_water_color()
+{
+return pick_color(get_index_column_x(), 4);
+}
+
 bool MultiBitmapTileMapLoader::validate()
 {
 return true;
@@ -103,7 +119,16 @@ for (unsigned y=0; y<final_tile_map_height; y++)
       ALLEGRO_COLOR this_pixel_color = al_get_pixel(source_bitmap, x, y);
 
       if (colors_are_equal(this_pixel_color, pick_door_color()))
-         tile_map->set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(2, tile_map->get_tile(x, y).get_height()));
+         tile_map->set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(LabyrinthOfLore::WorldMap::DOOR_TILE, tile_map->get_tile(x, y).get_height()));
+
+      else if (colors_are_equal(this_pixel_color, pick_water_color()))
+         tile_map->set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(LabyrinthOfLore::WorldMap::WATER_TILE, tile_map->get_tile(x, y).get_height()));
+
+      else if (colors_are_equal(this_pixel_color, pick_lava_color()))
+         tile_map->set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(LabyrinthOfLore::WorldMap::LAVA_TILE, tile_map->get_tile(x, y).get_height()));
+
+      else if (colors_are_equal(this_pixel_color, pick_glow_water_color()))
+         tile_map->set_tile(x, y, LabyrinthOfLore::WorldMap::Tile(LabyrinthOfLore::WorldMap::GLOW_WATER_TILE, tile_map->get_tile(x, y).get_height()));
 
       //else
       //{

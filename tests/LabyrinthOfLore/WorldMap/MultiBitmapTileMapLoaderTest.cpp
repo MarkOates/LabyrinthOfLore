@@ -22,6 +22,8 @@ static void EXPECT_EQ_COLOR(ALLEGRO_COLOR expected, ALLEGRO_COLOR actual)
 
 #include <LabyrinthOfLore/WorldMap/MultiBitmapTileMapLoader.hpp>
 
+#include <LabyrinthOfLore/WorldMap/TileTypeEnum.hpp>
+
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
 
@@ -126,8 +128,58 @@ TEST(LabyrinthOfLore_WorldMap_MultiBitmapTileMapLoaderTest, load_and_process__on
 
    bitmap_tile_map_loader.load_and_process();
 
-   EXPECT_EQ(2, tile_map.get_tile(expected_door_x, expected_door_y).get_type());
+   EXPECT_EQ(LabyrinthOfLore::WorldMap::DOOR_TILE, tile_map.get_tile(expected_door_x, expected_door_y).get_type());
    EXPECT_NEAR(door_height, tile_map.get_tile(expected_door_x, expected_door_y).get_height(), FLOATING_POINT_ERROR_MARGIN);
+
+   al_uninstall_system();
+   SUCCEED();
+}
+
+TEST(LabyrinthOfLore_WorldMap_MultiBitmapTileMapLoaderTest, load_and_process__on_water_tiles__will_change_the_tile_type_to_3)
+{
+   al_init();
+   al_init_image_addon();
+
+   int expected_water_x = 6;
+   int expected_water_y = 16;
+   float water_height = 1.2;
+
+   LabyrinthOfLore::WorldMap::TileMap tile_map;
+   tile_map.resize(50, 67, LabyrinthOfLore::WorldMap::Tile(1, water_height));
+   ALLEGRO_BITMAP *source_bitmap = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/test_bitmap_tile_map_loader-multi.png");
+   ASSERT_NE(nullptr, source_bitmap);
+
+   LabyrinthOfLore::WorldMap::MultiBitmapTileMapLoader bitmap_tile_map_loader(&tile_map, source_bitmap);
+
+   bitmap_tile_map_loader.load_and_process();
+
+   EXPECT_EQ(LabyrinthOfLore::WorldMap::LAVA_TILE, tile_map.get_tile(expected_water_x, expected_water_y).get_type());
+   EXPECT_NEAR(water_height, tile_map.get_tile(expected_water_x, expected_water_y).get_height(), FLOATING_POINT_ERROR_MARGIN);
+
+   al_uninstall_system();
+   SUCCEED();
+}
+
+TEST(LabyrinthOfLore_WorldMap_MultiBitmapTileMapLoaderTest, load_and_process__on_water_tiles__will_change_the_tile_type_to_4)
+{
+   al_init();
+   al_init_image_addon();
+
+   int expected_water_x = 6;
+   int expected_water_y = 7;
+   float water_height = 1.2;
+
+   LabyrinthOfLore::WorldMap::TileMap tile_map;
+   tile_map.resize(50, 67, LabyrinthOfLore::WorldMap::Tile(1, water_height));
+   ALLEGRO_BITMAP *source_bitmap = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/test_bitmap_tile_map_loader-multi.png");
+   ASSERT_NE(nullptr, source_bitmap);
+
+   LabyrinthOfLore::WorldMap::MultiBitmapTileMapLoader bitmap_tile_map_loader(&tile_map, source_bitmap);
+
+   bitmap_tile_map_loader.load_and_process();
+
+   EXPECT_EQ(LabyrinthOfLore::WorldMap::GLOW_WATER_TILE, tile_map.get_tile(expected_water_x, expected_water_y).get_type());
+   EXPECT_NEAR(water_height, tile_map.get_tile(expected_water_x, expected_water_y).get_height(), FLOATING_POINT_ERROR_MARGIN);
 
    al_uninstall_system();
    SUCCEED();
