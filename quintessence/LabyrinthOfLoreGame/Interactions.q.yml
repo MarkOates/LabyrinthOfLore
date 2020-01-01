@@ -95,7 +95,14 @@ functions:
         default_argument: THING_TYPE_UNDEFINED
     body: |
         return get_player_inventory_count_of_type() >= 1;
-  - name: process
+  - name: process_use
+    parameters:
+      - name: time_now
+        type: float
+        default_argument: 0.0f
+    body: |
+      return;
+  - name: process_talk
     parameters:
       - name: time_now
         type: float

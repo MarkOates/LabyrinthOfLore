@@ -81,7 +81,13 @@ return get_player_inventory_count_of_type() >= 1;
 
 }
 
-void Interactions::process(float time_now)
+void Interactions::process_use(float time_now)
+{
+return;
+
+}
+
+void Interactions::process_talk(float time_now)
 {
 LabyrinthOfLore::Entity::ThingDefinition &this_thing_definition = thing_dictionary->find_definition_ref(thing_id);
 

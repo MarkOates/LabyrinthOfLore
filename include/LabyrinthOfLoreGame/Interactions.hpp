@@ -39,7 +39,8 @@ namespace LabyrinthOfLoreGame
    bool player_has_item(int item_id=-1);
    int get_player_inventory_count_of_type(thing_type_t thing_type=THING_TYPE_UNDEFINED);
    bool player_has_thing_of_type(thing_type_t thing_type=THING_TYPE_UNDEFINED);
-   void process(float time_now=0.0f);
+   void process_use(float time_now=0.0f);
+   void process_talk(float time_now=0.0f);
    };
 }
 
