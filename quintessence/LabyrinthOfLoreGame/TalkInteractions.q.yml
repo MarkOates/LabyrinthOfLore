@@ -3,6 +3,10 @@ properties:
     type: int
     init_with: 0
     constructor_arg: true
+  - name: thing_definition_factory
+    type: LabyrinthOfLoreGame::ThingDefinitionFactory*
+    init_with: nullptr
+    constructor_arg: true
   - name: all_entities
     type: std::vector<LabyrinthOfLore::Entity::Base*>*
     init_with: nullptr
@@ -36,6 +40,7 @@ functions:
   - name: validate_arguments
     body: |
      if (!all_entities) throw std::runtime_error("Cannot process_thing_talk_click with a nullptr all_entities");
+     if (!thing_definition_factory) throw std::runtime_error("Cannot process_thing_talk_click with a nullptr thing_definition_factory");
      if (!thing_dictionary) throw std::runtime_error("Cannot process_thing_talk_click with a nullptr thing_dictionary");
      if (!message_scroll) throw std::runtime_error("Cannot process_thing_talk_click with a nullptr message_scroll");
      if (!character_panel) throw std::runtime_error("Cannot process_thing_talk_click with a nullptr character_panel");
@@ -81,6 +86,8 @@ functions:
     body: |
       LabyrinthOfLore::Entity::ThingDefinition &this_thing_definition = thing_dictionary->find_definition_ref(thing_id);
 
+      int new_id = -1;
+
       if (you_talk_to(MAN_AT_THE_ENTRANCE_TO_THE_CAVE))
       {
          if (player_has_item(ITEM_INFINITY_TORCH_ID)) {
@@ -104,14 +111,19 @@ functions:
 
       if (you_talk_to(HARCOURT_IN_THE_VILLAGE))
       {
-         if (!player_has_item(ITEM_TORCH_FUEL_ID))
-         {
-            character_speaks("It's not so great down here. We all do our best to help each other out. " \
+         //if (!player_has_item_of_type(ITEM_TORCH_FUEL_ID))
+         //{
+            //character_speaks("It's not so great down here. We all do our best to help each other out. " \
                              "You look like you're low on torch fuel. Have some of mine.");
-         }
-         else
+
+            //while(character_panel->
+            //player_inventory->add_item(thing_dictionary->create_new_definition({THING_TYPE_TORCH_FUEL, "some", "torch fuel"}));
+            //player_inventory->add_item(thing_dictionary->create_new_definition({THING_TYPE_TORCH_FUEL, "some", "torch fuel"}));
+            //player_inventory->add_item(thing_dictionary->create_new_definition({THING_TYPE_TORCH_FUEL, "some", "torch fuel"}));
+         //}
+         //else
          {
-            character_speaks("You look like an avatar I once knew. They were strong and powerful and once saved us all. Maybe you can do the same.");
+            character_speaks("You look like an avatar I once knew. So strong and powerful, they once saved us all. Maybe you can do the same.");
          }
       }
 
@@ -136,3 +148,7 @@ dependencies:
     headers: [ LabyrinthOfLoreGame/ItemIdEnums.hpp ]
   - symbol: std::stringstream
     headers: [ sstream ]
+  - symbol: LabyrinthOfLoreGame::ThingDefinitionFactory*
+    headers: [ LabyrinthOfLoreGame/ThingDefinitionFactory.hpp ]
+  - symbol: thing_type_t
+    headers: [ LabyrinthOfLoreGame/ItemIdEnums.hpp ]

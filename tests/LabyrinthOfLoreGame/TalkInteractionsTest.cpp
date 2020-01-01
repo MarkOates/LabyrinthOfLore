@@ -15,6 +15,7 @@ class LabyrinthOfLoreGame_TalkInteractionsTest : public ::testing::Test
 {
 protected:
    std::vector<LabyrinthOfLore::Entity::Base*> all_entities;
+   LabyrinthOfLoreGame::ThingDefinitionFactory thing_definition_factory;
    LabyrinthOfLore::Entity::ThingDictionary thing_dictionary;
    LabyrinthOfLore::Hud::MessageScroll message_scroll;
    LabyrinthOfLore::Hud::CharacterPanel character_panel;
@@ -22,6 +23,7 @@ protected:
 
    LabyrinthOfLoreGame_TalkInteractionsTest()
       : all_entities()
+      , thing_definition_factory()
       , thing_dictionary()
       , message_scroll()
       , character_panel()
@@ -39,7 +41,7 @@ protected:
 
    LabyrinthOfLoreGame::TalkInteractions create_simple_talk_interaction_with(int thing_talking_to)
    {
-      return LabyrinthOfLoreGame::TalkInteractions(thing_talking_to, &all_entities, &thing_dictionary, &message_scroll, &character_panel, &player_inventory);
+      return LabyrinthOfLoreGame::TalkInteractions(thing_talking_to, &thing_definition_factory, &all_entities, &thing_dictionary, &message_scroll, &character_panel, &player_inventory);
    }
 
    void ASSERT_SAID(std::string expected_message)
@@ -90,11 +92,12 @@ TEST_F(LabyrinthOfLoreGame_TalkInteractionsTest, validate_arguments__will_raise_
 {
    std::vector<LabyrinthOfLore::Entity::Base*> all_entities;
    LabyrinthOfLore::Entity::ThingDictionary thing_dictionary;
+   LabyrinthOfLoreGame::ThingDefinitionFactory thing_definition_factory;
    LabyrinthOfLore::Hud::MessageScroll message_scroll;
    LabyrinthOfLore::Hud::CharacterPanel character_panel;
    AllegroFlare::Inventory player_inventory;
 
-   LabyrinthOfLoreGame::TalkInteractions talk_interactions(0, &all_entities, &thing_dictionary, &message_scroll, &character_panel, &player_inventory);
+   LabyrinthOfLoreGame::TalkInteractions talk_interactions(0, &thing_definition_factory, &all_entities, &thing_dictionary, &message_scroll, &character_panel, &player_inventory);
 
    std::string expected_error_message = "cannot find_definition_ref in the ThingDictionary. It doesn't exist.";
    ASSERT_THROW_WITH_MESSAGE(talk_interactions.validate_arguments(), std::runtime_error, expected_error_message);
@@ -104,7 +107,7 @@ TEST_F(LabyrinthOfLoreGame_TalkInteractionsTest, validate_arguments__will_raise_
 
 TEST_F(LabyrinthOfLoreGame_TalkInteractionsTest, works_with_the_fixture)
 {
-   LabyrinthOfLoreGame::TalkInteractions talk_interactions(0, &all_entities, &thing_dictionary, &message_scroll, &character_panel, &player_inventory);
+   LabyrinthOfLoreGame::TalkInteractions talk_interactions(0, &thing_definition_factory, &all_entities, &thing_dictionary, &message_scroll, &character_panel, &player_inventory);
 
    std::string expected_error_message = "cannot find_definition_ref in the ThingDictionary. It doesn't exist.";
    ASSERT_THROW_WITH_MESSAGE(talk_interactions.validate_arguments(), std::runtime_error, expected_error_message);
@@ -120,7 +123,7 @@ TEST_F(LabyrinthOfLoreGame_TalkInteractionsTest, if_you_talk_to_the_man_at_the_e
       { MAN_AT_THE_ENTRANCE_TO_THE_CAVE, LabyrinthOfLore::Entity::ThingDefinition() },
    });
 
-   LabyrinthOfLoreGame::TalkInteractions talk_interactions(MAN_AT_THE_ENTRANCE_TO_THE_CAVE, &all_entities, &thing_dictionary, &message_scroll, &character_panel, &player_inventory);
+   LabyrinthOfLoreGame::TalkInteractions talk_interactions(MAN_AT_THE_ENTRANCE_TO_THE_CAVE, &thing_definition_factory, &all_entities, &thing_dictionary, &message_scroll, &character_panel, &player_inventory);
    std::string expected_thing_to_say = "Hey traveler! Down this cavern is a runestone of immaginable power. If you dare to go, you'll need to keep a lit torch or the darkness will attack you.";
 
    talk_interactions.process();
@@ -138,7 +141,7 @@ TEST_F(LabyrinthOfLoreGame_TalkInteractionsTest, with_the_torch_of_truth__talkin
 
    player_inventory.add_item(ITEM_TORCH_OF_TRUTH);
 
-   LabyrinthOfLoreGame::TalkInteractions talk_interactions(MAN_AT_THE_ENTRANCE_TO_THE_CAVE, &all_entities, &thing_dictionary, &message_scroll, &character_panel, &player_inventory);
+   LabyrinthOfLoreGame::TalkInteractions talk_interactions(MAN_AT_THE_ENTRANCE_TO_THE_CAVE, &thing_definition_factory, &all_entities, &thing_dictionary, &message_scroll, &character_panel, &player_inventory);
    std::string expected_thing_to_say = "Wowza! I thought the infinity torch you got was cool, but this is... this is... unbelievable!!";
 
    talk_interactions.process();
@@ -156,7 +159,7 @@ TEST_F(LabyrinthOfLoreGame_TalkInteractionsTest, with_the_infinity_torch__talkin
 
    player_inventory.add_item(ITEM_INFINITY_TORCH_ID);
 
-   LabyrinthOfLoreGame::TalkInteractions talk_interactions(MAN_AT_THE_ENTRANCE_TO_THE_CAVE, &all_entities, &thing_dictionary, &message_scroll, &character_panel, &player_inventory);
+   LabyrinthOfLoreGame::TalkInteractions talk_interactions(MAN_AT_THE_ENTRANCE_TO_THE_CAVE, &thing_definition_factory, &all_entities, &thing_dictionary, &message_scroll, &character_panel, &player_inventory);
    std::string expected_thing_to_say = "You found the Infinity Torch! Amazing! You are surely a seeker of truth! You have a long quest ahead of you, take this.";
 
    talk_interactions.process();
@@ -178,5 +181,46 @@ TEST_F(LabyrinthOfLoreGame_TalkInteractionsTest, if_you_talk_to_catalina_in_the_
    talk_interaction.process();
    ASSERT_SAID(expected_thing_to_say);
 }
+
+
+TEST_F(LabyrinthOfLoreGame_TalkInteractionsTest, if_you_talk_to_harcourt__he_will_give_you_a_prophecy)
+{
+   thing_dictionary = LabyrinthOfLore::Entity::ThingDictionary({
+      { HARCOURT_IN_THE_VILLAGE, LabyrinthOfLore::Entity::ThingDefinition() },
+   });
+
+   LabyrinthOfLoreGame::TalkInteractions talk_interaction = create_simple_talk_interaction_with(HARCOURT_IN_THE_VILLAGE);
+   std::string expected_thing_to_say = "You look like an avatar I once knew. So strong and powerful, they once saved us all. Maybe you can do the same.";
+
+   talk_interaction.process();
+
+   // assert he said the thing
+   ASSERT_SAID(expected_thing_to_say);
+}
+
+
+
+//TEST_F(LabyrinthOfLoreGame_TalkInteractionsTest, if_you_talk_to_harcourt__with_less_than_3_torch_fuels__he_will_tell_you_the_message__and_fill_you_up_to_3_torch_fuels)
+//{
+   //thing_dictionary = LabyrinthOfLore::Entity::ThingDictionary({
+      //{ HARCOURT_IN_THE_VILLAGE, LabyrinthOfLore::Entity::ThingDefinition() },
+   //});
+
+   //LabyrinthOfLoreGame::TalkInteractions talk_interaction = create_simple_talk_interaction_with(HARCOURT_IN_THE_VILLAGE);
+   //std::string expected_thing_to_say = "It's not so great down here. We all do our best to help each other out. You look like you're low on torch fuel. Have some of mine.";
+
+   //talk_interaction.process();
+
+   //// assert he said the thing
+   //ASSERT_SAID(expected_thing_to_say);
+
+   //// assert 3 new items have been created
+   //ASSERT_EQ(3, player_inventory.size());
+   ////ASSERT_EQ(THING_TYPE_TORCH_FUEL, player_inventory.get_items_ref()[0].get_type());
+   ////ASSERT_EQ(0, player_inventory.get_items_ref()[0].get_type());
+   ////ASSERT_EQ(0, player_inventory.get_items_ref()[0].get_type());
+   ////ASSERT_EQ(3, character_panel.calculate_count_of_type(THING_TYPE_TORCH_FUEL));
+   ////ASSERT_EQ(4, thing_dictionary.size());
+//}
 
 

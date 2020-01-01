@@ -6,6 +6,7 @@
 #include <LabyrinthOfLore/Entity/ThingDictionary.hpp>
 #include <LabyrinthOfLore/Hud/CharacterPanel.hpp>
 #include <LabyrinthOfLore/Hud/MessageScroll.hpp>
+#include <LabyrinthOfLoreGame/ThingDefinitionFactory.hpp>
 #include <string>
 #include <vector>
 
@@ -16,6 +17,7 @@ namespace LabyrinthOfLoreGame
    {
    private:
       int thing_id;
+      LabyrinthOfLoreGame::ThingDefinitionFactory* thing_definition_factory;
       std::vector<LabyrinthOfLore::Entity::Base*>* all_entities;
       LabyrinthOfLore::Entity::ThingDictionary* thing_dictionary;
       LabyrinthOfLore::Hud::MessageScroll* message_scroll;
@@ -25,7 +27,7 @@ namespace LabyrinthOfLoreGame
       static std::string THING_ID_ATTRIBUTE;
 
    public:
-      TalkInteractions(int thing_id=0, std::vector<LabyrinthOfLore::Entity::Base*>* all_entities=nullptr, LabyrinthOfLore::Entity::ThingDictionary* thing_dictionary=nullptr, LabyrinthOfLore::Hud::MessageScroll* message_scroll=nullptr, LabyrinthOfLore::Hud::CharacterPanel* character_panel=nullptr, AllegroFlare::Inventory* player_inventory=nullptr, float time_now=0.0f);
+      TalkInteractions(int thing_id=0, LabyrinthOfLoreGame::ThingDefinitionFactory* thing_definition_factory=nullptr, std::vector<LabyrinthOfLore::Entity::Base*>* all_entities=nullptr, LabyrinthOfLore::Entity::ThingDictionary* thing_dictionary=nullptr, LabyrinthOfLore::Hud::MessageScroll* message_scroll=nullptr, LabyrinthOfLore::Hud::CharacterPanel* character_panel=nullptr, AllegroFlare::Inventory* player_inventory=nullptr, float time_now=0.0f);
       ~TalkInteractions();
 
 

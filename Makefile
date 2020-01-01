@@ -2,6 +2,8 @@
 #FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Rendering/TileMapMeshPillarBuilder
 #FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Entity/ThingDefinition
 #FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Hud/MessageScroll
+#FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Hud/CharacterPanel
+#FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Entity/ThingDictionary
 FOCUSED_COMPONENT_NAME=LabyrinthOfLoreGame/TalkInteractions
 #FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer
 #FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Hud/CharacterPanel

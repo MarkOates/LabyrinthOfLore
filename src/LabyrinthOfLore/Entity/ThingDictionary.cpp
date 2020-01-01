@@ -34,6 +34,7 @@ return definitions.size();
 
 int ThingDictionary::create_new_definition(LabyrinthOfLore::Entity::ThingDefinition thing)
 {
+if (definitions.empty()) return 1;
 int largest_thing_id = definitions.rbegin()->first;
 int new_thing_id = largest_thing_id++;
 definitions[new_thing_id] = thing;
