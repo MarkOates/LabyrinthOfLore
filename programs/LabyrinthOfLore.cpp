@@ -1443,7 +1443,7 @@ int main(int argc, char **argv)
             }
          case ALLEGRO_EVENT_KEY_CHAR: // using key down does not capture the SHIFT modifier for cheats
             {
-               bool shift = this_event.keyboard.modifiers & ALLEGRO_KEYMOD_SHIFT;
+               bool shift = this_event.keyboard.modifiers & ALLEGRO_KEYMOD_SHIFT; /// DISABLE ON RELEASE
 
                if (this_event.keyboard.keycode == ALLEGRO_KEY_ESCAPE) shutdown_program = true;
                if (this_event.keyboard.keycode == ALLEGRO_KEY_A) player_turning = shift ? 4*-max_player_turning_speed : -max_player_turning_speed;
@@ -1451,9 +1451,9 @@ int main(int argc, char **argv)
                if (this_event.keyboard.keycode == ALLEGRO_KEY_D) player_turning = shift ? 4*max_player_turning_speed : max_player_turning_speed;
                if (this_event.keyboard.keycode == ALLEGRO_KEY_S) player_movement_magnitude = shift ? -0.1 : -0.022;
 
-               if (this_event.keyboard.keycode == ALLEGRO_KEY_Y) depth_darken_shader.set_torch_type(0);
-               if (this_event.keyboard.keycode == ALLEGRO_KEY_H) depth_darken_shader.set_torch_type(1);
-               if (this_event.keyboard.keycode == ALLEGRO_KEY_N) depth_darken_shader.set_torch_type(2);
+               if (this_event.keyboard.keycode == ALLEGRO_KEY_Y) depth_darken_shader.set_torch_type(0); /// DISABLE ON RELEASE
+               if (this_event.keyboard.keycode == ALLEGRO_KEY_H) depth_darken_shader.set_torch_type(1); /// DISABLE ON RELEASE
+               if (this_event.keyboard.keycode == ALLEGRO_KEY_N) depth_darken_shader.set_torch_type(2); /// DISABLE ON RELEASE
 
                process_cheat_keyboard_keydown_event(
                   this_event,

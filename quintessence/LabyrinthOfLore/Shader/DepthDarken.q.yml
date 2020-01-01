@@ -88,7 +88,8 @@ functions:
            else if (torch_type == 2) // torch_of_truth
            {
               vec4 torch_color = (vec4(0.73, 0.744, 0.79, 1.0) + vec4(1., 1., 1., 1.)) * 0.8;
-              float depth_value = gl_FragCoord.a;
+              float depth_value = (gl_FragCoord.a * 0.96) + 0.04;
+
               //float inverse_tint_intensity = 1.0 - tint_intensity;
               tmp.r = tmp.r * depth_value * torch_color.r;// * noise;
               tmp.g = tmp.g * depth_value * torch_color.g;// * noise;
