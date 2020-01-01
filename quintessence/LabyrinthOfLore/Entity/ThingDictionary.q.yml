@@ -15,11 +15,12 @@ functions:
         type: LabyrinthOfLore::Entity::ThingDefinition
         default_argument: "{}"
     body: |
-      if (definitions.empty()) return 1;
-      int largest_thing_id = definitions.rbegin()->first;
+      int largest_thing_id = std::max((int)CREATED_THINGS_START, definitions.rbegin()->first);
       int new_thing_id = largest_thing_id++;
       definitions[new_thing_id] = thing;
       return new_thing_id;
+    body_dependency_symbols:
+      - std::max
   - name: find_definition
     type: LabyrinthOfLore::Entity::ThingDefinition
     parameters:
@@ -45,3 +46,5 @@ dependencies:
     headers: [ LabyrinthOfLore/Entity/ThingDefinition.hpp ]
   - symbol: std::map<int, LabyrinthOfLore::Entity::ThingDefinition>
     headers: [ map, LabyrinthOfLore/Entity/ThingDefinition.hpp ]
+  - symbol: std::max
+    headers: [ algorithm ]

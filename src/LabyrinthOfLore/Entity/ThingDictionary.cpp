@@ -1,7 +1,7 @@
 
 
 #include <LabyrinthOfLore/Entity/ThingDictionary.hpp>
-
+#include <algorithm>
 
 
 namespace LabyrinthOfLore
@@ -34,8 +34,7 @@ return definitions.size();
 
 int ThingDictionary::create_new_definition(LabyrinthOfLore::Entity::ThingDefinition thing)
 {
-if (definitions.empty()) return 1;
-int largest_thing_id = definitions.rbegin()->first;
+int largest_thing_id = std::max((int)CREATED_THINGS_START, definitions.rbegin()->first);
 int new_thing_id = largest_thing_id++;
 definitions[new_thing_id] = thing;
 return new_thing_id;
