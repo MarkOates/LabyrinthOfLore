@@ -3,8 +3,10 @@
 #FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Entity/ThingDefinition
 #FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer
 #FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Hud/CharacterPanel
-FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Entity/Cleanup
-FOCUSED_TEST_FILTER=
+#FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Entity/Cleanup
+#FOCUSED_COMPONENT_NAME= LabyrinthOfLore/WorldMap/MultiBitmapTileMapLoader
+FOCUSED_COMPONENT_NAME=LabyrinthOfLore/Rendering/TileMapWaterMesh
+#FOCUSED_TEST_FILTER=
 
 
 

@@ -46,6 +46,7 @@ camera->start_projection(rendering_surface);
 if (depth_darken_shader) depth_darken_shader->activate();
 
 tile_map_mesh.draw();
+tile_map_water_mesh.draw();
 
 for (auto &entity : entities)
 {
