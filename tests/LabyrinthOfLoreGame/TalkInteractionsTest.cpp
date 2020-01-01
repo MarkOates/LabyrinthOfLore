@@ -36,7 +36,14 @@ protected:
    virtual void TearDown() override
    {
    }
+
+   LabyrinthOfLoreGame::TalkInteractions create_simple_talk_interaction_with(int thing_talking_to)
+   {
+      return LabyrinthOfLoreGame::TalkInteractions(thing_talking_to, &all_entities, &thing_dictionary, &message_scroll, &character_panel, &player_inventory);
+   }
 };
+
+
 
 
 static void ASSERT_SAID(LabyrinthOfLore::Hud::MessageScroll message_scroll, std::string expected_message)
@@ -74,10 +81,13 @@ static void ASSERT_SAID(LabyrinthOfLore::Hud::MessageScroll message_scroll, std:
 
 
 
+
 TEST_F(LabyrinthOfLoreGame_TalkInteractionsTest, can_be_created_without_blowing_up)
 {
    LabyrinthOfLoreGame::TalkInteractions talk_interactions;
 }
+
+
 
 TEST_F(LabyrinthOfLoreGame_TalkInteractionsTest, validate_arguments__will_raise_an_exception_if_it_cannot_find_the_thing_id)
 {
@@ -93,6 +103,8 @@ TEST_F(LabyrinthOfLoreGame_TalkInteractionsTest, validate_arguments__will_raise_
    ASSERT_THROW_WITH_MESSAGE(talk_interactions.validate_arguments(), std::runtime_error, expected_error_message);
 }
 
+
+
 TEST_F(LabyrinthOfLoreGame_TalkInteractionsTest, works_with_the_fixture)
 {
    LabyrinthOfLoreGame::TalkInteractions talk_interactions(0, &all_entities, &thing_dictionary, &message_scroll, &character_panel, &player_inventory);
@@ -100,6 +112,8 @@ TEST_F(LabyrinthOfLoreGame_TalkInteractionsTest, works_with_the_fixture)
    std::string expected_error_message = "cannot find_definition_ref in the ThingDictionary. It doesn't exist.";
    ASSERT_THROW_WITH_MESSAGE(talk_interactions.validate_arguments(), std::runtime_error, expected_error_message);
 }
+
+
 
 /// gameplay event tests
 
@@ -117,6 +131,8 @@ TEST_F(LabyrinthOfLoreGame_TalkInteractionsTest, if_you_talk_to_the_man_at_the_e
    ASSERT_SAID(message_scroll, expected_thing_to_say);
 }
 
+
+
 TEST_F(LabyrinthOfLoreGame_TalkInteractionsTest, with_the_torch_of_truth__talking_to__the_man_at_the_entrance_of_the_cave__he_will_say_something_cool)
 {
    LabyrinthOfLore::Entity::ThingDictionary thing_dictionary({
@@ -133,6 +149,8 @@ TEST_F(LabyrinthOfLoreGame_TalkInteractionsTest, with_the_torch_of_truth__talkin
    ASSERT_SAID(message_scroll, expected_thing_to_say);
 }
 
+
+
 TEST_F(LabyrinthOfLoreGame_TalkInteractionsTest, with_the_infinity_torch__talking_to__the_man_at_the_entrance_of_the_cave__he_will_say_the_expected_message)
 {
    LabyrinthOfLore::Entity::ThingDictionary thing_dictionary({
@@ -148,4 +166,20 @@ TEST_F(LabyrinthOfLoreGame_TalkInteractionsTest, with_the_infinity_torch__talkin
 
    ASSERT_SAID(message_scroll, expected_thing_to_say);
 }
+
+
+
+TEST_F(LabyrinthOfLoreGame_TalkInteractionsTest, if_you_talk_to_catalina_in_the_village__she_gives_you_the_expected_message)
+{
+   thing_dictionary = LabyrinthOfLore::Entity::ThingDictionary({
+      { CATALINA_IN_THE_VILLAGE, LabyrinthOfLore::Entity::ThingDefinition() },
+   });
+
+   LabyrinthOfLoreGame::TalkInteractions talk_interaction = create_simple_talk_interaction_with(CATALINA_IN_THE_VILLAGE);
+   std::string expected_thing_to_say = "Hello there young one. Look at you. You have so much life. I've been here for far to long, and miss so deeply my loved ones. I wonder if they still think of me...";
+
+   talk_interaction.process();
+   ASSERT_SAID(message_scroll, expected_thing_to_say);
+}
+
 

@@ -96,6 +96,12 @@ functions:
          }
       }
 
+      if (you_talk_to(CATALINA_IN_THE_VILLAGE))
+      {
+         character_speaks("Hello there young one. Look at you. You have so much life. I've been here for far to long, and " \
+                          "miss so deeply my loved ones. I wonder if they still think of me...");
+      }
+
       return;
     body_dependency_symbols:
       - std::stringstream

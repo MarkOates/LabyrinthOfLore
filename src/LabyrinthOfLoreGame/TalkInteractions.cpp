@@ -85,6 +85,12 @@ if (you_talk_to(MAN_AT_THE_ENTRANCE_TO_THE_CAVE))
    }
 }
 
+if (you_talk_to(CATALINA_IN_THE_VILLAGE))
+{
+   character_speaks("Hello there young one. Look at you. You have so much life. I've been here for far to long, and " \
+                    "miss so deeply my loved ones. I wonder if they still think of me...");
+}
+
 return;
 
 }
