@@ -52,6 +52,8 @@
 #include <LabyrinthOfLore/WorldMap/TileTypeEnum.hpp>
 #include <LabyrinthOfLore/Entity/Cleanup.hpp>
 //#include <algorithm> // for std::max
+#include <LabyrinthOfLoreGame/ThingDefinitionFactory.hpp>
+#include <LabyrinthOfLoreGame/Interactions.hpp>
 
 
 #include <iostream>
@@ -489,32 +491,67 @@ void process_thing_use_click(
 
 
 
-void process_thing_talk_click(
-      std::vector<LabyrinthOfLore::Entity::Base *> &all_entities,
-      LabyrinthOfLore::Entity::Base *entity,
-      //int thing_id,
-      LabyrinthOfLore::Entity::ThingDictionary &thing_dictionary,
-      LabyrinthOfLore::Hud::MessageScroll &message_scroll,
-      LabyrinthOfLore::Hud::CharacterPanel &character_panel,
-      AllegroFlare::Inventory &player_inventory
-      )
-{
-   if (!entity) throw std::runtime_error("Cannot process_thing_talk_click with a nullptr entity");
-   if (!entity->exists(THING_ID_ATTRIBUTE)) throw std::runtime_error("Cannot process_thing_talk_click expecting the entity to have a \"thing_id\" but it does not.");
+//void process_thing_talk_click(
+      //vector<LabyrinthOfLore::Entity::Base *> &all_entities,
+      //std::vector<LabyrinthOfLore::Entity::Base *> &all_entities,
+      //LabyrinthOfLore::Entity::Base *entity,
+      ////int thing_id,
+      //LabyrinthOfLore::Entity::ThingDictionary &thing_dictionary,
+      //LabyrinthOfLore::Hud::MessageScroll &message_scroll,
+      //LabyrinthOfLore::Hud::CharacterPanel &character_panel,
+      //AllegroFlare::Inventory &player_inventory
+      //)
+//{
+      ////LabyrinthOfLoreGame::ThingDefinitionFactory* thing_definition_factory;
+      ////std::vector<LabyrinthOfLore::Entity::Base*>* all_entities;
+      ////LabyrinthOfLore::Entity::ThingDictionary* thing_dictionary;
+      ////LabyrinthOfLore::Hud::MessageScroll* message_scroll;
+      ////LabyrinthOfLore::Hud::CharacterPanel* character_panel;
+      ////AllegroFlare::Inventory* player_inventory;
+      ////float time_now;
 
-   int thing_id = entity->get_as_int(THING_ID_ATTRIBUTE);
+   //if (!entity) throw std::runtime_error("Cannot process_thing_talk_click with a nullptr entity");
+   //if (!entity->exists(THING_ID_ATTRIBUTE)) throw std::runtime_error("Cannot process_thing_talk_click expecting the entity to have a \"thing_id\" but it does not.");
+   //int thing_id = entity->get_as_int(THING_ID_ATTRIBUTE);
 
-   LabyrinthOfLore::Entity::ThingDefinition &this_thing_definition = thing_dictionary.find_definition_ref(thing_id);
+   //LabyrinthOfLoreGame::Interactions interactions(
+         //nullptr,
+         //&all_entities,
+         //&thing_dictionary,
+         //&message_scroll,
+         //&character_panel,
+         //&player_inventory,
+         //al_get_time()
+         //);
 
+   //interactions.validate_arguments();
 
-   if (false) // thing wants to be talked to
-   {
-   }
-   else
-   {
-      message_scroll.append_message(al_get_time(), _does_not_want_to_talk(this_thing_definition));
-   }
-}
+   //interactions.process_talk(thing_id);
+
+      ////LabyrinthOfLoreGame::ThingDefinitionFactory* thing_definition_factory;
+      ////std::vector<LabyrinthOfLore::Entity::Base*>* all_entities;
+      ////LabyrinthOfLore::Entity::ThingDictionary* thing_dictionary;
+      ////LabyrinthOfLore::Hud::MessageScroll* message_scroll;
+      ////LabyrinthOfLore::Hud::CharacterPanel* character_panel;
+      ////AllegroFlare::Inventory* player_inventory;
+      ////float time_now;
+
+   ////if (!entity) throw std::runtime_error("Cannot process_thing_talk_click with a nullptr entity");
+   ////if (!entity->exists(THING_ID_ATTRIBUTE)) throw std::runtime_error("Cannot process_thing_talk_click expecting the entity to have a \"thing_id\" but it does not.");
+
+   ////int thing_id = entity->get_as_int(THING_ID_ATTRIBUTE);
+////
+   ////LabyrinthOfLore::Entity::ThingDefinition &this_thing_definition = thing_dictionary.find_definition_ref(thing_id);
+
+////
+   ////if (false) // thing wants to be talked to
+   ////{
+   ////}
+   ////else
+   ////{
+      ////message_scroll.append_message(al_get_time(), _does_not_want_to_talk(this_thing_definition));
+   ////}
+//}
 
 
 
@@ -572,6 +609,7 @@ void process_click_event(
       float resolution_scale,
       std::vector<LabyrinthOfLore::Entity::Base *> &all_entities,
       LabyrinthOfLore::Entity::ThingDictionary &thing_dictionary,
+      LabyrinthOfLoreGame::ThingDefinitionFactory &thing_definition_factory,
       LabyrinthOfLore::Hud::MessageScroll &message_scroll,
       LabyrinthOfLore::Hud::CommandPanel &command_panel,
       LabyrinthOfLore::Hud::CharacterPanel &character_panel,
@@ -656,14 +694,23 @@ void process_click_event(
          }
          else if (command_panel.get_current_mode() == LabyrinthOfLore::Hud::COMMAND_MODE_TALK)
          {
-            process_thing_talk_click(
-                  all_entities,
-                  this_entity,
-                  thing_dictionary,
-                  message_scroll,
-                  character_panel,
-                  player_inventory
-               );
+            if (!this_entity) throw std::runtime_error("Cannot process_thing_talk_click with a nullptr entity");
+            if (!this_entity->exists(THING_ID_ATTRIBUTE)) throw std::runtime_error("Cannot process_thing_talk_click expecting the this_entity to have a \"thing_id\" but it does not.");
+            int thing_id = this_entity->get_as_int(THING_ID_ATTRIBUTE);
+
+            LabyrinthOfLoreGame::Interactions interactions(
+                  &thing_definition_factory,
+                  &all_entities,
+                  &thing_dictionary,
+                  &message_scroll,
+                  &character_panel,
+                  &player_inventory,
+                  al_get_time()
+                  );
+
+            interactions.validate_arguments();
+
+            interactions.process_talk(thing_id);
          }
       }
    }
@@ -1221,6 +1268,9 @@ int main(int argc, char **argv)
       });
 
 
+      LabyrinthOfLoreGame::ThingDefinitionFactory thing_definition_factory; // yet to be used
+
+
 
       //
 
@@ -1430,6 +1480,7 @@ int main(int argc, char **argv)
                   resolution_scale,
                   all_entities,
                   thing_dictionary,
+                  thing_definition_factory,
                   message_scroll,
                   command_panel,
                   character_panel,

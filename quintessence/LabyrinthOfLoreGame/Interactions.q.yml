@@ -120,9 +120,6 @@ functions:
       - name: thing_id
         type: int
         default_argument: 0
-      - name: time_now
-        type: float
-        default_argument: 0.0f
     body: |
       //this->thing_id = thing_id;
       LabyrinthOfLore::Entity::ThingDefinition &this_thing_definition = thing_dictionary->find_definition_ref(thing_id);
