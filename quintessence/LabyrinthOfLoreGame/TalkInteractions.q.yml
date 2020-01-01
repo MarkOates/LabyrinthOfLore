@@ -2,25 +2,46 @@ properties:
   - name: all_entities
     type: std::vector<LabyrinthOfLore::Entity::Base*>*
     init_with: nullptr
+    constructor_arg: true
   - name: entity
     type: LabyrinthOfLore::Entity::Base*
     init_with: nullptr
+    constructor_arg: true
   - name: thing_dictionary
     type: LabyrinthOfLore::Entity::ThingDictionary*
     init_with: nullptr
+    constructor_arg: true
   - name: message_scroll
     type: LabyrinthOfLore::Hud::MessageScroll*
     init_with: nullptr
+    constructor_arg: true
   - name: character_panel
     type: LabyrinthOfLore::Hud::CharacterPanel*
     init_with: nullptr
+    constructor_arg: true
   - name: player_inventory
     type: AllegroFlare::Inventory*
     init_with: nullptr
-functions:
-  - name: run
+    constructor_arg: true
+  - name: THING_ID_ATTRIBUTE
     type: std::string
-    body: return "Hello World!";
+    static: true
+    const: true
+    init_with: "\"thing_id\""
+functions:
+  - name: process
+    body: |
+     if (!all_entities) throw std::runtime_error("Cannot process_thing_talk_click with a nullptr all_entities");
+     if (!entity) throw std::runtime_error("Cannot process_thing_talk_click with a nullptr entity");
+     if (!thing_dictionary) throw std::runtime_error("Cannot process_thing_talk_click with a nullptr thing_dictionary");
+     if (!message_scroll) throw std::runtime_error("Cannot process_thing_talk_click with a nullptr message_scroll");
+     if (!character_panel) throw std::runtime_error("Cannot process_thing_talk_click with a nullptr character_panel");
+     if (!player_inventory) throw std::runtime_error("Cannot process_thing_talk_click with a nullptr player_inventory");
+
+     if (!entity->exists(THING_ID_ATTRIBUTE)) throw std::runtime_error("Cannot process_thing_talk_click expecting the entity to have a \"thing_id\" but it does not.");
+
+
+     return;
 dependencies:
   - symbol: std::vector<LabyrinthOfLore::Entity::Base*>*
     headers: [ vector, LabyrinthOfLore/Entity/Base.hpp ]
