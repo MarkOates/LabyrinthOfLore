@@ -22,13 +22,16 @@ CharacterPanel::~CharacterPanel()
 }
 
 
-std::vector<int> CharacterPanel::get_unique_sorted_list_of_inventory_items()
+int CharacterPanel::calculate_count_of_type(thing_type_t thing_type)
 {
-if (!player_inventory) throw std::runtime_error("Cannot get_unique_list_of_inventory_items with a nullptr player_inventory");
-std::vector<int> local_copy = player_inventory->get_items_ref();
-sort(local_copy.begin(), local_copy.end());
-local_copy.erase(unique(local_copy.begin(), local_copy.end()), local_copy.end());
-return local_copy;
+int count = 0;
+std::vector<int> &player_inventory_items = player_inventory->get_items_ref();
+
+for (unsigned i=0; i<player_inventory_items.size(); i++)
+{
+   if (thing_dictionary->find_definition(player_inventory_items[i]).get_type() == thing_type) count++;
+}
+return count;
 
 }
 

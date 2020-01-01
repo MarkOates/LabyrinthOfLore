@@ -2,6 +2,7 @@
 #include <gtest/gtest.h>
 
 #include <LabyrinthOfLore/Hud/CharacterPanel.hpp>
+#include <LabyrinthOfLoreGame/ItemIdEnums.hpp>
 
 TEST(LabyrinthOfLore_Hud_CharacterPanelTest, can_be_created_without_blowing_up)
 {
@@ -19,7 +20,7 @@ TEST(LabyrinthOfLore_Hud_CharacterPanelTest, calculate_current_carry_weight__ret
 {
    AllegroFlare::Inventory player_inventory;
    LabyrinthOfLore::Entity::ThingDictionary thing_dictionary({
-      { 1, LabyrinthOfLore::Entity::ThingDefinition("a", "rock", nullptr, -1, 6) },
+      { 1, LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_DOES_NOT_MATTER, "a", "rock", nullptr, -1, 6) },
    });
 
    player_inventory.add_item(1);
@@ -32,10 +33,10 @@ TEST(LabyrinthOfLore_Hud_CharacterPanelTest, calculate_current_carry_weight__ret
 {
    AllegroFlare::Inventory player_inventory;
    LabyrinthOfLore::Entity::ThingDictionary thing_dictionary({
-      { 1, LabyrinthOfLore::Entity::ThingDefinition("a", "rock",    nullptr, -1, 6) },
-      { 2, LabyrinthOfLore::Entity::ThingDefinition("a", "feather", nullptr, -1, 1) },
-      { 3, LabyrinthOfLore::Entity::ThingDefinition("a", "shoe",    nullptr, -1, 4) },
-      { 4, LabyrinthOfLore::Entity::ThingDefinition("a", "duck",    nullptr, -1, -1) },
+      { 1, LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_DOES_NOT_MATTER, "a", "rock",    nullptr, -1, 6) },
+      { 2, LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_DOES_NOT_MATTER, "a", "feather", nullptr, -1, 1) },
+      { 3, LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_DOES_NOT_MATTER, "a", "shoe",    nullptr, -1, 4) },
+      { 4, LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_DOES_NOT_MATTER, "a", "duck",    nullptr, -1, -1) },
    });
 
    player_inventory.add_item(1);
@@ -47,28 +48,24 @@ TEST(LabyrinthOfLore_Hud_CharacterPanelTest, calculate_current_carry_weight__ret
    EXPECT_EQ(10, character_panel.calculate_current_carry_weight());
 }
 
-TEST(LabyrinthOfLore_Hud_CharacterPanelTest, get_unique_sorted_list_of_inventory_items__returns_a_unique_list_of_items_in_the_inventory)
+
+TEST(LabyrinthOfLore_Hud_CharacterPanelTest, count_of_type__returns_a_count_of_things_of_a_certain_type)
 {
    AllegroFlare::Inventory player_inventory;
    LabyrinthOfLore::Entity::ThingDictionary thing_dictionary({
-      { 1, LabyrinthOfLore::Entity::ThingDefinition("a", "rock",    nullptr, -1, 6) },
-      { 2, LabyrinthOfLore::Entity::ThingDefinition("a", "feather", nullptr, -1, 1) },
-      { 3, LabyrinthOfLore::Entity::ThingDefinition("a", "shoe",    nullptr, -1, 4) },
-      { 4, LabyrinthOfLore::Entity::ThingDefinition("a", "duck",    nullptr, -1, -1) },
+      { 1, LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_TORCH_FUEL, "some",   "torch fuel",    nullptr, -1, 6) },
+      { 2, LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_TORCH_FUEL, "some",   "torch fuel", nullptr, -1, 1) },
+      { 3, LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_TORCH,      "a",      "torch",    nullptr, -1, 4) },
+      { 4, LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_DOES_NOT_MATTER, "a", "duck",    nullptr, -1, -1) },
    });
 
-   player_inventory.add_item(3);
    player_inventory.add_item(1);
    player_inventory.add_item(2);
-   player_inventory.add_item(2);
+   player_inventory.add_item(3);
    player_inventory.add_item(4);
-   player_inventory.add_item(1);
-   player_inventory.add_item(3);
-   player_inventory.add_item(1);
-
-   std::vector<int> expected_unique_sorted_list_of_inventory_items = { 1, 2, 3, 4 };
 
    LabyrinthOfLore::Hud::CharacterPanel character_panel(&player_inventory, &thing_dictionary);
-   EXPECT_EQ(expected_unique_sorted_list_of_inventory_items, character_panel.get_unique_sorted_list_of_inventory_items());
+   EXPECT_EQ(2, character_panel.calculate_count_of_type(THING_TYPE_TORCH_FUEL));
+   EXPECT_EQ(1, character_panel.calculate_count_of_type(THING_TYPE_TORCH));
 }
 

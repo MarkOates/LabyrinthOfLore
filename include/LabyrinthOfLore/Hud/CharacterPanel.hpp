@@ -3,8 +3,8 @@
 
 #include <AllegroFlare/Inventory.hpp>
 #include <LabyrinthOfLore/Entity/ThingDictionary.hpp>
+#include <LabyrinthOfLoreGame/ItemIdEnums.hpp>
 #include <string>
-#include <vector>
 
 
 namespace LabyrinthOfLore
@@ -22,7 +22,7 @@ namespace LabyrinthOfLore
          ~CharacterPanel();
 
 
-      std::vector<int> get_unique_sorted_list_of_inventory_items();
+      int calculate_count_of_type(thing_type_t thing_type=THING_TYPE_UNDEFINED);
       int calculate_attack_strength();
       int calculate_total_carry_strength();
       int calculate_current_carry_weight();
