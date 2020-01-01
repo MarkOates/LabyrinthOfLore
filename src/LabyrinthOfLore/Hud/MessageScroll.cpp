@@ -47,7 +47,16 @@ return;
 
 void MessageScroll::append_message(float time_of_message, std::string text_to_append)
 {
-messages.push_back({ time_of_message, text_to_append });
+if (!messages.empty() && text_to_append == messages.back().second)
+{
+   // update the time of the newest message so it flashes
+   messages.back().first = time_of_message;
+}
+else
+{
+   // append the message normally
+   messages.push_back({ time_of_message, text_to_append });
+}
 return;
 
 }
