@@ -1,6 +1,6 @@
 
 
-#include <LabyrinthOfLoreGame/TalkInteractions.hpp>
+#include <LabyrinthOfLoreGame/Interactions.hpp>
 #include <sstream>
 #include <LabyrinthOfLoreGame/ItemIdEnums.hpp>
 
@@ -9,10 +9,10 @@ namespace LabyrinthOfLoreGame
 {
 
 
-std::string TalkInteractions::THING_ID_ATTRIBUTE = "thing_id";
+std::string Interactions::THING_ID_ATTRIBUTE = "thing_id";
 
 
-TalkInteractions::TalkInteractions(int thing_id, LabyrinthOfLoreGame::ThingDefinitionFactory* thing_definition_factory, std::vector<LabyrinthOfLore::Entity::Base*>* all_entities, LabyrinthOfLore::Entity::ThingDictionary* thing_dictionary, LabyrinthOfLore::Hud::MessageScroll* message_scroll, LabyrinthOfLore::Hud::CharacterPanel* character_panel, AllegroFlare::Inventory* player_inventory, float time_now)
+Interactions::Interactions(int thing_id, LabyrinthOfLoreGame::ThingDefinitionFactory* thing_definition_factory, std::vector<LabyrinthOfLore::Entity::Base*>* all_entities, LabyrinthOfLore::Entity::ThingDictionary* thing_dictionary, LabyrinthOfLore::Hud::MessageScroll* message_scroll, LabyrinthOfLore::Hud::CharacterPanel* character_panel, AllegroFlare::Inventory* player_inventory, float time_now)
    : thing_id(thing_id)
    , thing_definition_factory(thing_definition_factory)
    , all_entities(all_entities)
@@ -25,12 +25,12 @@ TalkInteractions::TalkInteractions(int thing_id, LabyrinthOfLoreGame::ThingDefin
 }
 
 
-TalkInteractions::~TalkInteractions()
+Interactions::~Interactions()
 {
 }
 
 
-void TalkInteractions::validate_arguments()
+void Interactions::validate_arguments()
 {
 if (!all_entities) throw std::runtime_error("Cannot process_thing_talk_click with a nullptr all_entities");
 if (!thing_definition_factory) throw std::runtime_error("Cannot process_thing_talk_click with a nullptr thing_definition_factory");
@@ -44,44 +44,44 @@ return;
 
 }
 
-void TalkInteractions::character_speaks(std::string message)
+void Interactions::character_speaks(std::string message)
 {
 message_scroll->append_character_dialog(time_now, message);
 
 }
 
-void TalkInteractions::append_message(std::string message)
+void Interactions::append_message(std::string message)
 {
 message_scroll->append_message(time_now, message);
 
 }
 
-bool TalkInteractions::you_talk_to(int possible_thing_id_talking_to)
+bool Interactions::you_talk_to(int possible_thing_id_talking_to)
 {
 return thing_id == possible_thing_id_talking_to;
 
 }
 
-bool TalkInteractions::player_has_item(int item_id)
+bool Interactions::player_has_item(int item_id)
 {
 return player_inventory->has_item(item_id);
 
 }
 
-int TalkInteractions::get_player_inventory_count_of_type(thing_type_t thing_type)
+int Interactions::get_player_inventory_count_of_type(thing_type_t thing_type)
 {
 if (!character_panel) throw std::runtime_error("cannot player_has_thing_of_type on a nullptr character_panel");
 return character_panel->calculate_count_of_type(thing_type);
 
 }
 
-bool TalkInteractions::player_has_thing_of_type(thing_type_t thing_type)
+bool Interactions::player_has_thing_of_type(thing_type_t thing_type)
 {
 return get_player_inventory_count_of_type() >= 1;
 
 }
 
-void TalkInteractions::process(float time_now)
+void Interactions::process(float time_now)
 {
 LabyrinthOfLore::Entity::ThingDefinition &this_thing_definition = thing_dictionary->find_definition_ref(thing_id);
 

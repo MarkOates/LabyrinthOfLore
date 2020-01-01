@@ -14,7 +14,7 @@
 
 namespace LabyrinthOfLoreGame
 {
-   class TalkInteractions
+   class Interactions
    {
    private:
       int thing_id;
@@ -28,8 +28,8 @@ namespace LabyrinthOfLoreGame
       static std::string THING_ID_ATTRIBUTE;
 
    public:
-      TalkInteractions(int thing_id=0, LabyrinthOfLoreGame::ThingDefinitionFactory* thing_definition_factory=nullptr, std::vector<LabyrinthOfLore::Entity::Base*>* all_entities=nullptr, LabyrinthOfLore::Entity::ThingDictionary* thing_dictionary=nullptr, LabyrinthOfLore::Hud::MessageScroll* message_scroll=nullptr, LabyrinthOfLore::Hud::CharacterPanel* character_panel=nullptr, AllegroFlare::Inventory* player_inventory=nullptr, float time_now=0.0f);
-      ~TalkInteractions();
+      Interactions(int thing_id=0, LabyrinthOfLoreGame::ThingDefinitionFactory* thing_definition_factory=nullptr, std::vector<LabyrinthOfLore::Entity::Base*>* all_entities=nullptr, LabyrinthOfLore::Entity::ThingDictionary* thing_dictionary=nullptr, LabyrinthOfLore::Hud::MessageScroll* message_scroll=nullptr, LabyrinthOfLore::Hud::CharacterPanel* character_panel=nullptr, AllegroFlare::Inventory* player_inventory=nullptr, float time_now=0.0f);
+      ~Interactions();
 
 
    void validate_arguments();
