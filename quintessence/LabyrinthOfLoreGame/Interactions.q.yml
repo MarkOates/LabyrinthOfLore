@@ -112,6 +112,7 @@ functions:
          character_speaks("What is this!? Oh my! A letter from my loved ones! They haven't forgotten me! I feel young again! I shall repay you with the only thing I have.");
          player_inventory->remove_item(LETTER_TO_CATALINA_ID);
          player_inventory->add_item(AMULET_OF_MAGIC_ID);
+         append_message(you_have_received_the_(AMULET_OF_MAGIC_ID));
       }
       return;
   - name: process_talk

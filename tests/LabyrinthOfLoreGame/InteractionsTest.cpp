@@ -220,14 +220,19 @@ TEST_F(LabyrinthOfLoreGame_InteractionsTest, process_use__if_you_use_the_letter_
    thing_dictionary = LabyrinthOfLore::Entity::ThingDictionary({
       { CATALINA_IN_THE_VILLAGE_ID, LabyrinthOfLore::Entity::ThingDefinition() },
       { LETTER_TO_CATALINA_ID, LabyrinthOfLore::Entity::ThingDefinition() },
+      { AMULET_OF_MAGIC_ID, LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_AMULET_OF_MAGIC, "the", "Amulet of Magic") },
    });
 
    interactions.process_use(LETTER_TO_CATALINA_ID, CATALINA_IN_THE_VILLAGE_ID);
 
-   std::string expected_thing_said = "What is this!? Oh my! A letter from my loved ones! They haven't forgotten me! I feel young again! I shall repay you with the only thing I have.";
-   ASSERT_SAID(expected_thing_said);
-   ASSERT_EQ(false, player_inventory.has_item(LETTER_TO_CATALINA_ID));
-   ASSERT_EQ(true, player_inventory.has_item(AMULET_OF_MAGIC_ID));
+   std::vector<std::string> expected_things_said = {
+      "What is this!? Oh my! A letter from my loved ones! They haven't forgotten me! I feel young again! I shall repay you with the only thing I have.",
+      "You have received the Amulet of Magic.",
+   };
+
+   for (auto &expected_thing_said : expected_things_said) ASSERT_SAID(expected_thing_said);
+   EXPECT_EQ(false, player_inventory.has_item(LETTER_TO_CATALINA_ID));
+   EXPECT_EQ(true, player_inventory.has_item(AMULET_OF_MAGIC_ID));
 }
 
 
