@@ -24,6 +24,16 @@ properties:
     init_with: 1 
     constructor_arg: true
     getter: true
+  - name: health
+    type: int
+    init_with: 1
+    constructor_arg: true
+    getter: true
+  - name: mood
+    type: std::string
+    init_with: "\"\""
+    constructor_arg: true
+    getter: true
 functions:
   - name: infer_decorated_name
     type: std::string
