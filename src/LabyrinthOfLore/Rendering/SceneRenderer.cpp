@@ -13,10 +13,11 @@ namespace Rendering
 {
 
 
-SceneRenderer::SceneRenderer(ALLEGRO_BITMAP* rendering_surface, LabyrinthOfLore::Rendering::Camera* camera, LabyrinthOfLore::Rendering::TileMapMesh tile_map_mesh, std::vector<LabyrinthOfLore::Entity::Base*> entities, LabyrinthOfLore::Shader::DepthDarken* depth_darken_shader)
+SceneRenderer::SceneRenderer(ALLEGRO_BITMAP* rendering_surface, LabyrinthOfLore::Rendering::Camera* camera, LabyrinthOfLore::Rendering::TileMapMesh tile_map_mesh, LabyrinthOfLore::Rendering::TileMapWaterMesh tile_map_water_mesh, std::vector<LabyrinthOfLore::Entity::Base*> entities, LabyrinthOfLore::Shader::DepthDarken* depth_darken_shader)
    : rendering_surface(rendering_surface)
    , camera(camera)
    , tile_map_mesh(tile_map_mesh)
+   , tile_map_water_mesh(tile_map_water_mesh)
    , entities(entities)
    , depth_darken_shader(depth_darken_shader)
 {

@@ -11,6 +11,10 @@ properties:
     type: LabyrinthOfLore::Rendering::TileMapMesh
     init_with: "{}"
     constructor_arg: true
+  - name: tile_map_water_mesh
+    type: LabyrinthOfLore::Rendering::TileMapWaterMesh
+    init_with: "{}"
+    constructor_arg: true
   - name: entities
     type: std::vector<LabyrinthOfLore::Entity::Base*>
     init_with: "{}"
@@ -66,6 +70,8 @@ dependencies:
     headers: [ LabyrinthOfLore/Rendering/EntityRenderer.hpp ]
   - symbol: LabyrinthOfLore::Rendering::TileMapMesh
     headers: [ LabyrinthOfLore/Rendering/TileMapMesh.hpp ]
+  - symbol: LabyrinthOfLore::Rendering::TileMapWaterMesh
+    headers: [ LabyrinthOfLore/Rendering/TileMapWaterMesh.hpp ]
   - symbol: allegro_flare::placement3d
     headers: [ allegro_flare/placement3d.h ]
   - symbol: ALLEGRO_BITMAP*

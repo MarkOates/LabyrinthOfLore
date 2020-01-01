@@ -11,6 +11,7 @@
 #include <LabyrinthOfLore/WorldMap/Level.hpp>
 #include <LabyrinthOfLore/Rendering/SceneRenderer.hpp>
 #include <LabyrinthOfLore/Rendering/TileMapMesh.hpp>
+#include <LabyrinthOfLore/Rendering/TileMapWaterMesh.hpp>
 #include <LabyrinthOfLore/Physics/GravityStepper.hpp>
 #include <LabyrinthOfLore/Physics/EntityTileMapCollisionStepper.hpp>
 #include <LabyrinthOfLore/Rendering/PickingBufferRenderer.hpp>
@@ -183,14 +184,17 @@ void move_player_to_level(
       LabyrinthOfLore::Entity::Base* player_entity,
       std::map<std::string, LabyrinthOfLore::WorldMap::Level> &levels,
       std::map<std::string, LabyrinthOfLore::Rendering::TileMapMesh> &meshes,
+      std::map<std::string, LabyrinthOfLore::Rendering::TileMapWaterMesh> &water_meshes,
       std::string level_identifier,
       AllegroFlare::vec3d spawn_point,
       LabyrinthOfLore::WorldMap::TileMap &current_tile_map,
-      LabyrinthOfLore::Rendering::TileMapMesh &current_tile_map_mesh
+      LabyrinthOfLore::Rendering::TileMapMesh &current_tile_map_mesh,
+      LabyrinthOfLore::Rendering::TileMapWaterMesh &current_tile_map_water_mesh
    )
 {
    current_tile_map = levels[level_identifier].get_tile_map();
    current_tile_map_mesh = meshes[level_identifier];
+   current_tile_map_water_mesh = water_meshes[level_identifier];
 
    // set the player's position
    player_entity->set_identifier_for_level_within(level_identifier);
@@ -215,9 +219,11 @@ void go_into_door(
       LabyrinthOfLore::Entity::Base* player_entity,
       std::map<std::string, LabyrinthOfLore::WorldMap::Level> &levels,
       std::map<std::string, LabyrinthOfLore::Rendering::TileMapMesh> &meshes,
+      std::map<std::string, LabyrinthOfLore::Rendering::TileMapWaterMesh> &water_meshes,
       float &player_yaw,
       LabyrinthOfLore::WorldMap::TileMap &current_tile_map,
       LabyrinthOfLore::Rendering::TileMapMesh &current_tile_map_mesh,
+      LabyrinthOfLore::Rendering::TileMapWaterMesh &current_tile_map_water_mesh,
       LabyrinthOfLore::Hud::TitleText &title_text
    )
 {
@@ -225,10 +231,12 @@ void go_into_door(
       player_entity,
       levels,
       meshes,
+      water_meshes,
       door.level_identifier,
       AllegroFlare::vec3d(door.spawn_x, door.spawn_y, door.spawn_z),
       current_tile_map,
-      current_tile_map_mesh
+      current_tile_map_mesh,
+      current_tile_map_water_mesh
    );
 
    set_title_text(
@@ -557,29 +565,31 @@ void process_keyboard_keydown_event(
       LabyrinthOfLore::Entity::Base* player_entity,
       std::map<std::string, LabyrinthOfLore::WorldMap::Level> &levels,
       std::map<std::string, LabyrinthOfLore::Rendering::TileMapMesh> &meshes,
+      std::map<std::string, LabyrinthOfLore::Rendering::TileMapWaterMesh> &water_meshes,
       float &player_yaw,
       LabyrinthOfLore::WorldMap::TileMap &current_tile_map,
       LabyrinthOfLore::Rendering::TileMapMesh &current_tile_map_mesh,
+      LabyrinthOfLore::Rendering::TileMapWaterMesh &current_tile_map_water_mesh,
       LabyrinthOfLore::Hud::TitleText &title_text,
       LabyrinthOfLore::Hud::CommandPanel &command_panel
    )
 {
    if (this_event.keyboard.keycode == ALLEGRO_KEY_0)
-      go_into_door(doors.at(10), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
+      go_into_door(doors.at(10), player_entity, levels, meshes, water_meshes, player_yaw, current_tile_map, current_tile_map_mesh, current_tile_map_water_mesh, title_text);
    else if (this_event.keyboard.keycode == ALLEGRO_KEY_1)
-      go_into_door(doors.at(1), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
+      go_into_door(doors.at(1), player_entity, levels, meshes, water_meshes, player_yaw, current_tile_map, current_tile_map_mesh, current_tile_map_water_mesh, title_text);
    else if (this_event.keyboard.keycode == ALLEGRO_KEY_2)
-      go_into_door(doors.at(3), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
+      go_into_door(doors.at(3), player_entity, levels, meshes, water_meshes, player_yaw, current_tile_map, current_tile_map_mesh, current_tile_map_water_mesh, title_text);
    else if (this_event.keyboard.keycode == ALLEGRO_KEY_3)
-      go_into_door(doors.at(2), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
+      go_into_door(doors.at(2), player_entity, levels, meshes, water_meshes, player_yaw, current_tile_map, current_tile_map_mesh, current_tile_map_water_mesh, title_text);
    else if (this_event.keyboard.keycode == ALLEGRO_KEY_4)
-      go_into_door(doors.at(4), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
+      go_into_door(doors.at(4), player_entity, levels, meshes, water_meshes, player_yaw, current_tile_map, current_tile_map_mesh, current_tile_map_water_mesh, title_text);
    else if (this_event.keyboard.keycode == ALLEGRO_KEY_5)
-      go_into_door(doors.at(5), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
+      go_into_door(doors.at(5), player_entity, levels, meshes, water_meshes, player_yaw, current_tile_map, current_tile_map_mesh, current_tile_map_water_mesh, title_text);
    else if (this_event.keyboard.keycode == ALLEGRO_KEY_6)
-      go_into_door(doors.at(6), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
+      go_into_door(doors.at(6), player_entity, levels, meshes, water_meshes, player_yaw, current_tile_map, current_tile_map_mesh, current_tile_map_water_mesh, title_text);
    else if (this_event.keyboard.keycode == ALLEGRO_KEY_7)
-      go_into_door(doors.at(7), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
+      go_into_door(doors.at(7), player_entity, levels, meshes, water_meshes, player_yaw, current_tile_map, current_tile_map_mesh, current_tile_map_water_mesh, title_text);
 
 
    else if (this_event.keyboard.keycode == ALLEGRO_KEY_T) set_command_mode(command_panel, LabyrinthOfLore::Hud::COMMAND_MODE_TALK);
@@ -616,9 +626,11 @@ void process_collision_stepper_events(
       //LabyrinthOfLore::Entity::Base* player_entity,
       //std::map<std::string, LabyrinthOfLore::WorldMap::Level> &levels,
       std::map<std::string, LabyrinthOfLore::Rendering::TileMapMesh> &meshes,
+      std::map<std::string, LabyrinthOfLore::Rendering::TileMapWaterMesh> &water_meshes,
       float &player_yaw,
       LabyrinthOfLore::WorldMap::TileMap &current_tile_map,
       LabyrinthOfLore::Rendering::TileMapMesh &current_tile_map_mesh,
+      LabyrinthOfLore::Rendering::TileMapWaterMesh &current_tile_map_water_mesh,
       LabyrinthOfLore::Hud::TitleText &title_text
 
    )
@@ -658,7 +670,7 @@ void process_collision_stepper_events(
          {
             if (current_level_identifier == std::get<0>(door_data) && tile_x == std::get<1>(door_data) && tile_y == std::get<2>(door_data))
             {
-               go_into_door(doors.at(std::get<3>(door_data)), player_entity, levels, meshes, player_yaw, current_tile_map, current_tile_map_mesh, title_text);
+               go_into_door(doors.at(std::get<3>(door_data)), player_entity, levels, meshes, water_meshes, player_yaw, current_tile_map, current_tile_map_mesh, current_tile_map_water_mesh, title_text);
             }
          }
          // the player encountered a new collision
@@ -972,9 +984,77 @@ int main(int argc, char **argv)
          },
       };
 
+      std::map<std::string, LabyrinthOfLore::Rendering::TileMapWaterMesh> water_meshes = {
+         { THE_UNDERWORLD_IDENTIFIER,           LabyrinthOfLore::Rendering::TileMapWaterMesh(
+                                                   &world_texture_tile_atlas,
+                                                   tile_type_dictionary,
+                                                   levels[THE_UNDERWORLD_IDENTIFIER].get_tile_map(),
+                                                   world_texture_tile_atlas.get_bitmap(),
+                                                   0
+                                                ),
+         },
+         { THE_CAVE_IDENTIFIER,                 LabyrinthOfLore::Rendering::TileMapWaterMesh(
+                                                   &world_texture_tile_atlas,
+                                                   tile_type_dictionary,
+                                                   levels[THE_CAVE_IDENTIFIER].get_tile_map(),
+                                                   world_texture_tile_atlas.get_bitmap(),
+                                                   10
+                                                ),
+         },
+         { AN_ABANDONED_TEMPLE_IDENTIFIER,      LabyrinthOfLore::Rendering::TileMapWaterMesh(
+                                                   &world_texture_tile_atlas,
+                                                   tile_type_dictionary,
+                                                   levels[AN_ABANDONED_TEMPLE_IDENTIFIER].get_tile_map(),
+                                                   world_texture_tile_atlas.get_bitmap(),
+                                                   20
+                                                ),
+         },
+         { DUNGEON_OF_THE_CURSED_IDENTIFIER,    LabyrinthOfLore::Rendering::TileMapWaterMesh(
+                                                   &world_texture_tile_atlas,
+                                                   tile_type_dictionary,
+                                                   levels[DUNGEON_OF_THE_CURSED_IDENTIFIER].get_tile_map(),
+                                                   world_texture_tile_atlas.get_bitmap(),
+                                                   30
+                                                ),
+         },
+         { TEMPLE_OF_WATER_IDENTIFIER,          LabyrinthOfLore::Rendering::TileMapWaterMesh(
+                                                   &world_texture_tile_atlas,
+                                                   tile_type_dictionary,
+                                                   levels[TEMPLE_OF_WATER_IDENTIFIER].get_tile_map(),
+                                                   world_texture_tile_atlas.get_bitmap(),
+                                                   40
+                                                ),
+         },
+         { WORLD_OF_FIRE_IDENTIFIER,            LabyrinthOfLore::Rendering::TileMapWaterMesh(
+                                                   &world_texture_tile_atlas,
+                                                   tile_type_dictionary,
+                                                   levels[WORLD_OF_FIRE_IDENTIFIER].get_tile_map(),
+                                                   world_texture_tile_atlas.get_bitmap(),
+                                                   50
+                                                ),
+         },
+         { FINAL_TEMPLE_IDENTIFIER,             LabyrinthOfLore::Rendering::TileMapWaterMesh(
+                                                   &world_texture_tile_atlas,
+                                                   tile_type_dictionary,
+                                                   levels[FINAL_TEMPLE_IDENTIFIER].get_tile_map(),
+                                                   world_texture_tile_atlas.get_bitmap(),
+                                                   60
+                                                ),
+         },
+         { VILLAGE_OF_THE_FORGOTTEN_IDENTIFIER, LabyrinthOfLore::Rendering::TileMapWaterMesh(
+                                                   &world_texture_tile_atlas,
+                                                   tile_type_dictionary,
+                                                   levels[VILLAGE_OF_THE_FORGOTTEN_IDENTIFIER].get_tile_map(),
+                                                   world_texture_tile_atlas.get_bitmap(),
+                                                   70
+                                                ),
+         },
+      };
+
       // build all the meshes
 
       for (auto &mesh : meshes) { mesh.second.build(); }
+      for (auto &water_mesh : water_meshes) { water_mesh.second.build(); }
 
 
 
@@ -1149,6 +1229,7 @@ int main(int argc, char **argv)
 
       LabyrinthOfLore::WorldMap::TileMap current_tile_map;
       LabyrinthOfLore::Rendering::TileMapMesh current_tile_map_mesh;
+      LabyrinthOfLore::Rendering::TileMapWaterMesh current_tile_map_water_mesh;
 
       //
          //{40.5, 87.5, levels[THE_UNDERWORLD_IDENTIFIER].get_ground_height()+0.001f },
@@ -1189,9 +1270,11 @@ int main(int argc, char **argv)
          player_entity,
          levels,
          meshes,
+         water_meshes,
          player_yaw,
          current_tile_map,
          current_tile_map_mesh,
+         current_tile_map_water_mesh,
          title_text
       );
 
@@ -1254,9 +1337,11 @@ int main(int argc, char **argv)
                player_entity,
                levels,
                meshes,
+               water_meshes,
                player_yaw,
                current_tile_map,
                current_tile_map_mesh,
+               current_tile_map_water_mesh,
                title_text,
                command_panel
             );
@@ -1302,9 +1387,11 @@ int main(int argc, char **argv)
                      //LabyrinthOfLore::Entity::Base* player_entity,
                      //std::map<std::string, LabyrinthOfLore::WorldMap::Level> &levels,
                      meshes,
+                     water_meshes,
                      player_yaw,
                      current_tile_map,
                      current_tile_map_mesh,
+                     current_tile_map_water_mesh,
                      title_text
                );
                //LabyrinthOfLoreGame::EntityTileMapCollisionEventProcessor entity_tile_map_collision_event_processor(collision_stepper_events);
@@ -1320,7 +1407,7 @@ int main(int argc, char **argv)
 
                //
 
-               LabyrinthOfLore::Rendering::SceneRenderer scene_renderer(scene_rendering_surface, &camera, current_tile_map_mesh, entities_in_the_current_level, &depth_darken_shader);
+               LabyrinthOfLore::Rendering::SceneRenderer scene_renderer(scene_rendering_surface, &camera, current_tile_map_mesh, current_tile_map_water_mesh, entities_in_the_current_level, &depth_darken_shader);
                scene_renderer.render();
 
                //
