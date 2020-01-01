@@ -68,10 +68,16 @@ return player_inventory->has_item(item_id);
 
 }
 
-bool TalkInteractions::player_has_thing_of_type(thing_type_t thing_type)
+int TalkInteractions::get_player_inventory_count_of_type(thing_type_t thing_type)
 {
 if (!character_panel) throw std::runtime_error("cannot player_has_thing_of_type on a nullptr character_panel");
 return character_panel->calculate_count_of_type(thing_type);
+
+}
+
+bool TalkInteractions::player_has_thing_of_type(thing_type_t thing_type)
+{
+return get_player_inventory_count_of_type() >= 1;
 
 }
 
@@ -104,17 +110,17 @@ if (you_talk_to(CATALINA_IN_THE_VILLAGE))
 
 if (you_talk_to(HARCOURT_IN_THE_VILLAGE))
 {
-   //if (!player_has_thing_of_type(THING_TYPE_TORCH_FUEL))
-   //{
-      //character_speaks("It's not so great down here. We all do our best to help each other out. " \
-                       //"You look like you're low on torch fuel. Have some of mine.");
+   if (get_player_inventory_count_of_type(THING_TYPE_TORCH_FUEL) < 3)
+   {
+      character_speaks("It's not so great down here. We all do our best to help each other out. " \
+                       "You look like you're low on torch fuel. Have some of mine.");
 
-      //while(character_panel->
-      //player_inventory->add_item(thing_dictionary->create_new_definition({THING_TYPE_TORCH_FUEL, "some", "torch fuel"}));
-      //player_inventory->add_item(thing_dictionary->create_new_definition({THING_TYPE_TORCH_FUEL, "some", "torch fuel"}));
-      //player_inventory->add_item(thing_dictionary->create_new_definition({THING_TYPE_TORCH_FUEL, "some", "torch fuel"}));
-   //}
-   //else
+      while(character_panel->calculate_count_of_type(THING_TYPE_TORCH_FUEL) < 3)
+      {
+          player_inventory->add_item(thing_dictionary->create_new_definition({THING_TYPE_TORCH_FUEL, "some", "torch fuel"}));
+      }
+   }
+   else
    {
       character_speaks("You look like an avatar I once knew. So strong and powerful, they once saved us all. Maybe you can do the same.");
    }

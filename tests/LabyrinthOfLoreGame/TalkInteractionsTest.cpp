@@ -183,11 +183,15 @@ TEST_F(LabyrinthOfLoreGame_TalkInteractionsTest, if_you_talk_to_catalina_in_the_
 }
 
 
-TEST_F(LabyrinthOfLoreGame_TalkInteractionsTest, if_you_talk_to_harcourt__he_will_give_you_a_prophecy)
+TEST_F(LabyrinthOfLoreGame_TalkInteractionsTest, if_you_talk_to_harcourt__when_you_have_at_least_3_torch_fuels__he_will_give_you_a_prophecy)
 {
    thing_dictionary = LabyrinthOfLore::Entity::ThingDictionary({
       { HARCOURT_IN_THE_VILLAGE, LabyrinthOfLore::Entity::ThingDefinition() },
    });
+
+   player_inventory.add_item(thing_dictionary.create_new_definition({THING_TYPE_TORCH_FUEL, "some", "torch fuel"}));
+   player_inventory.add_item(thing_dictionary.create_new_definition({THING_TYPE_TORCH_FUEL, "some", "torch fuel"}));
+   player_inventory.add_item(thing_dictionary.create_new_definition({THING_TYPE_TORCH_FUEL, "some", "torch fuel"}));
 
    LabyrinthOfLoreGame::TalkInteractions talk_interaction = create_simple_talk_interaction_with(HARCOURT_IN_THE_VILLAGE);
    std::string expected_thing_to_say = "You look like an avatar I once knew. So strong and powerful, they once saved us all. Maybe you can do the same.";
@@ -200,27 +204,21 @@ TEST_F(LabyrinthOfLoreGame_TalkInteractionsTest, if_you_talk_to_harcourt__he_wil
 
 
 
-//TEST_F(LabyrinthOfLoreGame_TalkInteractionsTest, if_you_talk_to_harcourt__with_less_than_3_torch_fuels__he_will_tell_you_the_message__and_fill_you_up_to_3_torch_fuels)
-//{
-   //thing_dictionary = LabyrinthOfLore::Entity::ThingDictionary({
-      //{ HARCOURT_IN_THE_VILLAGE, LabyrinthOfLore::Entity::ThingDefinition() },
-   //});
+TEST_F(LabyrinthOfLoreGame_TalkInteractionsTest, if_you_talk_to_harcourt__when_you_have_less_than_3_torch_fuels__he_will_tell_you_a_message_and_give_you_up_to_3_torch_fuels)
+{
+   thing_dictionary = LabyrinthOfLore::Entity::ThingDictionary({
+      { HARCOURT_IN_THE_VILLAGE, LabyrinthOfLore::Entity::ThingDefinition() },
+   });
 
-   //LabyrinthOfLoreGame::TalkInteractions talk_interaction = create_simple_talk_interaction_with(HARCOURT_IN_THE_VILLAGE);
-   //std::string expected_thing_to_say = "It's not so great down here. We all do our best to help each other out. You look like you're low on torch fuel. Have some of mine.";
+   LabyrinthOfLoreGame::TalkInteractions talk_interaction = create_simple_talk_interaction_with(HARCOURT_IN_THE_VILLAGE);
+   std::string expected_thing_to_say = "It's not so great down here. We all do our best to help each other out. You look like you're low on torch fuel. Have some of mine.";
 
-   //talk_interaction.process();
+   talk_interaction.process();
 
-   //// assert he said the thing
-   //ASSERT_SAID(expected_thing_to_say);
+   // assert he said the thing
+   ASSERT_SAID(expected_thing_to_say);
+   ASSERT_EQ(3, character_panel.calculate_count_of_type(THING_TYPE_TORCH_FUEL));
+}
 
-   //// assert 3 new items have been created
-   //ASSERT_EQ(3, player_inventory.size());
-   ////ASSERT_EQ(THING_TYPE_TORCH_FUEL, player_inventory.get_items_ref()[0].get_type());
-   ////ASSERT_EQ(0, player_inventory.get_items_ref()[0].get_type());
-   ////ASSERT_EQ(0, player_inventory.get_items_ref()[0].get_type());
-   ////ASSERT_EQ(3, character_panel.calculate_count_of_type(THING_TYPE_TORCH_FUEL));
-   ////ASSERT_EQ(4, thing_dictionary.size());
-//}
 
 

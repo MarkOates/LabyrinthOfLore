@@ -37,6 +37,7 @@ namespace LabyrinthOfLoreGame
    void append_message(std::string message="");
    bool you_talk_to(int possible_thing_id_talking_to=-1);
    bool player_has_item(int item_id=-1);
+   int get_player_inventory_count_of_type(thing_type_t thing_type=THING_TYPE_UNDEFINED);
    bool player_has_thing_of_type(thing_type_t thing_type=THING_TYPE_UNDEFINED);
    void process(float time_now=0.0f);
    };
