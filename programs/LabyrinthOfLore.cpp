@@ -360,6 +360,17 @@ std::string this_cannot_be_used(LabyrinthOfLore::Entity::ThingDefinition &thing_
 }
 
 
+std::string _does_not_want_to_talk(LabyrinthOfLore::Entity::ThingDefinition &thing_definition)
+{
+    std::stringstream message;
+    message << thing_definition.infer_decorated_name() << " does not want to talk.";
+
+    std::string str_needs_capitalization = message.str();
+    capitalize(str_needs_capitalization);
+    return str_needs_capitalization;
+}
+
+
 std::string you_killed_(LabyrinthOfLore::Entity::ThingDefinition &thing_definition)
 {
     std::stringstream message;
@@ -473,6 +484,35 @@ void process_thing_use_click(
    else
    {
       message_scroll.append_message(al_get_time(), this_cannot_be_used(this_thing_definition));
+   }
+}
+
+
+
+void process_thing_talk_click(
+      std::vector<LabyrinthOfLore::Entity::Base *> &all_entities,
+      LabyrinthOfLore::Entity::Base *entity,
+      //int thing_id,
+      LabyrinthOfLore::Entity::ThingDictionary &thing_dictionary,
+      LabyrinthOfLore::Hud::MessageScroll &message_scroll,
+      LabyrinthOfLore::Hud::CharacterPanel &character_panel,
+      AllegroFlare::Inventory &player_inventory
+      )
+{
+   if (!entity) throw std::runtime_error("Cannot process_thing_talk_click with a nullptr entity");
+   if (!entity->exists(THING_ID_ATTRIBUTE)) throw std::runtime_error("Cannot process_thing_talk_click expecting the entity to have a \"thing_id\" but it does not.");
+
+   int thing_id = entity->get_as_int(THING_ID_ATTRIBUTE);
+
+   LabyrinthOfLore::Entity::ThingDefinition &this_thing_definition = thing_dictionary.find_definition_ref(thing_id);
+
+
+   if (false) // thing wants to be talked to
+   {
+   }
+   else
+   {
+      message_scroll.append_message(al_get_time(), _does_not_want_to_talk(this_thing_definition));
    }
 }
 
@@ -606,6 +646,17 @@ void process_click_event(
          else if (command_panel.get_current_mode() == LabyrinthOfLore::Hud::COMMAND_MODE_ATTACK)
          {
             process_thing_attack_click(
+                  all_entities,
+                  this_entity,
+                  thing_dictionary,
+                  message_scroll,
+                  character_panel,
+                  player_inventory
+               );
+         }
+         else if (command_panel.get_current_mode() == LabyrinthOfLore::Hud::COMMAND_MODE_TALK)
+         {
+            process_thing_talk_click(
                   all_entities,
                   this_entity,
                   thing_dictionary,
