@@ -51,6 +51,38 @@ protected:
 };
 
 
+static void ASSERT_SAID(LabyrinthOfLore::Hud::MessageScroll message_scroll, std::string expected_message)
+{
+   std::vector<std::tuple<float, std::string, int>> message_scroll_messages = message_scroll.get_messages_ref();
+
+   if (message_scroll_messages.empty()) FAIL() << "\033[33mThe message scroll is empty.";
+
+   std::stringstream things_said;
+   things_said << "\033[33mThe following things were said in the message scroll: [" << std::endl;
+
+   for (unsigned i=0; i<message_scroll_messages.size(); i++)
+   {
+      float time = std::get<0>(message_scroll_messages[i]);
+      std::string message = std::get<1>(message_scroll_messages[i]);
+      int style = std::get<2>(message_scroll_messages[i]);
+
+      std::string actual_thing_said = message;
+
+      if (expected_message == actual_thing_said)
+      {
+         SUCCEED();
+         return;
+      }
+
+      things_said << "  • \"" << actual_thing_said << "\"" << std::endl;
+   }
+
+   things_said << "]" << std::endl;
+   FAIL() << things_said.str();
+}
+
+
+
 TEST_F(LabyrinthOfLoreGame_TalkInteractionsTest, can_be_created_without_blowing_up)
 {
    LabyrinthOfLoreGame::TalkInteractions talk_interactions;
@@ -76,5 +108,21 @@ TEST_F(LabyrinthOfLoreGame_TalkInteractionsTest, works_with_the_fixture)
 
    std::string expected_error_message = "cannot find_definition_ref in the ThingDictionary. It doesn't exist.";
    ASSERT_THROW_WITH_MESSAGE(talk_interactions.validate_arguments(), std::runtime_error, expected_error_message);
+}
+
+/// gameplay event tests
+
+TEST_F(LabyrinthOfLoreGame_TalkInteractionsTest, if_you_talk_to_the_man_at_the_entrance_of_the_cave__he_will_say_the_expected_thing)
+{
+   LabyrinthOfLore::Entity::ThingDictionary thing_dictionary({
+      { MAN_AT_THE_ENTRANCE_TO_THE_CAVE, LabyrinthOfLore::Entity::ThingDefinition() },
+   });
+
+   LabyrinthOfLoreGame::TalkInteractions talk_interactions(MAN_AT_THE_ENTRANCE_TO_THE_CAVE, &all_entities, &thing_dictionary, &message_scroll, &character_panel, &player_inventory);
+   std::string expected_thing_to_say = "Hey traveler! Down this cavern is a runestone of immaginable power. If you dare to go, you'll need to keep a lit torch or the darkness will attack you.";
+
+   talk_interactions.process();
+
+   ASSERT_SAID(message_scroll, expected_thing_to_say);
 }
 

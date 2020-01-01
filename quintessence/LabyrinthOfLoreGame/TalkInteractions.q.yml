@@ -47,10 +47,10 @@ functions:
     body: |
       LabyrinthOfLore::Entity::ThingDefinition &this_thing_definition = thing_dictionary->find_definition_ref(thing_id);
 
-      if (thing_id == 6)
+      if (thing_id == 5)
       {
          std::stringstream character_dialog;
-         message_scroll->append_character_dialog(time_now, "Hey traveler! Down this cavern is a runestone of immaginable power. If you dare to go, you'll need to keep a lit torch, or the darkness will attack you.");
+         message_scroll->append_character_dialog(time_now, "Hey traveler! Down this cavern is a runestone of immaginable power. If you dare to go, you'll need to keep a lit torch or the darkness will attack you.");
       }
 
       return;
