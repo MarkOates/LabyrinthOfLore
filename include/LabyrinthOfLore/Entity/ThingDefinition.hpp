@@ -24,6 +24,8 @@ namespace LabyrinthOfLore
          ThingDefinition(std::string article="an", std::string name="unnamed thing", Tileo::TileAtlas* tile_atlas=nullptr, int tile_atlas_index_id=-1, int weight=1, int health=1, std::string mood="");
          ~ThingDefinition();
 
+         void set_health(int health);
+         void set_mood(std::string mood);
 
          std::string get_article();
          std::string get_name();

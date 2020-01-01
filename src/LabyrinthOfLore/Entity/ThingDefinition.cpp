@@ -27,6 +27,18 @@ ThingDefinition::~ThingDefinition()
 }
 
 
+void ThingDefinition::set_health(int health)
+{
+   this->health = health;
+}
+
+
+void ThingDefinition::set_mood(std::string mood)
+{
+   this->mood = mood;
+}
+
+
 std::string ThingDefinition::get_article()
 {
    return article;
@@ -73,6 +85,7 @@ std::string ThingDefinition::infer_decorated_name()
 {
 std::stringstream result;
 if (!article.empty()) result << article << " ";
+if (!mood.empty()) result << mood << " ";
 if (!name.empty()) result << name << " ";
 
 std::string result_str = result.str();

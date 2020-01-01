@@ -28,11 +28,13 @@ properties:
     type: int
     init_with: 1
     constructor_arg: true
+    setter: true
     getter: true
   - name: mood
     type: std::string
     init_with: "\"\""
     constructor_arg: true
+    setter: true
     getter: true
 functions:
   - name: infer_decorated_name
@@ -40,6 +42,7 @@ functions:
     body: |
       std::stringstream result;
       if (!article.empty()) result << article << " ";
+      if (!mood.empty()) result << mood << " ";
       if (!name.empty()) result << name << " ";
 
       std::string result_str = result.str();
