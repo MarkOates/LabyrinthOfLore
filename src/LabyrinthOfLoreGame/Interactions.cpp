@@ -87,8 +87,9 @@ return;
 
 }
 
-void Interactions::process_talk(float time_now)
+void Interactions::process_talk(int thing_id, float time_now)
 {
+this->thing_id = thing_id;
 LabyrinthOfLore::Entity::ThingDefinition &this_thing_definition = thing_dictionary->find_definition_ref(thing_id);
 
 int new_id = -1;
