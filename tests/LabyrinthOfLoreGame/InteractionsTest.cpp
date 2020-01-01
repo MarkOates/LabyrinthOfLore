@@ -168,12 +168,12 @@ TEST_F(LabyrinthOfLoreGame_InteractionsTest, process_talk__with_the_infinity_tor
 TEST_F(LabyrinthOfLoreGame_InteractionsTest, process_talk__if_you_talk_to_catalina_in_the_village__she_gives_you_the_expected_message)
 {
    thing_dictionary = LabyrinthOfLore::Entity::ThingDictionary({
-      { CATALINA_IN_THE_VILLAGE, LabyrinthOfLore::Entity::ThingDefinition() },
+      { CATALINA_IN_THE_VILLAGE_ID, LabyrinthOfLore::Entity::ThingDefinition() },
    });
 
    std::string expected_thing_to_say = "Hello there young one. Look at you. You have so much life. I've been here for far to long, and miss so deeply my loved ones. I wonder if they still think of me...";
 
-   interactions.process_talk(CATALINA_IN_THE_VILLAGE);
+   interactions.process_talk(CATALINA_IN_THE_VILLAGE_ID);
    ASSERT_SAID(expected_thing_to_say);
 }
 
@@ -211,6 +211,23 @@ TEST_F(LabyrinthOfLoreGame_InteractionsTest, process_talk__if_you_talk_to_harcou
    // assert he said the thing
    ASSERT_SAID(expected_thing_to_say);
    ASSERT_EQ(3, character_panel.calculate_count_of_type(THING_TYPE_TORCH_FUEL));
+}
+
+
+
+TEST_F(LabyrinthOfLoreGame_InteractionsTest, process_use__if_you_use_the_letter_to_catalina__on__catalina__then_she_will_give_a_heartwarming_response_give_you_the_amulet_of_magic_and_take_the_letter_to_catalina)
+{
+   thing_dictionary = LabyrinthOfLore::Entity::ThingDictionary({
+      { CATALINA_IN_THE_VILLAGE_ID, LabyrinthOfLore::Entity::ThingDefinition() },
+      { LETTER_TO_CATALINA_ID, LabyrinthOfLore::Entity::ThingDefinition() },
+   });
+
+   interactions.process_use(LETTER_TO_CATALINA_ID, CATALINA_IN_THE_VILLAGE_ID);
+
+   std::string expected_thing_said = "What is this!? Oh my! A letter from my loved ones! They haven't forgotten me! I feel young again! I shall repay you with the only thing I have.";
+   ASSERT_SAID(expected_thing_said);
+   ASSERT_EQ(false, player_inventory.has_item(LETTER_TO_CATALINA_ID));
+   ASSERT_EQ(true, player_inventory.has_item(AMULET_OF_MAGIC_ID));
 }
 
 

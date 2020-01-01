@@ -84,6 +84,25 @@ functions:
         default_argument: 0.0f
     body: |
       return;
+  - name: process_use
+    parameters:
+      - name: thing_being_used_by_player_from_inventory
+        type: int
+        default_argument: -1
+      - name: thing_being_used_on
+        type: int
+        default_argument: 0
+      - name: time_now
+        type: float
+        default_argument: 0.0f
+    body: |
+      if (thing_being_used_by_player_from_inventory == LETTER_TO_CATALINA_ID && thing_being_used_on == CATALINA_IN_THE_VILLAGE_ID)
+      {
+         character_speaks("What is this!? Oh my! A letter from my loved ones! They haven't forgotten me! I feel young again! I shall repay you with the only thing I have.");
+         player_inventory->remove_item(LETTER_TO_CATALINA_ID);
+         player_inventory->add_item(AMULET_OF_MAGIC_ID);
+      }
+      return;
   - name: process_talk
     parameters:
       - name: thing_id
@@ -113,7 +132,7 @@ functions:
          }
       }
 
-      if (thing_id == CATALINA_IN_THE_VILLAGE)
+      if (thing_id == CATALINA_IN_THE_VILLAGE_ID)
       {
          character_speaks("Hello there young one. Look at you. You have so much life. I've been here for far to long, and " \
                           "miss so deeply my loved ones. I wonder if they still think of me...");

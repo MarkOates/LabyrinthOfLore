@@ -76,6 +76,18 @@ return;
 
 }
 
+void Interactions::process_use(int thing_being_used_by_player_from_inventory, int thing_being_used_on, float time_now)
+{
+if (thing_being_used_by_player_from_inventory == LETTER_TO_CATALINA_ID && thing_being_used_on == CATALINA_IN_THE_VILLAGE_ID)
+{
+   character_speaks("What is this!? Oh my! A letter from my loved ones! They haven't forgotten me! I feel young again! I shall repay you with the only thing I have.");
+   player_inventory->remove_item(LETTER_TO_CATALINA_ID);
+   player_inventory->add_item(AMULET_OF_MAGIC_ID);
+}
+return;
+
+}
+
 void Interactions::process_talk(int thing_id, float time_now)
 {
 //this->thing_id = thing_id;
@@ -98,7 +110,7 @@ if (thing_id == MAN_AT_THE_ENTRANCE_TO_THE_CAVE)
    }
 }
 
-if (thing_id == CATALINA_IN_THE_VILLAGE)
+if (thing_id == CATALINA_IN_THE_VILLAGE_ID)
 {
    character_speaks("Hello there young one. Look at you. You have so much life. I've been here for far to long, and " \
                     "miss so deeply my loved ones. I wonder if they still think of me...");
