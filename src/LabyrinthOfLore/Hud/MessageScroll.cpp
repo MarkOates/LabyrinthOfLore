@@ -28,7 +28,7 @@ std::string MessageScroll::get_text()
 }
 
 
-std::vector<std::tuple<float, std::string>> MessageScroll::get_last_3_messages()
+std::vector<std::tuple<float, std::string, int>> MessageScroll::get_last_3_messages()
 {
 if (messages.empty()) return {};
 if (messages.size() == 1) return { messages[messages.size()-1] };
@@ -55,7 +55,23 @@ if (!messages.empty() && text_to_append == std::get<1>(messages.back())) //.seco
 else
 {
    // append the message normally
-   messages.push_back({ time_of_message, text_to_append });
+   messages.push_back({ time_of_message, text_to_append, 0 });
+}
+return;
+
+}
+
+void MessageScroll::append_character_dialog(float time_of_message, std::string text_to_append)
+{
+if (!messages.empty() && text_to_append == std::get<1>(messages.back())) //.second)
+{
+   // update the time of the newest message so it flashes
+   std::get<0>(messages.back()) = time_of_message;
+}
+else
+{
+   // append the message normally
+   messages.push_back({ time_of_message, text_to_append, 1 });
 }
 return;
 

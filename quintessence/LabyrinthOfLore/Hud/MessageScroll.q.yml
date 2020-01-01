@@ -5,11 +5,11 @@ properties:
     getter: true
     constructor_arg: true
   - name: messages
-    type: std::vector<std::tuple<float, std::string>>
+    type: std::vector<std::tuple<float, std::string, int>>
     init_with: "{}"
 functions:
   - name: get_last_3_messages
-    type: std::vector<std::tuple<float, std::string>>
+    type: std::vector<std::tuple<float, std::string, int>>
     body: |
       if (messages.empty()) return {};
       if (messages.size() == 1) return { messages[messages.size()-1] };
@@ -43,12 +43,33 @@ functions:
       else
       {
          // append the message normally
-         messages.push_back({ time_of_message, text_to_append });
+         messages.push_back({ time_of_message, text_to_append, 0 });
+      }
+      return;
+  - name: append_character_dialog
+    type: void
+    parameters:
+      - name: time_of_message
+        type: float
+        default_argument: 0.0f
+      - name: text_to_append
+        type: std::string
+        default_argument: "\"\""
+    body: |
+      if (!messages.empty() && text_to_append == std::get<1>(messages.back())) //.second)
+      {
+         // update the time of the newest message so it flashes
+         std::get<0>(messages.back()) = time_of_message;
+      }
+      else
+      {
+         // append the message normally
+         messages.push_back({ time_of_message, text_to_append, 1 });
       }
       return;
   - name: clear_text
     type: void
     body: text.clear();
 dependencies:
-  - symbol: std::vector<std::tuple<float, std::string>>
+  - symbol: std::vector<std::tuple<float, std::string, int>>
     headers: [ vector, utility, string ]

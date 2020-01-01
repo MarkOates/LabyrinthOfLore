@@ -32,3 +32,4 @@ TEST(LabyrinthOfLore_Hud_MessageScrollTest, get_last_3_messages__returns_the_las
    std::string expected_string = "Welcome.\nYour quest has only just begun...";
    EXPECT_EQ(expected_string, message_scroll.get_text());
 }
+
