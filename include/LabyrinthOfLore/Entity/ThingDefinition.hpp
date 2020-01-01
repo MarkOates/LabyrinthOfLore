@@ -34,6 +34,8 @@ namespace LabyrinthOfLore
          int get_weight();
          int get_health();
          std::string get_mood();
+      bool infer_is_dead();
+      std::string infer_short_decorated_name();
       std::string infer_decorated_name();
       };
    }

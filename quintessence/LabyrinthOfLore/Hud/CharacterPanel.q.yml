@@ -16,6 +16,11 @@ functions:
        sort(local_copy.begin(), local_copy.end());
        local_copy.erase(unique(local_copy.begin(), local_copy.end()), local_copy.end());
        return local_copy;
+  - name: calculate_attack_strength
+    type: int
+    body: |
+      // 1 for now
+      return 1;
   - name: calculate_total_carry_strength
     type: int
     body: |

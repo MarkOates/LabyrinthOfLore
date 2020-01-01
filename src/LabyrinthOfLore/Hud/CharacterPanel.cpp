@@ -32,6 +32,13 @@ return local_copy;
 
 }
 
+int CharacterPanel::calculate_attack_strength()
+{
+// 1 for now
+return 1;
+
+}
+
 int CharacterPanel::calculate_total_carry_strength()
 {
 // 10 for now

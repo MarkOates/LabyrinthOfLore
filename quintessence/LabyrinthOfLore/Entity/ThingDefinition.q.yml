@@ -37,6 +37,23 @@ properties:
     setter: true
     getter: true
 functions:
+  - name: infer_is_dead
+    type: bool
+    body: |
+      return (health <= 0);
+  - name: infer_short_decorated_name
+    type: std::string
+    body: |
+      std::stringstream result;
+      if (!article.empty()) result << article << " ";
+      if (!name.empty()) result << name << " ";
+
+      std::string result_str = result.str();
+      if (result_str.size() > 0 && result_str[result_str.size()-1] == ' ') result_str.pop_back();
+
+      return result_str;
+    body_dependency_symbols:
+      - std::stringstream
   - name: infer_decorated_name
     type: std::string
     body: |

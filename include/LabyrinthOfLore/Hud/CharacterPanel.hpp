@@ -23,6 +23,7 @@ namespace LabyrinthOfLore
 
 
       std::vector<int> get_unique_sorted_list_of_inventory_items();
+      int calculate_attack_strength();
       int calculate_total_carry_strength();
       int calculate_current_carry_weight();
       int calculate_available_remaining_carry_weight();

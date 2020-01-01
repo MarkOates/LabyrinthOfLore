@@ -353,10 +353,20 @@ std::string this_cannot_be_used(LabyrinthOfLore::Entity::ThingDefinition &thing_
 {
     std::stringstream message;
     message << thing_definition.infer_decorated_name() << " cannot be used.";
+
     std::string str_needs_capitalization = message.str();
-
     capitalize(str_needs_capitalization);
+    return str_needs_capitalization;
+}
 
+
+std::string you_killed_(LabyrinthOfLore::Entity::ThingDefinition &thing_definition)
+{
+    std::stringstream message;
+    message << "You killed " << thing_definition.get_name() << ".";
+
+    std::string str_needs_capitalization = message.str();
+    capitalize(str_needs_capitalization);
     return str_needs_capitalization;
 }
 
@@ -486,7 +496,21 @@ void process_thing_attack_click(
    LabyrinthOfLore::Entity::ThingDefinition &this_thing_definition = thing_dictionary.find_definition_ref(thing_id);
 
 
-   //this_thing_definition
+   bool thing_can_be_attacked = true;
+
+
+   if (thing_can_be_attacked)
+   {
+      int result_strength_of_item_being_attacked = this_thing_definition.get_health() - character_panel.calculate_attack_strength();
+      this_thing_definition.set_health(result_strength_of_item_being_attacked);
+
+      if (this_thing_definition.infer_is_dead())
+      {
+         this_thing_definition.set_health(result_strength_of_item_being_attacked);
+         flag_for_destruction(entity);
+         message_scroll.append_message(al_get_time(), you_killed_(this_thing_definition));
+      }
+   }
 
 
    //if (entity->exists(MUST_BE_PICKED_UP_TO_BE_USED))
