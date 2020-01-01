@@ -8,6 +8,14 @@ properties:
     init_with: nullptr
     constructor_arg: true
 functions:
+  - name: get_unique_sorted_list_of_inventory_items
+    type: std::vector<int>
+    body: |
+       if (!player_inventory) throw std::runtime_error("Cannot get_unique_list_of_inventory_items with a nullptr player_inventory");
+       std::vector<int> local_copy = player_inventory->get_items_ref();
+       sort(local_copy.begin(), local_copy.end());
+       local_copy.erase(unique(local_copy.begin(), local_copy.end()), local_copy.end());
+       return local_copy;
   - name: calculate_total_carry_strength
     type: int
     body: |
@@ -53,4 +61,6 @@ dependencies:
   - symbol: LabyrinthOfLore::Entity::ThingDictionary*
     headers: [ LabyrinthOfLore/Entity/ThingDictionary.hpp ]
   - symbol: std::vector
+    headers: [ vector ]
+  - symbol: std::vector<int>
     headers: [ vector ]
