@@ -9,9 +9,6 @@ namespace LabyrinthOfLoreGame
 {
 
 
-std::string Interactions::THING_ID_ATTRIBUTE = "thing_id";
-
-
 Interactions::Interactions(LabyrinthOfLoreGame::ThingDefinitionFactory* thing_definition_factory, std::vector<LabyrinthOfLore::Entity::Base*>* all_entities, LabyrinthOfLore::Entity::ThingDictionary* thing_dictionary, LabyrinthOfLore::Hud::MessageScroll* message_scroll, LabyrinthOfLore::Hud::CharacterPanel* character_panel, AllegroFlare::Inventory* player_inventory, float time_now)
    : thing_definition_factory(thing_definition_factory)
    , all_entities(all_entities)

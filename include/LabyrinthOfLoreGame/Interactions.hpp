@@ -24,7 +24,6 @@ namespace LabyrinthOfLoreGame
       LabyrinthOfLore::Hud::CharacterPanel* character_panel;
       AllegroFlare::Inventory* player_inventory;
       float time_now;
-      static std::string THING_ID_ATTRIBUTE;
 
    public:
       Interactions(LabyrinthOfLoreGame::ThingDefinitionFactory* thing_definition_factory=nullptr, std::vector<LabyrinthOfLore::Entity::Base*>* all_entities=nullptr, LabyrinthOfLore::Entity::ThingDictionary* thing_dictionary=nullptr, LabyrinthOfLore::Hud::MessageScroll* message_scroll=nullptr, LabyrinthOfLore::Hud::CharacterPanel* character_panel=nullptr, AllegroFlare::Inventory* player_inventory=nullptr, float time_now=0.0f);

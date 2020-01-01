@@ -27,11 +27,6 @@ properties:
     type: float
     init_with: 0.0f
     constructor_arg: true
-  - name: THING_ID_ATTRIBUTE
-    type: std::string
-    static: true
-    const: true
-    init_with: "\"thing_id\""
 functions:
   - name: validate_arguments
     body: |
