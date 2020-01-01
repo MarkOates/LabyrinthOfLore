@@ -874,7 +874,7 @@ int main(int argc, char **argv)
                                                    "Level 3",
                                                    "An Abandoned Temple",
                                                    3.0f,
-                                                   LabyrinthOfLore::WorldMap::BitmapFilenameToWorldBuilder("data/bitmaps/an_abandoned_temple.png", 3.0, 1.0).build()
+                                                   LabyrinthOfLore::WorldMap::MultiBitmapFilenameToWorldBuilder("data/bitmaps/an_abandoned_temple.png", "data/bitmaps/an_abandoned_temple-type.png", 3.0, 1.0).build()
                                                 )
          },
          { DUNGEON_OF_THE_CURSED_IDENTIFIER,    LabyrinthOfLore::WorldMap::Level(
@@ -888,7 +888,7 @@ int main(int argc, char **argv)
                                                    "Level 4",
                                                    "Temple of Water",
                                                    2.0f,
-                                                   LabyrinthOfLore::WorldMap::BitmapFilenameToWorldBuilder("data/bitmaps/temple_of_water.png", 6.0, 1.25).build()
+                                                   LabyrinthOfLore::WorldMap::MultiBitmapFilenameToWorldBuilder("data/bitmaps/temple_of_water.png", "data/bitmaps/temple_of_water-type.png", 6.0, 1.25).build()
                                                 )
          },
          { WORLD_OF_FIRE_IDENTIFIER,            LabyrinthOfLore::WorldMap::Level(
