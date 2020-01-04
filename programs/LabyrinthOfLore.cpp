@@ -80,6 +80,9 @@ void capitalize (string &s)
 }
 
 
+bool development_mode = false;
+
+
 
 #include <AllegroFlare/Inventory.hpp>
 
@@ -740,22 +743,25 @@ void process_keyboard_keydown_event(
       LabyrinthOfLore::Hud::CommandPanel &command_panel
    )
 {
-   if (this_event.keyboard.keycode == ALLEGRO_KEY_0)
-      go_into_door(doors.at(10), player_entity, levels, meshes, water_meshes, player_yaw, current_tile_map, current_tile_map_mesh, current_tile_map_water_mesh, title_text);
-   else if (this_event.keyboard.keycode == ALLEGRO_KEY_1)
-      go_into_door(doors.at(1), player_entity, levels, meshes, water_meshes, player_yaw, current_tile_map, current_tile_map_mesh, current_tile_map_water_mesh, title_text);
-   else if (this_event.keyboard.keycode == ALLEGRO_KEY_2)
-      go_into_door(doors.at(3), player_entity, levels, meshes, water_meshes, player_yaw, current_tile_map, current_tile_map_mesh, current_tile_map_water_mesh, title_text);
-   else if (this_event.keyboard.keycode == ALLEGRO_KEY_3)
-      go_into_door(doors.at(2), player_entity, levels, meshes, water_meshes, player_yaw, current_tile_map, current_tile_map_mesh, current_tile_map_water_mesh, title_text);
-   else if (this_event.keyboard.keycode == ALLEGRO_KEY_4)
-      go_into_door(doors.at(4), player_entity, levels, meshes, water_meshes, player_yaw, current_tile_map, current_tile_map_mesh, current_tile_map_water_mesh, title_text);
-   else if (this_event.keyboard.keycode == ALLEGRO_KEY_5)
-      go_into_door(doors.at(5), player_entity, levels, meshes, water_meshes, player_yaw, current_tile_map, current_tile_map_mesh, current_tile_map_water_mesh, title_text);
-   else if (this_event.keyboard.keycode == ALLEGRO_KEY_6)
-      go_into_door(doors.at(6), player_entity, levels, meshes, water_meshes, player_yaw, current_tile_map, current_tile_map_mesh, current_tile_map_water_mesh, title_text);
-   else if (this_event.keyboard.keycode == ALLEGRO_KEY_7)
-      go_into_door(doors.at(7), player_entity, levels, meshes, water_meshes, player_yaw, current_tile_map, current_tile_map_mesh, current_tile_map_water_mesh, title_text);
+   if (development_mode)
+   {
+      if (this_event.keyboard.keycode == ALLEGRO_KEY_0)
+         go_into_door(doors.at(10), player_entity, levels, meshes, water_meshes, player_yaw, current_tile_map, current_tile_map_mesh, current_tile_map_water_mesh, title_text);
+      else if (this_event.keyboard.keycode == ALLEGRO_KEY_1)
+         go_into_door(doors.at(1), player_entity, levels, meshes, water_meshes, player_yaw, current_tile_map, current_tile_map_mesh, current_tile_map_water_mesh, title_text);
+      else if (this_event.keyboard.keycode == ALLEGRO_KEY_2)
+         go_into_door(doors.at(3), player_entity, levels, meshes, water_meshes, player_yaw, current_tile_map, current_tile_map_mesh, current_tile_map_water_mesh, title_text);
+      else if (this_event.keyboard.keycode == ALLEGRO_KEY_3)
+         go_into_door(doors.at(2), player_entity, levels, meshes, water_meshes, player_yaw, current_tile_map, current_tile_map_mesh, current_tile_map_water_mesh, title_text);
+      else if (this_event.keyboard.keycode == ALLEGRO_KEY_4)
+         go_into_door(doors.at(4), player_entity, levels, meshes, water_meshes, player_yaw, current_tile_map, current_tile_map_mesh, current_tile_map_water_mesh, title_text);
+      else if (this_event.keyboard.keycode == ALLEGRO_KEY_5)
+         go_into_door(doors.at(5), player_entity, levels, meshes, water_meshes, player_yaw, current_tile_map, current_tile_map_mesh, current_tile_map_water_mesh, title_text);
+      else if (this_event.keyboard.keycode == ALLEGRO_KEY_6)
+         go_into_door(doors.at(6), player_entity, levels, meshes, water_meshes, player_yaw, current_tile_map, current_tile_map_mesh, current_tile_map_water_mesh, title_text);
+      else if (this_event.keyboard.keycode == ALLEGRO_KEY_7)
+         go_into_door(doors.at(7), player_entity, levels, meshes, water_meshes, player_yaw, current_tile_map, current_tile_map_mesh, current_tile_map_water_mesh, title_text);
+   }
 
 
    else if (this_event.keyboard.keycode == ALLEGRO_KEY_T) set_command_mode(command_panel, LabyrinthOfLore::Hud::COMMAND_MODE_TALK);
@@ -1494,7 +1500,8 @@ int main(int argc, char **argv)
             }
          case ALLEGRO_EVENT_KEY_CHAR: // using key down does not capture the SHIFT modifier for cheats
             {
-               bool shift = this_event.keyboard.modifiers & ALLEGRO_KEYMOD_SHIFT; /// DISABLE ON RELEASE
+               bool shift = false;
+               if (development_mode) shift = this_event.keyboard.modifiers & ALLEGRO_KEYMOD_SHIFT; /// DISABLE ON RELEASE
 
                if (this_event.keyboard.keycode == ALLEGRO_KEY_ESCAPE) shutdown_program = true;
                if (this_event.keyboard.keycode == ALLEGRO_KEY_A) player_turning = shift ? 4*-max_player_turning_speed : -max_player_turning_speed;
@@ -1502,9 +1509,12 @@ int main(int argc, char **argv)
                if (this_event.keyboard.keycode == ALLEGRO_KEY_D) player_turning = shift ? 4*max_player_turning_speed : max_player_turning_speed;
                if (this_event.keyboard.keycode == ALLEGRO_KEY_S) player_movement_magnitude = shift ? -0.1 : -0.022;
 
-               if (this_event.keyboard.keycode == ALLEGRO_KEY_Y) depth_darken_shader.set_torch_type(0); /// DISABLE ON RELEASE
-               if (this_event.keyboard.keycode == ALLEGRO_KEY_H) depth_darken_shader.set_torch_type(1); /// DISABLE ON RELEASE
-               if (this_event.keyboard.keycode == ALLEGRO_KEY_N) depth_darken_shader.set_torch_type(2); /// DISABLE ON RELEASE
+               if (development_mode)
+               {
+                  if (this_event.keyboard.keycode == ALLEGRO_KEY_Y) depth_darken_shader.set_torch_type(0); /// DISABLE ON RELEASE
+                  if (this_event.keyboard.keycode == ALLEGRO_KEY_H) depth_darken_shader.set_torch_type(1); /// DISABLE ON RELEASE
+                  if (this_event.keyboard.keycode == ALLEGRO_KEY_N) depth_darken_shader.set_torch_type(2); /// DISABLE ON RELEASE
+               }
 
                process_cheat_keyboard_keydown_event(
                   this_event,
