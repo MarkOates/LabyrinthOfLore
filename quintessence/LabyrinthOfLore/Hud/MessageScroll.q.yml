@@ -81,4 +81,4 @@ functions:
     body: text.clear();
 dependencies:
   - symbol: std::vector<std::tuple<float, std::string, int>>
-    headers: [ vector, utility, string ]
+    headers: [ vector, tuple, string ]
