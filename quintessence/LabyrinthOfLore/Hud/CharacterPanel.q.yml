@@ -28,12 +28,14 @@ functions:
     type: std::map<thing_type_t, int>
     body: |
       if (!player_inventory) throw std::runtime_error("cannot calculate_count_of_type on a nullptr player_inventory");
+      if (!thing_dictionary) throw std::runtime_error("cannot calculate_count_of_type on a nullptr thing_dictionary");
+
             //item //count
       std::map<thing_type_t, int> result = {};
 
-      for (auto &inventory_item_int : player_inventory->get_items_ref())
+      for (auto &inventory_item_id : player_inventory->get_items_ref())
       {
-         thing_type_t inventory_item_type = (thing_type_t)inventory_item_int;
+         thing_type_t inventory_item_type = thing_dictionary->find_definition_ref(inventory_item_id).get_type();
          result[inventory_item_type] = calculate_count_of_type(inventory_item_type);
       }
 

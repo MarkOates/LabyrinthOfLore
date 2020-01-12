@@ -93,7 +93,16 @@ TEST(LabyrinthOfLore_Hud_CharacterPanelTest, get_rollup_inventory__will_return_a
    player_inventory.add_item(5);
 
    LabyrinthOfLore::Hud::CharacterPanel character_panel(&player_inventory, &thing_dictionary);
-   EXPECT_EQ(2, character_panel.calculate_count_of_type(THING_TYPE_TORCH_FUEL));
-   EXPECT_EQ(1, character_panel.calculate_count_of_type(THING_TYPE_TORCH));
+
+   std::map<thing_type_t, int> expected_rolled_up_inventory{
+      { THING_TYPE_TORCH,           1 },
+      { THING_TYPE_DOES_NOT_MATTER, 1 },
+      { THING_TYPE_TORCH_FUEL,      3 },
+   };
+
+   std::map<thing_type_t, int> actual_rolled_up_inventory = character_panel.get_rollup_inventory();
+
+   EXPECT_EQ(expected_rolled_up_inventory, actual_rolled_up_inventory);
 }
+
 
