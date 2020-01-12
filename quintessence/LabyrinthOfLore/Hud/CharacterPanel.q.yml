@@ -26,6 +26,16 @@ functions:
          cursor_y = inventory_list_length - 1;
       }
       return true;
+  - name: move_cursor_down
+    type: bool
+    body: |
+      cursor_y++;
+      int inventory_list_length = get_inventory_rollup().size();
+      if (cursor_y >= inventory_list_length)
+      {
+         cursor_y = 0;
+      }
+      return true;
   - name: calculate_count_of_type
     type: int
     parameters:

@@ -149,3 +149,25 @@ TEST(LabyrinthOfLore_Hud_CharacterPanelTest, move_cursor_up__will_cycle_the_curs
 }
 
 
+TEST(LabyrinthOfLore_Hud_CharacterPanelTest, move_cursor_down__will_cycle_the_cursor_to_the_top_if_it_reaches_the_edge)
+{
+   AllegroFlare::Inventory player_inventory;
+   LabyrinthOfLore::Entity::ThingDictionary thing_dictionary({
+      { 1, LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_TORCH_FUEL, "some",   "torch fuel",    nullptr, -1, 6) },
+      { 2, LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_DOES_NOT_MATTER, "a", "duck",    nullptr, -1, -1) },
+      { 3, LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_TORCH,      "a",      "torch",    nullptr, -1, 4) },
+   });
+
+   player_inventory.add_item(1);
+   player_inventory.add_item(2);
+   player_inventory.add_item(3);
+
+   LabyrinthOfLore::Hud::CharacterPanel character_panel(&player_inventory, &thing_dictionary);
+
+   EXPECT_EQ(true, character_panel.move_cursor_up());
+   EXPECT_EQ(true, character_panel.move_cursor_down());
+
+   EXPECT_EQ(0, character_panel.get_cursor_y());
+}
+
+
