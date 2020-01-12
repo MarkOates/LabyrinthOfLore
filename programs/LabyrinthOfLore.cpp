@@ -1214,7 +1214,7 @@ int main(int argc, char **argv)
 
       LabyrinthOfLore::Entity::Base* player_entity = new LabyrinthOfLore::Entity::Base;
 
-      float player_yaw = -0.04 - 0.5;
+      float player_yaw = 0;
       float player_camera_ascent = 0.65;
       float player_pitch = 0.0;
       float player_turning = 0.0;
@@ -1267,8 +1267,6 @@ int main(int argc, char **argv)
             //current_tile_map_mesh
       //);
 
-      player_yaw += 0.5;
-         
       //move_player_to_level(
          //player_entity,
          //levels,
