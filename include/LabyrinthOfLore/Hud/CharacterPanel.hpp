@@ -26,6 +26,7 @@ namespace LabyrinthOfLore
 
          int get_cursor_x();
          int get_cursor_y();
+      bool move_cursor_up();
       int calculate_count_of_type(thing_type_t thing_type=THING_TYPE_UNDEFINED);
       std::map<thing_type_t, int> get_inventory_rollup();
       int calculate_attack_strength();

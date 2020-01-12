@@ -16,6 +16,16 @@ properties:
     init_with: 0
     getter: true
 functions:
+  - name: move_cursor_up
+    type: bool
+    body: |
+      cursor_y--;
+      if (cursor_y < 0)
+      {
+         int inventory_list_length = get_inventory_rollup().size();
+         cursor_y = inventory_list_length - 1;
+      }
+      return true;
   - name: calculate_count_of_type
     type: int
     parameters:

@@ -36,6 +36,18 @@ int CharacterPanel::get_cursor_y()
 }
 
 
+bool CharacterPanel::move_cursor_up()
+{
+cursor_y--;
+if (cursor_y < 0)
+{
+   int inventory_list_length = get_inventory_rollup().size();
+   cursor_y = inventory_list_length - 1;
+}
+return true;
+
+}
+
 int CharacterPanel::calculate_count_of_type(thing_type_t thing_type)
 {
 if (!player_inventory) throw std::runtime_error("cannot calculate_count_of_type on a nullptr player_inventory");
