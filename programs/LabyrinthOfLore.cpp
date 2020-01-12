@@ -1254,37 +1254,9 @@ int main(int argc, char **argv)
       LabyrinthOfLore::Rendering::TileMapWaterMesh current_tile_map_water_mesh;
 
       //
-         //{40.5, 87.5, levels[THE_UNDERWORLD_IDENTIFIER].get_ground_height()+0.001f },
-
-
-      //move_player_to_level(
-            //player_entity,
-            //levels,
-            //meshes,
-            //TEMPLE_OF_WATER_IDENTIFIER,
-            //{ 27, 14, 0 },
-            //current_tile_map,
-            //current_tile_map_mesh
-      //);
-
-      //move_player_to_level(
-         //player_entity,
-         //levels,
-         //meshes,
-         //&player_yaw,
-         //current_tile_map,
-         //current_tile_map_mesh
-      //);
-
-      //set_title_text(
-         //title_text,
-         //"Level 0",
-         //levels[THE_UNDERWORLD_IDENTIFIER].get_name()
-      //);
-
-      //
 
       // start game
+
       go_into_door(
          doors.at(10),
          player_entity,
