@@ -1534,7 +1534,7 @@ int main(int argc, char **argv)
 
                //
 
-               LabyrinthOfLore::Rendering::SceneRenderer scene_renderer(scene_rendering_surface, &camera, current_tile_map_mesh, current_tile_map_water_mesh, entities_in_the_current_level, &depth_darken_shader);
+               LabyrinthOfLore::Rendering::SceneRenderer scene_renderer(scene_rendering_surface, &camera, &current_tile_map_mesh, &current_tile_map_water_mesh, entities_in_the_current_level, &depth_darken_shader);
                scene_renderer.render();
 
                //

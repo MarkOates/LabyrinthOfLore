@@ -13,7 +13,7 @@ namespace Rendering
 {
 
 
-SceneRenderer::SceneRenderer(ALLEGRO_BITMAP* rendering_surface, LabyrinthOfLore::Rendering::Camera* camera, LabyrinthOfLore::Rendering::TileMapMesh tile_map_mesh, LabyrinthOfLore::Rendering::TileMapWaterMesh tile_map_water_mesh, std::vector<LabyrinthOfLore::Entity::Base*> entities, LabyrinthOfLore::Shader::DepthDarken* depth_darken_shader)
+SceneRenderer::SceneRenderer(ALLEGRO_BITMAP* rendering_surface, LabyrinthOfLore::Rendering::Camera* camera, LabyrinthOfLore::Rendering::TileMapMesh* tile_map_mesh, LabyrinthOfLore::Rendering::TileMapWaterMesh* tile_map_water_mesh, std::vector<LabyrinthOfLore::Entity::Base*> entities, LabyrinthOfLore::Shader::DepthDarken* depth_darken_shader)
    : rendering_surface(rendering_surface)
    , camera(camera)
    , tile_map_mesh(tile_map_mesh)
@@ -31,6 +31,8 @@ SceneRenderer::~SceneRenderer()
 
 void SceneRenderer::render()
 {
+if (!tile_map_mesh) throw std::runtime_error("cannot render with null tile_map_mesh");
+if (!tile_map_water_mesh) throw std::runtime_error("cannot render with null tile_map_water_mesh");
 if (!rendering_surface) throw std::runtime_error("cannot render with null rendering_surface");
 if (!camera) throw std::runtime_error("cannot render with null camera");
 //if (!depth_darken_shader) throw std::runtime_error("cannot render with null depth_darken_shader");
@@ -45,8 +47,8 @@ camera->start_projection(rendering_surface);
 
 if (depth_darken_shader) depth_darken_shader->activate();
 
-tile_map_mesh.draw();
-tile_map_water_mesh.draw();
+tile_map_mesh->draw();
+tile_map_water_mesh->draw();
 
 for (auto &entity : entities)
 {
