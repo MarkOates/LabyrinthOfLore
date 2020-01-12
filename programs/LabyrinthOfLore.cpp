@@ -1163,17 +1163,6 @@ int main(int argc, char **argv)
 
 
 
-      //std::map<int, std::string> map_names = {
-         //{ 0, THE_UNDERWORLD_IDENTIFIER },
-         //{ 1, THE_CAVE_IDENTIFIER },
-         //{ 2, AN_ABANDONED_TEMPLE_IDENTIFIER },
-         //{ 3, DUNGEON_OF_THE_CURSED_IDENTIFIER },
-         //{ 4, TEMPLE_OF_WATER_IDENTIFIER },
-         //{ 5, WORLD_OF_FIRE_IDENTIFIER },
-         //{ 6, FINAL_TEMPLE_IDENTIFIER },
-         //{ 7, VILLAGE_OF_THE_FORGOTTEN_IDENTIFIER },
-      //};
-
       std::map<char, Door> doors = {
          { 1, Door(THE_CAVE_IDENTIFIER, 32.5, 13.5, -5.0, 0.5) },
          { 2, Door(AN_ABANDONED_TEMPLE_IDENTIFIER, 19.5, 42.5, -5.0, 0.5) },
