@@ -5,7 +5,6 @@
 #include <LabyrinthOfLore/Entity/ThingDictionary.hpp>
 #include <LabyrinthOfLoreGame/ItemIdEnums.hpp>
 #include <map>
-#include <string>
 
 
 namespace LabyrinthOfLore
@@ -30,7 +29,6 @@ namespace LabyrinthOfLore
       int calculate_current_carry_weight();
       int calculate_available_remaining_carry_weight();
       bool has_item(int item_id=0);
-      std::string run();
       };
    }
 }

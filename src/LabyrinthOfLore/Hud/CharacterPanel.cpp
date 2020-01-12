@@ -98,11 +98,6 @@ if (player_inventory && player_inventory->has_item(item_id)) return true;
 return false;
 
 }
-
-std::string CharacterPanel::run()
-{
-return "Hello World!";
-}
 } // namespace Hud
 } // namespace LabyrinthOfLore
 

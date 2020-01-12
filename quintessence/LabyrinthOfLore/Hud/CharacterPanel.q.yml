@@ -81,9 +81,6 @@ functions:
     body: |
       if (player_inventory && player_inventory->has_item(item_id)) return true;
       return false;
-  - name: run
-    type: std::string
-    body: return "Hello World!";
 dependencies:
   - symbol: AllegroFlare::Inventory*
     headers: [ AllegroFlare/Inventory.hpp ]
