@@ -1209,21 +1209,21 @@ int main(int argc, char **argv)
 
       LabyrinthOfLoreGame::ThingDefinitionFactory thing_definition_factory; // yet to be used
 
-
-
-      //
-
-      AllegroFlare::Inventory player_inventory;
-
-      //
       //
 
       std::vector<LabyrinthOfLore::Entity::Base*> all_entities = {};
+
+      //
+
+      add_thing_to_world(all_entities, thing_dictionary, ITEM_TORCH_ID,                   THE_UNDERWORLD_IDENTIFIER, {  42.5,  77.5, 3.0 }, true, true,  false);
+      add_thing_to_world(all_entities, thing_dictionary, MAN_AT_THE_ENTRANCE_TO_THE_CAVE, THE_CAVE_IDENTIFIER,       {  31.5,  9.5, 1.0 },  true, false, false);
+      add_thing_to_world(all_entities, thing_dictionary, RAT+1,                           THE_UNDERWORLD_IDENTIFIER, {  40.5,  101.5, 1.0 },  true, false, false);
+
+      //
+
       LabyrinthOfLore::Rendering::Camera camera({0, 0, 0}, 0.0, 0.0);
 
       LabyrinthOfLore::Entity::Base* player_entity = new LabyrinthOfLore::Entity::Base;
-      //player_entity->get_placement_ref().position = AllegroFlare::vec3d(1.5, 90.5, 1.01);
-      //
 
       float player_yaw = -0.04 - 0.5;
       float player_camera_ascent = 0.65;
@@ -1238,92 +1238,12 @@ int main(int argc, char **argv)
       player_entity->get_velocity_ref().position = {0.0, 0.0, 0.0};
       player_entity->set_identifier_for_level_within(THE_UNDERWORLD_IDENTIFIER);
       player_entity->get_placement_ref().position = {0.0, 0.0, 0.0};
-      //player_entity->get_placement_ref().rotation = {2.5, 2.5, 0.0};
-
-      //camera.get_position_ref() = player_entity->get_placement_ref().position + AllegroFlare::vec3d(0, 0, 0.65); //{5, 20, 2.01 + 0.5};
 
       all_entities.push_back(player_entity);
 
-
-
-
-      //add_thing_to_world(LabyrinthOfLore::Entity::ThingDefinition, std::string level_identifier, placement3d placement, billboard_at_camera);
-
-      //std::vector<LabyrinthOfLore::Entity::Base*> *all_entities,
-      //LabyrinthOfLore::Entity::ThingDictionary &thing_dictionary,
-      //int thing_id,
-      //std::string level_identifier,
-      //AllegroFlare::vec3d position,
-      //bool billboard_at_camera=true
-
-      add_thing_to_world(all_entities, thing_dictionary, ITEM_TORCH_ID,                   THE_UNDERWORLD_IDENTIFIER, {  42.5,  77.5, 3.0 }, true, true,  false);
-      add_thing_to_world(all_entities, thing_dictionary, MAN_AT_THE_ENTRANCE_TO_THE_CAVE, THE_CAVE_IDENTIFIER,       {  31.5,  9.5, 1.0 },  true, false, false);
-
-      // a rat
-      add_thing_to_world(all_entities, thing_dictionary, RAT+1,                           THE_UNDERWORLD_IDENTIFIER, {  40.5,  101.5, 1.0 },  true, false, false);
-
-
-      //for (int y=0; y<36; y++)
-      //{
-         //for (int x=0; x<40; x++)
-         //{
-            //add_thing_to_world(&all_entities, thing_dictionary.find_definition(ITEM_TORCH_ID), THE_CAVE_IDENTIFIER,       { x + 0.5f, y + 0.5f, 6.0f }, true);
-         //}
-      //}
-
-      //std::vector<LabyrinthOfLore::Entity::Base*> *all_entities,
-      //LabyrinthOfLore::Entity::ThingDefinition thing_definition,
-      //std::string level_identifier,
-      //AllegroFlare::vec3d position,
-      //bool billboard_at_camera=true
-
       //
 
-      /*
-      int x = 42;
-      int y = 59+18;
-      //int sprite_sheet_width = al_get_bitmap_width(item_tile_atlas.get_bitmap());
-      //int torch_id = 9*13+6;
-      ALLEGRO_BITMAP *bitmap = item_tile_atlas.get_bitmap(thing_dictionary.find_definition(ITEM_TORCH_ID).get_tile_atlas_index_id());
-      LabyrinthOfLore::Entity::Base* entity = new LabyrinthOfLore::Entity::Base;
-      entity->set_billboard_at_camera(true);
-      entity->set_bitmap(bitmap);
-      entity->set_identifier_for_level_within(THE_UNDERWORLD_IDENTIFIER);
-      entity->get_placement_ref().size = AllegroFlare::vec3d(al_get_bitmap_width(bitmap), al_get_bitmap_height(bitmap), 0.0);
-      entity->get_placement_ref().size = AllegroFlare::vec3d(al_get_bitmap_width(bitmap), al_get_bitmap_height(bitmap), 0.0);
-      entity->get_placement_ref().scale = AllegroFlare::vec3d(0.005, 0.005, 0.005);
-      entity->get_placement_ref().align = AllegroFlare::vec3d(0.5, 1.0, 0.0);
-      entity->get_placement_ref().position = AllegroFlare::vec3d(x + 0.5, y + 0.5, 3.01);
-      //entity->get_placement_ref().rotation = AllegroFlare::vec3d(0, random.get_random_float(-1, 1), 0);
-      all_entities.push_back(entity);
-      */
-
-      //Random random;
-
-      //for (int y=1; y<3; y++)
-      //{
-         //for (int x=1; x<3; x++)
-         //{
-            //LabyrinthOfLore::Entity::Base* entity = new LabyrinthOfLore::Entity::Base;
-            //entity->set_billboard_at_camera(true);
-            //entity->set_bitmap(item_tile_atlas.get_bitmap(9*8));
-            //entity->set_identifier_for_level_within(THE_UNDERWORLD_IDENTIFIER);
-            //entity->get_placement_ref().size = AllegroFlare::vec3d(al_get_bitmap_width(billboarding_tester_sprite), al_get_bitmap_height(billboarding_tester_sprite), 0.0);
-            //entity->get_placement_ref().scale = AllegroFlare::vec3d(0.005, 0.005, 0.005);
-            //entity->get_placement_ref().align = AllegroFlare::vec3d(0.5, 1.0, 0.0);
-            //entity->get_placement_ref().position = AllegroFlare::vec3d(x + 0.5, y + 0.5, 1.01);
-            //entity->get_placement_ref().rotation = AllegroFlare::vec3d(0, random.get_random_float(-1, 1), 0);
-            ////entity->get_placement_ref().rotation = AllegroFlare::vec3d(random.get_random_float(-1, 1), random.get_random_float(-1, 1), random.get_random_float(-1, 1));
-
-            //all_entities.push_back(entity);
-
-            //std::cout << "entity made " << std::endl;
-         //}
-      //}
-
-
-
-      //
+      AllegroFlare::Inventory player_inventory;
 
       LabyrinthOfLore::Hud::MessageScroll message_scroll("");
       LabyrinthOfLore::Hud::CommandPanel command_panel;
