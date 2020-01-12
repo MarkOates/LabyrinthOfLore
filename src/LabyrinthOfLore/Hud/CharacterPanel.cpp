@@ -44,8 +44,8 @@ std::map<thing_type_t, int> result = {};
 
 for (auto &inventory_item_int : player_inventory->get_items_ref())
 {
-   thing_type_t inventory_item = (thing_type_t)inventory_item_int;
-   result[inventory_item] = calculate_count_of_type(inventory_item);
+   thing_type_t inventory_item_type = (thing_type_t)inventory_item_int;
+   result[inventory_item_type] = calculate_count_of_type(inventory_item_type);
 }
 
 return result;
