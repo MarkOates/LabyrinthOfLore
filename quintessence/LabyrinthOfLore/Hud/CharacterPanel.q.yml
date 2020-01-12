@@ -25,9 +25,18 @@ functions:
       }
       return count;
   - name: get_rollup_inventory
-    type: std::vector<std::tuple<int, int>>
+    type: std::map<thing_type_t, int>
     body: |
-      std::vector<std::tuple<int, int>> result = {};
+      if (!player_inventory) throw std::runtime_error("cannot calculate_count_of_type on a nullptr player_inventory");
+            //item //count
+      std::map<thing_type_t, int> result = {};
+
+      for (auto &inventory_item_int : player_inventory->get_items_ref())
+      {
+         thing_type_t inventory_item = (thing_type_t)inventory_item_int;
+         result[inventory_item] = calculate_count_of_type(inventory_item);
+      }
+
       return result;
   - name: calculate_attack_strength
     type: int
@@ -84,5 +93,5 @@ dependencies:
     headers: [ vector ]
   - symbol: thing_type_t
     headers: [ LabyrinthOfLoreGame/ItemIdEnums.hpp ]
-  - symbol: std::vector<std::tuple<int, int>>
-    headers: [ vector, tuple ]
+  - symbol: std::map<thing_type_t, int>
+    headers: [ map ]

@@ -69,3 +69,26 @@ TEST(LabyrinthOfLore_Hud_CharacterPanelTest, count_of_type__returns_a_count_of_t
    EXPECT_EQ(1, character_panel.calculate_count_of_type(THING_TYPE_TORCH));
 }
 
+
+TEST(LabyrinthOfLore_Hud_CharacterPanelTest, get_rollup_inventory__will_return_a_list_of_inventory_items_rolled_up)
+{
+   AllegroFlare::Inventory player_inventory;
+   LabyrinthOfLore::Entity::ThingDictionary thing_dictionary({
+      { 1, LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_TORCH_FUEL, "some",   "torch fuel",    nullptr, -1, 6) },
+      { 2, LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_TORCH_FUEL, "some",   "torch fuel", nullptr, -1, 1) },
+      { 3, LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_TORCH,      "a",      "torch",    nullptr, -1, 4) },
+      { 4, LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_DOES_NOT_MATTER, "a", "duck",    nullptr, -1, -1) },
+      { 5, LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_TORCH_FUEL, "some",   "torch fuel", nullptr, -1, 1) },
+   });
+
+   player_inventory.add_item(1);
+   player_inventory.add_item(2);
+   player_inventory.add_item(3);
+   player_inventory.add_item(4);
+   player_inventory.add_item(5);
+
+   LabyrinthOfLore::Hud::CharacterPanel character_panel(&player_inventory, &thing_dictionary);
+   EXPECT_EQ(2, character_panel.calculate_count_of_type(THING_TYPE_TORCH_FUEL));
+   EXPECT_EQ(1, character_panel.calculate_count_of_type(THING_TYPE_TORCH));
+}
+

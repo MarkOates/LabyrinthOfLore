@@ -36,9 +36,18 @@ return count;
 
 }
 
-std::vector<std::tuple<int, int>> CharacterPanel::get_rollup_inventory()
+std::map<thing_type_t, int> CharacterPanel::get_rollup_inventory()
 {
-std::vector<std::tuple<int, int>> result = {};
+if (!player_inventory) throw std::runtime_error("cannot calculate_count_of_type on a nullptr player_inventory");
+      //item //count
+std::map<thing_type_t, int> result = {};
+
+for (auto &inventory_item_int : player_inventory->get_items_ref())
+{
+   thing_type_t inventory_item = (thing_type_t)inventory_item_int;
+   result[inventory_item] = calculate_count_of_type(inventory_item);
+}
+
 return result;
 
 }
