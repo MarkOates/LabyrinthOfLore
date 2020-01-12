@@ -80,7 +80,7 @@ void capitalize (string &s)
 }
 
 
-bool development_mode = false;
+bool development_mode = true;
 
 
 
