@@ -7,6 +7,14 @@ properties:
     type: LabyrinthOfLore::Entity::ThingDictionary*
     init_with: nullptr
     constructor_arg: true
+  - name: cursor_x
+    type: int
+    init_with: 0
+    getter: true
+  - name: cursor_y
+    type: int
+    init_with: 0
+    getter: true
 functions:
   - name: calculate_count_of_type
     type: int

@@ -16,12 +16,16 @@ namespace LabyrinthOfLore
       private:
          AllegroFlare::Inventory* player_inventory;
          LabyrinthOfLore::Entity::ThingDictionary* thing_dictionary;
+         int cursor_x;
+         int cursor_y;
 
       public:
          CharacterPanel(AllegroFlare::Inventory* player_inventory=nullptr, LabyrinthOfLore::Entity::ThingDictionary* thing_dictionary=nullptr);
          ~CharacterPanel();
 
 
+         int get_cursor_x();
+         int get_cursor_y();
       int calculate_count_of_type(thing_type_t thing_type=THING_TYPE_UNDEFINED);
       std::map<thing_type_t, int> get_inventory_rollup();
       int calculate_attack_strength();

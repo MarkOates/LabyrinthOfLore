@@ -14,6 +14,14 @@ TEST(LabyrinthOfLore_Hud_CharacterPanelTest, can_be_created_without_blowing_up)
    LabyrinthOfLore::Hud::CharacterPanel character_panel;
 }
 
+TEST(LabyrinthOfLore_Hud_CharacterPanelTest, has_the_expected_getters_with_expected_defaults_when_created)
+{
+   LabyrinthOfLore::Hud::CharacterPanel character_panel;
+
+   EXPECT_EQ(0, character_panel.get_cursor_x());
+   EXPECT_EQ(0, character_panel.get_cursor_y());
+}
+
 TEST(LabyrinthOfLore_Hud_CharacterPanelTest, calculate_current_carry_weight__returns_the_total_weight_of_the_players_inventory__test_1)
 {
    AllegroFlare::Inventory player_inventory;
