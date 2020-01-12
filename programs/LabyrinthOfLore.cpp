@@ -54,6 +54,7 @@
 //#include <algorithm> // for std::max
 #include <LabyrinthOfLoreGame/ThingDefinitionFactory.hpp>
 #include <LabyrinthOfLoreGame/Interactions.hpp>
+#include <LabyrinthOfLoreGame/Classic.hpp>
 
 
 #include <iostream>
@@ -888,9 +889,12 @@ int main(int argc, char **argv)
 
 
 
-      Game game(display, resolution_scale);
-      game.initialize();
+      Game game_system(display, resolution_scale);
+      game_system.initialize();
 
+
+
+      LabyrinthOfLoreGame::Classic classic_game;
 
 
 
@@ -935,14 +939,14 @@ int main(int argc, char **argv)
       if (!billboarding_tester_sprite) throw std::runtime_error("could not load billboarding_tester_sprite.png");
 
       Tileo::TileAtlas item_tile_atlas;
-      item_tile_atlas.load(game.bitmap_bin["item_spritesheet_full.png"], 16, 16, 0);
+      item_tile_atlas.load(game_system.bitmap_bin["item_spritesheet_full.png"], 16, 16, 0);
 
       Tileo::TileAtlas character_tile_atlas;
-      character_tile_atlas.load(game.bitmap_bin["item_spritesheet_full.png"], 32, 32, 0);
+      character_tile_atlas.load(game_system.bitmap_bin["item_spritesheet_full.png"], 32, 32, 0);
 
       Tileo::TileAtlas world_texture_tile_atlas;
       //world_texture_tile_atlas.load(bitmap_bin["grid-texture-128.png"], 128/3, 128/3, 0);
-      world_texture_tile_atlas.load(game.bitmap_bin["world_texture_tile_atlas-02.png"], 48, 48, 0);
+      world_texture_tile_atlas.load(game_system.bitmap_bin["world_texture_tile_atlas-02.png"], 48, 48, 0);
 
 
 
@@ -1294,7 +1298,7 @@ int main(int argc, char **argv)
                process_click_event(
                   player_mouse_x,
                   player_mouse_y,
-                  game.picking_buffer,
+                  game_system.picking_buffer,
                   resolution_scale,
                   all_entities,
                   thing_dictionary,
@@ -1359,7 +1363,7 @@ int main(int argc, char **argv)
 
             break;
          case ALLEGRO_EVENT_TIMER:
-            game.run_timer_step();
+            game_system.run_timer_step();
             {
                player_yaw += player_turning;
 
@@ -1417,7 +1421,7 @@ int main(int argc, char **argv)
 
                al_clear_depth_buffer(1);
                al_set_render_state(ALLEGRO_DEPTH_TEST, 1);
-               LabyrinthOfLore::Rendering::PickingBufferRenderer picking_buffer_renderer(&game.picking_buffer, &camera, current_tile_map_mesh, entities_in_the_current_level, &clamped_color_shader);
+               LabyrinthOfLore::Rendering::PickingBufferRenderer picking_buffer_renderer(&game_system.picking_buffer, &camera, current_tile_map_mesh, entities_in_the_current_level, &clamped_color_shader);
                picking_buffer_renderer.render();
 
                //
@@ -1432,7 +1436,7 @@ int main(int argc, char **argv)
                LabyrinthOfLore::Rendering::MousePointer mouse_pointer(player_mouse_x, player_mouse_y);
                LabyrinthOfLore::Rendering::Hud::Renderer hud_renderer(
                      al_get_backbuffer(display),
-                     &game.font_bin,
+                     &game_system.font_bin,
                      &message_scroll,
                      &command_panel,
                      &vitality_and_mana_bar,
