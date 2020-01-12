@@ -36,6 +36,13 @@ return count;
 
 }
 
+std::vector<std::tuple<int, int>> CharacterPanel::get_rollup_inventory()
+{
+std::vector<std::tuple<int, int>> result = {};
+return result;
+
+}
+
 int CharacterPanel::calculate_attack_strength()
 {
 // 1 for now

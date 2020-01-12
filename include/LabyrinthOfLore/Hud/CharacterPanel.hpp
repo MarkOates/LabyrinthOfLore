@@ -5,6 +5,8 @@
 #include <LabyrinthOfLore/Entity/ThingDictionary.hpp>
 #include <LabyrinthOfLoreGame/ItemIdEnums.hpp>
 #include <string>
+#include <tuple>
+#include <vector>
 
 
 namespace LabyrinthOfLore
@@ -23,6 +25,7 @@ namespace LabyrinthOfLore
 
 
       int calculate_count_of_type(thing_type_t thing_type=THING_TYPE_UNDEFINED);
+      std::vector<std::tuple<int, int>> get_rollup_inventory();
       int calculate_attack_strength();
       int calculate_total_carry_strength();
       int calculate_current_carry_weight();
