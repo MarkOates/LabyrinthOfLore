@@ -24,7 +24,7 @@ namespace LabyrinthOfLore
 
 
       int calculate_count_of_type(thing_type_t thing_type=THING_TYPE_UNDEFINED);
-      std::map<thing_type_t, int> get_rollup_inventory();
+      std::map<thing_type_t, int> get_inventory_rollup();
       int calculate_attack_strength();
       int calculate_total_carry_strength();
       int calculate_current_carry_weight();

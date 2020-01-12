@@ -75,29 +75,29 @@ TEST(LabyrinthOfLore_Hud_CharacterPanelTest, count_of_type__returns_a_count_of_t
 }
 
 
-TEST(LabyrinthOfLore_Hud_CharacterPanelTest, get_rollup_inventory__without_a_player_inventory__raises_an_exception)
+TEST(LabyrinthOfLore_Hud_CharacterPanelTest, get_inventory_rollup__without_a_player_inventory__raises_an_exception)
 {
    LabyrinthOfLore::Entity::ThingDictionary thing_dictionary;
    LabyrinthOfLore::Hud::CharacterPanel character_panel(nullptr, &thing_dictionary);
 
    std::string expected_error_message = "cannot calculate_count_of_type on a nullptr player_inventory";
 
-   ASSERT_THROW_WITH_MESSAGE(character_panel.get_rollup_inventory(), std::runtime_error, expected_error_message);
+   ASSERT_THROW_WITH_MESSAGE(character_panel.get_inventory_rollup(), std::runtime_error, expected_error_message);
 }
 
 
-TEST(LabyrinthOfLore_Hud_CharacterPanelTest, get_rollup_inventory__without_a_thing_dictionary__raises_an_exception)
+TEST(LabyrinthOfLore_Hud_CharacterPanelTest, get_inventory_rollup__without_a_thing_dictionary__raises_an_exception)
 {
    AllegroFlare::Inventory player_inventory;
    LabyrinthOfLore::Hud::CharacterPanel character_panel(&player_inventory, nullptr);
 
    std::string expected_error_message = "cannot calculate_count_of_type on a nullptr thing_dictionary";
 
-   ASSERT_THROW_WITH_MESSAGE(character_panel.get_rollup_inventory(), std::runtime_error, expected_error_message);
+   ASSERT_THROW_WITH_MESSAGE(character_panel.get_inventory_rollup(), std::runtime_error, expected_error_message);
 }
 
 
-TEST(LabyrinthOfLore_Hud_CharacterPanelTest, get_rollup_inventory__will_return_a_list_of_inventory_items_rolled_up)
+TEST(LabyrinthOfLore_Hud_CharacterPanelTest, get_inventory_rollup__will_return_a_list_of_inventory_items_rolled_up)
 {
    AllegroFlare::Inventory player_inventory;
    LabyrinthOfLore::Entity::ThingDictionary thing_dictionary({
@@ -122,7 +122,7 @@ TEST(LabyrinthOfLore_Hud_CharacterPanelTest, get_rollup_inventory__will_return_a
       { THING_TYPE_TORCH_FUEL,      3 },
    };
 
-   std::map<thing_type_t, int> actual_rolled_up_inventory = character_panel.get_rollup_inventory();
+   std::map<thing_type_t, int> actual_rolled_up_inventory = character_panel.get_inventory_rollup();
 
    EXPECT_EQ(expected_rolled_up_inventory, actual_rolled_up_inventory);
 }

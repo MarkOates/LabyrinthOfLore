@@ -36,7 +36,7 @@ return count;
 
 }
 
-std::map<thing_type_t, int> CharacterPanel::get_rollup_inventory()
+std::map<thing_type_t, int> CharacterPanel::get_inventory_rollup()
 {
 if (!player_inventory) throw std::runtime_error("cannot calculate_count_of_type on a nullptr player_inventory");
 if (!thing_dictionary) throw std::runtime_error("cannot calculate_count_of_type on a nullptr thing_dictionary");
