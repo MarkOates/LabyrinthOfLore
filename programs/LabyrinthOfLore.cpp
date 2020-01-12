@@ -149,7 +149,7 @@ public:
 };
 
 
-class Game
+class System
 {
 public:
    AllegroFlare::FontBin font_bin;
@@ -158,7 +158,7 @@ public:
    float resolution_scale;
    AllegroFlare::PickingBuffer picking_buffer;
 
-   Game(ALLEGRO_DISPLAY *display, float resolution_scale)
+   System(ALLEGRO_DISPLAY *display, float resolution_scale)
       : font_bin()
       , bitmap_bin()
       , display(display)
@@ -166,7 +166,7 @@ public:
       , picking_buffer(al_get_display_width(display)/resolution_scale, al_get_display_height(display)/resolution_scale, 32)
    {
    }
-   ~Game()
+   ~System()
    {
    }
 
@@ -889,7 +889,7 @@ int main(int argc, char **argv)
 
 
 
-      Game game_system(display, resolution_scale);
+      System game_system(display, resolution_scale);
       game_system.initialize();
 
 
