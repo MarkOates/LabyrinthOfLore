@@ -901,16 +901,6 @@ int main(int argc, char **argv)
       //
 
       //
-      LabyrinthOfLore::Entity::ThingDictionary thing_dictionary({                                                                          // tile atlas and index            // weight  // health  // mood
-          { ITEM_TORCH_ID,                         LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_TORCH,           "a",   "torch",                                 &classic_game.get_item_tile_atlas_ref(),      6 + 9*14,  1,         1)  },
-          { ITEM_RING_OF_LOFT_ID,                  LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_TORCH,           "the", "ring of loft",                          &classic_game.get_item_tile_atlas_ref(),      10+13*14,  1,         1)  },
-          { ITEM_INFINITY_TORCH_ID,                LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_TORCH,           "the", "infinity torch",                        &classic_game.get_item_tile_atlas_ref(),      6 + 9*14,  1,         1)  },
-          { ITEM_TORCH_FUEL_ID,                    LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_TORCH,           "some","torch fuel",                            &classic_game.get_item_tile_atlas_ref(),      27 + 5*14, 1,         1)  },
-          { MAN_AT_THE_ENTRANCE_TO_THE_CAVE,       LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_DOES_NOT_MATTER, "a",   "goblin at the entrance of the cave",  &classic_game.get_character_tile_atlas_ref(), 4 + 11*7,    1,         10,        "friendly")  },
-
-          { RAT+1,                                 LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_TORCH, "",       "rat",                                 &classic_game.get_character_tile_atlas_ref(), 4 + 12*7,    1,         3)  },
-      });
-
 
       LabyrinthOfLoreGame::ThingDefinitionFactory thing_definition_factory; // yet to be used
 
@@ -920,9 +910,9 @@ int main(int argc, char **argv)
 
       //
 
-      add_thing_to_world(all_entities, thing_dictionary, ITEM_TORCH_ID,                   LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER, {  42.5,  77.5, 3.0 }, true, true,  false);
-      add_thing_to_world(all_entities, thing_dictionary, MAN_AT_THE_ENTRANCE_TO_THE_CAVE, LabyrinthOfLoreGame::LevelIdentifiers::THE_CAVE_IDENTIFIER,       {  31.5,  9.5, 1.0 },  true, false, false);
-      add_thing_to_world(all_entities, thing_dictionary, RAT+1,                           LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER, {  40.5,  101.5, 1.0 },  true, false, false);
+      add_thing_to_world(all_entities, classic_game.get_thing_dictionary_ref(), ITEM_TORCH_ID,                   LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER, {  42.5,  77.5, 3.0 }, true, true,  false);
+      add_thing_to_world(all_entities, classic_game.get_thing_dictionary_ref(), MAN_AT_THE_ENTRANCE_TO_THE_CAVE, LabyrinthOfLoreGame::LevelIdentifiers::THE_CAVE_IDENTIFIER,       {  31.5,  9.5, 1.0 },  true, false, false);
+      add_thing_to_world(all_entities, classic_game.get_thing_dictionary_ref(), RAT+1,                           LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER, {  40.5,  101.5, 1.0 },  true, false, false);
 
       //
 
@@ -953,7 +943,7 @@ int main(int argc, char **argv)
       LabyrinthOfLore::Hud::MessageScroll message_scroll("");
       LabyrinthOfLore::Hud::CommandPanel command_panel;
       LabyrinthOfLore::Hud::VitalityAndManaBar vitality_and_mana_bar;
-      LabyrinthOfLore::Hud::CharacterPanel character_panel(&player_inventory, &thing_dictionary);
+      LabyrinthOfLore::Hud::CharacterPanel character_panel(&player_inventory, &classic_game.get_thing_dictionary_ref());
       LabyrinthOfLore::Hud::MapButton map_button;
       LabyrinthOfLore::Hud::RuneShelf rune_shelf;
       LabyrinthOfLore::Hud::Compass compass;
@@ -1013,7 +1003,7 @@ int main(int argc, char **argv)
                   game_system.picking_buffer,
                   game_system.resolution_scale,
                   all_entities,
-                  thing_dictionary,
+                  classic_game.get_thing_dictionary_ref(),
                   thing_definition_factory,
                   message_scroll,
                   command_panel,
