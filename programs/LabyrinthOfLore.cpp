@@ -902,9 +902,6 @@ int main(int argc, char **argv)
 
       //
 
-      LabyrinthOfLore::Shader::ClampedColor clamped_color_shader;
-      clamped_color_shader.initialize();
-
       LabyrinthOfLore::Shader::DepthDarken depth_darken_shader;
       depth_darken_shader.initialize();
 
