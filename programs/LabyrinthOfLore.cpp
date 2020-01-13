@@ -152,6 +152,9 @@ public:
 class System
 {
 public:
+   const int DISPLAY_WIDTH;
+   const int DISPLAY_HEIGHT;
+
    AllegroFlare::FontBin font_bin;
    AllegroFlare::BitmapBin bitmap_bin;
    ALLEGRO_EVENT_QUEUE *event_queue;
@@ -161,11 +164,13 @@ public:
    bool shutdown_program;
 
    System(float resolution_scale)
-      : font_bin()
+      : DISPLAY_WIDTH(1920)
+      , DISPLAY_HEIGHT(1080)
+      , font_bin()
       , bitmap_bin()
-      , display(al_create_display(1920, 1080))
+      , display(al_create_display(DISPLAY_WIDTH, DISPLAY_HEIGHT))
       , resolution_scale(resolution_scale)
-      , picking_buffer(al_get_display_width(display)/resolution_scale, al_get_display_height(display)/resolution_scale, 32)
+      , picking_buffer(DISPLAY_WIDTH/resolution_scale, DISPLAY_HEIGHT/resolution_scale, 32)
       , shutdown_program(false)
    {
    }
