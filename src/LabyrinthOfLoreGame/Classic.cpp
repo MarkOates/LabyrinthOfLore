@@ -214,6 +214,8 @@ meshes = {
    },
 };
 
+for (auto &mesh : meshes) { mesh.second.build(); }
+
 }
 } // namespace LabyrinthOfLoreGame
 
