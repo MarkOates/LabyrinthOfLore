@@ -895,12 +895,6 @@ int main(int argc, char **argv)
 
 
 
-      LabyrinthOfLoreGame::Classic classic_game;
-      classic_game.initialize();
-
-
-
-
 
       //
 
@@ -929,6 +923,12 @@ int main(int argc, char **argv)
 
 
       //
+
+      LabyrinthOfLoreGame::Classic classic_game;
+      classic_game.initialize();
+
+
+
 
       ALLEGRO_BITMAP *billboarding_tester_sprite = al_load_bitmap("data/bitmaps/billboarding_tester_sprite.png");
       if (!billboarding_tester_sprite) throw std::runtime_error("could not load billboarding_tester_sprite.png");
