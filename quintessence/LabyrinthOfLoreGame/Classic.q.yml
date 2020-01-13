@@ -6,11 +6,18 @@ properties:
     type: LabyrinthOfLore::Shader::ClampedColor
     init_with: "{}"
     getter_ref: true
+  - name: depth_darken_shader
+    type: LabyrinthOfLore::Shader::DepthDarken
+    init_with: "{}"
+    getter_ref: true
 functions:
   - name: initialize
     body: |
       if (initialized) return;
+      depth_darken_shader.initialize();
       clamped_color_shader.initialize();
 dependencies:
   - symbol: LabyrinthOfLore::Shader::ClampedColor
     headers: [ LabyrinthOfLore/Shader/ClampedColor.hpp ]
+  - symbol: LabyrinthOfLore::Shader::DepthDarken
+    headers: [ LabyrinthOfLore/Shader/DepthDarken.hpp ]
