@@ -160,10 +160,10 @@ public:
    AllegroFlare::PickingBuffer picking_buffer;
    bool shutdown_program;
 
-   System(ALLEGRO_DISPLAY *display, float resolution_scale)
+   System(float resolution_scale)
       : font_bin()
       , bitmap_bin()
-      , display(display)
+      , display(al_create_display(1920, 1080))
       , resolution_scale(resolution_scale)
       , picking_buffer(al_get_display_width(display)/resolution_scale, al_get_display_height(display)/resolution_scale, 32)
       , shutdown_program(false)
@@ -882,13 +882,8 @@ int main(int argc, char **argv)
       float resolution_scale = 3;
 
 
-      ALLEGRO_DISPLAY *display = al_create_display(1920, 1080);
 
-      //
-
-
-
-      System game_system(display, resolution_scale);
+      System game_system(resolution_scale);
       game_system.initialize();
 
 
@@ -911,7 +906,7 @@ int main(int argc, char **argv)
       al_set_new_bitmap_samples(0);
       //ALLEGRO_BITMAP *bmp = al_create_bitmap(w, h);
 
-      ALLEGRO_BITMAP *buffer_buffer = al_create_bitmap(al_get_display_width(display)/resolution_scale, al_get_display_height(display)/resolution_scale);
+      ALLEGRO_BITMAP *buffer_buffer = al_create_bitmap(al_get_display_width(game_system.display)/resolution_scale, al_get_display_height(game_system.display)/resolution_scale);
       //ALLEGRO_BITMAP *buffer_buffer = al_get_backbuffer(display);
 
       al_restore_state(&previous_state);
@@ -1419,16 +1414,16 @@ int main(int argc, char **argv)
 
                //
 
-               al_set_target_bitmap(al_get_backbuffer(display));
+               al_set_target_bitmap(al_get_backbuffer(game_system.display));
                al_set_render_state(ALLEGRO_DEPTH_TEST, 0);
-               al_draw_scaled_bitmap(buffer_buffer, 0, 0, al_get_bitmap_width(buffer_buffer), al_get_bitmap_height(buffer_buffer), 0, 0, al_get_display_width(display), al_get_display_height(display), 0);
+               al_draw_scaled_bitmap(buffer_buffer, 0, 0, al_get_bitmap_width(buffer_buffer), al_get_bitmap_height(buffer_buffer), 0, 0, al_get_display_width(game_system.display), al_get_display_height(game_system.display), 0);
                //al_draw_scaled_bitmap(picking_buffer.get_surface_render(), 0, 0, al_get_bitmap_width(buffer_buffer), al_get_bitmap_height(buffer_buffer), 0, 0, al_get_display_width(display), al_get_display_height(display), 0);
 
                //
 
                LabyrinthOfLore::Rendering::MousePointer mouse_pointer(player_mouse_x, player_mouse_y);
                LabyrinthOfLore::Rendering::Hud::Renderer hud_renderer(
-                     al_get_backbuffer(display),
+                     al_get_backbuffer(game_system.display),
                      &game_system.font_bin,
                      &message_scroll,
                      &command_panel,
