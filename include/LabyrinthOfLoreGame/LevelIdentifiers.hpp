@@ -8,6 +8,7 @@ namespace LabyrinthOfLoreGame
 {
    class LevelIdentifiers
    {
+   public:
       static const std::string THE_UNDERWORLD_IDENTIFIER;
       static const std::string THE_CAVE_IDENTIFIER;
       static const std::string AN_ABANDONED_TEMPLE_IDENTIFIER;

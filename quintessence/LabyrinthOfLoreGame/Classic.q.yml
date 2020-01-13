@@ -54,3 +54,5 @@ dependencies:
     headers: [ map, string, LabyrinthOfLore/WorldMap/Level.hpp ]
   - symbol: LabyrinthOfLore::WorldMap::MultiBitmapFilenameToWorldBuilder
     headers: [ LabyrinthOfLore/WorldMap/MultiBitmapFilenameToWorldBuilder.hpp ]
+  - symbol: LabyrinthOfLoreGame::LevelIdentifiers
+    headers: [ LabyrinthOfLoreGame/LevelIdentifiers.hpp ]
