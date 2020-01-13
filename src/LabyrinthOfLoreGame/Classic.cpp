@@ -15,6 +15,7 @@ Classic::Classic(AllegroFlare::BitmapBin* bitmap_bin)
    , depth_darken_shader({})
    , item_tile_atlas({})
    , character_tile_atlas({})
+   , world_texture_tile_atlas({})
 {
 }
 
@@ -48,6 +49,12 @@ Tileo::TileAtlas &Classic::get_character_tile_atlas_ref()
 }
 
 
+Tileo::TileAtlas &Classic::get_world_texture_tile_atlas_ref()
+{
+   return world_texture_tile_atlas;
+}
+
+
 void Classic::initialize()
 {
 if (initialized) return;
@@ -55,6 +62,7 @@ depth_darken_shader.initialize();
 clamped_color_shader.initialize();
 item_tile_atlas.load(bitmap_bin->operator[]("item_spritesheet_full.png"), 16, 16, 0);
 character_tile_atlas.load(bitmap_bin->operator[]("item_spritesheet_full.png"), 32, 32, 0);
+world_texture_tile_atlas.load(bitmap_bin->operator[]("world_texture_tile_atlas-02.png"), 48, 48, 0);
 
 }
 } // namespace LabyrinthOfLoreGame
