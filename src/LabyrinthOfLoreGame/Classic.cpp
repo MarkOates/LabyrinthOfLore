@@ -26,6 +26,7 @@ Classic::Classic(AllegroFlare::BitmapBin* bitmap_bin)
    , water_meshes({})
    , doors({})
    , thing_dictionary()
+   , all_entities({})
 {
 }
 
@@ -92,6 +93,12 @@ std::map<char, LabyrinthOfLore::WorldMap::Door> &Classic::get_doors_ref()
 LabyrinthOfLore::Entity::ThingDictionary &Classic::get_thing_dictionary_ref()
 {
    return thing_dictionary;
+}
+
+
+std::vector<LabyrinthOfLore::Entity::Base*> &Classic::get_all_entities_ref()
+{
+   return all_entities;
 }
 
 

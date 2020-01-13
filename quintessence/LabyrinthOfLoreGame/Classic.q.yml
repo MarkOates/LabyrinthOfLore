@@ -46,6 +46,10 @@ properties:
     type: LabyrinthOfLore::Entity::ThingDictionary
     init_with: ""
     getter_ref: true
+  - name: all_entities
+    type: std::vector<LabyrinthOfLore::Entity::Base*>
+    init_with: "{}"
+    getter_ref: true
 functions:
   - name: add_thing_to_world
     parameters:
