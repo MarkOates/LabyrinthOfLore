@@ -810,7 +810,7 @@ void process_collision_stepper_events(
 
 
 void add_thing_to_world(
-      std::vector<LabyrinthOfLore::Entity::Base*> &all_entities,
+      std::vector<LabyrinthOfLore::Entity::Base*> *all_entities,
       LabyrinthOfLore::Entity::ThingDictionary *thing_dictionary,
       int thing_id,
       std::string level_identifier,
@@ -845,7 +845,7 @@ void add_thing_to_world(
    entity->get_placement_ref().position = position; //AllegroFlare::vec3d(x + 0.5, y + 0.5, 3.01);
    ////entity->get_placement_ref().rotation = AllegroFlare::vec3d(0, random.get_random_float(-1, 1), 0);
 
-   all_entities.push_back(entity);
+   all_entities->push_back(entity);
 }
 
 
@@ -910,9 +910,9 @@ int main(int argc, char **argv)
 
       //
 
-      add_thing_to_world(all_entities, &classic_game.get_thing_dictionary_ref(), ITEM_TORCH_ID,                   LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER, {  42.5,  77.5, 3.0 }, true, true,  false);
-      add_thing_to_world(all_entities, &classic_game.get_thing_dictionary_ref(), MAN_AT_THE_ENTRANCE_TO_THE_CAVE, LabyrinthOfLoreGame::LevelIdentifiers::THE_CAVE_IDENTIFIER,       {  31.5,  9.5, 1.0 },  true, false, false);
-      add_thing_to_world(all_entities, &classic_game.get_thing_dictionary_ref(), RAT+1,                           LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER, {  40.5,  101.5, 1.0 },  true, false, false);
+      add_thing_to_world(&all_entities, &classic_game.get_thing_dictionary_ref(), ITEM_TORCH_ID,                   LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER, {  42.5,  77.5, 3.0 }, true, true,  false);
+      add_thing_to_world(&all_entities, &classic_game.get_thing_dictionary_ref(), MAN_AT_THE_ENTRANCE_TO_THE_CAVE, LabyrinthOfLoreGame::LevelIdentifiers::THE_CAVE_IDENTIFIER,       {  31.5,  9.5, 1.0 },  true, false, false);
+      add_thing_to_world(&all_entities, &classic_game.get_thing_dictionary_ref(), RAT+1,                           LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER, {  40.5,  101.5, 1.0 },  true, false, false);
 
       //
 
