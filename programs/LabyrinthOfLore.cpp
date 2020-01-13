@@ -890,9 +890,6 @@ int main(int argc, char **argv)
       ALLEGRO_BITMAP *scene_rendering_surface = al_create_sub_bitmap(buffer_buffer, 0, 0, al_get_bitmap_width(buffer_buffer), al_get_bitmap_height(buffer_buffer));
       if (!scene_rendering_surface) throw std::runtime_error("could not create scene_rendering_surface");
 
-      ALLEGRO_BITMAP *hud_rendering_surface = al_create_sub_bitmap(buffer_buffer, 0, 0, al_get_bitmap_width(buffer_buffer), al_get_bitmap_height(buffer_buffer));
-      if (!hud_rendering_surface) throw std::runtime_error("could not create hud_rendering_surface");
-
       //
 
       LabyrinthOfLoreGame::Classic classic_game(&game_system.bitmap_bin);
