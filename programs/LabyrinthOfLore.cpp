@@ -168,7 +168,7 @@ public:
       , DISPLAY_HEIGHT(1080)
       , font_bin()
       , bitmap_bin()
-      , display(al_create_display(DISPLAY_WIDTH, DISPLAY_HEIGHT))
+      , display(nullptr)
       , resolution_scale(resolution_scale)
       , picking_buffer(DISPLAY_WIDTH/resolution_scale, DISPLAY_HEIGHT/resolution_scale, 32)
       , shutdown_program(false)
@@ -180,6 +180,9 @@ public:
 
    void initialize()
    {
+      display = al_create_display(DISPLAY_WIDTH, DISPLAY_HEIGHT);
+
+
       event_queue = al_create_event_queue();
 
       al_install_keyboard();
