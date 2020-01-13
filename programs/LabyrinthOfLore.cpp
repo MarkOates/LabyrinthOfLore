@@ -900,10 +900,6 @@ int main(int argc, char **argv)
 
 
 
-      //
-
-      LabyrinthOfLore::Shader::DepthDarken depth_darken_shader;
-      depth_darken_shader.initialize();
 
       //
 
@@ -1325,9 +1321,9 @@ int main(int argc, char **argv)
 
                if (development_mode)
                {
-                  if (this_event.keyboard.keycode == ALLEGRO_KEY_Y) depth_darken_shader.set_torch_type(0); /// DISABLE ON RELEASE
-                  if (this_event.keyboard.keycode == ALLEGRO_KEY_H) depth_darken_shader.set_torch_type(1); /// DISABLE ON RELEASE
-                  if (this_event.keyboard.keycode == ALLEGRO_KEY_N) depth_darken_shader.set_torch_type(2); /// DISABLE ON RELEASE
+                  if (this_event.keyboard.keycode == ALLEGRO_KEY_Y) classic_game.get_depth_darken_shader_ref().set_torch_type(0); /// DISABLE ON RELEASE
+                  if (this_event.keyboard.keycode == ALLEGRO_KEY_H) classic_game.get_depth_darken_shader_ref().set_torch_type(1); /// DISABLE ON RELEASE
+                  if (this_event.keyboard.keycode == ALLEGRO_KEY_N) classic_game.get_depth_darken_shader_ref().set_torch_type(2); /// DISABLE ON RELEASE
                }
 
                process_cheat_keyboard_keydown_event(
@@ -1412,7 +1408,7 @@ int main(int argc, char **argv)
 
                //
 
-               LabyrinthOfLore::Rendering::SceneRenderer scene_renderer(scene_rendering_surface, &camera, &current_tile_map_mesh, &current_tile_map_water_mesh, entities_in_the_current_level, &depth_darken_shader);
+               LabyrinthOfLore::Rendering::SceneRenderer scene_renderer(scene_rendering_surface, &camera, &current_tile_map_mesh, &current_tile_map_water_mesh, entities_in_the_current_level, &classic_game.get_depth_darken_shader_ref());
                scene_renderer.render();
 
                //
