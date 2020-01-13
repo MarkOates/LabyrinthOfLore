@@ -9,6 +9,7 @@
 #include <LabyrinthOfLore/WorldMap/Tile.hpp>
 #include <LabyrinthOfLore/WorldMap/TileMapLoader.hpp>
 #include <LabyrinthOfLore/WorldMap/Level.hpp>
+#include <LabyrinthOfLore/WorldMap/Door.hpp>
 #include <LabyrinthOfLore/Rendering/SceneRenderer.hpp>
 #include <LabyrinthOfLore/Rendering/TileMapMesh.hpp>
 #include <LabyrinthOfLore/Rendering/TileMapWaterMesh.hpp>
@@ -118,27 +119,6 @@ using AllegroFlare::Random;
 
 
 std::string current_level_identifier = LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER;
-
-
-class Door
-{
-public:
-   std::string level_identifier;
-   float spawn_x;
-   float spawn_y;
-   float spawn_z;
-   float spawn_facing_yaw;
-
-   Door(std::string level_identifier, float spawn_x, float spawn_y, float spawn_z, float spawn_facing_yaw)
-      : level_identifier(level_identifier)
-      , spawn_x(spawn_x)
-      , spawn_y(spawn_y)
-      , spawn_z(spawn_z)
-      , spawn_facing_yaw(spawn_facing_yaw)
-   {}
-
-   ~Door() {}
-};
 
 
 class System
@@ -259,7 +239,7 @@ void set_title_text(LabyrinthOfLore::Hud::TitleText &title_text, std::string top
 
 
 void go_into_door(
-      Door door,
+      LabyrinthOfLore::WorldMap::Door door,
       LabyrinthOfLore::Entity::Base* player_entity,
       std::map<std::string, LabyrinthOfLore::WorldMap::Level> &levels,
       std::map<std::string, LabyrinthOfLore::Rendering::TileMapMesh> &meshes,
@@ -276,8 +256,8 @@ void go_into_door(
       levels,
       meshes,
       water_meshes,
-      door.level_identifier,
-      AllegroFlare::vec3d(door.spawn_x, door.spawn_y, door.spawn_z),
+      door.get_level_identifier(),
+      AllegroFlare::vec3d(door.get_spawn_x(), door.get_spawn_y(), door.get_spawn_z()),
       current_tile_map,
       current_tile_map_mesh,
       current_tile_map_water_mesh
@@ -285,11 +265,11 @@ void go_into_door(
 
    set_title_text(
       title_text,
-      levels[door.level_identifier].get_heading(),
-      levels[door.level_identifier].get_name()
+      levels[door.get_level_identifier()].get_heading(),
+      levels[door.get_level_identifier()].get_name()
    );
 
-   player_yaw = door.spawn_facing_yaw;
+   player_yaw = door.get_spawn_facing_yaw();
 }
 
 
@@ -703,7 +683,7 @@ void set_command_mode(LabyrinthOfLore::Hud::CommandPanel &command_panel, Labyrin
 
 void process_keyboard_keydown_event(
       ALLEGRO_EVENT &this_event,
-      std::map<char, Door> doors,
+      std::map<char, LabyrinthOfLore::WorldMap::Door> doors,
       LabyrinthOfLore::Entity::Base* player_entity,
       std::map<std::string, LabyrinthOfLore::WorldMap::Level> &levels,
       std::map<std::string, LabyrinthOfLore::Rendering::TileMapMesh> &meshes,
@@ -767,7 +747,7 @@ void process_collision_stepper_events(
       std::map<std::string, LabyrinthOfLore::WorldMap::Level> &levels,
 
       // dependencies for go_into_door
-      std::map<char, Door> doors,
+      std::map<char, LabyrinthOfLore::WorldMap::Door> doors,
       //LabyrinthOfLore::Entity::Base* player_entity,
       //std::map<std::string, LabyrinthOfLore::WorldMap::Level> &levels,
       std::map<std::string, LabyrinthOfLore::Rendering::TileMapMesh> &meshes,
@@ -920,24 +900,24 @@ int main(int argc, char **argv)
 
       //
 
-      std::map<char, Door> doors = {
-         { 1, Door(LabyrinthOfLoreGame::LevelIdentifiers::THE_CAVE_IDENTIFIER, 32.5, 13.5, -5.0, 0.5) },
-         { 2, Door(LabyrinthOfLoreGame::LevelIdentifiers::AN_ABANDONED_TEMPLE_IDENTIFIER, 19.5, 42.5, -5.0, 0.5) },
-         { 3, Door(LabyrinthOfLoreGame::LevelIdentifiers::DUNGEON_OF_THE_CURSED_IDENTIFIER, 2.5, 24.5, -5.0, -0.25) },
-         { 4, Door(LabyrinthOfLoreGame::LevelIdentifiers::TEMPLE_OF_WATER_IDENTIFIER, 55.5, 57.5, -5.0, 0.5) },
-         { 5, Door(LabyrinthOfLoreGame::LevelIdentifiers::WORLD_OF_FIRE_IDENTIFIER, 19.5, 57.5, -5.0, 0.5) },
-         { 6, Door(LabyrinthOfLoreGame::LevelIdentifiers::FINAL_TEMPLE_IDENTIFIER, 39.5, 56.5, -5.0, 0.5) },
-         { 7, Door(LabyrinthOfLoreGame::LevelIdentifiers::VILLAGE_OF_THE_FORGOTTEN_IDENTIFIER, 28.5, 30.5, -5.0, 0.25) },
+      std::map<char, LabyrinthOfLore::WorldMap::Door> doors = {
+         { 1, LabyrinthOfLore::WorldMap::Door(LabyrinthOfLoreGame::LevelIdentifiers::THE_CAVE_IDENTIFIER, 32.5, 13.5, -5.0, 0.5) },
+         { 2, LabyrinthOfLore::WorldMap::Door(LabyrinthOfLoreGame::LevelIdentifiers::AN_ABANDONED_TEMPLE_IDENTIFIER, 19.5, 42.5, -5.0, 0.5) },
+         { 3, LabyrinthOfLore::WorldMap::Door(LabyrinthOfLoreGame::LevelIdentifiers::DUNGEON_OF_THE_CURSED_IDENTIFIER, 2.5, 24.5, -5.0, -0.25) },
+         { 4, LabyrinthOfLore::WorldMap::Door(LabyrinthOfLoreGame::LevelIdentifiers::TEMPLE_OF_WATER_IDENTIFIER, 55.5, 57.5, -5.0, 0.5) },
+         { 5, LabyrinthOfLore::WorldMap::Door(LabyrinthOfLoreGame::LevelIdentifiers::WORLD_OF_FIRE_IDENTIFIER, 19.5, 57.5, -5.0, 0.5) },
+         { 6, LabyrinthOfLore::WorldMap::Door(LabyrinthOfLoreGame::LevelIdentifiers::FINAL_TEMPLE_IDENTIFIER, 39.5, 56.5, -5.0, 0.5) },
+         { 7, LabyrinthOfLore::WorldMap::Door(LabyrinthOfLoreGame::LevelIdentifiers::VILLAGE_OF_THE_FORGOTTEN_IDENTIFIER, 28.5, 30.5, -5.0, 0.25) },
 
-         { 10, Door(LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER, 40.5, 88.5+18, -5.0, 0.5 ), }, // this is the primary spawn point, the game start
+         { 10, LabyrinthOfLore::WorldMap::Door(LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER, 40.5, 88.5+18, -5.0, 0.5 ), }, // this is the primary spawn point, the game start
 
-         { 11, Door(LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER, 56.5, 25.5, -5.0, 0.0 ), },
-         { 12, Door(LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER, 42.5, 45.5, -5.0, 0.25 ), },
-         { 13, Door(LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER, 71.5, 92.5, -5.0, 0.25 ), },
-         { 14, Door(LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER, 25.5, 21.5, -5.0, 0.0 ), },
-         { 15, Door(LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER, 103.5, 2.5, -5.0, 0.0 ), },
-         { 16, Door(LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER, 40.5, 31.5, -5.0, 0.0 ), },
-         { 17, Door(LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER, 24.5, 55.5, -5.0, -0.25 ), },
+         { 11, LabyrinthOfLore::WorldMap::Door(LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER, 56.5, 25.5, -5.0, 0.0 ), },
+         { 12, LabyrinthOfLore::WorldMap::Door(LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER, 42.5, 45.5, -5.0, 0.25 ), },
+         { 13, LabyrinthOfLore::WorldMap::Door(LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER, 71.5, 92.5, -5.0, 0.25 ), },
+         { 14, LabyrinthOfLore::WorldMap::Door(LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER, 25.5, 21.5, -5.0, 0.0 ), },
+         { 15, LabyrinthOfLore::WorldMap::Door(LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER, 103.5, 2.5, -5.0, 0.0 ), },
+         { 16, LabyrinthOfLore::WorldMap::Door(LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER, 40.5, 31.5, -5.0, 0.0 ), },
+         { 17, LabyrinthOfLore::WorldMap::Door(LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER, 24.5, 55.5, -5.0, -0.25 ), },
       };
 
 
