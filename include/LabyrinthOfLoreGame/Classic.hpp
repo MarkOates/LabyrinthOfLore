@@ -2,6 +2,7 @@
 
 
 #include <AllegroFlare/BitmapBin.hpp>
+#include <LabyrinthOfLore/Rendering/TileMapMesh.hpp>
 #include <LabyrinthOfLore/Shader/ClampedColor.hpp>
 #include <LabyrinthOfLore/Shader/DepthDarken.hpp>
 #include <LabyrinthOfLore/WorldMap/Level.hpp>
@@ -23,6 +24,7 @@ namespace LabyrinthOfLoreGame
       Tileo::TileAtlas character_tile_atlas;
       Tileo::TileAtlas world_texture_tile_atlas;
       std::map<std::string, LabyrinthOfLore::WorldMap::Level> levels;
+      std::map<std::string, LabyrinthOfLore::Rendering::TileMapMesh> meshes;
 
    public:
       Classic(AllegroFlare::BitmapBin* bitmap_bin=nullptr);
@@ -35,6 +37,7 @@ namespace LabyrinthOfLoreGame
       Tileo::TileAtlas &get_character_tile_atlas_ref();
       Tileo::TileAtlas &get_world_texture_tile_atlas_ref();
       std::map<std::string, LabyrinthOfLore::WorldMap::Level> &get_levels_ref();
+      std::map<std::string, LabyrinthOfLore::Rendering::TileMapMesh> &get_meshes_ref();
    void initialize();
    };
 }
