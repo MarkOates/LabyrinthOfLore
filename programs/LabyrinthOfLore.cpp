@@ -930,9 +930,6 @@ int main(int argc, char **argv)
 
 
 
-      Tileo::TileAtlas character_tile_atlas;
-      character_tile_atlas.load(game_system.bitmap_bin["item_spritesheet_full.png"], 32, 32, 0);
-
       Tileo::TileAtlas world_texture_tile_atlas;
       //world_texture_tile_atlas.load(bitmap_bin["grid-texture-128.png"], 128/3, 128/3, 0);
       world_texture_tile_atlas.load(game_system.bitmap_bin["world_texture_tile_atlas-02.png"], 48, 48, 0);
@@ -1183,9 +1180,9 @@ int main(int argc, char **argv)
           { ITEM_RING_OF_LOFT_ID,                  LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_TORCH,           "the", "ring of loft",                          &classic_game.get_item_tile_atlas_ref(),      10+13*14,  1,         1)  },
           { ITEM_INFINITY_TORCH_ID,                LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_TORCH,           "the", "infinity torch",                        &classic_game.get_item_tile_atlas_ref(),      6 + 9*14,  1,         1)  },
           { ITEM_TORCH_FUEL_ID,                    LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_TORCH,           "some","torch fuel",                            &classic_game.get_item_tile_atlas_ref(),      27 + 5*14, 1,         1)  },
-          { MAN_AT_THE_ENTRANCE_TO_THE_CAVE,       LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_DOES_NOT_MATTER, "a",   "goblin at the entrance of the cave",  &character_tile_atlas, 4 + 11*7,    1,         10,        "friendly")  },
+          { MAN_AT_THE_ENTRANCE_TO_THE_CAVE,       LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_DOES_NOT_MATTER, "a",   "goblin at the entrance of the cave",  &classic_game.get_character_tile_atlas_ref(), 4 + 11*7,    1,         10,        "friendly")  },
 
-          { RAT+1,                                 LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_TORCH, "",       "rat",                                 &character_tile_atlas, 4 + 12*7,    1,         3)  },
+          { RAT+1,                                 LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_TORCH, "",       "rat",                                 &classic_game.get_character_tile_atlas_ref(), 4 + 12*7,    1,         3)  },
       });
 
 

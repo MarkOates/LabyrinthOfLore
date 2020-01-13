@@ -18,6 +18,10 @@ properties:
     type: Tileo::TileAtlas
     init_with: "{}"
     getter_ref: true
+  - name: character_tile_atlas
+    type: Tileo::TileAtlas
+    init_with: "{}"
+    getter_ref: true
 functions:
   - name: initialize
     body: |
@@ -25,6 +29,7 @@ functions:
       depth_darken_shader.initialize();
       clamped_color_shader.initialize();
       item_tile_atlas.load(bitmap_bin->operator[]("item_spritesheet_full.png"), 16, 16, 0);
+      character_tile_atlas.load(bitmap_bin->operator[]("item_spritesheet_full.png"), 32, 32, 0);
 dependencies:
   - symbol: LabyrinthOfLore::Shader::ClampedColor
     headers: [ LabyrinthOfLore/Shader/ClampedColor.hpp ]
