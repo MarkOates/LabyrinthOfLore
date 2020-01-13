@@ -4,7 +4,9 @@
 #include <LabyrinthOfLore/WorldMap/MultiBitmapFilenameToWorldBuilder.hpp>
 #include <LabyrinthOfLoreGame/LevelIdentifiers.hpp>
 #include <LabyrinthOfLore/WorldMap/TileTypeEnum.hpp>
+#include <LabyrinthOfLoreGame/ItemIdEnums.hpp>
 #include <LabyrinthOfLore/Rendering/TileTypeDictionary.hpp>
+#include <LabyrinthOfLore/Entity/ThingDictionary.hpp>
 
 
 namespace LabyrinthOfLoreGame
@@ -324,6 +326,16 @@ doors = {
    { 16, LabyrinthOfLore::WorldMap::Door(LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER, 40.5, 31.5, -5.0, 0.0 ), },
    { 17, LabyrinthOfLore::WorldMap::Door(LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER, 24.5, 55.5, -5.0, -0.25 ), },
 };
+
+thing_dictionary = LabyrinthOfLore::Entity::ThingDictionary({                                                                          // tile atlas and index            // weight  // health  // mood
+    { ITEM_TORCH_ID,                         LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_TORCH,           "a",   "torch",                                 &get_item_tile_atlas_ref(),      6 + 9*14,  1,         1)  },
+    { ITEM_RING_OF_LOFT_ID,                  LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_TORCH,           "the", "ring of loft",                          &get_item_tile_atlas_ref(),      10+13*14,  1,         1)  },
+    { ITEM_INFINITY_TORCH_ID,                LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_TORCH,           "the", "infinity torch",                        &get_item_tile_atlas_ref(),      6 + 9*14,  1,         1)  },
+    { ITEM_TORCH_FUEL_ID,                    LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_TORCH,           "some","torch fuel",                            &get_item_tile_atlas_ref(),      27 + 5*14, 1,         1)  },
+    { MAN_AT_THE_ENTRANCE_TO_THE_CAVE,       LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_DOES_NOT_MATTER, "a",   "goblin at the entrance of the cave",  &get_character_tile_atlas_ref(), 4 + 11*7,    1,         10,        "friendly")  },
+
+    { RAT+1,                                 LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_TORCH, "",       "rat",                                 &get_character_tile_atlas_ref(), 4 + 12*7,    1,         3)  },
+});
 
 }
 } // namespace LabyrinthOfLoreGame
