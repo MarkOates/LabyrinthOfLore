@@ -930,12 +930,6 @@ int main(int argc, char **argv)
 
 
 
-      Tileo::TileAtlas world_texture_tile_atlas;
-      //world_texture_tile_atlas.load(bitmap_bin["grid-texture-128.png"], 128/3, 128/3, 0);
-      world_texture_tile_atlas.load(game_system.bitmap_bin["world_texture_tile_atlas-02.png"], 48, 48, 0);
-
-
-
       //
 
       LabyrinthOfLore::Rendering::TileTypeDictionary tile_type_dictionary({
@@ -1014,66 +1008,66 @@ int main(int argc, char **argv)
 
       std::map<std::string, LabyrinthOfLore::Rendering::TileMapMesh> meshes = {
          { THE_UNDERWORLD_IDENTIFIER,           LabyrinthOfLore::Rendering::TileMapMesh(
-                                                   &world_texture_tile_atlas,
+                                                   &classic_game.get_world_texture_tile_atlas_ref(),
                                                    tile_type_dictionary,
                                                    levels[THE_UNDERWORLD_IDENTIFIER].get_tile_map(),
-                                                   world_texture_tile_atlas.get_bitmap(),
+                                                   classic_game.get_world_texture_tile_atlas_ref().get_bitmap(),
                                                    0
                                                 ),
          },
          { THE_CAVE_IDENTIFIER,                 LabyrinthOfLore::Rendering::TileMapMesh(
-                                                   &world_texture_tile_atlas,
+                                                   &classic_game.get_world_texture_tile_atlas_ref(),
                                                    tile_type_dictionary,
                                                    levels[THE_CAVE_IDENTIFIER].get_tile_map(),
-                                                   world_texture_tile_atlas.get_bitmap(),
+                                                   classic_game.get_world_texture_tile_atlas_ref().get_bitmap(),
                                                    10
                                                 ),
          },
          { AN_ABANDONED_TEMPLE_IDENTIFIER,      LabyrinthOfLore::Rendering::TileMapMesh(
-                                                   &world_texture_tile_atlas,
+                                                   &classic_game.get_world_texture_tile_atlas_ref(),
                                                    tile_type_dictionary,
                                                    levels[AN_ABANDONED_TEMPLE_IDENTIFIER].get_tile_map(),
-                                                   world_texture_tile_atlas.get_bitmap(),
+                                                   classic_game.get_world_texture_tile_atlas_ref().get_bitmap(),
                                                    20
                                                 ),
          },
          { DUNGEON_OF_THE_CURSED_IDENTIFIER,    LabyrinthOfLore::Rendering::TileMapMesh(
-                                                   &world_texture_tile_atlas,
+                                                   &classic_game.get_world_texture_tile_atlas_ref(),
                                                    tile_type_dictionary,
                                                    levels[DUNGEON_OF_THE_CURSED_IDENTIFIER].get_tile_map(),
-                                                   world_texture_tile_atlas.get_bitmap(),
+                                                   classic_game.get_world_texture_tile_atlas_ref().get_bitmap(),
                                                    30
                                                 ),
          },
          { TEMPLE_OF_WATER_IDENTIFIER,          LabyrinthOfLore::Rendering::TileMapMesh(
-                                                   &world_texture_tile_atlas,
+                                                   &classic_game.get_world_texture_tile_atlas_ref(),
                                                    tile_type_dictionary,
                                                    levels[TEMPLE_OF_WATER_IDENTIFIER].get_tile_map(),
-                                                   world_texture_tile_atlas.get_bitmap(),
+                                                   classic_game.get_world_texture_tile_atlas_ref().get_bitmap(),
                                                    40
                                                 ),
          },
          { WORLD_OF_FIRE_IDENTIFIER,            LabyrinthOfLore::Rendering::TileMapMesh(
-                                                   &world_texture_tile_atlas,
+                                                   &classic_game.get_world_texture_tile_atlas_ref(),
                                                    tile_type_dictionary,
                                                    levels[WORLD_OF_FIRE_IDENTIFIER].get_tile_map(),
-                                                   world_texture_tile_atlas.get_bitmap(),
+                                                   classic_game.get_world_texture_tile_atlas_ref().get_bitmap(),
                                                    50
                                                 ),
          },
          { FINAL_TEMPLE_IDENTIFIER,             LabyrinthOfLore::Rendering::TileMapMesh(
-                                                   &world_texture_tile_atlas,
+                                                   &classic_game.get_world_texture_tile_atlas_ref(),
                                                    tile_type_dictionary,
                                                    levels[FINAL_TEMPLE_IDENTIFIER].get_tile_map(),
-                                                   world_texture_tile_atlas.get_bitmap(),
+                                                   classic_game.get_world_texture_tile_atlas_ref().get_bitmap(),
                                                    60
                                                 ),
          },
          { VILLAGE_OF_THE_FORGOTTEN_IDENTIFIER, LabyrinthOfLore::Rendering::TileMapMesh(
-                                                   &world_texture_tile_atlas,
+                                                   &classic_game.get_world_texture_tile_atlas_ref(),
                                                    tile_type_dictionary,
                                                    levels[VILLAGE_OF_THE_FORGOTTEN_IDENTIFIER].get_tile_map(),
-                                                   world_texture_tile_atlas.get_bitmap(),
+                                                   classic_game.get_world_texture_tile_atlas_ref().get_bitmap(),
                                                    70
                                                 ),
          },
@@ -1081,66 +1075,66 @@ int main(int argc, char **argv)
 
       std::map<std::string, LabyrinthOfLore::Rendering::TileMapWaterMesh> water_meshes = {
          { THE_UNDERWORLD_IDENTIFIER,           LabyrinthOfLore::Rendering::TileMapWaterMesh(
-                                                   &world_texture_tile_atlas,
+                                                   &classic_game.get_world_texture_tile_atlas_ref(),
                                                    tile_type_dictionary,
                                                    levels[THE_UNDERWORLD_IDENTIFIER].get_tile_map(),
-                                                   world_texture_tile_atlas.get_bitmap(),
+                                                   classic_game.get_world_texture_tile_atlas_ref().get_bitmap(),
                                                    0
                                                 ),
          },
          { THE_CAVE_IDENTIFIER,                 LabyrinthOfLore::Rendering::TileMapWaterMesh(
-                                                   &world_texture_tile_atlas,
+                                                   &classic_game.get_world_texture_tile_atlas_ref(),
                                                    tile_type_dictionary,
                                                    levels[THE_CAVE_IDENTIFIER].get_tile_map(),
-                                                   world_texture_tile_atlas.get_bitmap(),
+                                                   classic_game.get_world_texture_tile_atlas_ref().get_bitmap(),
                                                    10
                                                 ),
          },
          { AN_ABANDONED_TEMPLE_IDENTIFIER,      LabyrinthOfLore::Rendering::TileMapWaterMesh(
-                                                   &world_texture_tile_atlas,
+                                                   &classic_game.get_world_texture_tile_atlas_ref(),
                                                    tile_type_dictionary,
                                                    levels[AN_ABANDONED_TEMPLE_IDENTIFIER].get_tile_map(),
-                                                   world_texture_tile_atlas.get_bitmap(),
+                                                   classic_game.get_world_texture_tile_atlas_ref().get_bitmap(),
                                                    20
                                                 ),
          },
          { DUNGEON_OF_THE_CURSED_IDENTIFIER,    LabyrinthOfLore::Rendering::TileMapWaterMesh(
-                                                   &world_texture_tile_atlas,
+                                                   &classic_game.get_world_texture_tile_atlas_ref(),
                                                    tile_type_dictionary,
                                                    levels[DUNGEON_OF_THE_CURSED_IDENTIFIER].get_tile_map(),
-                                                   world_texture_tile_atlas.get_bitmap(),
+                                                   classic_game.get_world_texture_tile_atlas_ref().get_bitmap(),
                                                    30
                                                 ),
          },
          { TEMPLE_OF_WATER_IDENTIFIER,          LabyrinthOfLore::Rendering::TileMapWaterMesh(
-                                                   &world_texture_tile_atlas,
+                                                   &classic_game.get_world_texture_tile_atlas_ref(),
                                                    tile_type_dictionary,
                                                    levels[TEMPLE_OF_WATER_IDENTIFIER].get_tile_map(),
-                                                   world_texture_tile_atlas.get_bitmap(),
+                                                   classic_game.get_world_texture_tile_atlas_ref().get_bitmap(),
                                                    40
                                                 ),
          },
          { WORLD_OF_FIRE_IDENTIFIER,            LabyrinthOfLore::Rendering::TileMapWaterMesh(
-                                                   &world_texture_tile_atlas,
+                                                   &classic_game.get_world_texture_tile_atlas_ref(),
                                                    tile_type_dictionary,
                                                    levels[WORLD_OF_FIRE_IDENTIFIER].get_tile_map(),
-                                                   world_texture_tile_atlas.get_bitmap(),
+                                                   classic_game.get_world_texture_tile_atlas_ref().get_bitmap(),
                                                    50
                                                 ),
          },
          { FINAL_TEMPLE_IDENTIFIER,             LabyrinthOfLore::Rendering::TileMapWaterMesh(
-                                                   &world_texture_tile_atlas,
+                                                   &classic_game.get_world_texture_tile_atlas_ref(),
                                                    tile_type_dictionary,
                                                    levels[FINAL_TEMPLE_IDENTIFIER].get_tile_map(),
-                                                   world_texture_tile_atlas.get_bitmap(),
+                                                   classic_game.get_world_texture_tile_atlas_ref().get_bitmap(),
                                                    60
                                                 ),
          },
          { VILLAGE_OF_THE_FORGOTTEN_IDENTIFIER, LabyrinthOfLore::Rendering::TileMapWaterMesh(
-                                                   &world_texture_tile_atlas,
+                                                   &classic_game.get_world_texture_tile_atlas_ref(),
                                                    tile_type_dictionary,
                                                    levels[VILLAGE_OF_THE_FORGOTTEN_IDENTIFIER].get_tile_map(),
-                                                   world_texture_tile_atlas.get_bitmap(),
+                                                   classic_game.get_world_texture_tile_atlas_ref().get_bitmap(),
                                                    70
                                                 ),
          },
