@@ -930,9 +930,6 @@ int main(int argc, char **argv)
 
 
 
-      ALLEGRO_BITMAP *billboarding_tester_sprite = al_load_bitmap("data/bitmaps/billboarding_tester_sprite.png");
-      if (!billboarding_tester_sprite) throw std::runtime_error("could not load billboarding_tester_sprite.png");
-
       Tileo::TileAtlas item_tile_atlas;
       item_tile_atlas.load(game_system.bitmap_bin["item_spritesheet_full.png"], 16, 16, 0);
 
