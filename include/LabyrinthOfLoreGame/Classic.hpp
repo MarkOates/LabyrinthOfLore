@@ -6,6 +6,7 @@
 #include <LabyrinthOfLore/Rendering/TileMapWaterMesh.hpp>
 #include <LabyrinthOfLore/Shader/ClampedColor.hpp>
 #include <LabyrinthOfLore/Shader/DepthDarken.hpp>
+#include <LabyrinthOfLore/WorldMap/Door.hpp>
 #include <LabyrinthOfLore/WorldMap/Level.hpp>
 #include <Tileo/TileAtlas.hpp>
 #include <map>
@@ -27,6 +28,7 @@ namespace LabyrinthOfLoreGame
       std::map<std::string, LabyrinthOfLore::WorldMap::Level> levels;
       std::map<std::string, LabyrinthOfLore::Rendering::TileMapMesh> meshes;
       std::map<std::string, LabyrinthOfLore::Rendering::TileMapWaterMesh> water_meshes;
+      std::map<char, LabyrinthOfLore::WorldMap::Door> doors;
 
    public:
       Classic(AllegroFlare::BitmapBin* bitmap_bin=nullptr);
@@ -41,6 +43,7 @@ namespace LabyrinthOfLoreGame
       std::map<std::string, LabyrinthOfLore::WorldMap::Level> &get_levels_ref();
       std::map<std::string, LabyrinthOfLore::Rendering::TileMapMesh> &get_meshes_ref();
       std::map<std::string, LabyrinthOfLore::Rendering::TileMapWaterMesh> &get_water_meshes_ref();
+      std::map<char, LabyrinthOfLore::WorldMap::Door> &get_doors_ref();
    void initialize();
    };
 }

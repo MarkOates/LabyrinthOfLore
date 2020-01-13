@@ -22,6 +22,7 @@ Classic::Classic(AllegroFlare::BitmapBin* bitmap_bin)
    , levels({})
    , meshes({})
    , water_meshes({})
+   , doors({})
 {
 }
 
@@ -76,6 +77,12 @@ std::map<std::string, LabyrinthOfLore::Rendering::TileMapMesh> &Classic::get_mes
 std::map<std::string, LabyrinthOfLore::Rendering::TileMapWaterMesh> &Classic::get_water_meshes_ref()
 {
    return water_meshes;
+}
+
+
+std::map<char, LabyrinthOfLore::WorldMap::Door> &Classic::get_doors_ref()
+{
+   return doors;
 }
 
 

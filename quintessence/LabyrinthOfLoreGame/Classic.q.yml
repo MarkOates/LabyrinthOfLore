@@ -38,6 +38,10 @@ properties:
     type: std::map<std::string, LabyrinthOfLore::Rendering::TileMapWaterMesh>
     init_with: "{}"
     getter_ref: true
+  - name: doors
+    type: std::map<char, LabyrinthOfLore::WorldMap::Door>
+    init_with: "{}"
+    getter_ref: true
 functions:
   - name: initialize
     body: |
@@ -278,3 +282,5 @@ dependencies:
     headers: [ map, string, LabyrinthOfLore/Rendering/TileMapMesh.hpp ]
   - symbol: std::map<std::string, LabyrinthOfLore::Rendering::TileMapWaterMesh>
     headers: [ map, string, LabyrinthOfLore/Rendering/TileMapWaterMesh.hpp ]
+  - symbol: std::map<char, LabyrinthOfLore::WorldMap::Door>
+    headers: [ map, LabyrinthOfLore/WorldMap/Door.hpp ]
