@@ -1,4 +1,16 @@
+properties:
+  - name: initialized
+    type: bool
+    init_with: false
+  - name: clamped_color_shader
+    type: LabyrinthOfLore::Shader::ClampedColor
+    init_with: "{}"
+    getter_ref: true
 functions:
-  - name: run
-    type: std::string
-    body: return "Hello World!";
+  - name: initialize
+    body: |
+      if (initialized) return;
+      clamped_color_shader.initialize();
+dependencies:
+  - symbol: LabyrinthOfLore::Shader::ClampedColor
+    headers: [ LabyrinthOfLore/Shader/ClampedColor.hpp ]

@@ -9,6 +9,8 @@ namespace LabyrinthOfLoreGame
 
 
 Classic::Classic()
+   : initialized(false)
+   , clamped_color_shader({})
 {
 }
 
@@ -18,9 +20,17 @@ Classic::~Classic()
 }
 
 
-std::string Classic::run()
+LabyrinthOfLore::Shader::ClampedColor &Classic::get_clamped_color_shader_ref()
 {
-return "Hello World!";
+   return clamped_color_shader;
+}
+
+
+void Classic::initialize()
+{
+if (initialized) return;
+clamped_color_shader.initialize();
+
 }
 } // namespace LabyrinthOfLoreGame
 
