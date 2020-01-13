@@ -52,7 +52,7 @@ namespace LabyrinthOfLoreGame
       std::map<char, LabyrinthOfLore::WorldMap::Door> &get_doors_ref();
       LabyrinthOfLore::Entity::ThingDictionary &get_thing_dictionary_ref();
       std::vector<LabyrinthOfLore::Entity::Base*> &get_all_entities_ref();
-   void add_thing_to_world(std::vector<LabyrinthOfLore::Entity::Base*> all_entities={}, LabyrinthOfLore::Entity::ThingDictionary* thing_dictionary=nullptr, int thing_id=0, std::string level_identifier="", AllegroFlare::vec3d position={}, bool billboard_at_camera=true, bool can_be_picked_up=true, bool must_be_picked_up_to_be_used=false);
+   void add_thing_to_world(std::vector<LabyrinthOfLore::Entity::Base*>* all_entities={}, LabyrinthOfLore::Entity::ThingDictionary* thing_dictionary=nullptr, int thing_id=0, std::string level_identifier="", AllegroFlare::vec3d position={}, bool billboard_at_camera=true, bool can_be_picked_up=true, bool must_be_picked_up_to_be_used=false);
    void initialize();
    };
 }

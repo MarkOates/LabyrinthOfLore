@@ -907,12 +907,6 @@ int main(int argc, char **argv)
 
       //
 
-      add_thing_to_world(&classic_game.get_all_entities_ref(), &classic_game.get_thing_dictionary_ref(), ITEM_TORCH_ID,                   LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER, {  42.5,  77.5, 3.0 }, true, true,  false);
-      add_thing_to_world(&classic_game.get_all_entities_ref(), &classic_game.get_thing_dictionary_ref(), MAN_AT_THE_ENTRANCE_TO_THE_CAVE, LabyrinthOfLoreGame::LevelIdentifiers::THE_CAVE_IDENTIFIER,       {  31.5,  9.5, 1.0 },  true, false, false);
-      add_thing_to_world(&classic_game.get_all_entities_ref(), &classic_game.get_thing_dictionary_ref(), RAT+1,                           LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER, {  40.5,  101.5, 1.0 },  true, false, false);
-
-      //
-
       LabyrinthOfLore::Rendering::Camera camera({0, 0, 0}, 0.0, 0.0);
 
       LabyrinthOfLore::Entity::Base* player_entity = new LabyrinthOfLore::Entity::Base;

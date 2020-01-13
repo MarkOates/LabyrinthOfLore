@@ -54,7 +54,7 @@ functions:
   - name: add_thing_to_world
     parameters:
       - name: all_entities
-        type: std::vector<LabyrinthOfLore::Entity::Base*>
+        type: std::vector<LabyrinthOfLore::Entity::Base*>*
         default_argument: "{}"
       - name: thing_dictionary
         type: LabyrinthOfLore::Entity::ThingDictionary*
@@ -107,7 +107,7 @@ functions:
        entity->get_placement_ref().position = position; //AllegroFlare::vec3d(x + 0.5, y + 0.5, 3.01);
        ////entity->get_placement_ref().rotation = AllegroFlare::vec3d(0, random.get_random_float(-1, 1), 0);
 
-       all_entities.push_back(entity);
+       all_entities->push_back(entity);
   - name: initialize
     body: |
       if (initialized) return;
@@ -350,6 +350,12 @@ functions:
           { RAT+1,                                 LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_TORCH, "",       "rat",                                 &get_character_tile_atlas_ref(), 4 + 12*7,    1,         3)  },
       });
 
+      //
+
+      add_thing_to_world(&get_all_entities_ref(), &get_thing_dictionary_ref(), ITEM_TORCH_ID,                   LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER, {  42.5,  77.5, 3.0 }, true, true,  false);
+      add_thing_to_world(&get_all_entities_ref(), &get_thing_dictionary_ref(), MAN_AT_THE_ENTRANCE_TO_THE_CAVE, LabyrinthOfLoreGame::LevelIdentifiers::THE_CAVE_IDENTIFIER,       {  31.5,  9.5, 1.0 },  true, false, false);
+      add_thing_to_world(&get_all_entities_ref(), &get_thing_dictionary_ref(), RAT+1,                           LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER, {  40.5,  101.5, 1.0 },  true, false, false);
+
     body_dependency_symbols:
       - LabyrinthOfLore::WorldMap::MultiBitmapFilenameToWorldBuilder
       - LabyrinthOfLoreGame::LevelIdentifiers
@@ -391,4 +397,6 @@ dependencies:
   - symbol: LabyrinthOfLore::Entity::ThingDictionary*
     headers: [ LabyrinthOfLore/Entity/ThingDictionary.hpp ]
   - symbol: std::vector<LabyrinthOfLore::Entity::Base*>
+    headers: [ vector, LabyrinthOfLore/Entity/Base.hpp ]
+  - symbol: std::vector<LabyrinthOfLore::Entity::Base*>*
     headers: [ vector, LabyrinthOfLore/Entity/Base.hpp ]
