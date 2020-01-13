@@ -904,9 +904,6 @@ int main(int argc, char **argv)
 
       LabyrinthOfLoreGame::ThingDefinitionFactory thing_definition_factory; // yet to be used
 
-      //
-
-      //std::vector<LabyrinthOfLore::Entity::Base*> all_entities = {};
 
       //
 
