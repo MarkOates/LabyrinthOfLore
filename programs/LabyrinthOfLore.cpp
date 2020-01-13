@@ -906,13 +906,13 @@ int main(int argc, char **argv)
 
       //
 
-      std::vector<LabyrinthOfLore::Entity::Base*> all_entities = {};
+      //std::vector<LabyrinthOfLore::Entity::Base*> all_entities = {};
 
       //
 
-      add_thing_to_world(&all_entities, &classic_game.get_thing_dictionary_ref(), ITEM_TORCH_ID,                   LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER, {  42.5,  77.5, 3.0 }, true, true,  false);
-      add_thing_to_world(&all_entities, &classic_game.get_thing_dictionary_ref(), MAN_AT_THE_ENTRANCE_TO_THE_CAVE, LabyrinthOfLoreGame::LevelIdentifiers::THE_CAVE_IDENTIFIER,       {  31.5,  9.5, 1.0 },  true, false, false);
-      add_thing_to_world(&all_entities, &classic_game.get_thing_dictionary_ref(), RAT+1,                           LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER, {  40.5,  101.5, 1.0 },  true, false, false);
+      add_thing_to_world(&classic_game.get_all_entities_ref(), &classic_game.get_thing_dictionary_ref(), ITEM_TORCH_ID,                   LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER, {  42.5,  77.5, 3.0 }, true, true,  false);
+      add_thing_to_world(&classic_game.get_all_entities_ref(), &classic_game.get_thing_dictionary_ref(), MAN_AT_THE_ENTRANCE_TO_THE_CAVE, LabyrinthOfLoreGame::LevelIdentifiers::THE_CAVE_IDENTIFIER,       {  31.5,  9.5, 1.0 },  true, false, false);
+      add_thing_to_world(&classic_game.get_all_entities_ref(), &classic_game.get_thing_dictionary_ref(), RAT+1,                           LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER, {  40.5,  101.5, 1.0 },  true, false, false);
 
       //
 
@@ -934,7 +934,7 @@ int main(int argc, char **argv)
       player_entity->set_identifier_for_level_within(LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER);
       player_entity->get_placement_ref().position = {0.0, 0.0, 0.0};
 
-      all_entities.push_back(player_entity);
+      classic_game.get_all_entities_ref().push_back(player_entity);
 
       //
 
@@ -1002,7 +1002,7 @@ int main(int argc, char **argv)
                   player_mouse_y,
                   game_system.picking_buffer,
                   game_system.resolution_scale,
-                  all_entities,
+                  classic_game.get_all_entities_ref(),
                   classic_game.get_thing_dictionary_ref(),
                   thing_definition_factory,
                   message_scroll,
@@ -1073,7 +1073,7 @@ int main(int argc, char **argv)
                player_entity->get_velocity_ref().position.x = view_vector_2d.x; //view_vector_2d.x;
                player_entity->get_velocity_ref().position.y = view_vector_2d.y; //view_vector_2d.y;
 
-               std::vector<LabyrinthOfLore::Entity::Base*> entities_in_the_current_level = LabyrinthOfLore::Entity::Selector(all_entities).select_within_level(current_level_identifier);
+               std::vector<LabyrinthOfLore::Entity::Base*> entities_in_the_current_level = LabyrinthOfLore::Entity::Selector(classic_game.get_all_entities_ref()).select_within_level(current_level_identifier);
 
                LabyrinthOfLore::Physics::GravityStepper gravity_stepper(entities_in_the_current_level);
                gravity_stepper.process_step();
@@ -1163,7 +1163,7 @@ int main(int argc, char **argv)
                al_drop_next_event(game_system.event_queue);
          }
 
-         cleanup_all_entities_flagged_for_destruction(all_entities);
+         cleanup_all_entities_flagged_for_destruction(classic_game.get_all_entities_ref());
       }
 
       al_save_bitmap("tmp/buffer_buffer.png", buffer_buffer);
