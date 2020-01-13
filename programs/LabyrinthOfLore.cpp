@@ -158,6 +158,7 @@ public:
    ALLEGRO_DISPLAY *display;
    float resolution_scale;
    AllegroFlare::PickingBuffer picking_buffer;
+   bool shutdown_program;
 
    System(ALLEGRO_DISPLAY *display, float resolution_scale)
       : font_bin()
@@ -165,6 +166,7 @@ public:
       , display(display)
       , resolution_scale(resolution_scale)
       , picking_buffer(al_get_display_width(display)/resolution_scale, al_get_display_height(display)/resolution_scale, 32)
+      , shutdown_program(false)
    {
    }
    ~System()
@@ -884,10 +886,6 @@ int main(int argc, char **argv)
 
       //
 
-      bool shutdown_program = false;
-
-      //
-
 
 
       System game_system(display, resolution_scale);
@@ -1270,7 +1268,7 @@ int main(int argc, char **argv)
       );
 
 
-      while(!shutdown_program)
+      while(!game_system.shutdown_program)
       {
          ALLEGRO_EVENT this_event, next_event;
          al_wait_for_event(game_system.event_queue, &this_event);
@@ -1278,7 +1276,7 @@ int main(int argc, char **argv)
          switch(this_event.type)
          {
          case ALLEGRO_EVENT_DISPLAY_CLOSE:
-            shutdown_program = true;
+            game_system.shutdown_program = true;
             break;
          case ALLEGRO_EVENT_MOUSE_AXES:
             player_mouse_x = this_event.mouse.x;
@@ -1314,7 +1312,7 @@ int main(int argc, char **argv)
                bool shift = false;
                if (development_mode) shift = this_event.keyboard.modifiers & ALLEGRO_KEYMOD_SHIFT; /// DISABLE ON RELEASE
 
-               if (this_event.keyboard.keycode == ALLEGRO_KEY_ESCAPE) shutdown_program = true;
+               if (this_event.keyboard.keycode == ALLEGRO_KEY_ESCAPE) game_system.shutdown_program = true;
                if (this_event.keyboard.keycode == ALLEGRO_KEY_A) player_turning = shift ? 4*-max_player_turning_speed : -max_player_turning_speed;
                if (this_event.keyboard.keycode == ALLEGRO_KEY_W) player_movement_magnitude = shift ? 0.1 : 0.022;
                if (this_event.keyboard.keycode == ALLEGRO_KEY_D) player_turning = shift ? 4*max_player_turning_speed : max_player_turning_speed;
