@@ -180,6 +180,19 @@ public:
 
    void initialize()
    {
+      al_init();
+      al_init_font_addon();
+      al_init_ttf_addon();
+      al_init_image_addon();
+      al_init_primitives_addon();
+
+      ALLEGRO_PATH *resource_path = al_get_standard_path(ALLEGRO_RESOURCES_PATH);
+      al_change_directory(al_path_cstr(resource_path, ALLEGRO_NATIVE_PATH_SEP));
+      al_destroy_path(resource_path);
+
+
+
+
       // set a few options and flags
       al_set_new_display_option(ALLEGRO_SAMPLE_BUFFERS, 2, ALLEGRO_SUGGEST);
       al_set_new_display_option(ALLEGRO_DEPTH_SIZE, 32, ALLEGRO_SUGGEST);
@@ -877,19 +890,6 @@ int main(int argc, char **argv)
 {
    if (active)
    {
-      al_init();
-      al_init_font_addon();
-      al_init_ttf_addon();
-      al_init_image_addon();
-      al_init_primitives_addon();
-
-      ALLEGRO_PATH *resource_path = al_get_standard_path(ALLEGRO_RESOURCES_PATH);
-      al_change_directory(al_path_cstr(resource_path, ALLEGRO_NATIVE_PATH_SEP));
-      al_destroy_path(resource_path);
-
-
-
-
       System game_system;
       game_system.initialize();
 
