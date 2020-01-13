@@ -154,6 +154,7 @@ class System
 public:
    AllegroFlare::FontBin font_bin;
    AllegroFlare::BitmapBin bitmap_bin;
+   ALLEGRO_EVENT_QUEUE *event_queue;
    ALLEGRO_DISPLAY *display;
    float resolution_scale;
    AllegroFlare::PickingBuffer picking_buffer;
@@ -172,6 +173,19 @@ public:
 
    void initialize()
    {
+      event_queue = al_create_event_queue();
+
+      al_install_keyboard();
+      al_register_event_source(event_queue, al_get_keyboard_event_source());
+
+      al_install_mouse();
+      al_register_event_source(event_queue, al_get_mouse_event_source());
+
+      ALLEGRO_TIMER *primary_timer = al_create_timer(1.0/60.0);
+      al_register_event_source(event_queue, al_get_timer_event_source(primary_timer));
+      al_start_timer(primary_timer);
+
+
       font_bin.set_path("data/fonts");
       bitmap_bin.set_path("data/bitmaps");
 
@@ -872,19 +886,6 @@ int main(int argc, char **argv)
 
       bool shutdown_program = false;
 
-      ALLEGRO_EVENT_QUEUE *event_queue = al_create_event_queue();
-
-      al_install_keyboard();
-      al_register_event_source(event_queue, al_get_keyboard_event_source());
-
-      al_install_mouse();
-      al_register_event_source(event_queue, al_get_mouse_event_source());
-
-      ALLEGRO_TIMER *primary_timer = al_create_timer(1.0/60.0);
-      al_register_event_source(event_queue, al_get_timer_event_source(primary_timer));
-      al_start_timer(primary_timer);
-
-
       //
 
 
@@ -1272,7 +1273,7 @@ int main(int argc, char **argv)
       while(!shutdown_program)
       {
          ALLEGRO_EVENT this_event, next_event;
-         al_wait_for_event(event_queue, &this_event);
+         al_wait_for_event(game_system.event_queue, &this_event);
 
          switch(this_event.type)
          {
@@ -1449,10 +1450,10 @@ int main(int argc, char **argv)
 
                al_flip_display();
             }
-            while (al_peek_next_event(event_queue, &next_event)
+            while (al_peek_next_event(game_system.event_queue, &next_event)
                   && next_event.type == ALLEGRO_EVENT_TIMER
                   && next_event.timer.source == this_event.timer.source)
-               al_drop_next_event(event_queue);
+               al_drop_next_event(game_system.event_queue);
          }
 
          cleanup_all_entities_flagged_for_destruction(all_entities);
