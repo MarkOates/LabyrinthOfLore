@@ -163,13 +163,13 @@ public:
    AllegroFlare::PickingBuffer picking_buffer;
    bool shutdown_program;
 
-   System(float resolution_scale)
+   System()
       : DISPLAY_WIDTH(1920)
       , DISPLAY_HEIGHT(1080)
       , font_bin()
       , bitmap_bin()
       , display(nullptr)
-      , resolution_scale(resolution_scale)
+      , resolution_scale(3.0f)
       , picking_buffer(DISPLAY_WIDTH/resolution_scale, DISPLAY_HEIGHT/resolution_scale, 32)
       , shutdown_program(false)
    {
@@ -180,6 +180,13 @@ public:
 
    void initialize()
    {
+      // set a few options and flags
+      al_set_new_display_option(ALLEGRO_SAMPLE_BUFFERS, 2, ALLEGRO_SUGGEST);
+      al_set_new_display_option(ALLEGRO_DEPTH_SIZE, 32, ALLEGRO_SUGGEST);
+      al_set_new_display_option(ALLEGRO_SAMPLES, 16, ALLEGRO_SUGGEST);
+      al_set_new_display_flags(ALLEGRO_RESIZABLE | ALLEGRO_OPENGL | ALLEGRO_PROGRAMMABLE_PIPELINE);
+
+
       display = al_create_display(DISPLAY_WIDTH, DISPLAY_HEIGHT);
 
 
@@ -880,18 +887,10 @@ int main(int argc, char **argv)
       al_change_directory(al_path_cstr(resource_path, ALLEGRO_NATIVE_PATH_SEP));
       al_destroy_path(resource_path);
 
-      // set a few options and flags
-      al_set_new_display_option(ALLEGRO_SAMPLE_BUFFERS, 2, ALLEGRO_SUGGEST);
-      al_set_new_display_option(ALLEGRO_DEPTH_SIZE, 32, ALLEGRO_SUGGEST);
-      al_set_new_display_option(ALLEGRO_SAMPLES, 16, ALLEGRO_SUGGEST);
-      al_set_new_display_flags(ALLEGRO_RESIZABLE | ALLEGRO_OPENGL | ALLEGRO_PROGRAMMABLE_PIPELINE);
-
-
-      float resolution_scale = 3;
 
 
 
-      System game_system(resolution_scale);
+      System game_system;
       game_system.initialize();
 
 
@@ -914,7 +913,7 @@ int main(int argc, char **argv)
       al_set_new_bitmap_samples(0);
       //ALLEGRO_BITMAP *bmp = al_create_bitmap(w, h);
 
-      ALLEGRO_BITMAP *buffer_buffer = al_create_bitmap(al_get_display_width(game_system.display)/resolution_scale, al_get_display_height(game_system.display)/resolution_scale);
+      ALLEGRO_BITMAP *buffer_buffer = al_create_bitmap(al_get_display_width(game_system.display)/game_system.resolution_scale, al_get_display_height(game_system.display)/game_system.resolution_scale);
       //ALLEGRO_BITMAP *buffer_buffer = al_get_backbuffer(display);
 
       al_restore_state(&previous_state);
@@ -1295,7 +1294,7 @@ int main(int argc, char **argv)
                   player_mouse_x,
                   player_mouse_y,
                   game_system.picking_buffer,
-                  resolution_scale,
+                  game_system.resolution_scale,
                   all_entities,
                   thing_dictionary,
                   thing_definition_factory,
