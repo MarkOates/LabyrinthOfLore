@@ -930,9 +930,6 @@ int main(int argc, char **argv)
 
 
 
-      Tileo::TileAtlas item_tile_atlas;
-      item_tile_atlas.load(game_system.bitmap_bin["item_spritesheet_full.png"], 16, 16, 0);
-
       Tileo::TileAtlas character_tile_atlas;
       character_tile_atlas.load(game_system.bitmap_bin["item_spritesheet_full.png"], 32, 32, 0);
 
