@@ -932,16 +932,6 @@ int main(int argc, char **argv)
 
       //
 
-      LabyrinthOfLore::Rendering::TileTypeDictionary tile_type_dictionary({
-          { LabyrinthOfLore::WorldMap::NORMAL_GROUND_TILE, LabyrinthOfLore::Rendering::TileTypeDefinition(1,      1,    0) },
-          { LabyrinthOfLore::WorldMap::DOOR_TILE,          LabyrinthOfLore::Rendering::TileTypeDefinition(2,      2,    0) },
-          { LabyrinthOfLore::WorldMap::WATER_TILE,         LabyrinthOfLore::Rendering::TileTypeDefinition(1,      1,    0 + 9*10) },
-          { LabyrinthOfLore::WorldMap::LAVA_TILE,          LabyrinthOfLore::Rendering::TileTypeDefinition(1,      1,    1 + 9*10) },
-          { LabyrinthOfLore::WorldMap::GLOW_WATER_TILE,    LabyrinthOfLore::Rendering::TileTypeDefinition(1,      1,    2 + 9*10) },
-      });
-
-      //
-
       //LabyrinthOfLoreGame::WorldMap::BitmapFilenameToWorldBuilder("data/bitmaps/the_underworld.png");
 
       std::map<std::string, LabyrinthOfLore::WorldMap::Level> levels = {
@@ -1005,6 +995,16 @@ int main(int argc, char **argv)
 
       //
 
+
+      LabyrinthOfLore::Rendering::TileTypeDictionary tile_type_dictionary({
+          { LabyrinthOfLore::WorldMap::NORMAL_GROUND_TILE, LabyrinthOfLore::Rendering::TileTypeDefinition(1,      1,    0) },
+          { LabyrinthOfLore::WorldMap::DOOR_TILE,          LabyrinthOfLore::Rendering::TileTypeDefinition(2,      2,    0) },
+          { LabyrinthOfLore::WorldMap::WATER_TILE,         LabyrinthOfLore::Rendering::TileTypeDefinition(1,      1,    0 + 9*10) },
+          { LabyrinthOfLore::WorldMap::LAVA_TILE,          LabyrinthOfLore::Rendering::TileTypeDefinition(1,      1,    1 + 9*10) },
+          { LabyrinthOfLore::WorldMap::GLOW_WATER_TILE,    LabyrinthOfLore::Rendering::TileTypeDefinition(1,      1,    2 + 9*10) },
+      });
+
+      //
 
       std::map<std::string, LabyrinthOfLore::Rendering::TileMapMesh> meshes = {
          { THE_UNDERWORLD_IDENTIFIER,           LabyrinthOfLore::Rendering::TileMapMesh(
