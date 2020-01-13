@@ -1,7 +1,7 @@
 
 
 #include <LabyrinthOfLoreGame/Classic.hpp>
-
+#include <LabyrinthOfLore/WorldMap/MultiBitmapFilenameToWorldBuilder.hpp>
 
 
 namespace LabyrinthOfLoreGame
@@ -16,6 +16,7 @@ Classic::Classic(AllegroFlare::BitmapBin* bitmap_bin)
    , item_tile_atlas({})
    , character_tile_atlas({})
    , world_texture_tile_atlas({})
+   , levels({})
 {
 }
 
@@ -52,6 +53,12 @@ Tileo::TileAtlas &Classic::get_character_tile_atlas_ref()
 Tileo::TileAtlas &Classic::get_world_texture_tile_atlas_ref()
 {
    return world_texture_tile_atlas;
+}
+
+
+std::map<std::string, LabyrinthOfLore::WorldMap::Level> &Classic::get_levels_ref()
+{
+   return levels;
 }
 
 

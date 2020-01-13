@@ -26,6 +26,10 @@ properties:
     type: Tileo::TileAtlas
     init_with: "{}"
     getter_ref: true
+  - name: levels
+    type: std::map<std::string, LabyrinthOfLore::WorldMap::Level>
+    init_with: "{}"
+    getter_ref: true
 functions:
   - name: initialize
     body: |
@@ -35,6 +39,8 @@ functions:
       item_tile_atlas.load(bitmap_bin->operator[]("item_spritesheet_full.png"), 16, 16, 0);
       character_tile_atlas.load(bitmap_bin->operator[]("item_spritesheet_full.png"), 32, 32, 0);
       world_texture_tile_atlas.load(bitmap_bin->operator[]("world_texture_tile_atlas-02.png"), 48, 48, 0);
+    body_dependency_symbols:
+      - LabyrinthOfLore::WorldMap::MultiBitmapFilenameToWorldBuilder
 dependencies:
   - symbol: LabyrinthOfLore::Shader::ClampedColor
     headers: [ LabyrinthOfLore/Shader/ClampedColor.hpp ]
@@ -44,3 +50,7 @@ dependencies:
     headers: [ AllegroFlare/BitmapBin.hpp ]
   - symbol: Tileo::TileAtlas
     headers: [ Tileo/TileAtlas.hpp ]
+  - symbol: std::map<std::string, LabyrinthOfLore::WorldMap::Level>
+    headers: [ map, string, LabyrinthOfLore/WorldMap/Level.hpp ]
+  - symbol: LabyrinthOfLore::WorldMap::MultiBitmapFilenameToWorldBuilder
+    headers: [ LabyrinthOfLore/WorldMap/MultiBitmapFilenameToWorldBuilder.hpp ]
