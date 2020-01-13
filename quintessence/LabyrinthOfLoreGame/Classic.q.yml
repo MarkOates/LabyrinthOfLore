@@ -47,6 +47,63 @@ properties:
     init_with: ""
     getter_ref: true
 functions:
+  - name: add_thing_to_world
+    parameters:
+      - name: all_entities
+        type: std::vector<LabyrinthOfLore::Entity::Base*>
+        default_argument: "{}"
+      - name: thing_dictionary
+        type: LabyrinthOfLore::Entity::ThingDictionary*
+        default_argument: nullptr
+      - name: thing_id
+        type: int
+        default_argument: 0
+      - name: level_identifier
+        type: std::string
+        default_argument: "\"\""
+      - name: position
+        type: AllegroFlare::vec3d
+        default_argument: "{}"
+      - name: billboard_at_camera
+        type: bool
+        default_argument: true
+      - name: can_be_picked_up
+        type: bool
+        default_argument: true
+      - name: must_be_picked_up_to_be_used
+        type: bool
+        default_argument: false
+    body: |
+       const std::string THING_ID_ATTRIBUTE = ("thing_id");
+       const std::string CAN_BE_PICKED_UP_ATTRIBUTE = ("can_be_picked_up");
+       const std::string MUST_BE_PICKED_UP_TO_BE_USED = ("must_be_picked_up_to_be_used");
+       const std::string DESTROY_THIS_ITEM_AT_CLEANUP = ("destroy_this_item_at_cleanup");
+
+       //if (!all_entities) throw std::runtime_error("cannot add_thing_to_world with a nullptr all_entities");
+
+       LabyrinthOfLore::Entity::ThingDefinition thing_definition = thing_dictionary->find_definition(thing_id);
+       Tileo::TileAtlas *this_things_tile_atlas = thing_definition.get_tile_atlas();
+       if (!this_things_tile_atlas) throw std::runtime_error("cannot add_thing_to_world with a nullptr this_things_tile_atlas on the thing_definition"); 
+
+       ALLEGRO_BITMAP *bitmap = this_things_tile_atlas->get_bitmap(thing_definition.get_tile_atlas_index_id());
+       LabyrinthOfLore::Entity::Base* entity = new LabyrinthOfLore::Entity::Base;
+
+       entity->set_billboard_at_camera(billboard_at_camera);
+       entity->set_bitmap(bitmap);
+       entity->set_identifier_for_level_within(level_identifier);
+
+       entity->set(THING_ID_ATTRIBUTE, thing_id);
+       if (can_be_picked_up) entity->set(CAN_BE_PICKED_UP_ATTRIBUTE);
+       if (must_be_picked_up_to_be_used) entity->set(MUST_BE_PICKED_UP_TO_BE_USED);
+
+       entity->get_placement_ref().size = AllegroFlare::vec3d(al_get_bitmap_width(bitmap), al_get_bitmap_height(bitmap), 0.0);
+       entity->get_placement_ref().size = AllegroFlare::vec3d(al_get_bitmap_width(bitmap), al_get_bitmap_height(bitmap), 0.0);
+       entity->get_placement_ref().scale = AllegroFlare::vec3d(0.005*4, 0.005*4, 0.005*4);
+       entity->get_placement_ref().align = AllegroFlare::vec3d(0.5, 1.0, 0.0);
+       entity->get_placement_ref().position = position; //AllegroFlare::vec3d(x + 0.5, y + 0.5, 3.01);
+       ////entity->get_placement_ref().rotation = AllegroFlare::vec3d(0, random.get_random_float(-1, 1), 0);
+
+       all_entities.push_back(entity);
   - name: initialize
     body: |
       if (initialized) return;
@@ -303,6 +360,8 @@ dependencies:
     headers: [ LabyrinthOfLore/Shader/DepthDarken.hpp ]
   - symbol: AllegroFlare::BitmapBin*
     headers: [ AllegroFlare/BitmapBin.hpp ]
+  - symbol: AllegroFlare::vec3d
+    headers: [ AllegroFlare/Vec3D.hpp ]
   - symbol: Tileo::TileAtlas
     headers: [ Tileo/TileAtlas.hpp ]
   - symbol: std::map<std::string, LabyrinthOfLore::WorldMap::Level>
@@ -325,3 +384,7 @@ dependencies:
     headers: [ map, LabyrinthOfLore/WorldMap/Door.hpp ]
   - symbol: LabyrinthOfLore::Entity::ThingDictionary
     headers: [ LabyrinthOfLore/Entity/ThingDictionary.hpp ]
+  - symbol: LabyrinthOfLore::Entity::ThingDictionary*
+    headers: [ LabyrinthOfLore/Entity/ThingDictionary.hpp ]
+  - symbol: std::vector<LabyrinthOfLore::Entity::Base*>
+    headers: [ vector, LabyrinthOfLore/Entity/Base.hpp ]

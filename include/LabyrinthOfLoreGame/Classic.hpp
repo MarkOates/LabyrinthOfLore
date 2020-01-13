@@ -2,6 +2,8 @@
 
 
 #include <AllegroFlare/BitmapBin.hpp>
+#include <AllegroFlare/Vec3D.hpp>
+#include <LabyrinthOfLore/Entity/Base.hpp>
 #include <LabyrinthOfLore/Entity/ThingDictionary.hpp>
 #include <LabyrinthOfLore/Rendering/TileMapMesh.hpp>
 #include <LabyrinthOfLore/Rendering/TileMapWaterMesh.hpp>
@@ -12,6 +14,7 @@
 #include <Tileo/TileAtlas.hpp>
 #include <map>
 #include <string>
+#include <vector>
 
 
 namespace LabyrinthOfLoreGame
@@ -47,6 +50,7 @@ namespace LabyrinthOfLoreGame
       std::map<std::string, LabyrinthOfLore::Rendering::TileMapWaterMesh> &get_water_meshes_ref();
       std::map<char, LabyrinthOfLore::WorldMap::Door> &get_doors_ref();
       LabyrinthOfLore::Entity::ThingDictionary &get_thing_dictionary_ref();
+   void add_thing_to_world(std::vector<LabyrinthOfLore::Entity::Base*> all_entities={}, LabyrinthOfLore::Entity::ThingDictionary* thing_dictionary=nullptr, int thing_id=0, std::string level_identifier="", AllegroFlare::vec3d position={}, bool billboard_at_camera=true, bool can_be_picked_up=true, bool must_be_picked_up_to_be_used=false);
    void initialize();
    };
 }

@@ -95,6 +95,41 @@ LabyrinthOfLore::Entity::ThingDictionary &Classic::get_thing_dictionary_ref()
 }
 
 
+void Classic::add_thing_to_world(std::vector<LabyrinthOfLore::Entity::Base*> all_entities, LabyrinthOfLore::Entity::ThingDictionary* thing_dictionary, int thing_id, std::string level_identifier, AllegroFlare::vec3d position, bool billboard_at_camera, bool can_be_picked_up, bool must_be_picked_up_to_be_used)
+{
+const std::string THING_ID_ATTRIBUTE = ("thing_id");
+const std::string CAN_BE_PICKED_UP_ATTRIBUTE = ("can_be_picked_up");
+const std::string MUST_BE_PICKED_UP_TO_BE_USED = ("must_be_picked_up_to_be_used");
+const std::string DESTROY_THIS_ITEM_AT_CLEANUP = ("destroy_this_item_at_cleanup");
+
+//if (!all_entities) throw std::runtime_error("cannot add_thing_to_world with a nullptr all_entities");
+
+LabyrinthOfLore::Entity::ThingDefinition thing_definition = thing_dictionary->find_definition(thing_id);
+Tileo::TileAtlas *this_things_tile_atlas = thing_definition.get_tile_atlas();
+if (!this_things_tile_atlas) throw std::runtime_error("cannot add_thing_to_world with a nullptr this_things_tile_atlas on the thing_definition"); 
+
+ALLEGRO_BITMAP *bitmap = this_things_tile_atlas->get_bitmap(thing_definition.get_tile_atlas_index_id());
+LabyrinthOfLore::Entity::Base* entity = new LabyrinthOfLore::Entity::Base;
+
+entity->set_billboard_at_camera(billboard_at_camera);
+entity->set_bitmap(bitmap);
+entity->set_identifier_for_level_within(level_identifier);
+
+entity->set(THING_ID_ATTRIBUTE, thing_id);
+if (can_be_picked_up) entity->set(CAN_BE_PICKED_UP_ATTRIBUTE);
+if (must_be_picked_up_to_be_used) entity->set(MUST_BE_PICKED_UP_TO_BE_USED);
+
+entity->get_placement_ref().size = AllegroFlare::vec3d(al_get_bitmap_width(bitmap), al_get_bitmap_height(bitmap), 0.0);
+entity->get_placement_ref().size = AllegroFlare::vec3d(al_get_bitmap_width(bitmap), al_get_bitmap_height(bitmap), 0.0);
+entity->get_placement_ref().scale = AllegroFlare::vec3d(0.005*4, 0.005*4, 0.005*4);
+entity->get_placement_ref().align = AllegroFlare::vec3d(0.5, 1.0, 0.0);
+entity->get_placement_ref().position = position; //AllegroFlare::vec3d(x + 0.5, y + 0.5, 3.01);
+////entity->get_placement_ref().rotation = AllegroFlare::vec3d(0, random.get_random_float(-1, 1), 0);
+
+all_entities.push_back(entity);
+
+}
+
 void Classic::initialize()
 {
 if (initialized) return;
