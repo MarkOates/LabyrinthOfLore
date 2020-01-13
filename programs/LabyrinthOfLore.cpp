@@ -1182,10 +1182,10 @@ int main(int argc, char **argv)
 
       //
       LabyrinthOfLore::Entity::ThingDictionary thing_dictionary({                                                                          // tile atlas and index            // weight  // health  // mood
-          { ITEM_TORCH_ID,                         LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_TORCH,           "a",   "torch",                                 &item_tile_atlas,      6 + 9*14,  1,         1)  },
-          { ITEM_RING_OF_LOFT_ID,                  LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_TORCH,           "the", "ring of loft",                          &item_tile_atlas,      10+13*14,  1,         1)  },
-          { ITEM_INFINITY_TORCH_ID,                LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_TORCH,           "the", "infinity torch",                        &item_tile_atlas,      6 + 9*14,  1,         1)  },
-          { ITEM_TORCH_FUEL_ID,                    LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_TORCH,           "some","torch fuel",                            &item_tile_atlas,      27 + 5*14, 1,         1)  },
+          { ITEM_TORCH_ID,                         LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_TORCH,           "a",   "torch",                                 &classic_game.get_item_tile_atlas_ref(),      6 + 9*14,  1,         1)  },
+          { ITEM_RING_OF_LOFT_ID,                  LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_TORCH,           "the", "ring of loft",                          &classic_game.get_item_tile_atlas_ref(),      10+13*14,  1,         1)  },
+          { ITEM_INFINITY_TORCH_ID,                LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_TORCH,           "the", "infinity torch",                        &classic_game.get_item_tile_atlas_ref(),      6 + 9*14,  1,         1)  },
+          { ITEM_TORCH_FUEL_ID,                    LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_TORCH,           "some","torch fuel",                            &classic_game.get_item_tile_atlas_ref(),      27 + 5*14, 1,         1)  },
           { MAN_AT_THE_ENTRANCE_TO_THE_CAVE,       LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_DOES_NOT_MATTER, "a",   "goblin at the entrance of the cave",  &character_tile_atlas, 4 + 11*7,    1,         10,        "friendly")  },
 
           { RAT+1,                                 LabyrinthOfLore::Entity::ThingDefinition(THING_TYPE_TORCH, "",       "rat",                                 &character_tile_atlas, 4 + 12*7,    1,         3)  },
