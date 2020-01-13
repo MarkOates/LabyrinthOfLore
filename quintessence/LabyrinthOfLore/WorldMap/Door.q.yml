@@ -1,0 +1,26 @@
+properties:
+  - name: level_identifier
+    type: std::string
+    init_with: "\"\""
+    constructor_arg: true
+    getter: true
+  - name: spawn_x
+    type: float
+    init_with: 0.0f
+    constructor_arg: true
+    getter: true
+  - name: spawn_y
+    type: float
+    init_with: 0.0f
+    constructor_arg: true
+    getter: true
+  - name: spawn_z
+    type: float
+    init_with: 0.0f
+    constructor_arg: true
+    getter: true
+  - name: spawn_facing_yaw
+    type: float
+    init_with: 0.0f
+    constructor_arg: true
+    getter: true
