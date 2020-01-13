@@ -289,6 +289,7 @@ water_meshes = {
 };
 
 for (auto &mesh : meshes) { mesh.second.build(); }
+for (auto &water_mesh : water_meshes) { water_mesh.second.build(); }
 
 }
 } // namespace LabyrinthOfLoreGame
