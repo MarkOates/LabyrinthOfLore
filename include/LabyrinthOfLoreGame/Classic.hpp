@@ -2,6 +2,7 @@
 
 
 #include <AllegroFlare/BitmapBin.hpp>
+#include <LabyrinthOfLore/Entity/ThingDictionary.hpp>
 #include <LabyrinthOfLore/Rendering/TileMapMesh.hpp>
 #include <LabyrinthOfLore/Rendering/TileMapWaterMesh.hpp>
 #include <LabyrinthOfLore/Shader/ClampedColor.hpp>
@@ -29,6 +30,7 @@ namespace LabyrinthOfLoreGame
       std::map<std::string, LabyrinthOfLore::Rendering::TileMapMesh> meshes;
       std::map<std::string, LabyrinthOfLore::Rendering::TileMapWaterMesh> water_meshes;
       std::map<char, LabyrinthOfLore::WorldMap::Door> doors;
+      LabyrinthOfLore::Entity::ThingDictionary thing_dictionary;
 
    public:
       Classic(AllegroFlare::BitmapBin* bitmap_bin=nullptr);
@@ -44,6 +46,7 @@ namespace LabyrinthOfLoreGame
       std::map<std::string, LabyrinthOfLore::Rendering::TileMapMesh> &get_meshes_ref();
       std::map<std::string, LabyrinthOfLore::Rendering::TileMapWaterMesh> &get_water_meshes_ref();
       std::map<char, LabyrinthOfLore::WorldMap::Door> &get_doors_ref();
+      LabyrinthOfLore::Entity::ThingDictionary &get_thing_dictionary_ref();
    void initialize();
    };
 }

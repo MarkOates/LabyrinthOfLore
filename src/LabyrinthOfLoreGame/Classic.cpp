@@ -23,6 +23,7 @@ Classic::Classic(AllegroFlare::BitmapBin* bitmap_bin)
    , meshes({})
    , water_meshes({})
    , doors({})
+   , thing_dictionary()
 {
 }
 
@@ -83,6 +84,12 @@ std::map<std::string, LabyrinthOfLore::Rendering::TileMapWaterMesh> &Classic::ge
 std::map<char, LabyrinthOfLore::WorldMap::Door> &Classic::get_doors_ref()
 {
    return doors;
+}
+
+
+LabyrinthOfLore::Entity::ThingDictionary &Classic::get_thing_dictionary_ref()
+{
+   return thing_dictionary;
 }
 
 

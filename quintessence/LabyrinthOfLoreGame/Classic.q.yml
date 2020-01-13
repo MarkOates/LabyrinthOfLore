@@ -42,6 +42,10 @@ properties:
     type: std::map<char, LabyrinthOfLore::WorldMap::Door>
     init_with: "{}"
     getter_ref: true
+  - name: thing_dictionary
+    type: LabyrinthOfLore::Entity::ThingDictionary
+    init_with: ""
+    getter_ref: true
 functions:
   - name: initialize
     body: |
@@ -306,3 +310,5 @@ dependencies:
     headers: [ map, string, LabyrinthOfLore/Rendering/TileMapWaterMesh.hpp ]
   - symbol: std::map<char, LabyrinthOfLore::WorldMap::Door>
     headers: [ map, LabyrinthOfLore/WorldMap/Door.hpp ]
+  - symbol: LabyrinthOfLore::Entity::ThingDictionary
+    headers: [ LabyrinthOfLore/Entity/ThingDictionary.hpp ]
