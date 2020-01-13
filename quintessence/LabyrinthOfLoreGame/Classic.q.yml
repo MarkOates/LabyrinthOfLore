@@ -1,4 +1,8 @@
 properties:
+  - name: bitmap_bin
+    type: AllegroFlare::BitmapBin*
+    init_with: nullptr
+    constructor_arg: true
   - name: initialized
     type: bool
     init_with: false
@@ -21,3 +25,5 @@ dependencies:
     headers: [ LabyrinthOfLore/Shader/ClampedColor.hpp ]
   - symbol: LabyrinthOfLore::Shader::DepthDarken
     headers: [ LabyrinthOfLore/Shader/DepthDarken.hpp ]
+  - symbol: AllegroFlare::BitmapBin*
+    headers: [ AllegroFlare/BitmapBin.hpp ]

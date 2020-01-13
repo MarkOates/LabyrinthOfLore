@@ -8,8 +8,9 @@ namespace LabyrinthOfLoreGame
 {
 
 
-Classic::Classic()
-   : initialized(false)
+Classic::Classic(AllegroFlare::BitmapBin* bitmap_bin)
+   : bitmap_bin(bitmap_bin)
+   , initialized(false)
    , clamped_color_shader({})
    , depth_darken_shader({})
 {

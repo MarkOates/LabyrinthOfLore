@@ -924,7 +924,7 @@ int main(int argc, char **argv)
 
       //
 
-      LabyrinthOfLoreGame::Classic classic_game;
+      LabyrinthOfLoreGame::Classic classic_game(&game_system.bitmap_bin);
       classic_game.initialize();
 
 
