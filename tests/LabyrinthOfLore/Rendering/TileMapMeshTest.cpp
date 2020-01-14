@@ -5,6 +5,10 @@
 #include <Tileo/TileAtlas.hpp>
 #include <LabyrinthOfLore/WorldMap/TileMapLoader.hpp>
 
+#define TEST_TEXTURE_FILENAME "/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/3x3_test_texture.png"
+
+
+
 TEST(LabyrinthOfLore_Rendering_TileMapMeshTest, can_be_created_without_blowing_up)
 {
    LabyrinthOfLore::Rendering::TileMapMesh tile_map_mesh;
@@ -27,9 +31,9 @@ TEST(LabyrinthOfLore_Rendering_TileMapMeshTest, build__with_a_single_cube__retur
    al_init_image_addon();
 
    Tileo::TileAtlas tile_atlas;
-   ALLEGRO_BITMAP *tile_atlas_bitmap = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/grid-texture-128.png");
+   ALLEGRO_BITMAP *tile_atlas_bitmap = al_load_bitmap(TEST_TEXTURE_FILENAME);
    ASSERT_NE(nullptr, tile_atlas_bitmap);
-   tile_atlas.load(tile_atlas_bitmap, 128/3, 128/3, 0);
+   tile_atlas.load(tile_atlas_bitmap, al_get_bitmap_width(tile_atlas_bitmap)/3, al_get_bitmap_height(tile_atlas_bitmap)/3, 0);
 
    LabyrinthOfLore::Rendering::TileTypeDictionary tile_type_dictionary;
 
@@ -48,9 +52,9 @@ TEST(LabyrinthOfLore_Rendering_TileMapMeshTest, build__on_tile_types_of_0__does_
    al_init_image_addon();
 
    Tileo::TileAtlas tile_atlas;
-   ALLEGRO_BITMAP *tile_atlas_bitmap = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/grid-texture-128.png");
+   ALLEGRO_BITMAP *tile_atlas_bitmap = al_load_bitmap(TEST_TEXTURE_FILENAME);
    ASSERT_NE(nullptr, tile_atlas_bitmap);
-   tile_atlas.load(tile_atlas_bitmap, 128/3, 128/3, 0);
+   tile_atlas.load(tile_atlas_bitmap, al_get_bitmap_width(tile_atlas_bitmap)/3, al_get_bitmap_height(tile_atlas_bitmap)/3, 0);
 
    LabyrinthOfLore::Rendering::TileTypeDictionary tile_type_dictionary;
 
@@ -69,9 +73,9 @@ TEST(DISABLED_LabyrinthOfLore_Rendering_TileMapMeshTest, build__when_building_tw
    al_init_image_addon();
 
    Tileo::TileAtlas tile_atlas;
-   ALLEGRO_BITMAP *tile_atlas_bitmap = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/grid-texture-128.png");
+   ALLEGRO_BITMAP *tile_atlas_bitmap = al_load_bitmap(TEST_TEXTURE_FILENAME);
    ASSERT_NE(nullptr, tile_atlas_bitmap);
-   tile_atlas.load(tile_atlas_bitmap, 128/3, 128/3, 0);
+   tile_atlas.load(tile_atlas_bitmap, al_get_bitmap_width(tile_atlas_bitmap)/3, al_get_bitmap_height(tile_atlas_bitmap)/3, 0);
 
    LabyrinthOfLore::Rendering::TileTypeDictionary tile_type_dictionary;
 
@@ -91,9 +95,9 @@ TEST(DISABLED_LabyrinthOfLore_Rendering_TileMapMeshTest, build__when_building_tw
    al_init_image_addon();
 
    Tileo::TileAtlas tile_atlas;
-   ALLEGRO_BITMAP *tile_atlas_bitmap = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/grid-texture-128.png");
+   ALLEGRO_BITMAP *tile_atlas_bitmap = al_load_bitmap(TEST_TEXTURE_FILENAME);
    ASSERT_NE(nullptr, tile_atlas_bitmap);
-   tile_atlas.load(tile_atlas_bitmap, 128/3, 128/3, 0);
+   tile_atlas.load(tile_atlas_bitmap, al_get_bitmap_width(tile_atlas_bitmap)/3, al_get_bitmap_height(tile_atlas_bitmap)/3, 0);
 
    LabyrinthOfLore::Rendering::TileTypeDictionary tile_type_dictionary;
 
