@@ -15,6 +15,10 @@
 #include <allegro5/allegro_color.h>
 
 
+#define TEST_TEXTURE_FILENAME "/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/3x3_test_texture.png"
+
+
+
 
 class LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest : public ::testing::Test
 {
@@ -89,7 +93,7 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, while_rendering_wi
    ALLEGRO_BITMAP *surface = al_get_backbuffer(al_get_current_display());
    ASSERT_NE(nullptr, surface);
 
-   ALLEGRO_BITMAP *b = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/grid-texture-128.png");
+   ALLEGRO_BITMAP *b = al_load_bitmap(TEST_TEXTURE_FILENAME);
    if (!b) throw std::runtime_error("in test, cannot load test texture \"b\"");
    Tileo::TileAtlas tile_atlas;
    tile_atlas.load(b, 128/3, 128/3, 0);
@@ -117,7 +121,7 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, while_rendering_wi
    ALLEGRO_BITMAP *surface = al_get_backbuffer(al_get_current_display());
    ASSERT_NE(nullptr, surface);
 
-   ALLEGRO_BITMAP *b = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/grid-texture-128.png");
+   ALLEGRO_BITMAP *b = al_load_bitmap(TEST_TEXTURE_FILENAME);
    if (!b) throw std::runtime_error("in test, cannot load test texture \"b\"");
    Tileo::TileAtlas tile_atlas;
    tile_atlas.load(b, 128/3, 128/3, 0);
@@ -145,7 +149,7 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, while_rendering_wi
    ALLEGRO_BITMAP *surface = al_get_backbuffer(al_get_current_display());
    ASSERT_NE(nullptr, surface);
 
-   ALLEGRO_BITMAP *b = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/grid-texture-128.png");
+   ALLEGRO_BITMAP *b = al_load_bitmap(TEST_TEXTURE_FILENAME);
    if (!b) throw std::runtime_error("in test, cannot load test texture \"b\"");
    Tileo::TileAtlas tile_atlas;
    tile_atlas.load(b, 128/3, 128/3, 0);
@@ -173,7 +177,7 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, while_rendering_wi
    ALLEGRO_BITMAP *surface = al_get_backbuffer(al_get_current_display());
    ASSERT_NE(nullptr, surface);
 
-   ALLEGRO_BITMAP *b = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/grid-texture-128.png");
+   ALLEGRO_BITMAP *b = al_load_bitmap(TEST_TEXTURE_FILENAME);
    if (!b) throw std::runtime_error("in test, cannot load test texture \"b\"");
    Tileo::TileAtlas tile_atlas;
    tile_atlas.load(b, 128/3, 128/3, 0);
@@ -202,7 +206,7 @@ TEST_F(LabyrinthOfLore_Rendering_TileMapMeshCubeTexturerTest, while_rendering_wi
    ALLEGRO_BITMAP *surface = al_get_backbuffer(al_get_current_display());
    ASSERT_NE(nullptr, surface);
 
-   ALLEGRO_BITMAP *b = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/grid-texture-128.png");
+   ALLEGRO_BITMAP *b = al_load_bitmap(TEST_TEXTURE_FILENAME);
    if (!b) throw std::runtime_error("in test, cannot load test texture \"b\"");
    Tileo::TileAtlas tile_atlas;
    tile_atlas.load(b, 128/3, 128/3, 0);
