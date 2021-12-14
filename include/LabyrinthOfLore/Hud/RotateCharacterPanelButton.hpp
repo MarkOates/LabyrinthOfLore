@@ -16,8 +16,7 @@ namespace LabyrinthOfLore
          RotateCharacterPanelButton();
          ~RotateCharacterPanelButton();
 
-
-      std::string run();
+         std::string run();
       };
    }
 }

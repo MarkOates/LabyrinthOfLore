@@ -16,8 +16,7 @@ namespace LabyrinthOfLore
          Compass();
          ~Compass();
 
-
-      std::string run();
+         std::string run();
       };
    }
 }

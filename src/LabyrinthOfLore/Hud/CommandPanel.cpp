@@ -35,7 +35,7 @@ LabyrinthOfLore::Hud::command_mode_t CommandPanel::get_current_mode()
 
 std::string CommandPanel::run()
 {
-return "Hello World!";
+   return "Hello World!";
 }
 } // namespace Hud
 } // namespace LabyrinthOfLore

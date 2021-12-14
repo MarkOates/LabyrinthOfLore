@@ -16,8 +16,7 @@ namespace LabyrinthOfLore
          ViewFrame();
          ~ViewFrame();
 
-
-      std::string run();
+         std::string run();
       };
    }
 }

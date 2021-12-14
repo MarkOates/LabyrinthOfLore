@@ -28,17 +28,16 @@ CurrentSpellsRenderer::~CurrentSpellsRenderer()
 
 void CurrentSpellsRenderer::render()
 {
-if (!font) throw std::runtime_error("Cannot draw CurrentSpells with a nullptr font");
-if (!current_spells) throw std::runtime_error("Cannot draw CurrentSpells with a nullptr current_spells");
+   if (!font) throw std::runtime_error("Cannot draw CurrentSpells with a nullptr font");
+   if (!current_spells) throw std::runtime_error("Cannot draw CurrentSpells with a nullptr current_spells");
 
-place.start_transform();
+   place.start_transform();
 
-al_draw_filled_rounded_rectangle(0, 0, place.size.x, place.size.y, 6, 6, al_color_name("red"));
-al_draw_text(font, al_color_name("white"), 0, 0, 0, " - current spells - ");
+   al_draw_filled_rounded_rectangle(0, 0, place.size.x, place.size.y, 6, 6, al_color_name("red"));
+   al_draw_text(font, al_color_name("white"), 0, 0, 0, " - current spells - ");
 
-place.restore_transform();
-return;
-
+   place.restore_transform();
+   return;
 }
 } // namespace Hud
 } // namespace Rendering

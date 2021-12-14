@@ -19,9 +19,8 @@ namespace LabyrinthOfLore
          TileMapLoader(std::vector<std::vector<LabyrinthOfLore::WorldMap::Tile>> tile_map_data={});
          ~TileMapLoader();
 
-
-      void validate_size_and_integrity();
-      LabyrinthOfLore::WorldMap::TileMap build_tile_map();
+         void validate_size_and_integrity();
+         LabyrinthOfLore::WorldMap::TileMap build_tile_map();
       };
    }
 }

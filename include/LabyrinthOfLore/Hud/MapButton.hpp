@@ -16,8 +16,7 @@ namespace LabyrinthOfLore
          MapButton();
          ~MapButton();
 
-
-      std::string run();
+         std::string run();
       };
    }
 }

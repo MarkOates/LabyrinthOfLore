@@ -17,8 +17,7 @@ namespace LabyrinthOfLore
          MousePointer(float x=1, float y=1);
          ~MousePointer();
 
-
-      void render();
+         void render();
       };
    }
 }

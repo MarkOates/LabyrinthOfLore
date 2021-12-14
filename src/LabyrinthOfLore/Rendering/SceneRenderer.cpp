@@ -31,35 +31,34 @@ SceneRenderer::~SceneRenderer()
 
 void SceneRenderer::render()
 {
-if (!tile_map_mesh) throw std::runtime_error("cannot render with null tile_map_mesh");
-if (!tile_map_water_mesh) throw std::runtime_error("cannot render with null tile_map_water_mesh");
-if (!rendering_surface) throw std::runtime_error("cannot render with null rendering_surface");
-if (!camera) throw std::runtime_error("cannot render with null camera");
-//if (!depth_darken_shader) throw std::runtime_error("cannot render with null depth_darken_shader");
+   if (!tile_map_mesh) throw std::runtime_error("cannot render with null tile_map_mesh");
+   if (!tile_map_water_mesh) throw std::runtime_error("cannot render with null tile_map_water_mesh");
+   if (!rendering_surface) throw std::runtime_error("cannot render with null rendering_surface");
+   if (!camera) throw std::runtime_error("cannot render with null camera");
+   //if (!depth_darken_shader) throw std::runtime_error("cannot render with null depth_darken_shader");
 
-ALLEGRO_STATE previous_render_state;
-al_store_state(&previous_render_state, ALLEGRO_STATE_TARGET_BITMAP);
-al_set_target_bitmap(rendering_surface);
+   ALLEGRO_STATE previous_render_state;
+   al_store_state(&previous_render_state, ALLEGRO_STATE_TARGET_BITMAP);
+   al_set_target_bitmap(rendering_surface);
 
-al_clear_to_color(al_color_name("black"));
+   al_clear_to_color(al_color_name("black"));
 
-camera->start_projection(rendering_surface);
+   camera->start_projection(rendering_surface);
 
-if (depth_darken_shader) depth_darken_shader->activate();
+   if (depth_darken_shader) depth_darken_shader->activate();
 
-tile_map_mesh->draw();
-tile_map_water_mesh->draw();
+   tile_map_mesh->draw();
+   tile_map_water_mesh->draw();
 
-for (auto &entity : entities)
-{
-   LabyrinthOfLore::Rendering::EntityRenderer(entity).render();
-}
+   for (auto &entity : entities)
+   {
+      LabyrinthOfLore::Rendering::EntityRenderer(entity).render();
+   }
 
-if (depth_darken_shader) depth_darken_shader->deactivate();
+   if (depth_darken_shader) depth_darken_shader->deactivate();
 
-al_restore_state(&previous_render_state);
-return;
-
+   al_restore_state(&previous_render_state);
+   return;
 }
 } // namespace Rendering
 } // namespace LabyrinthOfLore

@@ -17,9 +17,8 @@ namespace LabyrinthOfLore
          BasicRenderer(LabyrinthOfLore::WorldMap::TileMap tile_map={});
          ~BasicRenderer();
 
-
-      void initialize();
-      void render();
+         void initialize();
+         void render();
       };
    }
 }

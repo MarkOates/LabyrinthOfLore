@@ -23,8 +23,7 @@ namespace LabyrinthOfLore
             CharacterPanelRenderer(ALLEGRO_FONT* font=nullptr, LabyrinthOfLore::Hud::CharacterPanel* character_panel=nullptr, allegro_flare::placement3d place=allegro_flare::placement3d{});
             ~CharacterPanelRenderer();
 
-
-         void render();
+            void render();
          };
       }
    }

@@ -22,7 +22,7 @@ VitalityAndManaBar::~VitalityAndManaBar()
 
 std::string VitalityAndManaBar::run()
 {
-return "Hello World!";
+   return "Hello World!";
 }
 } // namespace Hud
 } // namespace LabyrinthOfLore

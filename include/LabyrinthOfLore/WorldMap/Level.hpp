@@ -23,7 +23,6 @@ namespace LabyrinthOfLore
          Level(std::string heading="Level 0", std::string name="Unmade World", float ground_height=1, LabyrinthOfLore::WorldMap::TileMap tile_map={}, LabyrinthOfLore::Rendering::TileMapMesh tile_map_mesh={});
          ~Level();
 
-
          std::string get_heading();
          std::string get_name();
          float get_ground_height();

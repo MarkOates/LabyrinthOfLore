@@ -53,215 +53,202 @@ Renderer::~Renderer()
 
 ALLEGRO_FONT* Renderer::get_basic_lettering_font()
 {
-return font_bin->operator[]("Commodore_Rounded_v1.2.ttf -14");
+   return font_bin->operator[]("Commodore_Rounded_v1.2.ttf -14");
 }
 
 void Renderer::render_message_scroll()
 {
-ALLEGRO_FONT *font = get_basic_lettering_font();
-allegro_flare::placement3d placement{0, 0, 0};
-placement.size = AllegroFlare::vec3d(450, 80, 0);
-placement.scale = AllegroFlare::vec3d(2.0, 2.0, 2.0);
-placement.position = AllegroFlare::vec3d(al_get_bitmap_width(render_surface)/2, al_get_bitmap_height(render_surface) - 150, 0);
-LabyrinthOfLore::Rendering::Hud::MessageScrollRenderer message_scroll_renderer(font, message_scroll, placement);
-message_scroll_renderer.render();
-return;
-
+   ALLEGRO_FONT *font = get_basic_lettering_font();
+   allegro_flare::placement3d placement{0, 0, 0};
+   placement.size = AllegroFlare::vec3d(450, 80, 0);
+   placement.scale = AllegroFlare::vec3d(2.0, 2.0, 2.0);
+   placement.position = AllegroFlare::vec3d(al_get_bitmap_width(render_surface)/2, al_get_bitmap_height(render_surface) - 150, 0);
+   LabyrinthOfLore::Rendering::Hud::MessageScrollRenderer message_scroll_renderer(font, message_scroll, placement);
+   message_scroll_renderer.render();
+   return;
 }
 
 void Renderer::render_command_panel()
 {
-ALLEGRO_FONT *font = font_bin->operator[]("gameovercre1.ttf -12");
-allegro_flare::placement3d placement{0, 0, 0};
-placement.align = AllegroFlare::vec3d(0.5, 0.5, 0);
-placement.size = AllegroFlare::vec3d(130, 200, 0);
-//placement.rotation = AllegroFlare::vec3d(0, 0, 0);
-placement.scale = AllegroFlare::vec3d(2.0, 2.0, 2.0);
-placement.position = AllegroFlare::vec3d(300, al_get_bitmap_height(render_surface)/3, 0);
+   ALLEGRO_FONT *font = font_bin->operator[]("gameovercre1.ttf -12");
+   allegro_flare::placement3d placement{0, 0, 0};
+   placement.align = AllegroFlare::vec3d(0.5, 0.5, 0);
+   placement.size = AllegroFlare::vec3d(130, 200, 0);
+   //placement.rotation = AllegroFlare::vec3d(0, 0, 0);
+   placement.scale = AllegroFlare::vec3d(2.0, 2.0, 2.0);
+   placement.position = AllegroFlare::vec3d(300, al_get_bitmap_height(render_surface)/3, 0);
 
-LabyrinthOfLore::Rendering::Hud::CommandPanelRenderer command_panel_renderer(font, command_panel, placement);
-command_panel_renderer.render();
-return;
-
+   LabyrinthOfLore::Rendering::Hud::CommandPanelRenderer command_panel_renderer(font, command_panel, placement);
+   command_panel_renderer.render();
+   return;
 }
 
 void Renderer::render_vitality_and_mana_bar()
 {
-ALLEGRO_FONT *font = font_bin->operator[]("gameovercre1.ttf -12");
-allegro_flare::placement3d placement{0, 0, 0};
-placement.size = AllegroFlare::vec3d(200, 20, 0);
-placement.scale = AllegroFlare::vec3d(2.0, 2.0, 2.0);
-placement.position = AllegroFlare::vec3d(al_get_bitmap_width(render_surface)/2, al_get_bitmap_height(render_surface) - 200 - 80, 0);
+   ALLEGRO_FONT *font = font_bin->operator[]("gameovercre1.ttf -12");
+   allegro_flare::placement3d placement{0, 0, 0};
+   placement.size = AllegroFlare::vec3d(200, 20, 0);
+   placement.scale = AllegroFlare::vec3d(2.0, 2.0, 2.0);
+   placement.position = AllegroFlare::vec3d(al_get_bitmap_width(render_surface)/2, al_get_bitmap_height(render_surface) - 200 - 80, 0);
 
-LabyrinthOfLore::Rendering::Hud::VitalityAndManaBarRenderer vitality_and_mana_bar_renderer(font, vitality_and_mana_bar, placement);
-vitality_and_mana_bar_renderer.render();
-return;
-
+   LabyrinthOfLore::Rendering::Hud::VitalityAndManaBarRenderer vitality_and_mana_bar_renderer(font, vitality_and_mana_bar, placement);
+   vitality_and_mana_bar_renderer.render();
+   return;
 }
 
 void Renderer::render_character_panel()
 {
-ALLEGRO_FONT *font = font_bin->operator[]("gameovercre1.ttf -12");
-allegro_flare::placement3d placement{0, 0, 0};
-placement.align = AllegroFlare::vec3d(0.5, 0.5, 0);
-placement.size = AllegroFlare::vec3d(130, 200, 0);
-placement.scale = AllegroFlare::vec3d(2.0, 2.0, 2.0);
-placement.position = AllegroFlare::vec3d(al_get_bitmap_width(render_surface) - 300, al_get_bitmap_height(render_surface)/3, 0);
+   ALLEGRO_FONT *font = font_bin->operator[]("gameovercre1.ttf -12");
+   allegro_flare::placement3d placement{0, 0, 0};
+   placement.align = AllegroFlare::vec3d(0.5, 0.5, 0);
+   placement.size = AllegroFlare::vec3d(130, 200, 0);
+   placement.scale = AllegroFlare::vec3d(2.0, 2.0, 2.0);
+   placement.position = AllegroFlare::vec3d(al_get_bitmap_width(render_surface) - 300, al_get_bitmap_height(render_surface)/3, 0);
 
-LabyrinthOfLore::Rendering::Hud::CharacterPanelRenderer renderer(font, character_panel, placement);
-renderer.render();
-return;
-
+   LabyrinthOfLore::Rendering::Hud::CharacterPanelRenderer renderer(font, character_panel, placement);
+   renderer.render();
+   return;
 }
 
 void Renderer::render_map_button()
 {
-ALLEGRO_FONT *font = font_bin->operator[]("gameovercre1.ttf -12");
-allegro_flare::placement3d placement{0, 0, 0};
-placement.align = AllegroFlare::vec3d(0.5, 0.5, 0);
-placement.size = AllegroFlare::vec3d(80, 50, 0);
-placement.scale = AllegroFlare::vec3d(2.0, 2.0, 2.0);
-placement.position = AllegroFlare::vec3d(300, al_get_bitmap_height(render_surface) - 170, 0);
+   ALLEGRO_FONT *font = font_bin->operator[]("gameovercre1.ttf -12");
+   allegro_flare::placement3d placement{0, 0, 0};
+   placement.align = AllegroFlare::vec3d(0.5, 0.5, 0);
+   placement.size = AllegroFlare::vec3d(80, 50, 0);
+   placement.scale = AllegroFlare::vec3d(2.0, 2.0, 2.0);
+   placement.position = AllegroFlare::vec3d(300, al_get_bitmap_height(render_surface) - 170, 0);
 
-LabyrinthOfLore::Rendering::Hud::MapButtonRenderer renderer(font, map_button, placement);
-renderer.render();
-return;
-
+   LabyrinthOfLore::Rendering::Hud::MapButtonRenderer renderer(font, map_button, placement);
+   renderer.render();
+   return;
 }
 
 void Renderer::render_rune_shelf()
 {
-ALLEGRO_FONT *font = font_bin->operator[]("gameovercre1.ttf -12");
-allegro_flare::placement3d placement{0, 0, 0};
-placement.align = AllegroFlare::vec3d(0.5, 0.5, 0);
-placement.size = AllegroFlare::vec3d(80, 80, 0);
-placement.scale = AllegroFlare::vec3d(2.0, 2.0, 2.0);
-placement.position = AllegroFlare::vec3d(al_get_bitmap_width(render_surface) - 300, al_get_bitmap_height(render_surface) - 170, 0);
+   ALLEGRO_FONT *font = font_bin->operator[]("gameovercre1.ttf -12");
+   allegro_flare::placement3d placement{0, 0, 0};
+   placement.align = AllegroFlare::vec3d(0.5, 0.5, 0);
+   placement.size = AllegroFlare::vec3d(80, 80, 0);
+   placement.scale = AllegroFlare::vec3d(2.0, 2.0, 2.0);
+   placement.position = AllegroFlare::vec3d(al_get_bitmap_width(render_surface) - 300, al_get_bitmap_height(render_surface) - 170, 0);
 
-LabyrinthOfLore::Rendering::Hud::RuneShelfRenderer renderer(font, rune_shelf, placement);
-renderer.render();
-return;
-
+   LabyrinthOfLore::Rendering::Hud::RuneShelfRenderer renderer(font, rune_shelf, placement);
+   renderer.render();
+   return;
 }
 
 void Renderer::render_compass()
 {
-ALLEGRO_FONT *font = font_bin->operator[]("gameovercre1.ttf -12");
-allegro_flare::placement3d placement{0, 0, 0};
-placement.align = AllegroFlare::vec3d(0.5, 0.5, 0);
-placement.size = AllegroFlare::vec3d(90, 50, 0);
-placement.scale = AllegroFlare::vec3d(2.0, 2.0, 2.0);
-placement.position = AllegroFlare::vec3d(300, al_get_bitmap_height(render_surface) - 300, 0);
+   ALLEGRO_FONT *font = font_bin->operator[]("gameovercre1.ttf -12");
+   allegro_flare::placement3d placement{0, 0, 0};
+   placement.align = AllegroFlare::vec3d(0.5, 0.5, 0);
+   placement.size = AllegroFlare::vec3d(90, 50, 0);
+   placement.scale = AllegroFlare::vec3d(2.0, 2.0, 2.0);
+   placement.position = AllegroFlare::vec3d(300, al_get_bitmap_height(render_surface) - 300, 0);
 
 
-LabyrinthOfLore::Rendering::Hud::CompassRenderer renderer(font, compass, placement);
-renderer.render();
-return;
-
+   LabyrinthOfLore::Rendering::Hud::CompassRenderer renderer(font, compass, placement);
+   renderer.render();
+   return;
 }
 
 void Renderer::render_rotate_character_panel_button()
 {
-ALLEGRO_FONT *font = font_bin->operator[]("gameovercre1.ttf -12");
-allegro_flare::placement3d placement{0, 0, 0};
-placement.align = AllegroFlare::vec3d(0.5, 0.5, 0);
-placement.size = AllegroFlare::vec3d(40, 20, 0);
-placement.scale = AllegroFlare::vec3d(2.0, 2.0, 2.0);
-placement.position = AllegroFlare::vec3d(al_get_bitmap_width(render_surface) - 300, al_get_bitmap_height(render_surface) - 370, 0);
+   ALLEGRO_FONT *font = font_bin->operator[]("gameovercre1.ttf -12");
+   allegro_flare::placement3d placement{0, 0, 0};
+   placement.align = AllegroFlare::vec3d(0.5, 0.5, 0);
+   placement.size = AllegroFlare::vec3d(40, 20, 0);
+   placement.scale = AllegroFlare::vec3d(2.0, 2.0, 2.0);
+   placement.position = AllegroFlare::vec3d(al_get_bitmap_width(render_surface) - 300, al_get_bitmap_height(render_surface) - 370, 0);
 
-LabyrinthOfLore::Rendering::Hud::RotateCharacterPanelButtonRenderer renderer(font, rotate_character_panel_button, placement);
-renderer.render();
-return;
-
+   LabyrinthOfLore::Rendering::Hud::RotateCharacterPanelButtonRenderer renderer(font, rotate_character_panel_button, placement);
+   renderer.render();
+   return;
 }
 
 void Renderer::render_commands_hint_pane()
 {
-ALLEGRO_FONT *font = font_bin->operator[]("gameovercre1.ttf -12");
-allegro_flare::placement3d placement{0, 0, 0};
-placement.align = AllegroFlare::vec3d(0.5, 0.5, 0);
-placement.size = AllegroFlare::vec3d(30, 100, 0);
-placement.scale = AllegroFlare::vec3d(2.0, 2.0, 2.0);
-placement.position = AllegroFlare::vec3d(al_get_bitmap_width(render_surface) - 600, al_get_bitmap_height(render_surface)/3*2, 0);
+   ALLEGRO_FONT *font = font_bin->operator[]("gameovercre1.ttf -12");
+   allegro_flare::placement3d placement{0, 0, 0};
+   placement.align = AllegroFlare::vec3d(0.5, 0.5, 0);
+   placement.size = AllegroFlare::vec3d(30, 100, 0);
+   placement.scale = AllegroFlare::vec3d(2.0, 2.0, 2.0);
+   placement.position = AllegroFlare::vec3d(al_get_bitmap_width(render_surface) - 600, al_get_bitmap_height(render_surface)/3*2, 0);
 
-LabyrinthOfLore::Rendering::Hud::CommandsHintPaneRenderer renderer(font, commands_hint_pane, placement);
-renderer.render();
-return;
-
+   LabyrinthOfLore::Rendering::Hud::CommandsHintPaneRenderer renderer(font, commands_hint_pane, placement);
+   renderer.render();
+   return;
 }
 
 void Renderer::render_current_spells()
 {
-ALLEGRO_FONT *font = font_bin->operator[]("gameovercre1.ttf -12");
-allegro_flare::placement3d placement{0, 0, 0};
-placement.align = AllegroFlare::vec3d(0.5, 0.5, 0);
-placement.size = AllegroFlare::vec3d(40, 30, 0);
-placement.scale = AllegroFlare::vec3d(2.0, 2.0, 2.0);
-placement.position = AllegroFlare::vec3d(470, al_get_bitmap_height(render_surface) - 420, 0);
+   ALLEGRO_FONT *font = font_bin->operator[]("gameovercre1.ttf -12");
+   allegro_flare::placement3d placement{0, 0, 0};
+   placement.align = AllegroFlare::vec3d(0.5, 0.5, 0);
+   placement.size = AllegroFlare::vec3d(40, 30, 0);
+   placement.scale = AllegroFlare::vec3d(2.0, 2.0, 2.0);
+   placement.position = AllegroFlare::vec3d(470, al_get_bitmap_height(render_surface) - 420, 0);
 
-LabyrinthOfLore::Rendering::Hud::CurrentSpellsRenderer renderer(font, current_spells, placement);
-renderer.render();
-return;
-
+   LabyrinthOfLore::Rendering::Hud::CurrentSpellsRenderer renderer(font, current_spells, placement);
+   renderer.render();
+   return;
 }
 
 void Renderer::render_view_frame()
 {
-ALLEGRO_FONT *font = font_bin->operator[]("gameovercre1.ttf -12");
-allegro_flare::placement3d placement{0, 0, 0};
-placement.align = AllegroFlare::vec3d(0.5, 0.5, 0);
-placement.size = AllegroFlare::vec3d(al_get_bitmap_width(render_surface)/2-100, al_get_bitmap_height(render_surface)/2-100, 0);
-placement.scale = AllegroFlare::vec3d(2.0, 2.0, 2.0);
-placement.position = AllegroFlare::vec3d(al_get_bitmap_width(render_surface)/2, al_get_bitmap_height(render_surface)/2 - 80, 0);
+   ALLEGRO_FONT *font = font_bin->operator[]("gameovercre1.ttf -12");
+   allegro_flare::placement3d placement{0, 0, 0};
+   placement.align = AllegroFlare::vec3d(0.5, 0.5, 0);
+   placement.size = AllegroFlare::vec3d(al_get_bitmap_width(render_surface)/2-100, al_get_bitmap_height(render_surface)/2-100, 0);
+   placement.scale = AllegroFlare::vec3d(2.0, 2.0, 2.0);
+   placement.position = AllegroFlare::vec3d(al_get_bitmap_width(render_surface)/2, al_get_bitmap_height(render_surface)/2 - 80, 0);
 
-LabyrinthOfLore::Rendering::Hud::ViewFrameRenderer renderer(font, view_frame, placement);
-renderer.render();
-return;
-
+   LabyrinthOfLore::Rendering::Hud::ViewFrameRenderer renderer(font, view_frame, placement);
+   renderer.render();
+   return;
 }
 
 void Renderer::render_title_text()
 {
-ALLEGRO_FONT *font = font_bin->operator[]("gameovercre1.ttf -12");
-allegro_flare::placement3d placement{0, 0, 0};
-placement.align = AllegroFlare::vec3d(0.5, 0.5, 0);
-placement.size = AllegroFlare::vec3d(400, 100, 0);
-placement.scale = AllegroFlare::vec3d(2.0, 2.0, 2.0);
-placement.position = AllegroFlare::vec3d(al_get_bitmap_width(render_surface)/2, al_get_bitmap_height(render_surface)/5*2, 0);
+   ALLEGRO_FONT *font = font_bin->operator[]("gameovercre1.ttf -12");
+   allegro_flare::placement3d placement{0, 0, 0};
+   placement.align = AllegroFlare::vec3d(0.5, 0.5, 0);
+   placement.size = AllegroFlare::vec3d(400, 100, 0);
+   placement.scale = AllegroFlare::vec3d(2.0, 2.0, 2.0);
+   placement.position = AllegroFlare::vec3d(al_get_bitmap_width(render_surface)/2, al_get_bitmap_height(render_surface)/5*2, 0);
 
-LabyrinthOfLore::Rendering::Hud::TitleTextRenderer renderer(font, title_text, placement);
-renderer.render();
-return;
-
+   LabyrinthOfLore::Rendering::Hud::TitleTextRenderer renderer(font, title_text, placement);
+   renderer.render();
+   return;
 }
 
 void Renderer::render()
 {
-if (!render_surface) throw std::runtime_error("cannot render HudRenderer with a nullptr render_surface");
-if (!font_bin) throw std::runtime_error("cannot render HudRenderer with a nullptr font_bin");
+   if (!render_surface) throw std::runtime_error("cannot render HudRenderer with a nullptr render_surface");
+   if (!font_bin) throw std::runtime_error("cannot render HudRenderer with a nullptr font_bin");
 
-al_set_target_bitmap(render_surface);
-ALLEGRO_TRANSFORM transform;
-al_identity_transform(&transform);
-al_use_transform(&transform);
+   al_set_target_bitmap(render_surface);
+   ALLEGRO_TRANSFORM transform;
+   al_identity_transform(&transform);
+   al_use_transform(&transform);
 
-render_message_scroll();
-render_command_panel();
-//render_vitality_and_mana_bar();
-render_character_panel();
-//render_map_button();
-//render_rune_shelf();
-//render_compass();
-//render_rotate_character_panel_button();
-//render_commands_hint_pane();
-//render_current_spells();
-//render_view_frame();
-render_title_text();
+   render_message_scroll();
+   render_command_panel();
+   //render_vitality_and_mana_bar();
+   render_character_panel();
+   //render_map_button();
+   //render_rune_shelf();
+   //render_compass();
+   //render_rotate_character_panel_button();
+   //render_commands_hint_pane();
+   //render_current_spells();
+   //render_view_frame();
+   render_title_text();
 
-if (mouse_pointer) mouse_pointer->render();
+   if (mouse_pointer) mouse_pointer->render();
 
-return;
-
+   return;
 }
 } // namespace Hud
 } // namespace Rendering

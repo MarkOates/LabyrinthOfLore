@@ -22,7 +22,7 @@ CurrentSpells::~CurrentSpells()
 
 std::string CurrentSpells::run()
 {
-return "Hello World!";
+   return "Hello World!";
 }
 } // namespace Hud
 } // namespace LabyrinthOfLore

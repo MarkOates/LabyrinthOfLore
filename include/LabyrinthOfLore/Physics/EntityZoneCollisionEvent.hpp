@@ -20,7 +20,6 @@ namespace LabyrinthOfLore
          EntityZoneCollisionEvent(int zone_id=-1, LabyrinthOfLore::Entity::Base* entity=nullptr, LabyrinthOfLore::Physics::zone_collision_event_t event_type=LabyrinthOfLore::Physics::COLLISION_EVENT_NONE);
          ~EntityZoneCollisionEvent();
 
-
          int get_zone_id();
          LabyrinthOfLore::Entity::Base* get_entity();
          LabyrinthOfLore::Physics::zone_collision_event_t get_event_type();

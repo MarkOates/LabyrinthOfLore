@@ -19,8 +19,7 @@ namespace LabyrinthOfLore
          Selector(std::vector<LabyrinthOfLore::Entity::Base*> all_entities={});
          ~Selector();
 
-
-      std::vector<LabyrinthOfLore::Entity::Base*> select_within_level(std::string level_identifier="");
+         std::vector<LabyrinthOfLore::Entity::Base*> select_within_level(std::string level_identifier="");
       };
    }
 }

@@ -30,7 +30,6 @@ namespace LabyrinthOfLore
          void set_health(int health);
          void set_mood(std::string mood);
          void set_condition(std::string condition);
-
          thing_type_t get_type();
          std::string get_article();
          std::string get_name();
@@ -40,9 +39,9 @@ namespace LabyrinthOfLore
          int get_health();
          std::string get_mood();
          std::string get_condition();
-      bool infer_is_dead();
-      std::string infer_short_decorated_name();
-      std::string infer_decorated_name();
+         bool infer_is_dead();
+         std::string infer_short_decorated_name();
+         std::string infer_decorated_name();
       };
    }
 }

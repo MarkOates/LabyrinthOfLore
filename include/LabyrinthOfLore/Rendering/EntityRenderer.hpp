@@ -17,10 +17,9 @@ namespace LabyrinthOfLore
          EntityRenderer(LabyrinthOfLore::Entity::Base* entity=nullptr);
          ~EntityRenderer();
 
-
-      void render_with_legacy_transform();
-      void render_with_custom_transform();
-      void render();
+         void render_with_legacy_transform();
+         void render_with_custom_transform();
+         void render();
       };
    }
 }

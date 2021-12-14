@@ -18,8 +18,7 @@ namespace LabyrinthOfLore
          TileTypeDictionary(std::map<int, LabyrinthOfLore::Rendering::TileTypeDefinition> definitions={});
          ~TileTypeDictionary();
 
-
-      LabyrinthOfLore::Rendering::TileTypeDefinition find_definition(int tile_type=0);
+         LabyrinthOfLore::Rendering::TileTypeDefinition find_definition(int tile_type=0);
       };
    }
 }

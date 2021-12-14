@@ -64,14 +64,13 @@ float Zone::get_z2()
 
 bool Zone::collides(AllegroFlare::vec3d point)
 {
-if (point.x > x2) return false;
-if (point.x < x1) return false;
-if (point.y > y2) return false;
-if (point.y < y1) return false;
-if (point.z > z2) return false;
-if (point.z < z1) return false;
-return true;
-
+   if (point.x > x2) return false;
+   if (point.x < x1) return false;
+   if (point.y > y2) return false;
+   if (point.y < y1) return false;
+   if (point.z > z2) return false;
+   if (point.z < z1) return false;
+   return true;
 }
 } // namespace WorldMap
 } // namespace LabyrinthOfLore

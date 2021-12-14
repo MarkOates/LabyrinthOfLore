@@ -20,9 +20,8 @@ namespace LabyrinthOfLore
          Cleanup(std::vector<LabyrinthOfLore::Entity::Base*>* all_entities=nullptr);
          ~Cleanup();
 
-
          static std::string get_CLEANUP_FLAG();
-      int cleanup();
+         int cleanup();
       };
    }
 }

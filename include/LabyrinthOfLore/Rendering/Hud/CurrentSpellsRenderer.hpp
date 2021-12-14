@@ -23,8 +23,7 @@ namespace LabyrinthOfLore
             CurrentSpellsRenderer(ALLEGRO_FONT* font=nullptr, LabyrinthOfLore::Hud::CurrentSpells* current_spells=nullptr, allegro_flare::placement3d place=allegro_flare::placement3d{});
             ~CurrentSpellsRenderer();
 
-
-         void render();
+            void render();
          };
       }
    }

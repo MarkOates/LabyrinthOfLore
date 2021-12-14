@@ -28,17 +28,16 @@ MapButtonRenderer::~MapButtonRenderer()
 
 void MapButtonRenderer::render()
 {
-if (!font) throw std::runtime_error("Cannot draw MapButton with a nullptr font");
-if (!map_button) throw std::runtime_error("Cannot draw MapButton with a nullptr map_button");
+   if (!font) throw std::runtime_error("Cannot draw MapButton with a nullptr font");
+   if (!map_button) throw std::runtime_error("Cannot draw MapButton with a nullptr map_button");
 
-place.start_transform();
+   place.start_transform();
 
-al_draw_filled_rounded_rectangle(0, 0, place.size.x, place.size.y, 6, 6, al_color_name("red"));
-al_draw_text(font, al_color_name("white"), 0, 0, 0, " - map button - ");
+   al_draw_filled_rounded_rectangle(0, 0, place.size.x, place.size.y, 6, 6, al_color_name("red"));
+   al_draw_text(font, al_color_name("white"), 0, 0, 0, " - map button - ");
 
-place.restore_transform();
-return;
-
+   place.restore_transform();
+   return;
 }
 } // namespace Hud
 } // namespace Rendering

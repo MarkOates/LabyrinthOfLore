@@ -22,7 +22,7 @@ RotateCharacterPanelButton::~RotateCharacterPanelButton()
 
 std::string RotateCharacterPanelButton::run()
 {
-return "Hello World!";
+   return "Hello World!";
 }
 } // namespace Hud
 } // namespace LabyrinthOfLore

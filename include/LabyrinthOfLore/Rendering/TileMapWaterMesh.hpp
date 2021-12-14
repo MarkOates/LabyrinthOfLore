@@ -26,10 +26,9 @@ namespace LabyrinthOfLore
          TileMapWaterMesh(Tileo::TileAtlas* tile_atlas=nullptr, LabyrinthOfLore::Rendering::TileTypeDictionary tile_type_dictionary={}, LabyrinthOfLore::WorldMap::TileMap tile_map={}, ALLEGRO_BITMAP* texture=nullptr, int __unused_offset_to_first_texture_index=0);
          ~TileMapWaterMesh();
 
-
          std::vector<ALLEGRO_VERTEX> get_vertexes();
-      bool build();
-      void draw();
+         bool build();
+         void draw();
       };
    }
 }

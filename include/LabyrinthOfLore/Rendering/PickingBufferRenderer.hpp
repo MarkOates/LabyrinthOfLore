@@ -26,8 +26,7 @@ namespace LabyrinthOfLore
          PickingBufferRenderer(AllegroFlare::PickingBuffer* picking_buffer=nullptr, LabyrinthOfLore::Rendering::Camera* camera=nullptr, LabyrinthOfLore::Rendering::TileMapMesh tile_map_mesh={}, std::vector<LabyrinthOfLore::Entity::Base*> entities={}, LabyrinthOfLore::Shader::ClampedColor* clamped_color_shader=nullptr);
          ~PickingBufferRenderer();
 
-
-      void render();
+         void render();
       };
    }
 }

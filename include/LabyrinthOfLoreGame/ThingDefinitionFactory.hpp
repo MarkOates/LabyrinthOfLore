@@ -14,8 +14,7 @@ namespace LabyrinthOfLoreGame
       ThingDefinitionFactory();
       ~ThingDefinitionFactory();
 
-
-   std::string run();
+      std::string run();
    };
 }
 

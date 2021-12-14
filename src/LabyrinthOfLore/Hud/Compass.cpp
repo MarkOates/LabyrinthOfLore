@@ -22,7 +22,7 @@ Compass::~Compass()
 
 std::string Compass::run()
 {
-return "Hello World!";
+   return "Hello World!";
 }
 } // namespace Hud
 } // namespace LabyrinthOfLore

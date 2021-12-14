@@ -21,9 +21,8 @@ namespace LabyrinthOfLore
          PixelRenderer(LabyrinthOfLore::WorldMap::TileMap tile_map={}, LabyrinthOfLore::Rendering::TileTypeDictionary tile_type_dictionary={}, float ground_level=1.0);
          ~PixelRenderer();
 
-
-      void initialize();
-      ALLEGRO_BITMAP* create_render();
+         void initialize();
+         ALLEGRO_BITMAP* create_render();
       };
    }
 }

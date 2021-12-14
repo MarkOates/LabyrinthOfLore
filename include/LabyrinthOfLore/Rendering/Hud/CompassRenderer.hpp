@@ -23,8 +23,7 @@ namespace LabyrinthOfLore
             CompassRenderer(ALLEGRO_FONT* font=nullptr, LabyrinthOfLore::Hud::Compass* compass=nullptr, allegro_flare::placement3d place=allegro_flare::placement3d{});
             ~CompassRenderer();
 
-
-         void render();
+            void render();
          };
       }
    }

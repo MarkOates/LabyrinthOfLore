@@ -24,11 +24,10 @@ GravityStepper::~GravityStepper()
 
 void GravityStepper::process_step()
 {
-for (auto &entity : entities)
-{
-   entity->get_velocity_ref().position += gravity;
-}
-
+   for (auto &entity : entities)
+   {
+      entity->get_velocity_ref().position += gravity;
+   }
 }
 } // namespace Physics
 } // namespace LabyrinthOfLore

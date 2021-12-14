@@ -23,8 +23,7 @@ namespace LabyrinthOfLore
             CommandsHintPaneRenderer(ALLEGRO_FONT* font=nullptr, LabyrinthOfLore::Hud::CommandsHintPane* commands_hint_pane=nullptr, allegro_flare::placement3d place=allegro_flare::placement3d{});
             ~CommandsHintPaneRenderer();
 
-
-         void render();
+            void render();
          };
       }
    }

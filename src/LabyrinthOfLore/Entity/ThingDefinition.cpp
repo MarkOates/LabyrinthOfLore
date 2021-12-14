@@ -104,36 +104,33 @@ std::string ThingDefinition::get_condition()
 
 bool ThingDefinition::infer_is_dead()
 {
-return (health <= 0);
-
+   return (health <= 0);
 }
 
 std::string ThingDefinition::infer_short_decorated_name()
 {
-std::stringstream result;
-if (!article.empty()) result << article << " ";
-if (!name.empty()) result << name << " ";
+   std::stringstream result;
+   if (!article.empty()) result << article << " ";
+   if (!name.empty()) result << name << " ";
 
-std::string result_str = result.str();
-if (result_str.size() > 0 && result_str[result_str.size()-1] == ' ') result_str.pop_back();
+   std::string result_str = result.str();
+   if (result_str.size() > 0 && result_str[result_str.size()-1] == ' ') result_str.pop_back();
 
-return result_str;
-
+   return result_str;
 }
 
 std::string ThingDefinition::infer_decorated_name()
 {
-std::stringstream result;
-if (!article.empty()) result << article << " ";
-if (!mood.empty()) result << mood << " ";
-if (!condition.empty()) result << condition << " ";
-if (!name.empty()) result << name << " ";
+   std::stringstream result;
+   if (!article.empty()) result << article << " ";
+   if (!mood.empty()) result << mood << " ";
+   if (!condition.empty()) result << condition << " ";
+   if (!name.empty()) result << name << " ";
 
-std::string result_str = result.str();
-if (result_str.size() > 0 && result_str[result_str.size()-1] == ' ') result_str.pop_back();
+   std::string result_str = result.str();
+   if (result_str.size() > 0 && result_str[result_str.size()-1] == ' ') result_str.pop_back();
 
-return result_str;
-
+   return result_str;
 }
 } // namespace Entity
 } // namespace LabyrinthOfLore

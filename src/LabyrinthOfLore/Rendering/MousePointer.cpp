@@ -25,9 +25,8 @@ MousePointer::~MousePointer()
 
 void MousePointer::render()
 {
-float size = 10;
-al_draw_filled_rectangle(x-size, y-size, x+size, y+size, al_color_name("white"));
-
+   float size = 10;
+   al_draw_filled_rectangle(x-size, y-size, x+size, y+size, al_color_name("white"));
 }
 } // namespace Rendering
 } // namespace LabyrinthOfLore

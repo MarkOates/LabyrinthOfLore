@@ -16,8 +16,7 @@ namespace LabyrinthOfLore
          VitalityAndManaBar();
          ~VitalityAndManaBar();
 
-
-      std::string run();
+         std::string run();
       };
    }
 }

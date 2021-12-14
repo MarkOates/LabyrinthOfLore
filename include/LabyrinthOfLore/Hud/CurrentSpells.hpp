@@ -16,8 +16,7 @@ namespace LabyrinthOfLore
          CurrentSpells();
          ~CurrentSpells();
 
-
-      std::string run();
+         std::string run();
       };
    }
 }

@@ -28,17 +28,16 @@ CompassRenderer::~CompassRenderer()
 
 void CompassRenderer::render()
 {
-if (!font) throw std::runtime_error("Cannot draw Compass with a nullptr font");
-if (!compass) throw std::runtime_error("Cannot draw Compass with a nullptr compass");
+   if (!font) throw std::runtime_error("Cannot draw Compass with a nullptr font");
+   if (!compass) throw std::runtime_error("Cannot draw Compass with a nullptr compass");
 
-place.start_transform();
+   place.start_transform();
 
-al_draw_filled_rounded_rectangle(0, 0, place.size.x, place.size.y, 6, 6, al_color_name("red"));
-al_draw_text(font, al_color_name("white"), 0, 0, 0, " - compass - ");
+   al_draw_filled_rounded_rectangle(0, 0, place.size.x, place.size.y, 6, 6, al_color_name("red"));
+   al_draw_text(font, al_color_name("white"), 0, 0, 0, " - compass - ");
 
-place.restore_transform();
-return;
-
+   place.restore_transform();
+   return;
 }
 } // namespace Hud
 } // namespace Rendering

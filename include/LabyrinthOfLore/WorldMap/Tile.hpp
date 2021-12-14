@@ -20,10 +20,9 @@ namespace LabyrinthOfLore
 
          void set_type(int type);
          void set_height(float height);
-
          int get_type();
          float get_height();
-      std::string run();
+         std::string run();
       };
    }
 }

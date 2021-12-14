@@ -48,7 +48,7 @@ float Tile::get_height()
 
 std::string Tile::run()
 {
-return "Hello World!";
+   return "Hello World!";
 }
 } // namespace WorldMap
 } // namespace LabyrinthOfLore

@@ -19,9 +19,8 @@ namespace LabyrinthOfLore
          ~CommandPanel();
 
          void set_current_mode(LabyrinthOfLore::Hud::command_mode_t current_mode);
-
          LabyrinthOfLore::Hud::command_mode_t get_current_mode();
-      std::string run();
+         std::string run();
       };
    }
 }

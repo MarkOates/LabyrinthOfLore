@@ -24,10 +24,9 @@ namespace LabyrinthOfLore
             TitleTextRenderer(ALLEGRO_FONT* font=nullptr, LabyrinthOfLore::Hud::TitleText* title_text=nullptr, allegro_flare::placement3d place=allegro_flare::placement3d{});
             ~TitleTextRenderer();
 
-
-         float smoothstep(float edge0=0.0f, float edge1=0.0f, float x=0.0f);
-         std::string decorated_title();
-         void render();
+            float smoothstep(float edge0=0.0f, float edge1=0.0f, float x=0.0f);
+            std::string decorated_title();
+            void render();
          };
       }
    }

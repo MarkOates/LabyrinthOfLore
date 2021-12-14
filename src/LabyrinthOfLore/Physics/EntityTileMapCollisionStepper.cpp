@@ -72,181 +72,180 @@ std::vector<LabyrinthOfLore::Physics::EntityTileMapCollisionEvent> EntityTileMap
 
 LabyrinthOfLore::WorldMap::TileMap& EntityTileMapCollisionStepper::get_dummy_tile_map()
 {
-return dummy_tile_map;
+   return dummy_tile_map;
 }
 
 void EntityTileMapCollisionStepper::process_step()
 {
-events_from_last_processed_step.clear();
+   events_from_last_processed_step.clear();
 
-for (auto &entity : entities)
-{
-   AllegroFlare::vec2d player_xy = AllegroFlare::vec2d(
-        entity->get_velocity_ref().position.x,
-        entity->get_velocity_ref().position.y
-     );
-
-   AllegroFlare::vec2d x_y_movement_normalized = player_xy.normalized();
-   float player_xy_magnitude = player_xy.get_magnitude();
-
-   if (fabs(entity->get_velocity_ref().position.x) <= 0.00001 && fabs(entity->get_velocity_ref().position.y) <= 0.00001)
+   for (auto &entity : entities)
    {
-      x_y_movement_normalized = AllegroFlare::vec2d(0, 1);
-      player_xy_magnitude = 0.0;
-   }
+      AllegroFlare::vec2d player_xy = AllegroFlare::vec2d(
+           entity->get_velocity_ref().position.x,
+           entity->get_velocity_ref().position.y
+        );
 
-   double dirX = x_y_movement_normalized.x;
-   double dirY = x_y_movement_normalized.y; // normal
-   double dirZ = entity->get_velocity_ref().position.z;
-   double moveSpeed = player_xy_magnitude;
-   double posX = entity->get_placement_ref().position.x;
-   double posY = entity->get_placement_ref().position.y;
-   double posZ = entity->get_placement_ref().position.z;
+      AllegroFlare::vec2d x_y_movement_normalized = player_xy.normalized();
+      float player_xy_magnitude = player_xy.get_magnitude();
 
-   if(tile_map.get_tile(int(posX + dirX * moveSpeed), int(posY)).get_height() <= (posZ + get_auto_ascend_threshold()))
-   {
-      float previous_posX = posX;
-      posX += dirX * moveSpeed;
-      float now_posX = posX;
-
-      // if currentx!=nextx, create a collision event into the nextx tile, with a face of NONE
-      if ((int)previous_posX != (int)now_posX)
+      if (fabs(entity->get_velocity_ref().position.x) <= 0.00001 && fabs(entity->get_velocity_ref().position.y) <= 0.00001)
       {
-        LabyrinthOfLore::Entity::Base* colliding_entity = entity;
-        int collided_tile_x = int(posX);
-        int collided_tile_y = int(posY);
-        int collided_tile_type = tile_map.get_tile(collided_tile_x, collided_tile_y).get_type();
-        LabyrinthOfLore::WorldMap::tile_face_t collided_tile_face_collided_with = LabyrinthOfLore::WorldMap::TILE_FACE_NONE;
-        float collided_force = abs(dirX * moveSpeed);
+         x_y_movement_normalized = AllegroFlare::vec2d(0, 1);
+         player_xy_magnitude = 0.0;
+      }
 
-         // a new tile space has been entered
+      double dirX = x_y_movement_normalized.x;
+      double dirY = x_y_movement_normalized.y; // normal
+      double dirZ = entity->get_velocity_ref().position.z;
+      double moveSpeed = player_xy_magnitude;
+      double posX = entity->get_placement_ref().position.x;
+      double posY = entity->get_placement_ref().position.y;
+      double posZ = entity->get_placement_ref().position.z;
+
+      if(tile_map.get_tile(int(posX + dirX * moveSpeed), int(posY)).get_height() <= (posZ + get_auto_ascend_threshold()))
+      {
+         float previous_posX = posX;
+         posX += dirX * moveSpeed;
+         float now_posX = posX;
+
+         // if currentx!=nextx, create a collision event into the nextx tile, with a face of NONE
+         if ((int)previous_posX != (int)now_posX)
+         {
+           LabyrinthOfLore::Entity::Base* colliding_entity = entity;
+           int collided_tile_x = int(posX);
+           int collided_tile_y = int(posY);
+           int collided_tile_type = tile_map.get_tile(collided_tile_x, collided_tile_y).get_type();
+           LabyrinthOfLore::WorldMap::tile_face_t collided_tile_face_collided_with = LabyrinthOfLore::WorldMap::TILE_FACE_NONE;
+           float collided_force = abs(dirX * moveSpeed);
+
+            // a new tile space has been entered
+            LabyrinthOfLore::Physics::EntityTileMapCollisionEvent collision_event(
+                 colliding_entity,
+                 collided_tile_type,
+                 collided_tile_x,
+                 collided_tile_y,
+                 collided_tile_face_collided_with,
+                 collided_force
+               );
+            events_from_last_processed_step.push_back(collision_event);
+         }
+      }
+      else
+      {
+         LabyrinthOfLore::Entity::Base* colliding_entity = entity;
+         int collided_tile_type = tile_map.get_tile(int(posX + dirX * moveSpeed), int(posY)).get_type();
+         int collided_tile_x = int(posX + dirX * moveSpeed);
+         int collided_tile_y = int(posY);
+         LabyrinthOfLore::WorldMap::tile_face_t collided_tile_face_collided_with = ((dirX * moveSpeed) > 0) ? LabyrinthOfLore::WorldMap::TILE_FACE_LEFT : LabyrinthOfLore::WorldMap::TILE_FACE_RIGHT;
+         float collided_force = abs(dirX * moveSpeed);
+
          LabyrinthOfLore::Physics::EntityTileMapCollisionEvent collision_event(
-              colliding_entity,
-              collided_tile_type,
-              collided_tile_x,
-              collided_tile_y,
-              collided_tile_face_collided_with,
-              collided_force
+               colliding_entity,
+               collided_tile_type,
+               collided_tile_x,
+               collided_tile_y,
+               collided_tile_face_collided_with,
+               collided_force
             );
          events_from_last_processed_step.push_back(collision_event);
       }
-   }
-   else
-   {
-      LabyrinthOfLore::Entity::Base* colliding_entity = entity;
-      int collided_tile_type = tile_map.get_tile(int(posX + dirX * moveSpeed), int(posY)).get_type();
-      int collided_tile_x = int(posX + dirX * moveSpeed);
-      int collided_tile_y = int(posY);
-      LabyrinthOfLore::WorldMap::tile_face_t collided_tile_face_collided_with = ((dirX * moveSpeed) > 0) ? LabyrinthOfLore::WorldMap::TILE_FACE_LEFT : LabyrinthOfLore::WorldMap::TILE_FACE_RIGHT;
-      float collided_force = abs(dirX * moveSpeed);
-
-      LabyrinthOfLore::Physics::EntityTileMapCollisionEvent collision_event(
-            colliding_entity,
-            collided_tile_type,
-            collided_tile_x,
-            collided_tile_y,
-            collided_tile_face_collided_with,
-            collided_force
-         );
-      events_from_last_processed_step.push_back(collision_event);
-   }
-   if(tile_map.get_tile(int(posX), int(posY + dirY * moveSpeed)).get_height() <= (posZ + get_auto_ascend_threshold()))
-   {
-      float previous_posY = posY;
-      posY += dirY * moveSpeed;
-      float now_posY = posY;
-
-      // if currenty!=nexty, create a collision event into the nexty tile, with a face of NONE
-      if ((int)previous_posY != (int)now_posY)
+      if(tile_map.get_tile(int(posX), int(posY + dirY * moveSpeed)).get_height() <= (posZ + get_auto_ascend_threshold()))
       {
-        LabyrinthOfLore::Entity::Base* colliding_entity = entity;
-        int collided_tile_x = int(posX);
-        int collided_tile_y = int(posY);
-        int collided_tile_type = tile_map.get_tile(collided_tile_x, collided_tile_y).get_type();
-        LabyrinthOfLore::WorldMap::tile_face_t collided_tile_face_collided_with = LabyrinthOfLore::WorldMap::TILE_FACE_NONE;
-        float collided_force = abs(dirY * moveSpeed);
+         float previous_posY = posY;
+         posY += dirY * moveSpeed;
+         float now_posY = posY;
 
-         // a new tile space has been entered
+         // if currenty!=nexty, create a collision event into the nexty tile, with a face of NONE
+         if ((int)previous_posY != (int)now_posY)
+         {
+           LabyrinthOfLore::Entity::Base* colliding_entity = entity;
+           int collided_tile_x = int(posX);
+           int collided_tile_y = int(posY);
+           int collided_tile_type = tile_map.get_tile(collided_tile_x, collided_tile_y).get_type();
+           LabyrinthOfLore::WorldMap::tile_face_t collided_tile_face_collided_with = LabyrinthOfLore::WorldMap::TILE_FACE_NONE;
+           float collided_force = abs(dirY * moveSpeed);
+
+            // a new tile space has been entered
+            LabyrinthOfLore::Physics::EntityTileMapCollisionEvent collision_event(
+                 colliding_entity,
+                 collided_tile_type,
+                 collided_tile_x,
+                 collided_tile_y,
+                 collided_tile_face_collided_with,
+                 collided_force
+               );
+            events_from_last_processed_step.push_back(collision_event);
+         }
+      }
+      else
+      {
+         LabyrinthOfLore::Entity::Base* colliding_entity = entity;
+         int collided_tile_x = int(posX);
+         int collided_tile_y = int(posY + dirY * moveSpeed);
+         int collided_tile_type = tile_map.get_tile(collided_tile_x, collided_tile_y).get_type();
+         LabyrinthOfLore::WorldMap::tile_face_t collided_tile_face_collided_with = ((dirY * moveSpeed) > 0) ? LabyrinthOfLore::WorldMap::TILE_FACE_BACK : LabyrinthOfLore::WorldMap::TILE_FACE_FRONT;
+         float collided_force = abs(dirY * moveSpeed);
+
          LabyrinthOfLore::Physics::EntityTileMapCollisionEvent collision_event(
-              colliding_entity,
-              collided_tile_type,
-              collided_tile_x,
-              collided_tile_y,
-              collided_tile_face_collided_with,
-              collided_force
+               colliding_entity,
+               collided_tile_type,
+               collided_tile_x,
+               collided_tile_y,
+               collided_tile_face_collided_with,
+               collided_force
             );
+
          events_from_last_processed_step.push_back(collision_event);
       }
-   }
-   else
-   {
-      LabyrinthOfLore::Entity::Base* colliding_entity = entity;
-      int collided_tile_x = int(posX);
-      int collided_tile_y = int(posY + dirY * moveSpeed);
-      int collided_tile_type = tile_map.get_tile(collided_tile_x, collided_tile_y).get_type();
-      LabyrinthOfLore::WorldMap::tile_face_t collided_tile_face_collided_with = ((dirY * moveSpeed) > 0) ? LabyrinthOfLore::WorldMap::TILE_FACE_BACK : LabyrinthOfLore::WorldMap::TILE_FACE_FRONT;
-      float collided_force = abs(dirY * moveSpeed);
+      if ((posZ + dirZ) < tile_map.get_tile(int(posX), int(posY)).get_height())
+      {
+         posZ = tile_map.get_tile(int(posX), int(posY)).get_height() + get_offset_at_collision_edge();
+         entity->get_velocity_ref().position.z = 0.0f;
 
-      LabyrinthOfLore::Physics::EntityTileMapCollisionEvent collision_event(
-            colliding_entity,
-            collided_tile_type,
-            collided_tile_x,
-            collided_tile_y,
-            collided_tile_face_collided_with,
-            collided_force
-         );
+         LabyrinthOfLore::Entity::Base* colliding_entity = entity;
+         int collided_tile_x = int(posX);
+         int collided_tile_y = int(posY);
+         int collided_tile_type = tile_map.get_tile(collided_tile_x, collided_tile_y).get_type();
+         LabyrinthOfLore::WorldMap::tile_face_t collided_tile_face_collided_with = LabyrinthOfLore::WorldMap::TILE_FACE_TOP;
+         float collided_force = abs(dirZ);
 
-      events_from_last_processed_step.push_back(collision_event);
-   }
-   if ((posZ + dirZ) < tile_map.get_tile(int(posX), int(posY)).get_height())
-   {
-      posZ = tile_map.get_tile(int(posX), int(posY)).get_height() + get_offset_at_collision_edge();
-      entity->get_velocity_ref().position.z = 0.0f;
+         LabyrinthOfLore::Physics::EntityTileMapCollisionEvent collision_event(
+               colliding_entity,
+               collided_tile_type,
+               collided_tile_x,
+               collided_tile_y,
+               collided_tile_face_collided_with,
+               collided_force
+            );
 
-      LabyrinthOfLore::Entity::Base* colliding_entity = entity;
-      int collided_tile_x = int(posX);
-      int collided_tile_y = int(posY);
-      int collided_tile_type = tile_map.get_tile(collided_tile_x, collided_tile_y).get_type();
-      LabyrinthOfLore::WorldMap::tile_face_t collided_tile_face_collided_with = LabyrinthOfLore::WorldMap::TILE_FACE_TOP;
-      float collided_force = abs(dirZ);
+         events_from_last_processed_step.push_back(collision_event);
+      }
+      else
+      {
+         posZ += dirZ;
+      }
 
-      LabyrinthOfLore::Physics::EntityTileMapCollisionEvent collision_event(
-            colliding_entity,
-            collided_tile_type,
-            collided_tile_x,
-            collided_tile_y,
-            collided_tile_face_collided_with,
-            collided_force
-         );
+      entity->get_placement_ref().position.x = posX;
+      entity->get_placement_ref().position.y = posY;
+      float clamped_ceiling = std::min<float>(get_ceiling_height()-get_offset_at_collision_edge(), posZ);
+      if (fabs(clamped_ceiling - posZ) > 0.0001f)
+      {
+         // has been clamped at the ceiling
+         entity->get_velocity_ref().position.z = 0.0f;
+      }
 
-      events_from_last_processed_step.push_back(collision_event);
-   }
-   else
-   {
-      posZ += dirZ;
+      float clamped_floor = std::max<float>(get_floor_height()+get_offset_at_collision_edge(), clamped_ceiling);
+      if (fabs(clamped_floor - posZ) > 0.0001f)
+      {
+         // has been clamped at the ceiling
+         entity->get_velocity_ref().position.z = 0.0f;
+      }
+
+      entity->get_placement_ref().position.z = clamped_floor;
    }
 
-   entity->get_placement_ref().position.x = posX;
-   entity->get_placement_ref().position.y = posY;
-   float clamped_ceiling = std::min<float>(get_ceiling_height()-get_offset_at_collision_edge(), posZ);
-   if (fabs(clamped_ceiling - posZ) > 0.0001f)
-   {
-      // has been clamped at the ceiling
-      entity->get_velocity_ref().position.z = 0.0f;
-   }
-
-   float clamped_floor = std::max<float>(get_floor_height()+get_offset_at_collision_edge(), clamped_ceiling);
-   if (fabs(clamped_floor - posZ) > 0.0001f)
-   {
-      // has been clamped at the ceiling
-      entity->get_velocity_ref().position.z = 0.0f;
-   }
-
-   entity->get_placement_ref().position.z = clamped_floor;
-}
-
-return;
-
+   return;
 }
 } // namespace Physics
 } // namespace LabyrinthOfLore

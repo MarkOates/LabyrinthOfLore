@@ -20,11 +20,10 @@ namespace LabyrinthOfLore
          BitmapFilenameToWorldBuilder(std::string bitmap_source_filename="data/bitmaps/the_underworld.png", float top_height=2.0f, float ground_height=1.0f);
          ~BitmapFilenameToWorldBuilder();
 
-
          std::string get_bitmap_source_filename();
          float get_top_height();
          float get_ground_height();
-      LabyrinthOfLore::WorldMap::TileMap build();
+         LabyrinthOfLore::WorldMap::TileMap build();
       };
    }
 }

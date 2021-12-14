@@ -23,8 +23,7 @@ namespace LabyrinthOfLore
             ViewFrameRenderer(ALLEGRO_FONT* font=nullptr, LabyrinthOfLore::Hud::ViewFrame* view_frame=nullptr, allegro_flare::placement3d place=allegro_flare::placement3d{});
             ~ViewFrameRenderer();
 
-
-         void render();
+            void render();
          };
       }
    }

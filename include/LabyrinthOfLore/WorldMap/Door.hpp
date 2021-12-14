@@ -21,7 +21,6 @@ namespace LabyrinthOfLore
          Door(std::string level_identifier="", float spawn_x=0.0f, float spawn_y=0.0f, float spawn_z=0.0f, float spawn_facing_yaw=0.0f);
          ~Door();
 
-
          std::string get_level_identifier();
          float get_spawn_x();
          float get_spawn_y();

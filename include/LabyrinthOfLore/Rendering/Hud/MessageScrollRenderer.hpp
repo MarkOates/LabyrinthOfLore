@@ -27,10 +27,9 @@ namespace LabyrinthOfLore
             MessageScrollRenderer(ALLEGRO_FONT* font=nullptr, LabyrinthOfLore::Hud::MessageScroll* message_scroll={}, allegro_flare::placement3d place=allegro_flare::placement3d{});
             ~MessageScrollRenderer();
 
-
-         float smoothstep(float edge0=0.0f, float edge1=0.0f, float x=0.0f);
-         static bool multiline_draw_callback(int line_num=0, const char* line=nullptr, int size=0, void* extra=nullptr);
-         void render();
+            float smoothstep(float edge0=0.0f, float edge1=0.0f, float x=0.0f);
+            static bool multiline_draw_callback(int line_num=0, const char* line=nullptr, int size=0, void* extra=nullptr);
+            void render();
          };
       }
    }

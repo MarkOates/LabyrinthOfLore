@@ -16,8 +16,7 @@ namespace LabyrinthOfLore
          RuneShelf();
          ~RuneShelf();
 
-
-      std::string run();
+         std::string run();
       };
    }
 }

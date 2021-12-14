@@ -20,8 +20,7 @@ namespace LabyrinthOfLore
          GravityStepper(std::vector<LabyrinthOfLore::Entity::Base*> entities={});
          ~GravityStepper();
 
-
-      void process_step();
+         void process_step();
       };
    }
 }

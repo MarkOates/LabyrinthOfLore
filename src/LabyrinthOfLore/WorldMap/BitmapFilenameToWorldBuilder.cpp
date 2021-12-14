@@ -46,19 +46,18 @@ float BitmapFilenameToWorldBuilder::get_ground_height()
 
 LabyrinthOfLore::WorldMap::TileMap BitmapFilenameToWorldBuilder::build()
 {
-// could use a al_is_image_addon_installed() here
-ALLEGRO_BITMAP *bitmap_source = al_load_bitmap(bitmap_source_filename.c_str());
-if (!bitmap_source)
-{
-  std::stringstream error_message;
-  error_message << "was unable to load bitmap ";
-  error_message << "\"" << bitmap_source_filename << "\" ";
-  error_message << "when calling build.";
-  throw std::runtime_error(error_message.str());
-}
-LabyrinthOfLore::WorldMap::BitmapTileMapLoader loader(bitmap_source);
-return loader.load(top_height, ground_height);
-
+   // could use a al_is_image_addon_installed() here
+   ALLEGRO_BITMAP *bitmap_source = al_load_bitmap(bitmap_source_filename.c_str());
+   if (!bitmap_source)
+   {
+     std::stringstream error_message;
+     error_message << "was unable to load bitmap ";
+     error_message << "\"" << bitmap_source_filename << "\" ";
+     error_message << "when calling build.";
+     throw std::runtime_error(error_message.str());
+   }
+   LabyrinthOfLore::WorldMap::BitmapTileMapLoader loader(bitmap_source);
+   return loader.load(top_height, ground_height);
 }
 } // namespace WorldMap
 } // namespace LabyrinthOfLore

@@ -20,8 +20,7 @@ namespace LabyrinthOfLore
          SpritesBillboarder(LabyrinthOfLore::Rendering::Camera camera={}, std::vector<LabyrinthOfLore::Entity::Base*> entities={});
          ~SpritesBillboarder();
 
-
-      void process();
+         void process();
       };
    }
 }

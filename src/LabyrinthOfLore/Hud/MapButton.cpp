@@ -22,7 +22,7 @@ MapButton::~MapButton()
 
 std::string MapButton::run()
 {
-return "Hello World!";
+   return "Hello World!";
 }
 } // namespace Hud
 } // namespace LabyrinthOfLore

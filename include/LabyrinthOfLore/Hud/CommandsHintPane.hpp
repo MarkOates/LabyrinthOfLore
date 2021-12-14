@@ -16,8 +16,7 @@ namespace LabyrinthOfLore
          CommandsHintPane();
          ~CommandsHintPane();
 
-
-      std::string run();
+         std::string run();
       };
    }
 }

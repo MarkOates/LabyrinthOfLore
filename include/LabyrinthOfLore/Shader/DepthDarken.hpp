@@ -19,15 +19,14 @@ namespace LabyrinthOfLore
          DepthDarken();
          ~DepthDarken();
 
-
-      void initialize();
-      void set_torch_type(int type=0);
-      void set_torch_on();
-      void set_torch_off();
-      void activate();
-      void deactivate();
-      static std::string obtain_vertex_source();
-      static std::string obtain_fragment_source();
+         void initialize();
+         void set_torch_type(int type=0);
+         void set_torch_on();
+         void set_torch_off();
+         void activate();
+         void deactivate();
+         static std::string obtain_vertex_source();
+         static std::string obtain_fragment_source();
       };
    }
 }

@@ -26,16 +26,15 @@ SpritesBillboarder::~SpritesBillboarder()
 
 void SpritesBillboarder::process()
 {
-for (auto &entity : entities)
-{
-   if (entity->get_billboard_at_camera())
+   for (auto &entity : entities)
    {
-      entity->get_placement_ref().rotation.y = -camera.get_yaw_ref();
-      entity->get_placement_ref().rotation.x = camera.get_pitch_ref();
+      if (entity->get_billboard_at_camera())
+      {
+         entity->get_placement_ref().rotation.y = -camera.get_yaw_ref();
+         entity->get_placement_ref().rotation.x = camera.get_pitch_ref();
+      }
    }
-}
-return;
-
+   return;
 }
 } // namespace Rendering
 } // namespace LabyrinthOfLore

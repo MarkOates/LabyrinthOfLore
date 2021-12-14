@@ -28,17 +28,16 @@ VitalityAndManaBarRenderer::~VitalityAndManaBarRenderer()
 
 void VitalityAndManaBarRenderer::render()
 {
-if (!font) throw std::runtime_error("Cannot draw VitalityAndManaBar with a nullptr font");
-if (!vitality_and_mana_bar) throw std::runtime_error("Cannot draw VitalityAndManaBar with a nullptr object");
+   if (!font) throw std::runtime_error("Cannot draw VitalityAndManaBar with a nullptr font");
+   if (!vitality_and_mana_bar) throw std::runtime_error("Cannot draw VitalityAndManaBar with a nullptr object");
 
-place.start_transform();
+   place.start_transform();
 
-al_draw_filled_rounded_rectangle(0, 0, place.size.x, place.size.y, 6, 6, al_color_name("brown"));
-al_draw_text(font, al_color_name("white"), 0, 0, 0, " -- vitality and mana bar -- ");
+   al_draw_filled_rounded_rectangle(0, 0, place.size.x, place.size.y, 6, 6, al_color_name("brown"));
+   al_draw_text(font, al_color_name("white"), 0, 0, 0, " -- vitality and mana bar -- ");
 
-place.restore_transform();
-return;
-
+   place.restore_transform();
+   return;
 }
 } // namespace Hud
 } // namespace Rendering
