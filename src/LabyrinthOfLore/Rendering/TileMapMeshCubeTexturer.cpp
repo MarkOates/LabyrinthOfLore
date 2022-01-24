@@ -39,10 +39,15 @@ std::vector<ALLEGRO_VERTEX> TileMapMeshCubeTexturer::build_textured_cube(bool sc
    ALLEGRO_BITMAP *texture = tile_atlas->get_bitmap();
    if (!texture) throw std::runtime_error("Cannot build_textured_cube with a nullptr tile_atlas bitmap.");
 
-   float u1 = 0;
-   float v1 = 0;
-   float u2 = 0;
-   float v2 = 0;
+   //float u1 = 0;
+   //float v1 = 0;
+   //float u2 = 0;
+   //float v2 = 0;
+
+   int u1 = 0;
+   int v1 = 0;
+   int u2 = 0;
+   int v2 = 0;
 
    tile_atlas->get_tile_uv(tile_index_for_top_texture, &u1, &v1, &u2, &v2);
    // top face
