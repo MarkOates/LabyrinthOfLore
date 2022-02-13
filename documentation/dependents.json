@@ -36,7 +36,8 @@
     "LabyrinthOfLore/Rendering/TileMapWaterMesh",
     "LabyrinthOfLore/WorldMap/BitmapTileMapLoader",
     "LabyrinthOfLore/WorldMap/MultiBitmapTileMapLoader",
-    "LabyrinthOfLore/WorldMap/PixelRenderer"
+    "LabyrinthOfLore/WorldMap/PixelRenderer",
+    "Tileo/TileIndexInfo"
   ],
   "std/vector<LabyrinthOfLore/Entity/Base>": [
     "LabyrinthOfLore/Entity/Cleanup",

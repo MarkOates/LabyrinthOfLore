@@ -118,6 +118,7 @@ table td
   <li><a href="#quintessence/LabyrinthOfLoreGame/Classic.q.yml">quintessence/LabyrinthOfLoreGame/Classic.q.yml</a></li>
   <li><a href="#quintessence/LabyrinthOfLoreGame/Interactions.q.yml">quintessence/LabyrinthOfLoreGame/Interactions.q.yml</a></li>
   <li><a href="#quintessence/LabyrinthOfLoreGame/ThingDefinitionFactory.q.yml">quintessence/LabyrinthOfLoreGame/ThingDefinitionFactory.q.yml</a></li>
+  <li><a href="#quintessence/Tileo/TileIndexInfo.q.yml">quintessence/Tileo/TileIndexInfo.q.yml</a></li>
 </ul>
 <h1>Components</h1>
 <ul>
@@ -3374,6 +3375,48 @@ table td
     </table>
   </div>
 </ul>
+<ul>
+  <div class="component">
+    <h3 id="quintessence/Tileo/TileIndexInfo.q.yml">quintessence/Tileo/TileIndexInfo.q.yml</h3>
+     <table>
+<tr>
+  <td class="property">index_num</td>
+  <td class="property">int</td>
+</tr>
+<tr>
+  <td class="property">bitmap_source</td>
+  <td class="property">ALLEGRO_BITMAP*</td>
+</tr>
+<tr>
+  <td class="property">sub_bitmap</td>
+  <td class="property">ALLEGRO_BITMAP*</td>
+</tr>
+<tr>
+  <td class="property">u1</td>
+  <td class="property">float</td>
+</tr>
+<tr>
+  <td class="property">v1</td>
+  <td class="property">float</td>
+</tr>
+<tr>
+  <td class="property">u2</td>
+  <td class="property">float</td>
+</tr>
+<tr>
+  <td class="property">v2</td>
+  <td class="property">float</td>
+</tr>
+    </table>
+     <table>
+    </table>
+     <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_BITMAP*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
+</tr>
+    </table>
+  </div>
+</ul>
 <h1>Dependents</h1>
 <pre>
 {
@@ -3414,7 +3457,8 @@ table td
     "LabyrinthOfLore/Rendering/TileMapWaterMesh",
     "LabyrinthOfLore/WorldMap/BitmapTileMapLoader",
     "LabyrinthOfLore/WorldMap/MultiBitmapTileMapLoader",
-    "LabyrinthOfLore/WorldMap/PixelRenderer"
+    "LabyrinthOfLore/WorldMap/PixelRenderer",
+    "Tileo/TileIndexInfo"
   ],
   "std/vector<LabyrinthOfLore/Entity/Base>": [
     "LabyrinthOfLore/Entity/Cleanup",

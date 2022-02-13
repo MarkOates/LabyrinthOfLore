@@ -34,7 +34,13 @@ int ThingDictionary::size()
 
 int ThingDictionary::create_new_definition(LabyrinthOfLore::Entity::ThingDefinition thing)
 {
-   int largest_thing_id = std::max((int)CREATED_THINGS_START, definitions.rbegin()->first);
+   // get the map key of the last definition, or 0 if there is none
+   int largest_thing_id = CREATED_THINGS_START;
+   if (!definitions.empty()) largest_thing_id = definitions.rbegin()->first;
+
+   // guarantee that the largest map is greater than 
+   //int largest_thing_id = std::max((int)CREATED_THINGS_START, last_definition_id);
+
    int new_thing_id = largest_thing_id + 1;
    definitions[new_thing_id] = thing;
    return new_thing_id;
