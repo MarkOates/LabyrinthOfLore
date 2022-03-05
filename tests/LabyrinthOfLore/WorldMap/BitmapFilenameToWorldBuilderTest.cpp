@@ -37,8 +37,9 @@ protected:
       if (al_is_system_installed())
       {
          std::cout << "Warning: This test is expecting to start with allegro in an uninstalled state. "
-            << "However, during test setup, allegro is installed. This should be fixed, but in the "
-            << "mean time allegro will be uninstalled so that setup can continue as expected."
+            << "However, during this test's setup, it was detected that allegro is installed. "
+            << "This indicates that somewhere there is a leaky test which should be fixed. But in the "
+            << "mean time, allegro will be uninstalled now so that this test setup can continue as expected."
             << std::endl;
          al_uninstall_system();
       }
