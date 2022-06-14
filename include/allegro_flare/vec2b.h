@@ -1,1 +1,18 @@
-/Users/markoates/Repos/allegro_flare/include/allegro_flare/vec2b.h
+#pragma once
+
+
+
+
+namespace allegro_flare
+{
+   class vec2b
+   {
+   public:
+      bool x, y;
+
+      vec2b(bool x=false, bool y=false);
+   };
+}
+
+
+
