@@ -80,10 +80,16 @@ functions:
       return result_str;
     body_dependency_symbols:
       - std::stringstream
+
+
 dependencies:
+
+
   - symbol: std::stringstream
     headers: [ sstream ]
-  - symbol: Tileo::TileAtlas*
+  - symbol: Tileo::TileAtlas
     headers: [ Tileo/TileAtlas.hpp ]
   - symbol: thing_type_t
     headers: [ LabyrinthOfLoreGame/ItemIdEnums.hpp ]
+
+

@@ -4,6 +4,7 @@
 
 
 
+
 namespace LabyrinthOfLore
 {
 namespace Entity
@@ -51,25 +52,25 @@ void Base::set_billboard_at_camera(bool billboard_at_camera)
 }
 
 
-ALLEGRO_BITMAP* Base::get_bitmap()
+ALLEGRO_BITMAP* Base::get_bitmap() const
 {
    return bitmap;
 }
 
 
-AllegroFlare::Model3D* Base::get_model()
+AllegroFlare::Model3D* Base::get_model() const
 {
    return model;
 }
 
 
-std::string Base::get_identifier_for_level_within()
+std::string Base::get_identifier_for_level_within() const
 {
    return identifier_for_level_within;
 }
 
 
-bool Base::get_billboard_at_camera()
+bool Base::get_billboard_at_camera() const
 {
    return billboard_at_camera;
 }
@@ -85,6 +86,8 @@ allegro_flare::placement3d &Base::get_velocity_ref()
 {
    return velocity;
 }
+
+
 
 
 } // namespace Entity

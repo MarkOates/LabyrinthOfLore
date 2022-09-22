@@ -1,21 +1,31 @@
 properties:
+
+
   - name: zone_id
     type: int
     init_with: -1
     constructor_arg: true
     getter: true
+
   - name: entity
     type: LabyrinthOfLore::Entity::Base*
     init_with: nullptr
     constructor_arg: true
     getter: true
+
   - name: event_type
     type: LabyrinthOfLore::Physics::zone_collision_event_t
     init_with: LabyrinthOfLore::Physics::COLLISION_EVENT_NONE
     constructor_arg: true
     getter: true
+
+
 dependencies:
-  - symbol: LabyrinthOfLore::Entity::Base*
+
+
+  - symbol: LabyrinthOfLore::Entity::Base
     headers: [ LabyrinthOfLore/Entity/Base.hpp ]
   - symbol: LabyrinthOfLore::Physics::zone_collision_event_t
     headers: [ LabyrinthOfLore/Physics/ZoneCollisionEventEnum.hpp ]
+
+

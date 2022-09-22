@@ -1,14 +1,21 @@
 properties:
+
+
   - name: all_entities
     type: std::vector<LabyrinthOfLore::Entity::Base*>*
     init_with: nullptr
     constructor_arg: true
+
   - name: CLEANUP_FLAG
     static: true
     const: true
     init_with: "\"destroy_this_item_at_cleanup\""
     getter: true
+
+
 functions:
+
+
   - name: cleanup
     type: int
     body: |
@@ -27,6 +34,12 @@ functions:
       }
 
       return entities_destroyed;
+
+
 dependencies:
-  - symbol: std::vector<LabyrinthOfLore::Entity::Base*>*
-    headers: [ vector, LabyrinthOfLore/Entity/Base.hpp ]
+
+
+  - symbol: LabyrinthOfLore::Entity::Base
+    headers: [ LabyrinthOfLore/Entity/Base.hpp ]
+
+
