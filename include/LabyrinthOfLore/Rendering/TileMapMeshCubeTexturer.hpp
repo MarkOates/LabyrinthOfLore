@@ -19,6 +19,9 @@ namespace LabyrinthOfLore
          int tile_index_for_right_and_left_texture;
          int tile_index_for_top_texture;
 
+      protected:
+
+
       public:
          TileMapMeshCubeTexturer(Tileo::TileAtlas* tile_atlas=nullptr, std::vector<ALLEGRO_VERTEX> cube_vertexes={}, int tile_index_for_front_and_back_texture=0, int tile_index_for_right_and_left_texture=0, int tile_index_for_top_texture=0);
          ~TileMapMeshCubeTexturer();

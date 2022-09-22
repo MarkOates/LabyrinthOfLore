@@ -91,13 +91,9 @@ dependencies:
     headers: [ AllegroFlare/Vec3D.hpp ]
   - symbol: allegro_flare::placement3d
     headers: [ allegro_flare/placement3d.h ]
-  - symbol: allegro_flare::placement3d*
-    headers: [ allegro_flare/placement3d.h ]
   - symbol: ALLEGRO_TRANSFORM
     headers: [ allegro5/allegro.h ]
-  - symbol: ALLEGRO_TRANSFORM*
-    headers: [ allegro5/allegro.h ]
-  - symbol: ALLEGRO_BITMAP*
+  - symbol: ALLEGRO_BITMAP
     headers: [ allegro5/allegro.h ]
   - symbol: AllegroFlare::TAU
     headers: [ AllegroFlare/Useful.hpp ]

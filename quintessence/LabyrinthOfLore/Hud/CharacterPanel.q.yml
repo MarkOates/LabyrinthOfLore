@@ -110,9 +110,9 @@ functions:
       if (player_inventory && player_inventory->has_item(item_id)) return true;
       return false;
 dependencies:
-  - symbol: AllegroFlare::Inventory*
+  - symbol: AllegroFlare::Inventory
     headers: [ AllegroFlare/Inventory.hpp ]
-  - symbol: LabyrinthOfLore::Entity::ThingDictionary*
+  - symbol: LabyrinthOfLore::Entity::ThingDictionary
     headers: [ LabyrinthOfLore/Entity/ThingDictionary.hpp ]
   - symbol: std::vector
     headers: [ vector ]

@@ -1,10 +1,11 @@
 
 
 #include <LabyrinthOfLore/Rendering/TileMapWaterMesh.hpp>
-#include <iostream>
+
 #include <LabyrinthOfLore/Rendering/TileMapMeshPillarBuilder.hpp>
 #include <LabyrinthOfLore/Rendering/TileMapMeshPillarTexturer.hpp>
 #include <LabyrinthOfLore/WorldMap/TileTypeEnum.hpp>
+#include <iostream>
 
 
 namespace LabyrinthOfLore
@@ -29,7 +30,7 @@ TileMapWaterMesh::~TileMapWaterMesh()
 }
 
 
-std::vector<ALLEGRO_VERTEX> TileMapWaterMesh::get_vertexes()
+std::vector<ALLEGRO_VERTEX> TileMapWaterMesh::get_vertexes() const
 {
    return vertexes;
 }
@@ -161,6 +162,8 @@ void TileMapWaterMesh::draw()
 
    //al_restore_state(&previous_transform_state);
 }
+
+
 } // namespace Rendering
 } // namespace LabyrinthOfLore
 

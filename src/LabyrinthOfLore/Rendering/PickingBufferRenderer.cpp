@@ -1,6 +1,7 @@
 
 
 #include <LabyrinthOfLore/Rendering/PickingBufferRenderer.hpp>
+
 #include <LabyrinthOfLore/Rendering/EntityPickingRenderer.hpp>
 
 
@@ -53,6 +54,8 @@ void PickingBufferRenderer::render()
    al_restore_state(&previous_render_state);
    return;
 }
+
+
 } // namespace Rendering
 } // namespace LabyrinthOfLore
 

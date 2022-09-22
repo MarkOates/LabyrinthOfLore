@@ -1,6 +1,7 @@
 
 
 #include <LabyrinthOfLore/Rendering/Camera.hpp>
+
 #include <AllegroFlare/Useful.hpp>
 #include <allegro5/allegro.h>
 #include <allegro_flare/placement3d.h>
@@ -92,6 +93,8 @@ void Camera::start_projection(ALLEGRO_BITMAP* surface)
 
    return;
 }
+
+
 } // namespace Rendering
 } // namespace LabyrinthOfLore
 

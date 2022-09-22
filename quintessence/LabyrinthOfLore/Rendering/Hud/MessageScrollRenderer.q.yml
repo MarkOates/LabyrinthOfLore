@@ -42,7 +42,7 @@ functions:
       // Evaluate polynomial
       return x * x * (3 - 2 * x);
     body_dependency_symbols:
-      - AllegroFlare::clamp<float>
+      - AllegroFlare::clamp
   - name: multiline_draw_callback
     static: true
     type: bool
@@ -114,11 +114,11 @@ functions:
       - al_color_name
       - al_draw_rounded_rectangle
 dependencies:
-  - symbol: LabyrinthOfLore::Hud::MessageScroll*
+  - symbol: LabyrinthOfLore::Hud::MessageScroll
     headers: [ LabyrinthOfLore/Hud/MessageScroll.hpp ]
   - symbol: ALLEGRO_COLOR
     headers: [ allegro5/allegro_color.h ]
-  - symbol: ALLEGRO_FONT*
+  - symbol: ALLEGRO_FONT
     headers: [ allegro5/allegro_font.h ]
   - symbol: al_color_name
     headers: [ allegro5/allegro_color.h ]
@@ -134,5 +134,5 @@ dependencies:
     headers: [ ]
   - symbol: const char*
     headers: [ ]
-  - symbol: AllegroFlare::clamp<float>
+  - symbol: AllegroFlare::clamp
     headers: [ AllegroFlare/Useful.hpp ]

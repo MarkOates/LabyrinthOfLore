@@ -1,8 +1,9 @@
 
 
 #include <LabyrinthOfLore/Rendering/TileMapMeshCubeTexturer.hpp>
-#include <sstream>
+
 #include <allegro5/allegro_color.h>
+#include <sstream>
 
 
 namespace LabyrinthOfLore
@@ -135,6 +136,8 @@ std::vector<ALLEGRO_VERTEX> TileMapMeshCubeTexturer::build_textured_cube(bool sc
 
    return cube_vertexes;
 }
+
+
 } // namespace Rendering
 } // namespace LabyrinthOfLore
 

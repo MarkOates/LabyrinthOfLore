@@ -1,6 +1,7 @@
 
 
 #include <LabyrinthOfLore/Rendering/TileMapMeshCubeBuilder.hpp>
+
 #include <AllegroFlare/Random.hpp>
 #include <AllegroFlare/Useful.hpp>
 #include <allegro5/allegro_color.h>
@@ -142,6 +143,8 @@ std::vector<ALLEGRO_VERTEX> TileMapMeshCubeBuilder::build_cube()
 
    return result;
 }
+
+
 } // namespace Rendering
 } // namespace LabyrinthOfLore
 

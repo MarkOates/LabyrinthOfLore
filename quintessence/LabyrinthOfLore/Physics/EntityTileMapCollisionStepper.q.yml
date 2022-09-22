@@ -220,10 +220,8 @@ functions:
 dependencies:
   - symbol: LabyrinthOfLore::WorldMap::TileMap
     headers: [ LabyrinthOfLore/WorldMap/TileMap.hpp ]
-  - symbol: LabyrinthOfLore::WorldMap::TileMap&
-    headers: [ LabyrinthOfLore/WorldMap/TileMap.hpp ]
-  - symbol: std::vector<LabyrinthOfLore::Entity::Base*>
-    headers: [ vector, LabyrinthOfLore/Entity/Base.hpp ]
+  - symbol: LabyrinthOfLore::Entity::Base
+    headers: [ LabyrinthOfLore/Entity/Base.hpp ]
   - symbol: fabs
     headers: [ cmath ]
   - symbol: std::min
@@ -234,5 +232,5 @@ dependencies:
     headers: [ LabyrinthOfLore/WorldMap/TileFaceEnum.hpp ]
   - symbol: LabyrinthOfLore::Physics::EntityTileMapCollisionEvent
     headers: [ LabyrinthOfLore/Physics/EntityTileMapCollisionEvent.hpp ]
-  - symbol: std::vector<LabyrinthOfLore::Physics::EntityTileMapCollisionEvent>
-    headers: [ vector, LabyrinthOfLore/Physics/EntityTileMapCollisionEvent.hpp ]
+  - symbol: LabyrinthOfLore::Physics::EntityTileMapCollisionEvent
+    headers: [ LabyrinthOfLore/Physics/EntityTileMapCollisionEvent.hpp ]

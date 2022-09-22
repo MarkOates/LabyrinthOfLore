@@ -69,9 +69,9 @@ functions:
       - al_color_name
       - al_draw_rounded_rectangle
 dependencies:
-  - symbol: LabyrinthOfLore::Hud::TitleText*
+  - symbol: LabyrinthOfLore::Hud::TitleText
     headers: [ LabyrinthOfLore/Hud/TitleText.hpp ]
-  - symbol: ALLEGRO_FONT*
+  - symbol: ALLEGRO_FONT
     headers: [ allegro5/allegro_font.h ]
   - symbol: al_get_time
     headers: [ allegro5/allegro_color.h ]

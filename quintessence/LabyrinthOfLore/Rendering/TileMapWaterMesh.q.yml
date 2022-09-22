@@ -163,13 +163,13 @@ dependencies:
     headers: [ LabyrinthOfLore/Rendering/TileTypeDictionary.hpp ]
   - symbol: LabyrinthOfLore::WorldMap::TileMap
     headers: [ LabyrinthOfLore/WorldMap/TileMap.hpp ]
-  - symbol: std::vector<ALLEGRO_VERTEX>
-    headers: [ vector, allegro5/allegro.h ]
+  - symbol: ALLEGRO_VERTEX
+    headers: [ allegro5/allegro.h ]
   - symbol: AllegroFlare::Random
     headers: [ AllegroFlare/Random.hpp ]
   - symbol: ALLEGRO_COLOR
     headers: [ allegro5/allegro.h ]
-  - symbol: ALLEGRO_BITMAP*
+  - symbol: ALLEGRO_BITMAP
     headers: [ allegro5/allegro.h ]
   - symbol: ALLEGRO_VERTEX
     headers: [ allegro5/allegro.h ]
@@ -179,7 +179,7 @@ dependencies:
     headers: [ AllegroFlare/Useful.hpp ]
   - symbol: std::cout
     headers: [ iostream ]
-  - symbol: Tileo::TileAtlas*
+  - symbol: Tileo::TileAtlas
     headers: [ Tileo/TileAtlas.hpp ]
   - symbol: LabyrinthOfLore::WorldMap::tile_type_t
     headers: [ LabyrinthOfLore/WorldMap/TileTypeEnum.hpp ]

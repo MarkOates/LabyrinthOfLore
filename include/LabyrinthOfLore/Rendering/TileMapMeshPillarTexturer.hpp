@@ -26,6 +26,9 @@ namespace LabyrinthOfLore
          bool left_face_is_removed;
          bool back_face_is_removed;
 
+      protected:
+
+
       public:
          TileMapMeshPillarTexturer(Tileo::TileAtlas* tile_atlas=nullptr, std::vector<ALLEGRO_VERTEX> pillar_vertexes={}, int tile_index_for_front_and_back_texture=0, int tile_index_for_right_and_left_texture=0, int tile_index_for_top_texture=0, bool needs_partial_height_side_faces_from_top=false, float height=-1, bool top_face_is_removed=false, bool front_face_is_removed=false, bool right_face_is_removed=false, bool left_face_is_removed=false, bool back_face_is_removed=false);
          ~TileMapMeshPillarTexturer();

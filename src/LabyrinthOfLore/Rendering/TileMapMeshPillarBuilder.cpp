@@ -1,8 +1,7 @@
 
 
 #include <LabyrinthOfLore/Rendering/TileMapMeshPillarBuilder.hpp>
-#include <AllegroFlare/Useful.hpp>
-#include <AllegroFlare/Useful.hpp>
+
 #include <AllegroFlare/Random.hpp>
 #include <AllegroFlare/Useful.hpp>
 #include <allegro5/allegro_color.h>
@@ -32,7 +31,7 @@ TileMapMeshPillarBuilder::~TileMapMeshPillarBuilder()
 }
 
 
-float TileMapMeshPillarBuilder::get_height()
+float TileMapMeshPillarBuilder::get_height() const
 {
    return height;
 }
@@ -275,6 +274,8 @@ std::vector<ALLEGRO_VERTEX> TileMapMeshPillarBuilder::build_pillar()
 
    return result;
 }
+
+
 } // namespace Rendering
 } // namespace LabyrinthOfLore
 

@@ -64,5 +64,5 @@ functions:
           */
        }
 dependencies:
-  - symbol: LabyrinthOfLore::Entity::Base*
+  - symbol: LabyrinthOfLore::Entity::Base
     headers: [ LabyrinthOfLore/Entity/Base.hpp ]

@@ -14,6 +14,9 @@ namespace LabyrinthOfLore
       private:
          std::map<int, LabyrinthOfLore::Rendering::TileTypeDefinition> definitions;
 
+      protected:
+
+
       public:
          TileTypeDictionary(std::map<int, LabyrinthOfLore::Rendering::TileTypeDefinition> definitions={});
          ~TileTypeDictionary();

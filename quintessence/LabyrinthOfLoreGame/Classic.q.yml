@@ -368,7 +368,7 @@ dependencies:
     headers: [ LabyrinthOfLore/Shader/ClampedColor.hpp ]
   - symbol: LabyrinthOfLore::Shader::DepthDarken
     headers: [ LabyrinthOfLore/Shader/DepthDarken.hpp ]
-  - symbol: AllegroFlare::BitmapBin*
+  - symbol: AllegroFlare::BitmapBin
     headers: [ AllegroFlare/BitmapBin.hpp ]
   - symbol: AllegroFlare::vec3d
     headers: [ AllegroFlare/Vec3D.hpp ]
@@ -394,9 +394,5 @@ dependencies:
     headers: [ map, LabyrinthOfLore/WorldMap/Door.hpp ]
   - symbol: LabyrinthOfLore::Entity::ThingDictionary
     headers: [ LabyrinthOfLore/Entity/ThingDictionary.hpp ]
-  - symbol: LabyrinthOfLore::Entity::ThingDictionary*
-    headers: [ LabyrinthOfLore/Entity/ThingDictionary.hpp ]
-  - symbol: std::vector<LabyrinthOfLore::Entity::Base*>
-    headers: [ vector, LabyrinthOfLore/Entity/Base.hpp ]
-  - symbol: std::vector<LabyrinthOfLore::Entity::Base*>*
-    headers: [ vector, LabyrinthOfLore/Entity/Base.hpp ]
+  - symbol: LabyrinthOfLore::Entity::Base
+    headers: [ LabyrinthOfLore/Entity/Base.hpp ]

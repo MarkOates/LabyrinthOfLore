@@ -1,10 +1,10 @@
 
 
 #include <LabyrinthOfLore/Rendering/SceneRenderer.hpp>
+
 #include <LabyrinthOfLore/Rendering/EntityRenderer.hpp>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_color.h>
-#include <allegro5/allegro.h>
 
 
 namespace LabyrinthOfLore
@@ -60,6 +60,8 @@ void SceneRenderer::render()
    al_restore_state(&previous_render_state);
    return;
 }
+
+
 } // namespace Rendering
 } // namespace LabyrinthOfLore
 

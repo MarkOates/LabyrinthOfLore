@@ -1,6 +1,7 @@
 
 
 #include <LabyrinthOfLore/Rendering/EntityPickingRenderer.hpp>
+
 #include <AllegroFlare/ColorIDConverter.hpp>
 
 
@@ -78,6 +79,8 @@ void EntityPickingRenderer::render()
        //entity->get_placement_ref().restore_transform();
     //}
 }
+
+
 } // namespace Rendering
 } // namespace LabyrinthOfLore
 

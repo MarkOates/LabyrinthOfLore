@@ -57,9 +57,9 @@ functions:
       - al_color_name
       - al_draw_rounded_rectangle
 dependencies:
-  - symbol: LabyrinthOfLore::Hud::CommandPanel*
+  - symbol: LabyrinthOfLore::Hud::CommandPanel
     headers: [ LabyrinthOfLore/Hud/CommandPanel.hpp ]
-  - symbol: ALLEGRO_FONT*
+  - symbol: ALLEGRO_FONT
     headers: [ allegro5/allegro_font.h ]
   - symbol: al_color_name
     headers: [ allegro5/allegro_color.h ]
@@ -69,5 +69,5 @@ dependencies:
     headers: [ allegro_flare/placement3d.h ]
   - symbol: x
     headers: [ y ]
-  - symbol: std::vector<LabyrinthOfLore::Hud::command_mode_t>
-    headers: [ vector, LabyrinthOfLore/Hud/CommandPanelModeEnum.hpp ]
+  - symbol: LabyrinthOfLore::Hud::command_mode_t
+    headers: [ LabyrinthOfLore/Hud/CommandPanelModeEnum.hpp ]
