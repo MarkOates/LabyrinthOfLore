@@ -175,17 +175,15 @@ functions:
       - std::stringstream
       - LabyrinthOfLoreGame::ItemIdEnums
 dependencies:
-  - symbol: std::vector<LabyrinthOfLore::Entity::Base*>*
-    headers: [ vector, LabyrinthOfLore/Entity/Base.hpp ]
-  - symbol: LabyrinthOfLore::Entity::Base*
+  - symbol: LabyrinthOfLore::Entity::Base
     headers: [ LabyrinthOfLore/Entity/Base.hpp ]
-  - symbol: LabyrinthOfLore::Entity::ThingDictionary*
+  - symbol: LabyrinthOfLore::Entity::ThingDictionary
     headers: [ LabyrinthOfLore/Entity/ThingDictionary.hpp ]
-  - symbol: LabyrinthOfLore::Hud::MessageScroll*
+  - symbol: LabyrinthOfLore::Hud::MessageScroll
     headers: [ LabyrinthOfLore/Hud/MessageScroll.hpp ]
-  - symbol: LabyrinthOfLore::Hud::CharacterPanel*
+  - symbol: LabyrinthOfLore::Hud::CharacterPanel
     headers: [ LabyrinthOfLore/Hud/CharacterPanel.hpp ]
-  - symbol: AllegroFlare::Inventory*
+  - symbol: AllegroFlare::Inventory
     headers: [ AllegroFlare/Inventory.hpp ]
   - symbol: LabyrinthOfLoreGame::ItemIdEnums
     headers: [ LabyrinthOfLoreGame/ItemIdEnums.hpp ]
@@ -193,7 +191,7 @@ dependencies:
     headers: [ sstream ]
   - symbol: LabyrinthOfLore::Entity::ThingDefinition
     headers: [ LabyrinthOfLore/Entity/ThingDefinition.hpp ]
-  - symbol: LabyrinthOfLoreGame::ThingDefinitionFactory*
+  - symbol: LabyrinthOfLoreGame::ThingDefinitionFactory
     headers: [ LabyrinthOfLoreGame/ThingDefinitionFactory.hpp ]
   - symbol: thing_type_t
     headers: [ LabyrinthOfLoreGame/ItemIdEnums.hpp ]

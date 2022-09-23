@@ -151,10 +151,10 @@ functions:
 dependencies:
 
 
-  - symbol: Tileo::TileAtlas*
+  - symbol: Tileo::TileAtlas
     headers: [ Tileo/TileAtlas.hpp ]
-  - symbol: std::vector<ALLEGRO_VERTEX>
-    headers: [ vector, allegro5/allegro_primitives.h ]
+  - symbol: ALLEGRO_VERTEX
+    headers: [ allegro5/allegro_primitives.h ]
   - symbol: std::stringstream
     headers: [ sstream ]
   - symbol: al_color_name

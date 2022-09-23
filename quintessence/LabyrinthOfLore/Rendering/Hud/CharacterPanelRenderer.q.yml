@@ -32,9 +32,9 @@ functions:
       - al_color_name
       - al_draw_rounded_rectangle
 dependencies:
-  - symbol: LabyrinthOfLore::Hud::CharacterPanel*
+  - symbol: LabyrinthOfLore::Hud::CharacterPanel
     headers: [ LabyrinthOfLore/Hud/CharacterPanel.hpp ]
-  - symbol: ALLEGRO_FONT*
+  - symbol: ALLEGRO_FONT
     headers: [ allegro5/allegro_font.h ]
   - symbol: al_color_name
     headers: [ allegro5/allegro_color.h ]

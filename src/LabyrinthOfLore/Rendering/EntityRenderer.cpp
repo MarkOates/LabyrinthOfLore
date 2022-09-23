@@ -4,6 +4,7 @@
 
 
 
+
 namespace LabyrinthOfLore
 {
 namespace Rendering
@@ -82,6 +83,8 @@ void EntityRenderer::render()
       */
    }
 }
+
+
 } // namespace Rendering
 } // namespace LabyrinthOfLore
 

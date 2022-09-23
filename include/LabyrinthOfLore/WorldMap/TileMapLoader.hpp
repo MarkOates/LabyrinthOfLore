@@ -14,12 +14,15 @@ namespace LabyrinthOfLore
       {
       private:
          std::vector<std::vector<LabyrinthOfLore::WorldMap::Tile>> tile_map_data;
+         void validate_size_and_integrity();
+
+      protected:
+
 
       public:
          TileMapLoader(std::vector<std::vector<LabyrinthOfLore::WorldMap::Tile>> tile_map_data={});
          ~TileMapLoader();
 
-         void validate_size_and_integrity();
          LabyrinthOfLore::WorldMap::TileMap build_tile_map();
       };
    }

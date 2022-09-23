@@ -51,21 +51,21 @@ functions:
     body_dependency_symbols:
       - LabyrinthOfLore::Rendering::EntityPickingRenderer
 dependencies:
-  - symbol: LabyrinthOfLore::Rendering::Camera*
+  - symbol: LabyrinthOfLore::Rendering::Camera
     headers: [ LabyrinthOfLore/Rendering/Camera.hpp ]
   - symbol: allegro_flare::placement3d
     headers: [ allegro_flare/placement3d.h ]
-  - symbol: LabyrinthOfLore::Shader::ClampedColor*
+  - symbol: LabyrinthOfLore::Shader::ClampedColor
     headers: [ LabyrinthOfLore/Shader/ClampedColor.hpp ]
   - symbol: LabyrinthOfLore::Rendering::EntityPickingRenderer
     headers: [ LabyrinthOfLore/Rendering/EntityPickingRenderer.hpp ]
-  - symbol: std::vector<LabyrinthOfLore::Entity::Base*>
-    headers: [ vector, LabyrinthOfLore/Entity/Base.hpp ]
-  - symbol: AllegroFlare::PickingBuffer*
+  - symbol: LabyrinthOfLore::Entity::Base
+    headers: [ LabyrinthOfLore/Entity/Base.hpp ]
+  - symbol: AllegroFlare::PickingBuffer
     headers: [ AllegroFlare/PickingBuffer.hpp ]
-  - symbol: ALLEGRO_TRANSFORM*
+  - symbol: ALLEGRO_TRANSFORM
     headers: [ allegro5/allegro.h ]
-  - symbol: ALLEGRO_BITMAP*
+  - symbol: ALLEGRO_BITMAP
     headers: [ allegro5/allegro.h ]
   - symbol: LabyrinthOfLore::Rendering::TileMapMesh
     headers: [ LabyrinthOfLore/Rendering/TileMapMesh.hpp ]

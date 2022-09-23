@@ -13,6 +13,9 @@ namespace LabyrinthOfLore
       private:
          LabyrinthOfLore::Entity::Base* entity;
 
+      protected:
+
+
       public:
          EntityRenderer(LabyrinthOfLore::Entity::Base* entity=nullptr);
          ~EntityRenderer();

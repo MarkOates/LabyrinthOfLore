@@ -4,6 +4,7 @@
 
 
 
+
 namespace LabyrinthOfLore
 {
 namespace Entity
@@ -32,6 +33,8 @@ std::vector<LabyrinthOfLore::Entity::Base*> Selector::select_within_level(std::s
 
    return result;
 }
+
+
 } // namespace Entity
 } // namespace LabyrinthOfLore
 

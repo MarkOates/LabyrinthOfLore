@@ -1,44 +1,56 @@
 properties:
+
+
   - name: render_surface
     type: ALLEGRO_BITMAP*
     init_with: nullptr
     constructor_arg: true
+
   - name: font_bin
     type: AllegroFlare::FontBin*
     init_with: nullptr
     constructor_arg: true
+
   - name: message_scroll
     type: LabyrinthOfLore::Hud::MessageScroll*
     init_with: nullptr
     constructor_arg: true
+
   - name: command_panel
     type: LabyrinthOfLore::Hud::CommandPanel*
     init_with: nullptr
     constructor_arg: true
+
   - name: vitality_and_mana_bar
     type: LabyrinthOfLore::Hud::VitalityAndManaBar*
     init_with: nullptr
     constructor_arg: true
+
   - name: character_panel
     type: LabyrinthOfLore::Hud::CharacterPanel*
     init_with: nullptr
     constructor_arg: true
+
   - name: map_button
     type: LabyrinthOfLore::Hud::MapButton*
     init_with: nullptr
     constructor_arg: true
+
   - name: rune_shelf
     type: LabyrinthOfLore::Hud::RuneShelf*
     init_with: nullptr
     constructor_arg: true
+
   - name: compass
     type: LabyrinthOfLore::Hud::Compass*
     init_with: nullptr
     constructor_arg: true
+
   - name: rotate_character_panel_button
     type: LabyrinthOfLore::Hud::RotateCharacterPanelButton*
     init_with: nullptr
     constructor_arg: true
+
   - name: commands_hint_pane
     type: LabyrinthOfLore::Hud::CommandsHintPane*
     init_with: nullptr
@@ -59,10 +71,16 @@ properties:
     type: LabyrinthOfLore::Rendering::MousePointer*
     init_with: nullptr
     constructor_arg: true
+
+
 functions:
+
+
   - name: get_basic_lettering_font
     type: ALLEGRO_FONT*
     body: return font_bin->operator[]("Commodore_Rounded_v1.2.ttf -14");
+
+
   - name: render_message_scroll
     type: void
     body: |
@@ -76,6 +94,8 @@ functions:
       return;
     body_dependency_symbols:
       - LabyrinthOfLore::Rendering::Hud::MessageScrollRenderer
+
+
   - name: render_command_panel
     type: void
     body: |
@@ -92,6 +112,8 @@ functions:
       return;
     body_dependency_symbols:
       - LabyrinthOfLore::Rendering::Hud::CommandPanelRenderer
+
+
   - name: render_vitality_and_mana_bar
     type: void
     body: |
@@ -106,6 +128,8 @@ functions:
       return;
     body_dependency_symbols:
       - LabyrinthOfLore::Rendering::Hud::VitalityAndManaBarRenderer
+
+
   - name: render_character_panel
     type: void
     body: |
@@ -121,6 +145,8 @@ functions:
       return;
     body_dependency_symbols:
       - LabyrinthOfLore::Rendering::Hud::CharacterPanelRenderer
+
+
   - name: render_map_button
     type: void
     body: |
@@ -136,6 +162,8 @@ functions:
       return;
     body_dependency_symbols:
       - LabyrinthOfLore::Rendering::Hud::MapButtonRenderer
+
+
   - name: render_rune_shelf
     type: void
     body: |
@@ -151,6 +179,8 @@ functions:
       return;
     body_dependency_symbols:
       - LabyrinthOfLore::Rendering::Hud::RuneShelfRenderer
+
+
   - name: render_compass
     type: void
     body: |
@@ -167,6 +197,8 @@ functions:
       return;
     body_dependency_symbols:
       - LabyrinthOfLore::Rendering::Hud::CompassRenderer
+
+
   - name: render_rotate_character_panel_button
     type: void
     body: |
@@ -182,6 +214,8 @@ functions:
       return;
     body_dependency_symbols:
       - LabyrinthOfLore::Rendering::Hud::RotateCharacterPanelButtonRenderer
+
+
   - name: render_commands_hint_pane
     type: void
     body: |
@@ -197,6 +231,8 @@ functions:
       return;
     body_dependency_symbols:
       - LabyrinthOfLore::Rendering::Hud::CommandsHintPaneRenderer
+
+
   - name: render_current_spells
     type: void
     body: |
@@ -212,6 +248,8 @@ functions:
       return;
     body_dependency_symbols:
       - LabyrinthOfLore::Rendering::Hud::CurrentSpellsRenderer
+
+
   - name: render_view_frame
     type: void
     body: |
@@ -227,6 +265,8 @@ functions:
       return;
     body_dependency_symbols:
       - LabyrinthOfLore::Rendering::Hud::ViewFrameRenderer
+
+
   - name: render_title_text
     type: void
     body: |
@@ -242,6 +282,8 @@ functions:
       return;
     body_dependency_symbols:
       - LabyrinthOfLore::Rendering::Hud::TitleTextRenderer
+
+
   - name: render
     type: void
     body: |
@@ -273,26 +315,30 @@ functions:
       - std::runtime_error
       - al_color_name
       - allegro_flare::placement3d
+
+
 dependencies:
-  - symbol: AllegroFlare::FontBin*
+
+
+  - symbol: AllegroFlare::FontBin
     headers: [ AllegroFlare/FontBin.hpp ]
-  - symbol: ALLEGRO_FONT*
+  - symbol: ALLEGRO_FONT
     headers: [ allegro5/allegro_font.h ]
-  - symbol: ALLEGRO_BITMAP*
+  - symbol: ALLEGRO_BITMAP
     headers: [ allegro5/allegro.h ]
   - symbol: al_color_name
     headers: [ allegro5/allegro_color.h ]
   - symbol: allegro_flare::placement3d
     headers: [ allegro_flare/placement3d.h ]
-  - symbol: LabyrinthOfLore::Hud::VitalityAndManaBar*
+  - symbol: LabyrinthOfLore::Hud::VitalityAndManaBar
     headers: [ LabyrinthOfLore/Hud/VitalityAndManaBar.hpp ]
   - symbol: LabyrinthOfLore::Rendering::Hud::VitalityAndManaBarRenderer
     headers: [ LabyrinthOfLore/Rendering/Hud/VitalityAndManaBarRenderer.hpp ]
-  - symbol: LabyrinthOfLore::Hud::CommandPanel*
+  - symbol: LabyrinthOfLore::Hud::CommandPanel
     headers: [ LabyrinthOfLore/Hud/CommandPanel.hpp ]
-  - symbol: LabyrinthOfLore::Hud::CharacterPanel*
+  - symbol: LabyrinthOfLore::Hud::CharacterPanel
     headers: [ LabyrinthOfLore/Hud/CharacterPanel.hpp ]
-  - symbol: LabyrinthOfLore::Hud::MessageScroll*
+  - symbol: LabyrinthOfLore::Hud::MessageScroll
     headers: [ LabyrinthOfLore/Hud/MessageScroll.hpp ]
   - symbol: LabyrinthOfLore::Rendering::Hud::CommandPanelRenderer
     headers: [ LabyrinthOfLore/Rendering/Hud/CommandPanelRenderer.hpp ]
@@ -300,39 +346,41 @@ dependencies:
     headers: [ LabyrinthOfLore/Rendering/Hud/CharacterPanelRenderer.hpp ]
   - symbol: LabyrinthOfLore::Rendering::Hud::MessageScrollRenderer
     headers: [ LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer.hpp ]
-  - symbol: LabyrinthOfLore::Hud::MapButton*
+  - symbol: LabyrinthOfLore::Hud::MapButton
     headers: [ LabyrinthOfLore/Hud/MapButton.hpp ]
   - symbol: LabyrinthOfLore::Rendering::Hud::MapButtonRenderer
     headers: [ LabyrinthOfLore/Rendering/Hud/MapButtonRenderer.hpp ]
-  - symbol: LabyrinthOfLore::Hud::RuneShelf*
+  - symbol: LabyrinthOfLore::Hud::RuneShelf
     headers: [ LabyrinthOfLore/Hud/RuneShelf.hpp ]
   - symbol: LabyrinthOfLore::Rendering::Hud::RuneShelfRenderer
     headers: [ LabyrinthOfLore/Rendering/Hud/RuneShelfRenderer.hpp ]
-  - symbol: LabyrinthOfLore::Hud::Compass*
+  - symbol: LabyrinthOfLore::Hud::Compass
     headers: [ LabyrinthOfLore/Hud/Compass.hpp ]
   - symbol: LabyrinthOfLore::Rendering::Hud::CompassRenderer
     headers: [ LabyrinthOfLore/Rendering/Hud/CompassRenderer.hpp ]
-  - symbol: LabyrinthOfLore::Hud::RotateCharacterPanelButton*
+  - symbol: LabyrinthOfLore::Hud::RotateCharacterPanelButton
     headers: [ LabyrinthOfLore/Hud/RotateCharacterPanelButton.hpp ]
   - symbol: LabyrinthOfLore::Rendering::Hud::RotateCharacterPanelButtonRenderer
     headers: [ LabyrinthOfLore/Rendering/Hud/RotateCharacterPanelButtonRenderer.hpp ]
-  - symbol: LabyrinthOfLore::Hud::CommandsHintPane*
+  - symbol: LabyrinthOfLore::Hud::CommandsHintPane
     headers: [ LabyrinthOfLore/Hud/CommandsHintPane.hpp ]
   - symbol: LabyrinthOfLore::Rendering::Hud::CommandsHintPaneRenderer
     headers: [ LabyrinthOfLore/Rendering/Hud/CommandsHintPaneRenderer.hpp ]
-  - symbol: LabyrinthOfLore::Hud::CurrentSpells*
+  - symbol: LabyrinthOfLore::Hud::CurrentSpells
     headers: [ LabyrinthOfLore/Hud/CurrentSpells.hpp ]
   - symbol: LabyrinthOfLore::Rendering::Hud::CurrentSpellsRenderer
     headers: [ LabyrinthOfLore/Rendering/Hud/CurrentSpellsRenderer.hpp ]
-  - symbol: LabyrinthOfLore::Hud::ViewFrame*
+  - symbol: LabyrinthOfLore::Hud::ViewFrame
     headers: [ LabyrinthOfLore/Hud/ViewFrame.hpp ]
   - symbol: LabyrinthOfLore::Rendering::Hud::ViewFrameRenderer
     headers: [ LabyrinthOfLore/Rendering/Hud/ViewFrameRenderer.hpp ]
-  - symbol: LabyrinthOfLore::Hud::TitleText*
+  - symbol: LabyrinthOfLore::Hud::TitleText
     headers: [ LabyrinthOfLore/Hud/TitleText.hpp ]
   - symbol: LabyrinthOfLore::Rendering::Hud::TitleTextRenderer
     headers: [ LabyrinthOfLore/Rendering/Hud/TitleTextRenderer.hpp ]
-  - symbol: LabyrinthOfLore::Rendering::MousePointer*
+  - symbol: LabyrinthOfLore::Rendering::MousePointer
     headers: [ LabyrinthOfLore/Rendering/MousePointer.hpp ]
   - symbol: std::runtime_error
     headers: [ stdexcept ]
+
+

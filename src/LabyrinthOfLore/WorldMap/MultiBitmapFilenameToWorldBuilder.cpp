@@ -1,11 +1,12 @@
 
 
 #include <LabyrinthOfLore/WorldMap/MultiBitmapFilenameToWorldBuilder.hpp>
-#include <sstream>
+
 #include <LabyrinthOfLore/WorldMap/BitmapTileMapLoader.hpp>
 #include <LabyrinthOfLore/WorldMap/MultiBitmapTileMapLoader.hpp>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
+#include <sstream>
 
 
 namespace LabyrinthOfLore
@@ -28,25 +29,25 @@ MultiBitmapFilenameToWorldBuilder::~MultiBitmapFilenameToWorldBuilder()
 }
 
 
-std::string MultiBitmapFilenameToWorldBuilder::get_elevation_bitmap_source_filename()
+std::string MultiBitmapFilenameToWorldBuilder::get_elevation_bitmap_source_filename() const
 {
    return elevation_bitmap_source_filename;
 }
 
 
-std::string MultiBitmapFilenameToWorldBuilder::get_tile_type_bitmap_source_filename()
+std::string MultiBitmapFilenameToWorldBuilder::get_tile_type_bitmap_source_filename() const
 {
    return tile_type_bitmap_source_filename;
 }
 
 
-float MultiBitmapFilenameToWorldBuilder::get_top_height()
+float MultiBitmapFilenameToWorldBuilder::get_top_height() const
 {
    return top_height;
 }
 
 
-float MultiBitmapFilenameToWorldBuilder::get_ground_height()
+float MultiBitmapFilenameToWorldBuilder::get_ground_height() const
 {
    return ground_height;
 }
@@ -93,6 +94,8 @@ LabyrinthOfLore::WorldMap::TileMap MultiBitmapFilenameToWorldBuilder::build()
 
    return result;
 }
+
+
 } // namespace WorldMap
 } // namespace LabyrinthOfLore
 

@@ -159,7 +159,7 @@ functions:
 dependencies:
   - symbol: std::stringstream
     headers: [ sstream ]
-  - symbol: ALLEGRO_BITMAP*
+  - symbol: ALLEGRO_BITMAP
     headers: [ allegro5/allegro.h ]
   - symbol: ALLEGRO_COLOR
     headers: [ allegro5/allegro_color.h ]

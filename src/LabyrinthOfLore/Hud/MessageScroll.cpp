@@ -4,6 +4,7 @@
 
 
 
+
 namespace LabyrinthOfLore
 {
 namespace Hud
@@ -22,7 +23,7 @@ MessageScroll::~MessageScroll()
 }
 
 
-std::string MessageScroll::get_text()
+std::string MessageScroll::get_text() const
 {
    return text;
 }
@@ -88,6 +89,8 @@ void MessageScroll::clear_text()
 {
    text.clear();
 }
+
+
 } // namespace Hud
 } // namespace LabyrinthOfLore
 

@@ -16,11 +16,14 @@ namespace LabyrinthOfLore
          std::string text;
          std::vector<std::tuple<float, std::string, int>> messages;
 
+      protected:
+
+
       public:
          MessageScroll(std::string text="Hello, brave soul. Adventure awaits you.");
          ~MessageScroll();
 
-         std::string get_text();
+         std::string get_text() const;
          std::string get_last_message_text();
          std::vector<std::tuple<float, std::string, int>> get_messages_ref();
          std::vector<std::tuple<float, std::string, int>> get_last_3_messages();

@@ -1,9 +1,10 @@
 
 
 #include <LabyrinthOfLore/Rendering/SpritesBillboarder.hpp>
-#include <allegro_flare/placement3d.h>
-#include <AllegroFlare/Vec3D.hpp>
+
 #include <AllegroFlare/Useful.hpp>
+#include <AllegroFlare/Vec3D.hpp>
+#include <allegro_flare/placement3d.h>
 
 
 namespace LabyrinthOfLore
@@ -36,6 +37,8 @@ void SpritesBillboarder::process()
    }
    return;
 }
+
+
 } // namespace Rendering
 } // namespace LabyrinthOfLore
 

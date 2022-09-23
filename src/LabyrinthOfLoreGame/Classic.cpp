@@ -1,12 +1,13 @@
 
 
 #include <LabyrinthOfLoreGame/Classic.hpp>
+
+#include <LabyrinthOfLore/Entity/ThingDictionary.hpp>
+#include <LabyrinthOfLore/Rendering/TileTypeDictionary.hpp>
 #include <LabyrinthOfLore/WorldMap/MultiBitmapFilenameToWorldBuilder.hpp>
-#include <LabyrinthOfLoreGame/LevelIdentifiers.hpp>
 #include <LabyrinthOfLore/WorldMap/TileTypeEnum.hpp>
 #include <LabyrinthOfLoreGame/ItemIdEnums.hpp>
-#include <LabyrinthOfLore/Rendering/TileTypeDictionary.hpp>
-#include <LabyrinthOfLore/Entity/ThingDictionary.hpp>
+#include <LabyrinthOfLoreGame/LevelIdentifiers.hpp>
 
 
 namespace LabyrinthOfLoreGame
@@ -384,6 +385,8 @@ void Classic::initialize()
    add_thing_to_world(&get_all_entities_ref(), &get_thing_dictionary_ref(), MAN_AT_THE_ENTRANCE_TO_THE_CAVE, LabyrinthOfLoreGame::LevelIdentifiers::THE_CAVE_IDENTIFIER,       {  31.5,  9.5, 1.0 },  true, false, false);
    add_thing_to_world(&get_all_entities_ref(), &get_thing_dictionary_ref(), RAT+1,                           LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER, {  40.5,  101.5, 1.0 },  true, false, false);
 }
+
+
 } // namespace LabyrinthOfLoreGame
 
 

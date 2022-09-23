@@ -19,6 +19,9 @@ namespace LabyrinthOfLore
             LabyrinthOfLore::Hud::RuneShelf* rune_shelf;
             allegro_flare::placement3d place;
 
+         protected:
+
+
          public:
             RuneShelfRenderer(ALLEGRO_FONT* font=nullptr, LabyrinthOfLore::Hud::RuneShelf* rune_shelf=nullptr, allegro_flare::placement3d place=allegro_flare::placement3d{});
             ~RuneShelfRenderer();

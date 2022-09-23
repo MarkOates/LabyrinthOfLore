@@ -16,6 +16,9 @@ namespace LabyrinthOfLore
          LabyrinthOfLore::Rendering::Camera camera;
          std::vector<LabyrinthOfLore::Entity::Base*> entities;
 
+      protected:
+
+
       public:
          SpritesBillboarder(LabyrinthOfLore::Rendering::Camera camera={}, std::vector<LabyrinthOfLore::Entity::Base*> entities={});
          ~SpritesBillboarder();

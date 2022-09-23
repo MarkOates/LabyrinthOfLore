@@ -1,7 +1,7 @@
 
 
 #include <LabyrinthOfLore/Physics/EntityZoneCollisionObserver.hpp>
-#include <algorithm>
+
 #include <algorithm>
 
 
@@ -23,13 +23,13 @@ EntityZoneCollisionObserver::~EntityZoneCollisionObserver()
 }
 
 
-std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>> EntityZoneCollisionObserver::get_collisions_at_start()
+std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>> EntityZoneCollisionObserver::get_collisions_at_start() const
 {
    return collisions_at_start;
 }
 
 
-std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>> EntityZoneCollisionObserver::get_collisions_at_end()
+std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*>> EntityZoneCollisionObserver::get_collisions_at_end() const
 {
    return collisions_at_end;
 }
@@ -87,6 +87,8 @@ std::vector<std::pair<LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap:
 
    return diff;
 }
+
+
 } // namespace Physics
 } // namespace LabyrinthOfLore
 

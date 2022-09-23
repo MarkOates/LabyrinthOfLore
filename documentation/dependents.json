@@ -1,10 +1,78 @@
 {
-  "AllegroFlare/ElementID": [
-    "LabyrinthOfLore/Entity/Base"
+  "LabyrinthOfLore/Hud/MessageScroll": [
+    ".removed/LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
+    "LabyrinthOfLore/Rendering/Hud/Renderer",
+    "LabyrinthOfLoreGame/Interactions"
+  ],
+  "ALLEGRO_COLOR": [
+    ".removed/LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
+    "LabyrinthOfLore/Rendering/TileMapMesh",
+    "LabyrinthOfLore/Rendering/TileMapMeshCubeBuilder",
+    "LabyrinthOfLore/Rendering/TileMapMeshPillarBuilder",
+    "LabyrinthOfLore/Rendering/TileMapWaterMesh",
+    "LabyrinthOfLore/Shader/ClampedColor",
+    "LabyrinthOfLore/Shader/DepthDarken",
+    "LabyrinthOfLore/Shader/FlatColor",
+    "LabyrinthOfLore/WorldMap/BitmapTileMapLoader",
+    "LabyrinthOfLore/WorldMap/MultiBitmapTileMapLoader"
+  ],
+  "ALLEGRO_FONT": [
+    ".removed/LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
+    "LabyrinthOfLore/Rendering/Hud/CharacterPanelRenderer",
+    "LabyrinthOfLore/Rendering/Hud/CommandPanelRenderer",
+    "LabyrinthOfLore/Rendering/Hud/CommandsHintPaneRenderer",
+    "LabyrinthOfLore/Rendering/Hud/CompassRenderer",
+    "LabyrinthOfLore/Rendering/Hud/CurrentSpellsRenderer",
+    "LabyrinthOfLore/Rendering/Hud/MapButtonRenderer",
+    "LabyrinthOfLore/Rendering/Hud/Renderer",
+    "LabyrinthOfLore/Rendering/Hud/RotateCharacterPanelButtonRenderer",
+    "LabyrinthOfLore/Rendering/Hud/RuneShelfRenderer",
+    "LabyrinthOfLore/Rendering/Hud/TitleTextRenderer",
+    "LabyrinthOfLore/Rendering/Hud/ViewFrameRenderer",
+    "LabyrinthOfLore/Rendering/Hud/VitalityAndManaBarRenderer"
+  ],
+  "al_color_name": [
+    ".removed/LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
+    "LabyrinthOfLore/Rendering/Hud/CharacterPanelRenderer",
+    "LabyrinthOfLore/Rendering/Hud/CommandPanelRenderer",
+    "LabyrinthOfLore/Rendering/Hud/CommandsHintPaneRenderer",
+    "LabyrinthOfLore/Rendering/Hud/CompassRenderer",
+    "LabyrinthOfLore/Rendering/Hud/CurrentSpellsRenderer",
+    "LabyrinthOfLore/Rendering/Hud/MapButtonRenderer",
+    "LabyrinthOfLore/Rendering/Hud/Renderer",
+    "LabyrinthOfLore/Rendering/Hud/RotateCharacterPanelButtonRenderer",
+    "LabyrinthOfLore/Rendering/Hud/RuneShelfRenderer",
+    "LabyrinthOfLore/Rendering/Hud/TitleTextRenderer",
+    "LabyrinthOfLore/Rendering/Hud/ViewFrameRenderer",
+    "LabyrinthOfLore/Rendering/Hud/VitalityAndManaBarRenderer",
+    "LabyrinthOfLore/Rendering/MousePointer",
+    "LabyrinthOfLore/Rendering/SceneRenderer",
+    "LabyrinthOfLore/Rendering/TileMapMesh",
+    "LabyrinthOfLore/Rendering/TileMapMeshCubeBuilder",
+    "LabyrinthOfLore/Rendering/TileMapMeshCubeTexturer",
+    "LabyrinthOfLore/Rendering/TileMapMeshPillarBuilder",
+    "LabyrinthOfLore/Rendering/TileMapMeshPillarTexturer",
+    "LabyrinthOfLore/Rendering/TileMapWaterMesh",
+    "LabyrinthOfLore/WorldMap/BasicRenderer",
+    "LabyrinthOfLore/WorldMap/PixelRenderer"
+  ],
+  "al_draw_rounded_rectangle": [
+    ".removed/LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
+    "LabyrinthOfLore/Rendering/Hud/CharacterPanelRenderer",
+    "LabyrinthOfLore/Rendering/Hud/CommandPanelRenderer",
+    "LabyrinthOfLore/Rendering/Hud/CommandsHintPaneRenderer",
+    "LabyrinthOfLore/Rendering/Hud/CompassRenderer",
+    "LabyrinthOfLore/Rendering/Hud/CurrentSpellsRenderer",
+    "LabyrinthOfLore/Rendering/Hud/MapButtonRenderer",
+    "LabyrinthOfLore/Rendering/Hud/RotateCharacterPanelButtonRenderer",
+    "LabyrinthOfLore/Rendering/Hud/RuneShelfRenderer",
+    "LabyrinthOfLore/Rendering/Hud/TitleTextRenderer",
+    "LabyrinthOfLore/Rendering/Hud/ViewFrameRenderer",
+    "LabyrinthOfLore/Rendering/Hud/VitalityAndManaBarRenderer"
   ],
   "allegro_flare/placement3d": [
+    ".removed/LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
     "LabyrinthOfLore/Entity/Base",
-    "LabyrinthOfLore/Rendering/Camera",
     "LabyrinthOfLore/Rendering/Camera",
     "LabyrinthOfLore/Rendering/Hud/CharacterPanelRenderer",
     "LabyrinthOfLore/Rendering/Hud/CommandPanelRenderer",
@@ -12,7 +80,6 @@
     "LabyrinthOfLore/Rendering/Hud/CompassRenderer",
     "LabyrinthOfLore/Rendering/Hud/CurrentSpellsRenderer",
     "LabyrinthOfLore/Rendering/Hud/MapButtonRenderer",
-    "LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
     "LabyrinthOfLore/Rendering/Hud/Renderer",
     "LabyrinthOfLore/Rendering/Hud/RotateCharacterPanelButtonRenderer",
     "LabyrinthOfLore/Rendering/Hud/RuneShelfRenderer",
@@ -22,6 +89,37 @@
     "LabyrinthOfLore/Rendering/PickingBufferRenderer",
     "LabyrinthOfLore/Rendering/SceneRenderer",
     "LabyrinthOfLore/Rendering/SpritesBillboarder"
+  ],
+  "x": [
+    ".removed/LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
+    "LabyrinthOfLore/Rendering/Hud/CharacterPanelRenderer",
+    "LabyrinthOfLore/Rendering/Hud/CommandPanelRenderer",
+    "LabyrinthOfLore/Rendering/Hud/CommandsHintPaneRenderer",
+    "LabyrinthOfLore/Rendering/Hud/CompassRenderer",
+    "LabyrinthOfLore/Rendering/Hud/CurrentSpellsRenderer",
+    "LabyrinthOfLore/Rendering/Hud/MapButtonRenderer",
+    "LabyrinthOfLore/Rendering/Hud/RotateCharacterPanelButtonRenderer",
+    "LabyrinthOfLore/Rendering/Hud/RuneShelfRenderer",
+    "LabyrinthOfLore/Rendering/Hud/TitleTextRenderer",
+    "LabyrinthOfLore/Rendering/Hud/ViewFrameRenderer",
+    "LabyrinthOfLore/Rendering/Hud/VitalityAndManaBarRenderer"
+  ],
+  "std/vector<std/tuple<float, std/string, int>>": [
+    ".removed/LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
+    "LabyrinthOfLore/Hud/MessageScroll"
+  ],
+  "void": [
+    ".removed/LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer"
+  ],
+  "const char": [
+    ".removed/LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer"
+  ],
+  "AllegroFlare/clamp": [
+    ".removed/LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
+    "LabyrinthOfLore/Rendering/Hud/TitleTextRenderer"
+  ],
+  "AllegroFlare/ElementID": [
+    "LabyrinthOfLore/Entity/Base"
   ],
   "AllegroFlare/Model3D": [
     "LabyrinthOfLore/Entity/Base"
@@ -39,16 +137,20 @@
     "LabyrinthOfLore/WorldMap/PixelRenderer",
     "Tileo/TileIndexInfo"
   ],
-  "std/vector<LabyrinthOfLore/Entity/Base>": [
+  "LabyrinthOfLore/Entity/Base": [
     "LabyrinthOfLore/Entity/Cleanup",
     "LabyrinthOfLore/Entity/Selector",
+    "LabyrinthOfLore/Physics/EntityTileMapCollisionEvent",
     "LabyrinthOfLore/Physics/EntityTileMapCollisionStepper",
+    "LabyrinthOfLore/Physics/EntityZoneCollisionEvent",
     "LabyrinthOfLore/Physics/EntityZoneCollisionObserver",
     "LabyrinthOfLore/Physics/GravityStepper",
+    "LabyrinthOfLore/Rendering/EntityPickingRenderer",
+    "LabyrinthOfLore/Rendering/EntityRenderer",
     "LabyrinthOfLore/Rendering/PickingBufferRenderer",
     "LabyrinthOfLore/Rendering/SceneRenderer",
+    "LabyrinthOfLore/Rendering/SceneRenderer",
     "LabyrinthOfLore/Rendering/SpritesBillboarder",
-    "LabyrinthOfLoreGame/Classic",
     "LabyrinthOfLoreGame/Classic",
     "LabyrinthOfLoreGame/Interactions"
   ],
@@ -98,7 +200,6 @@
   "LabyrinthOfLore/Entity/ThingDictionary": [
     "LabyrinthOfLore/Hud/CharacterPanel",
     "LabyrinthOfLoreGame/Classic",
-    "LabyrinthOfLoreGame/Classic",
     "LabyrinthOfLoreGame/Interactions"
   ],
   "std/vector": [
@@ -111,19 +212,8 @@
     "LabyrinthOfLore/Hud/CharacterPanel"
   ],
   "LabyrinthOfLore/Hud/command_mode_t": [
-    "LabyrinthOfLore/Hud/CommandPanel"
-  ],
-  "std/vector<std/tuple<float, std/string, int>>": [
-    "LabyrinthOfLore/Hud/MessageScroll",
-    "LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer"
-  ],
-  "LabyrinthOfLore/Entity/Base": [
-    "LabyrinthOfLore/Physics/EntityTileMapCollisionEvent",
-    "LabyrinthOfLore/Physics/EntityZoneCollisionEvent",
-    "LabyrinthOfLore/Rendering/EntityPickingRenderer",
-    "LabyrinthOfLore/Rendering/EntityRenderer",
-    "LabyrinthOfLore/Rendering/SceneRenderer",
-    "LabyrinthOfLoreGame/Interactions"
+    "LabyrinthOfLore/Hud/CommandPanel",
+    "LabyrinthOfLore/Rendering/Hud/CommandPanelRenderer"
   ],
   "LabyrinthOfLore/WorldMap/tile_face_t": [
     "LabyrinthOfLore/Physics/EntityTileMapCollisionEvent",
@@ -139,12 +229,8 @@
     "LabyrinthOfLore/WorldMap/Level",
     "LabyrinthOfLore/WorldMap/MultiBitmapFilenameToWorldBuilder",
     "LabyrinthOfLore/WorldMap/MultiBitmapTileMapLoader",
-    "LabyrinthOfLore/WorldMap/MultiBitmapTileMapLoader",
     "LabyrinthOfLore/WorldMap/PixelRenderer",
     "LabyrinthOfLore/WorldMap/TileMapLoader"
-  ],
-  "LabyrinthOfLore/WorldMap/TileMap&": [
-    "LabyrinthOfLore/Physics/EntityTileMapCollisionStepper"
   ],
   "fabs": [
     "LabyrinthOfLore/Physics/EntityTileMapCollisionStepper"
@@ -153,18 +239,13 @@
     "LabyrinthOfLore/Physics/EntityTileMapCollisionStepper"
   ],
   "LabyrinthOfLore/Physics/EntityTileMapCollisionEvent": [
-    "LabyrinthOfLore/Physics/EntityTileMapCollisionStepper"
-  ],
-  "std/vector<LabyrinthOfLore/Physics/EntityTileMapCollisionEvent>": [
+    "LabyrinthOfLore/Physics/EntityTileMapCollisionStepper",
     "LabyrinthOfLore/Physics/EntityTileMapCollisionStepper"
   ],
   "LabyrinthOfLore/Physics/zone_collision_event_t": [
     "LabyrinthOfLore/Physics/EntityZoneCollisionEvent"
   ],
-  "std/vector<LabyrinthOfLore/WorldMap/Zone>": [
-    "LabyrinthOfLore/Physics/EntityZoneCollisionObserver"
-  ],
-  "std/vector<std/pair<LabyrinthOfLore/Entity/Base, LabyrinthOfLore/WorldMap/Zone>>": [
+  "LabyrinthOfLore/WorldMap/Zone": [
     "LabyrinthOfLore/Physics/EntityZoneCollisionObserver"
   ],
   "std/set_difference": [
@@ -179,7 +260,6 @@
     "LabyrinthOfLoreGame/Classic"
   ],
   "ALLEGRO_TRANSFORM": [
-    "LabyrinthOfLore/Rendering/Camera",
     "LabyrinthOfLore/Rendering/Camera",
     "LabyrinthOfLore/Rendering/PickingBufferRenderer",
     "LabyrinthOfLore/Rendering/SceneRenderer"
@@ -203,80 +283,9 @@
     "LabyrinthOfLore/Rendering/Hud/Renderer",
     "LabyrinthOfLoreGame/Interactions"
   ],
-  "ALLEGRO_FONT": [
-    "LabyrinthOfLore/Rendering/Hud/CharacterPanelRenderer",
-    "LabyrinthOfLore/Rendering/Hud/CommandPanelRenderer",
-    "LabyrinthOfLore/Rendering/Hud/CommandsHintPaneRenderer",
-    "LabyrinthOfLore/Rendering/Hud/CompassRenderer",
-    "LabyrinthOfLore/Rendering/Hud/CurrentSpellsRenderer",
-    "LabyrinthOfLore/Rendering/Hud/MapButtonRenderer",
-    "LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
-    "LabyrinthOfLore/Rendering/Hud/Renderer",
-    "LabyrinthOfLore/Rendering/Hud/RotateCharacterPanelButtonRenderer",
-    "LabyrinthOfLore/Rendering/Hud/RuneShelfRenderer",
-    "LabyrinthOfLore/Rendering/Hud/TitleTextRenderer",
-    "LabyrinthOfLore/Rendering/Hud/ViewFrameRenderer",
-    "LabyrinthOfLore/Rendering/Hud/VitalityAndManaBarRenderer"
-  ],
-  "al_color_name": [
-    "LabyrinthOfLore/Rendering/Hud/CharacterPanelRenderer",
-    "LabyrinthOfLore/Rendering/Hud/CommandPanelRenderer",
-    "LabyrinthOfLore/Rendering/Hud/CommandsHintPaneRenderer",
-    "LabyrinthOfLore/Rendering/Hud/CompassRenderer",
-    "LabyrinthOfLore/Rendering/Hud/CurrentSpellsRenderer",
-    "LabyrinthOfLore/Rendering/Hud/MapButtonRenderer",
-    "LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
-    "LabyrinthOfLore/Rendering/Hud/Renderer",
-    "LabyrinthOfLore/Rendering/Hud/RotateCharacterPanelButtonRenderer",
-    "LabyrinthOfLore/Rendering/Hud/RuneShelfRenderer",
-    "LabyrinthOfLore/Rendering/Hud/TitleTextRenderer",
-    "LabyrinthOfLore/Rendering/Hud/ViewFrameRenderer",
-    "LabyrinthOfLore/Rendering/Hud/VitalityAndManaBarRenderer",
-    "LabyrinthOfLore/Rendering/MousePointer",
-    "LabyrinthOfLore/Rendering/SceneRenderer",
-    "LabyrinthOfLore/Rendering/TileMapMesh",
-    "LabyrinthOfLore/Rendering/TileMapMeshCubeBuilder",
-    "LabyrinthOfLore/Rendering/TileMapMeshCubeTexturer",
-    "LabyrinthOfLore/Rendering/TileMapMeshPillarBuilder",
-    "LabyrinthOfLore/Rendering/TileMapMeshPillarTexturer",
-    "LabyrinthOfLore/Rendering/TileMapWaterMesh",
-    "LabyrinthOfLore/WorldMap/BasicRenderer",
-    "LabyrinthOfLore/WorldMap/PixelRenderer"
-  ],
-  "al_draw_rounded_rectangle": [
-    "LabyrinthOfLore/Rendering/Hud/CharacterPanelRenderer",
-    "LabyrinthOfLore/Rendering/Hud/CommandPanelRenderer",
-    "LabyrinthOfLore/Rendering/Hud/CommandsHintPaneRenderer",
-    "LabyrinthOfLore/Rendering/Hud/CompassRenderer",
-    "LabyrinthOfLore/Rendering/Hud/CurrentSpellsRenderer",
-    "LabyrinthOfLore/Rendering/Hud/MapButtonRenderer",
-    "LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
-    "LabyrinthOfLore/Rendering/Hud/RotateCharacterPanelButtonRenderer",
-    "LabyrinthOfLore/Rendering/Hud/RuneShelfRenderer",
-    "LabyrinthOfLore/Rendering/Hud/TitleTextRenderer",
-    "LabyrinthOfLore/Rendering/Hud/ViewFrameRenderer",
-    "LabyrinthOfLore/Rendering/Hud/VitalityAndManaBarRenderer"
-  ],
-  "x": [
-    "LabyrinthOfLore/Rendering/Hud/CharacterPanelRenderer",
-    "LabyrinthOfLore/Rendering/Hud/CommandPanelRenderer",
-    "LabyrinthOfLore/Rendering/Hud/CommandsHintPaneRenderer",
-    "LabyrinthOfLore/Rendering/Hud/CompassRenderer",
-    "LabyrinthOfLore/Rendering/Hud/CurrentSpellsRenderer",
-    "LabyrinthOfLore/Rendering/Hud/MapButtonRenderer",
-    "LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
-    "LabyrinthOfLore/Rendering/Hud/RotateCharacterPanelButtonRenderer",
-    "LabyrinthOfLore/Rendering/Hud/RuneShelfRenderer",
-    "LabyrinthOfLore/Rendering/Hud/TitleTextRenderer",
-    "LabyrinthOfLore/Rendering/Hud/ViewFrameRenderer",
-    "LabyrinthOfLore/Rendering/Hud/VitalityAndManaBarRenderer"
-  ],
   "LabyrinthOfLore/Hud/CommandPanel": [
     "LabyrinthOfLore/Rendering/Hud/CommandPanelRenderer",
     "LabyrinthOfLore/Rendering/Hud/Renderer"
-  ],
-  "std/vector<LabyrinthOfLore/Hud/command_mode_t>": [
-    "LabyrinthOfLore/Rendering/Hud/CommandPanelRenderer"
   ],
   "LabyrinthOfLore/Hud/CommandsHintPane": [
     "LabyrinthOfLore/Rendering/Hud/CommandsHintPaneRenderer",
@@ -293,33 +302,6 @@
   "LabyrinthOfLore/Hud/MapButton": [
     "LabyrinthOfLore/Rendering/Hud/MapButtonRenderer",
     "LabyrinthOfLore/Rendering/Hud/Renderer"
-  ],
-  "LabyrinthOfLore/Hud/MessageScroll": [
-    "LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
-    "LabyrinthOfLore/Rendering/Hud/Renderer",
-    "LabyrinthOfLoreGame/Interactions"
-  ],
-  "ALLEGRO_COLOR": [
-    "LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
-    "LabyrinthOfLore/Rendering/TileMapMesh",
-    "LabyrinthOfLore/Rendering/TileMapMeshCubeBuilder",
-    "LabyrinthOfLore/Rendering/TileMapMeshPillarBuilder",
-    "LabyrinthOfLore/Rendering/TileMapWaterMesh",
-    "LabyrinthOfLore/Shader/ClampedColor",
-    "LabyrinthOfLore/Shader/DepthDarken",
-    "LabyrinthOfLore/Shader/FlatColor",
-    "LabyrinthOfLore/WorldMap/BitmapTileMapLoader",
-    "LabyrinthOfLore/WorldMap/MultiBitmapTileMapLoader"
-  ],
-  "void": [
-    "LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer"
-  ],
-  "const char": [
-    "LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer"
-  ],
-  "AllegroFlare/clamp<float>": [
-    "LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
-    "LabyrinthOfLore/Rendering/Hud/TitleTextRenderer"
   ],
   "AllegroFlare/FontBin": [
     "LabyrinthOfLore/Rendering/Hud/Renderer"
@@ -408,7 +390,8 @@
   "LabyrinthOfLore/Rendering/TileMapMesh": [
     "LabyrinthOfLore/Rendering/PickingBufferRenderer",
     "LabyrinthOfLore/Rendering/SceneRenderer",
-    "LabyrinthOfLore/WorldMap/Level"
+    "LabyrinthOfLore/WorldMap/Level",
+    "LabyrinthOfLoreGame/Classic"
   ],
   "LabyrinthOfLore/Shader/DepthDarken": [
     "LabyrinthOfLore/Rendering/SceneRenderer",
@@ -418,7 +401,8 @@
     "LabyrinthOfLore/Rendering/SceneRenderer"
   ],
   "LabyrinthOfLore/Rendering/TileMapWaterMesh": [
-    "LabyrinthOfLore/Rendering/SceneRenderer"
+    "LabyrinthOfLore/Rendering/SceneRenderer",
+    "LabyrinthOfLoreGame/Classic"
   ],
   "al_clear_to_color": [
     "LabyrinthOfLore/Rendering/SceneRenderer"
@@ -449,21 +433,19 @@
     "LabyrinthOfLore/WorldMap/PixelRenderer",
     "LabyrinthOfLoreGame/Classic"
   ],
-  "std/vector<ALLEGRO_VERTEX>": [
+  "ALLEGRO_VERTEX": [
     "LabyrinthOfLore/Rendering/TileMapMesh",
+    "LabyrinthOfLore/Rendering/TileMapMesh",
+    "LabyrinthOfLore/Rendering/TileMapMeshCubeBuilder",
     "LabyrinthOfLore/Rendering/TileMapMeshCubeBuilder",
     "LabyrinthOfLore/Rendering/TileMapMeshCubeTexturer",
     "LabyrinthOfLore/Rendering/TileMapMeshPillarBuilder",
+    "LabyrinthOfLore/Rendering/TileMapMeshPillarBuilder",
     "LabyrinthOfLore/Rendering/TileMapMeshPillarTexturer",
+    "LabyrinthOfLore/Rendering/TileMapWaterMesh",
     "LabyrinthOfLore/Rendering/TileMapWaterMesh"
   ],
   "AllegroFlare/Random": [
-    "LabyrinthOfLore/Rendering/TileMapMesh",
-    "LabyrinthOfLore/Rendering/TileMapMeshCubeBuilder",
-    "LabyrinthOfLore/Rendering/TileMapMeshPillarBuilder",
-    "LabyrinthOfLore/Rendering/TileMapWaterMesh"
-  ],
-  "ALLEGRO_VERTEX": [
     "LabyrinthOfLore/Rendering/TileMapMesh",
     "LabyrinthOfLore/Rendering/TileMapMeshCubeBuilder",
     "LabyrinthOfLore/Rendering/TileMapMeshPillarBuilder",
@@ -491,9 +473,7 @@
     "LabyrinthOfLore/Rendering/TileMapMeshPillarTexturer"
   ],
   "LabyrinthOfLore/Rendering/TileTypeDefinition": [
-    "LabyrinthOfLore/Rendering/TileTypeDictionary"
-  ],
-  "std/map<int, LabyrinthOfLore/Rendering/TileTypeDefinition>": [
+    "LabyrinthOfLore/Rendering/TileTypeDictionary",
     "LabyrinthOfLore/Rendering/TileTypeDictionary"
   ],
   "AllegroFlare/Shader": [
@@ -504,7 +484,7 @@
     "LabyrinthOfLore/Shader/DepthDarken",
     "LabyrinthOfLore/Shader/FlatColor"
   ],
-  "std/map<std/string, LabyrinthOfLore/WorldMap/Level>": [
+  "LabyrinthOfLore/WorldMap/Level": [
     "LabyrinthOfLore/World",
     "LabyrinthOfLoreGame/Classic"
   ],
@@ -514,7 +494,10 @@
   ],
   "LabyrinthOfLore/WorldMap/Tile": [
     "LabyrinthOfLore/WorldMap/BasicRenderer",
-    "LabyrinthOfLore/WorldMap/PixelRenderer"
+    "LabyrinthOfLore/WorldMap/BitmapFilenameToWorldBuilder",
+    "LabyrinthOfLore/WorldMap/MultiBitmapFilenameToWorldBuilder",
+    "LabyrinthOfLore/WorldMap/PixelRenderer",
+    "LabyrinthOfLore/WorldMap/TileMapLoader"
   ],
   "al_init_primitives_addon": [
     "LabyrinthOfLore/WorldMap/BasicRenderer",
@@ -524,11 +507,6 @@
     "LabyrinthOfLore/WorldMap/BitmapFilenameToWorldBuilder",
     "LabyrinthOfLore/WorldMap/BitmapFilenameToWorldBuilder",
     "LabyrinthOfLore/WorldMap/MultiBitmapFilenameToWorldBuilder"
-  ],
-  "std/vector<std/vector<LabyrinthOfLore/WorldMap/Tile>>": [
-    "LabyrinthOfLore/WorldMap/BitmapFilenameToWorldBuilder",
-    "LabyrinthOfLore/WorldMap/MultiBitmapFilenameToWorldBuilder",
-    "LabyrinthOfLore/WorldMap/TileMapLoader"
   ],
   "al_load_bitmap": [
     "LabyrinthOfLore/WorldMap/BitmapFilenameToWorldBuilder",
@@ -553,13 +531,7 @@
     "LabyrinthOfLoreGame/Classic",
     "LabyrinthOfLoreGame/Interactions"
   ],
-  "std/map<std/string, LabyrinthOfLore/Rendering/TileMapMesh>": [
-    "LabyrinthOfLoreGame/Classic"
-  ],
-  "std/map<std/string, LabyrinthOfLore/Rendering/TileMapWaterMesh>": [
-    "LabyrinthOfLoreGame/Classic"
-  ],
-  "std/map<char, LabyrinthOfLore/WorldMap/Door>": [
+  "LabyrinthOfLore/WorldMap/Door": [
     "LabyrinthOfLoreGame/Classic"
   ],
   "LabyrinthOfLoreGame/ThingDefinitionFactory": [

@@ -1,9 +1,17 @@
 properties:
+
+
   - name: levels
     type: std::map<std::string, LabyrinthOfLore::WorldMap::Level>
     init_with: "{}"
     constructor_arg: true
     getter_ref: true
+
+
 dependencies:
-  - symbol: std::map<std::string, LabyrinthOfLore::WorldMap::Level>
-    headers: [ map, LabyrinthOfLore/WorldMap/Level.hpp ]
+
+
+  - symbol: LabyrinthOfLore::WorldMap::Level
+    headers: [ LabyrinthOfLore/WorldMap/Level.hpp ]
+
+

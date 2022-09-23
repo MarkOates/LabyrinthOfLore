@@ -1,48 +1,65 @@
 parent_classes:
+
+
   - class: AllegroFlare::ElementID
     scope: public
     init_with: "{}"
+
+
 properties:
+
+
   - name: bitmap
     type: ALLEGRO_BITMAP*
     init_with: "nullptr"
     constructor_arg: true
     setter: true
     getter: true
+
   - name: model
     type: AllegroFlare::Model3D*
     init_with: "nullptr"
     constructor_arg: true
     setter: true
     getter: true
+
   - name: identifier_for_level_within
     type: std::string
     init_with: "\"\""
     constructor_arg: true
     setter: true
     getter: true
+
   - name: placement
     type: allegro_flare::placement3d
     init_with: "{}"
     constructor_arg: true
     getter_ref: true
+
   - name: velocity
     type: allegro_flare::placement3d
     init_with: "{}"
     constructor_arg: true
     getter_ref: true
+
   - name: billboard_at_camera
     type: bool
     init_with: false
     constructor_arg: true
     getter: true
     setter: true
+
+
 dependencies:
+
+
   - symbol: AllegroFlare::ElementID
     headers: [ AllegroFlare/ElementID.hpp ]
   - symbol: allegro_flare::placement3d
     headers: [ allegro_flare/placement3d.h ]
-  - symbol: AllegroFlare::Model3D*
+  - symbol: AllegroFlare::Model3D
     headers: [ AllegroFlare/Model3D.hpp ]
-  - symbol: ALLEGRO_BITMAP*
+  - symbol: ALLEGRO_BITMAP
     headers: [ allegro5/allegro.h ]
+
+

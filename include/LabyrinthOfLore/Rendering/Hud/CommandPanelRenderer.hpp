@@ -19,6 +19,9 @@ namespace LabyrinthOfLore
             LabyrinthOfLore::Hud::CommandPanel* command_panel;
             allegro_flare::placement3d place;
 
+         protected:
+
+
          public:
             CommandPanelRenderer(ALLEGRO_FONT* font=nullptr, LabyrinthOfLore::Hud::CommandPanel* command_panel=nullptr, allegro_flare::placement3d place=allegro_flare::placement3d{});
             ~CommandPanelRenderer();

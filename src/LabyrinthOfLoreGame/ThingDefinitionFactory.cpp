@@ -4,6 +4,7 @@
 
 
 
+
 namespace LabyrinthOfLoreGame
 {
 
@@ -22,6 +23,8 @@ std::string ThingDefinitionFactory::run()
 {
    return "Hello World!";
 }
+
+
 } // namespace LabyrinthOfLoreGame
 
 

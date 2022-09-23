@@ -15,6 +15,9 @@ namespace LabyrinthOfLore
          LabyrinthOfLore::Entity::Base* entity;
          LabyrinthOfLore::Shader::ClampedColor* clamped_color_shader;
 
+      protected:
+
+
       public:
          EntityPickingRenderer(LabyrinthOfLore::Entity::Base* entity=nullptr, LabyrinthOfLore::Shader::ClampedColor* clamped_color_shader=nullptr);
          ~EntityPickingRenderer();

@@ -121,11 +121,11 @@ functions:
       - AllegroFlare::build_vertex
       - al_color_name
 dependencies:
-  - symbol: std::vector<ALLEGRO_VERTEX>
-    headers: [ vector, allegro5/allegro.h, allegro5/allegro_primitives.h ]
+  - symbol: ALLEGRO_VERTEX
+    headers: [ allegro5/allegro.h, allegro5/allegro_primitives.h ]
   - symbol: AllegroFlare::Random
     headers: [ AllegroFlare/Random.hpp ]
-  - symbol: Tileo::TileAtlas*
+  - symbol: Tileo::TileAtlas
     headers: [ Tileo/TileAtlas.hpp ]
   - symbol: ALLEGRO_VERTEX
     headers: [ allegro5/allegro_primitives.h ]

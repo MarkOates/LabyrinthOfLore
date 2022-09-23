@@ -66,9 +66,9 @@ functions:
     body_dependency_symbols:
        - AllegroFlare::ColorIDConverter
 dependencies:
-  - symbol: LabyrinthOfLore::Entity::Base*
+  - symbol: LabyrinthOfLore::Entity::Base
     headers: [ LabyrinthOfLore/Entity/Base.hpp ]
-  - symbol: LabyrinthOfLore::Shader::ClampedColor*
+  - symbol: LabyrinthOfLore::Shader::ClampedColor
     headers: [ LabyrinthOfLore/Shader/ClampedColor.hpp ]
   - symbol: AllegroFlare::ColorIDConverter
     headers: [ AllegroFlare/ColorIDConverter.hpp ]

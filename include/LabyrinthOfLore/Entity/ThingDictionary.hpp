@@ -14,6 +14,9 @@ namespace LabyrinthOfLore
       private:
          std::map<int, LabyrinthOfLore::Entity::ThingDefinition> definitions;
 
+      protected:
+
+
       public:
          ThingDictionary(std::map<int, LabyrinthOfLore::Entity::ThingDefinition> definitions={});
          ~ThingDictionary();

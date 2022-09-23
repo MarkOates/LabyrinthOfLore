@@ -19,6 +19,9 @@ namespace LabyrinthOfLore
             LabyrinthOfLore::Hud::ViewFrame* view_frame;
             allegro_flare::placement3d place;
 
+         protected:
+
+
          public:
             ViewFrameRenderer(ALLEGRO_FONT* font=nullptr, LabyrinthOfLore::Hud::ViewFrame* view_frame=nullptr, allegro_flare::placement3d place=allegro_flare::placement3d{});
             ~ViewFrameRenderer();

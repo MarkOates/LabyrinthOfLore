@@ -16,6 +16,9 @@ namespace LabyrinthOfLore
          std::vector<LabyrinthOfLore::Entity::Base*>* all_entities;
          static std::string CLEANUP_FLAG;
 
+      protected:
+
+
       public:
          Cleanup(std::vector<LabyrinthOfLore::Entity::Base*>* all_entities=nullptr);
          ~Cleanup();

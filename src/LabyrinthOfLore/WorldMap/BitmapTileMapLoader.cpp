@@ -1,6 +1,7 @@
 
 
 #include <LabyrinthOfLore/WorldMap/BitmapTileMapLoader.hpp>
+
 #include <sstream>
 
 
@@ -182,6 +183,8 @@ LabyrinthOfLore::WorldMap::TileMap BitmapTileMapLoader::load(float top_height, f
 
    return result;
 }
+
+
 } // namespace WorldMap
 } // namespace LabyrinthOfLore
 

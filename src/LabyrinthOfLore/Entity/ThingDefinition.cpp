@@ -1,7 +1,7 @@
 
 
 #include <LabyrinthOfLore/Entity/ThingDefinition.hpp>
-#include <sstream>
+
 #include <sstream>
 
 
@@ -48,55 +48,55 @@ void ThingDefinition::set_condition(std::string condition)
 }
 
 
-thing_type_t ThingDefinition::get_type()
+thing_type_t ThingDefinition::get_type() const
 {
    return type;
 }
 
 
-std::string ThingDefinition::get_article()
+std::string ThingDefinition::get_article() const
 {
    return article;
 }
 
 
-std::string ThingDefinition::get_name()
+std::string ThingDefinition::get_name() const
 {
    return name;
 }
 
 
-Tileo::TileAtlas* ThingDefinition::get_tile_atlas()
+Tileo::TileAtlas* ThingDefinition::get_tile_atlas() const
 {
    return tile_atlas;
 }
 
 
-int ThingDefinition::get_tile_atlas_index_id()
+int ThingDefinition::get_tile_atlas_index_id() const
 {
    return tile_atlas_index_id;
 }
 
 
-int ThingDefinition::get_weight()
+int ThingDefinition::get_weight() const
 {
    return weight;
 }
 
 
-int ThingDefinition::get_health()
+int ThingDefinition::get_health() const
 {
    return health;
 }
 
 
-std::string ThingDefinition::get_mood()
+std::string ThingDefinition::get_mood() const
 {
    return mood;
 }
 
 
-std::string ThingDefinition::get_condition()
+std::string ThingDefinition::get_condition() const
 {
    return condition;
 }
@@ -132,6 +132,8 @@ std::string ThingDefinition::infer_decorated_name()
 
    return result_str;
 }
+
+
 } // namespace Entity
 } // namespace LabyrinthOfLore
 

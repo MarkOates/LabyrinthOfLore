@@ -16,5 +16,5 @@ functions:
 dependencies:
   - symbol: LabyrinthOfLore::Rendering::TileTypeDefinition
     headers: [ LabyrinthOfLore/Rendering/TileTypeDefinition.hpp ]
-  - symbol: std::map<int, LabyrinthOfLore::Rendering::TileTypeDefinition>
-    headers: [ map, LabyrinthOfLore/Rendering/TileTypeDefinition.hpp ]
+  - symbol: LabyrinthOfLore::Rendering::TileTypeDefinition
+    headers: [ LabyrinthOfLore/Rendering/TileTypeDefinition.hpp ]

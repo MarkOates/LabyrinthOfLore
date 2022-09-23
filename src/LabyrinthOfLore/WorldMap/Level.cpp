@@ -4,6 +4,7 @@
 
 
 
+
 namespace LabyrinthOfLore
 {
 namespace WorldMap
@@ -25,34 +26,36 @@ Level::~Level()
 }
 
 
-std::string Level::get_heading()
+std::string Level::get_heading() const
 {
    return heading;
 }
 
 
-std::string Level::get_name()
+std::string Level::get_name() const
 {
    return name;
 }
 
 
-float Level::get_ground_height()
+float Level::get_ground_height() const
 {
    return ground_height;
 }
 
 
-LabyrinthOfLore::WorldMap::TileMap Level::get_tile_map()
+LabyrinthOfLore::WorldMap::TileMap Level::get_tile_map() const
 {
    return tile_map;
 }
 
 
-LabyrinthOfLore::Rendering::TileMapMesh Level::get_tile_map_mesh()
+LabyrinthOfLore::Rendering::TileMapMesh Level::get_tile_map_mesh() const
 {
    return tile_map_mesh;
 }
+
+
 
 
 } // namespace WorldMap

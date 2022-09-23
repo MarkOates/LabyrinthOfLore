@@ -4,6 +4,7 @@
 
 
 
+
 namespace LabyrinthOfLore
 {
 namespace Entity
@@ -48,6 +49,8 @@ int Cleanup::cleanup()
 
    return entities_destroyed;
 }
+
+
 } // namespace Entity
 } // namespace LabyrinthOfLore
 

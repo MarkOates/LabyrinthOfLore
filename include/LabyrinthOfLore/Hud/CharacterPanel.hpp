@@ -19,12 +19,15 @@ namespace LabyrinthOfLore
          int cursor_x;
          int cursor_y;
 
+      protected:
+
+
       public:
          CharacterPanel(AllegroFlare::Inventory* player_inventory=nullptr, LabyrinthOfLore::Entity::ThingDictionary* thing_dictionary=nullptr);
          ~CharacterPanel();
 
-         int get_cursor_x();
-         int get_cursor_y();
+         int get_cursor_x() const;
+         int get_cursor_y() const;
          bool move_cursor_up();
          bool move_cursor_down();
          int calculate_count_of_type(thing_type_t thing_type=THING_TYPE_UNDEFINED);

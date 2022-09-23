@@ -1,11 +1,11 @@
 
 
 #include <LabyrinthOfLore/WorldMap/BasicRenderer.hpp>
-#include <allegro5/allegro_primitives.h>
+
 #include <AllegroFlare/Color.hpp>
 #include <LabyrinthOfLore/WorldMap/Tile.hpp>
-#include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_color.h>
+#include <allegro5/allegro_primitives.h>
 
 
 namespace LabyrinthOfLore
@@ -57,6 +57,8 @@ void BasicRenderer::render()
       }
    return;
 }
+
+
 } // namespace WorldMap
 } // namespace LabyrinthOfLore
 

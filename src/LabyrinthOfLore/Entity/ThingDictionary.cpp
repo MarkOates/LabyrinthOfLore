@@ -1,6 +1,7 @@
 
 
 #include <LabyrinthOfLore/Entity/ThingDictionary.hpp>
+
 #include <algorithm>
 
 
@@ -57,6 +58,8 @@ LabyrinthOfLore::Entity::ThingDefinition& ThingDictionary::find_definition_ref(i
    if (definitions.find(tile_type) == definitions.end()) throw std::runtime_error("cannot find_definition_ref in the ThingDictionary. It doesn't exist.");
    return definitions[tile_type];
 }
+
+
 } // namespace Entity
 } // namespace LabyrinthOfLore
 

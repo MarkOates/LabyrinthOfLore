@@ -1,9 +1,15 @@
 properties:
+
+
   - name: all_entities
     type: std::vector<LabyrinthOfLore::Entity::Base*>
     init_with: "{}"
     constructor_arg: true
+
+
 functions:
+
+
   - name: select_within_level
     type: std::vector<LabyrinthOfLore::Entity::Base*>
     parameters:
@@ -19,6 +25,12 @@ functions:
       }
 
       return result;
+
+
 dependencies:
-  - symbol: std::vector<LabyrinthOfLore::Entity::Base*>
-    headers: [ vector, LabyrinthOfLore/Entity/Base.hpp ] 
+
+
+  - symbol: LabyrinthOfLore::Entity::Base
+    headers: [ LabyrinthOfLore/Entity/Base.hpp ] 
+
+

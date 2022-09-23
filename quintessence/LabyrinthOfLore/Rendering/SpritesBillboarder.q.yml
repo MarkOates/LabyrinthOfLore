@@ -25,13 +25,13 @@ functions:
       - AllegroFlare::vec3d
       - AllegroFlare::FULL_ROTATION
 dependencies:
-  - symbol: std::vector<LabyrinthOfLore::Entity::Base*>
-    headers: [ vector, LabyrinthOfLore/Entity/Base.hpp ]
+  - symbol: LabyrinthOfLore::Entity::Base
+    headers: [ LabyrinthOfLore/Entity/Base.hpp ]
   - symbol: AllegroFlare::FULL_ROTATION
     headers: [ AllegroFlare/Useful.hpp ]
   - symbol: AllegroFlare::vec3d
     headers: [ AllegroFlare/Vec3D.hpp ]
-  - symbol: AllegroFlare::vec3d*
+  - symbol: AllegroFlare::vec3d
     headers: [ AllegroFlare/Vec3D.hpp ]
   - symbol: allegro_flare::placement3d
     headers: [ allegro_flare/placement3d.h ]

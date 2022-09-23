@@ -1,9 +1,10 @@
 
 
 #include <LabyrinthOfLore/Rendering/TileMapMeshPillarTexturer.hpp>
-#include <sstream>
+
 #include <allegro5/allegro_color.h>
 #include <cmath>
+#include <sstream>
 
 
 namespace LabyrinthOfLore
@@ -174,6 +175,8 @@ std::vector<ALLEGRO_VERTEX> TileMapMeshPillarTexturer::build_textured_pillar(boo
 
    return pillar_vertexes;
 }
+
+
 } // namespace Rendering
 } // namespace LabyrinthOfLore
 

@@ -19,6 +19,9 @@ namespace LabyrinthOfLore
             LabyrinthOfLore::Hud::CharacterPanel* character_panel;
             allegro_flare::placement3d place;
 
+         protected:
+
+
          public:
             CharacterPanelRenderer(ALLEGRO_FONT* font=nullptr, LabyrinthOfLore::Hud::CharacterPanel* character_panel=nullptr, allegro_flare::placement3d place=allegro_flare::placement3d{});
             ~CharacterPanelRenderer();

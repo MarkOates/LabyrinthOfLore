@@ -1,11 +1,11 @@
 
 
 #include <LabyrinthOfLore/Physics/EntityTileMapCollisionStepper.hpp>
+
 #include <LabyrinthOfLore/Physics/EntityTileMapCollisionEvent.hpp>
 #include <LabyrinthOfLore/WorldMap/TileFaceEnum.hpp>
+#include <algorithm>
 #include <cmath>
-#include <algorithm>
-#include <algorithm>
 
 
 namespace LabyrinthOfLore
@@ -40,7 +40,7 @@ EntityTileMapCollisionStepper::~EntityTileMapCollisionStepper()
 }
 
 
-float EntityTileMapCollisionStepper::get_ceiling_height()
+float EntityTileMapCollisionStepper::get_ceiling_height() const
 {
    return ceiling_height;
 }
@@ -64,7 +64,7 @@ float EntityTileMapCollisionStepper::get_offset_at_collision_edge()
 }
 
 
-std::vector<LabyrinthOfLore::Physics::EntityTileMapCollisionEvent> EntityTileMapCollisionStepper::get_events_from_last_processed_step()
+std::vector<LabyrinthOfLore::Physics::EntityTileMapCollisionEvent> EntityTileMapCollisionStepper::get_events_from_last_processed_step() const
 {
    return events_from_last_processed_step;
 }
@@ -247,6 +247,8 @@ void EntityTileMapCollisionStepper::process_step()
 
    return;
 }
+
+
 } // namespace Physics
 } // namespace LabyrinthOfLore
 

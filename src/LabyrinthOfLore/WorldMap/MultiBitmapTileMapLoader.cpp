@@ -1,8 +1,9 @@
 
 
 #include <LabyrinthOfLore/WorldMap/MultiBitmapTileMapLoader.hpp>
-#include <sstream>
+
 #include <LabyrinthOfLore/WorldMap/TileTypeEnum.hpp>
+#include <sstream>
 
 
 namespace LabyrinthOfLore
@@ -137,6 +138,8 @@ void MultiBitmapTileMapLoader::load_and_process(float top_height, float ground_h
 
    //return result;
 }
+
+
 } // namespace WorldMap
 } // namespace LabyrinthOfLore
 

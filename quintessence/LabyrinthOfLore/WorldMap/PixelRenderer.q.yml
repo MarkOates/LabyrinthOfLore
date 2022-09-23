@@ -73,7 +73,7 @@ dependencies:
     headers: [ allegro5/allegro_primitives.h ]
   - symbol: al_color_name
     headers: [ allegro5/allegro_color.h ]
-  - symbol: ALLEGRO_BITMAP*
+  - symbol: ALLEGRO_BITMAP
     headers: [ allegro5/allegro.h ]
   - symbol: al_init_primitives_addon
     headers: [ allegro5/allegro_primitives.h ]

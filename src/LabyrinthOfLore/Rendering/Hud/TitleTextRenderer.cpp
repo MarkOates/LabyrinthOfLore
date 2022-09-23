@@ -1,8 +1,8 @@
 
 
 #include <LabyrinthOfLore/Rendering/Hud/TitleTextRenderer.hpp>
+
 #include <AllegroFlare/Useful.hpp>
-#include <allegro5/allegro_color.h>
 #include <allegro5/allegro_color.h>
 #include <allegro5/allegro_primitives.h>
 
@@ -71,6 +71,8 @@ void TitleTextRenderer::render()
 
    return;
 }
+
+
 } // namespace Hud
 } // namespace Rendering
 } // namespace LabyrinthOfLore

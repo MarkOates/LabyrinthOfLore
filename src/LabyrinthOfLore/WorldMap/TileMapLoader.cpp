@@ -1,6 +1,7 @@
 
 
 #include <LabyrinthOfLore/WorldMap/TileMapLoader.hpp>
+
 #include <LabyrinthOfLore/WorldMap/TileMap.hpp>
 
 
@@ -58,6 +59,8 @@ LabyrinthOfLore::WorldMap::TileMap TileMapLoader::build_tile_map()
 
    return result;
 }
+
+
 } // namespace WorldMap
 } // namespace LabyrinthOfLore
 

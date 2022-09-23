@@ -3,6 +3,7 @@
 
 #include <LabyrinthOfLore/WorldMap/Level.hpp>
 #include <map>
+#include <string>
 
 
 namespace LabyrinthOfLore
@@ -11,6 +12,9 @@ namespace LabyrinthOfLore
    {
    private:
       std::map<std::string, LabyrinthOfLore::WorldMap::Level> levels;
+
+   protected:
+
 
    public:
       World(std::map<std::string, LabyrinthOfLore::WorldMap::Level> levels={});

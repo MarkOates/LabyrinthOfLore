@@ -15,6 +15,9 @@ namespace LabyrinthOfLore
       private:
          std::vector<LabyrinthOfLore::Entity::Base*> all_entities;
 
+      protected:
+
+
       public:
          Selector(std::vector<LabyrinthOfLore::Entity::Base*> all_entities={});
          ~Selector();

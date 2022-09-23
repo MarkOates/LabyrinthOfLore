@@ -17,5 +17,5 @@ functions:
 dependencies:
   - symbol: AllegroFlare::vec3d
     headers: [ AllegroFlare/Vec3D.hpp ]
-  - symbol: std::vector<LabyrinthOfLore::Entity::Base*>
-    headers: [ vector, LabyrinthOfLore/Entity/Base.hpp ]
+  - symbol: LabyrinthOfLore::Entity::Base
+    headers: [ LabyrinthOfLore/Entity/Base.hpp ]

@@ -16,6 +16,9 @@ namespace LabyrinthOfLore
          LabyrinthOfLore::WorldMap::TileMap* tile_map;
          ALLEGRO_BITMAP* source_bitmap;
 
+      protected:
+
+
       public:
          MultiBitmapTileMapLoader(LabyrinthOfLore::WorldMap::TileMap* tile_map=nullptr, ALLEGRO_BITMAP* source_bitmap=nullptr);
          ~MultiBitmapTileMapLoader();

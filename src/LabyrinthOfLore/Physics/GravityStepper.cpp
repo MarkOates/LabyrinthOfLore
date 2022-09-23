@@ -4,6 +4,7 @@
 
 
 
+
 namespace LabyrinthOfLore
 {
 namespace Physics
@@ -29,6 +30,8 @@ void GravityStepper::process_step()
       entity->get_velocity_ref().position += gravity;
    }
 }
+
+
 } // namespace Physics
 } // namespace LabyrinthOfLore
 

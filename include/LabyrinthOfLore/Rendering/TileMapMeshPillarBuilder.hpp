@@ -22,11 +22,14 @@ namespace LabyrinthOfLore
          bool do_not_include_left_face;
          bool do_not_include_back_face;
 
+      protected:
+
+
       public:
          TileMapMeshPillarBuilder(int x=0, int y=0, float height=1.0f, bool do_not_include_top_face=false, bool do_not_include_front_face=false, bool do_not_include_right_face=false, bool do_not_include_left_face=false, bool do_not_include_back_face=false);
          ~TileMapMeshPillarBuilder();
 
-         float get_height();
+         float get_height() const;
          ALLEGRO_VERTEX buildA();
          ALLEGRO_VERTEX buildB();
          ALLEGRO_VERTEX buildC();

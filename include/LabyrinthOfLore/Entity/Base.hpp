@@ -22,6 +22,9 @@ namespace LabyrinthOfLore
          allegro_flare::placement3d velocity;
          bool billboard_at_camera;
 
+      protected:
+
+
       public:
          Base(ALLEGRO_BITMAP* bitmap=nullptr, AllegroFlare::Model3D* model=nullptr, std::string identifier_for_level_within="", allegro_flare::placement3d placement={}, allegro_flare::placement3d velocity={}, bool billboard_at_camera=false);
          ~Base();
@@ -30,10 +33,10 @@ namespace LabyrinthOfLore
          void set_model(AllegroFlare::Model3D* model);
          void set_identifier_for_level_within(std::string identifier_for_level_within);
          void set_billboard_at_camera(bool billboard_at_camera);
-         ALLEGRO_BITMAP* get_bitmap();
-         AllegroFlare::Model3D* get_model();
-         std::string get_identifier_for_level_within();
-         bool get_billboard_at_camera();
+         ALLEGRO_BITMAP* get_bitmap() const;
+         AllegroFlare::Model3D* get_model() const;
+         std::string get_identifier_for_level_within() const;
+         bool get_billboard_at_camera() const;
          allegro_flare::placement3d &get_placement_ref();
          allegro_flare::placement3d &get_velocity_ref();
       };
