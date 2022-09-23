@@ -49,6 +49,7 @@ table td
 <body>
 <h1>TOC</h1>
 <ul>
+  <li><a href="#.removed/quintessence/LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer.q.yml">.removed/quintessence/LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer.q.yml</a></li>
   <li><a href="#quintessence/LabyrinthOfLore/Entity/Base.q.yml">quintessence/LabyrinthOfLore/Entity/Base.q.yml</a></li>
   <li><a href="#quintessence/LabyrinthOfLore/Entity/Cleanup.q.yml">quintessence/LabyrinthOfLore/Entity/Cleanup.q.yml</a></li>
   <li><a href="#quintessence/LabyrinthOfLore/Entity/Selector.q.yml">quintessence/LabyrinthOfLore/Entity/Selector.q.yml</a></li>
@@ -80,7 +81,6 @@ table td
   <li><a href="#quintessence/LabyrinthOfLore/Rendering/Hud/CompassRenderer.q.yml">quintessence/LabyrinthOfLore/Rendering/Hud/CompassRenderer.q.yml</a></li>
   <li><a href="#quintessence/LabyrinthOfLore/Rendering/Hud/CurrentSpellsRenderer.q.yml">quintessence/LabyrinthOfLore/Rendering/Hud/CurrentSpellsRenderer.q.yml</a></li>
   <li><a href="#quintessence/LabyrinthOfLore/Rendering/Hud/MapButtonRenderer.q.yml">quintessence/LabyrinthOfLore/Rendering/Hud/MapButtonRenderer.q.yml</a></li>
-  <li><a href="#quintessence/LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer.q.yml">quintessence/LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer.q.yml</a></li>
   <li><a href="#quintessence/LabyrinthOfLore/Rendering/Hud/Renderer.q.yml">quintessence/LabyrinthOfLore/Rendering/Hud/Renderer.q.yml</a></li>
   <li><a href="#quintessence/LabyrinthOfLore/Rendering/Hud/RotateCharacterPanelButtonRenderer.q.yml">quintessence/LabyrinthOfLore/Rendering/Hud/RotateCharacterPanelButtonRenderer.q.yml</a></li>
   <li><a href="#quintessence/LabyrinthOfLore/Rendering/Hud/RuneShelfRenderer.q.yml">quintessence/LabyrinthOfLore/Rendering/Hud/RuneShelfRenderer.q.yml</a></li>
@@ -123,6 +123,83 @@ table td
 <h1>Components</h1>
 <ul>
   <div class="component">
+    <h3 id=".removed/quintessence/LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer.q.yml">.removed/quintessence/LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer.q.yml</h3>
+     <table>
+<tr>
+  <td class="property">font</td>
+  <td class="property">ALLEGRO_FONT*</td>
+</tr>
+<tr>
+  <td class="property">message_scroll</td>
+  <td class="property">LabyrinthOfLore::Hud::MessageScroll*</td>
+</tr>
+<tr>
+  <td class="property">place</td>
+  <td class="property">allegro_flare::placement3d</td>
+</tr>
+<tr>
+  <td class="property">message_display_length_sec</td>
+  <td class="property">float</td>
+</tr>
+<tr>
+  <td class="property">__dirty_total_line_count</td>
+  <td class="property">int</td>
+</tr>
+<tr>
+  <td class="property">__dirty_this_text_color</td>
+  <td class="property">ALLEGRO_COLOR</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="method">smoothstep(3)</td>
+</tr>
+<tr>
+  <td class="method">multiline_draw_callback(4)</td>
+</tr>
+<tr>
+  <td class="method">render()</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::MessageScroll&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/MessageScroll.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_COLOR&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_color.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_FONT&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_font.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_color_name&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_color.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_draw_rounded_rectangle&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_primitives.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;allegro_flare::placement3d&quot;, &quot;headers&quot;=&gt;[&quot;allegro_flare/placement3d.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;x&quot;, &quot;headers&quot;=&gt;[&quot;y&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;std::tuple&lt;float, std::string, int&gt;&gt;&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;utility&quot;, &quot;string&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;void*&quot;, &quot;headers&quot;=&gt;[]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;const char*&quot;, &quot;headers&quot;=&gt;[]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::clamp&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Useful.hpp&quot;]}</td>
+</tr>
+    </table>
+  </div>
+</ul>
+<ul>
+  <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Entity/Base.q.yml">quintessence/LabyrinthOfLore/Entity/Base.q.yml</h3>
      <table>
 <tr>
@@ -160,10 +237,10 @@ table td
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;allegro_flare::placement3d&quot;, &quot;headers&quot;=&gt;[&quot;allegro_flare/placement3d.h&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Model3D*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Model3D.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Model3D&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Model3D.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_BITMAP*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_BITMAP&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -188,7 +265,7 @@ table td
     </table>
      <table>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;LabyrinthOfLore::Entity::Base*&gt;*&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;LabyrinthOfLore/Entity/Base.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Entity::Base&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Entity/Base.hpp&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -209,7 +286,7 @@ table td
     </table>
      <table>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;LabyrinthOfLore::Entity::Base*&gt;&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;LabyrinthOfLore/Entity/Base.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Entity::Base&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Entity/Base.hpp&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -271,7 +348,7 @@ table td
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::stringstream&quot;, &quot;headers&quot;=&gt;[&quot;sstream&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Tileo::TileAtlas*&quot;, &quot;headers&quot;=&gt;[&quot;Tileo/TileAtlas.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Tileo::TileAtlas&quot;, &quot;headers&quot;=&gt;[&quot;Tileo/TileAtlas.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;thing_type_t&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLoreGame/ItemIdEnums.hpp&quot;]}</td>
@@ -370,10 +447,10 @@ table td
     </table>
      <table>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Inventory*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Inventory.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Inventory&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Inventory.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Entity::ThingDictionary*&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Entity/ThingDictionary.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Entity::ThingDictionary&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Entity/ThingDictionary.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;]}</td>
@@ -625,7 +702,7 @@ table td
     </table>
      <table>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Entity::Base*&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Entity/Base.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Entity::Base&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Entity/Base.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::WorldMap::tile_face_t&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/WorldMap/TileFaceEnum.hpp&quot;]}</td>
@@ -683,10 +760,7 @@ table td
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::WorldMap::TileMap&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/WorldMap/TileMap.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::WorldMap::TileMap&amp;&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/WorldMap/TileMap.hpp&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;LabyrinthOfLore::Entity::Base*&gt;&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;LabyrinthOfLore/Entity/Base.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Entity::Base&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Entity/Base.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;fabs&quot;, &quot;headers&quot;=&gt;[&quot;cmath&quot;]}</td>
@@ -704,7 +778,7 @@ table td
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Physics::EntityTileMapCollisionEvent&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Physics/EntityTileMapCollisionEvent.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;LabyrinthOfLore::Physics::EntityTileMapCollisionEvent&gt;&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;LabyrinthOfLore/Physics/EntityTileMapCollisionEvent.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Physics::EntityTileMapCollisionEvent&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Physics/EntityTileMapCollisionEvent.hpp&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -730,7 +804,7 @@ table td
     </table>
      <table>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Entity::Base*&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Entity/Base.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Entity::Base&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Entity/Base.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Physics::zone_collision_event_t&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Physics/ZoneCollisionEventEnum.hpp&quot;]}</td>
@@ -770,13 +844,10 @@ table td
     </table>
      <table>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;LabyrinthOfLore::Entity::Base*&gt;&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;LabyrinthOfLore/Entity/Base.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::WorldMap::Zone&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/WorldMap/Zone.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;LabyrinthOfLore::WorldMap::Zone*&gt;&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;LabyrinthOfLore/WorldMap/Zone.hpp&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;std::pair&lt;LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*&gt;&gt;&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;utility&quot;, &quot;LabyrinthOfLore/Entity/Base.hpp&quot;, &quot;LabyrinthOfLore/WorldMap/Zone.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Entity::Base&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Entity/Base.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::set_difference&quot;, &quot;headers&quot;=&gt;[&quot;algorithm&quot;]}</td>
@@ -807,7 +878,7 @@ table td
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::vec3d&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Vec3D.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;LabyrinthOfLore::Entity::Base*&gt;&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;LabyrinthOfLore/Entity/Base.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Entity::Base&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Entity/Base.hpp&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -848,16 +919,10 @@ table td
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;allegro_flare::placement3d&quot;, &quot;headers&quot;=&gt;[&quot;allegro_flare/placement3d.h&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;allegro_flare::placement3d*&quot;, &quot;headers&quot;=&gt;[&quot;allegro_flare/placement3d.h&quot;]}</td>
-</tr>
-<tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_TRANSFORM&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_TRANSFORM*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_BITMAP*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_BITMAP&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::TAU&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Useful.hpp&quot;]}</td>
@@ -891,10 +956,10 @@ table td
     </table>
      <table>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Entity::Base*&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Entity/Base.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Entity::Base&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Entity/Base.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Shader::ClampedColor*&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Shader/ClampedColor.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Shader::ClampedColor&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Shader/ClampedColor.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::ColorIDConverter&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/ColorIDConverter.hpp&quot;]}</td>
@@ -924,7 +989,7 @@ table td
     </table>
      <table>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Entity::Base*&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Entity/Base.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Entity::Base&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Entity/Base.hpp&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -953,10 +1018,10 @@ table td
     </table>
      <table>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::CharacterPanel*&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/CharacterPanel.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::CharacterPanel&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/CharacterPanel.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_FONT*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_font.h&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_FONT&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_font.h&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_color_name&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_color.h&quot;]}</td>
@@ -997,10 +1062,10 @@ table td
     </table>
      <table>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::CommandPanel*&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/CommandPanel.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::CommandPanel&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/CommandPanel.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_FONT*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_font.h&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_FONT&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_font.h&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_color_name&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_color.h&quot;]}</td>
@@ -1015,7 +1080,7 @@ table td
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;x&quot;, &quot;headers&quot;=&gt;[&quot;y&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;LabyrinthOfLore::Hud::command_mode_t&gt;&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;LabyrinthOfLore/Hud/CommandPanelModeEnum.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::command_mode_t&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/CommandPanelModeEnum.hpp&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -1044,10 +1109,10 @@ table td
     </table>
      <table>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::CommandsHintPane*&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/CommandsHintPane.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::CommandsHintPane&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/CommandsHintPane.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_FONT*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_font.h&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_FONT&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_font.h&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_color_name&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_color.h&quot;]}</td>
@@ -1088,10 +1153,10 @@ table td
     </table>
      <table>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::Compass*&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/Compass.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::Compass&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/Compass.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_FONT*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_font.h&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_FONT&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_font.h&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_color_name&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_color.h&quot;]}</td>
@@ -1132,10 +1197,10 @@ table td
     </table>
      <table>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::CurrentSpells*&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/CurrentSpells.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::CurrentSpells&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/CurrentSpells.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_FONT*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_font.h&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_FONT&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_font.h&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_color_name&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_color.h&quot;]}</td>
@@ -1176,75 +1241,10 @@ table td
     </table>
      <table>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::MapButton*&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/MapButton.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::MapButton&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/MapButton.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_FONT*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_font.h&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_color_name&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_color.h&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_draw_rounded_rectangle&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_primitives.h&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;allegro_flare::placement3d&quot;, &quot;headers&quot;=&gt;[&quot;allegro_flare/placement3d.h&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;x&quot;, &quot;headers&quot;=&gt;[&quot;y&quot;]}</td>
-</tr>
-    </table>
-  </div>
-</ul>
-<ul>
-  <div class="component">
-    <h3 id="quintessence/LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer.q.yml">quintessence/LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer.q.yml</h3>
-     <table>
-<tr>
-  <td class="property">font</td>
-  <td class="property">ALLEGRO_FONT*</td>
-</tr>
-<tr>
-  <td class="property">message_scroll</td>
-  <td class="property">LabyrinthOfLore::Hud::MessageScroll*</td>
-</tr>
-<tr>
-  <td class="property">place</td>
-  <td class="property">allegro_flare::placement3d</td>
-</tr>
-<tr>
-  <td class="property">message_display_length_sec</td>
-  <td class="property">float</td>
-</tr>
-<tr>
-  <td class="property">__dirty_total_line_count</td>
-  <td class="property">int</td>
-</tr>
-<tr>
-  <td class="property">__dirty_this_text_color</td>
-  <td class="property">ALLEGRO_COLOR</td>
-</tr>
-    </table>
-     <table>
-<tr>
-  <td class="method">smoothstep(3)</td>
-</tr>
-<tr>
-  <td class="method">multiline_draw_callback(4)</td>
-</tr>
-<tr>
-  <td class="method">render()</td>
-</tr>
-    </table>
-     <table>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::MessageScroll*&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/MessageScroll.hpp&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_COLOR&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_color.h&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_FONT*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_font.h&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_FONT&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_font.h&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_color_name&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_color.h&quot;]}</td>
@@ -1257,18 +1257,6 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;x&quot;, &quot;headers&quot;=&gt;[&quot;y&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;std::tuple&lt;float, std::string, int&gt;&gt;&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;utility&quot;, &quot;string&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;void*&quot;, &quot;headers&quot;=&gt;[]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;const char*&quot;, &quot;headers&quot;=&gt;[]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::clamp&lt;float&gt;&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Useful.hpp&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -1384,13 +1372,13 @@ table td
     </table>
      <table>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FontBin*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FontBin.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FontBin&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/FontBin.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_FONT*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_font.h&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_FONT&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_font.h&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_BITMAP*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_BITMAP&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_color_name&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_color.h&quot;]}</td>
@@ -1399,19 +1387,19 @@ table td
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;allegro_flare::placement3d&quot;, &quot;headers&quot;=&gt;[&quot;allegro_flare/placement3d.h&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::VitalityAndManaBar*&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/VitalityAndManaBar.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::VitalityAndManaBar&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/VitalityAndManaBar.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Rendering::Hud::VitalityAndManaBarRenderer&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Rendering/Hud/VitalityAndManaBarRenderer.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::CommandPanel*&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/CommandPanel.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::CommandPanel&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/CommandPanel.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::CharacterPanel*&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/CharacterPanel.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::CharacterPanel&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/CharacterPanel.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::MessageScroll*&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/MessageScroll.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::MessageScroll&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/MessageScroll.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Rendering::Hud::CommandPanelRenderer&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Rendering/Hud/CommandPanelRenderer.hpp&quot;]}</td>
@@ -1423,55 +1411,55 @@ table td
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Rendering::Hud::MessageScrollRenderer&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::MapButton*&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/MapButton.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::MapButton&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/MapButton.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Rendering::Hud::MapButtonRenderer&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Rendering/Hud/MapButtonRenderer.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::RuneShelf*&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/RuneShelf.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::RuneShelf&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/RuneShelf.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Rendering::Hud::RuneShelfRenderer&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Rendering/Hud/RuneShelfRenderer.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::Compass*&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/Compass.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::Compass&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/Compass.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Rendering::Hud::CompassRenderer&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Rendering/Hud/CompassRenderer.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::RotateCharacterPanelButton*&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/RotateCharacterPanelButton.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::RotateCharacterPanelButton&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/RotateCharacterPanelButton.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Rendering::Hud::RotateCharacterPanelButtonRenderer&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Rendering/Hud/RotateCharacterPanelButtonRenderer.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::CommandsHintPane*&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/CommandsHintPane.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::CommandsHintPane&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/CommandsHintPane.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Rendering::Hud::CommandsHintPaneRenderer&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Rendering/Hud/CommandsHintPaneRenderer.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::CurrentSpells*&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/CurrentSpells.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::CurrentSpells&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/CurrentSpells.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Rendering::Hud::CurrentSpellsRenderer&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Rendering/Hud/CurrentSpellsRenderer.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::ViewFrame*&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/ViewFrame.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::ViewFrame&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/ViewFrame.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Rendering::Hud::ViewFrameRenderer&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Rendering/Hud/ViewFrameRenderer.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::TitleText*&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/TitleText.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::TitleText&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/TitleText.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Rendering::Hud::TitleTextRenderer&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Rendering/Hud/TitleTextRenderer.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Rendering::MousePointer*&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Rendering/MousePointer.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Rendering::MousePointer&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Rendering/MousePointer.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::runtime_error&quot;, &quot;headers&quot;=&gt;[&quot;stdexcept&quot;]}</td>
@@ -1503,10 +1491,10 @@ table td
     </table>
      <table>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::RotateCharacterPanelButton*&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/RotateCharacterPanelButton.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::RotateCharacterPanelButton&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/RotateCharacterPanelButton.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_FONT*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_font.h&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_FONT&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_font.h&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_color_name&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_color.h&quot;]}</td>
@@ -1547,10 +1535,10 @@ table td
     </table>
      <table>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::RuneShelf*&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/RuneShelf.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::RuneShelf&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/RuneShelf.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_FONT*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_font.h&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_FONT&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_font.h&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_color_name&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_color.h&quot;]}</td>
@@ -1591,10 +1579,10 @@ table td
     </table>
      <table>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::TitleText*&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/TitleText.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::TitleText&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/TitleText.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_FONT*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_font.h&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_FONT&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_font.h&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_get_time&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_color.h&quot;]}</td>
@@ -1612,7 +1600,7 @@ table td
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;x&quot;, &quot;headers&quot;=&gt;[&quot;y&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::clamp&lt;float&gt;&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Useful.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::clamp&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Useful.hpp&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -1641,10 +1629,10 @@ table td
     </table>
      <table>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::ViewFrame*&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/ViewFrame.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::ViewFrame&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/ViewFrame.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_FONT*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_font.h&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_FONT&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_font.h&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_color_name&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_color.h&quot;]}</td>
@@ -1685,10 +1673,10 @@ table td
     </table>
      <table>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::VitalityAndManaBar*&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/VitalityAndManaBar.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::VitalityAndManaBar&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/VitalityAndManaBar.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_FONT*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_font.h&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_FONT&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_font.h&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_color_name&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_color.h&quot;]}</td>
@@ -1765,28 +1753,28 @@ table td
     </table>
      <table>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Rendering::Camera*&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Rendering/Camera.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Rendering::Camera&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Rendering/Camera.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;allegro_flare::placement3d&quot;, &quot;headers&quot;=&gt;[&quot;allegro_flare/placement3d.h&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Shader::ClampedColor*&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Shader/ClampedColor.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Shader::ClampedColor&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Shader/ClampedColor.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Rendering::EntityPickingRenderer&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Rendering/EntityPickingRenderer.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;LabyrinthOfLore::Entity::Base*&gt;&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;LabyrinthOfLore/Entity/Base.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Entity::Base&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Entity/Base.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::PickingBuffer*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/PickingBuffer.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::PickingBuffer&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/PickingBuffer.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_TRANSFORM*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_TRANSFORM&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_BITMAP*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_BITMAP&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Rendering::TileMapMesh&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Rendering/TileMapMesh.hpp&quot;]}</td>
@@ -1830,34 +1818,34 @@ table td
     </table>
      <table>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Rendering::Camera*&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Rendering/Camera.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Rendering::Camera&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Rendering/Camera.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Shader::DepthDarken*&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Shader/DepthDarken.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Shader::DepthDarken&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Shader/DepthDarken.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Entity::Base*&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Entity/Base.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Entity::Base&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Entity/Base.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;LabyrinthOfLore::Entity::Base*&gt;&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;LabyrinthOfLore/Entity/Base.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Entity::Base&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Entity/Base.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Rendering::EntityRenderer&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Rendering/EntityRenderer.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Rendering::TileMapMesh*&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Rendering/TileMapMesh.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Rendering::TileMapMesh&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Rendering/TileMapMesh.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Rendering::TileMapWaterMesh*&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Rendering/TileMapWaterMesh.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Rendering::TileMapWaterMesh&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Rendering/TileMapWaterMesh.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;allegro_flare::placement3d&quot;, &quot;headers&quot;=&gt;[&quot;allegro_flare/placement3d.h&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_BITMAP*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_BITMAP&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_TRANSFORM*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_TRANSFORM&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_color_name&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_color.h&quot;]}</td>
@@ -1894,7 +1882,7 @@ table td
     </table>
      <table>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;LabyrinthOfLore::Entity::Base*&gt;&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;LabyrinthOfLore/Entity/Base.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Entity::Base&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Entity/Base.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::FULL_ROTATION&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Useful.hpp&quot;]}</td>
@@ -1903,7 +1891,7 @@ table td
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::vec3d&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Vec3D.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::vec3d*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Vec3D.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::vec3d&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Vec3D.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;allegro_flare::placement3d&quot;, &quot;headers&quot;=&gt;[&quot;allegro_flare/placement3d.h&quot;]}</td>
@@ -1968,7 +1956,7 @@ table td
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::WorldMap::TileMap&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/WorldMap/TileMap.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;ALLEGRO_VERTEX&gt;&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;allegro5/allegro.h&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_VERTEX&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Random&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Random.hpp&quot;]}</td>
@@ -1977,7 +1965,7 @@ table td
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_COLOR&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_BITMAP*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_BITMAP&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_VERTEX&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
@@ -1992,7 +1980,7 @@ table td
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::cout&quot;, &quot;headers&quot;=&gt;[&quot;iostream&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Tileo::TileAtlas*&quot;, &quot;headers&quot;=&gt;[&quot;Tileo/TileAtlas.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Tileo::TileAtlas&quot;, &quot;headers&quot;=&gt;[&quot;Tileo/TileAtlas.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::WorldMap::tile_type_t&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/WorldMap/TileTypeEnum.hpp&quot;]}</td>
@@ -2055,13 +2043,13 @@ table td
     </table>
      <table>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;ALLEGRO_VERTEX&gt;&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;allegro5/allegro.h&quot;, &quot;allegro5/allegro_primitives.h&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_VERTEX&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;, &quot;allegro5/allegro_primitives.h&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Random&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Random.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Tileo::TileAtlas*&quot;, &quot;headers&quot;=&gt;[&quot;Tileo/TileAtlas.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Tileo::TileAtlas&quot;, &quot;headers&quot;=&gt;[&quot;Tileo/TileAtlas.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_VERTEX&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_primitives.h&quot;]}</td>
@@ -2110,10 +2098,10 @@ table td
     </table>
      <table>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Tileo::TileAtlas*&quot;, &quot;headers&quot;=&gt;[&quot;Tileo/TileAtlas.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Tileo::TileAtlas&quot;, &quot;headers&quot;=&gt;[&quot;Tileo/TileAtlas.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;ALLEGRO_VERTEX&gt;&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;allegro5/allegro_primitives.h&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_VERTEX&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_primitives.h&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::stringstream&quot;, &quot;headers&quot;=&gt;[&quot;sstream&quot;]}</td>
@@ -2225,13 +2213,13 @@ table td
     </table>
      <table>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;ALLEGRO_VERTEX&gt;&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;allegro5/allegro.h&quot;, &quot;allegro5/allegro_primitives.h&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_VERTEX&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_primitives.h&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Random&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Random.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Tileo::TileAtlas*&quot;, &quot;headers&quot;=&gt;[&quot;Tileo/TileAtlas.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Tileo::TileAtlas&quot;, &quot;headers&quot;=&gt;[&quot;Tileo/TileAtlas.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_VERTEX&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_primitives.h&quot;]}</td>
@@ -2317,10 +2305,10 @@ table td
     </table>
      <table>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Tileo::TileAtlas*&quot;, &quot;headers&quot;=&gt;[&quot;Tileo/TileAtlas.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Tileo::TileAtlas&quot;, &quot;headers&quot;=&gt;[&quot;Tileo/TileAtlas.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;ALLEGRO_VERTEX&gt;&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;allegro5/allegro_primitives.h&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_VERTEX&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_primitives.h&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::stringstream&quot;, &quot;headers&quot;=&gt;[&quot;sstream&quot;]}</td>
@@ -2385,7 +2373,7 @@ table td
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::WorldMap::TileMap&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/WorldMap/TileMap.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;ALLEGRO_VERTEX&gt;&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;allegro5/allegro.h&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_VERTEX&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Random&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Random.hpp&quot;]}</td>
@@ -2394,7 +2382,7 @@ table td
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_COLOR&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_BITMAP*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_BITMAP&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_VERTEX&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
@@ -2409,7 +2397,7 @@ table td
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::cout&quot;, &quot;headers&quot;=&gt;[&quot;iostream&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Tileo::TileAtlas*&quot;, &quot;headers&quot;=&gt;[&quot;Tileo/TileAtlas.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Tileo::TileAtlas&quot;, &quot;headers&quot;=&gt;[&quot;Tileo/TileAtlas.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::WorldMap::tile_type_t&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/WorldMap/TileTypeEnum.hpp&quot;]}</td>
@@ -2459,7 +2447,7 @@ table td
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Rendering::TileTypeDefinition&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Rendering/TileTypeDefinition.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::map&lt;int, LabyrinthOfLore::Rendering::TileTypeDefinition&gt;&quot;, &quot;headers&quot;=&gt;[&quot;map&quot;, &quot;LabyrinthOfLore/Rendering/TileTypeDefinition.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Rendering::TileTypeDefinition&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Rendering/TileTypeDefinition.hpp&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -2623,7 +2611,7 @@ table td
     </table>
      <table>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::map&lt;std::string, LabyrinthOfLore::WorldMap::Level&gt;&quot;, &quot;headers&quot;=&gt;[&quot;map&quot;, &quot;LabyrinthOfLore/WorldMap/Level.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::WorldMap::Level&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/WorldMap/Level.hpp&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -2694,7 +2682,7 @@ table td
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::WorldMap::BitmapTileMapLoader&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/WorldMap/BitmapTileMapLoader.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;std::vector&lt;LabyrinthOfLore::WorldMap::Tile&gt;&gt;&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;LabyrinthOfLore/WorldMap/Tile.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::WorldMap::Tile&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/WorldMap/Tile.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::WorldMap::TileMap&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/WorldMap/TileMap.hpp&quot;]}</td>
@@ -2793,7 +2781,7 @@ table td
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::stringstream&quot;, &quot;headers&quot;=&gt;[&quot;sstream&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_BITMAP*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_BITMAP&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_COLOR&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_color.h&quot;]}</td>
@@ -2906,7 +2894,7 @@ table td
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::WorldMap::MultiBitmapTileMapLoader&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/WorldMap/MultiBitmapTileMapLoader.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;std::vector&lt;LabyrinthOfLore::WorldMap::Tile&gt;&gt;&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;LabyrinthOfLore/WorldMap/Tile.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::WorldMap::Tile&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/WorldMap/Tile.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::WorldMap::TileMap&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/WorldMap/TileMap.hpp&quot;]}</td>
@@ -2976,13 +2964,10 @@ table td
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::stringstream&quot;, &quot;headers&quot;=&gt;[&quot;sstream&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_BITMAP*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_BITMAP&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_COLOR&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_color.h&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::WorldMap::TileMap*&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/WorldMap/TileMap.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::WorldMap::TileMap&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/WorldMap/TileMap.hpp&quot;]}</td>
@@ -3038,7 +3023,7 @@ table td
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_color_name&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_color.h&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_BITMAP*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_BITMAP&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_init_primitives_addon&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_primitives.h&quot;]}</td>
@@ -3090,7 +3075,7 @@ table td
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::WorldMap::TileMap&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/WorldMap/TileMap.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;std::vector&lt;LabyrinthOfLore::WorldMap::Tile&gt;&gt;&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;LabyrinthOfLore/WorldMap/Tile.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::WorldMap::Tile&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/WorldMap/Tile.hpp&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -3209,7 +3194,7 @@ table td
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Shader::DepthDarken&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Shader/DepthDarken.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::BitmapBin*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/BitmapBin.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::BitmapBin&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/BitmapBin.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::vec3d&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Vec3D.hpp&quot;]}</td>
@@ -3218,7 +3203,7 @@ table td
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;Tileo::TileAtlas&quot;, &quot;headers&quot;=&gt;[&quot;Tileo/TileAtlas.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::map&lt;std::string, LabyrinthOfLore::WorldMap::Level&gt;&quot;, &quot;headers&quot;=&gt;[&quot;map&quot;, &quot;string&quot;, &quot;LabyrinthOfLore/WorldMap/Level.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::WorldMap::Level&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/WorldMap/Level.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::WorldMap::MultiBitmapFilenameToWorldBuilder&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/WorldMap/MultiBitmapFilenameToWorldBuilder.hpp&quot;]}</td>
@@ -3236,25 +3221,19 @@ table td
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLoreGame::ItemIdEnums&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLoreGame/ItemIdEnums.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::map&lt;std::string, LabyrinthOfLore::Rendering::TileMapMesh&gt;&quot;, &quot;headers&quot;=&gt;[&quot;map&quot;, &quot;string&quot;, &quot;LabyrinthOfLore/Rendering/TileMapMesh.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Rendering::TileMapMesh&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Rendering/TileMapMesh.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::map&lt;std::string, LabyrinthOfLore::Rendering::TileMapWaterMesh&gt;&quot;, &quot;headers&quot;=&gt;[&quot;map&quot;, &quot;string&quot;, &quot;LabyrinthOfLore/Rendering/TileMapWaterMesh.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Rendering::TileMapWaterMesh&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Rendering/TileMapWaterMesh.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::map&lt;char, LabyrinthOfLore::WorldMap::Door&gt;&quot;, &quot;headers&quot;=&gt;[&quot;map&quot;, &quot;LabyrinthOfLore/WorldMap/Door.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::WorldMap::Door&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/WorldMap/Door.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Entity::ThingDictionary&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Entity/ThingDictionary.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Entity::ThingDictionary*&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Entity/ThingDictionary.hpp&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;LabyrinthOfLore::Entity::Base*&gt;&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;LabyrinthOfLore/Entity/Base.hpp&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;LabyrinthOfLore::Entity::Base*&gt;*&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;LabyrinthOfLore/Entity/Base.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Entity::Base&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Entity/Base.hpp&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -3326,22 +3305,19 @@ table td
     </table>
      <table>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;std::vector&lt;LabyrinthOfLore::Entity::Base*&gt;*&quot;, &quot;headers&quot;=&gt;[&quot;vector&quot;, &quot;LabyrinthOfLore/Entity/Base.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Entity::Base&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Entity/Base.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Entity::Base*&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Entity/Base.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Entity::ThingDictionary&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Entity/ThingDictionary.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Entity::ThingDictionary*&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Entity/ThingDictionary.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::MessageScroll&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/MessageScroll.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::MessageScroll*&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/MessageScroll.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::CharacterPanel&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/CharacterPanel.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::CharacterPanel*&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/CharacterPanel.hpp&quot;]}</td>
-</tr>
-<tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Inventory*&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Inventory.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Inventory&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Inventory.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLoreGame::ItemIdEnums&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLoreGame/ItemIdEnums.hpp&quot;]}</td>
@@ -3353,7 +3329,7 @@ table td
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Entity::ThingDefinition&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Entity/ThingDefinition.hpp&quot;]}</td>
 </tr>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLoreGame::ThingDefinitionFactory*&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLoreGame/ThingDefinitionFactory.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLoreGame::ThingDefinitionFactory&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLoreGame/ThingDefinitionFactory.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;thing_type_t&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLoreGame/ItemIdEnums.hpp&quot;]}</td>
@@ -3412,7 +3388,7 @@ table td
     </table>
      <table>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_BITMAP*&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_BITMAP&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -3420,12 +3396,80 @@ table td
 <h1>Dependents</h1>
 <pre>
 {
-  "AllegroFlare/ElementID": [
-    "LabyrinthOfLore/Entity/Base"
+  "LabyrinthOfLore/Hud/MessageScroll": [
+    ".removed/LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
+    "LabyrinthOfLore/Rendering/Hud/Renderer",
+    "LabyrinthOfLoreGame/Interactions"
+  ],
+  "ALLEGRO_COLOR": [
+    ".removed/LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
+    "LabyrinthOfLore/Rendering/TileMapMesh",
+    "LabyrinthOfLore/Rendering/TileMapMeshCubeBuilder",
+    "LabyrinthOfLore/Rendering/TileMapMeshPillarBuilder",
+    "LabyrinthOfLore/Rendering/TileMapWaterMesh",
+    "LabyrinthOfLore/Shader/ClampedColor",
+    "LabyrinthOfLore/Shader/DepthDarken",
+    "LabyrinthOfLore/Shader/FlatColor",
+    "LabyrinthOfLore/WorldMap/BitmapTileMapLoader",
+    "LabyrinthOfLore/WorldMap/MultiBitmapTileMapLoader"
+  ],
+  "ALLEGRO_FONT": [
+    ".removed/LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
+    "LabyrinthOfLore/Rendering/Hud/CharacterPanelRenderer",
+    "LabyrinthOfLore/Rendering/Hud/CommandPanelRenderer",
+    "LabyrinthOfLore/Rendering/Hud/CommandsHintPaneRenderer",
+    "LabyrinthOfLore/Rendering/Hud/CompassRenderer",
+    "LabyrinthOfLore/Rendering/Hud/CurrentSpellsRenderer",
+    "LabyrinthOfLore/Rendering/Hud/MapButtonRenderer",
+    "LabyrinthOfLore/Rendering/Hud/Renderer",
+    "LabyrinthOfLore/Rendering/Hud/RotateCharacterPanelButtonRenderer",
+    "LabyrinthOfLore/Rendering/Hud/RuneShelfRenderer",
+    "LabyrinthOfLore/Rendering/Hud/TitleTextRenderer",
+    "LabyrinthOfLore/Rendering/Hud/ViewFrameRenderer",
+    "LabyrinthOfLore/Rendering/Hud/VitalityAndManaBarRenderer"
+  ],
+  "al_color_name": [
+    ".removed/LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
+    "LabyrinthOfLore/Rendering/Hud/CharacterPanelRenderer",
+    "LabyrinthOfLore/Rendering/Hud/CommandPanelRenderer",
+    "LabyrinthOfLore/Rendering/Hud/CommandsHintPaneRenderer",
+    "LabyrinthOfLore/Rendering/Hud/CompassRenderer",
+    "LabyrinthOfLore/Rendering/Hud/CurrentSpellsRenderer",
+    "LabyrinthOfLore/Rendering/Hud/MapButtonRenderer",
+    "LabyrinthOfLore/Rendering/Hud/Renderer",
+    "LabyrinthOfLore/Rendering/Hud/RotateCharacterPanelButtonRenderer",
+    "LabyrinthOfLore/Rendering/Hud/RuneShelfRenderer",
+    "LabyrinthOfLore/Rendering/Hud/TitleTextRenderer",
+    "LabyrinthOfLore/Rendering/Hud/ViewFrameRenderer",
+    "LabyrinthOfLore/Rendering/Hud/VitalityAndManaBarRenderer",
+    "LabyrinthOfLore/Rendering/MousePointer",
+    "LabyrinthOfLore/Rendering/SceneRenderer",
+    "LabyrinthOfLore/Rendering/TileMapMesh",
+    "LabyrinthOfLore/Rendering/TileMapMeshCubeBuilder",
+    "LabyrinthOfLore/Rendering/TileMapMeshCubeTexturer",
+    "LabyrinthOfLore/Rendering/TileMapMeshPillarBuilder",
+    "LabyrinthOfLore/Rendering/TileMapMeshPillarTexturer",
+    "LabyrinthOfLore/Rendering/TileMapWaterMesh",
+    "LabyrinthOfLore/WorldMap/BasicRenderer",
+    "LabyrinthOfLore/WorldMap/PixelRenderer"
+  ],
+  "al_draw_rounded_rectangle": [
+    ".removed/LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
+    "LabyrinthOfLore/Rendering/Hud/CharacterPanelRenderer",
+    "LabyrinthOfLore/Rendering/Hud/CommandPanelRenderer",
+    "LabyrinthOfLore/Rendering/Hud/CommandsHintPaneRenderer",
+    "LabyrinthOfLore/Rendering/Hud/CompassRenderer",
+    "LabyrinthOfLore/Rendering/Hud/CurrentSpellsRenderer",
+    "LabyrinthOfLore/Rendering/Hud/MapButtonRenderer",
+    "LabyrinthOfLore/Rendering/Hud/RotateCharacterPanelButtonRenderer",
+    "LabyrinthOfLore/Rendering/Hud/RuneShelfRenderer",
+    "LabyrinthOfLore/Rendering/Hud/TitleTextRenderer",
+    "LabyrinthOfLore/Rendering/Hud/ViewFrameRenderer",
+    "LabyrinthOfLore/Rendering/Hud/VitalityAndManaBarRenderer"
   ],
   "allegro_flare/placement3d": [
+    ".removed/LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
     "LabyrinthOfLore/Entity/Base",
-    "LabyrinthOfLore/Rendering/Camera",
     "LabyrinthOfLore/Rendering/Camera",
     "LabyrinthOfLore/Rendering/Hud/CharacterPanelRenderer",
     "LabyrinthOfLore/Rendering/Hud/CommandPanelRenderer",
@@ -3433,7 +3477,6 @@ table td
     "LabyrinthOfLore/Rendering/Hud/CompassRenderer",
     "LabyrinthOfLore/Rendering/Hud/CurrentSpellsRenderer",
     "LabyrinthOfLore/Rendering/Hud/MapButtonRenderer",
-    "LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
     "LabyrinthOfLore/Rendering/Hud/Renderer",
     "LabyrinthOfLore/Rendering/Hud/RotateCharacterPanelButtonRenderer",
     "LabyrinthOfLore/Rendering/Hud/RuneShelfRenderer",
@@ -3443,6 +3486,37 @@ table td
     "LabyrinthOfLore/Rendering/PickingBufferRenderer",
     "LabyrinthOfLore/Rendering/SceneRenderer",
     "LabyrinthOfLore/Rendering/SpritesBillboarder"
+  ],
+  "x": [
+    ".removed/LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
+    "LabyrinthOfLore/Rendering/Hud/CharacterPanelRenderer",
+    "LabyrinthOfLore/Rendering/Hud/CommandPanelRenderer",
+    "LabyrinthOfLore/Rendering/Hud/CommandsHintPaneRenderer",
+    "LabyrinthOfLore/Rendering/Hud/CompassRenderer",
+    "LabyrinthOfLore/Rendering/Hud/CurrentSpellsRenderer",
+    "LabyrinthOfLore/Rendering/Hud/MapButtonRenderer",
+    "LabyrinthOfLore/Rendering/Hud/RotateCharacterPanelButtonRenderer",
+    "LabyrinthOfLore/Rendering/Hud/RuneShelfRenderer",
+    "LabyrinthOfLore/Rendering/Hud/TitleTextRenderer",
+    "LabyrinthOfLore/Rendering/Hud/ViewFrameRenderer",
+    "LabyrinthOfLore/Rendering/Hud/VitalityAndManaBarRenderer"
+  ],
+  "std/vector<std/tuple<float, std/string, int>>": [
+    ".removed/LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
+    "LabyrinthOfLore/Hud/MessageScroll"
+  ],
+  "void": [
+    ".removed/LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer"
+  ],
+  "const char": [
+    ".removed/LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer"
+  ],
+  "AllegroFlare/clamp": [
+    ".removed/LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
+    "LabyrinthOfLore/Rendering/Hud/TitleTextRenderer"
+  ],
+  "AllegroFlare/ElementID": [
+    "LabyrinthOfLore/Entity/Base"
   ],
   "AllegroFlare/Model3D": [
     "LabyrinthOfLore/Entity/Base"
@@ -3460,16 +3534,20 @@ table td
     "LabyrinthOfLore/WorldMap/PixelRenderer",
     "Tileo/TileIndexInfo"
   ],
-  "std/vector<LabyrinthOfLore/Entity/Base>": [
+  "LabyrinthOfLore/Entity/Base": [
     "LabyrinthOfLore/Entity/Cleanup",
     "LabyrinthOfLore/Entity/Selector",
+    "LabyrinthOfLore/Physics/EntityTileMapCollisionEvent",
     "LabyrinthOfLore/Physics/EntityTileMapCollisionStepper",
+    "LabyrinthOfLore/Physics/EntityZoneCollisionEvent",
     "LabyrinthOfLore/Physics/EntityZoneCollisionObserver",
     "LabyrinthOfLore/Physics/GravityStepper",
+    "LabyrinthOfLore/Rendering/EntityPickingRenderer",
+    "LabyrinthOfLore/Rendering/EntityRenderer",
     "LabyrinthOfLore/Rendering/PickingBufferRenderer",
     "LabyrinthOfLore/Rendering/SceneRenderer",
+    "LabyrinthOfLore/Rendering/SceneRenderer",
     "LabyrinthOfLore/Rendering/SpritesBillboarder",
-    "LabyrinthOfLoreGame/Classic",
     "LabyrinthOfLoreGame/Classic",
     "LabyrinthOfLoreGame/Interactions"
   ],
@@ -3519,7 +3597,6 @@ table td
   "LabyrinthOfLore/Entity/ThingDictionary": [
     "LabyrinthOfLore/Hud/CharacterPanel",
     "LabyrinthOfLoreGame/Classic",
-    "LabyrinthOfLoreGame/Classic",
     "LabyrinthOfLoreGame/Interactions"
   ],
   "std/vector": [
@@ -3532,19 +3609,8 @@ table td
     "LabyrinthOfLore/Hud/CharacterPanel"
   ],
   "LabyrinthOfLore/Hud/command_mode_t": [
-    "LabyrinthOfLore/Hud/CommandPanel"
-  ],
-  "std/vector<std/tuple<float, std/string, int>>": [
-    "LabyrinthOfLore/Hud/MessageScroll",
-    "LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer"
-  ],
-  "LabyrinthOfLore/Entity/Base": [
-    "LabyrinthOfLore/Physics/EntityTileMapCollisionEvent",
-    "LabyrinthOfLore/Physics/EntityZoneCollisionEvent",
-    "LabyrinthOfLore/Rendering/EntityPickingRenderer",
-    "LabyrinthOfLore/Rendering/EntityRenderer",
-    "LabyrinthOfLore/Rendering/SceneRenderer",
-    "LabyrinthOfLoreGame/Interactions"
+    "LabyrinthOfLore/Hud/CommandPanel",
+    "LabyrinthOfLore/Rendering/Hud/CommandPanelRenderer"
   ],
   "LabyrinthOfLore/WorldMap/tile_face_t": [
     "LabyrinthOfLore/Physics/EntityTileMapCollisionEvent",
@@ -3560,12 +3626,8 @@ table td
     "LabyrinthOfLore/WorldMap/Level",
     "LabyrinthOfLore/WorldMap/MultiBitmapFilenameToWorldBuilder",
     "LabyrinthOfLore/WorldMap/MultiBitmapTileMapLoader",
-    "LabyrinthOfLore/WorldMap/MultiBitmapTileMapLoader",
     "LabyrinthOfLore/WorldMap/PixelRenderer",
     "LabyrinthOfLore/WorldMap/TileMapLoader"
-  ],
-  "LabyrinthOfLore/WorldMap/TileMap&": [
-    "LabyrinthOfLore/Physics/EntityTileMapCollisionStepper"
   ],
   "fabs": [
     "LabyrinthOfLore/Physics/EntityTileMapCollisionStepper"
@@ -3574,18 +3636,13 @@ table td
     "LabyrinthOfLore/Physics/EntityTileMapCollisionStepper"
   ],
   "LabyrinthOfLore/Physics/EntityTileMapCollisionEvent": [
-    "LabyrinthOfLore/Physics/EntityTileMapCollisionStepper"
-  ],
-  "std/vector<LabyrinthOfLore/Physics/EntityTileMapCollisionEvent>": [
+    "LabyrinthOfLore/Physics/EntityTileMapCollisionStepper",
     "LabyrinthOfLore/Physics/EntityTileMapCollisionStepper"
   ],
   "LabyrinthOfLore/Physics/zone_collision_event_t": [
     "LabyrinthOfLore/Physics/EntityZoneCollisionEvent"
   ],
-  "std/vector<LabyrinthOfLore/WorldMap/Zone>": [
-    "LabyrinthOfLore/Physics/EntityZoneCollisionObserver"
-  ],
-  "std/vector<std/pair<LabyrinthOfLore/Entity/Base, LabyrinthOfLore/WorldMap/Zone>>": [
+  "LabyrinthOfLore/WorldMap/Zone": [
     "LabyrinthOfLore/Physics/EntityZoneCollisionObserver"
   ],
   "std/set_difference": [
@@ -3600,7 +3657,6 @@ table td
     "LabyrinthOfLoreGame/Classic"
   ],
   "ALLEGRO_TRANSFORM": [
-    "LabyrinthOfLore/Rendering/Camera",
     "LabyrinthOfLore/Rendering/Camera",
     "LabyrinthOfLore/Rendering/PickingBufferRenderer",
     "LabyrinthOfLore/Rendering/SceneRenderer"
@@ -3624,80 +3680,9 @@ table td
     "LabyrinthOfLore/Rendering/Hud/Renderer",
     "LabyrinthOfLoreGame/Interactions"
   ],
-  "ALLEGRO_FONT": [
-    "LabyrinthOfLore/Rendering/Hud/CharacterPanelRenderer",
-    "LabyrinthOfLore/Rendering/Hud/CommandPanelRenderer",
-    "LabyrinthOfLore/Rendering/Hud/CommandsHintPaneRenderer",
-    "LabyrinthOfLore/Rendering/Hud/CompassRenderer",
-    "LabyrinthOfLore/Rendering/Hud/CurrentSpellsRenderer",
-    "LabyrinthOfLore/Rendering/Hud/MapButtonRenderer",
-    "LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
-    "LabyrinthOfLore/Rendering/Hud/Renderer",
-    "LabyrinthOfLore/Rendering/Hud/RotateCharacterPanelButtonRenderer",
-    "LabyrinthOfLore/Rendering/Hud/RuneShelfRenderer",
-    "LabyrinthOfLore/Rendering/Hud/TitleTextRenderer",
-    "LabyrinthOfLore/Rendering/Hud/ViewFrameRenderer",
-    "LabyrinthOfLore/Rendering/Hud/VitalityAndManaBarRenderer"
-  ],
-  "al_color_name": [
-    "LabyrinthOfLore/Rendering/Hud/CharacterPanelRenderer",
-    "LabyrinthOfLore/Rendering/Hud/CommandPanelRenderer",
-    "LabyrinthOfLore/Rendering/Hud/CommandsHintPaneRenderer",
-    "LabyrinthOfLore/Rendering/Hud/CompassRenderer",
-    "LabyrinthOfLore/Rendering/Hud/CurrentSpellsRenderer",
-    "LabyrinthOfLore/Rendering/Hud/MapButtonRenderer",
-    "LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
-    "LabyrinthOfLore/Rendering/Hud/Renderer",
-    "LabyrinthOfLore/Rendering/Hud/RotateCharacterPanelButtonRenderer",
-    "LabyrinthOfLore/Rendering/Hud/RuneShelfRenderer",
-    "LabyrinthOfLore/Rendering/Hud/TitleTextRenderer",
-    "LabyrinthOfLore/Rendering/Hud/ViewFrameRenderer",
-    "LabyrinthOfLore/Rendering/Hud/VitalityAndManaBarRenderer",
-    "LabyrinthOfLore/Rendering/MousePointer",
-    "LabyrinthOfLore/Rendering/SceneRenderer",
-    "LabyrinthOfLore/Rendering/TileMapMesh",
-    "LabyrinthOfLore/Rendering/TileMapMeshCubeBuilder",
-    "LabyrinthOfLore/Rendering/TileMapMeshCubeTexturer",
-    "LabyrinthOfLore/Rendering/TileMapMeshPillarBuilder",
-    "LabyrinthOfLore/Rendering/TileMapMeshPillarTexturer",
-    "LabyrinthOfLore/Rendering/TileMapWaterMesh",
-    "LabyrinthOfLore/WorldMap/BasicRenderer",
-    "LabyrinthOfLore/WorldMap/PixelRenderer"
-  ],
-  "al_draw_rounded_rectangle": [
-    "LabyrinthOfLore/Rendering/Hud/CharacterPanelRenderer",
-    "LabyrinthOfLore/Rendering/Hud/CommandPanelRenderer",
-    "LabyrinthOfLore/Rendering/Hud/CommandsHintPaneRenderer",
-    "LabyrinthOfLore/Rendering/Hud/CompassRenderer",
-    "LabyrinthOfLore/Rendering/Hud/CurrentSpellsRenderer",
-    "LabyrinthOfLore/Rendering/Hud/MapButtonRenderer",
-    "LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
-    "LabyrinthOfLore/Rendering/Hud/RotateCharacterPanelButtonRenderer",
-    "LabyrinthOfLore/Rendering/Hud/RuneShelfRenderer",
-    "LabyrinthOfLore/Rendering/Hud/TitleTextRenderer",
-    "LabyrinthOfLore/Rendering/Hud/ViewFrameRenderer",
-    "LabyrinthOfLore/Rendering/Hud/VitalityAndManaBarRenderer"
-  ],
-  "x": [
-    "LabyrinthOfLore/Rendering/Hud/CharacterPanelRenderer",
-    "LabyrinthOfLore/Rendering/Hud/CommandPanelRenderer",
-    "LabyrinthOfLore/Rendering/Hud/CommandsHintPaneRenderer",
-    "LabyrinthOfLore/Rendering/Hud/CompassRenderer",
-    "LabyrinthOfLore/Rendering/Hud/CurrentSpellsRenderer",
-    "LabyrinthOfLore/Rendering/Hud/MapButtonRenderer",
-    "LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
-    "LabyrinthOfLore/Rendering/Hud/RotateCharacterPanelButtonRenderer",
-    "LabyrinthOfLore/Rendering/Hud/RuneShelfRenderer",
-    "LabyrinthOfLore/Rendering/Hud/TitleTextRenderer",
-    "LabyrinthOfLore/Rendering/Hud/ViewFrameRenderer",
-    "LabyrinthOfLore/Rendering/Hud/VitalityAndManaBarRenderer"
-  ],
   "LabyrinthOfLore/Hud/CommandPanel": [
     "LabyrinthOfLore/Rendering/Hud/CommandPanelRenderer",
     "LabyrinthOfLore/Rendering/Hud/Renderer"
-  ],
-  "std/vector<LabyrinthOfLore/Hud/command_mode_t>": [
-    "LabyrinthOfLore/Rendering/Hud/CommandPanelRenderer"
   ],
   "LabyrinthOfLore/Hud/CommandsHintPane": [
     "LabyrinthOfLore/Rendering/Hud/CommandsHintPaneRenderer",
@@ -3714,33 +3699,6 @@ table td
   "LabyrinthOfLore/Hud/MapButton": [
     "LabyrinthOfLore/Rendering/Hud/MapButtonRenderer",
     "LabyrinthOfLore/Rendering/Hud/Renderer"
-  ],
-  "LabyrinthOfLore/Hud/MessageScroll": [
-    "LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
-    "LabyrinthOfLore/Rendering/Hud/Renderer",
-    "LabyrinthOfLoreGame/Interactions"
-  ],
-  "ALLEGRO_COLOR": [
-    "LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
-    "LabyrinthOfLore/Rendering/TileMapMesh",
-    "LabyrinthOfLore/Rendering/TileMapMeshCubeBuilder",
-    "LabyrinthOfLore/Rendering/TileMapMeshPillarBuilder",
-    "LabyrinthOfLore/Rendering/TileMapWaterMesh",
-    "LabyrinthOfLore/Shader/ClampedColor",
-    "LabyrinthOfLore/Shader/DepthDarken",
-    "LabyrinthOfLore/Shader/FlatColor",
-    "LabyrinthOfLore/WorldMap/BitmapTileMapLoader",
-    "LabyrinthOfLore/WorldMap/MultiBitmapTileMapLoader"
-  ],
-  "void": [
-    "LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer"
-  ],
-  "const char": [
-    "LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer"
-  ],
-  "AllegroFlare/clamp<float>": [
-    "LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
-    "LabyrinthOfLore/Rendering/Hud/TitleTextRenderer"
   ],
   "AllegroFlare/FontBin": [
     "LabyrinthOfLore/Rendering/Hud/Renderer"
@@ -3829,7 +3787,8 @@ table td
   "LabyrinthOfLore/Rendering/TileMapMesh": [
     "LabyrinthOfLore/Rendering/PickingBufferRenderer",
     "LabyrinthOfLore/Rendering/SceneRenderer",
-    "LabyrinthOfLore/WorldMap/Level"
+    "LabyrinthOfLore/WorldMap/Level",
+    "LabyrinthOfLoreGame/Classic"
   ],
   "LabyrinthOfLore/Shader/DepthDarken": [
     "LabyrinthOfLore/Rendering/SceneRenderer",
@@ -3839,7 +3798,8 @@ table td
     "LabyrinthOfLore/Rendering/SceneRenderer"
   ],
   "LabyrinthOfLore/Rendering/TileMapWaterMesh": [
-    "LabyrinthOfLore/Rendering/SceneRenderer"
+    "LabyrinthOfLore/Rendering/SceneRenderer",
+    "LabyrinthOfLoreGame/Classic"
   ],
   "al_clear_to_color": [
     "LabyrinthOfLore/Rendering/SceneRenderer"
@@ -3870,21 +3830,19 @@ table td
     "LabyrinthOfLore/WorldMap/PixelRenderer",
     "LabyrinthOfLoreGame/Classic"
   ],
-  "std/vector<ALLEGRO_VERTEX>": [
+  "ALLEGRO_VERTEX": [
     "LabyrinthOfLore/Rendering/TileMapMesh",
+    "LabyrinthOfLore/Rendering/TileMapMesh",
+    "LabyrinthOfLore/Rendering/TileMapMeshCubeBuilder",
     "LabyrinthOfLore/Rendering/TileMapMeshCubeBuilder",
     "LabyrinthOfLore/Rendering/TileMapMeshCubeTexturer",
     "LabyrinthOfLore/Rendering/TileMapMeshPillarBuilder",
+    "LabyrinthOfLore/Rendering/TileMapMeshPillarBuilder",
     "LabyrinthOfLore/Rendering/TileMapMeshPillarTexturer",
+    "LabyrinthOfLore/Rendering/TileMapWaterMesh",
     "LabyrinthOfLore/Rendering/TileMapWaterMesh"
   ],
   "AllegroFlare/Random": [
-    "LabyrinthOfLore/Rendering/TileMapMesh",
-    "LabyrinthOfLore/Rendering/TileMapMeshCubeBuilder",
-    "LabyrinthOfLore/Rendering/TileMapMeshPillarBuilder",
-    "LabyrinthOfLore/Rendering/TileMapWaterMesh"
-  ],
-  "ALLEGRO_VERTEX": [
     "LabyrinthOfLore/Rendering/TileMapMesh",
     "LabyrinthOfLore/Rendering/TileMapMeshCubeBuilder",
     "LabyrinthOfLore/Rendering/TileMapMeshPillarBuilder",
@@ -3912,9 +3870,7 @@ table td
     "LabyrinthOfLore/Rendering/TileMapMeshPillarTexturer"
   ],
   "LabyrinthOfLore/Rendering/TileTypeDefinition": [
-    "LabyrinthOfLore/Rendering/TileTypeDictionary"
-  ],
-  "std/map<int, LabyrinthOfLore/Rendering/TileTypeDefinition>": [
+    "LabyrinthOfLore/Rendering/TileTypeDictionary",
     "LabyrinthOfLore/Rendering/TileTypeDictionary"
   ],
   "AllegroFlare/Shader": [
@@ -3925,7 +3881,7 @@ table td
     "LabyrinthOfLore/Shader/DepthDarken",
     "LabyrinthOfLore/Shader/FlatColor"
   ],
-  "std/map<std/string, LabyrinthOfLore/WorldMap/Level>": [
+  "LabyrinthOfLore/WorldMap/Level": [
     "LabyrinthOfLore/World",
     "LabyrinthOfLoreGame/Classic"
   ],
@@ -3935,7 +3891,10 @@ table td
   ],
   "LabyrinthOfLore/WorldMap/Tile": [
     "LabyrinthOfLore/WorldMap/BasicRenderer",
-    "LabyrinthOfLore/WorldMap/PixelRenderer"
+    "LabyrinthOfLore/WorldMap/BitmapFilenameToWorldBuilder",
+    "LabyrinthOfLore/WorldMap/MultiBitmapFilenameToWorldBuilder",
+    "LabyrinthOfLore/WorldMap/PixelRenderer",
+    "LabyrinthOfLore/WorldMap/TileMapLoader"
   ],
   "al_init_primitives_addon": [
     "LabyrinthOfLore/WorldMap/BasicRenderer",
@@ -3945,11 +3904,6 @@ table td
     "LabyrinthOfLore/WorldMap/BitmapFilenameToWorldBuilder",
     "LabyrinthOfLore/WorldMap/BitmapFilenameToWorldBuilder",
     "LabyrinthOfLore/WorldMap/MultiBitmapFilenameToWorldBuilder"
-  ],
-  "std/vector<std/vector<LabyrinthOfLore/WorldMap/Tile>>": [
-    "LabyrinthOfLore/WorldMap/BitmapFilenameToWorldBuilder",
-    "LabyrinthOfLore/WorldMap/MultiBitmapFilenameToWorldBuilder",
-    "LabyrinthOfLore/WorldMap/TileMapLoader"
   ],
   "al_load_bitmap": [
     "LabyrinthOfLore/WorldMap/BitmapFilenameToWorldBuilder",
@@ -3974,13 +3928,7 @@ table td
     "LabyrinthOfLoreGame/Classic",
     "LabyrinthOfLoreGame/Interactions"
   ],
-  "std/map<std/string, LabyrinthOfLore/Rendering/TileMapMesh>": [
-    "LabyrinthOfLoreGame/Classic"
-  ],
-  "std/map<std/string, LabyrinthOfLore/Rendering/TileMapWaterMesh>": [
-    "LabyrinthOfLoreGame/Classic"
-  ],
-  "std/map<char, LabyrinthOfLore/WorldMap/Door>": [
+  "LabyrinthOfLore/WorldMap/Door": [
     "LabyrinthOfLoreGame/Classic"
   ],
   "LabyrinthOfLoreGame/ThingDefinitionFactory": [
