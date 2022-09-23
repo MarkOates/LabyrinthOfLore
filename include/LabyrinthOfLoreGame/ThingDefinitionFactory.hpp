@@ -10,6 +10,9 @@ namespace LabyrinthOfLoreGame
    {
    private:
 
+   protected:
+
+
    public:
       ThingDefinitionFactory();
       ~ThingDefinitionFactory();

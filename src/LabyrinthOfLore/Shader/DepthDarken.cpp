@@ -4,6 +4,7 @@
 
 
 
+
 namespace LabyrinthOfLore
 {
 namespace Shader
@@ -129,6 +130,8 @@ std::string DepthDarken::obtain_fragment_source()
    )DELIM";
    return source;
 }
+
+
 } // namespace Shader
 } // namespace LabyrinthOfLore
 

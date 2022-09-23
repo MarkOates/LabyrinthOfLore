@@ -1,6 +1,7 @@
 
 
 #include <LabyrinthOfLore/Hud/CharacterPanel.hpp>
+
 #include <vector>
 
 
@@ -24,13 +25,13 @@ CharacterPanel::~CharacterPanel()
 }
 
 
-int CharacterPanel::get_cursor_x()
+int CharacterPanel::get_cursor_x() const
 {
    return cursor_x;
 }
 
 
-int CharacterPanel::get_cursor_y()
+int CharacterPanel::get_cursor_y() const
 {
    return cursor_y;
 }
@@ -127,6 +128,8 @@ bool CharacterPanel::has_item(int item_id)
    if (player_inventory && player_inventory->has_item(item_id)) return true;
    return false;
 }
+
+
 } // namespace Hud
 } // namespace LabyrinthOfLore
 

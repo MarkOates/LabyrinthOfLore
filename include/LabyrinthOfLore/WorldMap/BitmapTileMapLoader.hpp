@@ -15,6 +15,9 @@ namespace LabyrinthOfLore
       private:
          ALLEGRO_BITMAP* source_bitmap;
 
+      protected:
+
+
       public:
          BitmapTileMapLoader(ALLEGRO_BITMAP* source_bitmap=nullptr);
          ~BitmapTileMapLoader();

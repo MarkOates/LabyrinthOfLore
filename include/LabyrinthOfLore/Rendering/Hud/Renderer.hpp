@@ -44,6 +44,9 @@ namespace LabyrinthOfLore
             LabyrinthOfLore::Hud::TitleText* title_text;
             LabyrinthOfLore::Rendering::MousePointer* mouse_pointer;
 
+         protected:
+
+
          public:
             Renderer(ALLEGRO_BITMAP* render_surface=nullptr, AllegroFlare::FontBin* font_bin=nullptr, LabyrinthOfLore::Hud::MessageScroll* message_scroll=nullptr, LabyrinthOfLore::Hud::CommandPanel* command_panel=nullptr, LabyrinthOfLore::Hud::VitalityAndManaBar* vitality_and_mana_bar=nullptr, LabyrinthOfLore::Hud::CharacterPanel* character_panel=nullptr, LabyrinthOfLore::Hud::MapButton* map_button=nullptr, LabyrinthOfLore::Hud::RuneShelf* rune_shelf=nullptr, LabyrinthOfLore::Hud::Compass* compass=nullptr, LabyrinthOfLore::Hud::RotateCharacterPanelButton* rotate_character_panel_button=nullptr, LabyrinthOfLore::Hud::CommandsHintPane* commands_hint_pane=nullptr, LabyrinthOfLore::Hud::CurrentSpells* current_spells=nullptr, LabyrinthOfLore::Hud::ViewFrame* view_frame=nullptr, LabyrinthOfLore::Hud::TitleText* title_text=nullptr, LabyrinthOfLore::Rendering::MousePointer* mouse_pointer=nullptr);
             ~Renderer();

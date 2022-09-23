@@ -36,6 +36,9 @@ namespace LabyrinthOfLoreGame
       LabyrinthOfLore::Entity::ThingDictionary thing_dictionary;
       std::vector<LabyrinthOfLore::Entity::Base*> all_entities;
 
+   protected:
+
+
    public:
       Classic(AllegroFlare::BitmapBin* bitmap_bin=nullptr);
       ~Classic();

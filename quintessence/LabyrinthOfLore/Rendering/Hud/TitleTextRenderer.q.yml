@@ -30,7 +30,7 @@ functions:
       // Evaluate polynomial
       return x * x * (3 - 2 * x);
     body_dependency_symbols:
-      - AllegroFlare::clamp<float>
+      - AllegroFlare::clamp
   - name: decorated_title
     type: std::string
     body: return std::string("- ") + title_text->get_headline_text() + " -";
@@ -83,7 +83,7 @@ dependencies:
     headers: [ allegro_flare/placement3d.h ]
   - symbol: x
     headers: [ y ]
-  - symbol: AllegroFlare::clamp<float>
+  - symbol: AllegroFlare::clamp
     headers: [ AllegroFlare/Useful.hpp ]
 functions:
   - name: run

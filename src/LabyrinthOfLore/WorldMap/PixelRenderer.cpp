@@ -1,11 +1,11 @@
 
 
 #include <LabyrinthOfLore/WorldMap/PixelRenderer.hpp>
-#include <allegro5/allegro_primitives.h>
+
 #include <AllegroFlare/Color.hpp>
 #include <LabyrinthOfLore/WorldMap/Tile.hpp>
-#include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_color.h>
+#include <allegro5/allegro_primitives.h>
 
 
 namespace LabyrinthOfLore
@@ -69,6 +69,8 @@ ALLEGRO_BITMAP* PixelRenderer::create_render()
 
    return result;
 }
+
+
 } // namespace WorldMap
 } // namespace LabyrinthOfLore
 

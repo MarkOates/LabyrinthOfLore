@@ -19,6 +19,9 @@ namespace LabyrinthOfLore
             LabyrinthOfLore::Hud::VitalityAndManaBar* vitality_and_mana_bar;
             allegro_flare::placement3d place;
 
+         protected:
+
+
          public:
             VitalityAndManaBarRenderer(ALLEGRO_FONT* font=nullptr, LabyrinthOfLore::Hud::VitalityAndManaBar* vitality_and_mana_bar={}, allegro_flare::placement3d place=allegro_flare::placement3d{});
             ~VitalityAndManaBarRenderer();

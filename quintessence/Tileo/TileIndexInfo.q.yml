@@ -42,5 +42,5 @@ properties:
     setter: true
     constructor_arg: true
 dependencies:
-  - symbol: ALLEGRO_BITMAP*
+  - symbol: ALLEGRO_BITMAP
     headers: [ allegro5/allegro.h ]

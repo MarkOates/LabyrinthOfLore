@@ -1,10 +1,11 @@
 
 
 #include <LabyrinthOfLore/WorldMap/BitmapFilenameToWorldBuilder.hpp>
-#include <sstream>
+
 #include <LabyrinthOfLore/WorldMap/BitmapTileMapLoader.hpp>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
+#include <sstream>
 
 
 namespace LabyrinthOfLore
@@ -26,19 +27,19 @@ BitmapFilenameToWorldBuilder::~BitmapFilenameToWorldBuilder()
 }
 
 
-std::string BitmapFilenameToWorldBuilder::get_bitmap_source_filename()
+std::string BitmapFilenameToWorldBuilder::get_bitmap_source_filename() const
 {
    return bitmap_source_filename;
 }
 
 
-float BitmapFilenameToWorldBuilder::get_top_height()
+float BitmapFilenameToWorldBuilder::get_top_height() const
 {
    return top_height;
 }
 
 
-float BitmapFilenameToWorldBuilder::get_ground_height()
+float BitmapFilenameToWorldBuilder::get_ground_height() const
 {
    return ground_height;
 }
@@ -59,6 +60,8 @@ LabyrinthOfLore::WorldMap::TileMap BitmapFilenameToWorldBuilder::build()
    LabyrinthOfLore::WorldMap::BitmapTileMapLoader loader(bitmap_source);
    return loader.load(top_height, ground_height);
 }
+
+
 } // namespace WorldMap
 } // namespace LabyrinthOfLore
 

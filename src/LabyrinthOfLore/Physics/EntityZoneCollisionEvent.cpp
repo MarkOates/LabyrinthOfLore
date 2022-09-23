@@ -4,6 +4,7 @@
 
 
 
+
 namespace LabyrinthOfLore
 {
 namespace Physics
@@ -23,22 +24,24 @@ EntityZoneCollisionEvent::~EntityZoneCollisionEvent()
 }
 
 
-int EntityZoneCollisionEvent::get_zone_id()
+int EntityZoneCollisionEvent::get_zone_id() const
 {
    return zone_id;
 }
 
 
-LabyrinthOfLore::Entity::Base* EntityZoneCollisionEvent::get_entity()
+LabyrinthOfLore::Entity::Base* EntityZoneCollisionEvent::get_entity() const
 {
    return entity;
 }
 
 
-LabyrinthOfLore::Physics::zone_collision_event_t EntityZoneCollisionEvent::get_event_type()
+LabyrinthOfLore::Physics::zone_collision_event_t EntityZoneCollisionEvent::get_event_type() const
 {
    return event_type;
 }
+
+
 
 
 } // namespace Physics

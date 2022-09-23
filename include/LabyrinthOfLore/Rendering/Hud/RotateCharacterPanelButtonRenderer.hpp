@@ -19,6 +19,9 @@ namespace LabyrinthOfLore
             LabyrinthOfLore::Hud::RotateCharacterPanelButton* rotate_character_panel_button;
             allegro_flare::placement3d place;
 
+         protected:
+
+
          public:
             RotateCharacterPanelButtonRenderer(ALLEGRO_FONT* font=nullptr, LabyrinthOfLore::Hud::RotateCharacterPanelButton* rotate_character_panel_button=nullptr, allegro_flare::placement3d place=allegro_flare::placement3d{});
             ~RotateCharacterPanelButtonRenderer();

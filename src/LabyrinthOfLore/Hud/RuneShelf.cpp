@@ -4,6 +4,7 @@
 
 
 
+
 namespace LabyrinthOfLore
 {
 namespace Hud
@@ -24,6 +25,8 @@ std::string RuneShelf::run()
 {
    return "Hello World!";
 }
+
+
 } // namespace Hud
 } // namespace LabyrinthOfLore
 

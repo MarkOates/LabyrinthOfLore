@@ -1,6 +1,7 @@
 
 
 #include <LabyrinthOfLore/Rendering/Hud/CompassRenderer.hpp>
+
 #include <allegro5/allegro_color.h>
 #include <allegro5/allegro_primitives.h>
 
@@ -39,6 +40,8 @@ void CompassRenderer::render()
    place.restore_transform();
    return;
 }
+
+
 } // namespace Hud
 } // namespace Rendering
 } // namespace LabyrinthOfLore

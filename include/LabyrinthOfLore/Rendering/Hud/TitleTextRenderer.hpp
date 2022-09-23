@@ -20,6 +20,9 @@ namespace LabyrinthOfLore
             LabyrinthOfLore::Hud::TitleText* title_text;
             allegro_flare::placement3d place;
 
+         protected:
+
+
          public:
             TitleTextRenderer(ALLEGRO_FONT* font=nullptr, LabyrinthOfLore::Hud::TitleText* title_text=nullptr, allegro_flare::placement3d place=allegro_flare::placement3d{});
             ~TitleTextRenderer();

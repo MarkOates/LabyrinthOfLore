@@ -12,6 +12,9 @@ namespace LabyrinthOfLore
       {
       private:
 
+      protected:
+
+
       public:
          CurrentSpells();
          ~CurrentSpells();

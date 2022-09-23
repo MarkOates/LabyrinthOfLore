@@ -4,6 +4,7 @@
 
 
 
+
 namespace LabyrinthOfLore
 {
 namespace Physics
@@ -26,40 +27,42 @@ EntityTileMapCollisionEvent::~EntityTileMapCollisionEvent()
 }
 
 
-LabyrinthOfLore::Entity::Base* EntityTileMapCollisionEvent::get_entity()
+LabyrinthOfLore::Entity::Base* EntityTileMapCollisionEvent::get_entity() const
 {
    return entity;
 }
 
 
-int EntityTileMapCollisionEvent::get_tile_type()
+int EntityTileMapCollisionEvent::get_tile_type() const
 {
    return tile_type;
 }
 
 
-int EntityTileMapCollisionEvent::get_tile_x()
+int EntityTileMapCollisionEvent::get_tile_x() const
 {
    return tile_x;
 }
 
 
-int EntityTileMapCollisionEvent::get_tile_y()
+int EntityTileMapCollisionEvent::get_tile_y() const
 {
    return tile_y;
 }
 
 
-LabyrinthOfLore::WorldMap::tile_face_t EntityTileMapCollisionEvent::get_tile_face_collided_with()
+LabyrinthOfLore::WorldMap::tile_face_t EntityTileMapCollisionEvent::get_tile_face_collided_with() const
 {
    return tile_face_collided_with;
 }
 
 
-float EntityTileMapCollisionEvent::get_force()
+float EntityTileMapCollisionEvent::get_force() const
 {
    return force;
 }
+
+
 
 
 } // namespace Physics

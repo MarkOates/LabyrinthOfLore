@@ -1,8 +1,9 @@
 
 
 #include <LabyrinthOfLoreGame/Interactions.hpp>
-#include <sstream>
+
 #include <LabyrinthOfLoreGame/ItemIdEnums.hpp>
+#include <sstream>
 
 
 namespace LabyrinthOfLoreGame
@@ -142,6 +143,8 @@ void Interactions::process_talk(int thing_id)
 
    return;
 }
+
+
 } // namespace LabyrinthOfLoreGame
 
 

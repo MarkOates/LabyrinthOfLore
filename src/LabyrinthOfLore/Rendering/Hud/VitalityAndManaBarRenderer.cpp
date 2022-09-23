@@ -1,6 +1,7 @@
 
 
 #include <LabyrinthOfLore/Rendering/Hud/VitalityAndManaBarRenderer.hpp>
+
 #include <allegro5/allegro_color.h>
 #include <allegro5/allegro_primitives.h>
 
@@ -39,6 +40,8 @@ void VitalityAndManaBarRenderer::render()
    place.restore_transform();
    return;
 }
+
+
 } // namespace Hud
 } // namespace Rendering
 } // namespace LabyrinthOfLore

@@ -19,6 +19,9 @@ namespace LabyrinthOfLore
             LabyrinthOfLore::Hud::MapButton* map_button;
             allegro_flare::placement3d place;
 
+         protected:
+
+
          public:
             MapButtonRenderer(ALLEGRO_FONT* font=nullptr, LabyrinthOfLore::Hud::MapButton* map_button=nullptr, allegro_flare::placement3d place=allegro_flare::placement3d{});
             ~MapButtonRenderer();

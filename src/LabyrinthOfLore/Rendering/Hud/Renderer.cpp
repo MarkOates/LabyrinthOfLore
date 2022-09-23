@@ -1,21 +1,22 @@
 
 
 #include <LabyrinthOfLore/Rendering/Hud/Renderer.hpp>
-#include <LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer.hpp>
-#include <LabyrinthOfLore/Rendering/Hud/CommandPanelRenderer.hpp>
-#include <LabyrinthOfLore/Rendering/Hud/VitalityAndManaBarRenderer.hpp>
+
 #include <LabyrinthOfLore/Rendering/Hud/CharacterPanelRenderer.hpp>
-#include <LabyrinthOfLore/Rendering/Hud/MapButtonRenderer.hpp>
-#include <LabyrinthOfLore/Rendering/Hud/RuneShelfRenderer.hpp>
-#include <LabyrinthOfLore/Rendering/Hud/CompassRenderer.hpp>
-#include <LabyrinthOfLore/Rendering/Hud/RotateCharacterPanelButtonRenderer.hpp>
+#include <LabyrinthOfLore/Rendering/Hud/CommandPanelRenderer.hpp>
 #include <LabyrinthOfLore/Rendering/Hud/CommandsHintPaneRenderer.hpp>
+#include <LabyrinthOfLore/Rendering/Hud/CompassRenderer.hpp>
 #include <LabyrinthOfLore/Rendering/Hud/CurrentSpellsRenderer.hpp>
-#include <LabyrinthOfLore/Rendering/Hud/ViewFrameRenderer.hpp>
+#include <LabyrinthOfLore/Rendering/Hud/MapButtonRenderer.hpp>
+#include <LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer.hpp>
+#include <LabyrinthOfLore/Rendering/Hud/RotateCharacterPanelButtonRenderer.hpp>
+#include <LabyrinthOfLore/Rendering/Hud/RuneShelfRenderer.hpp>
 #include <LabyrinthOfLore/Rendering/Hud/TitleTextRenderer.hpp>
-#include <stdexcept>
+#include <LabyrinthOfLore/Rendering/Hud/ViewFrameRenderer.hpp>
+#include <LabyrinthOfLore/Rendering/Hud/VitalityAndManaBarRenderer.hpp>
 #include <allegro5/allegro_color.h>
 #include <allegro_flare/placement3d.h>
+#include <stdexcept>
 
 
 namespace LabyrinthOfLore
@@ -250,6 +251,8 @@ void Renderer::render()
 
    return;
 }
+
+
 } // namespace Hud
 } // namespace Rendering
 } // namespace LabyrinthOfLore

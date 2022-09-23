@@ -4,6 +4,7 @@
 
 
 
+
 namespace LabyrinthOfLore
 {
 namespace Hud
@@ -27,7 +28,7 @@ void CommandPanel::set_current_mode(LabyrinthOfLore::Hud::command_mode_t current
 }
 
 
-LabyrinthOfLore::Hud::command_mode_t CommandPanel::get_current_mode()
+LabyrinthOfLore::Hud::command_mode_t CommandPanel::get_current_mode() const
 {
    return current_mode;
 }
@@ -37,6 +38,8 @@ std::string CommandPanel::run()
 {
    return "Hello World!";
 }
+
+
 } // namespace Hud
 } // namespace LabyrinthOfLore
 

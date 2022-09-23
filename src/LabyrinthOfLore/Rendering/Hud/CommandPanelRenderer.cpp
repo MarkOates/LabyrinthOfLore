@@ -1,10 +1,11 @@
 
 
 #include <LabyrinthOfLore/Rendering/Hud/CommandPanelRenderer.hpp>
-#include <vector>
+
 #include <LabyrinthOfLore/Hud/CommandPanelModeEnum.hpp>
 #include <allegro5/allegro_color.h>
 #include <allegro5/allegro_primitives.h>
+#include <vector>
 
 
 namespace LabyrinthOfLore
@@ -68,6 +69,8 @@ void CommandPanelRenderer::render()
    place.restore_transform();
    return;
 }
+
+
 } // namespace Hud
 } // namespace Rendering
 } // namespace LabyrinthOfLore

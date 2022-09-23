@@ -4,6 +4,7 @@
 
 
 
+
 namespace LabyrinthOfLore
 {
 namespace Hud
@@ -23,19 +24,19 @@ TitleText::~TitleText()
 }
 
 
-std::string TitleText::get_above_text()
+std::string TitleText::get_above_text() const
 {
    return above_text;
 }
 
 
-std::string TitleText::get_headline_text()
+std::string TitleText::get_headline_text() const
 {
    return headline_text;
 }
 
 
-float TitleText::get_time_changed_at()
+float TitleText::get_time_changed_at() const
 {
    return time_changed_at;
 }
@@ -47,6 +48,8 @@ void TitleText::set(std::string above_text, std::string headline_text, float tim
    this->headline_text = headline_text;
    time_changed_at = time_now;
 }
+
+
 } // namespace Hud
 } // namespace LabyrinthOfLore
 

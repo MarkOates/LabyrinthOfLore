@@ -14,6 +14,11 @@ namespace LabyrinthOfLore
       {
       private:
          bool initialized;
+         static std::string obtain_vertex_source();
+         static std::string obtain_fragment_source();
+
+      protected:
+
 
       public:
          ClampedColor();
@@ -23,8 +28,6 @@ namespace LabyrinthOfLore
          void activate();
          void deactivate();
          void set_clamped_color(ALLEGRO_COLOR clamped_color={});
-         static std::string obtain_vertex_source();
-         static std::string obtain_fragment_source();
       };
    }
 }

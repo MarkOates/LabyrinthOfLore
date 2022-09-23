@@ -13,6 +13,9 @@ namespace LabyrinthOfLore
       private:
          LabyrinthOfLore::WorldMap::TileMap tile_map;
 
+      protected:
+
+
       public:
          BasicRenderer(LabyrinthOfLore::WorldMap::TileMap tile_map={});
          ~BasicRenderer();

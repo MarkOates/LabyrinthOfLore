@@ -19,6 +19,9 @@ namespace LabyrinthOfLore
             LabyrinthOfLore::Hud::CurrentSpells* current_spells;
             allegro_flare::placement3d place;
 
+         protected:
+
+
          public:
             CurrentSpellsRenderer(ALLEGRO_FONT* font=nullptr, LabyrinthOfLore::Hud::CurrentSpells* current_spells=nullptr, allegro_flare::placement3d place=allegro_flare::placement3d{});
             ~CurrentSpellsRenderer();

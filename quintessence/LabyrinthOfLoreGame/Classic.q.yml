@@ -363,7 +363,11 @@ functions:
       - LabyrinthOfLoreGame::ItemIdEnums
       - LabyrinthOfLore::Rendering::TileTypeDictionary
       - LabyrinthOfLore::Entity::ThingDictionary
+
+
 dependencies:
+
+
   - symbol: LabyrinthOfLore::Shader::ClampedColor
     headers: [ LabyrinthOfLore/Shader/ClampedColor.hpp ]
   - symbol: LabyrinthOfLore::Shader::DepthDarken
@@ -374,8 +378,8 @@ dependencies:
     headers: [ AllegroFlare/Vec3D.hpp ]
   - symbol: Tileo::TileAtlas
     headers: [ Tileo/TileAtlas.hpp ]
-  - symbol: std::map<std::string, LabyrinthOfLore::WorldMap::Level>
-    headers: [ map, string, LabyrinthOfLore/WorldMap/Level.hpp ]
+  - symbol: LabyrinthOfLore::WorldMap::Level
+    headers: [ LabyrinthOfLore/WorldMap/Level.hpp ]
   - symbol: LabyrinthOfLore::WorldMap::MultiBitmapFilenameToWorldBuilder
     headers: [ LabyrinthOfLore/WorldMap/MultiBitmapFilenameToWorldBuilder.hpp ]
   - symbol: LabyrinthOfLoreGame::LevelIdentifiers
@@ -386,13 +390,15 @@ dependencies:
     headers: [ LabyrinthOfLore/WorldMap/TileTypeEnum.hpp ]
   - symbol: LabyrinthOfLoreGame::ItemIdEnums
     headers: [ LabyrinthOfLoreGame/ItemIdEnums.hpp ]
-  - symbol: std::map<std::string, LabyrinthOfLore::Rendering::TileMapMesh>
-    headers: [ map, string, LabyrinthOfLore/Rendering/TileMapMesh.hpp ]
-  - symbol: std::map<std::string, LabyrinthOfLore::Rendering::TileMapWaterMesh>
-    headers: [ map, string, LabyrinthOfLore/Rendering/TileMapWaterMesh.hpp ]
-  - symbol: std::map<char, LabyrinthOfLore::WorldMap::Door>
-    headers: [ map, LabyrinthOfLore/WorldMap/Door.hpp ]
+  - symbol: LabyrinthOfLore::Rendering::TileMapMesh
+    headers: [ LabyrinthOfLore/Rendering/TileMapMesh.hpp ]
+  - symbol: LabyrinthOfLore::Rendering::TileMapWaterMesh
+    headers: [ LabyrinthOfLore/Rendering/TileMapWaterMesh.hpp ]
+  - symbol: LabyrinthOfLore::WorldMap::Door
+    headers: [ LabyrinthOfLore/WorldMap/Door.hpp ]
   - symbol: LabyrinthOfLore::Entity::ThingDictionary
     headers: [ LabyrinthOfLore/Entity/ThingDictionary.hpp ]
   - symbol: LabyrinthOfLore::Entity::Base
     headers: [ LabyrinthOfLore/Entity/Base.hpp ]
+
+

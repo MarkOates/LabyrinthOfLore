@@ -17,6 +17,9 @@ namespace LabyrinthOfLore
          LabyrinthOfLore::Rendering::TileTypeDictionary tile_type_dictionary;
          float ground_level;
 
+      protected:
+
+
       public:
          PixelRenderer(LabyrinthOfLore::WorldMap::TileMap tile_map={}, LabyrinthOfLore::Rendering::TileTypeDictionary tile_type_dictionary={}, float ground_level=1.0);
          ~PixelRenderer();

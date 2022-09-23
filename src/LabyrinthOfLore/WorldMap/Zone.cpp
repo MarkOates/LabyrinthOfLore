@@ -4,6 +4,7 @@
 
 
 
+
 namespace LabyrinthOfLore
 {
 namespace WorldMap
@@ -26,37 +27,37 @@ Zone::~Zone()
 }
 
 
-float Zone::get_x1()
+float Zone::get_x1() const
 {
    return x1;
 }
 
 
-float Zone::get_y1()
+float Zone::get_y1() const
 {
    return y1;
 }
 
 
-float Zone::get_z1()
+float Zone::get_z1() const
 {
    return z1;
 }
 
 
-float Zone::get_x2()
+float Zone::get_x2() const
 {
    return x2;
 }
 
 
-float Zone::get_y2()
+float Zone::get_y2() const
 {
    return y2;
 }
 
 
-float Zone::get_z2()
+float Zone::get_z2() const
 {
    return z2;
 }
@@ -72,6 +73,8 @@ bool Zone::collides(AllegroFlare::vec3d point)
    if (point.z < z1) return false;
    return true;
 }
+
+
 } // namespace WorldMap
 } // namespace LabyrinthOfLore
 

@@ -16,6 +16,9 @@ namespace LabyrinthOfLore
          std::vector<LabyrinthOfLore::Entity::Base*> entities;
          AllegroFlare::vec3d gravity;
 
+      protected:
+
+
       public:
          GravityStepper(std::vector<LabyrinthOfLore::Entity::Base*> entities={});
          ~GravityStepper();

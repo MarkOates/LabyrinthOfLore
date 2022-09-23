@@ -4,6 +4,7 @@
 
 
 
+
 namespace LabyrinthOfLore
 {
 namespace WorldMap
@@ -25,34 +26,36 @@ Door::~Door()
 }
 
 
-std::string Door::get_level_identifier()
+std::string Door::get_level_identifier() const
 {
    return level_identifier;
 }
 
 
-float Door::get_spawn_x()
+float Door::get_spawn_x() const
 {
    return spawn_x;
 }
 
 
-float Door::get_spawn_y()
+float Door::get_spawn_y() const
 {
    return spawn_y;
 }
 
 
-float Door::get_spawn_z()
+float Door::get_spawn_z() const
 {
    return spawn_z;
 }
 
 
-float Door::get_spawn_facing_yaw()
+float Door::get_spawn_facing_yaw() const
 {
    return spawn_facing_yaw;
 }
+
+
 
 
 } // namespace WorldMap
