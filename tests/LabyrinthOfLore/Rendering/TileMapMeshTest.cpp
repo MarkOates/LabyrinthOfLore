@@ -14,6 +14,7 @@ TEST(LabyrinthOfLore_Rendering_TileMapMeshTest, can_be_created_without_blowing_u
    LabyrinthOfLore::Rendering::TileMapMesh tile_map_mesh;
 }
 
+
 TEST(LabyrinthOfLore_Rendering_TileMapMeshTest, can_be_constructed_with_reasonable_arguments)
 {
    Tileo::TileAtlas tile_atlas;
@@ -25,7 +26,9 @@ TEST(LabyrinthOfLore_Rendering_TileMapMeshTest, can_be_constructed_with_reasonab
    LabyrinthOfLore::Rendering::TileMapMesh tile_map_mesh(&tile_atlas, tile_type_dictionary, tile_map);
 }
 
-TEST(LabyrinthOfLore_Rendering_TileMapMeshTest, build__with_a_single_cube__returns_the_expected_number_of_vertexes)
+
+TEST(LabyrinthOfLore_Rendering_TileMapMeshTest,
+   build__with_a_single_cube__returns_the_expected_number_of_vertexes)
 {
    al_init();
    al_init_image_addon();
@@ -46,7 +49,9 @@ TEST(LabyrinthOfLore_Rendering_TileMapMeshTest, build__with_a_single_cube__retur
    al_destroy_bitmap(tile_atlas_bitmap);
 }
 
-TEST(LabyrinthOfLore_Rendering_TileMapMeshTest, build__on_tile_types_of_0__does_not_create_verticies)
+
+TEST(LabyrinthOfLore_Rendering_TileMapMeshTest,
+   build__on_tile_types_of_0__does_not_create_verticies)
 {
    al_init();
    al_init_image_addon();
@@ -67,7 +72,9 @@ TEST(LabyrinthOfLore_Rendering_TileMapMeshTest, build__on_tile_types_of_0__does_
    al_destroy_bitmap(tile_atlas_bitmap);
 }
 
-TEST(DISABLED_LabyrinthOfLore_Rendering_TileMapMeshTest, build__when_building_two_tiles_of_equal_height_next_to_each_other_vertically__skips_adding_their_ajacent_faces)
+
+TEST(DISABLED_LabyrinthOfLore_Rendering_TileMapMeshTest,
+   build__when_building_two_tiles_of_equal_height_next_to_each_other_vertically__skips_adding_their_ajacent_faces)
 {
    al_init();
    al_init_image_addon();
@@ -89,7 +96,8 @@ TEST(DISABLED_LabyrinthOfLore_Rendering_TileMapMeshTest, build__when_building_tw
 }
 
 
-TEST(DISABLED_LabyrinthOfLore_Rendering_TileMapMeshTest, build__when_building_two_tiles_of_inequal_height_next_to_each_other_vertically__skips_adding_the_shorter_pillars_ajacent_face)
+TEST(DISABLED_LabyrinthOfLore_Rendering_TileMapMeshTest,
+   build__when_building_two_tiles_of_inequal_height_next_to_each_other_vertically__skips_adding_the_shorter_pillars_ajacent_face)
 {
    al_init();
    al_init_image_addon();
@@ -109,4 +117,5 @@ TEST(DISABLED_LabyrinthOfLore_Rendering_TileMapMeshTest, build__when_building_tw
    ASSERT_EQ(30+30+24-6, tile_map_mesh.get_vertexes().size());
    al_destroy_bitmap(tile_atlas_bitmap);
 }
+
 

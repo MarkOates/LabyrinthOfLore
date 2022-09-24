@@ -1,29 +1,40 @@
 properties:
+
+
   - name: tile_atlas
     type: Tileo::TileAtlas*
     init_with: nullptr
     constructor_arg: true
+
   - name: tile_type_dictionary
     type: LabyrinthOfLore::Rendering::TileTypeDictionary
     init_with: "{}"
     constructor_arg: true
+
   - name: tile_map
     type: LabyrinthOfLore::WorldMap::TileMap
     init_with: "{}"
     constructor_arg: true
+
   - name: texture
     type: ALLEGRO_BITMAP*
     init_with: nullptr
     constructor_arg: true
+
   - name: offset_to_first_texture_index
     type: int
     init_with: 0
     constructor_arg: true
+
   - name: vertexes
     type: std::vector<ALLEGRO_VERTEX>
     init_with: "{}"
     getter: true
+
+
 functions:
+
+
   - name: build
     type: bool
     body: |
@@ -125,6 +136,8 @@ functions:
       - LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder
       - LabyrinthOfLore::Rendering::TileMapMeshPillarTexturer
       - LabyrinthOfLore::WorldMap::tile_type_t
+
+
   - name: draw
     type: void
     body: |
@@ -148,7 +161,12 @@ functions:
       al_draw_prim(&vertexes[0], nullptr, texture, 0, vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
 
       //al_restore_state(&previous_transform_state);
+      return;
+
+
 dependencies:
+
+
   - symbol: LabyrinthOfLore::Rendering::TileMapMeshPillarBuilder
     headers: [ LabyrinthOfLore/Rendering/TileMapMeshPillarBuilder.hpp ]
   - symbol: LabyrinthOfLore::Rendering::TileMapMeshPillarTexturer
@@ -177,3 +195,5 @@ dependencies:
     headers: [ Tileo/TileAtlas.hpp ]
   - symbol: LabyrinthOfLore::WorldMap::tile_type_t
     headers: [ LabyrinthOfLore/WorldMap/TileTypeEnum.hpp ]
+
+

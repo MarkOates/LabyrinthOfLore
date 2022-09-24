@@ -155,6 +155,7 @@ void TileMapMesh::draw()
    al_draw_prim(&vertexes[0], nullptr, texture, 0, vertexes.size(), ALLEGRO_PRIM_TRIANGLE_LIST);
 
    //al_restore_state(&previous_transform_state);
+   return;
 }
 
 
