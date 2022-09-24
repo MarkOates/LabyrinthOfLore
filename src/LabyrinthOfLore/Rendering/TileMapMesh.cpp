@@ -128,7 +128,7 @@ bool TileMapMesh::build()
 
    for (auto &vertex : vertexes) { float swap = vertex.y; vertex.y = vertex.z; vertex.z = swap; }
 
-   std::cout << "TileMapMesh has been built.  The mesh contains " << vertexes.size() << " vertexes.";
+   std::cout << "TileMapMesh has been built.  The mesh contains " << vertexes.size() << " vertexes." << std::endl;
 
    return true;
 }

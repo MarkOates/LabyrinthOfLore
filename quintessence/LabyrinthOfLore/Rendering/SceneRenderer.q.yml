@@ -1,29 +1,40 @@
 properties:
+
+
   - name: rendering_surface
     type: ALLEGRO_BITMAP*
     init_with: nullptr
     constructor_arg: true
+
   - name: camera
     type: LabyrinthOfLore::Rendering::Camera*
     init_with: nullptr
     constructor_arg: true
+
   - name: tile_map_mesh
     type: LabyrinthOfLore::Rendering::TileMapMesh*
     init_with: "{}"
     constructor_arg: true
+
   - name: tile_map_water_mesh
     type: LabyrinthOfLore::Rendering::TileMapWaterMesh*
     init_with: "{}"
     constructor_arg: true
+
   - name: entities
     type: std::vector<LabyrinthOfLore::Entity::Base*>
     init_with: "{}"
     constructor_arg: true
+
   - name: depth_darken_shader
     type: LabyrinthOfLore::Shader::DepthDarken*
     init_with: nullptr
     constructor_arg: true
+
+
 functions:
+
+
   - name: render
     type: void
     body: |
@@ -60,7 +71,11 @@ functions:
       - al_clear_to_color
       - al_color_name
       - al_draw_bitmap
+
+
 dependencies:
+
+
   - symbol: LabyrinthOfLore::Rendering::Camera
     headers: [ LabyrinthOfLore/Rendering/Camera.hpp ]
   - symbol: LabyrinthOfLore::Shader::DepthDarken
@@ -89,3 +104,5 @@ dependencies:
     headers: [ allegro5/allegro.h ]
   - symbol: std::sort
     headers: [ algorithm ]
+
+
