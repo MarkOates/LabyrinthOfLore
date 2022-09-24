@@ -1,0 +1,151 @@
+properties:
+
+
+  - name: font
+    type: ALLEGRO_FONT*
+    init_with: nullptr
+    constructor_arg: true
+
+  - name: message_scroll
+    type: LabyrinthOfLore::Hud::MessageScroll*
+    init_with: "{}"
+    constructor_arg: true
+
+  - name: place
+    type: allegro_flare::placement3d
+    init_with: "allegro_flare::placement3d{}"
+    constructor_arg: true
+
+  - name: message_display_length_sec
+    static: true
+    type: float
+    init_with: 7.0f
+
+  - name: __dirty_total_line_count
+    static: true
+    type: int
+    init_with: 0
+
+  - name: __dirty_this_text_color
+    static: true
+    type: ALLEGRO_COLOR
+    init_with: "{}"
+
+
+functions:
+
+
+  - name: smoothstep
+    type: float
+    parameters:
+      - name: edge0
+        type: float
+        default_argument: 0.0f
+      - name: edge1
+        type: float
+        default_argument: 0.0f
+      - name: x
+        type: float
+        default_argument: 0.0f
+    body: |
+      // Scale, bias and saturate x to 0..1 range
+      x = AllegroFlare::clamp((x - edge0) / (edge1 - edge0), 0.0f, 1.0f);
+      // Evaluate polynomial
+      return x * x * (3 - 2 * x);
+    body_dependency_symbols:
+      - AllegroFlare::clamp
+
+
+  - name: multiline_draw_callback
+    static: true
+    type: bool
+    parameters:
+      - name: line_num
+        type: int
+        default_argument: 0
+      - name: line
+        type: const char*
+        default_argument: nullptr
+      - name: size
+        type: int
+        default_argument: 0
+      - name: extra
+        type: void*
+        default_argument: nullptr
+    body: |
+      //this functions callback signature:
+      //bool (*cb)(int line_num, const char *line, int size, void *extra)
+
+      __dirty_total_line_count++;
+
+      ALLEGRO_FONT *font = (ALLEGRO_FONT *)extra;
+      std::string text_at_line_start = line;
+      std::string text_to_draw_in_this_line = text_at_line_start.substr(0, size);
+      al_draw_text(font, __dirty_this_text_color, 0, __dirty_total_line_count * al_get_font_line_height(font), 0, text_to_draw_in_this_line.c_str());
+      return true;
+
+
+  - name: render
+    type: void
+    body: |
+      if (!font) throw std::runtime_error("Cannot draw MessageScrollRenderer with a nullptr font");
+      if (!message_scroll) throw std::runtime_error("Cannot draw MessageScrollRenderer with a nullptr message_scroll");
+
+      place.start_transform();
+
+      //al_draw_filled_rounded_rectangle(0, 0, place.size.x, place.size.y, 6, 6, al_color_name("red"));
+      std::vector<std::tuple<float, std::string, int>> last_3_messages = message_scroll->get_last_3_messages();
+
+      float time_now = al_get_time();
+
+      __dirty_total_line_count = 0;
+      for (unsigned i=0; i<last_3_messages.size(); i++)
+      {
+         std::tuple<float, std::string, int> this_message = last_3_messages[i];
+         float message_time = std::get<0>(this_message); //.first;
+         int message_style = std::get<2>(this_message);
+         if (time_now >= (message_time + message_display_length_sec + 4.0)) break;
+
+         float message_age = time_now - message_time;
+         if (message_style == 1) __dirty_this_text_color = al_color_name("gold");
+         else __dirty_this_text_color = al_color_name("gray");
+
+         std::string message_text = std::get<1>(this_message); //.second;
+         float opacity = 1.0;
+         opacity *= (message_age <= message_display_length_sec/2) ? smoothstep(0.0, 0.2, message_age) : smoothstep(message_display_length_sec, message_display_length_sec-1.0, message_age);
+
+         __dirty_this_text_color.r *= opacity;
+         __dirty_this_text_color.g *= opacity;
+         __dirty_this_text_color.b *= opacity;
+         __dirty_this_text_color.a *= opacity;
+
+         al_do_multiline_text(font, place.size.x, message_text.c_str(), LabyrinthOfLore::Rendering::Hud::MessageScrollRenderer::multiline_draw_callback, font);
+      }
+
+      place.restore_transform();
+      return;
+    body_dependency_symbols:
+      - std::vector<std::tuple<float, std::string, int>>
+      - al_color_name
+      - al_draw_rounded_rectangle
+
+
+dependencies:
+
+
+  - symbol: LabyrinthOfLore::Hud::MessageScroll
+    headers: [ LabyrinthOfLore/Hud/MessageScroll.hpp ]
+  - symbol: ALLEGRO_COLOR
+    headers: [ allegro5/allegro_color.h ]
+  - symbol: ALLEGRO_FONT
+    headers: [ allegro5/allegro_font.h ]
+  - symbol: al_color_name
+    headers: [ allegro5/allegro_color.h ]
+  - symbol: al_draw_rounded_rectangle
+    headers: [ allegro5/allegro_primitives.h ]
+  - symbol: allegro_flare::placement3d
+    headers: [ allegro_flare/placement3d.h ]
+  - symbol: AllegroFlare::clamp
+    headers: [ AllegroFlare/Useful.hpp ]
+
+

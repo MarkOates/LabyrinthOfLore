@@ -1,11 +1,13 @@
 {
   "LabyrinthOfLore/Hud/MessageScroll": [
     ".removed/LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
+    "LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
     "LabyrinthOfLore/Rendering/Hud/Renderer",
     "LabyrinthOfLoreGame/Interactions"
   ],
   "ALLEGRO_COLOR": [
     ".removed/LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
+    "LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
     "LabyrinthOfLore/Rendering/TileMapMesh",
     "LabyrinthOfLore/Rendering/TileMapMeshCubeBuilder",
     "LabyrinthOfLore/Rendering/TileMapMeshPillarBuilder",
@@ -24,6 +26,7 @@
     "LabyrinthOfLore/Rendering/Hud/CompassRenderer",
     "LabyrinthOfLore/Rendering/Hud/CurrentSpellsRenderer",
     "LabyrinthOfLore/Rendering/Hud/MapButtonRenderer",
+    "LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
     "LabyrinthOfLore/Rendering/Hud/Renderer",
     "LabyrinthOfLore/Rendering/Hud/RotateCharacterPanelButtonRenderer",
     "LabyrinthOfLore/Rendering/Hud/RuneShelfRenderer",
@@ -39,6 +42,7 @@
     "LabyrinthOfLore/Rendering/Hud/CompassRenderer",
     "LabyrinthOfLore/Rendering/Hud/CurrentSpellsRenderer",
     "LabyrinthOfLore/Rendering/Hud/MapButtonRenderer",
+    "LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
     "LabyrinthOfLore/Rendering/Hud/Renderer",
     "LabyrinthOfLore/Rendering/Hud/RotateCharacterPanelButtonRenderer",
     "LabyrinthOfLore/Rendering/Hud/RuneShelfRenderer",
@@ -64,6 +68,7 @@
     "LabyrinthOfLore/Rendering/Hud/CompassRenderer",
     "LabyrinthOfLore/Rendering/Hud/CurrentSpellsRenderer",
     "LabyrinthOfLore/Rendering/Hud/MapButtonRenderer",
+    "LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
     "LabyrinthOfLore/Rendering/Hud/RotateCharacterPanelButtonRenderer",
     "LabyrinthOfLore/Rendering/Hud/RuneShelfRenderer",
     "LabyrinthOfLore/Rendering/Hud/TitleTextRenderer",
@@ -80,6 +85,7 @@
     "LabyrinthOfLore/Rendering/Hud/CompassRenderer",
     "LabyrinthOfLore/Rendering/Hud/CurrentSpellsRenderer",
     "LabyrinthOfLore/Rendering/Hud/MapButtonRenderer",
+    "LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
     "LabyrinthOfLore/Rendering/Hud/Renderer",
     "LabyrinthOfLore/Rendering/Hud/RotateCharacterPanelButtonRenderer",
     "LabyrinthOfLore/Rendering/Hud/RuneShelfRenderer",
@@ -116,6 +122,7 @@
   ],
   "AllegroFlare/clamp": [
     ".removed/LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
+    "LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
     "LabyrinthOfLore/Rendering/Hud/TitleTextRenderer"
   ],
   "AllegroFlare/ElementID": [

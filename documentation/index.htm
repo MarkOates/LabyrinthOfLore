@@ -81,6 +81,7 @@ table td
   <li><a href="#quintessence/LabyrinthOfLore/Rendering/Hud/CompassRenderer.q.yml">quintessence/LabyrinthOfLore/Rendering/Hud/CompassRenderer.q.yml</a></li>
   <li><a href="#quintessence/LabyrinthOfLore/Rendering/Hud/CurrentSpellsRenderer.q.yml">quintessence/LabyrinthOfLore/Rendering/Hud/CurrentSpellsRenderer.q.yml</a></li>
   <li><a href="#quintessence/LabyrinthOfLore/Rendering/Hud/MapButtonRenderer.q.yml">quintessence/LabyrinthOfLore/Rendering/Hud/MapButtonRenderer.q.yml</a></li>
+  <li><a href="#quintessence/LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer.q.yml">quintessence/LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer.q.yml</a></li>
   <li><a href="#quintessence/LabyrinthOfLore/Rendering/Hud/Renderer.q.yml">quintessence/LabyrinthOfLore/Rendering/Hud/Renderer.q.yml</a></li>
   <li><a href="#quintessence/LabyrinthOfLore/Rendering/Hud/RotateCharacterPanelButtonRenderer.q.yml">quintessence/LabyrinthOfLore/Rendering/Hud/RotateCharacterPanelButtonRenderer.q.yml</a></li>
   <li><a href="#quintessence/LabyrinthOfLore/Rendering/Hud/RuneShelfRenderer.q.yml">quintessence/LabyrinthOfLore/Rendering/Hud/RuneShelfRenderer.q.yml</a></li>
@@ -1257,6 +1258,71 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;x&quot;, &quot;headers&quot;=&gt;[&quot;y&quot;]}</td>
+</tr>
+    </table>
+  </div>
+</ul>
+<ul>
+  <div class="component">
+    <h3 id="quintessence/LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer.q.yml">quintessence/LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer.q.yml</h3>
+     <table>
+<tr>
+  <td class="property">font</td>
+  <td class="property">ALLEGRO_FONT*</td>
+</tr>
+<tr>
+  <td class="property">message_scroll</td>
+  <td class="property">LabyrinthOfLore::Hud::MessageScroll*</td>
+</tr>
+<tr>
+  <td class="property">place</td>
+  <td class="property">allegro_flare::placement3d</td>
+</tr>
+<tr>
+  <td class="property">message_display_length_sec</td>
+  <td class="property">float</td>
+</tr>
+<tr>
+  <td class="property">__dirty_total_line_count</td>
+  <td class="property">int</td>
+</tr>
+<tr>
+  <td class="property">__dirty_this_text_color</td>
+  <td class="property">ALLEGRO_COLOR</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="method">smoothstep(3)</td>
+</tr>
+<tr>
+  <td class="method">multiline_draw_callback(4)</td>
+</tr>
+<tr>
+  <td class="method">render()</td>
+</tr>
+    </table>
+     <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;LabyrinthOfLore::Hud::MessageScroll&quot;, &quot;headers&quot;=&gt;[&quot;LabyrinthOfLore/Hud/MessageScroll.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_COLOR&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_color.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_FONT&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_font.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_color_name&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_color.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_draw_rounded_rectangle&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_primitives.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;allegro_flare::placement3d&quot;, &quot;headers&quot;=&gt;[&quot;allegro_flare/placement3d.h&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::clamp&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Useful.hpp&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -3398,11 +3464,13 @@ table td
 {
   "LabyrinthOfLore/Hud/MessageScroll": [
     ".removed/LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
+    "LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
     "LabyrinthOfLore/Rendering/Hud/Renderer",
     "LabyrinthOfLoreGame/Interactions"
   ],
   "ALLEGRO_COLOR": [
     ".removed/LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
+    "LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
     "LabyrinthOfLore/Rendering/TileMapMesh",
     "LabyrinthOfLore/Rendering/TileMapMeshCubeBuilder",
     "LabyrinthOfLore/Rendering/TileMapMeshPillarBuilder",
@@ -3421,6 +3489,7 @@ table td
     "LabyrinthOfLore/Rendering/Hud/CompassRenderer",
     "LabyrinthOfLore/Rendering/Hud/CurrentSpellsRenderer",
     "LabyrinthOfLore/Rendering/Hud/MapButtonRenderer",
+    "LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
     "LabyrinthOfLore/Rendering/Hud/Renderer",
     "LabyrinthOfLore/Rendering/Hud/RotateCharacterPanelButtonRenderer",
     "LabyrinthOfLore/Rendering/Hud/RuneShelfRenderer",
@@ -3436,6 +3505,7 @@ table td
     "LabyrinthOfLore/Rendering/Hud/CompassRenderer",
     "LabyrinthOfLore/Rendering/Hud/CurrentSpellsRenderer",
     "LabyrinthOfLore/Rendering/Hud/MapButtonRenderer",
+    "LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
     "LabyrinthOfLore/Rendering/Hud/Renderer",
     "LabyrinthOfLore/Rendering/Hud/RotateCharacterPanelButtonRenderer",
     "LabyrinthOfLore/Rendering/Hud/RuneShelfRenderer",
@@ -3461,6 +3531,7 @@ table td
     "LabyrinthOfLore/Rendering/Hud/CompassRenderer",
     "LabyrinthOfLore/Rendering/Hud/CurrentSpellsRenderer",
     "LabyrinthOfLore/Rendering/Hud/MapButtonRenderer",
+    "LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
     "LabyrinthOfLore/Rendering/Hud/RotateCharacterPanelButtonRenderer",
     "LabyrinthOfLore/Rendering/Hud/RuneShelfRenderer",
     "LabyrinthOfLore/Rendering/Hud/TitleTextRenderer",
@@ -3477,6 +3548,7 @@ table td
     "LabyrinthOfLore/Rendering/Hud/CompassRenderer",
     "LabyrinthOfLore/Rendering/Hud/CurrentSpellsRenderer",
     "LabyrinthOfLore/Rendering/Hud/MapButtonRenderer",
+    "LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
     "LabyrinthOfLore/Rendering/Hud/Renderer",
     "LabyrinthOfLore/Rendering/Hud/RotateCharacterPanelButtonRenderer",
     "LabyrinthOfLore/Rendering/Hud/RuneShelfRenderer",
@@ -3513,6 +3585,7 @@ table td
   ],
   "AllegroFlare/clamp": [
     ".removed/LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
+    "LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer",
     "LabyrinthOfLore/Rendering/Hud/TitleTextRenderer"
   ],
   "AllegroFlare/ElementID": [

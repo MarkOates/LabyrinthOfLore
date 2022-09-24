@@ -1,12 +1,13 @@
 
 
 #include <LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer.hpp>
+
 #include <AllegroFlare/Useful.hpp>
-#include <vector>
-#include <utility>
-#include <string>
 #include <allegro5/allegro_color.h>
 #include <allegro5/allegro_primitives.h>
+#include <string>
+#include <tuple>
+#include <vector>
 
 
 namespace LabyrinthOfLore
@@ -100,6 +101,8 @@ void MessageScrollRenderer::render()
    place.restore_transform();
    return;
 }
+
+
 } // namespace Hud
 } // namespace Rendering
 } // namespace LabyrinthOfLore

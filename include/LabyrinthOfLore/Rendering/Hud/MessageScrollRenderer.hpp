@@ -23,6 +23,9 @@ namespace LabyrinthOfLore
             static int __dirty_total_line_count;
             static ALLEGRO_COLOR __dirty_this_text_color;
 
+         protected:
+
+
          public:
             MessageScrollRenderer(ALLEGRO_FONT* font=nullptr, LabyrinthOfLore::Hud::MessageScroll* message_scroll={}, allegro_flare::placement3d place=allegro_flare::placement3d{});
             ~MessageScrollRenderer();
