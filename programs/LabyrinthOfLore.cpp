@@ -171,6 +171,7 @@ public:
       al_set_new_display_option(ALLEGRO_SAMPLES, 16, ALLEGRO_SUGGEST);
       //al_set_new_display_flags(ALLEGRO_RESIZABLE | ALLEGRO_OPENGL | ALLEGRO_PROGRAMMABLE_PIPELINE);
       al_set_new_display_flags(ALLEGRO_OPENGL | ALLEGRO_PROGRAMMABLE_PIPELINE);
+      //al_set_new_display_flags(ALLEGRO_FULLSCREEN_WINDOW | ALLEGRO_OPENGL | ALLEGRO_PROGRAMMABLE_PIPELINE);
 
 
       display = al_create_display(DISPLAY_WIDTH, DISPLAY_HEIGHT);

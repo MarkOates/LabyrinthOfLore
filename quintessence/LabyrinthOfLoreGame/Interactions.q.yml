@@ -1,33 +1,45 @@
 properties:
+
+
   - name: thing_definition_factory
     type: LabyrinthOfLoreGame::ThingDefinitionFactory*
     init_with: nullptr
     constructor_arg: true
+
   - name: all_entities
     type: std::vector<LabyrinthOfLore::Entity::Base*>*
     init_with: nullptr
     constructor_arg: true
+
   - name: thing_dictionary
     type: LabyrinthOfLore::Entity::ThingDictionary*
     init_with: nullptr
     constructor_arg: true
+
   - name: message_scroll
     type: LabyrinthOfLore::Hud::MessageScroll*
     init_with: nullptr
     constructor_arg: true
+
   - name: character_panel
     type: LabyrinthOfLore::Hud::CharacterPanel*
     init_with: nullptr
     constructor_arg: true
+
   - name: player_inventory
     type: AllegroFlare::Inventory*
     init_with: nullptr
     constructor_arg: true
+
   - name: time_now
     type: float
     init_with: 0.0f
     constructor_arg: true
+
+
 functions:
+
+
   - name: validate_arguments
     body: |
      if (!thing_definition_factory) throw std::runtime_error("Cannot process_thing_talk_click with a nullptr thing_definition_factory");
@@ -38,6 +50,8 @@ functions:
      if (!player_inventory) throw std::runtime_error("Cannot process_thing_talk_click with a nullptr player_inventory");
 
      return;
+
+
   - name: you_have_received_the_
     type: std::string
     parameters:
@@ -49,6 +63,8 @@ functions:
       std::stringstream message;
       message << "You have received " << this_thing_definition.infer_decorated_name() << ".";
       return message.str();
+
+
   - name: character_speaks
     parameters:
       - name: message
@@ -56,6 +72,8 @@ functions:
         default_argument: "\"\""
     body: |
        message_scroll->append_character_dialog(time_now, message);
+
+
   - name: append_message
     parameters:
       - name: message
@@ -63,6 +81,8 @@ functions:
         default_argument: "\"\""
     body: |
        message_scroll->append_message(time_now, message);
+
+
   - name: player_has_item
     type: bool
     parameters:
@@ -71,6 +91,8 @@ functions:
         default_argument: -1
     body: |
        return player_inventory->has_item(item_id);
+
+
   - name: get_player_inventory_count_of_type
     type: int
     parameters:
@@ -80,6 +102,8 @@ functions:
     body: |
        if (!character_panel) throw std::runtime_error("cannot player_has_thing_of_type on a nullptr character_panel");
        return character_panel->calculate_count_of_type(thing_type);
+
+
   - name: player_has_thing_of_type
     type: bool
     parameters:
@@ -88,6 +112,8 @@ functions:
         default_argument: THING_TYPE_UNDEFINED
     body: |
         return get_player_inventory_count_of_type() >= 1;
+
+
   - name: process_use
     parameters:
       - name: time_now
@@ -95,6 +121,8 @@ functions:
         default_argument: 0.0f
     body: |
       return;
+
+
   - name: process_use
     parameters:
       - name: thing_being_used_by_player_from_inventory
@@ -115,6 +143,8 @@ functions:
          append_message(you_have_received_the_(AMULET_OF_MAGIC_ID));
       }
       return;
+
+
   - name: process_talk
     parameters:
       - name: thing_id
@@ -174,7 +204,11 @@ functions:
     body_dependency_symbols:
       - std::stringstream
       - LabyrinthOfLoreGame::ItemIdEnums
+
+
 dependencies:
+
+
   - symbol: LabyrinthOfLore::Entity::Base
     headers: [ LabyrinthOfLore/Entity/Base.hpp ]
   - symbol: LabyrinthOfLore::Entity::ThingDictionary
@@ -195,3 +229,5 @@ dependencies:
     headers: [ LabyrinthOfLoreGame/ThingDefinitionFactory.hpp ]
   - symbol: thing_type_t
     headers: [ LabyrinthOfLoreGame/ItemIdEnums.hpp ]
+
+

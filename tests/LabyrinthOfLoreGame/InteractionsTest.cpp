@@ -82,12 +82,10 @@ protected:
 
 
 
-
 //TEST_F(LabyrinthOfLoreGame_InteractionsTest, can_be_created_without_blowing_up)
 //{
    //LabyrinthOfLoreGame::Interactions interactions;
 //}
-
 
 
 TEST_F(LabyrinthOfLoreGame_InteractionsTest, validate_arguments__will_raise_an_exception_if_it_cannot_find_the_thing_id)
@@ -106,7 +104,6 @@ TEST_F(LabyrinthOfLoreGame_InteractionsTest, validate_arguments__will_raise_an_e
 }
 
 
-
 TEST_F(LabyrinthOfLoreGame_InteractionsTest, validate_arguments__works_with_the_fixture)
 {
    interactions.validate_arguments();
@@ -114,10 +111,10 @@ TEST_F(LabyrinthOfLoreGame_InteractionsTest, validate_arguments__works_with_the_
 }
 
 
-
 /// gameplay event tests
 
-TEST_F(LabyrinthOfLoreGame_InteractionsTest, process_talk__if_you_talk_to_the_man_at_the_entrance_of_the_cave__he_will_say_the_expected_thing)
+TEST_F(LabyrinthOfLoreGame_InteractionsTest,
+   process_talk__if_you_talk_to_the_man_at_the_entrance_of_the_cave__he_will_say_the_expected_thing)
 {
    thing_dictionary = LabyrinthOfLore::Entity::ThingDictionary({
       { MAN_AT_THE_ENTRANCE_TO_THE_CAVE, LabyrinthOfLore::Entity::ThingDefinition() },
@@ -131,8 +128,8 @@ TEST_F(LabyrinthOfLoreGame_InteractionsTest, process_talk__if_you_talk_to_the_ma
 }
 
 
-
-TEST_F(LabyrinthOfLoreGame_InteractionsTest, process_talk__when_you_talk_to_the_man_at_the_entrance_of_the_cave__if_you_do_not_have_any_torch_fuel__he_will_give_you_one_torch_fuel)
+TEST_F(LabyrinthOfLoreGame_InteractionsTest,
+   process_talk__when_you_talk_to_the_man_at_the_entrance_of_the_cave__if_you_do_not_have_any_torch_fuel__he_will_give_you_one_torch_fuel)
 {
    thing_dictionary = LabyrinthOfLore::Entity::ThingDictionary({
       { MAN_AT_THE_ENTRANCE_TO_THE_CAVE, LabyrinthOfLore::Entity::ThingDefinition() },
@@ -151,8 +148,8 @@ TEST_F(LabyrinthOfLoreGame_InteractionsTest, process_talk__when_you_talk_to_the_
 }
 
 
-
-TEST_F(LabyrinthOfLoreGame_InteractionsTest, process_talk__with_the_torch_of_truth__talking_to__the_man_at_the_entrance_of_the_cave__he_will_say_something_cool)
+TEST_F(LabyrinthOfLoreGame_InteractionsTest,
+   process_talk__with_the_torch_of_truth__talking_to__the_man_at_the_entrance_of_the_cave__he_will_say_something_cool)
 {
    thing_dictionary = LabyrinthOfLore::Entity::ThingDictionary({
       { MAN_AT_THE_ENTRANCE_TO_THE_CAVE, LabyrinthOfLore::Entity::ThingDefinition() },
@@ -167,8 +164,8 @@ TEST_F(LabyrinthOfLoreGame_InteractionsTest, process_talk__with_the_torch_of_tru
 }
 
 
-
-TEST_F(LabyrinthOfLoreGame_InteractionsTest, process_talk__with_the_infinity_torch__talking_to__the_man_at_the_entrance_of_the_cave__he_will_say_the_expected_message)
+TEST_F(LabyrinthOfLoreGame_InteractionsTest,
+   process_talk__with_the_infinity_torch__talking_to__the_man_at_the_entrance_of_the_cave__he_will_say_the_expected_message)
 {
    thing_dictionary = LabyrinthOfLore::Entity::ThingDictionary({
       { MAN_AT_THE_ENTRANCE_TO_THE_CAVE, LabyrinthOfLore::Entity::ThingDefinition() },
@@ -183,8 +180,8 @@ TEST_F(LabyrinthOfLoreGame_InteractionsTest, process_talk__with_the_infinity_tor
 }
 
 
-
-TEST_F(LabyrinthOfLoreGame_InteractionsTest, process_talk__if_you_talk_to_catalina_in_the_village__she_gives_you_the_expected_message)
+TEST_F(LabyrinthOfLoreGame_InteractionsTest,
+   process_talk__if_you_talk_to_catalina_in_the_village__she_gives_you_the_expected_message)
 {
    thing_dictionary = LabyrinthOfLore::Entity::ThingDictionary({
       { CATALINA_IN_THE_VILLAGE_ID, LabyrinthOfLore::Entity::ThingDefinition() },
@@ -197,7 +194,8 @@ TEST_F(LabyrinthOfLoreGame_InteractionsTest, process_talk__if_you_talk_to_catali
 }
 
 
-TEST_F(LabyrinthOfLoreGame_InteractionsTest, process_talk__if_you_talk_to_harcourt__when_you_have_at_least_3_torch_fuels__he_will_give_you_a_prophecy)
+TEST_F(LabyrinthOfLoreGame_InteractionsTest,
+   process_talk__if_you_talk_to_harcourt__when_you_have_at_least_3_torch_fuels__he_will_give_you_a_prophecy)
 {
    thing_dictionary = LabyrinthOfLore::Entity::ThingDictionary({
       { HARCOURT_IN_THE_VILLAGE, LabyrinthOfLore::Entity::ThingDefinition() },
@@ -216,8 +214,8 @@ TEST_F(LabyrinthOfLoreGame_InteractionsTest, process_talk__if_you_talk_to_harcou
 }
 
 
-
-TEST_F(LabyrinthOfLoreGame_InteractionsTest, process_talk__if_you_talk_to_harcourt__when_you_have_less_than_3_torch_fuels__he_will_tell_you_a_message_and_give_you_up_to_3_torch_fuels)
+TEST_F(LabyrinthOfLoreGame_InteractionsTest,
+   process_talk__if_you_talk_to_harcourt__when_you_have_less_than_3_torch_fuels__he_will_tell_you_a_message_and_give_you_up_to_3_torch_fuels)
 {
    thing_dictionary = LabyrinthOfLore::Entity::ThingDictionary({
       { HARCOURT_IN_THE_VILLAGE, LabyrinthOfLore::Entity::ThingDefinition() },
@@ -233,8 +231,8 @@ TEST_F(LabyrinthOfLoreGame_InteractionsTest, process_talk__if_you_talk_to_harcou
 }
 
 
-
-TEST_F(LabyrinthOfLoreGame_InteractionsTest, process_use__if_you_use_the_letter_to_catalina__on__catalina__then_she_will_give_a_heartwarming_response_give_you_the_amulet_of_magic_and_take_the_letter_to_catalina)
+TEST_F(LabyrinthOfLoreGame_InteractionsTest,
+   process_use__if_you_use_the_letter_to_catalina__on__catalina__then_she_will_give_a_heartwarming_response_give_you_the_amulet_of_magic_and_take_the_letter_to_catalina)
 {
    thing_dictionary = LabyrinthOfLore::Entity::ThingDictionary({
       { CATALINA_IN_THE_VILLAGE_ID, LabyrinthOfLore::Entity::ThingDefinition() },
@@ -253,6 +251,5 @@ TEST_F(LabyrinthOfLoreGame_InteractionsTest, process_use__if_you_use_the_letter_
    EXPECT_EQ(false, player_inventory.has_item(LETTER_TO_CATALINA_ID));
    EXPECT_EQ(true, player_inventory.has_item(AMULET_OF_MAGIC_ID));
 }
-
 
 
