@@ -1,1 +1,1 @@
-/Users/markoates/Repos/union/Makefile
+../blast/Makefile
