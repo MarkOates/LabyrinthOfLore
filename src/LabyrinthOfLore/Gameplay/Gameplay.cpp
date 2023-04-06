@@ -890,6 +890,10 @@ Gameplay::Gameplay()
 void Gameplay::initialize()
 {
    if (initialized) throw std::runtime_error("[Lol::Gameplay::Gameplay]: error: cannot initialize twice");
+
+
+
+   initialized = true;
 }
 
 
@@ -1153,7 +1157,18 @@ void Gameplay::run()
 
             al_set_target_bitmap(al_get_backbuffer(game_system.display));
             al_set_render_state(ALLEGRO_DEPTH_TEST, 0);
-            al_draw_scaled_bitmap(buffer_buffer, 0, 0, al_get_bitmap_width(buffer_buffer), al_get_bitmap_height(buffer_buffer), 0, 0, al_get_display_width(game_system.display), al_get_display_height(game_system.display), 0);
+            al_draw_scaled_bitmap(
+               buffer_buffer,
+               0,
+               0,
+               al_get_bitmap_width(buffer_buffer),
+               al_get_bitmap_height(buffer_buffer),
+               0,
+               0,
+               al_get_display_width(game_system.display),
+               al_get_display_height(game_system.display),
+               0
+            );
             //al_draw_scaled_bitmap(picking_buffer.get_surface_render(), 0, 0, al_get_bitmap_width(buffer_buffer), al_get_bitmap_height(buffer_buffer), 0, 0, al_get_display_width(display), al_get_display_height(display), 0);
 
             //
