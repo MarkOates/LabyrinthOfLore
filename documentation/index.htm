@@ -3298,10 +3298,6 @@ table td
   <td class="property">AllegroFlare::BitmapBin*</td>
 </tr>
 <tr>
-  <td class="property">initialized</td>
-  <td class="property">bool</td>
-</tr>
-<tr>
   <td class="property">clamped_color_shader</td>
   <td class="property">LabyrinthOfLore::Shader::ClampedColor</td>
 </tr>
@@ -3345,8 +3341,15 @@ table td
   <td class="property">all_entities</td>
   <td class="property">std::vector&lt;LabyrinthOfLore::Entity::Base*&gt;</td>
 </tr>
+<tr>
+  <td class="property">initialized</td>
+  <td class="property">bool</td>
+</tr>
     </table>
      <table>
+<tr>
+  <td class="method">set_bitmap_bin(AllegroFlare::BitmapBin* bitmap_bin=nullptr)</td>
+</tr>
 <tr>
   <td class="method">add_thing_to_world(std::vector&lt;LabyrinthOfLore::Entity::Base*&gt;* all_entities={}, LabyrinthOfLore::Entity::ThingDictionary* thing_dictionary=nullptr, int thing_id=0, std::string level_identifier=&quot;&quot;, AllegroFlare::vec3d position={}, bool billboard_at_camera=true, bool can_be_picked_up=true, bool must_be_picked_up_to_be_used=false)</td>
 </tr>

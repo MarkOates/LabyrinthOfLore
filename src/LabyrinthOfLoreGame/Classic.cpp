@@ -8,6 +8,9 @@
 #include <LabyrinthOfLore/WorldMap/TileTypeEnum.hpp>
 #include <LabyrinthOfLoreGame/ItemIdEnums.hpp>
 #include <LabyrinthOfLoreGame/LevelIdentifiers.hpp>
+#include <iostream>
+#include <sstream>
+#include <stdexcept>
 
 
 namespace LabyrinthOfLoreGame
@@ -16,7 +19,6 @@ namespace LabyrinthOfLoreGame
 
 Classic::Classic(AllegroFlare::BitmapBin* bitmap_bin)
    : bitmap_bin(bitmap_bin)
-   , initialized(false)
    , clamped_color_shader({})
    , depth_darken_shader({})
    , item_tile_atlas({})
@@ -28,6 +30,7 @@ Classic::Classic(AllegroFlare::BitmapBin* bitmap_bin)
    , doors({})
    , thing_dictionary()
    , all_entities({})
+   , initialized(false)
 {
 }
 
@@ -103,6 +106,19 @@ std::vector<LabyrinthOfLore::Entity::Base*> &Classic::get_all_entities_ref()
 }
 
 
+void Classic::set_bitmap_bin(AllegroFlare::BitmapBin* bitmap_bin)
+{
+   if (!((!initialized)))
+   {
+      std::stringstream error_message;
+      error_message << "[Classic::set_bitmap_bin]: error: guard \"(!initialized)\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Classic::set_bitmap_bin: error: guard \"(!initialized)\" not met");
+   }
+   this->bitmap_bin = bitmap_bin;
+   return;
+}
+
 void Classic::add_thing_to_world(std::vector<LabyrinthOfLore::Entity::Base*>* all_entities, LabyrinthOfLore::Entity::ThingDictionary* thing_dictionary, int thing_id, std::string level_identifier, AllegroFlare::vec3d position, bool billboard_at_camera, bool can_be_picked_up, bool must_be_picked_up_to_be_used)
 {
    const std::string THING_ID_ATTRIBUTE = ("thing_id");
@@ -139,6 +155,13 @@ void Classic::add_thing_to_world(std::vector<LabyrinthOfLore::Entity::Base*>* al
 
 void Classic::initialize()
 {
+   if (!(bitmap_bin))
+   {
+      std::stringstream error_message;
+      error_message << "[Classic::initialize]: error: guard \"bitmap_bin\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Classic::initialize: error: guard \"bitmap_bin\" not met");
+   }
    if (initialized) return;
    depth_darken_shader.initialize();
    clamped_color_shader.initialize();
@@ -384,6 +407,9 @@ void Classic::initialize()
    add_thing_to_world(&get_all_entities_ref(), &get_thing_dictionary_ref(), ITEM_TORCH_ID,                   LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER, {  42.5,  77.5, 3.0 }, true, true,  false);
    add_thing_to_world(&get_all_entities_ref(), &get_thing_dictionary_ref(), MAN_AT_THE_ENTRANCE_TO_THE_CAVE, LabyrinthOfLoreGame::LevelIdentifiers::THE_CAVE_IDENTIFIER,       {  31.5,  9.5, 1.0 },  true, false, false);
    add_thing_to_world(&get_all_entities_ref(), &get_thing_dictionary_ref(), RAT+1,                           LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER, {  40.5,  101.5, 1.0 },  true, false, false);
+
+   initialized = true;
+   return;
 }
 
 

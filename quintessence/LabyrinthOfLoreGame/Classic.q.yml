@@ -1,56 +1,86 @@
 properties:
+
+
   - name: bitmap_bin
     type: AllegroFlare::BitmapBin*
     init_with: nullptr
     constructor_arg: true
-  - name: initialized
-    type: bool
-    init_with: false
+    setter: false
+
   - name: clamped_color_shader
     type: LabyrinthOfLore::Shader::ClampedColor
     init_with: "{}"
     getter_ref: true
+
   - name: depth_darken_shader
     type: LabyrinthOfLore::Shader::DepthDarken
     init_with: "{}"
     getter_ref: true
+
   - name: item_tile_atlas
     type: Tileo::TileAtlas
     init_with: "{}"
     getter_ref: true
+
   - name: character_tile_atlas
     type: Tileo::TileAtlas
     init_with: "{}"
     getter_ref: true
+
   - name: world_texture_tile_atlas
     type: Tileo::TileAtlas
     init_with: "{}"
     getter_ref: true
+
   - name: levels
     type: std::map<std::string, LabyrinthOfLore::WorldMap::Level>
     init_with: "{}"
     getter_ref: true
+
   - name: meshes
     type: std::map<std::string, LabyrinthOfLore::Rendering::TileMapMesh>
     init_with: "{}"
     getter_ref: true
+
   - name: water_meshes
     type: std::map<std::string, LabyrinthOfLore::Rendering::TileMapWaterMesh>
     init_with: "{}"
     getter_ref: true
+
   - name: doors
     type: std::map<char, LabyrinthOfLore::WorldMap::Door>
     init_with: "{}"
     getter_ref: true
+
   - name: thing_dictionary
     type: LabyrinthOfLore::Entity::ThingDictionary
     init_with: ""
     getter_ref: true
+
   - name: all_entities
     type: std::vector<LabyrinthOfLore::Entity::Base*>
     init_with: "{}"
     getter_ref: true
+
+  - name: initialized
+    type: bool
+    init_with: false
+
+
 functions:
+
+
+  - name: set_bitmap_bin
+    parameters:
+      - name: bitmap_bin
+        type: AllegroFlare::BitmapBin*
+        default_argument: nullptr
+    guards: [ (!initialized) ]
+    body: |
+      this->bitmap_bin = bitmap_bin;
+      return;
+
+
   - name: add_thing_to_world
     parameters:
       - name: all_entities
@@ -108,7 +138,10 @@ functions:
        ////entity->get_placement_ref().rotation = AllegroFlare::vec3d(0, random.get_random_float(-1, 1), 0);
 
        all_entities->push_back(entity);
+
+
   - name: initialize
+    guards: [ bitmap_bin ]
     body: |
       if (initialized) return;
       depth_darken_shader.initialize();
@@ -355,6 +388,9 @@ functions:
       add_thing_to_world(&get_all_entities_ref(), &get_thing_dictionary_ref(), ITEM_TORCH_ID,                   LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER, {  42.5,  77.5, 3.0 }, true, true,  false);
       add_thing_to_world(&get_all_entities_ref(), &get_thing_dictionary_ref(), MAN_AT_THE_ENTRANCE_TO_THE_CAVE, LabyrinthOfLoreGame::LevelIdentifiers::THE_CAVE_IDENTIFIER,       {  31.5,  9.5, 1.0 },  true, false, false);
       add_thing_to_world(&get_all_entities_ref(), &get_thing_dictionary_ref(), RAT+1,                           LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER, {  40.5,  101.5, 1.0 },  true, false, false);
+
+      initialized = true;
+      return;
 
     body_dependency_symbols:
       - LabyrinthOfLore::WorldMap::MultiBitmapFilenameToWorldBuilder

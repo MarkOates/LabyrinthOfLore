@@ -811,7 +811,6 @@ void add_thing_to_world(
 
 
 
-
 //#include <LabyrinthOfLore/Gameplay/Screen.hpp>
 
 
@@ -834,6 +833,33 @@ void Gameplay::run()
 {
    System game_system;
    game_system.initialize();
+
+
+
+
+   // Declaration
+
+   LabyrinthOfLoreGame::ThingDefinitionFactory thing_definition_factory; // yet to be used
+   AllegroFlare::Inventory player_inventory;
+   LabyrinthOfLore::Hud::MessageScroll message_scroll;
+   LabyrinthOfLore::Hud::CommandPanel command_panel;
+   LabyrinthOfLore::Hud::VitalityAndManaBar vitality_and_mana_bar;
+   LabyrinthOfLore::Hud::CharacterPanel character_panel;
+   LabyrinthOfLore::Hud::MapButton map_button;
+   LabyrinthOfLore::Hud::RuneShelf rune_shelf;
+   LabyrinthOfLore::Hud::Compass compass;
+   LabyrinthOfLore::Hud::RotateCharacterPanelButton rotate_character_panel_button;
+   LabyrinthOfLore::Hud::CommandsHintPane commands_hint_pane;
+   LabyrinthOfLore::Hud::CurrentSpells current_spells;
+   LabyrinthOfLore::Hud::ViewFrame veiw_frame;
+   LabyrinthOfLore::Hud::TitleText title_text;
+   LabyrinthOfLore::WorldMap::TileMap current_tile_map;
+   LabyrinthOfLore::Rendering::TileMapMesh current_tile_map_mesh;
+   LabyrinthOfLore::Rendering::TileMapWaterMesh current_tile_map_water_mesh;
+
+
+
+   LabyrinthOfLoreGame::Classic classic_game; // This may be LabyrinthOfLore::Games::Base*
 
 
 
@@ -869,45 +895,16 @@ void Gameplay::run()
    al_set_new_bitmap_samples(previous_samples);
 
 
-   ALLEGRO_BITMAP *scene_rendering_surface = al_create_sub_bitmap(buffer_buffer, 0, 0, al_get_bitmap_width(buffer_buffer), al_get_bitmap_height(buffer_buffer));
+   ALLEGRO_BITMAP *scene_rendering_surface = al_create_sub_bitmap(
+         buffer_buffer,
+         0,
+         0,
+         al_get_bitmap_width(buffer_buffer),
+         al_get_bitmap_height(buffer_buffer)
+      );
    if (!scene_rendering_surface) throw std::runtime_error("could not create scene_rendering_surface");
 
    //
-
-   LabyrinthOfLoreGame::Classic classic_game(&game_system.bitmap_bin);
-   classic_game.initialize();
-
-   //
-
-   //
-
-   LabyrinthOfLoreGame::ThingDefinitionFactory thing_definition_factory; // yet to be used
-
-
-   AllegroFlare::Inventory player_inventory;
-
-   LabyrinthOfLore::Hud::MessageScroll message_scroll;
-   LabyrinthOfLore::Hud::CommandPanel command_panel;
-   LabyrinthOfLore::Hud::VitalityAndManaBar vitality_and_mana_bar;
-   LabyrinthOfLore::Hud::CharacterPanel character_panel;
-   LabyrinthOfLore::Hud::MapButton map_button;
-   LabyrinthOfLore::Hud::RuneShelf rune_shelf;
-   LabyrinthOfLore::Hud::Compass compass;
-   LabyrinthOfLore::Hud::RotateCharacterPanelButton rotate_character_panel_button;
-   LabyrinthOfLore::Hud::CommandsHintPane commands_hint_pane;
-   LabyrinthOfLore::Hud::CurrentSpells current_spells;
-   LabyrinthOfLore::Hud::ViewFrame veiw_frame;
-   LabyrinthOfLore::Hud::TitleText title_text;
-
-   //
-
-   LabyrinthOfLore::WorldMap::TileMap current_tile_map;
-   LabyrinthOfLore::Rendering::TileMapMesh current_tile_map_mesh;
-   LabyrinthOfLore::Rendering::TileMapWaterMesh current_tile_map_water_mesh;
-
-   //
-
-
 
 
 
@@ -915,9 +912,12 @@ void Gameplay::run()
    // initialize:
    ///////////////////////////////
 
+
+   classic_game.set_bitmap_bin(&game_system.bitmap_bin);
+   classic_game.initialize();
+
    character_panel.set_player_inventory(&player_inventory);
    character_panel.set_thing_dictionary(&classic_game.get_thing_dictionary_ref());
-
 
 
 
