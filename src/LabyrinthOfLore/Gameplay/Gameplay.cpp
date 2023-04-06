@@ -809,6 +809,37 @@ void add_thing_to_world(
 
 
 
+ALLEGRO_BITMAP *create_scene_rendering_surface(int width, int height)
+{
+   int previous_depth = al_get_new_bitmap_depth();
+   int previous_samples = al_get_new_bitmap_samples();
+   ALLEGRO_STATE previous_state;
+   al_store_state(&previous_state, ALLEGRO_STATE_BITMAP);
+
+   al_set_new_bitmap_depth(32);
+   al_set_new_bitmap_samples(0);
+   //ALLEGRO_BITMAP *bmp = al_create_bitmap(w, h);
+
+   ALLEGRO_BITMAP *buffer_buffer = al_create_bitmap(width, height);
+   //ALLEGRO_BITMAP *buffer_buffer = al_get_backbuffer(display);
+
+   al_restore_state(&previous_state);
+   al_set_new_bitmap_depth(previous_depth);
+   al_set_new_bitmap_samples(previous_samples);
+
+
+   ALLEGRO_BITMAP *scene_rendering_surface = al_create_sub_bitmap(
+         buffer_buffer,
+         0,
+         0,
+         al_get_bitmap_width(buffer_buffer),
+         al_get_bitmap_height(buffer_buffer)
+      );
+
+   return scene_rendering_surface;
+}
+
+
 
 
 //#include <LabyrinthOfLore/Gameplay/Screen.hpp>
@@ -860,14 +891,34 @@ void Gameplay::run()
 
 
    LabyrinthOfLoreGame::Classic classic_game; // This may be LabyrinthOfLore::Games::Base*
+   LabyrinthOfLore::Rendering::Camera camera;
+
+   ALLEGRO_BITMAP *buffer_buffer = nullptr;
+   ALLEGRO_BITMAP *scene_rendering_surface = nullptr;
+
+
+   // Player
+   LabyrinthOfLore::Entity::Base* player_entity = nullptr;
+
+   float player_yaw = 0;
+   float player_camera_ascent = 0.65;
+   float player_pitch = 0.0;
+   float player_turning = 0.0;
+   float max_player_turning_speed = 0.0023;
+   float player_movement_magnitude = 0.0;
+
+   int player_mouse_x = 0;
+   int player_mouse_y = 0;
 
 
 
 
+   ///////////////////////////////
+   // initialize:
+   ///////////////////////////////
 
 
-
-   //
+   // Create rendering surfaces (unclear what these are needed for)
 
    int previous_depth = al_get_new_bitmap_depth();
    int previous_samples = al_get_new_bitmap_samples();
@@ -878,7 +929,7 @@ void Gameplay::run()
    al_set_new_bitmap_samples(0);
    //ALLEGRO_BITMAP *bmp = al_create_bitmap(w, h);
 
-   ALLEGRO_BITMAP *buffer_buffer = al_create_bitmap(
+   buffer_buffer = al_create_bitmap(
       al_get_display_width(game_system.display)/resolution_scale,
       al_get_display_height(game_system.display)/resolution_scale
    );
@@ -889,7 +940,7 @@ void Gameplay::run()
    al_set_new_bitmap_samples(previous_samples);
 
 
-   ALLEGRO_BITMAP *scene_rendering_surface = al_create_sub_bitmap(
+   scene_rendering_surface = al_create_sub_bitmap(
          buffer_buffer,
          0,
          0,
@@ -898,14 +949,8 @@ void Gameplay::run()
       );
    if (!scene_rendering_surface) throw std::runtime_error("could not create scene_rendering_surface");
 
-   //
 
-
-
-   ///////////////////////////////
-   // initialize:
-   ///////////////////////////////
-
+   // Init our other stuff
 
    picking_buffer.initialize();
 
@@ -928,26 +973,17 @@ void Gameplay::run()
 
     
    // Create the player
-   LabyrinthOfLore::Rendering::Camera camera({0, 0, 0}, 0.0, 0.0);
-
-   LabyrinthOfLore::Entity::Base* player_entity = new LabyrinthOfLore::Entity::Base;
-
-   float player_yaw = 0;
-   float player_camera_ascent = 0.65;
-   float player_pitch = 0.0;
-   float player_turning = 0.0;
-   float max_player_turning_speed = 0.0023;
-   float player_movement_magnitude = 0.0;
-
-   int player_mouse_x = 0;
-   int player_mouse_y = 0;
-
+   player_entity = new LabyrinthOfLore::Entity::Base; // TODO: Destroy this player_entity on restart
    player_entity->get_velocity_ref().position = {0.0, 0.0, 0.0};
    player_entity->set_identifier_for_level_within(LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER);
    player_entity->get_placement_ref().position = {0.0, 0.0, 0.0};
-
    classic_game.get_all_entities_ref().push_back(player_entity);
 
+
+
+   // Reset the controls
+   player_mouse_x = 0;
+   player_mouse_y = 0;
 
 
    go_into_door(
@@ -962,6 +998,7 @@ void Gameplay::run()
       current_tile_map_water_mesh,
       title_text
    );
+
 
 
    while(!game_system.shutdown_program)
