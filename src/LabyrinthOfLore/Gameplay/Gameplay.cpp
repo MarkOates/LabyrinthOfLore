@@ -42,7 +42,8 @@ bool development_mode = true;
 //using AllegroFlare::radians_to_degrees;
 //using AllegroFlare::Random;
 
-#define USER_EVENT_APPEND_MESSAGE_TO_MESSAGE_SCROLL ALLEGRO_GET_EVENT_TYPE('A','p','d','M')
+// Maybe add this later
+//#define USER_EVENT_APPEND_MESSAGE_TO_MESSAGE_SCROLL ALLEGRO_GET_EVENT_TYPE('A','p','d','M')
 
 #define THING_ID_ATTRIBUTE ("thing_id")
 #define CAN_BE_PICKED_UP_ATTRIBUTE ("can_be_picked_up")
@@ -889,6 +890,22 @@ Gameplay::Gameplay()
 
 
 
+void Gameplay::set_bitmap_bin(AllegroFlare::BitmapBin *bitmap_bin)
+{
+   if (initialized) throw std::runtime_error("[Lol::Gameplay::Gameplay::set_bitmap_bin]: error: must be initialized");
+   this->bitmap_bin = bitmap_bin;
+}
+
+
+
+void Gameplay::set_font_bin(AllegroFlare::FontBin *font_bin)
+{
+   if (initialized) throw std::runtime_error("[Lol::Gameplay::Gameplay::set_font_bin]: error: must be initialized");
+   this->bitmap_bin = bitmap_bin;
+}
+
+
+
 void Gameplay::initialize(ALLEGRO_DISPLAY *_display)
 {
    if (initialized) throw std::runtime_error("[Lol::Gameplay::Gameplay::initialize]: error: cannot initialize twice");
@@ -1203,8 +1220,8 @@ void Gameplay::run()
 
    // initialize:
 
-   bitmap_bin = &game_system.bitmap_bin;
-   font_bin = &game_system.font_bin;
+   set_bitmap_bin(&game_system.bitmap_bin);
+   set_font_bin(&game_system.font_bin);
    initialize(game_system.display);
 
 
@@ -1233,9 +1250,6 @@ void Gameplay::run()
          break;
       case ALLEGRO_EVENT_KEY_CHAR: // using key down does not capture the SHIFT modifier for cheats
          process_key_char_event(this_event, game_system.shutdown_program);
-         break;
-      case USER_EVENT_APPEND_MESSAGE_TO_MESSAGE_SCROLL:
-         // no function set here
          break;
       case ALLEGRO_EVENT_KEY_UP:
          process_key_up_event(this_event);
