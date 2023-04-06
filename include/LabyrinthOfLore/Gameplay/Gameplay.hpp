@@ -97,6 +97,7 @@ namespace LabyrinthOfLore
          float player_movement_magnitude;
          int player_mouse_x;
          int player_mouse_y;
+         bool initialized;
 
       public:
          Gameplay();

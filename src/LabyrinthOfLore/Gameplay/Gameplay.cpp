@@ -153,9 +153,6 @@ public:
 
       //bitmap_bin.get("logo-fo-sho.png");
    }
-   void run_timer_step()
-   {
-   }
 };
 
 
@@ -884,6 +881,7 @@ Gameplay::Gameplay()
    , player_movement_magnitude(0.0)
    , player_mouse_x(0)
    , player_mouse_y(0)
+   , initialized(false)
 {
 }
 
@@ -891,6 +889,7 @@ Gameplay::Gameplay()
 
 void Gameplay::initialize()
 {
+   if (initialized) throw std::runtime_error("[Lol::Gameplay::Gameplay]: error: cannot initialize twice");
 }
 
 
@@ -1084,7 +1083,6 @@ void Gameplay::run()
 
          break;
       case ALLEGRO_EVENT_TIMER:
-         game_system.run_timer_step();
          {
             player_yaw += player_turning;
 
