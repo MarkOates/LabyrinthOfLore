@@ -1187,6 +1187,9 @@ void Gameplay::process_timer_event(ALLEGRO_EVENT &this_event, ALLEGRO_DISPLAY* _
 
             al_flip_display();
          }
+
+      // NOTE: This line was previously after the switch statement in the primary loop
+      cleanup_all_entities_flagged_for_destruction(classic_game.get_all_entities_ref());
 }
 
 
@@ -1246,10 +1249,10 @@ void Gameplay::run()
          break;
       }
 
-      cleanup_all_entities_flagged_for_destruction(classic_game.get_all_entities_ref());
+      //cleanup_all_entities_flagged_for_destruction(classic_game.get_all_entities_ref());
    }
 
-   al_save_bitmap("tmp/buffer_buffer.png", buffer_buffer);
+   //al_save_bitmap("tmp/buffer_buffer.png", buffer_buffer);
    //al_save_bitmap("tmp/scene.png", scene_rendering_surface);
    //al_save_bitmap("tmp/picking.png", picking_buffer.get_surface_render());
 }
