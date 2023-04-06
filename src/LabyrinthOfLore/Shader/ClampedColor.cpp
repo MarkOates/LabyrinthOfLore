@@ -42,8 +42,8 @@ void ClampedColor::deactivate()
 
 void ClampedColor::set_clamped_color(ALLEGRO_COLOR clamped_color)
 {
-   Shader::set_vec3("tint", clamped_color.r, clamped_color.g, clamped_color.b);
-   Shader::set_float("tint_intensity", 1.0);
+   AllegroFlare::Shaders::Base::set_vec3("tint", clamped_color.r, clamped_color.g, clamped_color.b);
+   AllegroFlare::Shaders::Base::set_float("tint_intensity", 1.0);
 }
 
 std::string ClampedColor::obtain_vertex_source()

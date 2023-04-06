@@ -49,7 +49,7 @@ void DepthDarken::activate()
 {
    if (!initialized) throw std::runtime_error("[LabyrinthOfLore::Shader::ClampedColor] Attempting to activate() shader before it has been initialized");
    LabyrinthOfLore::Shader::Base::activate();
-   Shader::set_int("torch_type", torch_type);
+   AllegroFlare::Shaders::Base::set_int("torch_type", torch_type);
 }
 
 void DepthDarken::deactivate()

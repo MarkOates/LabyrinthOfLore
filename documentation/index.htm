@@ -153,10 +153,10 @@ table td
     </table>
      <table>
 <tr>
-  <td class="method">smoothstep(3)</td>
+  <td class="method">smoothstep(float edge0=0.0f, float edge1=0.0f, float x=0.0f)</td>
 </tr>
 <tr>
-  <td class="method">multiline_draw_callback(4)</td>
+  <td class="method">multiline_draw_callback(int line_num=0, const char* line=nullptr, int size=0, void* extra=nullptr)</td>
 </tr>
 <tr>
   <td class="method">render()</td>
@@ -282,7 +282,7 @@ table td
     </table>
      <table>
 <tr>
-  <td class="method">select_within_level(1)</td>
+  <td class="method">select_within_level(std::string level_identifier=&quot;&quot;)</td>
 </tr>
     </table>
      <table>
@@ -371,13 +371,13 @@ table td
   <td class="method">size()</td>
 </tr>
 <tr>
-  <td class="method">create_new_definition(1)</td>
+  <td class="method">create_new_definition(LabyrinthOfLore::Entity::ThingDefinition thing={})</td>
 </tr>
 <tr>
-  <td class="method">find_definition(1)</td>
+  <td class="method">find_definition(int tile_type=0)</td>
 </tr>
 <tr>
-  <td class="method">find_definition_ref(1)</td>
+  <td class="method">find_definition_ref(int tile_type=0)</td>
 </tr>
     </table>
      <table>
@@ -425,7 +425,7 @@ table td
   <td class="method">move_cursor_down()</td>
 </tr>
 <tr>
-  <td class="method">calculate_count_of_type(1)</td>
+  <td class="method">calculate_count_of_type(thing_type_t thing_type=THING_TYPE_UNDEFINED)</td>
 </tr>
 <tr>
   <td class="method">get_inventory_rollup()</td>
@@ -443,7 +443,7 @@ table td
   <td class="method">calculate_available_remaining_carry_weight()</td>
 </tr>
 <tr>
-  <td class="method">has_item(1)</td>
+  <td class="method">has_item(int item_id=0)</td>
 </tr>
     </table>
      <table>
@@ -569,13 +569,13 @@ table td
   <td class="method">get_last_3_messages()</td>
 </tr>
 <tr>
-  <td class="method">append_text(1)</td>
+  <td class="method">append_text(std::string text_to_append=&quot;&quot;)</td>
 </tr>
 <tr>
-  <td class="method">append_message(2)</td>
+  <td class="method">append_message(float time_of_message=0.0f, std::string text_to_append=&quot;&quot;)</td>
 </tr>
 <tr>
-  <td class="method">append_character_dialog(2)</td>
+  <td class="method">append_character_dialog(float time_of_message=0.0f, std::string text_to_append=&quot;&quot;)</td>
 </tr>
 <tr>
   <td class="method">clear_text()</td>
@@ -635,7 +635,7 @@ table td
     </table>
      <table>
 <tr>
-  <td class="method">set(3)</td>
+  <td class="method">set(std::string above_text=&quot;&quot;, std::string headline_text=&quot;&quot;, float time_now=0.0f)</td>
 </tr>
     </table>
      <table>
@@ -828,13 +828,13 @@ table td
     </table>
      <table>
 <tr>
-  <td class="method">get_collided(2)</td>
+  <td class="method">get_collided(std::vector&lt;LabyrinthOfLore::Entity::Base*&gt; entities={}, std::vector&lt;LabyrinthOfLore::WorldMap::Zone*&gt; zones={})</td>
 </tr>
 <tr>
-  <td class="method">observe_start_state(2)</td>
+  <td class="method">observe_start_state(std::vector&lt;LabyrinthOfLore::Entity::Base*&gt; entities={}, std::vector&lt;LabyrinthOfLore::WorldMap::Zone*&gt; zones={})</td>
 </tr>
 <tr>
-  <td class="method">observe_end_state(2)</td>
+  <td class="method">observe_end_state(std::vector&lt;LabyrinthOfLore::Entity::Base*&gt; entities={}, std::vector&lt;LabyrinthOfLore::WorldMap::Zone*&gt; zones={})</td>
 </tr>
 <tr>
   <td class="method">collisions_added()</td>
@@ -903,13 +903,13 @@ table td
     </table>
      <table>
 <tr>
-  <td class="method">build_custom_reverse_transform(2)</td>
+  <td class="method">build_custom_reverse_transform(allegro_flare::placement3d* placement=nullptr, ALLEGRO_TRANSFORM* transform=nullptr)</td>
 </tr>
 <tr>
-  <td class="private_method">set_perspective_transform(2)</td>
+  <td class="private_method">set_perspective_transform(ALLEGRO_BITMAP* surface=nullptr, ALLEGRO_TRANSFORM* transform=nullptr)</td>
 </tr>
 <tr>
-  <td class="method">start_projection(1)</td>
+  <td class="method">start_projection(ALLEGRO_BITMAP* surface=nullptr)</td>
 </tr>
     </table>
      <table>
@@ -1293,10 +1293,10 @@ table td
     </table>
      <table>
 <tr>
-  <td class="method">smoothstep(3)</td>
+  <td class="method">smoothstep(float edge0=0.0f, float edge1=0.0f, float x=0.0f)</td>
 </tr>
 <tr>
-  <td class="method">multiline_draw_callback(4)</td>
+  <td class="method">multiline_draw_callback(int line_num=0, const char* line=nullptr, int size=0, void* extra=nullptr)</td>
 </tr>
 <tr>
   <td class="method">render()</td>
@@ -2159,7 +2159,7 @@ table td
     </table>
      <table>
 <tr>
-  <td class="method">build_textured_cube(1)</td>
+  <td class="method">build_textured_cube(bool scale_for_unit_sized_texture=true)</td>
 </tr>
     </table>
      <table>
@@ -2241,28 +2241,28 @@ table td
   <td class="method">buildH()</td>
 </tr>
 <tr>
-  <td class="method">buildA_whole(1)</td>
+  <td class="method">buildA_whole(float height_origin=0.0f)</td>
 </tr>
 <tr>
-  <td class="method">buildB_whole(1)</td>
+  <td class="method">buildB_whole(float height_origin=0.0f)</td>
 </tr>
 <tr>
-  <td class="method">buildC_whole(1)</td>
+  <td class="method">buildC_whole(float height_origin=0.0f)</td>
 </tr>
 <tr>
-  <td class="method">buildD_whole(1)</td>
+  <td class="method">buildD_whole(float height_origin=0.0f)</td>
 </tr>
 <tr>
-  <td class="method">buildE_whole(1)</td>
+  <td class="method">buildE_whole(float height_origin=0.0f)</td>
 </tr>
 <tr>
-  <td class="method">buildF_whole(1)</td>
+  <td class="method">buildF_whole(float height_origin=0.0f)</td>
 </tr>
 <tr>
-  <td class="method">buildG_whole(1)</td>
+  <td class="method">buildG_whole(float height_origin=0.0f)</td>
 </tr>
 <tr>
-  <td class="method">buildH_whole(1)</td>
+  <td class="method">buildH_whole(float height_origin=0.0f)</td>
 </tr>
 <tr>
   <td class="method">needs_partial_height_side_faces_from_top()</td>
@@ -2360,13 +2360,13 @@ table td
     </table>
      <table>
 <tr>
-  <td class="method">assign_texture_to_face(3)</td>
+  <td class="method">assign_texture_to_face(int this_face_start_index=0, int index_num_for_tile=0, bool needs_partial_height_side_faces_from_top=false)</td>
 </tr>
 <tr>
   <td class="method">infer_number_of_front_right_left_back_sets_of_vertexes()</td>
 </tr>
 <tr>
-  <td class="method">build_textured_pillar(1)</td>
+  <td class="method">build_textured_pillar(bool scale_for_unit_sized_texture=true)</td>
 </tr>
     </table>
      <table>
@@ -2505,7 +2505,7 @@ table td
     </table>
      <table>
 <tr>
-  <td class="method">find_definition(1)</td>
+  <td class="method">find_definition(int tile_type=0)</td>
 </tr>
     </table>
      <table>
@@ -2535,7 +2535,7 @@ table td
     </table>
      <table>
 <tr>
-  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Shader&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Shader.hpp&quot;]}</td>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Shaders::Base&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Shaders/Base.hpp&quot;]}</td>
 </tr>
     </table>
   </div>
@@ -2560,7 +2560,7 @@ table td
   <td class="method">deactivate()</td>
 </tr>
 <tr>
-  <td class="method">set_clamped_color(1)</td>
+  <td class="method">set_clamped_color(ALLEGRO_COLOR clamped_color={})</td>
 </tr>
 <tr>
   <td class="private_method">obtain_vertex_source()</td>
@@ -2597,7 +2597,7 @@ table td
   <td class="method">initialize()</td>
 </tr>
 <tr>
-  <td class="method">set_torch_type(1)</td>
+  <td class="method">set_torch_type(int type=0)</td>
 </tr>
 <tr>
   <td class="method">set_torch_on()</td>
@@ -2645,7 +2645,7 @@ table td
   <td class="method">activate()</td>
 </tr>
 <tr>
-  <td class="method">set_flat_color(1)</td>
+  <td class="method">set_flat_color(ALLEGRO_COLOR flat_color={})</td>
 </tr>
 <tr>
   <td class="private_method">obtain_vertex_source()</td>
@@ -2776,7 +2776,7 @@ table td
     </table>
      <table>
 <tr>
-  <td class="method">colors_are_equal(2)</td>
+  <td class="method">colors_are_equal(ALLEGRO_COLOR c1={}, ALLEGRO_COLOR c2={})</td>
 </tr>
 <tr>
   <td class="method">get_index_column_x()</td>
@@ -2788,7 +2788,7 @@ table td
   <td class="method">infer_tile_map_height()</td>
 </tr>
 <tr>
-  <td class="method">pick_color(2)</td>
+  <td class="method">pick_color(int x=0, int y=0)</td>
 </tr>
 <tr>
   <td class="method">pick_index_null_color()</td>
@@ -2839,7 +2839,7 @@ table td
   <td class="method">validate()</td>
 </tr>
 <tr>
-  <td class="method">load(2)</td>
+  <td class="method">load(float top_height=4.0f, float ground_height=2.0f)</td>
 </tr>
     </table>
      <table>
@@ -2989,7 +2989,7 @@ table td
     </table>
      <table>
 <tr>
-  <td class="method">colors_are_equal(2)</td>
+  <td class="method">colors_are_equal(ALLEGRO_COLOR c1={}, ALLEGRO_COLOR c2={})</td>
 </tr>
 <tr>
   <td class="method">get_index_column_x()</td>
@@ -3001,7 +3001,7 @@ table td
   <td class="method">infer_tile_map_height()</td>
 </tr>
 <tr>
-  <td class="method">pick_color(2)</td>
+  <td class="method">pick_color(int x=0, int y=0)</td>
 </tr>
 <tr>
   <td class="method">pick_index_null_color()</td>
@@ -3022,7 +3022,7 @@ table td
   <td class="method">validate()</td>
 </tr>
 <tr>
-  <td class="method">load_and_process(2)</td>
+  <td class="method">load_and_process(float top_height=4.0f, float ground_height=2.0f)</td>
 </tr>
     </table>
      <table>
@@ -3177,7 +3177,7 @@ table td
     </table>
      <table>
 <tr>
-  <td class="method">collides(1)</td>
+  <td class="method">collides(AllegroFlare::vec3d point={})</td>
 </tr>
     </table>
      <table>
@@ -3246,7 +3246,7 @@ table td
     </table>
      <table>
 <tr>
-  <td class="method">add_thing_to_world(8)</td>
+  <td class="method">add_thing_to_world(std::vector&lt;LabyrinthOfLore::Entity::Base*&gt;* all_entities={}, LabyrinthOfLore::Entity::ThingDictionary* thing_dictionary=nullptr, int thing_id=0, std::string level_identifier=&quot;&quot;, AllegroFlare::vec3d position={}, bool billboard_at_camera=true, bool can_be_picked_up=true, bool must_be_picked_up_to_be_used=false)</td>
 </tr>
 <tr>
   <td class="method">initialize()</td>
@@ -3342,31 +3342,31 @@ table td
   <td class="method">validate_arguments()</td>
 </tr>
 <tr>
-  <td class="method">you_have_received_the_(1)</td>
+  <td class="method">you_have_received_the_(int thing_id={})</td>
 </tr>
 <tr>
-  <td class="method">character_speaks(1)</td>
+  <td class="method">character_speaks(std::string message=&quot;&quot;)</td>
 </tr>
 <tr>
-  <td class="method">append_message(1)</td>
+  <td class="method">append_message(std::string message=&quot;&quot;)</td>
 </tr>
 <tr>
-  <td class="method">player_has_item(1)</td>
+  <td class="method">player_has_item(int item_id=-1)</td>
 </tr>
 <tr>
-  <td class="method">get_player_inventory_count_of_type(1)</td>
+  <td class="method">get_player_inventory_count_of_type(thing_type_t thing_type=THING_TYPE_UNDEFINED)</td>
 </tr>
 <tr>
-  <td class="method">player_has_thing_of_type(1)</td>
+  <td class="method">player_has_thing_of_type(thing_type_t thing_type=THING_TYPE_UNDEFINED)</td>
 </tr>
 <tr>
-  <td class="method">process_use(1)</td>
+  <td class="method">process_use(float time_now=0.0f)</td>
 </tr>
 <tr>
-  <td class="method">process_use(3)</td>
+  <td class="method">process_use(int thing_being_used_by_player_from_inventory=-1, int thing_being_used_on=0, float time_now=0.0f)</td>
 </tr>
 <tr>
-  <td class="method">process_talk(1)</td>
+  <td class="method">process_talk(int thing_id=0)</td>
 </tr>
     </table>
      <table>
@@ -3946,7 +3946,7 @@ table td
     "LabyrinthOfLore/Rendering/TileTypeDictionary",
     "LabyrinthOfLore/Rendering/TileTypeDictionary"
   ],
-  "AllegroFlare/Shader": [
+  "AllegroFlare/Shaders/Base": [
     "LabyrinthOfLore/Shader/Base"
   ],
   "LabyrinthOfLore/Shader/Base": [
