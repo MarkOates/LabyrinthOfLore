@@ -25,6 +25,18 @@ CharacterPanel::~CharacterPanel()
 }
 
 
+void CharacterPanel::set_player_inventory(AllegroFlare::Inventory* player_inventory)
+{
+   this->player_inventory = player_inventory;
+}
+
+
+void CharacterPanel::set_thing_dictionary(LabyrinthOfLore::Entity::ThingDictionary* thing_dictionary)
+{
+   this->thing_dictionary = thing_dictionary;
+}
+
+
 int CharacterPanel::get_cursor_x() const
 {
    return cursor_x;

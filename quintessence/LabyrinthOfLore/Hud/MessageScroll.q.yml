@@ -1,22 +1,33 @@
 properties:
+
+
   - name: text
     type: std::string
     init_with: "\"Hello, brave soul. Adventure awaits you.\""
     getter: true
     constructor_arg: true
+
   - name: messages
     type: std::vector<std::tuple<float, std::string, int>>
     init_with: "{}"
+
+
 functions:
+
+
   - name: get_last_message_text
     type: std::string
     body: |
       if (messages.empty()) return {};
       return std::get<1>(messages[messages.size()-1]);
+
+
   - name: get_messages_ref
     type: std::vector<std::tuple<float, std::string, int>>
     body: |
       return messages;
+
+
   - name: get_last_3_messages
     type: std::vector<std::tuple<float, std::string, int>>
     body: |
@@ -25,6 +36,8 @@ functions:
       if (messages.size() == 2) return { messages[messages.size()-1], messages[messages.size()-2] };
       if (messages.size() >= 3) return { messages[messages.size()-1], messages[messages.size()-2], messages[messages.size()-3] };
       return {};
+
+
   - name: append_text
     type: void
     parameters:
@@ -34,6 +47,8 @@ functions:
     body: |
       text += std::string("\n") + text_to_append;
       return;
+
+
   - name: append_message
     type: void
     parameters:
@@ -55,6 +70,8 @@ functions:
          messages.push_back({ time_of_message, text_to_append, 0 });
       }
       return;
+
+
   - name: append_character_dialog
     type: void
     parameters:
@@ -76,9 +93,17 @@ functions:
          messages.push_back({ time_of_message, text_to_append, 1 });
       }
       return;
+
+
   - name: clear_text
     type: void
     body: text.clear();
+
+
 dependencies:
+
+
   - symbol: std::vector<std::tuple<float, std::string, int>>
     headers: [ vector, tuple, string ]
+
+

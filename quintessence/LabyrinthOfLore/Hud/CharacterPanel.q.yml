@@ -5,11 +5,13 @@ properties:
     type: AllegroFlare::Inventory*
     init_with: nullptr
     constructor_arg: true
+    setter: true
 
   - name: thing_dictionary
     type: LabyrinthOfLore::Entity::ThingDictionary*
     init_with: nullptr
     constructor_arg: true
+    setter: true
 
   - name: cursor_x
     type: int

@@ -26,6 +26,8 @@ namespace LabyrinthOfLore
          CharacterPanel(AllegroFlare::Inventory* player_inventory=nullptr, LabyrinthOfLore::Entity::ThingDictionary* thing_dictionary=nullptr);
          ~CharacterPanel();
 
+         void set_player_inventory(AllegroFlare::Inventory* player_inventory);
+         void set_thing_dictionary(LabyrinthOfLore::Entity::ThingDictionary* thing_dictionary);
          int get_cursor_x() const;
          int get_cursor_y() const;
          bool move_cursor_up();

@@ -884,36 +884,12 @@ void Gameplay::run()
    LabyrinthOfLoreGame::ThingDefinitionFactory thing_definition_factory; // yet to be used
 
 
-   //
-
-   LabyrinthOfLore::Rendering::Camera camera({0, 0, 0}, 0.0, 0.0);
-
-   LabyrinthOfLore::Entity::Base* player_entity = new LabyrinthOfLore::Entity::Base;
-
-   float player_yaw = 0;
-   float player_camera_ascent = 0.65;
-   float player_pitch = 0.0;
-   float player_turning = 0.0;
-   float max_player_turning_speed = 0.0023;
-   float player_movement_magnitude = 0.0;
-
-   int player_mouse_x = 0;
-   int player_mouse_y = 0;
-
-   player_entity->get_velocity_ref().position = {0.0, 0.0, 0.0};
-   player_entity->set_identifier_for_level_within(LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER);
-   player_entity->get_placement_ref().position = {0.0, 0.0, 0.0};
-
-   classic_game.get_all_entities_ref().push_back(player_entity);
-
-   //
-
    AllegroFlare::Inventory player_inventory;
 
-   LabyrinthOfLore::Hud::MessageScroll message_scroll("");
+   LabyrinthOfLore::Hud::MessageScroll message_scroll;
    LabyrinthOfLore::Hud::CommandPanel command_panel;
    LabyrinthOfLore::Hud::VitalityAndManaBar vitality_and_mana_bar;
-   LabyrinthOfLore::Hud::CharacterPanel character_panel(&player_inventory, &classic_game.get_thing_dictionary_ref());
+   LabyrinthOfLore::Hud::CharacterPanel character_panel;
    LabyrinthOfLore::Hud::MapButton map_button;
    LabyrinthOfLore::Hud::RuneShelf rune_shelf;
    LabyrinthOfLore::Hud::Compass compass;
@@ -935,11 +911,48 @@ void Gameplay::run()
 
 
 
+   ///////////////////////////////
+   // initialize:
+   ///////////////////////////////
+
+   character_panel.set_player_inventory(&player_inventory);
+   character_panel.set_thing_dictionary(&classic_game.get_thing_dictionary_ref());
 
 
 
 
+   ///////////////////////////////
    // start game
+   ///////////////////////////////
+
+
+   // Clear the message scroll
+   message_scroll.clear_text();
+
+
+    
+   // Create the player
+   LabyrinthOfLore::Rendering::Camera camera({0, 0, 0}, 0.0, 0.0);
+
+   LabyrinthOfLore::Entity::Base* player_entity = new LabyrinthOfLore::Entity::Base;
+
+   float player_yaw = 0;
+   float player_camera_ascent = 0.65;
+   float player_pitch = 0.0;
+   float player_turning = 0.0;
+   float max_player_turning_speed = 0.0023;
+   float player_movement_magnitude = 0.0;
+
+   int player_mouse_x = 0;
+   int player_mouse_y = 0;
+
+   player_entity->get_velocity_ref().position = {0.0, 0.0, 0.0};
+   player_entity->set_identifier_for_level_within(LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER);
+   player_entity->get_placement_ref().position = {0.0, 0.0, 0.0};
+
+   classic_game.get_all_entities_ref().push_back(player_entity);
+
+
 
    go_into_door(
       classic_game.get_doors_ref().at(10),
