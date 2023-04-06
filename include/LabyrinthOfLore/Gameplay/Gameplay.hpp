@@ -106,6 +106,12 @@ namespace LabyrinthOfLore
          void initialize(ALLEGRO_DISPLAY* _display);
          void start_game();
          void run();
+
+         void process_mouse_axes_event(ALLEGRO_EVENT &this_event);
+         void process_mouse_button_down_event(ALLEGRO_EVENT &this_event);
+         void process_key_char_event(ALLEGRO_EVENT &this_event);
+         void process_key_up_event(ALLEGRO_EVENT &this_event);
+         void process_timer_event(ALLEGRO_EVENT &this_event);
       };
    } // namespace Gameplay
 } // namespace LabyrinthOfLore

@@ -984,6 +984,36 @@ void Gameplay::start_game()
 
 
 
+void Gameplay::process_mouse_axes_event(ALLEGRO_EVENT &this_event)
+{
+}
+
+
+
+void Gameplay::process_mouse_button_down_event(ALLEGRO_EVENT &this_event)
+{
+}
+
+
+
+void Gameplay::process_key_char_event(ALLEGRO_EVENT &this_event)
+{
+}
+
+
+
+void Gameplay::process_key_up_event(ALLEGRO_EVENT &this_event)
+{
+}
+
+
+
+void Gameplay::process_timer_event(ALLEGRO_EVENT &this_event)
+{
+}
+
+
+
 void Gameplay::run()
 {
    System game_system;
