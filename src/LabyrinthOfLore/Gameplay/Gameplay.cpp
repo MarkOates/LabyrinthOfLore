@@ -853,6 +853,29 @@ namespace Gameplay
 
 
 
+Gameplay::Gameplay()
+   : thing_definition_factory() // yet to be used
+   , player_inventory()
+   , message_scroll()
+   , command_panel()
+   , vitality_and_mana_bar()
+   , character_panel()
+   , map_button()
+   , rune_shelf()
+   , compass()
+   , rotate_character_panel_button()
+   , commands_hint_pane()
+   , current_spells()
+   , veiw_frame()
+   , title_text()
+   , current_tile_map()
+   , current_tile_map_mesh()
+   , current_tile_map_water_mesh()
+{
+}
+
+
+
 void Gameplay::initialize()
 {
 }
@@ -869,25 +892,6 @@ void Gameplay::run()
 
 
    // Declaration
-
-   LabyrinthOfLoreGame::ThingDefinitionFactory thing_definition_factory; // yet to be used
-   AllegroFlare::Inventory player_inventory;
-   LabyrinthOfLore::Hud::MessageScroll message_scroll;
-   LabyrinthOfLore::Hud::CommandPanel command_panel;
-   LabyrinthOfLore::Hud::VitalityAndManaBar vitality_and_mana_bar;
-   LabyrinthOfLore::Hud::CharacterPanel character_panel;
-   LabyrinthOfLore::Hud::MapButton map_button;
-   LabyrinthOfLore::Hud::RuneShelf rune_shelf;
-   LabyrinthOfLore::Hud::Compass compass;
-   LabyrinthOfLore::Hud::RotateCharacterPanelButton rotate_character_panel_button;
-   LabyrinthOfLore::Hud::CommandsHintPane commands_hint_pane;
-   LabyrinthOfLore::Hud::CurrentSpells current_spells;
-   LabyrinthOfLore::Hud::ViewFrame veiw_frame;
-   LabyrinthOfLore::Hud::TitleText title_text;
-   LabyrinthOfLore::WorldMap::TileMap current_tile_map;
-   LabyrinthOfLore::Rendering::TileMapMesh current_tile_map_mesh;
-   LabyrinthOfLore::Rendering::TileMapWaterMesh current_tile_map_water_mesh;
-
 
 
    LabyrinthOfLoreGame::Classic classic_game; // This may be LabyrinthOfLore::Games::Base*

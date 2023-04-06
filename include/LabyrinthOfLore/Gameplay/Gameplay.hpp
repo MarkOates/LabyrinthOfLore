@@ -66,7 +66,28 @@ namespace LabyrinthOfLore
    {
       class Gameplay
       {
+      private:
+         LabyrinthOfLoreGame::ThingDefinitionFactory thing_definition_factory; // yet to be used
+         AllegroFlare::Inventory player_inventory;
+         LabyrinthOfLore::Hud::MessageScroll message_scroll;
+         LabyrinthOfLore::Hud::CommandPanel command_panel;
+         LabyrinthOfLore::Hud::VitalityAndManaBar vitality_and_mana_bar;
+         LabyrinthOfLore::Hud::CharacterPanel character_panel;
+         LabyrinthOfLore::Hud::MapButton map_button;
+         LabyrinthOfLore::Hud::RuneShelf rune_shelf;
+         LabyrinthOfLore::Hud::Compass compass;
+         LabyrinthOfLore::Hud::RotateCharacterPanelButton rotate_character_panel_button;
+         LabyrinthOfLore::Hud::CommandsHintPane commands_hint_pane;
+         LabyrinthOfLore::Hud::CurrentSpells current_spells;
+         LabyrinthOfLore::Hud::ViewFrame veiw_frame;
+         LabyrinthOfLore::Hud::TitleText title_text;
+         LabyrinthOfLore::WorldMap::TileMap current_tile_map;
+         LabyrinthOfLore::Rendering::TileMapMesh current_tile_map_mesh;
+         LabyrinthOfLore::Rendering::TileMapWaterMesh current_tile_map_water_mesh;
+
       public:
+         Gameplay();
+         
          void initialize();
          void run();
       };
