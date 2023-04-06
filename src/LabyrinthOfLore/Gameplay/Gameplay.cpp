@@ -955,6 +955,10 @@ void Gameplay::run()
    ///////////////////////////////
 
 
+
+   initialize();
+
+
    // Create rendering surfaces (unclear what these are needed for)
 
    int previous_depth = al_get_new_bitmap_depth();
