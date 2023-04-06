@@ -69,28 +69,34 @@ bool development_mode = true;
 std::string current_level_identifier = LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER;
 
 
+const int DISPLAY_WIDTH = 1920;
+const int DISPLAY_HEIGHT = 1080;
+float resolution_scale = 3.0f;
+AllegroFlare::PickingBuffer picking_buffer(DISPLAY_WIDTH/resolution_scale, DISPLAY_HEIGHT/resolution_scale, 32);
+
+
 class System
 {
 public:
-   const int DISPLAY_WIDTH;
-   const int DISPLAY_HEIGHT;
+   //const int DISPLAY_WIDTH;
+   //const int DISPLAY_HEIGHT;
 
    AllegroFlare::FontBin font_bin;
    AllegroFlare::BitmapBin bitmap_bin;
    ALLEGRO_EVENT_QUEUE *event_queue;
    ALLEGRO_DISPLAY *display;
-   float resolution_scale;
-   AllegroFlare::PickingBuffer picking_buffer;
+   //float resolution_scale;
+   //AllegroFlare::PickingBuffer picking_buffer;
    bool shutdown_program;
 
    System()
-      : DISPLAY_WIDTH(1920)
-      , DISPLAY_HEIGHT(1080)
-      , font_bin()
+      //: DISPLAY_WIDTH(1920)
+      //, DISPLAY_HEIGHT(1080)
+      : font_bin()
       , bitmap_bin()
       , display(nullptr)
-      , resolution_scale(3.0f)
-      , picking_buffer(DISPLAY_WIDTH/resolution_scale, DISPLAY_HEIGHT/resolution_scale, 32)
+      //, resolution_scale(3.0f)
+      //, picking_buffer(DISPLAY_WIDTH/resolution_scale, DISPLAY_HEIGHT/resolution_scale, 32)
       , shutdown_program(false)
    {
    }
@@ -141,7 +147,7 @@ public:
       font_bin.set_path("data/fonts");
       bitmap_bin.set_path("data/bitmaps");
 
-      picking_buffer.initialize();
+      //picking_buffer.initialize();
 
       // preload the logo
 
@@ -830,6 +836,7 @@ void Gameplay::run()
 
 
 
+      picking_buffer.initialize();
 
 
 
@@ -847,7 +854,10 @@ void Gameplay::run()
       al_set_new_bitmap_samples(0);
       //ALLEGRO_BITMAP *bmp = al_create_bitmap(w, h);
 
-      ALLEGRO_BITMAP *buffer_buffer = al_create_bitmap(al_get_display_width(game_system.display)/game_system.resolution_scale, al_get_display_height(game_system.display)/game_system.resolution_scale);
+      ALLEGRO_BITMAP *buffer_buffer = al_create_bitmap(
+         al_get_display_width(game_system.display)/resolution_scale,
+         al_get_display_height(game_system.display)/resolution_scale
+      );
       //ALLEGRO_BITMAP *buffer_buffer = al_get_backbuffer(display);
 
       al_restore_state(&previous_state);
@@ -964,8 +974,8 @@ void Gameplay::run()
                process_click_event(
                   player_mouse_x,
                   player_mouse_y,
-                  game_system.picking_buffer,
-                  game_system.resolution_scale,
+                  picking_buffer,
+                  resolution_scale,
                   classic_game.get_all_entities_ref(),
                   classic_game.get_thing_dictionary_ref(),
                   thing_definition_factory,
@@ -1087,7 +1097,13 @@ void Gameplay::run()
 
                al_clear_depth_buffer(1);
                al_set_render_state(ALLEGRO_DEPTH_TEST, 1);
-               LabyrinthOfLore::Rendering::PickingBufferRenderer picking_buffer_renderer(&game_system.picking_buffer, &camera, current_tile_map_mesh, entities_in_the_current_level, &classic_game.get_clamped_color_shader_ref());
+               LabyrinthOfLore::Rendering::PickingBufferRenderer picking_buffer_renderer(
+                  &picking_buffer,
+                  &camera,
+                  current_tile_map_mesh,
+                  entities_in_the_current_level,
+                  &classic_game.get_clamped_color_shader_ref()
+               );
                picking_buffer_renderer.render();
 
                //
