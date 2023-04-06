@@ -67,6 +67,7 @@ namespace LabyrinthOfLore
       class Gameplay
       {
       private:
+         AllegroFlare::BitmapBin *bitmap_bin;
          LabyrinthOfLoreGame::ThingDefinitionFactory thing_definition_factory; // yet to be used
          AllegroFlare::Inventory player_inventory;
          LabyrinthOfLore::Hud::MessageScroll message_scroll;
@@ -102,7 +103,7 @@ namespace LabyrinthOfLore
       public:
          Gameplay();
          
-         void initialize();
+         void initialize(ALLEGRO_DISPLAY* _display);
          void start_game();
          void run();
       };

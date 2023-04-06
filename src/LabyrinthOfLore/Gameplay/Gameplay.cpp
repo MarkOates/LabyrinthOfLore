@@ -851,7 +851,8 @@ namespace Gameplay
 
 
 Gameplay::Gameplay()
-   : thing_definition_factory() // yet to be used
+   : bitmap_bin(nullptr)
+   , thing_definition_factory() // yet to be used
    , player_inventory()
    , message_scroll()
    , command_panel()
@@ -887,9 +888,54 @@ Gameplay::Gameplay()
 
 
 
-void Gameplay::initialize()
+void Gameplay::initialize(ALLEGRO_DISPLAY *_display)
 {
    if (initialized) throw std::runtime_error("[Lol::Gameplay::Gameplay::initialize]: error: cannot initialize twice");
+   if (!bitmap_bin) throw std::runtime_error("[Lol::Gameplay::Gameplay::initialize]: error: bitmap_bin required");
+
+
+
+   // Create rendering surfaces (unclear what these are needed for)
+
+   int previous_depth = al_get_new_bitmap_depth();
+   int previous_samples = al_get_new_bitmap_samples();
+   ALLEGRO_STATE previous_state;
+   al_store_state(&previous_state, ALLEGRO_STATE_BITMAP);
+
+   al_set_new_bitmap_depth(32);
+   al_set_new_bitmap_samples(0);
+   //ALLEGRO_BITMAP *bmp = al_create_bitmap(w, h);
+
+   buffer_buffer = al_create_bitmap(
+      al_get_display_width(_display)/resolution_scale,
+      al_get_display_height(_display)/resolution_scale
+   );
+   //ALLEGRO_BITMAP *buffer_buffer = al_get_backbuffer(display);
+
+   al_restore_state(&previous_state);
+   al_set_new_bitmap_depth(previous_depth);
+   al_set_new_bitmap_samples(previous_samples);
+
+
+   scene_rendering_surface = al_create_sub_bitmap(
+         buffer_buffer,
+         0,
+         0,
+         al_get_bitmap_width(buffer_buffer),
+         al_get_bitmap_height(buffer_buffer)
+      );
+   if (!scene_rendering_surface) throw std::runtime_error("could not create scene_rendering_surface");
+
+
+   // Init our other stuff
+
+   picking_buffer.initialize();
+
+   classic_game.set_bitmap_bin(bitmap_bin);
+   classic_game.initialize();
+
+   character_panel.set_player_inventory(&player_inventory);
+   character_panel.set_thing_dictionary(&classic_game.get_thing_dictionary_ref());
 
 
 
@@ -945,62 +991,10 @@ void Gameplay::run()
 
 
 
-
-   // Declaration
-
-
-
-   ///////////////////////////////
    // initialize:
-   ///////////////////////////////
 
-
-
-   initialize();
-
-
-   // Create rendering surfaces (unclear what these are needed for)
-
-   int previous_depth = al_get_new_bitmap_depth();
-   int previous_samples = al_get_new_bitmap_samples();
-   ALLEGRO_STATE previous_state;
-   al_store_state(&previous_state, ALLEGRO_STATE_BITMAP);
-
-   al_set_new_bitmap_depth(32);
-   al_set_new_bitmap_samples(0);
-   //ALLEGRO_BITMAP *bmp = al_create_bitmap(w, h);
-
-   buffer_buffer = al_create_bitmap(
-      al_get_display_width(game_system.display)/resolution_scale,
-      al_get_display_height(game_system.display)/resolution_scale
-   );
-   //ALLEGRO_BITMAP *buffer_buffer = al_get_backbuffer(display);
-
-   al_restore_state(&previous_state);
-   al_set_new_bitmap_depth(previous_depth);
-   al_set_new_bitmap_samples(previous_samples);
-
-
-   scene_rendering_surface = al_create_sub_bitmap(
-         buffer_buffer,
-         0,
-         0,
-         al_get_bitmap_width(buffer_buffer),
-         al_get_bitmap_height(buffer_buffer)
-      );
-   if (!scene_rendering_surface) throw std::runtime_error("could not create scene_rendering_surface");
-
-
-   // Init our other stuff
-
-   picking_buffer.initialize();
-
-   classic_game.set_bitmap_bin(&game_system.bitmap_bin);
-   classic_game.initialize();
-
-   character_panel.set_player_inventory(&player_inventory);
-   character_panel.set_thing_dictionary(&classic_game.get_thing_dictionary_ref());
-
+   bitmap_bin = &game_system.bitmap_bin;
+   initialize(game_system.display);
 
 
 
