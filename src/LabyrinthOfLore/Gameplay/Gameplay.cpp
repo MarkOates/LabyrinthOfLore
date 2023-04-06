@@ -33,12 +33,6 @@ static void capitalize (string &s)
 }
 
 
-bool development_mode = true;
-#define THING_ID_ATTRIBUTE ("thing_id")
-#define CAN_BE_PICKED_UP_ATTRIBUTE ("can_be_picked_up")
-#define MUST_BE_PICKED_UP_TO_BE_USED ("must_be_picked_up_to_be_used")
-#define DESTROY_THIS_ITEM_AT_CLEANUP ("destroy_this_item_at_cleanup")
-std::string current_level_identifier = LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER;
 const int DISPLAY_WIDTH = 1920;
 const int DISPLAY_HEIGHT = 1080;
 float resolution_scale = 3.0f;
@@ -115,6 +109,18 @@ public:
       //bitmap_bin.get("logo-fo-sho.png");
    }
 };
+
+
+
+
+bool development_mode = true;
+#define THING_ID_ATTRIBUTE ("thing_id")
+#define CAN_BE_PICKED_UP_ATTRIBUTE ("can_be_picked_up")
+#define MUST_BE_PICKED_UP_TO_BE_USED ("must_be_picked_up_to_be_used")
+#define DESTROY_THIS_ITEM_AT_CLEANUP ("destroy_this_item_at_cleanup")
+std::string current_level_identifier = LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER;
+
+
 
 
 
