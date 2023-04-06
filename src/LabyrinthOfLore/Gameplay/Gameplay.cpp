@@ -866,12 +866,6 @@ void Gameplay::run()
 
 
 
-   picking_buffer.initialize();
-
-
-
-
-
 
    //
 
@@ -912,6 +906,8 @@ void Gameplay::run()
    // initialize:
    ///////////////////////////////
 
+
+   picking_buffer.initialize();
 
    classic_game.set_bitmap_bin(&game_system.bitmap_bin);
    classic_game.initialize();
