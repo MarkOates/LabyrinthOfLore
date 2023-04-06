@@ -852,6 +852,7 @@ namespace Gameplay
 
 Gameplay::Gameplay()
    : bitmap_bin(nullptr)
+   , font_bin(nullptr)
    , thing_definition_factory() // yet to be used
    , player_inventory()
    , message_scroll()
@@ -892,6 +893,7 @@ void Gameplay::initialize(ALLEGRO_DISPLAY *_display)
 {
    if (initialized) throw std::runtime_error("[Lol::Gameplay::Gameplay::initialize]: error: cannot initialize twice");
    if (!bitmap_bin) throw std::runtime_error("[Lol::Gameplay::Gameplay::initialize]: error: bitmap_bin required");
+   if (!font_bin) throw std::runtime_error("[Lol::Gameplay::Gameplay::initialize]: error: font_bin required");
 
 
 
@@ -986,70 +988,15 @@ void Gameplay::start_game()
 
 void Gameplay::process_mouse_axes_event(ALLEGRO_EVENT &this_event)
 {
+         player_mouse_x = this_event.mouse.x;
+         player_mouse_y = this_event.mouse.y;
+         // observe mouse enter and mouse exit, emit game events if needed 
 }
 
 
 
 void Gameplay::process_mouse_button_down_event(ALLEGRO_EVENT &this_event)
 {
-}
-
-
-
-void Gameplay::process_key_char_event(ALLEGRO_EVENT &this_event)
-{
-}
-
-
-
-void Gameplay::process_key_up_event(ALLEGRO_EVENT &this_event)
-{
-}
-
-
-
-void Gameplay::process_timer_event(ALLEGRO_EVENT &this_event)
-{
-}
-
-
-
-void Gameplay::run()
-{
-   System game_system;
-   game_system.initialize();
-
-
-
-   // initialize:
-
-   bitmap_bin = &game_system.bitmap_bin;
-   initialize(game_system.display);
-
-
-
-   // Start game
-
-   start_game();
-
-
-
-   while(!game_system.shutdown_program)
-   {
-      ALLEGRO_EVENT this_event, next_event;
-      al_wait_for_event(game_system.event_queue, &this_event);
-
-      switch(this_event.type)
-      {
-      case ALLEGRO_EVENT_DISPLAY_CLOSE:
-         game_system.shutdown_program = true;
-         break;
-      case ALLEGRO_EVENT_MOUSE_AXES:
-         player_mouse_x = this_event.mouse.x;
-         player_mouse_y = this_event.mouse.y;
-         // observe mouse enter and mouse exit, emit game events if needed 
-         break;
-      case ALLEGRO_EVENT_MOUSE_BUTTON_DOWN:
          {
             player_mouse_x = this_event.mouse.x;
             player_mouse_y = this_event.mouse.y;
@@ -1071,14 +1018,19 @@ void Gameplay::run()
             //int picked_id = game.picking_buffer.get_id(player_mouse_x/resolution_scale, player_mouse_y/resolution_scale);
             //std::cout << "Picked ID: " << picked_id << std::endl;
             // observe clicked item, emit game events if needed 
-            break;
+            //break;
          }
-      case ALLEGRO_EVENT_KEY_CHAR: // using key down does not capture the SHIFT modifier for cheats
+}
+
+
+
+void Gameplay::process_key_char_event(ALLEGRO_EVENT &this_event, bool &shutdown_program_flag)
+{
          {
             bool shift = false;
             if (development_mode) shift = this_event.keyboard.modifiers & ALLEGRO_KEYMOD_SHIFT; /// DISABLE ON RELEASE
 
-            if (this_event.keyboard.keycode == ALLEGRO_KEY_ESCAPE) game_system.shutdown_program = true;
+            if (this_event.keyboard.keycode == ALLEGRO_KEY_ESCAPE) shutdown_program_flag = true;
             if (this_event.keyboard.keycode == ALLEGRO_KEY_A) player_turning = shift ? 4*-max_player_turning_speed : -max_player_turning_speed;
             if (this_event.keyboard.keycode == ALLEGRO_KEY_W) player_movement_magnitude = shift ? 0.1 : 0.022;
             if (this_event.keyboard.keycode == ALLEGRO_KEY_D) player_turning = shift ? 4*max_player_turning_speed : max_player_turning_speed;
@@ -1111,17 +1063,22 @@ void Gameplay::run()
                command_panel
             );
          }
-         break;
-      case USER_EVENT_APPEND_MESSAGE_TO_MESSAGE_SCROLL:
-         break;
-      case ALLEGRO_EVENT_KEY_UP:
+}
+
+
+
+void Gameplay::process_key_up_event(ALLEGRO_EVENT &this_event)
+{
          if (this_event.keyboard.keycode == ALLEGRO_KEY_A) player_turning = 0.0;
          if (this_event.keyboard.keycode == ALLEGRO_KEY_W) player_movement_magnitude = 0.0;
          if (this_event.keyboard.keycode == ALLEGRO_KEY_D) player_turning = 0.0;
          if (this_event.keyboard.keycode == ALLEGRO_KEY_S) player_movement_magnitude = 0.0;
+}
 
-         break;
-      case ALLEGRO_EVENT_TIMER:
+
+
+void Gameplay::process_timer_event(ALLEGRO_EVENT &this_event, ALLEGRO_DISPLAY* _display)
+{
          {
             player_yaw += player_turning;
 
@@ -1190,7 +1147,7 @@ void Gameplay::run()
 
             //
 
-            al_set_target_bitmap(al_get_backbuffer(game_system.display));
+            al_set_target_bitmap(al_get_backbuffer(_display));
             al_set_render_state(ALLEGRO_DEPTH_TEST, 0);
             al_draw_scaled_bitmap(
                buffer_buffer,
@@ -1200,8 +1157,8 @@ void Gameplay::run()
                al_get_bitmap_height(buffer_buffer),
                0,
                0,
-               al_get_display_width(game_system.display),
-               al_get_display_height(game_system.display),
+               al_get_display_width(_display),
+               al_get_display_height(_display),
                0
             );
             //al_draw_scaled_bitmap(picking_buffer.get_surface_render(), 0, 0, al_get_bitmap_width(buffer_buffer), al_get_bitmap_height(buffer_buffer), 0, 0, al_get_display_width(display), al_get_display_height(display), 0);
@@ -1210,8 +1167,8 @@ void Gameplay::run()
 
             LabyrinthOfLore::Rendering::MousePointer mouse_pointer(player_mouse_x, player_mouse_y);
             LabyrinthOfLore::Rendering::Hud::Renderer hud_renderer(
-                  al_get_backbuffer(game_system.display),
-                  &game_system.font_bin,
+                  al_get_backbuffer(_display),
+                  font_bin,
                   &message_scroll,
                   &command_panel,
                   &vitality_and_mana_bar,
@@ -1230,10 +1187,63 @@ void Gameplay::run()
 
             al_flip_display();
          }
+}
+
+
+
+void Gameplay::run()
+{
+   System game_system;
+   game_system.initialize();
+
+
+
+   // initialize:
+
+   bitmap_bin = &game_system.bitmap_bin;
+   font_bin = &game_system.font_bin;
+   initialize(game_system.display);
+
+
+
+   // Start game
+
+   start_game();
+
+
+
+   while(!game_system.shutdown_program)
+   {
+      ALLEGRO_EVENT this_event, next_event;
+      al_wait_for_event(game_system.event_queue, &this_event);
+
+      switch(this_event.type)
+      {
+      case ALLEGRO_EVENT_DISPLAY_CLOSE:
+         game_system.shutdown_program = true;
+         break;
+      case ALLEGRO_EVENT_MOUSE_AXES:
+         process_mouse_axes_event(this_event);
+         break;
+      case ALLEGRO_EVENT_MOUSE_BUTTON_DOWN:
+         process_mouse_button_down_event(this_event);
+         break;
+      case ALLEGRO_EVENT_KEY_CHAR: // using key down does not capture the SHIFT modifier for cheats
+         process_key_char_event(this_event, game_system.shutdown_program);
+         break;
+      case USER_EVENT_APPEND_MESSAGE_TO_MESSAGE_SCROLL:
+         // no function set here
+         break;
+      case ALLEGRO_EVENT_KEY_UP:
+         process_key_up_event(this_event);
+         break;
+      case ALLEGRO_EVENT_TIMER:
+         process_timer_event(this_event, game_system.display);
          while (al_peek_next_event(game_system.event_queue, &next_event)
                && next_event.type == ALLEGRO_EVENT_TIMER
                && next_event.timer.source == this_event.timer.source)
             al_drop_next_event(game_system.event_queue);
+         break;
       }
 
       cleanup_all_entities_flagged_for_destruction(classic_game.get_all_entities_ref());
