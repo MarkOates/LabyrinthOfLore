@@ -889,13 +889,52 @@ Gameplay::Gameplay()
 
 void Gameplay::initialize()
 {
-   if (initialized) throw std::runtime_error("[Lol::Gameplay::Gameplay]: error: cannot initialize twice");
+   if (initialized) throw std::runtime_error("[Lol::Gameplay::Gameplay::initialize]: error: cannot initialize twice");
 
 
 
    initialized = true;
 }
 
+
+
+void Gameplay::start_game()
+{
+   if (!initialized) throw std::runtime_error("[Lol::Gameplay::Gameplay::start_game]: error: must be initialized");
+
+
+   message_scroll.clear_text();
+
+
+    
+   // Create the player
+   player_entity = new LabyrinthOfLore::Entity::Base; // TODO: Destroy this player_entity on restart
+   player_entity->get_velocity_ref().position = {0.0, 0.0, 0.0};
+   player_entity->set_identifier_for_level_within(LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER);
+   player_entity->get_placement_ref().position = {0.0, 0.0, 0.0};
+   classic_game.get_all_entities_ref().push_back(player_entity);
+
+
+
+   // Reset the controls
+   player_mouse_x = 0;
+   player_mouse_y = 0;
+
+
+   go_into_door(
+      classic_game.get_doors_ref().at(10),
+      player_entity,
+      classic_game.get_levels_ref(),
+      classic_game.get_meshes_ref(),
+      classic_game.get_water_meshes_ref(),
+      player_yaw,
+      current_tile_map,
+      current_tile_map_mesh,
+      current_tile_map_water_mesh,
+      title_text
+   );
+
+}
 
 
 
@@ -960,42 +999,10 @@ void Gameplay::run()
 
 
 
-   ///////////////////////////////
-   // start game
-   ///////////////////////////////
 
+   // Start game
 
-   // Clear the message scroll
-   message_scroll.clear_text();
-
-
-    
-   // Create the player
-   player_entity = new LabyrinthOfLore::Entity::Base; // TODO: Destroy this player_entity on restart
-   player_entity->get_velocity_ref().position = {0.0, 0.0, 0.0};
-   player_entity->set_identifier_for_level_within(LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER);
-   player_entity->get_placement_ref().position = {0.0, 0.0, 0.0};
-   classic_game.get_all_entities_ref().push_back(player_entity);
-
-
-
-   // Reset the controls
-   player_mouse_x = 0;
-   player_mouse_y = 0;
-
-
-   go_into_door(
-      classic_game.get_doors_ref().at(10),
-      player_entity,
-      classic_game.get_levels_ref(),
-      classic_game.get_meshes_ref(),
-      classic_game.get_water_meshes_ref(),
-      player_yaw,
-      current_tile_map,
-      current_tile_map_mesh,
-      current_tile_map_water_mesh,
-      title_text
-   );
+   start_game();
 
 
 

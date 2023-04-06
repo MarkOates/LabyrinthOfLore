@@ -103,6 +103,7 @@ namespace LabyrinthOfLore
          Gameplay();
          
          void initialize();
+         void start_game();
          void run();
       };
    } // namespace Gameplay
