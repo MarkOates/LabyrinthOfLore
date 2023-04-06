@@ -12,7 +12,7 @@ using AllegroFlare::Random;
 #include <iostream>
 using namespace std;
 
-void capitalize (string &s)
+static void capitalize (string &s)
 {
    if (s.empty()) return;
 
