@@ -34,42 +34,11 @@ static void capitalize (string &s)
 
 
 bool development_mode = true;
-
-
-
-//#include <AllegroFlare/Inventory.hpp>
-
-//using AllegroFlare::radians_to_degrees;
-//using AllegroFlare::Random;
-
-// Maybe add this later
-//#define USER_EVENT_APPEND_MESSAGE_TO_MESSAGE_SCROLL ALLEGRO_GET_EVENT_TYPE('A','p','d','M')
-
 #define THING_ID_ATTRIBUTE ("thing_id")
 #define CAN_BE_PICKED_UP_ATTRIBUTE ("can_be_picked_up")
 #define MUST_BE_PICKED_UP_TO_BE_USED ("must_be_picked_up_to_be_used")
 #define DESTROY_THIS_ITEM_AT_CLEANUP ("destroy_this_item_at_cleanup")
-
-
-//enum item_id_t
-//{
-   //ITEM_NO_ID = 0,
-   //ITEM_TORCH_ID,
-   //ITEM_RING_OF_LOFT_ID,
-   //ITEM_INFINITY_TORCH_ID,
-   //ITEM_TORCH_FUEL_ID,
-
-   //// characters
-   //MAN_AT_THE_ENTRANCE_TO_THE_CAVE,
-
-   //RAT = 100,
-//};
-
-
-
 std::string current_level_identifier = LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER;
-
-
 const int DISPLAY_WIDTH = 1920;
 const int DISPLAY_HEIGHT = 1080;
 float resolution_scale = 3.0f;
@@ -79,25 +48,16 @@ AllegroFlare::PickingBuffer picking_buffer(DISPLAY_WIDTH/resolution_scale, DISPL
 class System
 {
 public:
-   //const int DISPLAY_WIDTH;
-   //const int DISPLAY_HEIGHT;
-
    AllegroFlare::FontBin font_bin;
    AllegroFlare::BitmapBin bitmap_bin;
    ALLEGRO_EVENT_QUEUE *event_queue;
    ALLEGRO_DISPLAY *display;
-   //float resolution_scale;
-   //AllegroFlare::PickingBuffer picking_buffer;
    bool shutdown_program;
 
    System()
-      //: DISPLAY_WIDTH(1920)
-      //, DISPLAY_HEIGHT(1080)
       : font_bin()
       , bitmap_bin()
       , display(nullptr)
-      //, resolution_scale(3.0f)
-      //, picking_buffer(DISPLAY_WIDTH/resolution_scale, DISPLAY_HEIGHT/resolution_scale, 32)
       , shutdown_program(false)
    {
    }
