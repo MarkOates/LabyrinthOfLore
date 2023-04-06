@@ -67,6 +67,7 @@ namespace LabyrinthOfLore
       class Gameplay
       {
       public:
+         void initialize();
          void run();
       };
    } // namespace Gameplay

@@ -823,6 +823,13 @@ namespace Gameplay
 
 
 
+void Gameplay::initialize()
+{
+}
+
+
+
+
 void Gameplay::run()
 {
    System game_system;
