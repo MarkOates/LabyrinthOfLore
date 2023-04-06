@@ -200,6 +200,35 @@
     "LabyrinthOfLore/Entity/ThingDictionary",
     "LabyrinthOfLore/Physics/EntityTileMapCollisionStepper"
   ],
+  "ALLEGRO_EVENT": [
+    "LabyrinthOfLore/Gameplay/Screen"
+  ],
+  "AllegroFlare/Screens/Base": [
+    "LabyrinthOfLore/Gameplay/Screen"
+  ],
+  "AllegroFlare/BitmapBin": [
+    "LabyrinthOfLore/Gameplay/Screen",
+    "LabyrinthOfLoreGame/Classic"
+  ],
+  "AllegroFlare/EventEmitter": [
+    "LabyrinthOfLore/Gameplay/Screen"
+  ],
+  "AllegroFlare/FontBin": [
+    "LabyrinthOfLore/Gameplay/Screen",
+    "LabyrinthOfLore/Rendering/Hud/Renderer"
+  ],
+  "AllegroFlare/ModelBin": [
+    "LabyrinthOfLore/Gameplay/Screen"
+  ],
+  "al_is_primitives_addon_initialized": [
+    "LabyrinthOfLore/Gameplay/Screen"
+  ],
+  "AllegroFlare/Player": [
+    "LabyrinthOfLore/Gameplay/Screen"
+  ],
+  "AllegroFlare/VirtualControllers/Base": [
+    "LabyrinthOfLore/Gameplay/Screen"
+  ],
   "AllegroFlare/Inventory": [
     "LabyrinthOfLore/Hud/CharacterPanel",
     "LabyrinthOfLoreGame/Interactions"
@@ -308,9 +337,6 @@
   ],
   "LabyrinthOfLore/Hud/MapButton": [
     "LabyrinthOfLore/Rendering/Hud/MapButtonRenderer",
-    "LabyrinthOfLore/Rendering/Hud/Renderer"
-  ],
-  "AllegroFlare/FontBin": [
     "LabyrinthOfLore/Rendering/Hud/Renderer"
   ],
   "LabyrinthOfLore/Hud/VitalityAndManaBar": [
@@ -521,9 +547,6 @@
   ],
   "LabyrinthOfLore/WorldMap/MultiBitmapTileMapLoader": [
     "LabyrinthOfLore/WorldMap/MultiBitmapFilenameToWorldBuilder"
-  ],
-  "AllegroFlare/BitmapBin": [
-    "LabyrinthOfLoreGame/Classic"
   ],
   "LabyrinthOfLore/WorldMap/MultiBitmapFilenameToWorldBuilder": [
     "LabyrinthOfLoreGame/Classic"
