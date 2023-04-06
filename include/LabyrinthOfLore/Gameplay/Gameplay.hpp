@@ -84,6 +84,19 @@ namespace LabyrinthOfLore
          LabyrinthOfLore::WorldMap::TileMap current_tile_map;
          LabyrinthOfLore::Rendering::TileMapMesh current_tile_map_mesh;
          LabyrinthOfLore::Rendering::TileMapWaterMesh current_tile_map_water_mesh;
+         LabyrinthOfLoreGame::Classic classic_game; // This may become LabyrinthOfLore::Games::Base*
+         LabyrinthOfLore::Rendering::Camera camera;
+         ALLEGRO_BITMAP *buffer_buffer;
+         ALLEGRO_BITMAP *scene_rendering_surface;
+         LabyrinthOfLore::Entity::Base* player_entity;
+         float player_yaw;
+         float player_camera_ascent;
+         float player_pitch;
+         float player_turning;
+         float max_player_turning_speed;
+         float player_movement_magnitude;
+         int player_mouse_x;
+         int player_mouse_y;
 
       public:
          Gameplay();

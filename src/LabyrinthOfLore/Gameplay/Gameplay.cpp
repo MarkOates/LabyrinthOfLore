@@ -871,6 +871,19 @@ Gameplay::Gameplay()
    , current_tile_map()
    , current_tile_map_mesh()
    , current_tile_map_water_mesh()
+   , classic_game() // This may be LabyrinthOfLore::Games::Base*
+   , camera()
+   , buffer_buffer(nullptr)
+   , scene_rendering_surface(nullptr)
+   , player_entity(nullptr)
+   , player_yaw(0)
+   , player_camera_ascent(0.65)
+   , player_pitch(0.0)
+   , player_turning(0.0)
+   , max_player_turning_speed(0.0023)
+   , player_movement_magnitude(0.0)
+   , player_mouse_x(0)
+   , player_mouse_y(0)
 {
 }
 
@@ -892,28 +905,6 @@ void Gameplay::run()
 
 
    // Declaration
-
-
-   LabyrinthOfLoreGame::Classic classic_game; // This may be LabyrinthOfLore::Games::Base*
-   LabyrinthOfLore::Rendering::Camera camera;
-
-   ALLEGRO_BITMAP *buffer_buffer = nullptr;
-   ALLEGRO_BITMAP *scene_rendering_surface = nullptr;
-
-
-   // Player
-   LabyrinthOfLore::Entity::Base* player_entity = nullptr;
-
-   float player_yaw = 0;
-   float player_camera_ascent = 0.65;
-   float player_pitch = 0.0;
-   float player_turning = 0.0;
-   float max_player_turning_speed = 0.0023;
-   float player_movement_magnitude = 0.0;
-
-   int player_mouse_x = 0;
-   int player_mouse_y = 0;
-
 
 
 
