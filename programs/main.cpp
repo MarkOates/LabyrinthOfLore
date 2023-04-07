@@ -960,8 +960,7 @@ public:
 
 
 
-//#include <LabyrinthOfLore/Gameplay/Screen.hpp>
-#include <LabyrinthOfLore/Gameplay/Gameplay.hpp>
+//#include <LabyrinthOfLore/Gameplay/Gameplay.hpp>
 
 
 
@@ -980,10 +979,45 @@ public:
 
 
 
+#include <LabyrinthOfLore/Gameplay/Screen.hpp>
 
 //bool active = true;
 
+
 int main(int argc, char **argv)
+{
+   AllegroFlare::Frameworks::Full framework;
+   framework.set_deployment_environment("development");
+   framework.disable_auto_created_config_warning();
+   framework.disable_fullscreen();
+   framework.initialize();
+
+   AllegroFlare::Display *display = framework.get_primary_display();
+
+   LabyrinthOfLore::Gameplay::Screen screen;
+   screen.set_event_emitter(&framework.get_event_emitter_ref());
+   screen.set_bitmap_bin(&framework.get_bitmap_bin_ref());
+   screen.set_font_bin(&framework.get_font_bin_ref());
+   screen.set_model_bin(&framework.get_model_bin_ref());
+   screen.set_render_surface_width(display->get_width());
+   screen.set_render_surface_height(display->get_height());
+   screen.set_render_surface_display(display->al_display);
+
+   screen.initialize();
+
+   framework.register_and_activate_screen("screen", &screen);
+
+   framework.run_loop();
+
+   framework.shutdown();
+
+   return 0;
+}
+
+
+
+
+int old__main(int argc, char **argv)
 {
    // TODO: Update this System to AllegroFlare 
    System game_system;
