@@ -35,8 +35,8 @@ static void capitalize (string &s)
 
 const int DISPLAY_WIDTH = 1920;
 const int DISPLAY_HEIGHT = 1080;
-float resolution_scale = 3.0f;
-AllegroFlare::PickingBuffer picking_buffer(DISPLAY_WIDTH/resolution_scale, DISPLAY_HEIGHT/resolution_scale, 32);
+//float resolution_scale = 3.0f;
+//AllegroFlare::PickingBuffer picking_buffer(DISPLAY_WIDTH/resolution_scale, DISPLAY_HEIGHT/resolution_scale, 32);
 
 
 class System
@@ -839,6 +839,10 @@ Gameplay::Gameplay()
    , current_tile_map_water_mesh()
    , classic_game() // This may be LabyrinthOfLore::Games::Base*
    , camera()
+   , render_surface_width(0) // HERE
+   , render_surface_height(0)
+   , resolution_scale(3.0)
+   , picking_buffer(0, 0, 32)
    , buffer_buffer(nullptr)
    , scene_rendering_surface(nullptr)
    , player_entity(nullptr)
@@ -852,6 +856,22 @@ Gameplay::Gameplay()
    , player_mouse_y(0)
    , initialized(false)
 {
+}
+
+
+
+void Gameplay::set_render_surface_width(int render_surface_width)
+{
+   if (initialized) throw std::runtime_error("[Lol::Gameplay::Gameplay::set_render_surface_width]: error: must be initialized");
+   this->render_surface_width = render_surface_width;
+}
+
+
+
+void Gameplay::set_render_surface_height(int render_surface_height)
+{
+   if (initialized) throw std::runtime_error("[Lol::Gameplay::Gameplay::set_render_surface_height]: error: must be initialized");
+   this->render_surface_height = render_surface_height;
 }
 
 
@@ -877,6 +897,8 @@ void Gameplay::initialize(ALLEGRO_DISPLAY *_display)
    if (initialized) throw std::runtime_error("[Lol::Gameplay::Gameplay::initialize]: error: cannot initialize twice");
    if (!bitmap_bin) throw std::runtime_error("[Lol::Gameplay::Gameplay::initialize]: error: bitmap_bin required");
    if (!font_bin) throw std::runtime_error("[Lol::Gameplay::Gameplay::initialize]: error: font_bin required");
+   if (render_surface_width <= 0) throw std::runtime_error("[Lol::Gameplay::Gameplay::initialize]: error: You must set a render_surface_width");
+   if (render_surface_height <= 0) throw std::runtime_error("[Lol::Gameplay::Gameplay::initialize]: error: You must set a render_surface_height");
 
 
 
@@ -914,6 +936,8 @@ void Gameplay::initialize(ALLEGRO_DISPLAY *_display)
 
    // Init our other stuff
 
+   picking_buffer.set_surface_width(render_surface_width/resolution_scale);
+   picking_buffer.set_surface_height(render_surface_height/resolution_scale);
    picking_buffer.initialize();
 
    classic_game.set_bitmap_bin(bitmap_bin);

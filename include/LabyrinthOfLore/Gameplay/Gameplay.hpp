@@ -88,6 +88,10 @@ namespace LabyrinthOfLore
          LabyrinthOfLore::Rendering::TileMapWaterMesh current_tile_map_water_mesh;
          LabyrinthOfLoreGame::Classic classic_game; // This may become LabyrinthOfLore::Games::Base*
          LabyrinthOfLore::Rendering::Camera camera;
+         int render_surface_width;
+         int render_surface_height;
+         float resolution_scale; // For faster rendering and mouse movement correction
+         AllegroFlare::PickingBuffer picking_buffer;
          ALLEGRO_BITMAP *buffer_buffer;
          ALLEGRO_BITMAP *scene_rendering_surface;
          LabyrinthOfLore::Entity::Base* player_entity;
@@ -104,6 +108,8 @@ namespace LabyrinthOfLore
       public:
          Gameplay();
 
+         void set_render_surface_width(int render_surface_width);
+         void set_render_surface_height(int render_surface_height);
          void set_bitmap_bin(AllegroFlare::BitmapBin *bitmap_bin);
          void set_font_bin(AllegroFlare::FontBin *font_bin);
          
