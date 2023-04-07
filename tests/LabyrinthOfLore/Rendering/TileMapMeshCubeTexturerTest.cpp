@@ -15,7 +15,7 @@
 #include <allegro5/allegro_color.h>
 
 
-#define TEST_TEXTURE_FILENAME "/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/3x3_test_texture.png"
+#define TEST_TEXTURE_FILENAME "/Users/markoates/Repos/LabyrinthOfLore/bin/data/bitmaps/3x3_test_texture.png"
 
 
 

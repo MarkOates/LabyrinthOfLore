@@ -52,7 +52,7 @@ LabyrinthOfLore::WorldMap::TileMap BitmapFilenameToWorldBuilder::build()
    if (!bitmap_source)
    {
      std::stringstream error_message;
-     error_message << "was unable to load bitmap ";
+     error_message << "[BitmapFilenameToWorldBuilder::build]: error: was unable to load bitmap ";
      error_message << "\"" << bitmap_source_filename << "\" ";
      error_message << "when calling build.";
      throw std::runtime_error(error_message.str());

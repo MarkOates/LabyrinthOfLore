@@ -929,8 +929,8 @@ public:
       al_start_timer(primary_timer);
 
 
-      font_bin.set_path("data/fonts");
-      bitmap_bin.set_path("data/bitmaps");
+      font_bin.set_full_path("/Users/markoates/Repos/LabyrinthOfLore/bin/data/fonts");
+      bitmap_bin.set_full_path("/Users/markoates/Repos/LabyrinthOfLore/bin/data/bitmaps");
 
       //picking_buffer.initialize();
 

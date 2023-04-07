@@ -71,7 +71,7 @@ TEST_F(LabyrinthOfLore_Rendering_PickingBufferRendererTest, render__displays_the
    LabyrinthOfLore::Shader::ClampedColor clamped_color_shader;
    clamped_color_shader.initialize();
 
-   ALLEGRO_BITMAP *billboard_tester_sprite = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/billboarding_tester_sprite.png");
+   ALLEGRO_BITMAP *billboard_tester_sprite = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/data/bitmaps/billboarding_tester_sprite.png");
    ASSERT_NE(nullptr, billboard_tester_sprite);
 
    LabyrinthOfLore::Entity::Base* entity = new LabyrinthOfLore::Entity::Base;
@@ -100,7 +100,7 @@ TEST_F(LabyrinthOfLore_Rendering_PickingBufferRendererTest, render__renders_the_
    LabyrinthOfLore::Shader::ClampedColor clamped_color_shader;
    clamped_color_shader.initialize();
 
-   ALLEGRO_BITMAP *billboard_tester_sprite = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/billboarding_tester_sprite.png");
+   ALLEGRO_BITMAP *billboard_tester_sprite = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/data/bitmaps/billboarding_tester_sprite.png");
    ASSERT_NE(nullptr, billboard_tester_sprite);
 
    int total_passes = 8;

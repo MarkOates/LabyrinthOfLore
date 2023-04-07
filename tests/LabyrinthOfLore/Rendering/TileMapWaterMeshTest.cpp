@@ -6,7 +6,7 @@
 #include <LabyrinthOfLore/WorldMap/TileMapLoader.hpp>
 #include <LabyrinthOfLore/WorldMap/TileTypeEnum.hpp>
 
-#define TEST_TEXTURE_FILENAME "/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/3x3_test_texture.png"
+#define TEST_TEXTURE_FILENAME "/Users/markoates/Repos/LabyrinthOfLore/bin/data/bitmaps/3x3_test_texture.png"
 
 
 TEST(LabyrinthOfLore_Rendering_TileMapWaterMeshTest, can_be_created_without_blowing_up)

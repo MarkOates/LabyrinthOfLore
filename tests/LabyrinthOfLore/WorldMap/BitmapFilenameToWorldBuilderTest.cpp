@@ -75,7 +75,7 @@ TEST_F(LabyrinthOfLore_WorldMap_BitmapFilenameToWorldBuilderTest, build__without
    std::string not_present_filename = "foo/bar/a_file_that_does_not_exist.php";
    LabyrinthOfLore::WorldMap::BitmapFilenameToWorldBuilder the_underworld(not_present_filename);
 
-   std::string expected_error_message = "was unable to load bitmap \"foo/bar/a_file_that_does_not_exist.php\" when calling build.";
+   std::string expected_error_message = "[BitmapFilenameToWorldBuilder::build]: error: was unable to load bitmap \"foo/bar/a_file_that_does_not_exist.php\" when calling build.";
    ASSERT_THROW_WITH_MESSAGE(the_underworld.build(), std::runtime_error, expected_error_message);
 }
 
@@ -91,7 +91,7 @@ TEST_F(LabyrinthOfLore_WorldMap_BitmapFilenameToWorldBuilderTest, get_bitmap_sou
 
 TEST_F(LabyrinthOfLore_WorldMap_BitmapFilenameToWorldBuilderTest, build__returns_a_map_of_the_expected_width_and_height)
 {
-   std::string real_source_location = "/Users/markoates/Repos/LabyrinthOfLore/bin/programs/";
+   std::string real_source_location = "/Users/markoates/Repos/LabyrinthOfLore/bin/";
    std::string bitmap_source_filename = "data/bitmaps/the_underworld.png";
 
    std::string full_source_location = real_source_location + bitmap_source_filename;
@@ -106,7 +106,7 @@ TEST_F(LabyrinthOfLore_WorldMap_BitmapFilenameToWorldBuilderTest, build__returns
 
 TEST_F(LabyrinthOfLore_WorldMap_BitmapFilenameToWorldBuilderTest, build__has_a_0_tile_in_the_top_left)
 {
-   std::string real_source_location = "/Users/markoates/Repos/LabyrinthOfLore/bin/programs/";
+   std::string real_source_location = "/Users/markoates/Repos/LabyrinthOfLore/bin/";
    std::string bitmap_source_filename = "data/bitmaps/the_underworld.png";
 
    std::string full_source_location = real_source_location + bitmap_source_filename;
@@ -119,7 +119,7 @@ TEST_F(LabyrinthOfLore_WorldMap_BitmapFilenameToWorldBuilderTest, build__has_a_0
 
 //TEST_F(LabyrinthOfLore_Maps_BitmapFilenameToWorldBuilderTest, build__has_the_expected_elevation_at_the_sparting_place)
 //{
-   //std::string real_source_location = "/Users/markoates/Repos/LabyrinthOfLore/bin/programs/";
+   //std::string real_source_location = "/Users/markoates/Repos/LabyrinthOfLore/bin/";
    //std::string bitmap_source_filename = "data/bitmaps/the_underworld.png";
 
    //std::string full_source_location = real_source_location + bitmap_source_filename;

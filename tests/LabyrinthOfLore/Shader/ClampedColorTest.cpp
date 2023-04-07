@@ -91,7 +91,7 @@ TEST_F(LabyrinthOfLore_Shader_ClampedColorTest, when_active__renders_the_image_w
 
    al_init_image_addon();
 
-   ALLEGRO_BITMAP *test_image = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/billboarding_tester_sprite.png");
+   ALLEGRO_BITMAP *test_image = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/data/bitmaps/billboarding_tester_sprite.png");
    ASSERT_NE(nullptr, test_image);
 
 
@@ -136,7 +136,7 @@ TEST_F(LabyrinthOfLore_Shader_ClampedColorTest, when_active__only_renders_solid_
 
    al_init_image_addon();
 
-   ALLEGRO_BITMAP *test_image = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/billboarding_tester_sprite.png");
+   ALLEGRO_BITMAP *test_image = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/data/bitmaps/billboarding_tester_sprite.png");
    ASSERT_NE(nullptr, test_image);
 
 
@@ -200,7 +200,7 @@ TEST_F(LabyrinthOfLore_Shader_ClampedColorTest, when_active__is_able_to_render_t
 
    al_init_image_addon();
 
-   ALLEGRO_BITMAP *test_image = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/billboarding_tester_sprite.png");
+   ALLEGRO_BITMAP *test_image = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/data/bitmaps/billboarding_tester_sprite.png");
    ASSERT_NE(nullptr, test_image);
 
 

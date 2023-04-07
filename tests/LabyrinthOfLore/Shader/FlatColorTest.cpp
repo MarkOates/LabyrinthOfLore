@@ -90,7 +90,7 @@ TEST_F(LabyrinthOfLore_Shader_FlatColorTest, when_active__renders_the_image_with
 
    al_init_image_addon();
 
-   ALLEGRO_BITMAP *test_image = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/programs/data/bitmaps/billboarding_tester_sprite.png");
+   ALLEGRO_BITMAP *test_image = al_load_bitmap("/Users/markoates/Repos/LabyrinthOfLore/bin/data/bitmaps/billboarding_tester_sprite.png");
    ASSERT_NE(nullptr, test_image);
 
 

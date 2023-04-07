@@ -61,6 +61,7 @@ LabyrinthOfLore::WorldMap::TileMap MultiBitmapFilenameToWorldBuilder::build()
    if (!elevation_bitmap_source)
    {
      std::stringstream error_message;
+     error_message << "[MultiBitmapFilenameToWorldBuilder::build]: error(A): was unable to load bitmap ";
      error_message << "was unable to load bitmap ";
      error_message << "\"" << elevation_bitmap_source_filename << "\" ";
      error_message << "when calling build.";
@@ -69,7 +70,8 @@ LabyrinthOfLore::WorldMap::TileMap MultiBitmapFilenameToWorldBuilder::build()
    if (!tile_type_bitmap_source)
    {
      std::stringstream error_message;
-     error_message << "was unable to load bitmap ";
+     error_message << "[MultiBitmapFilenameToWorldBuilder::build]: error(B): was unable to load bitmap ";
+     //error_message << "was unable to load bitmap ";
      error_message << "\"" << tile_type_bitmap_source_filename << "\" ";
      error_message << "when calling build.";
      throw std::runtime_error(error_message.str());
