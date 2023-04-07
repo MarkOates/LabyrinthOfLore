@@ -38,7 +38,7 @@ TEST_F(LabyrinthOfLore_Gameplay_ScreenTest, type__has_the_expected_value_matchin
 
 
 TEST_F(LabyrinthOfLore_Gameplay_ScreenTestWithAllegroFrameworksFullFixture,
-   DISABLED__TIMED_INTERACTIVE__will_run_as_expected)
+   TIMED_INTERACTIVE__will_run_as_expected)
 {
    // TODO: Get this test working
    AllegroFlare::Display *display = get_framework_ref().get_primary_display();
@@ -50,6 +50,7 @@ TEST_F(LabyrinthOfLore_Gameplay_ScreenTestWithAllegroFrameworksFullFixture,
    screen.set_render_surface_width(display->get_width());
    screen.set_render_surface_height(display->get_height());
    screen.set_render_surface_display(display->al_display);
+
    screen.initialize();
 
    framework_register_and_activate_screen("screen", &screen);

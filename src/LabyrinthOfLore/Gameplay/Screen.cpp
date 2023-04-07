@@ -197,6 +197,8 @@ void Screen::initialize()
    gameplay_element.set__display(render_surface_display);
    gameplay_element.initialize();
 
+   gameplay_element.start_game(); // TODO: Move this to a better spot
+
    initialized = true;
    return;
 }
