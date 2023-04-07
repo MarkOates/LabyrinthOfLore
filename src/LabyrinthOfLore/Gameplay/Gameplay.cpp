@@ -1124,7 +1124,7 @@ void Gameplay::process_timer_event()
                );
             hud_renderer.render();
 
-            al_flip_display();
+            //al_flip_display();
          }
 
       // NOTE: This line was previously after the switch statement in the primary loop

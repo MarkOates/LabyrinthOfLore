@@ -199,8 +199,9 @@ functions:
     override: true
     guards: [ initialized ]
     body: |
-      update();
-      render();
+      //update();
+      //render();
+      gameplay_element.process_timer_event();
       return;
 
 

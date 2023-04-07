@@ -1038,6 +1038,7 @@ int main(int argc, char **argv)
                && next_event.type == ALLEGRO_EVENT_TIMER
                && next_event.timer.source == this_event.timer.source)
             al_drop_next_event(game_system.event_queue);
+         al_flip_display();
          break;
       }
 
