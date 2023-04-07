@@ -989,6 +989,7 @@ int main(int argc, char **argv)
    AllegroFlare::Frameworks::Full framework;
    framework.set_deployment_environment("development");
    framework.disable_auto_created_config_warning();
+   framework.set_render_surface_multisamples(0);
    framework.disable_fullscreen();
    framework.initialize();
 
