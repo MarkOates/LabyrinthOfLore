@@ -857,6 +857,108 @@
 
 
 
+#define ALLEGRO_UNSTABLE
+
+
+#include <allegro5/allegro.h>
+#include <AllegroFlare/Frameworks/Full.hpp>
+//#include <AllegroFlare/FontBin.hpp>
+//#include <AllegroFlare/BitmapBin.hpp>
+
+
+
+class System
+{
+public:
+   const int DISPLAY_WIDTH = 1920;
+   const int DISPLAY_HEIGHT = 1080;
+   AllegroFlare::FontBin font_bin;
+   AllegroFlare::BitmapBin bitmap_bin;
+   ALLEGRO_EVENT_QUEUE *event_queue;
+   ALLEGRO_DISPLAY *display;
+   bool shutdown_program;
+
+   System()
+      : font_bin()
+      , bitmap_bin()
+      , display(nullptr)
+      , shutdown_program(false)
+   {
+   }
+   ~System()
+   {
+   }
+
+   void initialize()
+   {
+      al_init();
+      al_init_font_addon();
+      al_init_ttf_addon();
+      al_init_image_addon();
+      al_init_primitives_addon();
+
+      ALLEGRO_PATH *resource_path = al_get_standard_path(ALLEGRO_RESOURCES_PATH);
+      al_change_directory(al_path_cstr(resource_path, ALLEGRO_NATIVE_PATH_SEP));
+      al_destroy_path(resource_path);
+
+
+
+
+      // set a few options and flags
+      al_set_new_display_option(ALLEGRO_SAMPLE_BUFFERS, 2, ALLEGRO_SUGGEST);
+      al_set_new_display_option(ALLEGRO_DEPTH_SIZE, 32, ALLEGRO_SUGGEST);
+      //al_set_new_display_option(ALLEGRO_SAMPLES, 16, ALLEGRO_SUGGEST);
+      //al_set_new_display_flags(ALLEGRO_RESIZABLE | ALLEGRO_OPENGL | ALLEGRO_PROGRAMMABLE_PIPELINE);
+      al_set_new_display_flags(ALLEGRO_OPENGL | ALLEGRO_PROGRAMMABLE_PIPELINE);
+      //al_set_new_display_flags(ALLEGRO_FULLSCREEN_WINDOW | ALLEGRO_OPENGL | ALLEGRO_PROGRAMMABLE_PIPELINE);
+
+
+      display = al_create_display(DISPLAY_WIDTH, DISPLAY_HEIGHT);
+
+
+      event_queue = al_create_event_queue();
+
+      al_install_keyboard();
+      al_register_event_source(event_queue, al_get_keyboard_event_source());
+
+      al_install_mouse();
+      al_register_event_source(event_queue, al_get_mouse_event_source());
+
+      ALLEGRO_TIMER *primary_timer = al_create_timer(1.0/60.0);
+      al_register_event_source(event_queue, al_get_timer_event_source(primary_timer));
+      al_start_timer(primary_timer);
+
+
+      font_bin.set_path("data/fonts");
+      bitmap_bin.set_path("data/bitmaps");
+
+      //picking_buffer.initialize();
+
+      // preload the logo
+
+      //bitmap_bin.get("logo-fo-sho.png");
+   }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //#include <LabyrinthOfLore/Gameplay/Screen.hpp>
 #include <LabyrinthOfLore/Gameplay/Gameplay.hpp>
