@@ -985,6 +985,7 @@ public:
 
 int main(int argc, char **argv)
 {
+   // TODO: Update this System to AllegroFlare 
    System game_system;
    game_system.initialize();
 
