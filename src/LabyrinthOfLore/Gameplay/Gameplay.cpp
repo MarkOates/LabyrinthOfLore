@@ -813,7 +813,7 @@ void Gameplay::set_font_bin(AllegroFlare::FontBin *font_bin)
 
 
 
-void Gameplay::initialize(ALLEGRO_DISPLAY *_display)
+void Gameplay::initialize()
 {
    if (initialized) throw std::runtime_error("[Lol::Gameplay::Gameplay::initialize]: error: cannot initialize twice");
    if (!bitmap_bin) throw std::runtime_error("[Lol::Gameplay::Gameplay::initialize]: error: bitmap_bin required");
@@ -835,8 +835,10 @@ void Gameplay::initialize(ALLEGRO_DISPLAY *_display)
    //ALLEGRO_BITMAP *bmp = al_create_bitmap(w, h);
 
    buffer_buffer = al_create_bitmap(
-      al_get_display_width(_display)/resolution_scale,
-      al_get_display_height(_display)/resolution_scale
+      render_surface_width / resolution_scale,
+      render_surface_height / resolution_scale
+      //al_get_display_width(_display)/resolution_scale,
+      //al_get_display_height(_display)/resolution_scale
    );
    //ALLEGRO_BITMAP *buffer_buffer = al_get_backbuffer(display);
 

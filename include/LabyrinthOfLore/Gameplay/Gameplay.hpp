@@ -113,7 +113,7 @@ namespace LabyrinthOfLore
          void set_bitmap_bin(AllegroFlare::BitmapBin *bitmap_bin);
          void set_font_bin(AllegroFlare::FontBin *font_bin);
          
-         void initialize(ALLEGRO_DISPLAY* _display);
+         void initialize();
          void start_game();
 
          void process_mouse_axes_event(ALLEGRO_EVENT &this_event);
