@@ -38,10 +38,8 @@ TEST_F(LabyrinthOfLore_Gameplay_ScreenTest, type__has_the_expected_value_matchin
 
 
 TEST_F(LabyrinthOfLore_Gameplay_ScreenTestWithAllegroFrameworksFullFixture,
-   DISABLED__TIMED_INTERACTIVE__will_run_as_expected)
+   TIMED_INTERACTIVE__will_run_as_expected)
 {
-   // TODO: This test fails. It requires the assets folders to be setup correctly to work with
-   // deployment_environment
    AllegroFlare::Display *display = get_framework_ref().get_primary_display();
    LabyrinthOfLore::Gameplay::Screen screen;
    screen.set_event_emitter(get_framework_event_emitter());
