@@ -20,6 +20,7 @@ Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBi
    , bitmap_bin(bitmap_bin)
    , font_bin(font_bin)
    , model_bin(model_bin)
+   , gameplay_element({})
    , initialized(false)
 {
 }
@@ -27,6 +28,12 @@ Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBi
 
 Screen::~Screen()
 {
+}
+
+
+LabyrinthOfLore::Gameplay::Gameplay &Screen::get_gameplay_element_ref()
+{
+   return gameplay_element;
 }
 
 

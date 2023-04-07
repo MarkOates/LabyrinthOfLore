@@ -229,6 +229,9 @@
   "AllegroFlare/VirtualControllers/Base": [
     "LabyrinthOfLore/Gameplay/Screen"
   ],
+  "LabyrinthOfLore/Gameplay/Gameplay": [
+    "LabyrinthOfLore/Gameplay/Screen"
+  ],
   "AllegroFlare/Inventory": [
     "LabyrinthOfLore/Hud/CharacterPanel",
     "LabyrinthOfLoreGame/Interactions"

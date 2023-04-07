@@ -29,6 +29,11 @@ properties:
     init_with: nullptr
     constructor_arg: true
 
+  - name: gameplay_element
+    type: LabyrinthOfLore::Gameplay::Gameplay
+    init_with: '{}'
+    getter_ref: true
+
   - name: initialized
     type: bool
     init_with: false
@@ -223,5 +228,7 @@ dependencies:
     headers: [ AllegroFlare/Player.hpp ]
   - symbol: AllegroFlare::VirtualControllers::Base
     headers: [ AllegroFlare/VirtualControllers/Base.hpp ]
+  - symbol: LabyrinthOfLore::Gameplay::Gameplay
+    headers: [ LabyrinthOfLore/Gameplay/Gameplay.hpp ]
 
 

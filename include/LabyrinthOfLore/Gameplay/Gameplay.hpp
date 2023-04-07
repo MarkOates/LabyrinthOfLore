@@ -120,7 +120,7 @@ namespace LabyrinthOfLore
          void process_mouse_button_down_event(ALLEGRO_EVENT &this_event);
          void process_key_char_event(ALLEGRO_EVENT &this_event, bool &shutdown_program_flag);
          void process_key_up_event(ALLEGRO_EVENT &this_event);
-         void process_timer_event(ALLEGRO_EVENT &this_event, ALLEGRO_DISPLAY* _display);
+         void process_timer_event(ALLEGRO_DISPLAY* _display);
       };
    } // namespace Gameplay
 } // namespace LabyrinthOfLore

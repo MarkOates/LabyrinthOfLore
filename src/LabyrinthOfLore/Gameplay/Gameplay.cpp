@@ -1005,7 +1005,7 @@ void Gameplay::process_key_up_event(ALLEGRO_EVENT &this_event)
 
 
 
-void Gameplay::process_timer_event(ALLEGRO_EVENT &this_event, ALLEGRO_DISPLAY* _display)
+void Gameplay::process_timer_event(ALLEGRO_DISPLAY* _display)
 {
          {
             player_yaw += player_turning;

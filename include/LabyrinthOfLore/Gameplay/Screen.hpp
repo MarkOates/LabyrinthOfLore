@@ -8,6 +8,7 @@
 #include <AllegroFlare/Player.hpp>
 #include <AllegroFlare/Screens/Base.hpp>
 #include <AllegroFlare/VirtualControllers/Base.hpp>
+#include <LabyrinthOfLore/Gameplay/Gameplay.hpp>
 #include <allegro5/allegro.h>
 
 
@@ -25,6 +26,7 @@ namespace LabyrinthOfLore
          AllegroFlare::BitmapBin* bitmap_bin;
          AllegroFlare::FontBin* font_bin;
          AllegroFlare::ModelBin* model_bin;
+         LabyrinthOfLore::Gameplay::Gameplay gameplay_element;
          bool initialized;
 
       protected:
@@ -34,6 +36,7 @@ namespace LabyrinthOfLore
          Screen(AllegroFlare::EventEmitter* event_emitter=nullptr, AllegroFlare::BitmapBin* bitmap_bin=nullptr, AllegroFlare::FontBin* font_bin=nullptr, AllegroFlare::ModelBin* model_bin=nullptr);
          virtual ~Screen();
 
+         LabyrinthOfLore::Gameplay::Gameplay &get_gameplay_element_ref();
          void set_event_emitter(AllegroFlare::EventEmitter* event_emitter=nullptr);
          void set_bitmap_bin(AllegroFlare::BitmapBin* bitmap_bin=nullptr);
          void set_font_bin(AllegroFlare::FontBin* font_bin=nullptr);
