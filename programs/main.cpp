@@ -975,8 +975,76 @@ public:
 
 int main(int argc, char **argv)
 {
+   System game_system;
+   game_system.initialize();
+
+
+
    LabyrinthOfLore::Gameplay::Gameplay gameplay;
-   gameplay.run();
+
+
+   // initialize:
+
+   gameplay.set_bitmap_bin(&game_system.bitmap_bin);
+   gameplay.set_font_bin(&game_system.font_bin);
+   gameplay.set_render_surface_width(game_system.DISPLAY_WIDTH);
+   gameplay.set_render_surface_height(game_system.DISPLAY_HEIGHT);
+   gameplay.initialize(game_system.display);
+
+
+
+   // Start game
+
+   gameplay.start_game();
+
+
+
+   while(!game_system.shutdown_program)
+   {
+      ALLEGRO_EVENT this_event, next_event;
+      al_wait_for_event(game_system.event_queue, &this_event);
+
+      switch(this_event.type)
+      {
+      case ALLEGRO_EVENT_DISPLAY_CLOSE:
+         game_system.shutdown_program = true;
+         break;
+      case ALLEGRO_EVENT_MOUSE_AXES:
+         gameplay.process_mouse_axes_event(this_event);
+         break;
+      case ALLEGRO_EVENT_MOUSE_BUTTON_DOWN:
+         gameplay.process_mouse_button_down_event(this_event);
+         break;
+      case ALLEGRO_EVENT_KEY_CHAR: // using key down does not capture the SHIFT modifier for cheats
+         gameplay.process_key_char_event(this_event, game_system.shutdown_program);
+         break;
+      case ALLEGRO_EVENT_KEY_UP:
+         gameplay.process_key_up_event(this_event);
+         break;
+      case ALLEGRO_EVENT_TIMER:
+         gameplay.process_timer_event(this_event, game_system.display);
+         while (al_peek_next_event(game_system.event_queue, &next_event)
+               && next_event.type == ALLEGRO_EVENT_TIMER
+               && next_event.timer.source == this_event.timer.source)
+            al_drop_next_event(game_system.event_queue);
+         break;
+      }
+
+      //cleanup_all_entities_flagged_for_destruction(classic_game.get_all_entities_ref());
+   }
+
+   //al_save_bitmap("tmp/buffer_buffer.png", buffer_buffer);
+   //al_save_bitmap("tmp/scene.png", scene_rendering_surface);
+   //al_save_bitmap("tmp/picking.png", picking_buffer.get_surface_render());
+
+
+
+
+
+
+
+
+   //gameplay.run();
    //if (active)
    //{
       //System game_system;
