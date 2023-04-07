@@ -265,6 +265,59 @@ functions:
 
 
 
+  - name: mouse_axes_func
+    virtual: true
+    override: true
+    parameters:
+      - name: ev
+        type: ALLEGRO_EVENT*
+        default_argument: nullptr
+    guards: [ initialized, ev ]
+    body: |
+      gameplay_element.process_mouse_axes_event(*ev);
+      return;
+
+
+  - name: mouse_down_func
+    virtual: true
+    override: true
+    parameters:
+      - name: ev
+        type: ALLEGRO_EVENT*
+        default_argument: nullptr
+    guards: [ initialized, ev ]
+    body: |
+      gameplay_element.process_mouse_button_down_event(*ev);
+      return;
+
+
+  - name: key_char_func
+    virtual: true
+    override: true
+    parameters:
+      - name: ev
+        type: ALLEGRO_EVENT*
+        default_argument: nullptr
+    guards: [ initialized ]
+    body: |
+      bool unused_bool;
+      gameplay_element.process_key_char_event(*ev, unused_bool);
+      return;
+
+
+  - name: key_up_func
+    virtual: true
+    override: true
+    parameters:
+      - name: ev
+        type: ALLEGRO_EVENT*
+        default_argument: nullptr
+    guards: [ initialized ]
+    body: |
+      gameplay_element.process_key_up_event(*ev);
+      return;
+
+
 dependencies:
 
 

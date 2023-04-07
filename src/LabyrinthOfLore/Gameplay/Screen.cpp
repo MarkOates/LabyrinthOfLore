@@ -294,6 +294,73 @@ void Screen::virtual_control_axis_change_func(ALLEGRO_EVENT* ev)
    return;
 }
 
+void Screen::mouse_axes_func(ALLEGRO_EVENT* ev)
+{
+   if (!(initialized))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::mouse_axes_func]: error: guard \"initialized\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::mouse_axes_func: error: guard \"initialized\" not met");
+   }
+   if (!(ev))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::mouse_axes_func]: error: guard \"ev\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::mouse_axes_func: error: guard \"ev\" not met");
+   }
+   gameplay_element.process_mouse_axes_event(*ev);
+   return;
+}
+
+void Screen::mouse_down_func(ALLEGRO_EVENT* ev)
+{
+   if (!(initialized))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::mouse_down_func]: error: guard \"initialized\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::mouse_down_func: error: guard \"initialized\" not met");
+   }
+   if (!(ev))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::mouse_down_func]: error: guard \"ev\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::mouse_down_func: error: guard \"ev\" not met");
+   }
+   gameplay_element.process_mouse_button_down_event(*ev);
+   return;
+}
+
+void Screen::key_char_func(ALLEGRO_EVENT* ev)
+{
+   if (!(initialized))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::key_char_func]: error: guard \"initialized\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::key_char_func: error: guard \"initialized\" not met");
+   }
+   bool unused_bool;
+   gameplay_element.process_key_char_event(*ev, unused_bool);
+   return;
+}
+
+void Screen::key_up_func(ALLEGRO_EVENT* ev)
+{
+   if (!(initialized))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::key_up_func]: error: guard \"initialized\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::key_up_func: error: guard \"initialized\" not met");
+   }
+   gameplay_element.process_key_up_event(*ev);
+   return;
+}
+
 
 } // namespace Gameplay
 } // namespace LabyrinthOfLore
