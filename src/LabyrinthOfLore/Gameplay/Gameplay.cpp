@@ -33,8 +33,8 @@ static void capitalize (string &s)
 }
 
 
-const int DISPLAY_WIDTH = 1920;
-const int DISPLAY_HEIGHT = 1080;
+//const int DISPLAY_WIDTH = 1920;
+//const int DISPLAY_HEIGHT = 1080;
 //float resolution_scale = 3.0f;
 //AllegroFlare::PickingBuffer picking_buffer(DISPLAY_WIDTH/resolution_scale, DISPLAY_HEIGHT/resolution_scale, 32);
 
@@ -42,6 +42,8 @@ const int DISPLAY_HEIGHT = 1080;
 class System
 {
 public:
+   const int DISPLAY_WIDTH = 1920;
+   const int DISPLAY_HEIGHT = 1080;
    AllegroFlare::FontBin font_bin;
    AllegroFlare::BitmapBin bitmap_bin;
    ALLEGRO_EVENT_QUEUE *event_queue;
@@ -887,7 +889,7 @@ void Gameplay::set_bitmap_bin(AllegroFlare::BitmapBin *bitmap_bin)
 void Gameplay::set_font_bin(AllegroFlare::FontBin *font_bin)
 {
    if (initialized) throw std::runtime_error("[Lol::Gameplay::Gameplay::set_font_bin]: error: must be initialized");
-   this->bitmap_bin = bitmap_bin;
+   this->font_bin = font_bin;
 }
 
 
@@ -1212,6 +1214,8 @@ void Gameplay::run()
 
    set_bitmap_bin(&game_system.bitmap_bin);
    set_font_bin(&game_system.font_bin);
+   set_render_surface_width(game_system.DISPLAY_WIDTH);
+   set_render_surface_height(game_system.DISPLAY_HEIGHT);
    initialize(game_system.display);
 
 
