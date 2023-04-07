@@ -104,6 +104,7 @@ namespace LabyrinthOfLore
          int player_mouse_x;
          int player_mouse_y;
          bool initialized;
+         ALLEGRO_DISPLAY *_display;
 
       public:
          Gameplay();
@@ -112,6 +113,7 @@ namespace LabyrinthOfLore
          void set_render_surface_height(int render_surface_height);
          void set_bitmap_bin(AllegroFlare::BitmapBin *bitmap_bin);
          void set_font_bin(AllegroFlare::FontBin *font_bin);
+         void set__display(ALLEGRO_DISPLAY *_display); // Temporary dependency, design needs clarity on render surface
          
          void initialize();
          void start_game();
@@ -120,7 +122,7 @@ namespace LabyrinthOfLore
          void process_mouse_button_down_event(ALLEGRO_EVENT &this_event);
          void process_key_char_event(ALLEGRO_EVENT &this_event, bool &shutdown_program_flag);
          void process_key_up_event(ALLEGRO_EVENT &this_event);
-         void process_timer_event(ALLEGRO_DISPLAY* _display);
+         void process_timer_event();
       };
    } // namespace Gameplay
 } // namespace LabyrinthOfLore

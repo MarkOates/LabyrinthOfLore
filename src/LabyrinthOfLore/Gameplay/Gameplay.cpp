@@ -776,6 +776,7 @@ Gameplay::Gameplay()
    , player_mouse_x(0)
    , player_mouse_y(0)
    , initialized(false)
+   , _display(nullptr)
 {
 }
 
@@ -809,6 +810,14 @@ void Gameplay::set_font_bin(AllegroFlare::FontBin *font_bin)
 {
    if (initialized) throw std::runtime_error("[Lol::Gameplay::Gameplay::set_font_bin]: error: must be initialized");
    this->font_bin = font_bin;
+}
+
+
+
+void Gameplay::set__display(ALLEGRO_DISPLAY *_display)
+{
+   if (initialized) throw std::runtime_error("[Lol::Gameplay::Gameplay::set_font_bin]: error: must be initialized");
+   this->_display = _display;
 }
 
 
@@ -1007,7 +1016,7 @@ void Gameplay::process_key_up_event(ALLEGRO_EVENT &this_event)
 
 
 
-void Gameplay::process_timer_event(ALLEGRO_DISPLAY* _display)
+void Gameplay::process_timer_event()
 {
          {
             player_yaw += player_turning;

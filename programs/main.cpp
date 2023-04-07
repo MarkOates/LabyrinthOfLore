@@ -989,6 +989,7 @@ int main(int argc, char **argv)
    gameplay.set_font_bin(&game_system.font_bin);
    gameplay.set_render_surface_width(game_system.DISPLAY_WIDTH);
    gameplay.set_render_surface_height(game_system.DISPLAY_HEIGHT);
+   gameplay.set__display(game_system.display);
    gameplay.initialize();
 
 
@@ -1022,7 +1023,7 @@ int main(int argc, char **argv)
          gameplay.process_key_up_event(this_event);
          break;
       case ALLEGRO_EVENT_TIMER:
-         gameplay.process_timer_event(game_system.display);
+         gameplay.process_timer_event();
          while (al_peek_next_event(game_system.event_queue, &next_event)
                && next_event.type == ALLEGRO_EVENT_TIMER
                && next_event.timer.source == this_event.timer.source)
