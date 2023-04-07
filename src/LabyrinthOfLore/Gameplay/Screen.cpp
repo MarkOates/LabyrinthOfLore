@@ -14,12 +14,15 @@ namespace Gameplay
 {
 
 
-Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBin* bitmap_bin, AllegroFlare::FontBin* font_bin, AllegroFlare::ModelBin* model_bin)
+Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBin* bitmap_bin, AllegroFlare::FontBin* font_bin, AllegroFlare::ModelBin* model_bin, int render_surface_width, int render_surface_height, ALLEGRO_DISPLAY* render_surface_display)
    : AllegroFlare::Screens::Base(LabyrinthOfLore::Gameplay::Screen::TYPE)
    , event_emitter(event_emitter)
    , bitmap_bin(bitmap_bin)
    , font_bin(font_bin)
    , model_bin(model_bin)
+   , render_surface_width(render_surface_width)
+   , render_surface_height(render_surface_height)
+   , render_surface_display(render_surface_display)
    , gameplay_element({})
    , initialized(false)
 {
@@ -87,6 +90,44 @@ void Screen::set_model_bin(AllegroFlare::ModelBin* model_bin)
    }
    this->model_bin = model_bin;
    return;
+}
+
+void Screen::set_render_surface_width(int render_surface_width)
+{
+   if (!((!initialized)))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::set_render_surface_width]: error: guard \"(!initialized)\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::set_render_surface_width: error: guard \"(!initialized)\" not met");
+   }
+   this->render_surface_width = render_surface_width;
+   return;
+}
+
+void Screen::set_render_surface_height(int render_surface_height)
+{
+   if (!((!initialized)))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::set_render_surface_height]: error: guard \"(!initialized)\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::set_render_surface_height: error: guard \"(!initialized)\" not met");
+   }
+   this->render_surface_height = render_surface_height;
+   return;
+}
+
+void Screen::set_render_surface_display(ALLEGRO_DISPLAY* render_surface_display)
+{
+   if (!((!initialized)))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::set_render_surface_display]: error: guard \"(!initialized)\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::set_render_surface_display: error: guard \"(!initialized)\" not met");
+   }
+   this->render_surface_display = render_surface_display;
    return;
 }
 
@@ -148,6 +189,14 @@ void Screen::initialize()
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
       throw std::runtime_error("Screen::initialize: error: guard \"model_bin\" not met");
    }
+
+   gameplay_element.set_bitmap_bin(bitmap_bin);
+   gameplay_element.set_font_bin(font_bin);
+   gameplay_element.set_render_surface_width(render_surface_width);
+   gameplay_element.set_render_surface_height(render_surface_height);
+   gameplay_element.set__display(render_surface_display);
+   gameplay_element.initialize();
+
    initialized = true;
    return;
 }

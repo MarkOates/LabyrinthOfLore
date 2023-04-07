@@ -200,6 +200,9 @@
     "LabyrinthOfLore/Entity/ThingDictionary",
     "LabyrinthOfLore/Physics/EntityTileMapCollisionStepper"
   ],
+  "ALLEGRO_DISPLAY": [
+    "LabyrinthOfLore/Gameplay/Screen"
+  ],
   "ALLEGRO_EVENT": [
     "LabyrinthOfLore/Gameplay/Screen"
   ],

@@ -29,6 +29,21 @@ properties:
     init_with: nullptr
     constructor_arg: true
 
+  - name: render_surface_width
+    type: int
+    init_with: 1920
+    constructor_arg: true
+
+  - name: render_surface_height
+    type: int
+    init_with: 1920
+    constructor_arg: true
+
+  - name: render_surface_display
+    type: ALLEGRO_DISPLAY*
+    init_with: nullptr
+    constructor_arg: true
+
   - name: gameplay_element
     type: LabyrinthOfLore::Gameplay::Gameplay
     init_with: '{}'
@@ -90,6 +105,38 @@ functions:
     body: |
       this->model_bin = model_bin;
       return;
+
+
+  - name: set_render_surface_width
+    guards: [ (!initialized) ]
+    parameters:
+      - name: render_surface_width
+        type: int
+        default_argument: 0
+    body: |
+      this->render_surface_width = render_surface_width;
+      return;
+
+
+  - name: set_render_surface_height
+    guards: [ (!initialized) ]
+    parameters:
+      - name: render_surface_height
+        type: int
+        default_argument: 0
+    body: |
+      this->render_surface_height = render_surface_height;
+      return;
+
+
+  - name: set_render_surface_display
+    guards: [ (!initialized) ]
+    parameters:
+      - name: render_surface_display
+        type: ALLEGRO_DISPLAY*
+        default_argument: nullptr
+    body: |
+      this->render_surface_display = render_surface_display;
       return;
 
 
@@ -104,6 +151,14 @@ functions:
       - font_bin
       - model_bin
     body: |
+
+      gameplay_element.set_bitmap_bin(bitmap_bin);
+      gameplay_element.set_font_bin(font_bin);
+      gameplay_element.set_render_surface_width(render_surface_width);
+      gameplay_element.set_render_surface_height(render_surface_height);
+      gameplay_element.set__display(render_surface_display);
+      gameplay_element.initialize();
+
       initialized = true;
       return;
     body_dependency_symbols:
@@ -210,6 +265,8 @@ functions:
 dependencies:
 
 
+  - symbol: ALLEGRO_DISPLAY
+    headers: [ allegro5/allegro.h ]
   - symbol: ALLEGRO_EVENT
     headers: [ allegro5/allegro.h ]
   - symbol: AllegroFlare::Screens::Base

@@ -418,6 +418,18 @@ table td
   <td class="property">AllegroFlare::ModelBin*</td>
 </tr>
 <tr>
+  <td class="property">render_surface_width</td>
+  <td class="property">int</td>
+</tr>
+<tr>
+  <td class="property">render_surface_height</td>
+  <td class="property">int</td>
+</tr>
+<tr>
+  <td class="property">render_surface_display</td>
+  <td class="property">ALLEGRO_DISPLAY*</td>
+</tr>
+<tr>
   <td class="property">gameplay_element</td>
   <td class="property">LabyrinthOfLore::Gameplay::Gameplay</td>
 </tr>
@@ -442,6 +454,15 @@ table td
 </tr>
 <tr>
   <td class="method">set_model_bin(AllegroFlare::ModelBin* model_bin=nullptr)</td>
+</tr>
+<tr>
+  <td class="method">set_render_surface_width(int render_surface_width=0)</td>
+</tr>
+<tr>
+  <td class="method">set_render_surface_height(int render_surface_height=0)</td>
+</tr>
+<tr>
+  <td class="method">set_render_surface_display(ALLEGRO_DISPLAY* render_surface_display=nullptr)</td>
 </tr>
 <tr>
   <td class="method">initialize()</td>
@@ -472,6 +493,9 @@ table td
 </tr>
     </table>
      <table>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_DISPLAY&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
+</tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;ALLEGRO_EVENT&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro.h&quot;]}</td>
 </tr>
@@ -3774,6 +3798,9 @@ table td
   "std/max": [
     "LabyrinthOfLore/Entity/ThingDictionary",
     "LabyrinthOfLore/Physics/EntityTileMapCollisionStepper"
+  ],
+  "ALLEGRO_DISPLAY": [
+    "LabyrinthOfLore/Gameplay/Screen"
   ],
   "ALLEGRO_EVENT": [
     "LabyrinthOfLore/Gameplay/Screen"
