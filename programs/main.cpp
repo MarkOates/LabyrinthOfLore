@@ -991,7 +991,6 @@ int main(int argc, char **argv)
    framework.disable_auto_created_config_warning();
    framework.set_render_surface_multisamples(0);
    framework.disable_mipmapping();
-   framework.disable_fullscreen();
    framework.initialize();
 
    AllegroFlare::Display *display = framework.get_primary_display();
