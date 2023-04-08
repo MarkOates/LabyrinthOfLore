@@ -694,39 +694,6 @@ void add_thing_to_world(
 
 
 
-ALLEGRO_BITMAP *create_scene_rendering_surface(int width, int height)
-{
-   int previous_depth = al_get_new_bitmap_depth();
-   int previous_samples = al_get_new_bitmap_samples();
-   ALLEGRO_STATE previous_state;
-   al_store_state(&previous_state, ALLEGRO_STATE_BITMAP);
-
-   al_set_new_bitmap_depth(32);
-   al_set_new_bitmap_samples(0);
-   //ALLEGRO_BITMAP *bmp = al_create_bitmap(w, h);
-
-   ALLEGRO_BITMAP *buffer_buffer = al_create_bitmap(width, height);
-   //ALLEGRO_BITMAP *buffer_buffer = al_get_backbuffer(display);
-
-   al_restore_state(&previous_state);
-   al_set_new_bitmap_depth(previous_depth);
-   al_set_new_bitmap_samples(previous_samples);
-
-
-   ALLEGRO_BITMAP *scene_rendering_surface = al_create_sub_bitmap(
-         buffer_buffer,
-         0,
-         0,
-         al_get_bitmap_width(buffer_buffer),
-         al_get_bitmap_height(buffer_buffer)
-      );
-
-   return scene_rendering_surface;
-}
-
-
-
-
 //#include <LabyrinthOfLore/Gameplay/Screen.hpp>
 
 
