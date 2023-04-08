@@ -1019,381 +1019,381 @@ int main(int argc, char **argv)
 
 
 
-int old__main(int argc, char **argv)
-{
-   // TODO: Update this System to AllegroFlare 
-   System game_system;
-   game_system.initialize();
+//int old__main(int argc, char **argv)
+//{
+   //// TODO: Update this System to AllegroFlare 
+   //System game_system;
+   //game_system.initialize();
 
 
 
-   LabyrinthOfLore::Gameplay::Gameplay gameplay;
+   //LabyrinthOfLore::Gameplay::Gameplay gameplay;
 
 
-   // initialize:
+   //// initialize:
 
-   gameplay.set_bitmap_bin(&game_system.bitmap_bin);
-   gameplay.set_font_bin(&game_system.font_bin);
-   gameplay.set_render_surface_width(game_system.DISPLAY_WIDTH);
-   gameplay.set_render_surface_height(game_system.DISPLAY_HEIGHT);
-   gameplay.set__display(game_system.display);
-   gameplay.initialize();
-
-
-
-   // Start game
-
-   gameplay.start_game();
+   //gameplay.set_bitmap_bin(&game_system.bitmap_bin);
+   //gameplay.set_font_bin(&game_system.font_bin);
+   //gameplay.set_render_surface_width(game_system.DISPLAY_WIDTH);
+   //gameplay.set_render_surface_height(game_system.DISPLAY_HEIGHT);
+   //gameplay.set__display(game_system.display);
+   //gameplay.initialize();
 
 
 
-   while(!game_system.shutdown_program)
-   {
-      ALLEGRO_EVENT this_event, next_event;
-      al_wait_for_event(game_system.event_queue, &this_event);
+   //// Start game
 
-      switch(this_event.type)
-      {
-      case ALLEGRO_EVENT_DISPLAY_CLOSE:
-         game_system.shutdown_program = true;
-         break;
-      case ALLEGRO_EVENT_MOUSE_AXES:
-         gameplay.process_mouse_axes_event(this_event);
-         break;
-      case ALLEGRO_EVENT_MOUSE_BUTTON_DOWN:
-         gameplay.process_mouse_button_down_event(this_event);
-         break;
-      case ALLEGRO_EVENT_KEY_CHAR: // using key down does not capture the SHIFT modifier for cheats
-         gameplay.process_key_char_event(this_event, game_system.shutdown_program);
-         break;
-      case ALLEGRO_EVENT_KEY_UP:
-         gameplay.process_key_up_event(this_event);
-         break;
-      case ALLEGRO_EVENT_TIMER:
-         gameplay.process_timer_event();
-         while (al_peek_next_event(game_system.event_queue, &next_event)
-               && next_event.type == ALLEGRO_EVENT_TIMER
-               && next_event.timer.source == this_event.timer.source)
-            al_drop_next_event(game_system.event_queue);
-         al_flip_display();
-         break;
-      }
-
-      //cleanup_all_entities_flagged_for_destruction(classic_game.get_all_entities_ref());
-   }
-
-   //al_save_bitmap("tmp/buffer_buffer.png", buffer_buffer);
-   //al_save_bitmap("tmp/scene.png", scene_rendering_surface);
-   //al_save_bitmap("tmp/picking.png", picking_buffer.get_surface_render());
+   //gameplay.start_game();
 
 
 
-
-
-
-
-
-   //gameplay.run();
-   //if (active)
+   //while(!game_system.shutdown_program)
    //{
-      //System game_system;
-      //game_system.initialize();
+      //ALLEGRO_EVENT this_event, next_event;
+      //al_wait_for_event(game_system.event_queue, &this_event);
 
-
-
-
-      ////
-
-      //int previous_depth = al_get_new_bitmap_depth();
-      //int previous_samples = al_get_new_bitmap_samples();
-      //ALLEGRO_STATE previous_state;
-      //al_store_state(&previous_state, ALLEGRO_STATE_BITMAP);
-
-      //al_set_new_bitmap_depth(32);
-      //al_set_new_bitmap_samples(0);
-      ////ALLEGRO_BITMAP *bmp = al_create_bitmap(w, h);
-
-      //ALLEGRO_BITMAP *buffer_buffer = al_create_bitmap(al_get_display_width(game_system.display)/game_system.resolution_scale, al_get_display_height(game_system.display)/game_system.resolution_scale);
-      ////ALLEGRO_BITMAP *buffer_buffer = al_get_backbuffer(display);
-
-      //al_restore_state(&previous_state);
-      //al_set_new_bitmap_depth(previous_depth);
-      //al_set_new_bitmap_samples(previous_samples);
-
-
-      //ALLEGRO_BITMAP *scene_rendering_surface = al_create_sub_bitmap(buffer_buffer, 0, 0, al_get_bitmap_width(buffer_buffer), al_get_bitmap_height(buffer_buffer));
-      //if (!scene_rendering_surface) throw std::runtime_error("could not create scene_rendering_surface");
-
-      ////
-
-      //LabyrinthOfLoreGame::Classic classic_game(&game_system.bitmap_bin);
-      //classic_game.initialize();
-
-      ////
-
-      ////
-
-      //LabyrinthOfLoreGame::ThingDefinitionFactory thing_definition_factory; // yet to be used
-
-
-      ////
-
-      //LabyrinthOfLore::Rendering::Camera camera({0, 0, 0}, 0.0, 0.0);
-
-      //LabyrinthOfLore::Entity::Base* player_entity = new LabyrinthOfLore::Entity::Base;
-
-      //float player_yaw = 0;
-      //float player_camera_ascent = 0.65;
-      //float player_pitch = 0.0;
-      //float player_turning = 0.0;
-      //float max_player_turning_speed = 0.0023;
-      //float player_movement_magnitude = 0.0;
-
-      //int player_mouse_x = 0;
-      //int player_mouse_y = 0;
-
-      //player_entity->get_velocity_ref().position = {0.0, 0.0, 0.0};
-      //player_entity->set_identifier_for_level_within(LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER);
-      //player_entity->get_placement_ref().position = {0.0, 0.0, 0.0};
-
-      //classic_game.get_all_entities_ref().push_back(player_entity);
-
-      ////
-
-      //AllegroFlare::Inventory player_inventory;
-
-      //LabyrinthOfLore::Hud::MessageScroll message_scroll("");
-      //LabyrinthOfLore::Hud::CommandPanel command_panel;
-      //LabyrinthOfLore::Hud::VitalityAndManaBar vitality_and_mana_bar;
-      //LabyrinthOfLore::Hud::CharacterPanel character_panel(&player_inventory, &classic_game.get_thing_dictionary_ref());
-      //LabyrinthOfLore::Hud::MapButton map_button;
-      //LabyrinthOfLore::Hud::RuneShelf rune_shelf;
-      //LabyrinthOfLore::Hud::Compass compass;
-      //LabyrinthOfLore::Hud::RotateCharacterPanelButton rotate_character_panel_button;
-      //LabyrinthOfLore::Hud::CommandsHintPane commands_hint_pane;
-      //LabyrinthOfLore::Hud::CurrentSpells current_spells;
-      //LabyrinthOfLore::Hud::ViewFrame veiw_frame;
-      //LabyrinthOfLore::Hud::TitleText title_text;
-
-      ////
-
-      //LabyrinthOfLore::WorldMap::TileMap current_tile_map;
-      //LabyrinthOfLore::Rendering::TileMapMesh current_tile_map_mesh;
-      //LabyrinthOfLore::Rendering::TileMapWaterMesh current_tile_map_water_mesh;
-
-      ////
-
-      //// start game
-
-      //go_into_door(
-         //classic_game.get_doors_ref().at(10),
-         //player_entity,
-         //classic_game.get_levels_ref(),
-         //classic_game.get_meshes_ref(),
-         //classic_game.get_water_meshes_ref(),
-         //player_yaw,
-         //current_tile_map,
-         //current_tile_map_mesh,
-         //current_tile_map_water_mesh,
-         //title_text
-      //);
-
-
-      //while(!game_system.shutdown_program)
+      //switch(this_event.type)
       //{
-         //ALLEGRO_EVENT this_event, next_event;
-         //al_wait_for_event(game_system.event_queue, &this_event);
-
-         //switch(this_event.type)
-         //{
-         //case ALLEGRO_EVENT_DISPLAY_CLOSE:
-            //game_system.shutdown_program = true;
-            //break;
-         //case ALLEGRO_EVENT_MOUSE_AXES:
-            //player_mouse_x = this_event.mouse.x;
-            //player_mouse_y = this_event.mouse.y;
-            //// observe mouse enter and mouse exit, emit game events if needed 
-            //break;
-         //case ALLEGRO_EVENT_MOUSE_BUTTON_DOWN:
-            //{
-               //player_mouse_x = this_event.mouse.x;
-               //player_mouse_y = this_event.mouse.y;
-
-               //process_click_event(
-                  //player_mouse_x,
-                  //player_mouse_y,
-                  //game_system.picking_buffer,
-                  //game_system.resolution_scale,
-                  //classic_game.get_all_entities_ref(),
-                  //classic_game.get_thing_dictionary_ref(),
-                  //thing_definition_factory,
-                  //message_scroll,
-                  //command_panel,
-                  //character_panel,
-                  //player_inventory
-               //);
-
-               ////int picked_id = game.picking_buffer.get_id(player_mouse_x/resolution_scale, player_mouse_y/resolution_scale);
-               ////std::cout << "Picked ID: " << picked_id << std::endl;
-               //// observe clicked item, emit game events if needed 
-               //break;
-            //}
-         //case ALLEGRO_EVENT_KEY_CHAR: // using key down does not capture the SHIFT modifier for cheats
-            //{
-               //bool shift = false;
-               //if (development_mode) shift = this_event.keyboard.modifiers & ALLEGRO_KEYMOD_SHIFT; /// DISABLE ON RELEASE
-
-               //if (this_event.keyboard.keycode == ALLEGRO_KEY_ESCAPE) game_system.shutdown_program = true;
-               //if (this_event.keyboard.keycode == ALLEGRO_KEY_A) player_turning = shift ? 4*-max_player_turning_speed : -max_player_turning_speed;
-               //if (this_event.keyboard.keycode == ALLEGRO_KEY_W) player_movement_magnitude = shift ? 0.1 : 0.022;
-               //if (this_event.keyboard.keycode == ALLEGRO_KEY_D) player_turning = shift ? 4*max_player_turning_speed : max_player_turning_speed;
-               //if (this_event.keyboard.keycode == ALLEGRO_KEY_S) player_movement_magnitude = shift ? -0.1 : -0.022;
-
-               //if (development_mode)
-               //{
-                  //if (this_event.keyboard.keycode == ALLEGRO_KEY_Y) classic_game.get_depth_darken_shader_ref().set_torch_type(0); /// DISABLE ON RELEASE
-                  //if (this_event.keyboard.keycode == ALLEGRO_KEY_H) classic_game.get_depth_darken_shader_ref().set_torch_type(1); /// DISABLE ON RELEASE
-                  //if (this_event.keyboard.keycode == ALLEGRO_KEY_N) classic_game.get_depth_darken_shader_ref().set_torch_type(2); /// DISABLE ON RELEASE
-               //}
-
-               //process_cheat_keyboard_keydown_event(
-                  //this_event,
-                  //player_inventory
-               //);
-
-               //process_keyboard_keydown_event(
-                  //this_event,
-                  //classic_game.get_doors_ref(),
-                  //player_entity,
-                  //classic_game.get_levels_ref(),
-                  //classic_game.get_meshes_ref(),
-                  //classic_game.get_water_meshes_ref(),
-                  //player_yaw,
-                  //current_tile_map,
-                  //current_tile_map_mesh,
-                  //current_tile_map_water_mesh,
-                  //title_text,
-                  //command_panel
-               //);
-            //}
-            //break;
-         //case USER_EVENT_APPEND_MESSAGE_TO_MESSAGE_SCROLL:
-            //break;
-         //case ALLEGRO_EVENT_KEY_UP:
-            //if (this_event.keyboard.keycode == ALLEGRO_KEY_A) player_turning = 0.0;
-            //if (this_event.keyboard.keycode == ALLEGRO_KEY_W) player_movement_magnitude = 0.0;
-            //if (this_event.keyboard.keycode == ALLEGRO_KEY_D) player_turning = 0.0;
-            //if (this_event.keyboard.keycode == ALLEGRO_KEY_S) player_movement_magnitude = 0.0;
-
-            //break;
-         //case ALLEGRO_EVENT_TIMER:
-            //game_system.run_timer_step();
-            //{
-               //player_yaw += player_turning;
-
-               //AllegroFlare::vec2d view_vector_2d = AllegroFlare::vec2d::polar_coords((player_yaw + 0.25) * ALLEGRO_PI*2, player_movement_magnitude);
-               //player_entity->get_velocity_ref().position.x = view_vector_2d.x; //view_vector_2d.x;
-               //player_entity->get_velocity_ref().position.y = view_vector_2d.y; //view_vector_2d.y;
-
-               //std::vector<LabyrinthOfLore::Entity::Base*> entities_in_the_current_level = LabyrinthOfLore::Entity::Selector(classic_game.get_all_entities_ref()).select_within_level(current_level_identifier);
-
-               //LabyrinthOfLore::Physics::GravityStepper gravity_stepper(entities_in_the_current_level);
-               //gravity_stepper.process_step();
-
-               //// process_post_gravity_effects(entities_in_the_current_level);
-
-               //LabyrinthOfLore::Physics::EntityTileMapCollisionStepper entity_tile_map_collision_stepper(current_tile_map, entities_in_the_current_level);
-               //entity_tile_map_collision_stepper.process_step();
-
-               //// observe tile map collision events, emit game events if needed 
-               //std::vector<LabyrinthOfLore::Physics::EntityTileMapCollisionEvent> collision_stepper_events = entity_tile_map_collision_stepper.get_events_from_last_processed_step();
-
-               //process_collision_stepper_events(
-                     //collision_stepper_events,
-                     //player_entity,
-                     //classic_game.get_levels_ref(),
-
-                     //// dependencies for go_into_door
-                     //classic_game.get_doors_ref(),
-                     ////LabyrinthOfLore::Entity::Base* player_entity,
-                     ////std::map<std::string, LabyrinthOfLore::WorldMap::Level> &levels,
-                     //classic_game.get_meshes_ref(),
-                     //classic_game.get_water_meshes_ref(),
-                     //player_yaw,
-                     //current_tile_map,
-                     //current_tile_map_mesh,
-                     //current_tile_map_water_mesh,
-                     //title_text
-               //);
-               ////LabyrinthOfLoreGame::EntityTileMapCollisionEventProcessor entity_tile_map_collision_event_processor(collision_stepper_events);
-
-               //camera.get_position_ref() = player_entity->get_placement_ref().position + AllegroFlare::vec3d(0, 0, player_camera_ascent); // player_camera_ascent
-               //camera.get_yaw_ref() = player_yaw + 0.5;// + sin(al_get_time()) * 0.02;
-               //camera.get_pitch_ref() = player_pitch - 0.02;;// + sin((al_get_time()+2.345)*0.8534) * 0.02;
-
-               ////
-
-               //LabyrinthOfLore::Rendering::SpritesBillboarder sprites_billboarder(camera, entities_in_the_current_level);
-               //sprites_billboarder.process();
-
-               ////
-
-               //LabyrinthOfLore::Rendering::SceneRenderer scene_renderer(scene_rendering_surface, &camera, &current_tile_map_mesh, &current_tile_map_water_mesh, entities_in_the_current_level, &classic_game.get_depth_darken_shader_ref());
-               //scene_renderer.render();
-
-               ////
-
-               //al_clear_depth_buffer(1);
-               //al_set_render_state(ALLEGRO_DEPTH_TEST, 1);
-               //LabyrinthOfLore::Rendering::PickingBufferRenderer picking_buffer_renderer(&game_system.picking_buffer, &camera, current_tile_map_mesh, entities_in_the_current_level, &classic_game.get_clamped_color_shader_ref());
-               //picking_buffer_renderer.render();
-
-               ////
-
-               //al_set_target_bitmap(al_get_backbuffer(game_system.display));
-               //al_set_render_state(ALLEGRO_DEPTH_TEST, 0);
-               //al_draw_scaled_bitmap(buffer_buffer, 0, 0, al_get_bitmap_width(buffer_buffer), al_get_bitmap_height(buffer_buffer), 0, 0, al_get_display_width(game_system.display), al_get_display_height(game_system.display), 0);
-               ////al_draw_scaled_bitmap(picking_buffer.get_surface_render(), 0, 0, al_get_bitmap_width(buffer_buffer), al_get_bitmap_height(buffer_buffer), 0, 0, al_get_display_width(display), al_get_display_height(display), 0);
-
-               ////
-
-               //LabyrinthOfLore::Rendering::MousePointer mouse_pointer(player_mouse_x, player_mouse_y);
-               //LabyrinthOfLore::Rendering::Hud::Renderer hud_renderer(
-                     //al_get_backbuffer(game_system.display),
-                     //&game_system.font_bin,
-                     //&message_scroll,
-                     //&command_panel,
-                     //&vitality_and_mana_bar,
-                     //&character_panel,
-                     //&map_button,
-                     //&rune_shelf,
-                     //&compass,
-                     //&rotate_character_panel_button,
-                     //&commands_hint_pane,
-                     //&current_spells,
-                     //&veiw_frame,
-                     //&title_text,
-                     //&mouse_pointer
-                  //);
-               //hud_renderer.render();
-
-               //al_flip_display();
-            //}
-            //while (al_peek_next_event(game_system.event_queue, &next_event)
-                  //&& next_event.type == ALLEGRO_EVENT_TIMER
-                  //&& next_event.timer.source == this_event.timer.source)
-               //al_drop_next_event(game_system.event_queue);
-         //}
-
-         //cleanup_all_entities_flagged_for_destruction(classic_game.get_all_entities_ref());
+      //case ALLEGRO_EVENT_DISPLAY_CLOSE:
+         //game_system.shutdown_program = true;
+         //break;
+      //case ALLEGRO_EVENT_MOUSE_AXES:
+         //gameplay.process_mouse_axes_event(this_event);
+         //break;
+      //case ALLEGRO_EVENT_MOUSE_BUTTON_DOWN:
+         //gameplay.process_mouse_button_down_event(this_event);
+         //break;
+      //case ALLEGRO_EVENT_KEY_CHAR: // using key down does not capture the SHIFT modifier for cheats
+         //gameplay.process_key_char_event(this_event, game_system.shutdown_program);
+         //break;
+      //case ALLEGRO_EVENT_KEY_UP:
+         //gameplay.process_key_up_event(this_event);
+         //break;
+      //case ALLEGRO_EVENT_TIMER:
+         //gameplay.process_timer_event();
+         //while (al_peek_next_event(game_system.event_queue, &next_event)
+               //&& next_event.type == ALLEGRO_EVENT_TIMER
+               //&& next_event.timer.source == this_event.timer.source)
+            //al_drop_next_event(game_system.event_queue);
+         //al_flip_display();
+         //break;
       //}
 
-      //al_save_bitmap("tmp/buffer_buffer.png", buffer_buffer);
-      ////al_save_bitmap("tmp/scene.png", scene_rendering_surface);
-      ////al_save_bitmap("tmp/picking.png", picking_buffer.get_surface_render());
+      ////cleanup_all_entities_flagged_for_destruction(classic_game.get_all_entities_ref());
    //}
 
-   return 0;
-}
+   ////al_save_bitmap("tmp/buffer_buffer.png", buffer_buffer);
+   ////al_save_bitmap("tmp/scene.png", scene_rendering_surface);
+   ////al_save_bitmap("tmp/picking.png", picking_buffer.get_surface_render());
+
+
+
+
+
+
+
+
+   ////gameplay.run();
+   ////if (active)
+   ////{
+      ////System game_system;
+      ////game_system.initialize();
+
+
+
+
+      //////
+
+      ////int previous_depth = al_get_new_bitmap_depth();
+      ////int previous_samples = al_get_new_bitmap_samples();
+      ////ALLEGRO_STATE previous_state;
+      ////al_store_state(&previous_state, ALLEGRO_STATE_BITMAP);
+
+      ////al_set_new_bitmap_depth(32);
+      ////al_set_new_bitmap_samples(0);
+      //////ALLEGRO_BITMAP *bmp = al_create_bitmap(w, h);
+
+      ////ALLEGRO_BITMAP *buffer_buffer = al_create_bitmap(al_get_display_width(game_system.display)/game_system.resolution_scale, al_get_display_height(game_system.display)/game_system.resolution_scale);
+      //////ALLEGRO_BITMAP *buffer_buffer = al_get_backbuffer(display);
+
+      ////al_restore_state(&previous_state);
+      ////al_set_new_bitmap_depth(previous_depth);
+      ////al_set_new_bitmap_samples(previous_samples);
+
+
+      ////ALLEGRO_BITMAP *scene_rendering_surface = al_create_sub_bitmap(buffer_buffer, 0, 0, al_get_bitmap_width(buffer_buffer), al_get_bitmap_height(buffer_buffer));
+      ////if (!scene_rendering_surface) throw std::runtime_error("could not create scene_rendering_surface");
+
+      //////
+
+      ////LabyrinthOfLoreGame::Classic classic_game(&game_system.bitmap_bin);
+      ////classic_game.initialize();
+
+      //////
+
+      //////
+
+      ////LabyrinthOfLoreGame::ThingDefinitionFactory thing_definition_factory; // yet to be used
+
+
+      //////
+
+      ////LabyrinthOfLore::Rendering::Camera camera({0, 0, 0}, 0.0, 0.0);
+
+      ////LabyrinthOfLore::Entity::Base* player_entity = new LabyrinthOfLore::Entity::Base;
+
+      ////float player_yaw = 0;
+      ////float player_camera_ascent = 0.65;
+      ////float player_pitch = 0.0;
+      ////float player_turning = 0.0;
+      ////float max_player_turning_speed = 0.0023;
+      ////float player_movement_magnitude = 0.0;
+
+      ////int player_mouse_x = 0;
+      ////int player_mouse_y = 0;
+
+      ////player_entity->get_velocity_ref().position = {0.0, 0.0, 0.0};
+      ////player_entity->set_identifier_for_level_within(LabyrinthOfLoreGame::LevelIdentifiers::THE_UNDERWORLD_IDENTIFIER);
+      ////player_entity->get_placement_ref().position = {0.0, 0.0, 0.0};
+
+      ////classic_game.get_all_entities_ref().push_back(player_entity);
+
+      //////
+
+      ////AllegroFlare::Inventory player_inventory;
+
+      ////LabyrinthOfLore::Hud::MessageScroll message_scroll("");
+      ////LabyrinthOfLore::Hud::CommandPanel command_panel;
+      ////LabyrinthOfLore::Hud::VitalityAndManaBar vitality_and_mana_bar;
+      ////LabyrinthOfLore::Hud::CharacterPanel character_panel(&player_inventory, &classic_game.get_thing_dictionary_ref());
+      ////LabyrinthOfLore::Hud::MapButton map_button;
+      ////LabyrinthOfLore::Hud::RuneShelf rune_shelf;
+      ////LabyrinthOfLore::Hud::Compass compass;
+      ////LabyrinthOfLore::Hud::RotateCharacterPanelButton rotate_character_panel_button;
+      ////LabyrinthOfLore::Hud::CommandsHintPane commands_hint_pane;
+      ////LabyrinthOfLore::Hud::CurrentSpells current_spells;
+      ////LabyrinthOfLore::Hud::ViewFrame veiw_frame;
+      ////LabyrinthOfLore::Hud::TitleText title_text;
+
+      //////
+
+      ////LabyrinthOfLore::WorldMap::TileMap current_tile_map;
+      ////LabyrinthOfLore::Rendering::TileMapMesh current_tile_map_mesh;
+      ////LabyrinthOfLore::Rendering::TileMapWaterMesh current_tile_map_water_mesh;
+
+      //////
+
+      ////// start game
+
+      ////go_into_door(
+         ////classic_game.get_doors_ref().at(10),
+         ////player_entity,
+         ////classic_game.get_levels_ref(),
+         ////classic_game.get_meshes_ref(),
+         ////classic_game.get_water_meshes_ref(),
+         ////player_yaw,
+         ////current_tile_map,
+         ////current_tile_map_mesh,
+         ////current_tile_map_water_mesh,
+         ////title_text
+      ////);
+
+
+      ////while(!game_system.shutdown_program)
+      ////{
+         ////ALLEGRO_EVENT this_event, next_event;
+         ////al_wait_for_event(game_system.event_queue, &this_event);
+
+         ////switch(this_event.type)
+         ////{
+         ////case ALLEGRO_EVENT_DISPLAY_CLOSE:
+            ////game_system.shutdown_program = true;
+            ////break;
+         ////case ALLEGRO_EVENT_MOUSE_AXES:
+            ////player_mouse_x = this_event.mouse.x;
+            ////player_mouse_y = this_event.mouse.y;
+            ////// observe mouse enter and mouse exit, emit game events if needed 
+            ////break;
+         ////case ALLEGRO_EVENT_MOUSE_BUTTON_DOWN:
+            ////{
+               ////player_mouse_x = this_event.mouse.x;
+               ////player_mouse_y = this_event.mouse.y;
+
+               ////process_click_event(
+                  ////player_mouse_x,
+                  ////player_mouse_y,
+                  ////game_system.picking_buffer,
+                  ////game_system.resolution_scale,
+                  ////classic_game.get_all_entities_ref(),
+                  ////classic_game.get_thing_dictionary_ref(),
+                  ////thing_definition_factory,
+                  ////message_scroll,
+                  ////command_panel,
+                  ////character_panel,
+                  ////player_inventory
+               ////);
+
+               //////int picked_id = game.picking_buffer.get_id(player_mouse_x/resolution_scale, player_mouse_y/resolution_scale);
+               //////std::cout << "Picked ID: " << picked_id << std::endl;
+               ////// observe clicked item, emit game events if needed 
+               ////break;
+            ////}
+         ////case ALLEGRO_EVENT_KEY_CHAR: // using key down does not capture the SHIFT modifier for cheats
+            ////{
+               ////bool shift = false;
+               ////if (development_mode) shift = this_event.keyboard.modifiers & ALLEGRO_KEYMOD_SHIFT; /// DISABLE ON RELEASE
+
+               ////if (this_event.keyboard.keycode == ALLEGRO_KEY_ESCAPE) game_system.shutdown_program = true;
+               ////if (this_event.keyboard.keycode == ALLEGRO_KEY_A) player_turning = shift ? 4*-max_player_turning_speed : -max_player_turning_speed;
+               ////if (this_event.keyboard.keycode == ALLEGRO_KEY_W) player_movement_magnitude = shift ? 0.1 : 0.022;
+               ////if (this_event.keyboard.keycode == ALLEGRO_KEY_D) player_turning = shift ? 4*max_player_turning_speed : max_player_turning_speed;
+               ////if (this_event.keyboard.keycode == ALLEGRO_KEY_S) player_movement_magnitude = shift ? -0.1 : -0.022;
+
+               ////if (development_mode)
+               ////{
+                  ////if (this_event.keyboard.keycode == ALLEGRO_KEY_Y) classic_game.get_depth_darken_shader_ref().set_torch_type(0); /// DISABLE ON RELEASE
+                  ////if (this_event.keyboard.keycode == ALLEGRO_KEY_H) classic_game.get_depth_darken_shader_ref().set_torch_type(1); /// DISABLE ON RELEASE
+                  ////if (this_event.keyboard.keycode == ALLEGRO_KEY_N) classic_game.get_depth_darken_shader_ref().set_torch_type(2); /// DISABLE ON RELEASE
+               ////}
+
+               ////process_cheat_keyboard_keydown_event(
+                  ////this_event,
+                  ////player_inventory
+               ////);
+
+               ////process_keyboard_keydown_event(
+                  ////this_event,
+                  ////classic_game.get_doors_ref(),
+                  ////player_entity,
+                  ////classic_game.get_levels_ref(),
+                  ////classic_game.get_meshes_ref(),
+                  ////classic_game.get_water_meshes_ref(),
+                  ////player_yaw,
+                  ////current_tile_map,
+                  ////current_tile_map_mesh,
+                  ////current_tile_map_water_mesh,
+                  ////title_text,
+                  ////command_panel
+               ////);
+            ////}
+            ////break;
+         ////case USER_EVENT_APPEND_MESSAGE_TO_MESSAGE_SCROLL:
+            ////break;
+         ////case ALLEGRO_EVENT_KEY_UP:
+            ////if (this_event.keyboard.keycode == ALLEGRO_KEY_A) player_turning = 0.0;
+            ////if (this_event.keyboard.keycode == ALLEGRO_KEY_W) player_movement_magnitude = 0.0;
+            ////if (this_event.keyboard.keycode == ALLEGRO_KEY_D) player_turning = 0.0;
+            ////if (this_event.keyboard.keycode == ALLEGRO_KEY_S) player_movement_magnitude = 0.0;
+
+            ////break;
+         ////case ALLEGRO_EVENT_TIMER:
+            ////game_system.run_timer_step();
+            ////{
+               ////player_yaw += player_turning;
+
+               ////AllegroFlare::vec2d view_vector_2d = AllegroFlare::vec2d::polar_coords((player_yaw + 0.25) * ALLEGRO_PI*2, player_movement_magnitude);
+               ////player_entity->get_velocity_ref().position.x = view_vector_2d.x; //view_vector_2d.x;
+               ////player_entity->get_velocity_ref().position.y = view_vector_2d.y; //view_vector_2d.y;
+
+               ////std::vector<LabyrinthOfLore::Entity::Base*> entities_in_the_current_level = LabyrinthOfLore::Entity::Selector(classic_game.get_all_entities_ref()).select_within_level(current_level_identifier);
+
+               ////LabyrinthOfLore::Physics::GravityStepper gravity_stepper(entities_in_the_current_level);
+               ////gravity_stepper.process_step();
+
+               ////// process_post_gravity_effects(entities_in_the_current_level);
+
+               ////LabyrinthOfLore::Physics::EntityTileMapCollisionStepper entity_tile_map_collision_stepper(current_tile_map, entities_in_the_current_level);
+               ////entity_tile_map_collision_stepper.process_step();
+
+               ////// observe tile map collision events, emit game events if needed 
+               ////std::vector<LabyrinthOfLore::Physics::EntityTileMapCollisionEvent> collision_stepper_events = entity_tile_map_collision_stepper.get_events_from_last_processed_step();
+
+               ////process_collision_stepper_events(
+                     ////collision_stepper_events,
+                     ////player_entity,
+                     ////classic_game.get_levels_ref(),
+
+                     ////// dependencies for go_into_door
+                     ////classic_game.get_doors_ref(),
+                     //////LabyrinthOfLore::Entity::Base* player_entity,
+                     //////std::map<std::string, LabyrinthOfLore::WorldMap::Level> &levels,
+                     ////classic_game.get_meshes_ref(),
+                     ////classic_game.get_water_meshes_ref(),
+                     ////player_yaw,
+                     ////current_tile_map,
+                     ////current_tile_map_mesh,
+                     ////current_tile_map_water_mesh,
+                     ////title_text
+               ////);
+               //////LabyrinthOfLoreGame::EntityTileMapCollisionEventProcessor entity_tile_map_collision_event_processor(collision_stepper_events);
+
+               ////camera.get_position_ref() = player_entity->get_placement_ref().position + AllegroFlare::vec3d(0, 0, player_camera_ascent); // player_camera_ascent
+               ////camera.get_yaw_ref() = player_yaw + 0.5;// + sin(al_get_time()) * 0.02;
+               ////camera.get_pitch_ref() = player_pitch - 0.02;;// + sin((al_get_time()+2.345)*0.8534) * 0.02;
+
+               //////
+
+               ////LabyrinthOfLore::Rendering::SpritesBillboarder sprites_billboarder(camera, entities_in_the_current_level);
+               ////sprites_billboarder.process();
+
+               //////
+
+               ////LabyrinthOfLore::Rendering::SceneRenderer scene_renderer(scene_rendering_surface, &camera, &current_tile_map_mesh, &current_tile_map_water_mesh, entities_in_the_current_level, &classic_game.get_depth_darken_shader_ref());
+               ////scene_renderer.render();
+
+               //////
+
+               ////al_clear_depth_buffer(1);
+               ////al_set_render_state(ALLEGRO_DEPTH_TEST, 1);
+               ////LabyrinthOfLore::Rendering::PickingBufferRenderer picking_buffer_renderer(&game_system.picking_buffer, &camera, current_tile_map_mesh, entities_in_the_current_level, &classic_game.get_clamped_color_shader_ref());
+               ////picking_buffer_renderer.render();
+
+               //////
+
+               ////al_set_target_bitmap(al_get_backbuffer(game_system.display));
+               ////al_set_render_state(ALLEGRO_DEPTH_TEST, 0);
+               ////al_draw_scaled_bitmap(buffer_buffer, 0, 0, al_get_bitmap_width(buffer_buffer), al_get_bitmap_height(buffer_buffer), 0, 0, al_get_display_width(game_system.display), al_get_display_height(game_system.display), 0);
+               //////al_draw_scaled_bitmap(picking_buffer.get_surface_render(), 0, 0, al_get_bitmap_width(buffer_buffer), al_get_bitmap_height(buffer_buffer), 0, 0, al_get_display_width(display), al_get_display_height(display), 0);
+
+               //////
+
+               ////LabyrinthOfLore::Rendering::MousePointer mouse_pointer(player_mouse_x, player_mouse_y);
+               ////LabyrinthOfLore::Rendering::Hud::Renderer hud_renderer(
+                     ////al_get_backbuffer(game_system.display),
+                     ////&game_system.font_bin,
+                     ////&message_scroll,
+                     ////&command_panel,
+                     ////&vitality_and_mana_bar,
+                     ////&character_panel,
+                     ////&map_button,
+                     ////&rune_shelf,
+                     ////&compass,
+                     ////&rotate_character_panel_button,
+                     ////&commands_hint_pane,
+                     ////&current_spells,
+                     ////&veiw_frame,
+                     ////&title_text,
+                     ////&mouse_pointer
+                  ////);
+               ////hud_renderer.render();
+
+               ////al_flip_display();
+            ////}
+            ////while (al_peek_next_event(game_system.event_queue, &next_event)
+                  ////&& next_event.type == ALLEGRO_EVENT_TIMER
+                  ////&& next_event.timer.source == this_event.timer.source)
+               ////al_drop_next_event(game_system.event_queue);
+         ////}
+
+         ////cleanup_all_entities_flagged_for_destruction(classic_game.get_all_entities_ref());
+      ////}
+
+      ////al_save_bitmap("tmp/buffer_buffer.png", buffer_buffer);
+      //////al_save_bitmap("tmp/scene.png", scene_rendering_surface);
+      //////al_save_bitmap("tmp/picking.png", picking_buffer.get_surface_render());
+   ////}
+
+   //return 0;
+//}
 
 
