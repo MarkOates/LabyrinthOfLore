@@ -1068,7 +1068,14 @@ void Gameplay::process_timer_event()
 
             //
 
-            LabyrinthOfLore::Rendering::SceneRenderer scene_renderer(scene_rendering_surface, &camera, &current_tile_map_mesh, &current_tile_map_water_mesh, entities_in_the_current_level, &classic_game.get_depth_darken_shader_ref());
+            LabyrinthOfLore::Rendering::SceneRenderer scene_renderer(
+               scene_rendering_surface,
+               &camera,
+               &current_tile_map_mesh,
+               &current_tile_map_water_mesh,
+               entities_in_the_current_level,
+               &classic_game.get_depth_darken_shader_ref()
+            );
             scene_renderer.render();
 
             //

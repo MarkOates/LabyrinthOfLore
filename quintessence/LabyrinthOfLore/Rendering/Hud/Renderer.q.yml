@@ -55,18 +55,22 @@ properties:
     type: LabyrinthOfLore::Hud::CommandsHintPane*
     init_with: nullptr
     constructor_arg: true
+
   - name: current_spells
     type: LabyrinthOfLore::Hud::CurrentSpells*
     init_with: nullptr
     constructor_arg: true
+
   - name: view_frame
     type: LabyrinthOfLore::Hud::ViewFrame*
     init_with: nullptr
     constructor_arg: true
+
   - name: title_text
     type: LabyrinthOfLore::Hud::TitleText*
     init_with: nullptr
     constructor_arg: true
+
   - name: mouse_pointer
     type: LabyrinthOfLore::Rendering::MousePointer*
     init_with: nullptr
