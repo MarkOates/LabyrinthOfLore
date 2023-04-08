@@ -731,7 +731,7 @@ Gameplay::Gameplay()
    , render_surface_height(0)
    , resolution_scale(3.0)
    , picking_buffer(0, 0, 32)
-   , buffer_buffer(nullptr)
+   , rendering_surface(nullptr)
    , scene_rendering_surface(nullptr)
    , player_entity(nullptr)
    , player_yaw(0)
@@ -810,13 +810,13 @@ void Gameplay::initialize()
    al_set_new_bitmap_samples(0);
    //ALLEGRO_BITMAP *bmp = al_create_bitmap(w, h);
 
-   buffer_buffer = al_create_bitmap(
+   rendering_surface = al_create_bitmap(
       render_surface_width / resolution_scale,
       render_surface_height / resolution_scale
       //al_get_display_width(_display)/resolution_scale,
       //al_get_display_height(_display)/resolution_scale
    );
-   //ALLEGRO_BITMAP *buffer_buffer = al_get_backbuffer(display);
+   //ALLEGRO_BITMAP *rendering_surface = al_get_backbuffer(display);
 
    al_restore_state(&previous_state);
    al_set_new_bitmap_depth(previous_depth);
@@ -824,11 +824,11 @@ void Gameplay::initialize()
 
 
    scene_rendering_surface = al_create_sub_bitmap(
-         buffer_buffer,
+         rendering_surface,
          0,
          0,
-         al_get_bitmap_width(buffer_buffer),
-         al_get_bitmap_height(buffer_buffer)
+         al_get_bitmap_width(rendering_surface),
+         al_get_bitmap_height(rendering_surface)
       );
    if (!scene_rendering_surface) throw std::runtime_error("could not create scene_rendering_surface");
 
@@ -1063,11 +1063,11 @@ void Gameplay::process_timer_event()
             al_set_target_bitmap(al_get_backbuffer(_display));
             al_set_render_state(ALLEGRO_DEPTH_TEST, 0);
             al_draw_scaled_bitmap(
-               buffer_buffer,
+               rendering_surface,
                0,
                0,
-               al_get_bitmap_width(buffer_buffer),
-               al_get_bitmap_height(buffer_buffer),
+               al_get_bitmap_width(rendering_surface),
+               al_get_bitmap_height(rendering_surface),
                0,
                0,
                al_get_display_width(_display),
