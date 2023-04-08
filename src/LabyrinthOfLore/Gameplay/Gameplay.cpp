@@ -732,7 +732,8 @@ Gameplay::Gameplay()
    , resolution_scale(3.0)
    , picking_buffer(0, 0, 32)
    , rendering_surface(nullptr)
-   , scene_rendering_surface(nullptr)
+   , scene_render_surface(nullptr)
+   , hud_render_surface(nullptr)
    , player_entity(nullptr)
    , player_yaw(0)
    , player_camera_ascent(0.65)
@@ -818,20 +819,38 @@ void Gameplay::initialize()
    );
    //ALLEGRO_BITMAP *rendering_surface = al_get_backbuffer(display);
 
+   //al_restore_state(&previous_state);
+   //al_set_new_bitmap_depth(previous_depth);
+   //al_set_new_bitmap_samples(previous_samples);
+
+
+   scene_render_surface = al_create_bitmap(
+         //rendering_surface,
+         //0,
+         //0,
+         1920 / 5.0,
+         1080 / 5.0
+         //al_get_bitmap_width(rendering_surface),
+         //al_get_bitmap_height(rendering_surface)
+      );
+   if (!scene_render_surface) throw std::runtime_error("could not create scene_render_surface");
+
+
+   hud_render_surface = al_create_bitmap(
+         //rendering_surface,
+         //0,
+         //0,
+         1920, // / 5.0,
+         1080 // / 5.0
+         //al_get_bitmap_width(rendering_surface),
+         //al_get_bitmap_height(rendering_surface)
+      );
+   if (!hud_render_surface) throw std::runtime_error("could not create hud_render_surface");
+
+
    al_restore_state(&previous_state);
    al_set_new_bitmap_depth(previous_depth);
    al_set_new_bitmap_samples(previous_samples);
-
-
-   scene_rendering_surface = al_create_sub_bitmap(
-         rendering_surface,
-         0,
-         0,
-         al_get_bitmap_width(rendering_surface),
-         al_get_bitmap_height(rendering_surface)
-      );
-   if (!scene_rendering_surface) throw std::runtime_error("could not create scene_rendering_surface");
-
 
    // Init our other stuff
 
@@ -1036,7 +1055,7 @@ void Gameplay::process_timer_event()
             //
 
             LabyrinthOfLore::Rendering::SceneRenderer scene_renderer(
-               scene_rendering_surface,
+               scene_render_surface,
                &camera,
                &current_tile_map_mesh,
                &current_tile_map_water_mesh,
@@ -1060,27 +1079,10 @@ void Gameplay::process_timer_event()
 
             //
 
-            al_set_target_bitmap(al_get_backbuffer(_display));
-            al_set_render_state(ALLEGRO_DEPTH_TEST, 0);
-            al_draw_scaled_bitmap(
-               rendering_surface,
-               0,
-               0,
-               al_get_bitmap_width(rendering_surface),
-               al_get_bitmap_height(rendering_surface),
-               0,
-               0,
-               al_get_display_width(_display),
-               al_get_display_height(_display),
-               0
-            );
-            //al_draw_scaled_bitmap(picking_buffer.get_surface_render(), 0, 0, al_get_bitmap_width(buffer_buffer), al_get_bitmap_height(buffer_buffer), 0, 0, al_get_display_width(display), al_get_display_height(display), 0);
-
-            //
-
             LabyrinthOfLore::Rendering::MousePointer mouse_pointer(player_mouse_x, player_mouse_y);
             LabyrinthOfLore::Rendering::Hud::Renderer hud_renderer(
-                  al_get_backbuffer(_display),
+                  //al_get_backbuffer(_display),
+                  hud_render_surface,
                   font_bin,
                   &message_scroll,
                   &command_panel,
@@ -1097,6 +1099,44 @@ void Gameplay::process_timer_event()
                   &mouse_pointer
                );
             hud_renderer.render();
+
+            //
+
+            al_set_target_bitmap(al_get_backbuffer(_display));
+            al_set_render_state(ALLEGRO_DEPTH_TEST, 0);
+
+            al_draw_scaled_bitmap(
+               scene_render_surface,
+               0,
+               0,
+               al_get_bitmap_width(scene_render_surface),
+               al_get_bitmap_height(scene_render_surface),
+               0,
+               0,
+               1920, // NOTE: This is AllegroFlare's "hard-coded" width for its projection display
+               1080, // NOTE: This is AllegroFlare's "hard-coded" width for its projection display
+               //al_get_display_width(_display),
+               //al_get_display_height(_display),
+               0
+            );
+
+            al_draw_scaled_bitmap(
+               hud_render_surface,
+               0,
+               0,
+               al_get_bitmap_width(hud_render_surface),
+               al_get_bitmap_height(hud_render_surface),
+               0,
+               0,
+               1920, // NOTE: This is AllegroFlare's "hard-coded" width for its projection display
+               1080, // NOTE: This is AllegroFlare's "hard-coded" width for its projection display
+               //al_get_display_width(_display),
+               //al_get_display_height(_display),
+               0
+            );
+
+
+            //al_draw_scaled_bitmap(picking_buffer.get_surface_render(), 0, 0, al_get_bitmap_width(buffer_buffer), al_get_bitmap_height(buffer_buffer), 0, 0, al_get_display_width(display), al_get_display_height(display), 0);
 
             //al_flip_display();
          }

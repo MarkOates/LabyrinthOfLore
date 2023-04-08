@@ -93,7 +93,8 @@ namespace LabyrinthOfLore
          float resolution_scale; // For faster rendering and mouse movement correction
          AllegroFlare::PickingBuffer picking_buffer;
          ALLEGRO_BITMAP *rendering_surface;
-         ALLEGRO_BITMAP *scene_rendering_surface;
+         ALLEGRO_BITMAP *scene_render_surface;
+         ALLEGRO_BITMAP *hud_render_surface;
          LabyrinthOfLore::Entity::Base* player_entity;
          float player_yaw;
          float player_camera_ascent;
