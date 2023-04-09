@@ -418,6 +418,10 @@ table td
   <td class="property">AllegroFlare::ModelBin*</td>
 </tr>
 <tr>
+  <td class="property">profiler</td>
+  <td class="property">AllegroFlare::Profiler*</td>
+</tr>
+<tr>
   <td class="property">render_surface_width</td>
   <td class="property">int</td>
 </tr>
@@ -454,6 +458,9 @@ table td
 </tr>
 <tr>
   <td class="method">set_model_bin(AllegroFlare::ModelBin* model_bin=nullptr)</td>
+</tr>
+<tr>
+  <td class="method">set_profiler(AllegroFlare::Profiler* profiler=nullptr)</td>
 </tr>
 <tr>
   <td class="method">set_render_surface_width(int render_surface_width=0)</td>
@@ -525,6 +532,9 @@ table td
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::ModelBin&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/ModelBin.hpp&quot;]}</td>
+</tr>
+<tr>
+  <td class="dependency">{&quot;symbol&quot;=&gt;&quot;AllegroFlare::Profiler&quot;, &quot;headers&quot;=&gt;[&quot;AllegroFlare/Profiler.hpp&quot;]}</td>
 </tr>
 <tr>
   <td class="dependency">{&quot;symbol&quot;=&gt;&quot;al_is_primitives_addon_initialized&quot;, &quot;headers&quot;=&gt;[&quot;allegro5/allegro_primitives.h&quot;]}</td>
@@ -3832,6 +3842,9 @@ table td
     "LabyrinthOfLore/Rendering/Hud/Renderer"
   ],
   "AllegroFlare/ModelBin": [
+    "LabyrinthOfLore/Gameplay/Screen"
+  ],
+  "AllegroFlare/Profiler": [
     "LabyrinthOfLore/Gameplay/Screen"
   ],
   "al_is_primitives_addon_initialized": [

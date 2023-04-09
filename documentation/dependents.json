@@ -223,6 +223,9 @@
   "AllegroFlare/ModelBin": [
     "LabyrinthOfLore/Gameplay/Screen"
   ],
+  "AllegroFlare/Profiler": [
+    "LabyrinthOfLore/Gameplay/Screen"
+  ],
   "al_is_primitives_addon_initialized": [
     "LabyrinthOfLore/Gameplay/Screen"
   ],

@@ -29,6 +29,11 @@ properties:
     init_with: nullptr
     constructor_arg: true
 
+  - name: profiler
+    type: AllegroFlare::Profiler*
+    init_with: nullptr
+    constructor_arg: true
+
   - name: render_surface_width
     type: int
     init_with: 1920
@@ -107,6 +112,17 @@ functions:
       return;
 
 
+  - name: set_profiler
+    guards: [ (!initialized) ]
+    parameters:
+      - name: profiler
+        type: AllegroFlare::Profiler*
+        default_argument: nullptr
+    body: |
+      this->profiler = profiler;
+      return;
+
+
   - name: set_render_surface_width
     guards: [ (!initialized) ]
     parameters:
@@ -150,10 +166,12 @@ functions:
       - bitmap_bin
       - font_bin
       - model_bin
+      - profiler
     body: |
 
       gameplay_element.set_bitmap_bin(bitmap_bin);
       gameplay_element.set_font_bin(font_bin);
+      gameplay_element.set_profiler(profiler);
       gameplay_element.set_render_surface_width(render_surface_width);
       gameplay_element.set_render_surface_height(render_surface_height);
       gameplay_element.set__display(render_surface_display);
@@ -335,6 +353,8 @@ dependencies:
     headers: [ AllegroFlare/FontBin.hpp ]
   - symbol: AllegroFlare::ModelBin
     headers: [ AllegroFlare/ModelBin.hpp ]
+  - symbol: AllegroFlare::Profiler
+    headers: [ AllegroFlare/Profiler.hpp ]
   - symbol: al_is_primitives_addon_initialized
     headers: [ allegro5/allegro_primitives.h ]
   - symbol: AllegroFlare::Player

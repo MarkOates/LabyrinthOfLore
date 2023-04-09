@@ -708,6 +708,7 @@ namespace Gameplay
 Gameplay::Gameplay()
    : bitmap_bin(nullptr)
    , font_bin(nullptr)
+   , profiler(nullptr)
    , thing_definition_factory() // yet to be used
    , player_inventory()
    , message_scroll()
@@ -782,6 +783,14 @@ void Gameplay::set_font_bin(AllegroFlare::FontBin *font_bin)
 
 
 
+void Gameplay::set_profiler(AllegroFlare::Profiler *profiler)
+{
+   if (initialized) throw std::runtime_error("[Lol::Gameplay::Gameplay::set_profiler]: error: must be initialized");
+   this->profiler = profiler;
+}
+
+
+
 void Gameplay::set__display(ALLEGRO_DISPLAY *_display)
 {
    if (initialized) throw std::runtime_error("[Lol::Gameplay::Gameplay::set_font_bin]: error: must be initialized");
@@ -795,6 +804,7 @@ void Gameplay::initialize()
    if (initialized) throw std::runtime_error("[Lol::Gameplay::Gameplay::initialize]: error: cannot initialize twice");
    if (!bitmap_bin) throw std::runtime_error("[Lol::Gameplay::Gameplay::initialize]: error: bitmap_bin required");
    if (!font_bin) throw std::runtime_error("[Lol::Gameplay::Gameplay::initialize]: error: font_bin required");
+   if (!profiler) throw std::runtime_error("[Lol::Gameplay::Gameplay::initialize]: error: profiler required");
    if (render_surface_width <= 0) throw std::runtime_error("[Lol::Gameplay::Gameplay::initialize]: error: You must set a render_surface_width");
    if (render_surface_height <= 0) throw std::runtime_error("[Lol::Gameplay::Gameplay::initialize]: error: You must set a render_surface_height");
 
@@ -1066,6 +1076,7 @@ void Gameplay::process_timer_event()
 
             //
 
+            /*
             al_clear_depth_buffer(1);
             al_set_render_state(ALLEGRO_DEPTH_TEST, 1);
             LabyrinthOfLore::Rendering::PickingBufferRenderer picking_buffer_renderer(
@@ -1076,10 +1087,14 @@ void Gameplay::process_timer_event()
                &classic_game.get_clamped_color_shader_ref()
             );
             picking_buffer_renderer.render();
+            */
 
             //
 
-            LabyrinthOfLore::Rendering::MousePointer mouse_pointer(player_mouse_x, player_mouse_y);
+            LabyrinthOfLore::Rendering::MousePointer mouse_pointer(
+                  player_mouse_x,
+                  player_mouse_y
+            );
             LabyrinthOfLore::Rendering::Hud::Renderer hud_renderer(
                   //al_get_backbuffer(_display),
                   hud_render_surface,

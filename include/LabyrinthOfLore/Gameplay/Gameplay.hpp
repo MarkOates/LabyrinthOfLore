@@ -58,6 +58,7 @@
 #include <LabyrinthOfLoreGame/Classic.hpp>
 #include <LabyrinthOfLoreGame/LevelIdentifiers.hpp>
 #include <AllegroFlare/Inventory.hpp>
+#include <AllegroFlare/Profiler.hpp>
 
 
 namespace LabyrinthOfLore
@@ -69,6 +70,7 @@ namespace LabyrinthOfLore
       private:
          AllegroFlare::BitmapBin *bitmap_bin;
          AllegroFlare::FontBin *font_bin;
+         AllegroFlare::Profiler *profiler;
          LabyrinthOfLoreGame::ThingDefinitionFactory thing_definition_factory; // yet to be used
          AllegroFlare::Inventory player_inventory;
          LabyrinthOfLore::Hud::MessageScroll message_scroll;
@@ -114,6 +116,7 @@ namespace LabyrinthOfLore
          void set_render_surface_height(int render_surface_height);
          void set_bitmap_bin(AllegroFlare::BitmapBin *bitmap_bin);
          void set_font_bin(AllegroFlare::FontBin *font_bin);
+         void set_profiler(AllegroFlare::Profiler *profiler);
          void set__display(ALLEGRO_DISPLAY *_display); // Temporary dependency, design needs clarity on render surface
          
          void initialize();

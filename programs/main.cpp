@@ -991,6 +991,7 @@ int main(int argc, char **argv)
    framework.disable_auto_created_config_warning();
    framework.set_render_surface_multisamples(0);
    framework.disable_mipmapping();
+   framework.drawing_profiler_graph = true;
    framework.initialize();
 
    AllegroFlare::Display *display = framework.get_primary_display();
@@ -1000,6 +1001,7 @@ int main(int argc, char **argv)
    screen.set_bitmap_bin(&framework.get_bitmap_bin_ref());
    screen.set_font_bin(&framework.get_font_bin_ref());
    screen.set_model_bin(&framework.get_model_bin_ref());
+   screen.set_profiler(&framework.get_profiler_ref());
    screen.set_render_surface_width(display->get_width());
    screen.set_render_surface_height(display->get_height());
    screen.set_render_surface_display(display->al_display);

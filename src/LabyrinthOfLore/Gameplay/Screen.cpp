@@ -14,12 +14,13 @@ namespace Gameplay
 {
 
 
-Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBin* bitmap_bin, AllegroFlare::FontBin* font_bin, AllegroFlare::ModelBin* model_bin, int render_surface_width, int render_surface_height, ALLEGRO_DISPLAY* render_surface_display)
+Screen::Screen(AllegroFlare::EventEmitter* event_emitter, AllegroFlare::BitmapBin* bitmap_bin, AllegroFlare::FontBin* font_bin, AllegroFlare::ModelBin* model_bin, AllegroFlare::Profiler* profiler, int render_surface_width, int render_surface_height, ALLEGRO_DISPLAY* render_surface_display)
    : AllegroFlare::Screens::Base(LabyrinthOfLore::Gameplay::Screen::TYPE)
    , event_emitter(event_emitter)
    , bitmap_bin(bitmap_bin)
    , font_bin(font_bin)
    , model_bin(model_bin)
+   , profiler(profiler)
    , render_surface_width(render_surface_width)
    , render_surface_height(render_surface_height)
    , render_surface_display(render_surface_display)
@@ -89,6 +90,19 @@ void Screen::set_model_bin(AllegroFlare::ModelBin* model_bin)
       throw std::runtime_error("Screen::set_model_bin: error: guard \"(!initialized)\" not met");
    }
    this->model_bin = model_bin;
+   return;
+}
+
+void Screen::set_profiler(AllegroFlare::Profiler* profiler)
+{
+   if (!((!initialized)))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::set_profiler]: error: guard \"(!initialized)\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::set_profiler: error: guard \"(!initialized)\" not met");
+   }
+   this->profiler = profiler;
    return;
 }
 
@@ -189,9 +203,17 @@ void Screen::initialize()
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
       throw std::runtime_error("Screen::initialize: error: guard \"model_bin\" not met");
    }
+   if (!(profiler))
+   {
+      std::stringstream error_message;
+      error_message << "[Screen::initialize]: error: guard \"profiler\" not met.";
+      std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
+      throw std::runtime_error("Screen::initialize: error: guard \"profiler\" not met");
+   }
 
    gameplay_element.set_bitmap_bin(bitmap_bin);
    gameplay_element.set_font_bin(font_bin);
+   gameplay_element.set_profiler(profiler);
    gameplay_element.set_render_surface_width(render_surface_width);
    gameplay_element.set_render_surface_height(render_surface_height);
    gameplay_element.set__display(render_surface_display);

@@ -6,6 +6,7 @@
 #include <AllegroFlare/FontBin.hpp>
 #include <AllegroFlare/ModelBin.hpp>
 #include <AllegroFlare/Player.hpp>
+#include <AllegroFlare/Profiler.hpp>
 #include <AllegroFlare/Screens/Base.hpp>
 #include <AllegroFlare/VirtualControllers/Base.hpp>
 #include <LabyrinthOfLore/Gameplay/Gameplay.hpp>
@@ -26,6 +27,7 @@ namespace LabyrinthOfLore
          AllegroFlare::BitmapBin* bitmap_bin;
          AllegroFlare::FontBin* font_bin;
          AllegroFlare::ModelBin* model_bin;
+         AllegroFlare::Profiler* profiler;
          int render_surface_width;
          int render_surface_height;
          ALLEGRO_DISPLAY* render_surface_display;
@@ -36,7 +38,7 @@ namespace LabyrinthOfLore
 
 
       public:
-         Screen(AllegroFlare::EventEmitter* event_emitter=nullptr, AllegroFlare::BitmapBin* bitmap_bin=nullptr, AllegroFlare::FontBin* font_bin=nullptr, AllegroFlare::ModelBin* model_bin=nullptr, int render_surface_width=1920, int render_surface_height=1920, ALLEGRO_DISPLAY* render_surface_display=nullptr);
+         Screen(AllegroFlare::EventEmitter* event_emitter=nullptr, AllegroFlare::BitmapBin* bitmap_bin=nullptr, AllegroFlare::FontBin* font_bin=nullptr, AllegroFlare::ModelBin* model_bin=nullptr, AllegroFlare::Profiler* profiler=nullptr, int render_surface_width=1920, int render_surface_height=1920, ALLEGRO_DISPLAY* render_surface_display=nullptr);
          virtual ~Screen();
 
          LabyrinthOfLore::Gameplay::Gameplay &get_gameplay_element_ref();
@@ -44,6 +46,7 @@ namespace LabyrinthOfLore
          void set_bitmap_bin(AllegroFlare::BitmapBin* bitmap_bin=nullptr);
          void set_font_bin(AllegroFlare::FontBin* font_bin=nullptr);
          void set_model_bin(AllegroFlare::ModelBin* model_bin=nullptr);
+         void set_profiler(AllegroFlare::Profiler* profiler=nullptr);
          void set_render_surface_width(int render_surface_width=0);
          void set_render_surface_height(int render_surface_height=0);
          void set_render_surface_display(ALLEGRO_DISPLAY* render_surface_display=nullptr);
