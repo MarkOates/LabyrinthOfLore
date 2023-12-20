@@ -1,9 +1,9 @@
-
-.deps/*
 bin/*
+!bin/data
 !bin/data/*
 .DS_Store
-*.a
-obj/*
 .DS_Store
+obj/*
 tmp/*
+.deps/*
+*.a
