@@ -1014,6 +1014,7 @@ void Gameplay::process_key_up_event(ALLEGRO_EVENT &this_event)
 
 void Gameplay::process_timer_event()
 {
+   ALLEGRO_BITMAP* initial_target_bitmap = al_get_target_bitmap();
          {
             player_yaw += player_turning;
 
@@ -1117,7 +1118,10 @@ void Gameplay::process_timer_event()
 
             //
 
-            al_set_target_bitmap(al_get_backbuffer(_display));
+///*
+            al_set_target_bitmap(initial_target_bitmap);
+            //al_set_target_bitmap(al_get_backbuffer(_display));
+//*/
             al_set_render_state(ALLEGRO_DEPTH_TEST, 0);
 
             al_draw_scaled_bitmap(
