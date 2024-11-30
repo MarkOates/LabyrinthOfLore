@@ -46,9 +46,9 @@ void Screen::set_event_emitter(AllegroFlare::EventEmitter* event_emitter)
    if (!((!initialized)))
    {
       std::stringstream error_message;
-      error_message << "[Screen::set_event_emitter]: error: guard \"(!initialized)\" not met.";
+      error_message << "[LabyrinthOfLore::Gameplay::Screen::set_event_emitter]: error: guard \"(!initialized)\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::set_event_emitter: error: guard \"(!initialized)\" not met");
+      throw std::runtime_error("[LabyrinthOfLore::Gameplay::Screen::set_event_emitter]: error: guard \"(!initialized)\" not met");
    }
    this->event_emitter = event_emitter;
    return;
@@ -59,9 +59,9 @@ void Screen::set_bitmap_bin(AllegroFlare::BitmapBin* bitmap_bin)
    if (!((!initialized)))
    {
       std::stringstream error_message;
-      error_message << "[Screen::set_bitmap_bin]: error: guard \"(!initialized)\" not met.";
+      error_message << "[LabyrinthOfLore::Gameplay::Screen::set_bitmap_bin]: error: guard \"(!initialized)\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::set_bitmap_bin: error: guard \"(!initialized)\" not met");
+      throw std::runtime_error("[LabyrinthOfLore::Gameplay::Screen::set_bitmap_bin]: error: guard \"(!initialized)\" not met");
    }
    this->bitmap_bin = bitmap_bin;
    return;
@@ -72,9 +72,9 @@ void Screen::set_font_bin(AllegroFlare::FontBin* font_bin)
    if (!((!initialized)))
    {
       std::stringstream error_message;
-      error_message << "[Screen::set_font_bin]: error: guard \"(!initialized)\" not met.";
+      error_message << "[LabyrinthOfLore::Gameplay::Screen::set_font_bin]: error: guard \"(!initialized)\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::set_font_bin: error: guard \"(!initialized)\" not met");
+      throw std::runtime_error("[LabyrinthOfLore::Gameplay::Screen::set_font_bin]: error: guard \"(!initialized)\" not met");
    }
    this->font_bin = font_bin;
    return;
@@ -85,9 +85,9 @@ void Screen::set_model_bin(AllegroFlare::ModelBin* model_bin)
    if (!((!initialized)))
    {
       std::stringstream error_message;
-      error_message << "[Screen::set_model_bin]: error: guard \"(!initialized)\" not met.";
+      error_message << "[LabyrinthOfLore::Gameplay::Screen::set_model_bin]: error: guard \"(!initialized)\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::set_model_bin: error: guard \"(!initialized)\" not met");
+      throw std::runtime_error("[LabyrinthOfLore::Gameplay::Screen::set_model_bin]: error: guard \"(!initialized)\" not met");
    }
    this->model_bin = model_bin;
    return;
@@ -98,9 +98,9 @@ void Screen::set_profiler(AllegroFlare::Profiler* profiler)
    if (!((!initialized)))
    {
       std::stringstream error_message;
-      error_message << "[Screen::set_profiler]: error: guard \"(!initialized)\" not met.";
+      error_message << "[LabyrinthOfLore::Gameplay::Screen::set_profiler]: error: guard \"(!initialized)\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::set_profiler: error: guard \"(!initialized)\" not met");
+      throw std::runtime_error("[LabyrinthOfLore::Gameplay::Screen::set_profiler]: error: guard \"(!initialized)\" not met");
    }
    this->profiler = profiler;
    return;
@@ -111,9 +111,9 @@ void Screen::set_render_surface_width(int render_surface_width)
    if (!((!initialized)))
    {
       std::stringstream error_message;
-      error_message << "[Screen::set_render_surface_width]: error: guard \"(!initialized)\" not met.";
+      error_message << "[LabyrinthOfLore::Gameplay::Screen::set_render_surface_width]: error: guard \"(!initialized)\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::set_render_surface_width: error: guard \"(!initialized)\" not met");
+      throw std::runtime_error("[LabyrinthOfLore::Gameplay::Screen::set_render_surface_width]: error: guard \"(!initialized)\" not met");
    }
    this->render_surface_width = render_surface_width;
    return;
@@ -124,9 +124,9 @@ void Screen::set_render_surface_height(int render_surface_height)
    if (!((!initialized)))
    {
       std::stringstream error_message;
-      error_message << "[Screen::set_render_surface_height]: error: guard \"(!initialized)\" not met.";
+      error_message << "[LabyrinthOfLore::Gameplay::Screen::set_render_surface_height]: error: guard \"(!initialized)\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::set_render_surface_height: error: guard \"(!initialized)\" not met");
+      throw std::runtime_error("[LabyrinthOfLore::Gameplay::Screen::set_render_surface_height]: error: guard \"(!initialized)\" not met");
    }
    this->render_surface_height = render_surface_height;
    return;
@@ -137,9 +137,9 @@ void Screen::set_render_surface_display(ALLEGRO_DISPLAY* render_surface_display)
    if (!((!initialized)))
    {
       std::stringstream error_message;
-      error_message << "[Screen::set_render_surface_display]: error: guard \"(!initialized)\" not met.";
+      error_message << "[LabyrinthOfLore::Gameplay::Screen::set_render_surface_display]: error: guard \"(!initialized)\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::set_render_surface_display: error: guard \"(!initialized)\" not met");
+      throw std::runtime_error("[LabyrinthOfLore::Gameplay::Screen::set_render_surface_display]: error: guard \"(!initialized)\" not met");
    }
    this->render_surface_display = render_surface_display;
    return;
@@ -150,65 +150,65 @@ void Screen::initialize()
    if (!((!initialized)))
    {
       std::stringstream error_message;
-      error_message << "[Screen::initialize]: error: guard \"(!initialized)\" not met.";
+      error_message << "[LabyrinthOfLore::Gameplay::Screen::initialize]: error: guard \"(!initialized)\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::initialize: error: guard \"(!initialized)\" not met");
+      throw std::runtime_error("[LabyrinthOfLore::Gameplay::Screen::initialize]: error: guard \"(!initialized)\" not met");
    }
    if (!(al_is_system_installed()))
    {
       std::stringstream error_message;
-      error_message << "[Screen::initialize]: error: guard \"al_is_system_installed()\" not met.";
+      error_message << "[LabyrinthOfLore::Gameplay::Screen::initialize]: error: guard \"al_is_system_installed()\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::initialize: error: guard \"al_is_system_installed()\" not met");
+      throw std::runtime_error("[LabyrinthOfLore::Gameplay::Screen::initialize]: error: guard \"al_is_system_installed()\" not met");
    }
    if (!(al_is_primitives_addon_initialized()))
    {
       std::stringstream error_message;
-      error_message << "[Screen::initialize]: error: guard \"al_is_primitives_addon_initialized()\" not met.";
+      error_message << "[LabyrinthOfLore::Gameplay::Screen::initialize]: error: guard \"al_is_primitives_addon_initialized()\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::initialize: error: guard \"al_is_primitives_addon_initialized()\" not met");
+      throw std::runtime_error("[LabyrinthOfLore::Gameplay::Screen::initialize]: error: guard \"al_is_primitives_addon_initialized()\" not met");
    }
    if (!(al_is_font_addon_initialized()))
    {
       std::stringstream error_message;
-      error_message << "[Screen::initialize]: error: guard \"al_is_font_addon_initialized()\" not met.";
+      error_message << "[LabyrinthOfLore::Gameplay::Screen::initialize]: error: guard \"al_is_font_addon_initialized()\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::initialize: error: guard \"al_is_font_addon_initialized()\" not met");
+      throw std::runtime_error("[LabyrinthOfLore::Gameplay::Screen::initialize]: error: guard \"al_is_font_addon_initialized()\" not met");
    }
    if (!(event_emitter))
    {
       std::stringstream error_message;
-      error_message << "[Screen::initialize]: error: guard \"event_emitter\" not met.";
+      error_message << "[LabyrinthOfLore::Gameplay::Screen::initialize]: error: guard \"event_emitter\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::initialize: error: guard \"event_emitter\" not met");
+      throw std::runtime_error("[LabyrinthOfLore::Gameplay::Screen::initialize]: error: guard \"event_emitter\" not met");
    }
    if (!(bitmap_bin))
    {
       std::stringstream error_message;
-      error_message << "[Screen::initialize]: error: guard \"bitmap_bin\" not met.";
+      error_message << "[LabyrinthOfLore::Gameplay::Screen::initialize]: error: guard \"bitmap_bin\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::initialize: error: guard \"bitmap_bin\" not met");
+      throw std::runtime_error("[LabyrinthOfLore::Gameplay::Screen::initialize]: error: guard \"bitmap_bin\" not met");
    }
    if (!(font_bin))
    {
       std::stringstream error_message;
-      error_message << "[Screen::initialize]: error: guard \"font_bin\" not met.";
+      error_message << "[LabyrinthOfLore::Gameplay::Screen::initialize]: error: guard \"font_bin\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::initialize: error: guard \"font_bin\" not met");
+      throw std::runtime_error("[LabyrinthOfLore::Gameplay::Screen::initialize]: error: guard \"font_bin\" not met");
    }
    if (!(model_bin))
    {
       std::stringstream error_message;
-      error_message << "[Screen::initialize]: error: guard \"model_bin\" not met.";
+      error_message << "[LabyrinthOfLore::Gameplay::Screen::initialize]: error: guard \"model_bin\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::initialize: error: guard \"model_bin\" not met");
+      throw std::runtime_error("[LabyrinthOfLore::Gameplay::Screen::initialize]: error: guard \"model_bin\" not met");
    }
    if (!(profiler))
    {
       std::stringstream error_message;
-      error_message << "[Screen::initialize]: error: guard \"profiler\" not met.";
+      error_message << "[LabyrinthOfLore::Gameplay::Screen::initialize]: error: guard \"profiler\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::initialize: error: guard \"profiler\" not met");
+      throw std::runtime_error("[LabyrinthOfLore::Gameplay::Screen::initialize]: error: guard \"profiler\" not met");
    }
 
    gameplay_element.set_bitmap_bin(bitmap_bin);
@@ -230,9 +230,9 @@ void Screen::on_activate()
    if (!(initialized))
    {
       std::stringstream error_message;
-      error_message << "[Screen::on_activate]: error: guard \"initialized\" not met.";
+      error_message << "[LabyrinthOfLore::Gameplay::Screen::on_activate]: error: guard \"initialized\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::on_activate: error: guard \"initialized\" not met");
+      throw std::runtime_error("[LabyrinthOfLore::Gameplay::Screen::on_activate]: error: guard \"initialized\" not met");
    }
    //emit_event_to_update_input_hints_bar();
    //emit_show_and_size_input_hints_bar_event();
@@ -244,9 +244,9 @@ void Screen::on_deactivate()
    if (!(initialized))
    {
       std::stringstream error_message;
-      error_message << "[Screen::on_deactivate]: error: guard \"initialized\" not met.";
+      error_message << "[LabyrinthOfLore::Gameplay::Screen::on_deactivate]: error: guard \"initialized\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::on_deactivate: error: guard \"initialized\" not met");
+      throw std::runtime_error("[LabyrinthOfLore::Gameplay::Screen::on_deactivate]: error: guard \"initialized\" not met");
    }
    //emit_hide_and_restore_size_input_hints_bar_event();
    return;
@@ -267,9 +267,9 @@ void Screen::primary_timer_func()
    if (!(initialized))
    {
       std::stringstream error_message;
-      error_message << "[Screen::primary_timer_func]: error: guard \"initialized\" not met.";
+      error_message << "[LabyrinthOfLore::Gameplay::Screen::primary_timer_func]: error: guard \"initialized\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::primary_timer_func: error: guard \"initialized\" not met");
+      throw std::runtime_error("[LabyrinthOfLore::Gameplay::Screen::primary_timer_func]: error: guard \"initialized\" not met");
    }
    //update();
    //render();
@@ -282,9 +282,9 @@ void Screen::virtual_control_button_up_func(AllegroFlare::Player* player, Allegr
    if (!(initialized))
    {
       std::stringstream error_message;
-      error_message << "[Screen::virtual_control_button_up_func]: error: guard \"initialized\" not met.";
+      error_message << "[LabyrinthOfLore::Gameplay::Screen::virtual_control_button_up_func]: error: guard \"initialized\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::virtual_control_button_up_func: error: guard \"initialized\" not met");
+      throw std::runtime_error("[LabyrinthOfLore::Gameplay::Screen::virtual_control_button_up_func]: error: guard \"initialized\" not met");
    }
    // TODO: this function
    return;
@@ -295,9 +295,9 @@ void Screen::virtual_control_button_down_func(AllegroFlare::Player* player, Alle
    if (!(initialized))
    {
       std::stringstream error_message;
-      error_message << "[Screen::virtual_control_button_down_func]: error: guard \"initialized\" not met.";
+      error_message << "[LabyrinthOfLore::Gameplay::Screen::virtual_control_button_down_func]: error: guard \"initialized\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::virtual_control_button_down_func: error: guard \"initialized\" not met");
+      throw std::runtime_error("[LabyrinthOfLore::Gameplay::Screen::virtual_control_button_down_func]: error: guard \"initialized\" not met");
    }
    // TODO: this function
    return;
@@ -308,9 +308,9 @@ void Screen::virtual_control_axis_change_func(ALLEGRO_EVENT* ev)
    if (!(initialized))
    {
       std::stringstream error_message;
-      error_message << "[Screen::virtual_control_axis_change_func]: error: guard \"initialized\" not met.";
+      error_message << "[LabyrinthOfLore::Gameplay::Screen::virtual_control_axis_change_func]: error: guard \"initialized\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::virtual_control_axis_change_func: error: guard \"initialized\" not met");
+      throw std::runtime_error("[LabyrinthOfLore::Gameplay::Screen::virtual_control_axis_change_func]: error: guard \"initialized\" not met");
    }
    // TODO: this function
    return;
@@ -321,16 +321,16 @@ void Screen::mouse_axes_func(ALLEGRO_EVENT* ev)
    if (!(initialized))
    {
       std::stringstream error_message;
-      error_message << "[Screen::mouse_axes_func]: error: guard \"initialized\" not met.";
+      error_message << "[LabyrinthOfLore::Gameplay::Screen::mouse_axes_func]: error: guard \"initialized\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::mouse_axes_func: error: guard \"initialized\" not met");
+      throw std::runtime_error("[LabyrinthOfLore::Gameplay::Screen::mouse_axes_func]: error: guard \"initialized\" not met");
    }
    if (!(ev))
    {
       std::stringstream error_message;
-      error_message << "[Screen::mouse_axes_func]: error: guard \"ev\" not met.";
+      error_message << "[LabyrinthOfLore::Gameplay::Screen::mouse_axes_func]: error: guard \"ev\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::mouse_axes_func: error: guard \"ev\" not met");
+      throw std::runtime_error("[LabyrinthOfLore::Gameplay::Screen::mouse_axes_func]: error: guard \"ev\" not met");
    }
    gameplay_element.process_mouse_axes_event(*ev);
    return;
@@ -341,16 +341,16 @@ void Screen::mouse_down_func(ALLEGRO_EVENT* ev)
    if (!(initialized))
    {
       std::stringstream error_message;
-      error_message << "[Screen::mouse_down_func]: error: guard \"initialized\" not met.";
+      error_message << "[LabyrinthOfLore::Gameplay::Screen::mouse_down_func]: error: guard \"initialized\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::mouse_down_func: error: guard \"initialized\" not met");
+      throw std::runtime_error("[LabyrinthOfLore::Gameplay::Screen::mouse_down_func]: error: guard \"initialized\" not met");
    }
    if (!(ev))
    {
       std::stringstream error_message;
-      error_message << "[Screen::mouse_down_func]: error: guard \"ev\" not met.";
+      error_message << "[LabyrinthOfLore::Gameplay::Screen::mouse_down_func]: error: guard \"ev\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::mouse_down_func: error: guard \"ev\" not met");
+      throw std::runtime_error("[LabyrinthOfLore::Gameplay::Screen::mouse_down_func]: error: guard \"ev\" not met");
    }
    gameplay_element.process_mouse_button_down_event(*ev);
    return;
@@ -361,9 +361,9 @@ void Screen::key_char_func(ALLEGRO_EVENT* ev)
    if (!(initialized))
    {
       std::stringstream error_message;
-      error_message << "[Screen::key_char_func]: error: guard \"initialized\" not met.";
+      error_message << "[LabyrinthOfLore::Gameplay::Screen::key_char_func]: error: guard \"initialized\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::key_char_func: error: guard \"initialized\" not met");
+      throw std::runtime_error("[LabyrinthOfLore::Gameplay::Screen::key_char_func]: error: guard \"initialized\" not met");
    }
    bool unused_bool;
    gameplay_element.process_key_char_event(*ev, unused_bool);
@@ -375,9 +375,9 @@ void Screen::key_up_func(ALLEGRO_EVENT* ev)
    if (!(initialized))
    {
       std::stringstream error_message;
-      error_message << "[Screen::key_up_func]: error: guard \"initialized\" not met.";
+      error_message << "[LabyrinthOfLore::Gameplay::Screen::key_up_func]: error: guard \"initialized\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Screen::key_up_func: error: guard \"initialized\" not met");
+      throw std::runtime_error("[LabyrinthOfLore::Gameplay::Screen::key_up_func]: error: guard \"initialized\" not met");
    }
    gameplay_element.process_key_up_event(*ev);
    return;

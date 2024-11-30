@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <head>
 <style>
+html
+{
+  background-color: #09090c;
+  color: #dfdfdf;
+}
 *
 {
   font-family: 'Arial';
@@ -12,16 +17,16 @@ table td
 }
 .property
 {
-  color: blue;
+  color: dodgerblue;
 }
 .private_property
 {
-  color: lightblue;
+  color: aliceblue;
 }
 
 .method
 {
-  color: red;
+  color: orange;
 }
 
 .private_method
@@ -31,14 +36,14 @@ table td
 
 .dependency
 {
-  color: green;
+  color: #9f9fa1;
 }
 
 .component
 {
   padding: 20 10 20 10;
   margin: 20 10 20 10;
-  background-color: #dfdfdf;
+  background-color: #1a1a1c;
 }
 
 .component h3
@@ -123,10 +128,12 @@ table td
   <li><a href="#quintessence/Tileo/TileIndexInfo.q.yml">quintessence/Tileo/TileIndexInfo.q.yml</a></li>
 </ul>
 <h1>Components</h1>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id=".removed/quintessence/LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer.q.yml">.removed/quintessence/LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -157,13 +164,16 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">smoothstep(float edge0=0.0f, float edge1=0.0f, float x=0.0f)</td>
+  <td class="method">float</td>
+  <td class="method"><b>smoothstep</b>(float edge0=0.0f, float edge1=0.0f, float x=0.0f)</td>
 </tr>
 <tr>
-  <td class="method">multiline_draw_callback(int line_num=0, const char* line=nullptr, int size=0, void* extra=nullptr)</td>
+  <td class="method">bool</td>
+  <td class="method"><b>multiline_draw_callback</b>(int line_num=0, const char* line=nullptr, int size=0, void* extra=nullptr)</td>
 </tr>
 <tr>
-  <td class="method">render()</td>
+  <td class="method">void</td>
+  <td class="method"><b>render</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -204,10 +214,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Entity/Base.q.yml">quintessence/LabyrinthOfLore/Entity/Base.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -255,10 +267,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Entity/Cleanup.q.yml">quintessence/LabyrinthOfLore/Entity/Cleanup.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -273,7 +287,8 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">cleanup()</td>
+  <td class="method">int</td>
+  <td class="method"><b>cleanup</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -284,10 +299,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Entity/Selector.q.yml">quintessence/LabyrinthOfLore/Entity/Selector.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -298,7 +315,8 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">select_within_level(std::string level_identifier=&quot;&quot;)</td>
+  <td class="method">std::vector&lt;LabyrinthOfLore::Entity::Base*&gt;</td>
+  <td class="method"><b>select_within_level</b>(std::string level_identifier=&quot;&quot;)</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -309,10 +327,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Entity/ThingDefinition.q.yml">quintessence/LabyrinthOfLore/Entity/ThingDefinition.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -355,13 +375,16 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">infer_is_dead()</td>
+  <td class="method">bool</td>
+  <td class="method"><b>infer_is_dead</b>()</td>
 </tr>
 <tr>
-  <td class="method">infer_short_decorated_name()</td>
+  <td class="method">std::string</td>
+  <td class="method"><b>infer_short_decorated_name</b>()</td>
 </tr>
 <tr>
-  <td class="method">infer_decorated_name()</td>
+  <td class="method">std::string</td>
+  <td class="method"><b>infer_decorated_name</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -378,10 +401,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Entity/ThingDictionary.q.yml">quintessence/LabyrinthOfLore/Entity/ThingDictionary.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -392,16 +417,20 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">size()</td>
+  <td class="method">int</td>
+  <td class="method"><b>size</b>()</td>
 </tr>
 <tr>
-  <td class="method">create_new_definition(LabyrinthOfLore::Entity::ThingDefinition thing={})</td>
+  <td class="method">int</td>
+  <td class="method"><b>create_new_definition</b>(LabyrinthOfLore::Entity::ThingDefinition thing={})</td>
 </tr>
 <tr>
-  <td class="method">find_definition(int tile_type=0)</td>
+  <td class="method">LabyrinthOfLore::Entity::ThingDefinition</td>
+  <td class="method"><b>find_definition</b>(int tile_type=0)</td>
 </tr>
 <tr>
-  <td class="method">find_definition_ref(int tile_type=0)</td>
+  <td class="method">LabyrinthOfLore::Entity::ThingDefinition&amp;</td>
+  <td class="method"><b>find_definition_ref</b>(int tile_type=0)</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -421,10 +450,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Gameplay/Screen.q.yml">quintessence/LabyrinthOfLore/Gameplay/Screen.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -475,67 +506,88 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">set_event_emitter(AllegroFlare::EventEmitter* event_emitter=nullptr)</td>
+  <td class="method">void</td>
+  <td class="method"><b>set_event_emitter</b>(AllegroFlare::EventEmitter* event_emitter=nullptr)</td>
 </tr>
 <tr>
-  <td class="method">set_bitmap_bin(AllegroFlare::BitmapBin* bitmap_bin=nullptr)</td>
+  <td class="method">void</td>
+  <td class="method"><b>set_bitmap_bin</b>(AllegroFlare::BitmapBin* bitmap_bin=nullptr)</td>
 </tr>
 <tr>
-  <td class="method">set_font_bin(AllegroFlare::FontBin* font_bin=nullptr)</td>
+  <td class="method">void</td>
+  <td class="method"><b>set_font_bin</b>(AllegroFlare::FontBin* font_bin=nullptr)</td>
 </tr>
 <tr>
-  <td class="method">set_model_bin(AllegroFlare::ModelBin* model_bin=nullptr)</td>
+  <td class="method">void</td>
+  <td class="method"><b>set_model_bin</b>(AllegroFlare::ModelBin* model_bin=nullptr)</td>
 </tr>
 <tr>
-  <td class="method">set_profiler(AllegroFlare::Profiler* profiler=nullptr)</td>
+  <td class="method">void</td>
+  <td class="method"><b>set_profiler</b>(AllegroFlare::Profiler* profiler=nullptr)</td>
 </tr>
 <tr>
-  <td class="method">set_render_surface_width(int render_surface_width=0)</td>
+  <td class="method">void</td>
+  <td class="method"><b>set_render_surface_width</b>(int render_surface_width=0)</td>
 </tr>
 <tr>
-  <td class="method">set_render_surface_height(int render_surface_height=0)</td>
+  <td class="method">void</td>
+  <td class="method"><b>set_render_surface_height</b>(int render_surface_height=0)</td>
 </tr>
 <tr>
-  <td class="method">set_render_surface_display(ALLEGRO_DISPLAY* render_surface_display=nullptr)</td>
+  <td class="method">void</td>
+  <td class="method"><b>set_render_surface_display</b>(ALLEGRO_DISPLAY* render_surface_display=nullptr)</td>
 </tr>
 <tr>
-  <td class="method">initialize()</td>
+  <td class="method">void</td>
+  <td class="method"><b>initialize</b>()</td>
 </tr>
 <tr>
-  <td class="method">on_activate()</td>
+  <td class="method">void</td>
+  <td class="method"><b>on_activate</b>()</td>
 </tr>
 <tr>
-  <td class="method">on_deactivate()</td>
+  <td class="method">void</td>
+  <td class="method"><b>on_deactivate</b>()</td>
 </tr>
 <tr>
-  <td class="method">update()</td>
+  <td class="method">void</td>
+  <td class="method"><b>update</b>()</td>
 </tr>
 <tr>
-  <td class="method">render()</td>
+  <td class="method">void</td>
+  <td class="method"><b>render</b>()</td>
 </tr>
 <tr>
-  <td class="method">primary_timer_func()</td>
+  <td class="method">void</td>
+  <td class="method"><b>primary_timer_func</b>()</td>
 </tr>
 <tr>
-  <td class="method">virtual_control_button_up_func(AllegroFlare::Player* player=nullptr, AllegroFlare::VirtualControllers::Base* virtual_controller=nullptr, int virtual_controller_button_num=0, bool is_repeat=false)</td>
+  <td class="method">void</td>
+  <td class="method"><b>virtual_control_button_up_func</b>(AllegroFlare::Player* player=nullptr, AllegroFlare::VirtualControllers::Base* virtual_controller=nullptr, int virtual_controller_button_num=0, bool is_repeat=false)</td>
 </tr>
 <tr>
-  <td class="method">virtual_control_button_down_func(AllegroFlare::Player* player=nullptr, AllegroFlare::VirtualControllers::Base* virtual_controller=nullptr, int virtual_controller_button_num=0, bool is_repeat=false)</td>
+  <td class="method">void</td>
+  <td class="method"><b>virtual_control_button_down_func</b>(AllegroFlare::Player* player=nullptr, AllegroFlare::VirtualControllers::Base* virtual_controller=nullptr, int virtual_controller_button_num=0, bool is_repeat=false)</td>
 </tr>
 <tr>
-  <td class="method">virtual_control_axis_change_func(ALLEGRO_EVENT* ev=nullptr)</td>
+  <td class="method">void</td>
+  <td class="method"><b>virtual_control_axis_change_func</b>(ALLEGRO_EVENT* ev=nullptr)</td>
 </tr>
 <tr>
-  <td class="method">mouse_axes_func(ALLEGRO_EVENT* ev=nullptr)</td>
+  <td class="method">void</td>
+  <td class="method"><b>mouse_axes_func</b>(ALLEGRO_EVENT* ev=nullptr)</td>
 </tr>
 <tr>
-  <td class="method">mouse_down_func(ALLEGRO_EVENT* ev=nullptr)</td>
+  <td class="method">void</td>
+  <td class="method"><b>mouse_down_func</b>(ALLEGRO_EVENT* ev=nullptr)</td>
 </tr>
 <tr>
-  <td class="method">key_char_func(ALLEGRO_EVENT* ev=nullptr)</td>
+  <td class="method">void</td>
+  <td class="method"><b>key_char_func</b>(ALLEGRO_EVENT* ev=nullptr)</td>
 </tr>
 <tr>
-  <td class="method">key_up_func(ALLEGRO_EVENT* ev=nullptr)</td>
+  <td class="method">void</td>
+  <td class="method"><b>key_up_func</b>(ALLEGRO_EVENT* ev=nullptr)</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -579,10 +631,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Hud/CharacterPanel.q.yml">quintessence/LabyrinthOfLore/Hud/CharacterPanel.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -605,31 +659,40 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">move_cursor_up()</td>
+  <td class="method">bool</td>
+  <td class="method"><b>move_cursor_up</b>()</td>
 </tr>
 <tr>
-  <td class="method">move_cursor_down()</td>
+  <td class="method">bool</td>
+  <td class="method"><b>move_cursor_down</b>()</td>
 </tr>
 <tr>
-  <td class="method">calculate_count_of_type(thing_type_t thing_type=THING_TYPE_UNDEFINED)</td>
+  <td class="method">int</td>
+  <td class="method"><b>calculate_count_of_type</b>(thing_type_t thing_type=THING_TYPE_UNDEFINED)</td>
 </tr>
 <tr>
-  <td class="method">get_inventory_rollup()</td>
+  <td class="method">std::map&lt;thing_type_t, int&gt;</td>
+  <td class="method"><b>get_inventory_rollup</b>()</td>
 </tr>
 <tr>
-  <td class="method">calculate_attack_strength()</td>
+  <td class="method">int</td>
+  <td class="method"><b>calculate_attack_strength</b>()</td>
 </tr>
 <tr>
-  <td class="method">calculate_total_carry_strength()</td>
+  <td class="method">int</td>
+  <td class="method"><b>calculate_total_carry_strength</b>()</td>
 </tr>
 <tr>
-  <td class="method">calculate_current_carry_weight()</td>
+  <td class="method">int</td>
+  <td class="method"><b>calculate_current_carry_weight</b>()</td>
 </tr>
 <tr>
-  <td class="method">calculate_available_remaining_carry_weight()</td>
+  <td class="method">int</td>
+  <td class="method"><b>calculate_available_remaining_carry_weight</b>()</td>
 </tr>
 <tr>
-  <td class="method">has_item(int item_id=0)</td>
+  <td class="method">bool</td>
+  <td class="method"><b>has_item</b>(int item_id=0)</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -655,10 +718,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Hud/CommandPanel.q.yml">quintessence/LabyrinthOfLore/Hud/CommandPanel.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -669,7 +734,8 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">run()</td>
+  <td class="method">std::string</td>
+  <td class="method"><b>run</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -680,66 +746,80 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Hud/CommandsHintPane.q.yml">quintessence/LabyrinthOfLore/Hud/CommandsHintPane.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <p>This class contains no properties</p>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">run()</td>
+  <td class="method">std::string</td>
+  <td class="method"><b>run</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
 <p>This class contains no dependencies</p>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Hud/Compass.q.yml">quintessence/LabyrinthOfLore/Hud/Compass.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <p>This class contains no properties</p>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">run()</td>
+  <td class="method">std::string</td>
+  <td class="method"><b>run</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
 <p>This class contains no dependencies</p>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Hud/CurrentSpells.q.yml">quintessence/LabyrinthOfLore/Hud/CurrentSpells.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <p>This class contains no properties</p>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">run()</td>
+  <td class="method">std::string</td>
+  <td class="method"><b>run</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
 <p>This class contains no dependencies</p>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Hud/MapButton.q.yml">quintessence/LabyrinthOfLore/Hud/MapButton.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <p>This class contains no properties</p>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">run()</td>
+  <td class="method">std::string</td>
+  <td class="method"><b>run</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
 <p>This class contains no dependencies</p>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Hud/MessageScroll.q.yml">quintessence/LabyrinthOfLore/Hud/MessageScroll.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -754,25 +834,32 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">get_last_message_text()</td>
+  <td class="method">std::string</td>
+  <td class="method"><b>get_last_message_text</b>()</td>
 </tr>
 <tr>
-  <td class="method">get_messages_ref()</td>
+  <td class="method">std::vector&lt;std::tuple&lt;float, std::string, int&gt;&gt;</td>
+  <td class="method"><b>get_messages_ref</b>()</td>
 </tr>
 <tr>
-  <td class="method">get_last_3_messages()</td>
+  <td class="method">std::vector&lt;std::tuple&lt;float, std::string, int&gt;&gt;</td>
+  <td class="method"><b>get_last_3_messages</b>()</td>
 </tr>
 <tr>
-  <td class="method">append_text(std::string text_to_append=&quot;&quot;)</td>
+  <td class="method">void</td>
+  <td class="method"><b>append_text</b>(std::string text_to_append=&quot;&quot;)</td>
 </tr>
 <tr>
-  <td class="method">append_message(float time_of_message=0.0f, std::string text_to_append=&quot;&quot;)</td>
+  <td class="method">void</td>
+  <td class="method"><b>append_message</b>(float time_of_message=0.0f, std::string text_to_append=&quot;&quot;)</td>
 </tr>
 <tr>
-  <td class="method">append_character_dialog(float time_of_message=0.0f, std::string text_to_append=&quot;&quot;)</td>
+  <td class="method">void</td>
+  <td class="method"><b>append_character_dialog</b>(float time_of_message=0.0f, std::string text_to_append=&quot;&quot;)</td>
 </tr>
 <tr>
-  <td class="method">clear_text()</td>
+  <td class="method">void</td>
+  <td class="method"><b>clear_text</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -783,38 +870,46 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Hud/RotateCharacterPanelButton.q.yml">quintessence/LabyrinthOfLore/Hud/RotateCharacterPanelButton.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <p>This class contains no properties</p>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">run()</td>
+  <td class="method">std::string</td>
+  <td class="method"><b>run</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
 <p>This class contains no dependencies</p>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Hud/RuneShelf.q.yml">quintessence/LabyrinthOfLore/Hud/RuneShelf.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <p>This class contains no properties</p>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">run()</td>
+  <td class="method">std::string</td>
+  <td class="method"><b>run</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
 <p>This class contains no dependencies</p>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Hud/TitleText.q.yml">quintessence/LabyrinthOfLore/Hud/TitleText.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -833,44 +928,53 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">set(std::string above_text=&quot;&quot;, std::string headline_text=&quot;&quot;, float time_now=0.0f)</td>
+  <td class="method">void</td>
+  <td class="method"><b>set</b>(std::string above_text=&quot;&quot;, std::string headline_text=&quot;&quot;, float time_now=0.0f)</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
 <p>This class contains no dependencies</p>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Hud/ViewFrame.q.yml">quintessence/LabyrinthOfLore/Hud/ViewFrame.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <p>This class contains no properties</p>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">run()</td>
+  <td class="method">std::string</td>
+  <td class="method"><b>run</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
 <p>This class contains no dependencies</p>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Hud/VitalityAndManaBar.q.yml">quintessence/LabyrinthOfLore/Hud/VitalityAndManaBar.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <p>This class contains no properties</p>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">run()</td>
+  <td class="method">std::string</td>
+  <td class="method"><b>run</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
 <p>This class contains no dependencies</p>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Physics/EntityTileMapCollisionEvent.q.yml">quintessence/LabyrinthOfLore/Physics/EntityTileMapCollisionEvent.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -912,10 +1016,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Physics/EntityTileMapCollisionStepper.q.yml">quintessence/LabyrinthOfLore/Physics/EntityTileMapCollisionStepper.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -954,10 +1060,12 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">get_dummy_tile_map()</td>
+  <td class="method">LabyrinthOfLore::WorldMap::TileMap&amp;</td>
+  <td class="method"><b>get_dummy_tile_map</b>()</td>
 </tr>
 <tr>
-  <td class="method">process_step()</td>
+  <td class="method">void</td>
+  <td class="method"><b>process_step</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -989,10 +1097,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Physics/EntityZoneCollisionEvent.q.yml">quintessence/LabyrinthOfLore/Physics/EntityZoneCollisionEvent.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -1022,10 +1132,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Physics/EntityZoneCollisionObserver.q.yml">quintessence/LabyrinthOfLore/Physics/EntityZoneCollisionObserver.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -1040,19 +1152,24 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">get_collided(std::vector&lt;LabyrinthOfLore::Entity::Base*&gt; entities={}, std::vector&lt;LabyrinthOfLore::WorldMap::Zone*&gt; zones={})</td>
+  <td class="method">std::vector&lt;std::pair&lt;LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*&gt;&gt;</td>
+  <td class="method"><b>get_collided</b>(std::vector&lt;LabyrinthOfLore::Entity::Base*&gt; entities={}, std::vector&lt;LabyrinthOfLore::WorldMap::Zone*&gt; zones={})</td>
 </tr>
 <tr>
-  <td class="method">observe_start_state(std::vector&lt;LabyrinthOfLore::Entity::Base*&gt; entities={}, std::vector&lt;LabyrinthOfLore::WorldMap::Zone*&gt; zones={})</td>
+  <td class="method">void</td>
+  <td class="method"><b>observe_start_state</b>(std::vector&lt;LabyrinthOfLore::Entity::Base*&gt; entities={}, std::vector&lt;LabyrinthOfLore::WorldMap::Zone*&gt; zones={})</td>
 </tr>
 <tr>
-  <td class="method">observe_end_state(std::vector&lt;LabyrinthOfLore::Entity::Base*&gt; entities={}, std::vector&lt;LabyrinthOfLore::WorldMap::Zone*&gt; zones={})</td>
+  <td class="method">void</td>
+  <td class="method"><b>observe_end_state</b>(std::vector&lt;LabyrinthOfLore::Entity::Base*&gt; entities={}, std::vector&lt;LabyrinthOfLore::WorldMap::Zone*&gt; zones={})</td>
 </tr>
 <tr>
-  <td class="method">collisions_added()</td>
+  <td class="method">std::vector&lt;std::pair&lt;LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*&gt;&gt;</td>
+  <td class="method"><b>collisions_added</b>()</td>
 </tr>
 <tr>
-  <td class="method">collisions_removed()</td>
+  <td class="method">std::vector&lt;std::pair&lt;LabyrinthOfLore::Entity::Base*, LabyrinthOfLore::WorldMap::Zone*&gt;&gt;</td>
+  <td class="method"><b>collisions_removed</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -1069,10 +1186,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Physics/GravityStepper.q.yml">quintessence/LabyrinthOfLore/Physics/GravityStepper.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -1087,7 +1206,8 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">process_step()</td>
+  <td class="method">void</td>
+  <td class="method"><b>process_step</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -1101,10 +1221,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Rendering/Camera.q.yml">quintessence/LabyrinthOfLore/Rendering/Camera.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -1123,13 +1245,16 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">build_custom_reverse_transform(allegro_flare::placement3d* placement=nullptr, ALLEGRO_TRANSFORM* transform=nullptr)</td>
+  <td class="method">void</td>
+  <td class="method"><b>build_custom_reverse_transform</b>(allegro_flare::placement3d* placement=nullptr, ALLEGRO_TRANSFORM* transform=nullptr)</td>
 </tr>
 <tr>
-  <td class="private_method">set_perspective_transform(ALLEGRO_BITMAP* surface=nullptr, ALLEGRO_TRANSFORM* transform=nullptr)</td>
+  <td class="private_method">void</td>
+  <td class="private_method"><b>set_perspective_transform</b>(ALLEGRO_BITMAP* surface=nullptr, ALLEGRO_TRANSFORM* transform=nullptr)</td>
 </tr>
 <tr>
-  <td class="method">start_projection(ALLEGRO_BITMAP* surface=nullptr)</td>
+  <td class="method">void</td>
+  <td class="method"><b>start_projection</b>(ALLEGRO_BITMAP* surface=nullptr)</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -1155,10 +1280,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Rendering/EntityPickingRenderer.q.yml">quintessence/LabyrinthOfLore/Rendering/EntityPickingRenderer.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -1173,10 +1300,12 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">render_with_custom_transform()</td>
+  <td class="method">void</td>
+  <td class="method"><b>render_with_custom_transform</b>()</td>
 </tr>
 <tr>
-  <td class="method">render()</td>
+  <td class="method">void</td>
+  <td class="method"><b>render</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -1193,10 +1322,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Rendering/EntityRenderer.q.yml">quintessence/LabyrinthOfLore/Rendering/EntityRenderer.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -1207,13 +1338,16 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">render_with_legacy_transform()</td>
+  <td class="method">void</td>
+  <td class="method"><b>render_with_legacy_transform</b>()</td>
 </tr>
 <tr>
-  <td class="method">render_with_custom_transform()</td>
+  <td class="method">void</td>
+  <td class="method"><b>render_with_custom_transform</b>()</td>
 </tr>
 <tr>
-  <td class="method">render()</td>
+  <td class="method">void</td>
+  <td class="method"><b>render</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -1224,10 +1358,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Rendering/Hud/CharacterPanelRenderer.q.yml">quintessence/LabyrinthOfLore/Rendering/Hud/CharacterPanelRenderer.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -1246,7 +1382,8 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">render()</td>
+  <td class="method">void</td>
+  <td class="method"><b>render</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -1272,10 +1409,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Rendering/Hud/CommandPanelRenderer.q.yml">quintessence/LabyrinthOfLore/Rendering/Hud/CommandPanelRenderer.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -1294,7 +1433,8 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">render()</td>
+  <td class="method">void</td>
+  <td class="method"><b>render</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -1323,10 +1463,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Rendering/Hud/CommandsHintPaneRenderer.q.yml">quintessence/LabyrinthOfLore/Rendering/Hud/CommandsHintPaneRenderer.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -1345,7 +1487,8 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">run()</td>
+  <td class="method">std::string</td>
+  <td class="method"><b>run</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -1371,10 +1514,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Rendering/Hud/CompassRenderer.q.yml">quintessence/LabyrinthOfLore/Rendering/Hud/CompassRenderer.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -1393,7 +1538,8 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">run()</td>
+  <td class="method">std::string</td>
+  <td class="method"><b>run</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -1419,10 +1565,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Rendering/Hud/CurrentSpellsRenderer.q.yml">quintessence/LabyrinthOfLore/Rendering/Hud/CurrentSpellsRenderer.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -1441,7 +1589,8 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">run()</td>
+  <td class="method">std::string</td>
+  <td class="method"><b>run</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -1467,10 +1616,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Rendering/Hud/MapButtonRenderer.q.yml">quintessence/LabyrinthOfLore/Rendering/Hud/MapButtonRenderer.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -1489,7 +1640,8 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">run()</td>
+  <td class="method">std::string</td>
+  <td class="method"><b>run</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -1515,10 +1667,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer.q.yml">quintessence/LabyrinthOfLore/Rendering/Hud/MessageScrollRenderer.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -1549,13 +1703,16 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">smoothstep(float edge0=0.0f, float edge1=0.0f, float x=0.0f)</td>
+  <td class="method">float</td>
+  <td class="method"><b>smoothstep</b>(float edge0=0.0f, float edge1=0.0f, float x=0.0f)</td>
 </tr>
 <tr>
-  <td class="method">multiline_draw_callback(int line_num=0, const char* line=nullptr, int size=0, void* extra=nullptr)</td>
+  <td class="method">bool</td>
+  <td class="method"><b>multiline_draw_callback</b>(int line_num=0, const char* line=nullptr, int size=0, void* extra=nullptr)</td>
 </tr>
 <tr>
-  <td class="method">render()</td>
+  <td class="method">void</td>
+  <td class="method"><b>render</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -1584,10 +1741,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Rendering/Hud/Renderer.q.yml">quintessence/LabyrinthOfLore/Rendering/Hud/Renderer.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -1654,46 +1813,60 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">get_basic_lettering_font()</td>
+  <td class="method">ALLEGRO_FONT*</td>
+  <td class="method"><b>get_basic_lettering_font</b>()</td>
 </tr>
 <tr>
-  <td class="method">render_message_scroll()</td>
+  <td class="method">void</td>
+  <td class="method"><b>render_message_scroll</b>()</td>
 </tr>
 <tr>
-  <td class="method">render_command_panel()</td>
+  <td class="method">void</td>
+  <td class="method"><b>render_command_panel</b>()</td>
 </tr>
 <tr>
-  <td class="method">render_vitality_and_mana_bar()</td>
+  <td class="method">void</td>
+  <td class="method"><b>render_vitality_and_mana_bar</b>()</td>
 </tr>
 <tr>
-  <td class="method">render_character_panel()</td>
+  <td class="method">void</td>
+  <td class="method"><b>render_character_panel</b>()</td>
 </tr>
 <tr>
-  <td class="method">render_map_button()</td>
+  <td class="method">void</td>
+  <td class="method"><b>render_map_button</b>()</td>
 </tr>
 <tr>
-  <td class="method">render_rune_shelf()</td>
+  <td class="method">void</td>
+  <td class="method"><b>render_rune_shelf</b>()</td>
 </tr>
 <tr>
-  <td class="method">render_compass()</td>
+  <td class="method">void</td>
+  <td class="method"><b>render_compass</b>()</td>
 </tr>
 <tr>
-  <td class="method">render_rotate_character_panel_button()</td>
+  <td class="method">void</td>
+  <td class="method"><b>render_rotate_character_panel_button</b>()</td>
 </tr>
 <tr>
-  <td class="method">render_commands_hint_pane()</td>
+  <td class="method">void</td>
+  <td class="method"><b>render_commands_hint_pane</b>()</td>
 </tr>
 <tr>
-  <td class="method">render_current_spells()</td>
+  <td class="method">void</td>
+  <td class="method"><b>render_current_spells</b>()</td>
 </tr>
 <tr>
-  <td class="method">render_view_frame()</td>
+  <td class="method">void</td>
+  <td class="method"><b>render_view_frame</b>()</td>
 </tr>
 <tr>
-  <td class="method">render_title_text()</td>
+  <td class="method">void</td>
+  <td class="method"><b>render_title_text</b>()</td>
 </tr>
 <tr>
-  <td class="method">render()</td>
+  <td class="method">void</td>
+  <td class="method"><b>render</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -1794,10 +1967,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Rendering/Hud/RotateCharacterPanelButtonRenderer.q.yml">quintessence/LabyrinthOfLore/Rendering/Hud/RotateCharacterPanelButtonRenderer.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -1816,7 +1991,8 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">run()</td>
+  <td class="method">std::string</td>
+  <td class="method"><b>run</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -1842,10 +2018,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Rendering/Hud/RuneShelfRenderer.q.yml">quintessence/LabyrinthOfLore/Rendering/Hud/RuneShelfRenderer.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -1864,7 +2042,8 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">run()</td>
+  <td class="method">std::string</td>
+  <td class="method"><b>run</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -1890,10 +2069,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Rendering/Hud/TitleTextRenderer.q.yml">quintessence/LabyrinthOfLore/Rendering/Hud/TitleTextRenderer.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -1912,7 +2093,8 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">run()</td>
+  <td class="method">std::string</td>
+  <td class="method"><b>run</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -1944,10 +2126,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Rendering/Hud/ViewFrameRenderer.q.yml">quintessence/LabyrinthOfLore/Rendering/Hud/ViewFrameRenderer.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -1966,7 +2150,8 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">run()</td>
+  <td class="method">std::string</td>
+  <td class="method"><b>run</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -1992,10 +2177,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Rendering/Hud/VitalityAndManaBarRenderer.q.yml">quintessence/LabyrinthOfLore/Rendering/Hud/VitalityAndManaBarRenderer.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -2014,7 +2201,8 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">run()</td>
+  <td class="method">std::string</td>
+  <td class="method"><b>run</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -2040,10 +2228,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Rendering/MousePointer.q.yml">quintessence/LabyrinthOfLore/Rendering/MousePointer.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -2058,7 +2248,8 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">render()</td>
+  <td class="method">void</td>
+  <td class="method"><b>render</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -2072,10 +2263,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Rendering/PickingBufferRenderer.q.yml">quintessence/LabyrinthOfLore/Rendering/PickingBufferRenderer.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -2102,7 +2295,8 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">render()</td>
+  <td class="method">void</td>
+  <td class="method"><b>render</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -2137,10 +2331,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Rendering/SceneRenderer.q.yml">quintessence/LabyrinthOfLore/Rendering/SceneRenderer.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -2171,7 +2367,8 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">render()</td>
+  <td class="method">void</td>
+  <td class="method"><b>render</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -2221,10 +2418,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Rendering/SpritesBillboarder.q.yml">quintessence/LabyrinthOfLore/Rendering/SpritesBillboarder.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -2239,7 +2438,8 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">process()</td>
+  <td class="method">void</td>
+  <td class="method"><b>process</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -2268,10 +2468,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Rendering/TileMapMesh.q.yml">quintessence/LabyrinthOfLore/Rendering/TileMapMesh.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -2302,10 +2504,12 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">build()</td>
+  <td class="method">bool</td>
+  <td class="method"><b>build</b>()</td>
 </tr>
 <tr>
-  <td class="method">draw()</td>
+  <td class="method">void</td>
+  <td class="method"><b>draw</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -2355,10 +2559,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Rendering/TileMapMeshCubeBuilder.q.yml">quintessence/LabyrinthOfLore/Rendering/TileMapMeshCubeBuilder.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -2381,34 +2587,44 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">buildA()</td>
+  <td class="method">ALLEGRO_VERTEX</td>
+  <td class="method"><b>buildA</b>()</td>
 </tr>
 <tr>
-  <td class="method">buildB()</td>
+  <td class="method">ALLEGRO_VERTEX</td>
+  <td class="method"><b>buildB</b>()</td>
 </tr>
 <tr>
-  <td class="method">buildC()</td>
+  <td class="method">ALLEGRO_VERTEX</td>
+  <td class="method"><b>buildC</b>()</td>
 </tr>
 <tr>
-  <td class="method">buildD()</td>
+  <td class="method">ALLEGRO_VERTEX</td>
+  <td class="method"><b>buildD</b>()</td>
 </tr>
 <tr>
-  <td class="method">buildE()</td>
+  <td class="method">ALLEGRO_VERTEX</td>
+  <td class="method"><b>buildE</b>()</td>
 </tr>
 <tr>
-  <td class="method">buildF()</td>
+  <td class="method">ALLEGRO_VERTEX</td>
+  <td class="method"><b>buildF</b>()</td>
 </tr>
 <tr>
-  <td class="method">buildG()</td>
+  <td class="method">ALLEGRO_VERTEX</td>
+  <td class="method"><b>buildG</b>()</td>
 </tr>
 <tr>
-  <td class="method">buildH()</td>
+  <td class="method">ALLEGRO_VERTEX</td>
+  <td class="method"><b>buildH</b>()</td>
 </tr>
 <tr>
-  <td class="method">random_color()</td>
+  <td class="method">ALLEGRO_COLOR</td>
+  <td class="method"><b>random_color</b>()</td>
 </tr>
 <tr>
-  <td class="method">build_cube()</td>
+  <td class="method">std::vector&lt;ALLEGRO_VERTEX&gt;</td>
+  <td class="method"><b>build_cube</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -2437,10 +2653,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Rendering/TileMapMeshCubeTexturer.q.yml">quintessence/LabyrinthOfLore/Rendering/TileMapMeshCubeTexturer.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -2467,7 +2685,8 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">build_textured_cube(bool scale_for_unit_sized_texture=true)</td>
+  <td class="method">std::vector&lt;ALLEGRO_VERTEX&gt;</td>
+  <td class="method"><b>build_textured_cube</b>(bool scale_for_unit_sized_texture=true)</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -2487,10 +2706,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Rendering/TileMapMeshPillarBuilder.q.yml">quintessence/LabyrinthOfLore/Rendering/TileMapMeshPillarBuilder.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -2529,64 +2750,84 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">buildA()</td>
+  <td class="method">ALLEGRO_VERTEX</td>
+  <td class="method"><b>buildA</b>()</td>
 </tr>
 <tr>
-  <td class="method">buildB()</td>
+  <td class="method">ALLEGRO_VERTEX</td>
+  <td class="method"><b>buildB</b>()</td>
 </tr>
 <tr>
-  <td class="method">buildC()</td>
+  <td class="method">ALLEGRO_VERTEX</td>
+  <td class="method"><b>buildC</b>()</td>
 </tr>
 <tr>
-  <td class="method">buildD()</td>
+  <td class="method">ALLEGRO_VERTEX</td>
+  <td class="method"><b>buildD</b>()</td>
 </tr>
 <tr>
-  <td class="method">buildE()</td>
+  <td class="method">ALLEGRO_VERTEX</td>
+  <td class="method"><b>buildE</b>()</td>
 </tr>
 <tr>
-  <td class="method">buildF()</td>
+  <td class="method">ALLEGRO_VERTEX</td>
+  <td class="method"><b>buildF</b>()</td>
 </tr>
 <tr>
-  <td class="method">buildG()</td>
+  <td class="method">ALLEGRO_VERTEX</td>
+  <td class="method"><b>buildG</b>()</td>
 </tr>
 <tr>
-  <td class="method">buildH()</td>
+  <td class="method">ALLEGRO_VERTEX</td>
+  <td class="method"><b>buildH</b>()</td>
 </tr>
 <tr>
-  <td class="method">buildA_whole(float height_origin=0.0f)</td>
+  <td class="method">ALLEGRO_VERTEX</td>
+  <td class="method"><b>buildA_whole</b>(float height_origin=0.0f)</td>
 </tr>
 <tr>
-  <td class="method">buildB_whole(float height_origin=0.0f)</td>
+  <td class="method">ALLEGRO_VERTEX</td>
+  <td class="method"><b>buildB_whole</b>(float height_origin=0.0f)</td>
 </tr>
 <tr>
-  <td class="method">buildC_whole(float height_origin=0.0f)</td>
+  <td class="method">ALLEGRO_VERTEX</td>
+  <td class="method"><b>buildC_whole</b>(float height_origin=0.0f)</td>
 </tr>
 <tr>
-  <td class="method">buildD_whole(float height_origin=0.0f)</td>
+  <td class="method">ALLEGRO_VERTEX</td>
+  <td class="method"><b>buildD_whole</b>(float height_origin=0.0f)</td>
 </tr>
 <tr>
-  <td class="method">buildE_whole(float height_origin=0.0f)</td>
+  <td class="method">ALLEGRO_VERTEX</td>
+  <td class="method"><b>buildE_whole</b>(float height_origin=0.0f)</td>
 </tr>
 <tr>
-  <td class="method">buildF_whole(float height_origin=0.0f)</td>
+  <td class="method">ALLEGRO_VERTEX</td>
+  <td class="method"><b>buildF_whole</b>(float height_origin=0.0f)</td>
 </tr>
 <tr>
-  <td class="method">buildG_whole(float height_origin=0.0f)</td>
+  <td class="method">ALLEGRO_VERTEX</td>
+  <td class="method"><b>buildG_whole</b>(float height_origin=0.0f)</td>
 </tr>
 <tr>
-  <td class="method">buildH_whole(float height_origin=0.0f)</td>
+  <td class="method">ALLEGRO_VERTEX</td>
+  <td class="method"><b>buildH_whole</b>(float height_origin=0.0f)</td>
 </tr>
 <tr>
-  <td class="method">needs_partial_height_side_faces_from_top()</td>
+  <td class="method">bool</td>
+  <td class="method"><b>needs_partial_height_side_faces_from_top</b>()</td>
 </tr>
 <tr>
-  <td class="method">infer_number_of_whole_number_cubes_from_bottom()</td>
+  <td class="method">bool</td>
+  <td class="method"><b>infer_number_of_whole_number_cubes_from_bottom</b>()</td>
 </tr>
 <tr>
-  <td class="method">random_color()</td>
+  <td class="method">ALLEGRO_COLOR</td>
+  <td class="method"><b>random_color</b>()</td>
 </tr>
 <tr>
-  <td class="method">build_pillar()</td>
+  <td class="method">std::vector&lt;ALLEGRO_VERTEX&gt;</td>
+  <td class="method"><b>build_pillar</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -2618,10 +2859,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Rendering/TileMapMeshPillarTexturer.q.yml">quintessence/LabyrinthOfLore/Rendering/TileMapMeshPillarTexturer.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -2676,13 +2919,16 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">assign_texture_to_face(int this_face_start_index=0, int index_num_for_tile=0, bool needs_partial_height_side_faces_from_top=false)</td>
+  <td class="method">void</td>
+  <td class="method"><b>assign_texture_to_face</b>(int this_face_start_index=0, int index_num_for_tile=0, bool needs_partial_height_side_faces_from_top=false)</td>
 </tr>
 <tr>
-  <td class="method">infer_number_of_front_right_left_back_sets_of_vertexes()</td>
+  <td class="method">int</td>
+  <td class="method"><b>infer_number_of_front_right_left_back_sets_of_vertexes</b>()</td>
 </tr>
 <tr>
-  <td class="method">build_textured_pillar(bool scale_for_unit_sized_texture=true)</td>
+  <td class="method">std::vector&lt;ALLEGRO_VERTEX&gt;</td>
+  <td class="method"><b>build_textured_pillar</b>(bool scale_for_unit_sized_texture=true)</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -2705,10 +2951,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Rendering/TileMapWaterMesh.q.yml">quintessence/LabyrinthOfLore/Rendering/TileMapWaterMesh.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -2739,10 +2987,12 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">build()</td>
+  <td class="method">bool</td>
+  <td class="method"><b>build</b>()</td>
 </tr>
 <tr>
-  <td class="method">draw()</td>
+  <td class="method">void</td>
+  <td class="method"><b>draw</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -2792,10 +3042,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Rendering/TileTypeDefinition.q.yml">quintessence/LabyrinthOfLore/Rendering/TileTypeDefinition.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -2817,10 +3069,12 @@ table td
 </div>    <h3>Dependencies</h3>
 <p>This class contains no dependencies</p>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Rendering/TileTypeDictionary.q.yml">quintessence/LabyrinthOfLore/Rendering/TileTypeDictionary.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -2831,7 +3085,8 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">find_definition(int tile_type=0)</td>
+  <td class="method">LabyrinthOfLore::Rendering::TileTypeDefinition</td>
+  <td class="method"><b>find_definition</b>(int tile_type=0)</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -2845,10 +3100,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Shader/Base.q.yml">quintessence/LabyrinthOfLore/Shader/Base.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -2871,10 +3128,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Shader/ClampedColor.q.yml">quintessence/LabyrinthOfLore/Shader/ClampedColor.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -2885,22 +3144,28 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">initialize()</td>
+  <td class="method">void</td>
+  <td class="method"><b>initialize</b>()</td>
 </tr>
 <tr>
-  <td class="method">activate()</td>
+  <td class="method">void</td>
+  <td class="method"><b>activate</b>()</td>
 </tr>
 <tr>
-  <td class="method">deactivate()</td>
+  <td class="method">void</td>
+  <td class="method"><b>deactivate</b>()</td>
 </tr>
 <tr>
-  <td class="method">set_clamped_color(ALLEGRO_COLOR clamped_color={})</td>
+  <td class="method">void</td>
+  <td class="method"><b>set_clamped_color</b>(ALLEGRO_COLOR clamped_color={})</td>
 </tr>
 <tr>
-  <td class="private_method">obtain_vertex_source()</td>
+  <td class="private_method">std::string</td>
+  <td class="private_method"><b>obtain_vertex_source</b>()</td>
 </tr>
 <tr>
-  <td class="private_method">obtain_fragment_source()</td>
+  <td class="private_method">std::string</td>
+  <td class="private_method"><b>obtain_fragment_source</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -2914,10 +3179,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Shader/DepthDarken.q.yml">quintessence/LabyrinthOfLore/Shader/DepthDarken.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -2932,28 +3199,36 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">initialize()</td>
+  <td class="method">void</td>
+  <td class="method"><b>initialize</b>()</td>
 </tr>
 <tr>
-  <td class="method">set_torch_type(int type=0)</td>
+  <td class="method">void</td>
+  <td class="method"><b>set_torch_type</b>(int type=0)</td>
 </tr>
 <tr>
-  <td class="method">set_torch_on()</td>
+  <td class="method">void</td>
+  <td class="method"><b>set_torch_on</b>()</td>
 </tr>
 <tr>
-  <td class="method">set_torch_off()</td>
+  <td class="method">void</td>
+  <td class="method"><b>set_torch_off</b>()</td>
 </tr>
 <tr>
-  <td class="method">activate()</td>
+  <td class="method">void</td>
+  <td class="method"><b>activate</b>()</td>
 </tr>
 <tr>
-  <td class="method">deactivate()</td>
+  <td class="method">void</td>
+  <td class="method"><b>deactivate</b>()</td>
 </tr>
 <tr>
-  <td class="private_method">obtain_vertex_source()</td>
+  <td class="private_method">std::string</td>
+  <td class="private_method"><b>obtain_vertex_source</b>()</td>
 </tr>
 <tr>
-  <td class="private_method">obtain_fragment_source()</td>
+  <td class="private_method">std::string</td>
+  <td class="private_method"><b>obtain_fragment_source</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -2967,10 +3242,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/Shader/FlatColor.q.yml">quintessence/LabyrinthOfLore/Shader/FlatColor.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -2981,19 +3258,24 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">initialize()</td>
+  <td class="method">void</td>
+  <td class="method"><b>initialize</b>()</td>
 </tr>
 <tr>
-  <td class="method">activate()</td>
+  <td class="method">void</td>
+  <td class="method"><b>activate</b>()</td>
 </tr>
 <tr>
-  <td class="method">set_flat_color(ALLEGRO_COLOR flat_color={})</td>
+  <td class="method">void</td>
+  <td class="method"><b>set_flat_color</b>(ALLEGRO_COLOR flat_color={})</td>
 </tr>
 <tr>
-  <td class="private_method">obtain_vertex_source()</td>
+  <td class="private_method">std::string</td>
+  <td class="private_method"><b>obtain_vertex_source</b>()</td>
 </tr>
 <tr>
-  <td class="private_method">obtain_fragment_source()</td>
+  <td class="private_method">std::string</td>
+  <td class="private_method"><b>obtain_fragment_source</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -3007,10 +3289,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/World.q.yml">quintessence/LabyrinthOfLore/World.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -3029,10 +3313,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/WorldMap/BasicRenderer.q.yml">quintessence/LabyrinthOfLore/WorldMap/BasicRenderer.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -3043,10 +3329,12 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">initialize()</td>
+  <td class="method">void</td>
+  <td class="method"><b>initialize</b>()</td>
 </tr>
 <tr>
-  <td class="method">render()</td>
+  <td class="method">void</td>
+  <td class="method"><b>render</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -3072,10 +3360,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/WorldMap/BitmapFilenameToWorldBuilder.q.yml">quintessence/LabyrinthOfLore/WorldMap/BitmapFilenameToWorldBuilder.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -3094,7 +3384,8 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">build()</td>
+  <td class="method">LabyrinthOfLore::WorldMap::TileMap</td>
+  <td class="method"><b>build</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -3120,10 +3411,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/WorldMap/BitmapTileMapLoader.q.yml">quintessence/LabyrinthOfLore/WorldMap/BitmapTileMapLoader.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -3134,70 +3427,92 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">colors_are_equal(ALLEGRO_COLOR c1={}, ALLEGRO_COLOR c2={})</td>
+  <td class="method">bool</td>
+  <td class="method"><b>colors_are_equal</b>(ALLEGRO_COLOR c1={}, ALLEGRO_COLOR c2={})</td>
 </tr>
 <tr>
-  <td class="method">get_index_column_x()</td>
+  <td class="method">int</td>
+  <td class="method"><b>get_index_column_x</b>()</td>
 </tr>
 <tr>
-  <td class="method">infer_tile_map_width()</td>
+  <td class="method">int</td>
+  <td class="method"><b>infer_tile_map_width</b>()</td>
 </tr>
 <tr>
-  <td class="method">infer_tile_map_height()</td>
+  <td class="method">int</td>
+  <td class="method"><b>infer_tile_map_height</b>()</td>
 </tr>
 <tr>
-  <td class="method">pick_color(int x=0, int y=0)</td>
+  <td class="method">ALLEGRO_COLOR</td>
+  <td class="method"><b>pick_color</b>(int x=0, int y=0)</td>
 </tr>
 <tr>
-  <td class="method">pick_index_null_color()</td>
+  <td class="method">ALLEGRO_COLOR</td>
+  <td class="method"><b>pick_index_null_color</b>()</td>
 </tr>
 <tr>
-  <td class="method">pick_index_top_color()</td>
+  <td class="method">ALLEGRO_COLOR</td>
+  <td class="method"><b>pick_index_top_color</b>()</td>
 </tr>
 <tr>
-  <td class="method">pick_index_ground_color()</td>
+  <td class="method">ALLEGRO_COLOR</td>
+  <td class="method"><b>pick_index_ground_color</b>()</td>
 </tr>
 <tr>
-  <td class="method">pick_index_gp_color()</td>
+  <td class="method">ALLEGRO_COLOR</td>
+  <td class="method"><b>pick_index_gp_color</b>()</td>
 </tr>
 <tr>
-  <td class="method">pick_index_gpp_color()</td>
+  <td class="method">ALLEGRO_COLOR</td>
+  <td class="method"><b>pick_index_gpp_color</b>()</td>
 </tr>
 <tr>
-  <td class="method">pick_index_gppp_color()</td>
+  <td class="method">ALLEGRO_COLOR</td>
+  <td class="method"><b>pick_index_gppp_color</b>()</td>
 </tr>
 <tr>
-  <td class="method">pick_index_g1_color()</td>
+  <td class="method">ALLEGRO_COLOR</td>
+  <td class="method"><b>pick_index_g1_color</b>()</td>
 </tr>
 <tr>
-  <td class="method">pick_index_gm_color()</td>
+  <td class="method">ALLEGRO_COLOR</td>
+  <td class="method"><b>pick_index_gm_color</b>()</td>
 </tr>
 <tr>
-  <td class="method">pick_index_gmm_color()</td>
+  <td class="method">ALLEGRO_COLOR</td>
+  <td class="method"><b>pick_index_gmm_color</b>()</td>
 </tr>
 <tr>
-  <td class="method">pick_index_gmmm_color()</td>
+  <td class="method">ALLEGRO_COLOR</td>
+  <td class="method"><b>pick_index_gmmm_color</b>()</td>
 </tr>
 <tr>
-  <td class="method">pick_index_gm1_color()</td>
+  <td class="method">ALLEGRO_COLOR</td>
+  <td class="method"><b>pick_index_gm1_color</b>()</td>
 </tr>
 <tr>
-  <td class="method">pick_index_g1p_color()</td>
+  <td class="method">ALLEGRO_COLOR</td>
+  <td class="method"><b>pick_index_g1p_color</b>()</td>
 </tr>
 <tr>
-  <td class="method">pick_index_g1pp_color()</td>
+  <td class="method">ALLEGRO_COLOR</td>
+  <td class="method"><b>pick_index_g1pp_color</b>()</td>
 </tr>
 <tr>
-  <td class="method">pick_index_g1ppp_color()</td>
+  <td class="method">ALLEGRO_COLOR</td>
+  <td class="method"><b>pick_index_g1ppp_color</b>()</td>
 </tr>
 <tr>
-  <td class="method">pick_index_g2_color()</td>
+  <td class="method">ALLEGRO_COLOR</td>
+  <td class="method"><b>pick_index_g2_color</b>()</td>
 </tr>
 <tr>
-  <td class="method">validate()</td>
+  <td class="method">bool</td>
+  <td class="method"><b>validate</b>()</td>
 </tr>
 <tr>
-  <td class="method">load(float top_height=4.0f, float ground_height=2.0f)</td>
+  <td class="method">LabyrinthOfLore::WorldMap::TileMap</td>
+  <td class="method"><b>load</b>(float top_height=4.0f, float ground_height=2.0f)</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -3217,10 +3532,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/WorldMap/Door.q.yml">quintessence/LabyrinthOfLore/WorldMap/Door.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -3250,10 +3567,12 @@ table td
 </div>    <h3>Dependencies</h3>
 <p>This class contains no dependencies</p>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/WorldMap/Level.q.yml">quintessence/LabyrinthOfLore/WorldMap/Level.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -3291,10 +3610,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/WorldMap/MultiBitmapFilenameToWorldBuilder.q.yml">quintessence/LabyrinthOfLore/WorldMap/MultiBitmapFilenameToWorldBuilder.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -3317,7 +3638,8 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">build()</td>
+  <td class="method">LabyrinthOfLore::WorldMap::TileMap</td>
+  <td class="method"><b>build</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -3343,10 +3665,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/WorldMap/MultiBitmapTileMapLoader.q.yml">quintessence/LabyrinthOfLore/WorldMap/MultiBitmapTileMapLoader.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -3361,40 +3685,52 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">colors_are_equal(ALLEGRO_COLOR c1={}, ALLEGRO_COLOR c2={})</td>
+  <td class="method">bool</td>
+  <td class="method"><b>colors_are_equal</b>(ALLEGRO_COLOR c1={}, ALLEGRO_COLOR c2={})</td>
 </tr>
 <tr>
-  <td class="method">get_index_column_x()</td>
+  <td class="method">int</td>
+  <td class="method"><b>get_index_column_x</b>()</td>
 </tr>
 <tr>
-  <td class="method">infer_tile_map_width()</td>
+  <td class="method">int</td>
+  <td class="method"><b>infer_tile_map_width</b>()</td>
 </tr>
 <tr>
-  <td class="method">infer_tile_map_height()</td>
+  <td class="method">int</td>
+  <td class="method"><b>infer_tile_map_height</b>()</td>
 </tr>
 <tr>
-  <td class="method">pick_color(int x=0, int y=0)</td>
+  <td class="method">ALLEGRO_COLOR</td>
+  <td class="method"><b>pick_color</b>(int x=0, int y=0)</td>
 </tr>
 <tr>
-  <td class="method">pick_index_null_color()</td>
+  <td class="method">ALLEGRO_COLOR</td>
+  <td class="method"><b>pick_index_null_color</b>()</td>
 </tr>
 <tr>
-  <td class="method">pick_door_color()</td>
+  <td class="method">ALLEGRO_COLOR</td>
+  <td class="method"><b>pick_door_color</b>()</td>
 </tr>
 <tr>
-  <td class="method">pick_water_color()</td>
+  <td class="method">ALLEGRO_COLOR</td>
+  <td class="method"><b>pick_water_color</b>()</td>
 </tr>
 <tr>
-  <td class="method">pick_lava_color()</td>
+  <td class="method">ALLEGRO_COLOR</td>
+  <td class="method"><b>pick_lava_color</b>()</td>
 </tr>
 <tr>
-  <td class="method">pick_glow_water_color()</td>
+  <td class="method">ALLEGRO_COLOR</td>
+  <td class="method"><b>pick_glow_water_color</b>()</td>
 </tr>
 <tr>
-  <td class="method">validate()</td>
+  <td class="method">bool</td>
+  <td class="method"><b>validate</b>()</td>
 </tr>
 <tr>
-  <td class="method">load_and_process(float top_height=4.0f, float ground_height=2.0f)</td>
+  <td class="method">void</td>
+  <td class="method"><b>load_and_process</b>(float top_height=4.0f, float ground_height=2.0f)</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -3417,10 +3753,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/WorldMap/PixelRenderer.q.yml">quintessence/LabyrinthOfLore/WorldMap/PixelRenderer.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -3439,10 +3777,12 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">initialize()</td>
+  <td class="method">void</td>
+  <td class="method"><b>initialize</b>()</td>
 </tr>
 <tr>
-  <td class="method">create_render()</td>
+  <td class="method">ALLEGRO_BITMAP*</td>
+  <td class="method"><b>create_render</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -3474,10 +3814,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/WorldMap/Tile.q.yml">quintessence/LabyrinthOfLore/WorldMap/Tile.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -3492,16 +3834,19 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">run()</td>
+  <td class="method">std::string</td>
+  <td class="method"><b>run</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
 <p>This class contains no dependencies</p>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/WorldMap/TileMapLoader.q.yml">quintessence/LabyrinthOfLore/WorldMap/TileMapLoader.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -3512,10 +3857,12 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="private_method">validate_size_and_integrity()</td>
+  <td class="private_method">void</td>
+  <td class="private_method"><b>validate_size_and_integrity</b>()</td>
 </tr>
 <tr>
-  <td class="method">build_tile_map()</td>
+  <td class="method">LabyrinthOfLore::WorldMap::TileMap</td>
+  <td class="method"><b>build_tile_map</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -3529,10 +3876,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLore/WorldMap/Zone.q.yml">quintessence/LabyrinthOfLore/WorldMap/Zone.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -3563,7 +3912,8 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">collides(AllegroFlare::vec3d point={})</td>
+  <td class="method">bool</td>
+  <td class="method"><b>collides</b>(AllegroFlare::vec3d point={})</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -3574,10 +3924,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLoreGame/Classic.q.yml">quintessence/LabyrinthOfLoreGame/Classic.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -3636,13 +3988,16 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">set_bitmap_bin(AllegroFlare::BitmapBin* bitmap_bin=nullptr)</td>
+  <td class="method">void</td>
+  <td class="method"><b>set_bitmap_bin</b>(AllegroFlare::BitmapBin* bitmap_bin=nullptr)</td>
 </tr>
 <tr>
-  <td class="method">add_thing_to_world(std::vector&lt;LabyrinthOfLore::Entity::Base*&gt;* all_entities={}, LabyrinthOfLore::Entity::ThingDictionary* thing_dictionary=nullptr, int thing_id=0, std::string level_identifier=&quot;&quot;, AllegroFlare::vec3d position={}, bool billboard_at_camera=true, bool can_be_picked_up=true, bool must_be_picked_up_to_be_used=false)</td>
+  <td class="method">void</td>
+  <td class="method"><b>add_thing_to_world</b>(std::vector&lt;LabyrinthOfLore::Entity::Base*&gt;* all_entities={}, LabyrinthOfLore::Entity::ThingDictionary* thing_dictionary=nullptr, int thing_id=0, std::string level_identifier=&quot;&quot;, AllegroFlare::vec3d position={}, bool billboard_at_camera=true, bool can_be_picked_up=true, bool must_be_picked_up_to_be_used=false)</td>
 </tr>
 <tr>
-  <td class="method">initialize()</td>
+  <td class="method">void</td>
+  <td class="method"><b>initialize</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -3698,10 +4053,12 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLoreGame/Interactions.q.yml">quintessence/LabyrinthOfLoreGame/Interactions.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>
@@ -3736,34 +4093,44 @@ table td
 </div>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">validate_arguments()</td>
+  <td class="method">void</td>
+  <td class="method"><b>validate_arguments</b>()</td>
 </tr>
 <tr>
-  <td class="method">you_have_received_the_(int thing_id={})</td>
+  <td class="method">std::string</td>
+  <td class="method"><b>you_have_received_the_</b>(int thing_id={})</td>
 </tr>
 <tr>
-  <td class="method">character_speaks(std::string message=&quot;&quot;)</td>
+  <td class="method">void</td>
+  <td class="method"><b>character_speaks</b>(std::string message=&quot;&quot;)</td>
 </tr>
 <tr>
-  <td class="method">append_message(std::string message=&quot;&quot;)</td>
+  <td class="method">void</td>
+  <td class="method"><b>append_message</b>(std::string message=&quot;&quot;)</td>
 </tr>
 <tr>
-  <td class="method">player_has_item(int item_id=-1)</td>
+  <td class="method">bool</td>
+  <td class="method"><b>player_has_item</b>(int item_id=-1)</td>
 </tr>
 <tr>
-  <td class="method">get_player_inventory_count_of_type(thing_type_t thing_type=THING_TYPE_UNDEFINED)</td>
+  <td class="method">int</td>
+  <td class="method"><b>get_player_inventory_count_of_type</b>(thing_type_t thing_type=THING_TYPE_UNDEFINED)</td>
 </tr>
 <tr>
-  <td class="method">player_has_thing_of_type(thing_type_t thing_type=THING_TYPE_UNDEFINED)</td>
+  <td class="method">bool</td>
+  <td class="method"><b>player_has_thing_of_type</b>(thing_type_t thing_type=THING_TYPE_UNDEFINED)</td>
 </tr>
 <tr>
-  <td class="method">process_use(float time_now=0.0f)</td>
+  <td class="method">void</td>
+  <td class="method"><b>process_use</b>(float time_now=0.0f)</td>
 </tr>
 <tr>
-  <td class="method">process_use(int thing_being_used_by_player_from_inventory=-1, int thing_being_used_on=0, float time_now=0.0f)</td>
+  <td class="method">void</td>
+  <td class="method"><b>process_use</b>(int thing_being_used_by_player_from_inventory=-1, int thing_being_used_on=0, float time_now=0.0f)</td>
 </tr>
 <tr>
-  <td class="method">process_talk(int thing_id=0)</td>
+  <td class="method">void</td>
+  <td class="method"><b>process_talk</b>(int thing_id=0)</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
@@ -3801,24 +4168,29 @@ table td
     </table>
 </div>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/LabyrinthOfLoreGame/ThingDefinitionFactory.q.yml">quintessence/LabyrinthOfLoreGame/ThingDefinitionFactory.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <p>This class contains no properties</p>    <h3>Methods</h3>
 <div class="property-box methods">     <table>
 <tr>
-  <td class="method">run()</td>
+  <td class="method">std::string</td>
+  <td class="method"><b>run</b>()</td>
 </tr>
     </table>
 </div>    <h3>Dependencies</h3>
 <p>This class contains no dependencies</p>  </div>
 </ul>
+<br><br><br>
+<br><br><br>
 <ul>
   <div class="component">
     <h3 id="quintessence/Tileo/TileIndexInfo.q.yml">quintessence/Tileo/TileIndexInfo.q.yml</h3>
-    <h4>Overview<h4>
+    <p>(This component does not include supplementary documentation)</p>
     <h3>Properties</h3>
 <div class="property-box properties">     <table>
 <tr>

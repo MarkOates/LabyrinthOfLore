@@ -111,9 +111,9 @@ void Classic::set_bitmap_bin(AllegroFlare::BitmapBin* bitmap_bin)
    if (!((!initialized)))
    {
       std::stringstream error_message;
-      error_message << "[Classic::set_bitmap_bin]: error: guard \"(!initialized)\" not met.";
+      error_message << "[LabyrinthOfLoreGame::Classic::set_bitmap_bin]: error: guard \"(!initialized)\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Classic::set_bitmap_bin: error: guard \"(!initialized)\" not met");
+      throw std::runtime_error("[LabyrinthOfLoreGame::Classic::set_bitmap_bin]: error: guard \"(!initialized)\" not met");
    }
    this->bitmap_bin = bitmap_bin;
    return;
@@ -158,9 +158,9 @@ void Classic::initialize()
    if (!(bitmap_bin))
    {
       std::stringstream error_message;
-      error_message << "[Classic::initialize]: error: guard \"bitmap_bin\" not met.";
+      error_message << "[LabyrinthOfLoreGame::Classic::initialize]: error: guard \"bitmap_bin\" not met.";
       std::cerr << "\033[1;31m" << error_message.str() << " An exception will be thrown to halt the program.\033[0m" << std::endl;
-      throw std::runtime_error("Classic::initialize: error: guard \"bitmap_bin\" not met");
+      throw std::runtime_error("[LabyrinthOfLoreGame::Classic::initialize]: error: guard \"bitmap_bin\" not met");
    }
    if (initialized) return;
 
